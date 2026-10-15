@@ -90,8 +90,10 @@ docs/                  master-specification.md is the consolidated spec
 4. **Browser-local evidence:** raw document bytes/text never reach the server;
    `src/lib/evidence/` parsers are imported only from client components.
 5. **CSP:** never weaken the per-request nonce CSP in `src/proxy.ts` (no
-   `'unsafe-inline'` for scripts, `connect-src 'self'` only, no third-party or
-   analytics SDKs).
+   `'unsafe-inline'` for scripts, and none for styles in production — styles are
+   Tailwind classes, SVG presentation attributes, drawn SVG shapes, or CSSOM
+   writes, never a JSX style attribute; `connect-src 'self'` only, no
+   third-party or analytics SDKs).
 6. **No secret leakage:** production secrets live only in the deployment
    secret store; never commit them or expose them via `NEXT_PUBLIC_*`.
 

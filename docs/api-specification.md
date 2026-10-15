@@ -8,7 +8,7 @@ This document describes the request/response contracts for all API endpoints and
 
 ### `GET /api/health`
 
-Health check endpoint used by Vercel's monitoring and the production readiness workflow. Returns component-level status for the catalog, crypto primitives, the legacy configured-secret readiness marker, CRG adjacency graph, VA API config, and circuit-breaker state. These crypto fields support runtime readiness; the current research workflows use browser-local state, and the optional VA-account store has independent configuration and its own `VA_ACCOUNT_SESSION_SECRET`.
+Health check endpoint used by Vercel's monitoring and the production readiness workflow. Returns component-level status for the catalog, crypto primitives, the legacy configured-secret readiness marker, CRG adjacency graph, VA API config, circuit-breaker state, the shared consumer budget's admit/refuse pressure, and the Content-Security-Policy violations browsers have reported recently. These crypto fields support runtime readiness; the current research workflows use browser-local state, and the optional VA-account store has independent configuration and its own `VA_ACCOUNT_SESSION_SECRET`.
 
 `sessionCrypto` proves the seal/open primitives work using an ephemeral probe secret. `workflowSession` reports whether the primary `WORKFLOW_SESSION_SECRET` passes the production crypto-readiness probe; it does not establish research-workflow persistence or VA-account store readiness. Production health treats an absent/short primary key as degraded because the runtime-readiness contract still requires it.
 
@@ -78,8 +78,18 @@ The `kbGraph` component reports validated adjacency-graph migration state: `node
       "scope": "per-instance", // "per-instance" | "single-process"
       "detail": "per-client (key only as trustworthy as the forwarding header) limits apply per instance, so the aggregate is roughly the configured limit x instance count; the edge WAF remains the capacity layer",
       "identity": {
-        "trustedIngress": false, // true only when RATE_LIMIT_TRUSTED_INGRESS=true
+        "trustedIngress": false, // true only when an ingress model is declared
         "identity": "self-declared", // "asserted" | "self-declared"
+        "model": "unasserted", // "unasserted" | "set" | "append"
+        "header": "x-forwarded-for", // "x-forwarded-for" | "x-real-ip" | null
+        "hop": "leftmost", // "leftmost" | "nth-from-right" | "none"
+        "hopsFromRight": null, // set for the append model, otherwise null
+        "fallback": "x-real-ip", // null when the model reads no fallback header
+        "unidentified": {
+          "policy": "ceiling", // "ceiling" | "shared-per-client-bucket"
+          "keyTemplate": null, // "unidentified:<limiter>" under the class-bucket policy, else null
+          "detail": "no ingress model is declared, so a request with no usable identity cannot be told apart from an honest client of a deployment whose forwarding headers never arrive; it is bounded by the shared admission ceiling, and charging that whole population to one bucket at a client's own limit would cap it at one client's allowance"
+        },
         "variable": "RATE_LIMIT_TRUSTED_INGRESS",
         "detail": "no ingress is asserted, so a per-client key is only as trustworthy as the header that carried it; the shared admission ceiling caps abuse that rotates keys either way"
       },
@@ -95,7 +105,80 @@ The `kbGraph` component reports validated adjacency-graph migration state: `node
         "distributed": false,
         "blockedBy": "no-store-provisioned",
         "detail": "counters live in this process only, so the enforced limit is per instance; a deployment-wide quota needs a shared counter store the operator must provision (and prove atomic in the hosting environment), and no shared store is wired for inbound admission, so none is claimed (SEC-02 remains open on that half)"
+      },
+      "refusals": {
+        "scope": "process-local", // refusals are counted where they happen, never a fleet total
+        "windowMs": 900000,
+        "maxEvents": 256, // hard cap on retained events; a storm drops its own oldest rows
+        "received": 0, // retained in-window refusals
+        "unknownBudget": 0, // retained refusals whose reason was none of the budgets below
+        "byBudget": { "ceiling": 0, "perClient": 0, "unidentified": 0 }, // the reading: which budget refused
+        "ceilingShare": null, // 0-100, share charged to the shared ceiling; null when nothing retained
+        "evicted": 0, // dropped at the retention bound since this process started
+        "since": null, // oldest retained refusal, ISO 8601, or null
+        "lastRefusedAt": null,
+        "surfaces": [], // busiest first: { surface, budget, count, lastRefusedAt }
+        "surfacesOmitted": 0, // surface rows left out by the reporting cap of 12
+        "detail": "no inbound admission refusal in the last 15m; this window is per instance, forgets rows on cold start, and never sees a refusal the edge WAF answered itself"
       }
+    },
+    "vaConsumerBudget": {
+      "status": "ok",
+      "latencyMs": 0,
+      "scope": "not-required", // "fleet-shared" | "unenforced" | "not-required"
+      "detail": "one process is the whole fleet in this runtime, so the shared reservation is not consulted and the per-instance outbound budget (VA_API_OUTBOUND_WINDOW_MS / VA_API_OUTBOUND_MAX_REQUESTS_PER_SERVICE) is the whole budget; the shared pressure counters stay structurally zero",
+      "budget": {
+        "maxRequests": 60, // read off the budget that enforces it, never re-declared here
+        "windowMs": 60000,
+        "optIn": false, // VA_SHARED_CONSUMER_BUDGET=true is required in a distributed runtime
+        "variable": "VA_SHARED_CONSUMER_BUDGET"
+      },
+      "store": {
+        "mode": "no-coordinator", // "shared-coordinator" | "no-coordinator"
+        "distributed": false,
+        "blockedBy": null // "no-shared-budget-opt-in" | "no-shared-coordinator-configured" | null
+      },
+      "pressure": {
+        "scope": "per-instance", // this instance's decisions since it started, never a fleet total
+        "since": null,
+        "admitted": 0,
+        "refused": 0,
+        "refusals": {
+          "exhausted": 0, // the budget working: this window's budget is spent
+          "superseded-window": 0, // the store has already opened a later window
+          "predecessor-invalid": 0,
+          "counter-lifetime-refused": 0,
+          "unreadable-decision": 0,
+          "store-unconfigured": 0,
+          "store-unreachable": 0,
+          "clock-unusable": 0
+        },
+        "refusedInLastWindow": 0,
+        "lastRefusalAt": null,
+        "lastRefusalReason": null,
+        "pacing": {
+          "charges": 0,
+          "chargedReservations": 0,
+          "refusedCharges": 0,
+          "lastChargedAt": null
+        },
+        "detail": "no reservation has been decided on this instance since it started"
+      }
+    },
+    "cspReports": {
+      "status": "ok",
+      "latencyMs": 0,
+      "scope": "process-local", // reports are accepted by whichever instance served the POST
+      "windowMs": 900000,
+      "maxEvents": 128,
+      "received": 0, // non-zero is the signal: some deploy is blocking something the policy did not intend
+      "oversized": 0, // rejected before they could be attributed; counted, never parsed
+      "evicted": 0, // dropped at the retention bound since this process started
+      "since": null,
+      "lastReceivedAt": null,
+      "directives": [], // { directive, count, dispositions, lastReceivedAt }, most-reported first, capped at 12
+      "directivesOmitted": 0,
+      "detail": "no CSP violation report in the last 15m; this window is per instance and forgets rows on cold start"
     },
     "runtime": {
       "status": "ok",
@@ -106,6 +189,7 @@ The `kbGraph` component reports validated adjacency-graph migration state: `node
         "vaLiveIntegration": "enabled", // "enabled" | "disabled"
         "vaReferenceCache": "process-local", // "process-local" | "disabled"
         "rateLimit": "single-process", // "single-process" | "per-instance"
+        "vaConsumerBudget": "not-required", // "fleet-shared" | "unenforced" | "not-required"
         "circuitBreaker": "single-process" // "single-process" | "per-instance"
       },
       "detail": "all process-local capabilities run at full strength in this runtime"
@@ -121,19 +205,87 @@ The `kbGraph` component reports validated adjacency-graph migration state: `node
 
 `components.runtime` aggregates every control that depends on process-local state, so
 "what does this deployment give up?" has one answer: `reduced` lists capability ids below
-full strength, `capabilities` maps every id to its regime (including live VA access and
-the circuit breaker, which have no component of their own), and `detail` states it in one
-sentence. A distributed runtime reports all four as reduced; that is expected, not
-degraded. The `scope`/`detail` shown inside `components.vaReferenceCache` and
+full strength, `capabilities` maps every id to its regime (including live VA access, the circuit
+breaker, and the shared consumer budget), and `detail` states it in one
+sentence. A distributed runtime without the consumer-budget opt-in reports all five as reduced;
+that is expected, not degraded. The `scope`/`detail` shown inside `components.vaReferenceCache`,
+`components.vaConsumerBudget` and
 `components.rateLimit` are generated from the same report, so they cannot disagree with it, and
-`components.rateLimit.ceiling.max` is read off the limiter that actually enforces it, so the
-reported budget and the applied budget cannot drift apart.
+`components.rateLimit.ceiling.max` and `components.vaConsumerBudget.budget.maxRequests` are read
+off the controls that actually enforce them, so the reported budget and the applied budget cannot
+drift apart.
+
+`components.cspReports` is how a deployed Content-Security-Policy regression becomes an operator-
+readable fact instead of only a browser-console line. `/api/csp-report` redacts every violation
+report to a bounded, content-free event and now keeps the last few minutes of them, per directive,
+so `received > 0` names what is being blocked, how often, and when. It carries fact names and
+counts only: the window is handed the directive/disposition pair, so no document URL, blocked URL,
+source file, or report sample can reach this (public) payload. `scope` is always `process-local` — a
+report is accepted by whichever instance served the POST, so another instance legitimately reports
+its own window and a cold start forgets one — and `maxEvents`/`evicted` bound retention so a report
+flood cannot grow the process. It is a **report, never a health failure**: a violation usually means
+one page rendered under an unintended policy, not that the deployment cannot serve, so
+`cspReports.status` is always `ok` and it is not part of the verdict below.
+
+`components.vaConsumerBudget` reports the fleet's shared consumer budget (A03) in the three parts
+an operator needs to tell "the budget is holding" from "there is no budget here". `scope` is
+`fleet-shared` when every upstream attempt on this instance, including retries, reserves a slot in
+the fleet's one rolling window before it reaches VA; `unenforced` when the runtime is distributed
+and the `VA_SHARED_CONSUMER_BUDGET` opt-in or the coordinator is missing, in which case every
+upstream attempt is refused outright and live VA access falls back to local reference data;
+and `not-required` in a single-process runtime, where the per-instance outbound budget is the
+whole budget. `budget` carries the bounds read off the module that enforces them,
+`budget.optIn` and `store.blockedBy` name the missing prerequisite when it is unenforced, and
+`store.distributed` records the runtime classification the verdict came from.
+
+`pressure` is the reading that makes throttling visible before VA answers `429`. `refused` counts
+the upstream attempts this instance refused, `refusals` breaks them down by reason — `exhausted`
+is the budget working, while `superseded-window`, `predecessor-invalid`, `unreadable-decision`,
+`counter-lifetime-refused`, `store-unconfigured`, `store-unreachable` and `clock-unusable` are the
+budget failing closed, which is a different operator problem — and `refusedInLastWindow` with
+`lastRefusalAt`/`lastRefusalReason` says whether that is happening now or happened earlier.
+`pacing.chargedReservations` is the earliest warning of all: it counts reservations charged
+because the upstream's own `ratelimit-remaining` said less quota remains than the fleet's window
+believes, so a non-zero value means VA has already told the fleet it is short. When the fleet is
+being throttled, `refused` rises while `admitted` flattens and `refusedInLastWindow` is non-zero;
+`docs/operations.md` carries the worked example under "Monitoring Consumer-Budget Pressure".
+
+The counters are **per instance** (`pressure.scope` says so) and reset on cold start, so two
+instances do not add up to a fleet total without the operator adding them; a refusal is an event
+rather than a rate, so any non-zero `refused` is true of the fleet as a whole. `admitted + refused`
+is exactly the number of decisions this instance made, because the same statement that decides
+also records it. The component is always `status: "ok"`: an exhausted or unenforced budget is the
+documented degradation path, not a reason to take the deployment out of service.
 
 `components.rateLimit.identity` and `components.rateLimit.store` record the two limits of this
-control in one place: whether a per-client key rests on an asserted ingress
-(`RATE_LIMIT_TRUSTED_INGRESS=true`) or only on client-supplied headers, and whether the counters
-are deployment-wide or process-local. Neither is inferred from comments — see SEC-02 in
+control in one place: which hop of the forwarding header a per-client key comes from — the declared
+ingress model (`RATE_LIMIT_TRUSTED_INGRESS`: `set` for an ingress that overwrites the header,
+`append`/`append:N` for one that appends the observed peer at a known position from the right,
+`unasserted` when nothing is declared) reported as `model`, `header`, `hop` and `hopsFromRight` —
+and whether the counters are deployment-wide or process-local. The model is enforcement, not a
+label: it selects the hop, so an operator can audit the claim by comparing the reported hop with
+what the ingress writes, and an unreadable value falls back to `unasserted` and is reported as
+such. `identity.unidentified` records what a request with **no** usable identity gets: under a
+declared model it shares one class bucket per surface at that surface's own per-client limit
+(`policy: "shared-per-client-bucket"`, key template `unidentified:<limiter>`), because declining
+to present an identity must not be cheaper than presenting one; with no model declared it stays
+`policy: "ceiling"`, since an identity-less request cannot then be told apart from an honest
+client of a deployment whose headers never arrive. Neither is inferred from comments — see SEC-02 in
 `docs/security-architecture-audit-2026-10-07.md` for the hosted evidence still owed.
+
+`components.rateLimit.refusals` is why a refusal happened, counted because the `429` body
+deliberately never says: one probe must not be able to tell the shared ceiling from a per-client
+bucket. `byBudget.ceiling` rising with `ceilingShare` is aggregate pressure — many *different*
+clients refused in one window, which is the shared ceiling being spent — while
+`byBudget.perClient` is individual clients at their own limit, and `byBudget.unidentified` is the
+class bucket bounding requests that presented no identity — a non-zero count there means the
+declared ingress model and the edge it actually runs disagree, not that traffic is merely heavy.
+It carries the surface label
+(`method-post`, `reference-read`, or the matched route path) and the budget only: never the
+client key, which is an address, because this payload is public. Read it as this instance's
+decisions, not the fleet's — the window is process-local, resets on cold start, and never sees
+a refusal the edge WAF answered itself, so a zero means "nothing was refused here in this
+window", never "nothing was refused anywhere".
 
 **Runtime**: `force-dynamic`, `nodejs`.
 
@@ -214,7 +366,7 @@ Codes render inline on the current step (`role="alert"`). Only cross-step guidan
 
 **Persistence** — `src/lib/secondary-workflow/browser-context.ts` (Zod-bounded, versioned record) in `sessionStorage` under `secondary-condition-finder:secondary-workflow:v1`. A failed write never navigates: `persistStepResult` maps it to `context-too-large` and the step holds the user in place.
 
-**Completion** — the Finish Review / Start a new review controls in `src/components/secondary/SecondaryWorkflowCompletionActions.tsx` clear every registered browser-local key (`clearSecondaryWorkflowLocalState`) and only then navigate to `/secondary` or `/secondary/diagnosed`. A failed cleanup surfaces an error instead of navigating.
+**Completion** — the Finish Review / Start a new review controls in `src/components/secondary/SecondaryWorkflowCompletionActions.tsx` clear every registered browser-local key (`clearSecondaryWorkflowLocalState`) and only then navigate to `/secondary` or `/secondary/diagnosed`. A failed cleanup surfaces an error instead of navigating. The controls also carry the shared privacy-request pointer (`src/components/privacy/PrivacyDeletionCue.tsx`, destination `PRIVACY_INTAKE_PATH`), because the data a deletion request reaches is not the browser-local state these controls clear; the presumptive track's saved-service-history control renders the same pointer, so the destination and the distinction are stated once.
 
 **Recommendation engine** — Steps 5 and 6 run `recommend()` in the browser over the public corpus at `/kb/client-corpus.json` (`src/lib/client-corpus/`, generated by `npm run build:client-corpus`). Regulatory relevance filtering also runs locally (`relevantChangesForConditionIds`), so the scope-free server snapshot never sees the selections.
 
@@ -246,6 +398,16 @@ on `/presumptive` — there is no `?error=` transport any more):
 - `date-order`: End date before start date.
 - `invalid-date`: Invalid date format.
 - `storage-unavailable`: the browser refused the write; the caller must not continue.
+
+**Clearing**: `/presumptive/results` renders a “Clear saved service history” control
+(`src/components/presumptive/PresumptiveResults.tsx`) that calls
+`clearPresumptiveLocalState(storage)` for every registered key and then navigates
+to `/presumptive`. Beside it, the same shared privacy pointer the secondary
+completion controls render (`src/components/privacy/PrivacyDeletionCue.tsx`)
+states what that control did and what it cannot do: clearing removes this
+browser's copy, and the data the application itself keeps is deleted through the
+published intake (`PRIVACY_INTAKE_PATH`). Guarded by
+`tests/privacy-deletion-pointer.test.tsx`.
 
 **The flow's one server call**: the accredited-representative finder on
 `/presumptive/results` posts `zip` / `radiusMiles` / `type` **in the request body** to
@@ -413,11 +575,21 @@ method-scoped `POST` rule.
 A request without a usable IP identity is still charged to the named shared admission
 ceiling, so missing or invalid identity does not bypass all limits. Attributed requests
 also charge that ceiling in addition to their per-client bucket. All buckets remain
-process-local and reset on cold start; `/api/health` reports the identity policy,
-aggregate ceiling, and store regime in `components.rateLimit.identity|ceiling|store`.
-Forwarding headers are trustworthy only when the deployment ingress strips client-supplied
-values and asserts that trust configuration; the application cannot verify the edge.
-Hosted, multi-instance and direct-origin behavior remain deployment checks.
+process-local and reset on cold start; `/api/health` reports the declared ingress model
+(which hop is the key), the aggregate ceiling, and the store regime in
+`components.rateLimit.identity|ceiling|store`. A refusal's reason — the shared ceiling or the
+client's own bucket — is counted per instance and reported as `components.rateLimit.refusals`
+(15-minute window, at most 256 retained events and 12 reported surface rows, no client address
+in the payload), which is what makes ceiling saturation alertable instead of inferred from a
+`429` count. Forwarding headers are trustworthy only
+when the deployment ingress strips client-supplied values, and the deployment declares
+which model it runs — `set` (the ingress overwrites the header) or `append`/`append:N`
+(the ingress appends the observed peer, which is then read from the right, and
+`X-Real-IP` is not an identity); with no declaration the leftmost hop is read, which is
+correct only for an ingress that overwrites. The application cannot verify the edge from
+inside: declaring a model moves *which* end is trusted and makes the claim auditable, it
+does not prove the edge behaves that way. Hosted, multi-instance and direct-origin
+behavior remain deployment checks.
 
 ---
 

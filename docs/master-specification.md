@@ -49,7 +49,7 @@ The knowledge base strictly separates **Secondary Service Connection** (probabil
 
 - **Purity threshold:** `npm run kb:validate` downgrades any mapping with > 30% unverified citations to `"draft": true` (excluded from recommendation output) and quarantines single-unverified-citation mappings.
 - **Amnesty & purge:** human reviewers Verify, Replace, or Purge unverified citations. If clinical evidence does not exist, the CRG edge does not exist.
-- **Automated decay:** `npm run citations:decay` flags URLs returning 404/5xx as decayed and `sourceCheckedOn` dates older than 365 days as stale. Runs live network probes, so it is a deliberate maintainer gate, not per-PR CI.
+- **Automated decay:** `npm run citations:decay` flags URLs returning 404/5xx as decayed and `sourceCheckedOn` dates older than 365 days as stale. A host that refuses the automated probe — throttling (425/429, or `Retry-After`), a bot wall, or a timeout on a host that answers other URLs — is reported as unverifiable-by-probe with the run's coverage, never as a dead link, so the gate only fails on verdicts it actually obtained. Runs live network probes, so it is a deliberate maintainer gate, not per-PR CI.
 - **Hard ceiling:** `npm run citations:audit` fails the pipeline if unverified citation count exceeds the audited baseline.
 
 ## Part 2 — Codebase Layout, Routing, and Architecture
@@ -116,6 +116,7 @@ Zero-trust, privacy-first architecture — no PHI leakage, XSS, or CSRF surface.
 Generated per-request in `src/proxy.ts` (Next 16 edge proxy), with the per-request nonce propagated via the `x-nonce` request header:
 
 - `script-src 'self' 'nonce-<n>' 'strict-dynamic'` — no `'unsafe-inline'` (dev adds `'unsafe-eval'` only).
+- `style-src 'self' 'nonce-<n>'` + `style-src-attr 'none'` — production authorizes styles by nonce and refuses the style attribute; `'unsafe-inline'` is development-only (audit SEC-03).
 - `connect-src 'self'` (plus `ws:`/`wss:` in dev) — no third-party APIs, no analytics SDKs.
 - `frame-ancestors 'none'`, `form-action 'self'`, `object-src 'none'`, `base-uri 'self'`, `script-src-attr 'none'`, `upgrade-insecure-requests`.
 - Route-wide security headers (HSTS, `no-referrer`, `nosniff`, `DENY`, Permissions-Policy) ship from `next.config.ts`.

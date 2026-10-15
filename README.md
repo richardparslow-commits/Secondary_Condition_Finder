@@ -201,6 +201,7 @@ Open `http://localhost:3000`. `/scenarios` contains repeatable demo walkthroughs
 | `npm run evidence:architecture` | Audits the browser-local evidence parser architecture and its security boundaries |
 | `npm run regulatory:validate` | Validates the provenanced regulatory-actions seed data |
 | `npm run regulatory:audit` | Regulatory-intelligence audit (add `:markdown` for the report form) |
+| `npm run report:route-inventory` | Publishes the per-run route inventory report — every route's declared surfaces against the evidence actually recorded — as JSON + markdown (`--surface=`, `--evidence-dir=`, `--matrix=`); exits 1 when it names a coverage gap |
 
 CI also builds the production app and runs real Chrome/ChromeDriver journeys for
 the secondary workflow and validation/error behavior, plus a production-boot

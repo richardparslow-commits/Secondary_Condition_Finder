@@ -1,6 +1,19 @@
 import "server-only";
 
 import { createLogger } from "@/lib/observability/logger";
+
+import { isDistributedRuntime, type RuntimeEnvironment } from "../runtime-deployment";
+import {
+  parseVaApiRateLimitGuidance,
+  planVaApiConsumerPacing,
+  type VaApiRateLimitHeaderSource,
+} from "./api";
+import {
+  recordVaConsumerBudgetDecision,
+  recordVaConsumerBudgetPacingCharge,
+  recordVaConsumerBudgetPacingRefusal,
+  type VaSharedConsumerBudgetOutcome,
+} from "./consumer-budget-pressure";
 import { VA_REFERENCE_CACHE_TTL_MS } from "./reference-cache";
 
 type Env = Record<string, string | undefined>;
@@ -104,6 +117,14 @@ export const VA_SHARED_CACHE_ENVELOPE_VERSION = 2;
  * per-window rather than per-key, which over-counts refreshes of a hot key:
  * the bound stays conservative, and a refused write only makes the cache
  * colder, never incorrect.
+ *
+ * That bound only holds while the counter is a counter and has a lifetime, so
+ * the window reservation applies the same two rules as the consumer budget
+ * below: the reply must be a non-negative safe integer (a coerced float, a
+ * negative, a hex/exponent/padded string, or a JSON `true`/`[1]` is not a
+ * count), and the lifetime applied on the window's first write must be
+ * confirmed by the store — a counter that can never expire is an accumulating
+ * key, not a bounded budget, so the slot is refused and the key removed.
  */
 export const VA_SHARED_KEY_WRITE_WINDOW_SECONDS = 300;
 export const VA_SHARED_KEY_WRITE_MAX_PER_WINDOW = 240;
@@ -189,6 +210,99 @@ export const VA_SHARED_CONSUMER_BUDGET_VARIABLE = "VA_SHARED_CONSUMER_BUDGET";
 
 export function vaSharedConsumerBudgetEnabled(env: Env = process.env as Env): boolean {
   return env[VA_SHARED_CONSUMER_BUDGET_VARIABLE]?.trim().toLowerCase() === "true";
+}
+
+/**
+ * Whether the fleet-wide consumer budget is actually in force here, and if not,
+ * which prerequisite is missing.
+ */
+export interface VaSharedConsumerBudgetScope {
+  /**
+   * `fleet-shared` = every upstream attempt here reserves a slot in the fleet's
+   * one window; `unenforced` = live VA access is refused before any attempt, so
+   * nothing is bounded because nothing is sent; `not-required` = one process is
+   * the whole fleet, so the per-instance outbound budget is the whole budget.
+   */
+  scope: "fleet-shared" | "unenforced" | "not-required";
+  detail: string;
+  /** True when the budget is at full strength here — enforced, or not needed. */
+  full: boolean;
+  /** Whether a shared coordinator is configured at all. */
+  configured: boolean;
+  /** Whether the explicit `VA_SHARED_CONSUMER_BUDGET` opt-in is set. */
+  optIn: boolean;
+  /** The operator's next action when the budget is not enforced. */
+  blockedBy: "no-shared-budget-opt-in" | "no-shared-coordinator-configured" | null;
+}
+
+/**
+ * Report the regime the consumer budget is in, in the budget's own terms.
+ *
+ * The budget is the control that makes a *shared* quota safe, so its scope answers
+ * the one question a health surface cannot otherwise answer: is this deployment's
+ * upstream traffic bounded by one shared window, and if not, what is missing? The
+ * reservations that would show it are exactly the ones the gate refuses, which is
+ * why the answer has to be a report rather than an observation.
+ *
+ * This is also the one capability that can be at full strength *while* distributed
+ * (`fleet-shared`), because a shared atomic window is the correct fleet-wide form
+ * of an in-process budget rather than a weaker version of it. The other available
+ * readings are honest about what they are not: `unenforced` says live VA access is
+ * refused outright (the same refusal `vaLiveIntegration` reports, from the
+ * budget's side of it) instead of implying the fleet is unlimited.
+ *
+ * The verdict comes from the same three gates the reservation consults — the
+ * runtime classification, the opt-in, and a configured coordinator — so a green
+ * report cannot sit beside a closed gate.
+ */
+export function vaSharedConsumerBudgetScope(
+  env: RuntimeEnvironment = process.env,
+): VaSharedConsumerBudgetScope {
+  const distributed = isDistributedRuntime(env);
+  const configured = isVaSharedCacheConfigured(env);
+  const optIn = vaSharedConsumerBudgetEnabled(env);
+
+  if (!distributed) {
+    return {
+      scope: "not-required",
+      detail: `one process is the whole fleet in this runtime, so the shared reservation is not consulted and the per-instance outbound budget (VA_API_OUTBOUND_WINDOW_MS / VA_API_OUTBOUND_MAX_REQUESTS_PER_SERVICE) is the whole budget; the shared pressure counters stay structurally zero`,
+      full: true,
+      configured,
+      optIn,
+      blockedBy: null,
+    };
+  }
+
+  if (!optIn) {
+    return {
+      scope: "unenforced",
+      detail: `a distributed runtime requires the explicit ${VA_SHARED_CONSUMER_BUDGET_VARIABLE}=true opt-in before any upstream attempt is made, so no reservation is decided and the pressure counters stay structurally zero — live VA access itself is refused in this state, which is what the zero refusal count means here`,
+      full: false,
+      configured,
+      optIn,
+      blockedBy: "no-shared-budget-opt-in",
+    };
+  }
+
+  if (!configured) {
+    return {
+      scope: "unenforced",
+      detail: `the consumer-budget opt-in is set but no shared coordinator is configured (VA_REFERENCE_SHARED_CACHE_URL + TOKEN, or a vendor alias), so every upstream attempt is refused rather than granted a per-process budget`,
+      full: false,
+      configured,
+      optIn,
+      blockedBy: "no-shared-coordinator-configured",
+    };
+  }
+
+  return {
+    scope: "fleet-shared",
+    detail: `every upstream attempt on this instance, including retries, reserves a slot in the fleet's one shared window (${VA_SHARED_CONSUMER_MAX_REQUESTS} per ${VA_SHARED_CONSUMER_WINDOW_MS} ms) before it reaches VA, so the budget bounds the whole fleet rather than this process; components.vaConsumerBudget.pressure reports this instance's share of the resulting refusals`,
+    full: true,
+    configured,
+    optIn,
+    blockedBy: null,
+  };
 }
 
 /**
@@ -475,10 +589,28 @@ export async function bumpVaSharedCacheEpoch(
 }
 
 /**
+ * Read a Redis-REST integer reply strictly. Accepts a non-negative safe integer
+ * or its bare digit-string form and rejects fractions (`1.5`), negatives,
+ * exponents, hex and whitespace-padded strings, JSON booleans and arrays, and
+ * everything else — so no coerced value can authorise a slot or confirm a
+ * counter's lifetime. Shared by the per-namespace write budget and the
+ * distributed consumer budget.
+ */
+function readStrictCounter(reply: unknown): number | null {
+  if (typeof reply === "number") {
+    return Number.isSafeInteger(reply) && reply >= 0 ? reply : null;
+  }
+  if (typeof reply === "string" && /^\d{1,15}$/.test(reply)) {
+    return Number.isSafeInteger(Number(reply)) ? Number(reply) : null;
+  }
+  return null;
+}
+
+/**
  * Admit one write against the namespace's per-window budget. Returns
- * `unavailable` when the counter cannot be read (fail closed), `exhausted`
- * once the window cap is reached, and `admitted` otherwise — so the caller can
- * report the reason without guessing.
+ * `unavailable` when the counter cannot be read as a counter or cannot be given
+ * a lifetime (fail closed), `exhausted` once the window cap is reached, and
+ * `admitted` otherwise — so the caller can report the reason without guessing.
  */
 type SharedCacheWriteAdmission = "admitted" | "exhausted" | "unavailable";
 
@@ -494,16 +626,30 @@ async function reserveSharedCacheWriteSlot(
     if (!increment.ok || !increment.payload || increment.payload.error !== undefined) {
       return "unavailable";
     }
-    const count = Number(increment.payload.result);
-    if (!Number.isSafeInteger(count) || count < 1) return "unavailable";
+    const count = readStrictCounter(increment.payload.result);
+    if (count === null || count < 1) return "unavailable";
     if (count > VA_SHARED_KEY_WRITE_MAX_PER_WINDOW) return "exhausted";
     if (count === 1) {
-      // Bound the counter's lifetime. A failed EXPIRE only leaves one small
-      // per-window key behind — later windows use a different bucket key.
-      await runVaSharedKvCommand(
+      // Bound the counter's lifetime, and require the store to confirm it: a
+      // per-window counter that can never expire is an accumulating key, so an
+      // unconfirmed lifetime removes it and refuses the write rather than
+      // leaving one permanent key per window behind.
+      const expire = await runVaSharedKvCommand(
         ["EXPIRE", budgetKey, String(VA_SHARED_KEY_WRITE_WINDOW_SECONDS)],
         env,
       );
+      const lifetimeConfirmed =
+        expire.ok &&
+        expire.payload !== null &&
+        expire.payload.error === undefined &&
+        readStrictCounter(expire.payload.result) === 1;
+      if (!lifetimeConfirmed) {
+        await runVaSharedKvCommand(["DEL", budgetKey], env);
+        sharedLogger.warn("va shared cache write budget unavailable", {
+          outcome: "counter-lifetime-refused",
+        });
+        return "unavailable";
+      }
     }
     return "admitted";
   } catch {
@@ -532,42 +678,77 @@ export async function runVaSharedKvCommand(
 }
 
 /**
- * Conservative **rolling** consumer budget (audit A03).
+ * Conservative **rolling** consumer budget (audit A03), decided in one atomic
+ * server-side operation.
  *
  * VA enforces a per-consumer request quota across all instances, and a shared
- * GET/SET cache is not a rate limiter, so the distributed gate atomically
- * reserves a slot in the shared store before every upstream attempt, including
- * retries. It fails closed (false) when the coordinator is missing,
- * unreachable, or answers anything this module cannot read as a counter.
+ * GET/SET cache is not a rate limiter, so the distributed gate reserves a slot in
+ * the shared store before every upstream attempt, including retries. It fails
+ * closed (false) when the coordinator is missing, unreachable, or answers
+ * anything this module cannot read as a decision.
  *
- * Two defects of the original fixed-minute counter are closed here:
+ * **One round trip, one atomic decision.** The rolling rule — this window's
+ * count charged together with a weighted share of the predecessor window it
+ * still overlaps — used to be assembled from two commands (`INCR` here, `GET` of
+ * the predecessor there, plus a separate `EXPIRE`), so the two terms were read at
+ * different instants and a concurrent reservation, or a stalled one, could be
+ * decided against a predecessor that was still moving. It is now a single
+ * `EVAL`: the script reads the predecessor, increments this window, establishes
+ * the counter's lifetime, and applies the fence, all inside one server-side
+ * operation that no other command can interleave with. The reservation's worst
+ * case is therefore one bounded exchange instead of up to three.
  *
- *   - **No boundary burst.** `floor(now / 60000)` admitted 60 reservations at
- *     59,999 ms and another 60 at 60,000 ms — 120 admissions against a budget
- *     of 60, one millisecond apart. Admission is now a rolling window: the
- *     current bucket's count is charged together with a weighted share of the
- *     predecessor bucket's count, the weight being the fraction of that window
- *     the current instant still overlaps. `Math.ceil` on the product keeps the
- *     approximation conservative, so the burst above is refused, and pacing
- *     recovers gradually as the overlap decays. This is conservative pacing
- *     rather than a hard atomic sliding window: the current-bucket term is
- *     atomic (one `INCR`), while the predecessor term is a separate read.
- *   - **Strict command validation.** A counter reply must be a non-negative
- *     safe integer; a fractional, negative, non-numeric, or erroring reply
- *     refuses the slot instead of being coerced (`Number.isFinite` accepted
- *     `1.5`). The counter's lifetime is applied once per window and its reply is
- *     validated: a counter that cannot be given a lifetime is not a bounded
- *     budget, so the slot is refused and the key is removed instead of being
- *     left to accumulate in the store.
+ * Three defects are closed here:
  *
- * A refused reservation still consumes a slot, exactly as before, because the
- * counter is incremented before the decision. That over-count keeps the budget
- * conservative: a refused attempt can only reduce traffic against VA.
+ *   - **No fixed-minute boundary burst.** `floor(now / 60000)` admitted 60
+ *     reservations at 59,999 ms and another 60 at 60,000 ms — 120 admissions
+ *     against a budget of 60, one millisecond apart. The rolling rule refuses
+ *     that burst: the predecessor's weight is still 1 at the boundary, so the
+ *     second window admits nothing, and pacing recovers gradually as the overlap
+ *     decays. `ceil` on the product keeps the approximation on the conservative
+ *     side, so this is still conservative pacing rather than a hard sliding
+ *     window — but the pacing is now atomic, which is what makes the bound hold
+ *     under concurrency rather than only in sequence.
+ *   - **No superseded window.** A reservation whose window the store has already
+ *     moved past — a call stalled long enough to cross a boundary, or an instance
+ *     whose clock lags the fleet's — is refused instead of being decided against
+ *     a predecessor other instances are still writing. Without that fence the
+ *     straddling case is exactly the fixed-minute burst again, released by
+ *     latency instead of by the clock: N instances admit a window's budget while
+ *     the previous window's callers have not landed yet, and then those callers
+ *     admit theirs. The fence makes the cross-boundary total at most one budget.
+ *     It is deliberately one-sided: an instance whose clock *leads* the fleet's
+ *     opens the next window early and causes the lagging instances to be refused,
+ *     so clock skew can only narrow the fleet's traffic, never widen it.
+ *   - **Strict decision validation.** The reply must be a decision code
+ *     (`VA_SHARED_CONSUMER_DECISION`), read as a non-negative safe integer in
+ *     either Redis-REST encoding; a fractional, negative, unknown, or erroring
+ *     reply refuses the slot instead of being coerced. The predecessor's value is
+ *     validated with the same strictness *inside* the script (a non-integer
+ *     predecessor refuses the slot), so a corrupted counter can never be
+ *     arithmetic fuel. The counter's lifetime is established in the same atomic
+ *     step as the increment, which closes the old hole where the instance that
+ *     created the counter could die — or fail its `EXPIRE` — and leave a
+ *     lifetime-less counter behind.
+ *
+ * A refused *exhausted* reservation still consumes a slot, exactly as before,
+ * because the script increments before it decides. That over-count keeps the
+ * budget conservative: a refused attempt can only reduce traffic against VA.
+ * Refusals that are not about the budget — a superseded window, an invalid
+ * predecessor, an unreadable reply — are decided before the increment and so
+ * spend nothing, because there is no window for them to be counted in.
+ *
+ * The upstream's own `ratelimit-remaining`/`reset` guidance is consumed by
+ * `applyVaConsumerPacingGuidance` below, in the only direction that needs no
+ * confirmed policy: it can add reservations to this budget, never remove them,
+ * and guidance this module cannot read exactly changes nothing.
  *
  * Still unconfirmed, and therefore still an operator item: the issued
- * consumer's rolling/fixed/reset semantics, and whether its
- * `ratelimit-remaining`/reset guidance may adapt this pacing. Issue #287 owns
- * that evidence; this module does not guess at it.
+ * consumer's rolling/fixed/reset semantics, its environment and
+ * credential-sharing key scope, and whether a confirmed quota policy may
+ * **relax** this pacing. Issue #287 owns that evidence; this module does not
+ * guess at it, and its narrowing is one-way, so a confirmed policy that
+ * permits more can only be applied by changing this code deliberately.
  *
  * This is only consulted when `VA_SHARED_CONSUMER_BUDGET=true`; see
  * `vaSharedConsumerBudgetEnabled`.
@@ -582,45 +763,286 @@ export const VA_SHARED_CONSUMER_MAX_REQUESTS = 60;
 export const VA_SHARED_CONSUMER_COUNTER_TTL_SECONDS = 120;
 
 /**
- * Read a Redis-REST integer reply strictly. Accepts a non-negative safe integer
- * or its bare digit-string form and rejects fractions (`1.5`), negatives,
- * exponents, and anything else, so no coerced value can authorise a slot.
+ * The decision codes `SHARED_CONSUMER_WINDOW_SCRIPT` returns.
+ *
+ * Exported as names rather than bare integers because three layers have to agree
+ * on them: the script (Lua), the reservation (which validates the reply), and the
+ * store fake the concurrency proof runs against.
  */
-function readStrictCounter(reply: unknown): number | null {
-  if (typeof reply === "number") {
-    return Number.isSafeInteger(reply) && reply >= 0 ? reply : null;
-  }
-  if (typeof reply === "string" && /^\d{1,15}$/.test(reply)) {
-    return Number.isSafeInteger(Number(reply)) ? Number(reply) : null;
-  }
-  return null;
+export const VA_SHARED_CONSUMER_DECISION = {
+  /** A slot was reserved for this window. */
+  admitted: 1,
+  /** This window's budget is spent; the increment still counted. */
+  exhausted: 2,
+  /** The predecessor counter is not a strictly valid non-negative integer. */
+  predecessorInvalid: 3,
+  /** The store already holds a later window, so this reservation is behind it. */
+  supersededWindow: 4,
+  /** Defensive: the counter could not be given the lifetime it must have. */
+  counterLifetimeRefused: 5,
+} as const;
+
+export type VaSharedConsumerDecision =
+  (typeof VA_SHARED_CONSUMER_DECISION)[keyof typeof VA_SHARED_CONSUMER_DECISION];
+
+/**
+ * The whole rolling admission decision, as one server-side operation (audit A03).
+ *
+ * `KEYS[1]` is this window's counter, `KEYS[2]` its predecessor's (an impossible
+ * key when there is none, so the script reads a miss), `KEYS[3]` its successor's.
+ * `ARGV[1]` is the budget, `ARGV[2]` the elapsed milliseconds inside this window,
+ * `ARGV[3]` the window length in milliseconds, `ARGV[4]` the counter's lifetime in
+ * seconds. It returns one of `VA_SHARED_CONSUMER_DECISION`.
+ *
+ * Order matters and is deliberate:
+ *
+ *   1. The successor check comes first: a reservation for a window the store has
+ *      already moved past is refused before anything is written, because deciding
+ *      it would be deciding it against a predecessor other callers are still
+ *      writing (see the block comment above).
+ *   2. The predecessor is validated *strictly* — digits only, at most fifteen of
+ *      them — so a fractional, negative, padded, or non-numeric counter refuses
+ *      the slot instead of fuelling the arithmetic.
+ *   3. The increment happens before the decision, preserving the documented
+ *      over-count: an exhausted refusal still costs a slot, which can only reduce
+ *      traffic against VA.
+ *   4. The lifetime is established in the same atomic step, so no window's
+ *      counter can be left behind without one.
+ *
+ * Run against a store whose `EVAL` is unavailable, every branch fails closed: the
+ * command errors, the caller sees no decision code, and the slot is refused.
+ */
+export const SHARED_CONSUMER_WINDOW_SCRIPT = [
+  "if redis.call('EXISTS', KEYS[3]) == 1 then return 4 end",
+  "local carry = 0",
+  "local previous = redis.call('GET', KEYS[2])",
+  "if previous ~= false then",
+  "  if string.len(previous) > 15 or string.match(previous, '^%d+$') == nil then return 3 end",
+  "  local weight = (tonumber(ARGV[3]) - tonumber(ARGV[2])) / tonumber(ARGV[3])",
+  "  if weight < 0 then weight = 0 end",
+  "  if weight > 1 then weight = 1 end",
+  "  carry = math.ceil(tonumber(previous) * weight)",
+  "end",
+  "local count = redis.call('INCR', KEYS[1])",
+  "if redis.call('TTL', KEYS[1]) < 0 then",
+  "  if tonumber(ARGV[4]) == nil or tonumber(ARGV[4]) < 1 or redis.call('EXPIRE', KEYS[1], ARGV[4]) ~= 1 then",
+  "    redis.call('DEL', KEYS[1])",
+  "    return 5",
+  "  end",
+  "end",
+  "if count + carry <= tonumber(ARGV[1]) then return 1 end",
+  "return 2",
+].join("\n");
+
+/**
+ * Read a decision code without coercing it.
+ *
+ * Redis-REST encodes a Lua number as a JSON number or its digit-string form, and
+ * proxies differ on whether a scalar return is wrapped in a one-element array, so
+ * both shapes are accepted — and nothing else is.
+ */
+function readDecisionCode(reply: unknown): number | null {
+  const raw = Array.isArray(reply) && reply.length === 1 ? reply[0] : reply;
+  return readStrictCounter(raw);
 }
 
+/**
+ * Reserve one slot in the shared consumer budget, in a single atomic operation.
+ *
+ * Returns whether the caller may make this upstream attempt. Every failure mode —
+ * an unconfigured or unreachable coordinator, an erroring reply, an unreadable
+ * decision code, a refused lifetime, an invalid predecessor, or a window the
+ * store has already superseded — returns `false` with a warning, so the caller's
+ * fallback path is the same for all of them and none of them can spend quota.
+ *
+ * Every one of those paths also records its outcome in `consumer-budget-pressure.ts`,
+ * through the single `decide` helper below, so the admit/refuse pressure reported
+ * on `/api/health` is written by the same statement that makes the decision. A
+ * refusal reason the recorder does not know cannot be introduced without a type
+ * error, and a decision that returns without recording cannot be introduced
+ * without dropping the helper.
+ */
 export async function reserveVaSharedConsumerSlot(
   env: Env = process.env as Env,
   now = Date.now(),
 ): Promise<boolean> {
+  const decide = (outcome: VaSharedConsumerBudgetOutcome): boolean => {
+    recordVaConsumerBudgetDecision({ outcome, now, windowMs: VA_SHARED_CONSUMER_WINDOW_MS });
+    return outcome === "admitted";
+  };
+
   const config = loadVaSharedCacheConfig(env);
-  if (!config) return false;
+  if (!config) return decide("store-unconfigured");
   // A clock the bucket arithmetic cannot represent would key a counter by
   // `NaN` or a negative index; refuse instead of pretending that is a window.
-  if (!Number.isSafeInteger(now) || now < 0) return false;
+  if (!Number.isSafeInteger(now) || now < 0) return decide("clock-unusable");
 
   const budgetKey = (index: number) => `${config.prefix}budget:${index}`;
   const bucket = Math.floor(now / VA_SHARED_CONSUMER_WINDOW_MS);
   try {
-    const increment = await postRedisCommand(config, ["INCR", budgetKey(bucket)]);
-    if (!increment.ok || !increment.payload || increment.payload.error !== undefined) {
-      return false;
+    const exchange = await postRedisCommand(config, [
+      "EVAL",
+      SHARED_CONSUMER_WINDOW_SCRIPT,
+      "3",
+      budgetKey(bucket),
+      // An impossible key as the predecessor: reservations only ever write
+      // `bucket >= 0`, so a miss is the honest representation of "no predecessor".
+      budgetKey(bucket - 1),
+      budgetKey(bucket + 1),
+      String(VA_SHARED_CONSUMER_MAX_REQUESTS),
+      String(now - bucket * VA_SHARED_CONSUMER_WINDOW_MS),
+      String(VA_SHARED_CONSUMER_WINDOW_MS),
+      String(VA_SHARED_CONSUMER_COUNTER_TTL_SECONDS),
+    ]);
+    if (!exchange.ok || !exchange.payload || exchange.payload.error !== undefined) {
+      return decide("store-unreachable");
     }
-    const count = readStrictCounter(increment.payload.result);
-    if (count === null || count < 1) return false;
 
-    if (count === 1) {
-      // Bound the counter so an abandoned window cannot accumulate forever.
+    const code = readDecisionCode(exchange.payload.result);
+    switch (code) {
+      case VA_SHARED_CONSUMER_DECISION.admitted:
+        return decide("admitted");
+      case VA_SHARED_CONSUMER_DECISION.exhausted:
+        sharedLogger.warn("va shared consumer budget exhausted", { outcome: "refused" });
+        return decide("exhausted");
+      case VA_SHARED_CONSUMER_DECISION.supersededWindow:
+        sharedLogger.warn("va shared consumer budget unavailable", {
+          outcome: "superseded-window",
+        });
+        return decide("superseded-window");
+      case VA_SHARED_CONSUMER_DECISION.predecessorInvalid:
+        sharedLogger.warn("va shared consumer budget unavailable", {
+          outcome: "predecessor-invalid",
+        });
+        return decide("predecessor-invalid");
+      case VA_SHARED_CONSUMER_DECISION.counterLifetimeRefused:
+        sharedLogger.warn("va shared consumer budget unavailable", {
+          outcome: "counter-lifetime-refused",
+        });
+        return decide("counter-lifetime-refused");
+      default:
+        sharedLogger.warn("va shared consumer budget unavailable", {
+          outcome: "unreadable-decision",
+        });
+        return decide("unreadable-decision");
+    }
+  } catch {
+    sharedLogger.warn("va shared consumer budget unavailable");
+    return decide("store-unreachable");
+  }
+}
+
+/** What one attempt to apply upstream rate-limit guidance to the budget did. */
+export interface VaSharedConsumerPacingOutcome {
+  /** True only when the charge was written to the shared counter. */
+  applied: boolean;
+  reason:
+    | "quota-deficit"
+    | "no-guidance"
+    | "headroom-ample"
+    | "reset-imminent"
+    | "store-unconfigured"
+    | "charge-refused";
+  /** Reservations charged against this window's budget (0 when nothing was). */
+  extraReservations: number;
+}
+
+/**
+ * Feed the upstream's own rate-limit guidance into the shared consumer budget.
+ *
+ * The budget above approximates VA's per-consumer quota with a local rolling
+ * window. When a response states how much quota is actually left, that statement
+ * is strictly better information than the approximation, and the conservative
+ * way to use it is to charge the local counter for the difference — see
+ * `planVaApiConsumerPacing`, which owns the arithmetic and the direction rule.
+ *
+ * Three properties matter more than the arithmetic here:
+ *
+ *   1. **Tightening only.** The charge is a positive `INCRBY` against the
+ *      current window's counter. Nothing in this function can lower a counter,
+ *      raise the cap, or extend a window, so no header the upstream sends can
+ *      loosen the pacing. A confirmed VA policy could justify relaxing it; that
+ *      is an operator decision this module does not pre-empt.
+ *   2. **Fail-soft, never fail-open-by-accident and never throw.** The caller is
+ *      holding a live upstream response, so an unconfigured, unreachable, or
+ *      uncooperative store must not turn that response into a fallback. Every
+ *      failure returns `{ applied: false }` and logs; the reservation path stays
+ *      the fail-closed control it already is.
+ *   3. **A charged counter still has a lifetime.** A charge can create the
+ *      window's counter before any reservation does, so the `EXPIRE` that the
+ *      reservation would normally apply is applied here, validated the same
+ *      strict way, and an unconfirmable lifetime deletes the key rather than
+ *      leaving one permanent key per window in the store.
+ *
+ * Repeated observations re-charge: a fleet that keeps seeing a short quota
+ * tightens further, and the counter can only rise, so the effect is bounded to
+ * one window (the counter's own TTL) and to traffic the upstream has already
+ * said it does not have.
+ *
+ * Only called on the distributed request path, where a shared coordinator is
+ * already required; with no store configured it returns without any traffic.
+ */
+export async function applyVaConsumerPacingGuidance(
+  headers: VaApiRateLimitHeaderSource,
+  env: Env = process.env as Env,
+  now = Date.now(),
+): Promise<VaSharedConsumerPacingOutcome> {
+  const idle = (
+    reason: VaSharedConsumerPacingOutcome["reason"],
+  ): VaSharedConsumerPacingOutcome => {
+    // A refused charge is not a refused request — the response it came with is
+    // still served — so it is counted beside the reservation pressure rather than
+    // in it. `charge-refused` is exactly the set of paths where a charge was
+    // attempted and the store would not take it; `store-unconfigured` made no
+    // attempt, and the remaining reasons are the upstream saying there is nothing
+    // to charge.
+    if (reason === "charge-refused") recordVaConsumerBudgetPacingRefusal();
+    return { applied: false, reason, extraReservations: 0 };
+  };
+
+  const config = loadVaSharedCacheConfig(env);
+  if (!config) return idle("store-unconfigured");
+  // An unusable clock would charge a bucket key the reservations never consult.
+  if (!Number.isSafeInteger(now) || now < 0) return idle("charge-refused");
+
+  const plan = planVaApiConsumerPacing({
+    guidance: parseVaApiRateLimitGuidance(headers),
+    maxRequests: VA_SHARED_CONSUMER_MAX_REQUESTS,
+    windowMs: VA_SHARED_CONSUMER_WINDOW_MS,
+  });
+  if (!plan.adapt) return idle(plan.reason);
+
+  const budgetKey = `${config.prefix}budget:${Math.floor(now / VA_SHARED_CONSUMER_WINDOW_MS)}`;
+  try {
+    const charge = await postRedisCommand(config, [
+      "INCRBY",
+      budgetKey,
+      String(plan.extraReservations),
+    ]);
+    if (!charge.ok || !charge.payload || charge.payload.error !== undefined) {
+      sharedLogger.warn("va shared consumer budget unavailable", {
+        outcome: "pacing-charge-refused",
+      });
+      return idle("charge-refused");
+    }
+    // The reply is the counter's new value, so it can never be below the amount
+    // just charged; anything else is a store this module cannot read a counter
+    // from, and the charge is not counted as applied.
+    const count = readStrictCounter(charge.payload.result);
+    if (count === null || count < plan.extraReservations) {
+      sharedLogger.warn("va shared consumer budget unavailable", {
+        outcome: "pacing-charge-invalid",
+      });
+      return idle("charge-refused");
+    }
+
+    if (count === plan.extraReservations) {
+      // This charge created the counter, so it owes the lifetime the reservation
+      // path applies: a counter that can never expire is one accumulating key
+      // per window, which is the defect the reservation already refuses.
       const expire = await postRedisCommand(config, [
         "EXPIRE",
-        budgetKey(bucket),
+        budgetKey,
         String(VA_SHARED_CONSUMER_COUNTER_TTL_SECONDS),
       ]);
       const ttlApplied =
@@ -629,51 +1051,27 @@ export async function reserveVaSharedConsumerSlot(
         expire.payload.error === undefined &&
         readStrictCounter(expire.payload.result) === 1;
       if (!ttlApplied) {
-        // A counter without a lifetime is not a bounded budget: remove it so the
-        // store cannot collect one permanent key per window, and fail closed.
-        await postRedisCommand(config, ["DEL", budgetKey(bucket)]);
+        await postRedisCommand(config, ["DEL", budgetKey]);
         sharedLogger.warn("va shared consumer budget unavailable", {
-          outcome: "counter-lifetime-refused",
+          outcome: "pacing-counter-lifetime-refused",
         });
-        return false;
+        return idle("charge-refused");
       }
     }
 
-    // The predecessor bucket only exists from bucket 1 onward. While the current
-    // instant is still inside its own window the overlap weight is in (0, 1],
-    // and an absent predecessor counter means nothing to carry.
-    let carry = 0;
-    if (bucket > 0) {
-      const previous = await postRedisCommand(config, ["GET", budgetKey(bucket - 1)]);
-      if (!previous.ok || !previous.payload || previous.payload.error !== undefined) {
-        sharedLogger.warn("va shared consumer budget unavailable", {
-          outcome: "predecessor-unreadable",
-        });
-        return false;
-      }
-      const raw = previous.payload.result;
-      if (raw !== null && raw !== undefined) {
-        const previousCount = readStrictCounter(raw);
-        if (previousCount === null) {
-          sharedLogger.warn("va shared consumer budget unavailable", {
-            outcome: "predecessor-invalid",
-          });
-          return false;
-        }
-        const elapsed = now - bucket * VA_SHARED_CONSUMER_WINDOW_MS;
-        const carryWeight = 1 - elapsed / VA_SHARED_CONSUMER_WINDOW_MS;
-        carry = Math.ceil(previousCount * carryWeight);
-      }
-    }
-
-    const admitted = count + carry <= VA_SHARED_CONSUMER_MAX_REQUESTS;
-    if (!admitted) {
-      sharedLogger.warn("va shared consumer budget exhausted", { outcome: "refused" });
-    }
-    return admitted;
+    sharedLogger.warn("va shared consumer budget paced by upstream guidance", {
+      outcome: "upstream-quota-deficit",
+      count: plan.extraReservations,
+    });
+    recordVaConsumerBudgetPacingCharge({ reservations: plan.extraReservations, now });
+    return {
+      applied: true,
+      reason: "quota-deficit",
+      extraReservations: plan.extraReservations,
+    };
   } catch {
     sharedLogger.warn("va shared consumer budget unavailable");
-    return false;
+    return idle("charge-refused");
   }
 }
 

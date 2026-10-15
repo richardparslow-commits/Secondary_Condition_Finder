@@ -52,6 +52,11 @@ const eslintConfig = defineConfig([
     "public/pdf.worker.min.mjs",
     // Generated verbatim from the pinned tesseract.js packages during postinstall.
     "public/tesseract/**",
+    // Local scratch (see .gitignore): isolated copies of this tree, browser
+    // evidence and throwaway probes used to verify a change without disturbing
+    // a running dev server. Never source, never committed, and absent from CI —
+    // without this ignore the local lint surface is wider than CI's.
+    "tmp/**",
   ]),
 ]);
 

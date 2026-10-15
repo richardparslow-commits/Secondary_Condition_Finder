@@ -3,6 +3,8 @@ import { resolve } from "node:path";
 
 import { describe, expect, it } from "vitest";
 
+import { contrastRoutes } from "../scripts/lib/public-routes.mjs";
+
 const spec = readFileSync(resolve(process.cwd(), "e2e/a11y-contrast.mjs"), "utf8");
 const ci = readFileSync(resolve(process.cwd(), ".github/workflows/ci.yml"), "utf8");
 const trustedTypesGate = readFileSync(
@@ -22,9 +24,14 @@ const accessibilitySetup = readFileSync(
  * gap itself.
  */
 describe("R-05 real-browser contrast and keyboard gate", () => {
-  it("runs axe with color-contrast enabled and the jsdom gate keeps skipping it for the documented mechanical reason", () => {
-    // The real-browser spec must enable the rule the jsdom gate cannot run.
-    expect(spec).toContain('values: ["color-contrast"]');
+  it("runs the rendering-dependent axe rules and the jsdom gate keeps skipping color-contrast for the documented mechanical reason", () => {
+    // The real-browser spec must run the rules the jsdom gate cannot: colour
+    // contrast, and whether a link inside a block of text is distinguishable
+    // without colour (WCAG 1.4.1). Both need a layout engine and computed
+    // colours, so jsdom reports them as `incomplete` and the shipped build could
+    // carry the defect into a manual review. The second rule earned its place:
+    // the first run with it enabled flagged /secondary and /privacy/request.
+    expect(spec).toContain('values: ["color-contrast", "link-in-text-block"]');
     expect(spec).toContain('"critical"');
     expect(spec).toContain('"serious"');
     // The jsdom gate's skip stays exactly as documented — mechanical, not convenient.
@@ -82,10 +89,20 @@ describe("R-05 real-browser contrast and keyboard gate", () => {
   });
 
   it("audits every shipped route, not a hand-picked subset", () => {
-    // Route list must name the canonical research surfaces; /results is the
-    // documented 307 shim to /secondary and is audited through that target.
+    // The route list is *derived* rather than kept in the spec: the hand-kept
+    // copy had fallen four routes behind `src/app` (`/privacy/request`,
+    // `/secondary/upload`, `/presumptive/results`, `/runtime-readiness`), which
+    // is the drift `scripts/lib/public-routes.mjs` removes. `/results` is the
+    // documented 307 shim to `/secondary`, excluded by the manifest and audited
+    // through that target.
+    expect(spec).toContain("public-routes.mjs");
+    expect(spec).toContain("contrastRoutes()");
+    expect(spec).not.toMatch(/const ROUTES = \[\s*\n\s*\{ path: "/);
+
+    const scanned = contrastRoutes().map((entry) => entry.path);
+    // The canonical research surfaces, spot-checked against the derived list.
     for (const route of [
-      'path: "/"',
+      "/",
       "/get-records",
       "/pathways",
       "/presumptive",
@@ -97,10 +114,10 @@ describe("R-05 real-browser contrast and keyboard gate", () => {
       "/va-forms/finder",
       "/va-reference",
     ]) {
-      expect(spec).toContain(route);
+      expect(scanned).toContain(route);
     }
-    // Every declared route object carries a stable evidence-file label.
-    const routeLines = spec.match(/\{ path: "([^"]+)", label: "([^"]+)" \}/g) ?? [];
-    expect(routeLines.length).toBeGreaterThanOrEqual(20);
+    // Every scanned route carries a stable evidence-file label.
+    for (const entry of contrastRoutes()) expect(entry.label).toMatch(/^[a-z0-9-]+$/);
+    expect(scanned.length).toBeGreaterThanOrEqual(26);
   });
 });

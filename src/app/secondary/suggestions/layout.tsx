@@ -9,11 +9,13 @@ export const metadata: Metadata = {
 export default function SuggestionsLayout({ children }: { children: ReactNode }) {
   return (
     <>
-      <div className="mx-auto max-w-5xl px-6 pt-5">
+      {/* Landmark rather than bare container — see the note in
+          `src/app/presumptive/layout.tsx`; the `region` finding is the same one. */}
+      <nav aria-label="Related VA reference" className="mx-auto max-w-5xl px-6 pt-5">
         <Link href="/va-reference" className="text-sm underline">
           Compare a diagnosis name with VA reference terminology
         </Link>
-      </div>
+      </nav>
       {children}
     </>
   );

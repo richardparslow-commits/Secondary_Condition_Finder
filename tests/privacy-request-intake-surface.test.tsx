@@ -19,16 +19,24 @@
  * arrives already passing the automated portion of the gate.
  */
 import { cleanup, render, screen } from "@testing-library/react";
-import { afterEach, describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 
 import PrivacyRequestPage from "@/app/privacy/request/page";
+import { SecondaryWorkflowCompletionActions } from "@/components/secondary/SecondaryWorkflowCompletionActions";
 import {
   PRIVACY_CONTACT_EMAIL,
+  PRIVACY_INTAKE_PATH,
   PRIVACY_REQUESTS,
   privacyRequestMessage,
 } from "@/lib/privacy/intake";
 
 import { expectNoBlockingA11yViolations } from "./setup/accessibility";
+
+// The completion controls navigate on a confirmed cleanup, so the router is
+// stubbed the way the repo's other mounted client suites stub it.
+vi.mock("next/navigation", () => ({
+  useRouter: () => ({ push: vi.fn(), replace: vi.fn(), back: vi.fn() }),
+}));
 
 afterEach(cleanup);
 
@@ -91,6 +99,38 @@ describe("privacy request intake surface", () => {
     const summary = await expectNoBlockingA11yViolations(container);
     // A vacuous pass would be a suite with no rules enabled; require that axe
     // actually evaluated the markup.
+    expect(summary.passes).toBeGreaterThan(0);
+  });
+});
+
+describe("the intake is reachable from the workflow completion controls", () => {
+  it("links it beside the controls that clear browser-local state", () => {
+    // A visitor who has just been told what Finish Review clears is exactly the
+    // visitor who wants to know how to delete what it does not reach. The link
+    // therefore lives with the controls, not only in the policy (R-01 / B-02),
+    // and the rendered copy keeps clearing this browser apart from deleting
+    // what the application keeps.
+    const { container } = render(<SecondaryWorkflowCompletionActions />);
+
+    const intake = screen.getByRole("link", { name: "privacy request" });
+    expect(intake.getAttribute("href")).toBe(PRIVACY_INTAKE_PATH);
+    expect(PRIVACY_INTAKE_PATH).toBe("/privacy/request");
+    expect(
+      screen.getByRole("link", { name: "privacy policy" }).getAttribute("href"),
+    ).toBe("/privacy");
+
+    // The distinction the link rests on is rendered, not only implied.
+    expect(container.textContent).toMatch(/clears what this browser holds/);
+    expect(container.textContent).toMatch(/application itself keeps/);
+
+    // The controls themselves are unchanged: clearing still comes first.
+    expect(screen.getByRole("button", { name: /Finish Review/ })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Start a new review" })).toBeTruthy();
+  });
+
+  it("keeps the completion markup passing the automated WCAG 2.1 AA gate", async () => {
+    const { container } = render(<SecondaryWorkflowCompletionActions />);
+    const summary = await expectNoBlockingA11yViolations(container);
     expect(summary.passes).toBeGreaterThan(0);
   });
 });

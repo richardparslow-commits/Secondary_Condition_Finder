@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { findApiRouteLimitPolicy } from "@/lib/api-route-policies";
+import { recordAdmissionRefusal } from "@/lib/observability/refusal-window";
 import {
   chargeAdmission,
   referenceReadLimiter,
   resolveClientKey,
+  resolveIngressClaim,
   workflowSessionLimiter,
 } from "@/lib/rate-limiter";
 import {
@@ -173,6 +175,30 @@ function buildContentSecurityPolicy(nonce: string): string {
     ? "connect-src 'self' ws: wss:"
     : "connect-src 'self'";
 
+  /**
+   * Style policy (audit SEC-03 — production styles no longer retain
+   * `'unsafe-inline'`).
+   *
+   * Development keeps `'unsafe-inline'`: the Next.js dev overlay and React's
+   * dev-mode tooling inject styles as inline markup, and nothing served to a
+   * veteran carries that policy (the dev branch never runs in a deployment).
+   *
+   * Production does not. Every rendered style in `src/` is now declarative —
+   * Tailwind classes, SVG presentation attributes, a drawn `<rect>` — and the
+   * two genuinely computed values (the timeline's exported width and its
+   * tooltip position) are written through the CSSOM, which is a DOM API rather
+   * than the `style` content attribute this policy governs. The nonce is kept
+   * on `style-src` so a framework-emitted `<style>` element can still be
+   * authorized, and `style-src-attr 'none'` closes the form a nonce can never
+   * authorize: an HTML `style` attribute. Pinned in
+   * `tests/deployment-readiness.test.ts` (source policy) and
+   * `tests/low-severity-remediation.test.ts` (the emitted header, plus a gate
+   * that fails if any source file under `src/` renders a style attribute again).
+   */
+  const styleSources = isDevelopment
+    ? ["style-src 'self' 'unsafe-inline'"]
+    : [`style-src 'self' 'nonce-${nonce}'`, "style-src-attr 'none'"];
+
   // Trusted Types: sink XSS is closed for first-party code (the repo has no
   // first-party innerHTML/document.write sinks). The one library that reaches
   // a TT sink is tesseract.js v6 (pinned): it has no createPolicy calls of its
@@ -221,9 +247,7 @@ function buildContentSecurityPolicy(nonce: string): string {
     "default-src 'self'",
     scriptSource,
     "script-src-attr 'none'",
-    // Inline styles are retained because this audit item concerns script execution;
-    // React/Next UI styles are not converted to a nonce contract in this change.
-    "style-src 'self' 'unsafe-inline'",
+    ...styleSources,
     "img-src 'self' data: blob:",
     "font-src 'self' data:",
     connectSource,
@@ -287,8 +311,14 @@ export function proxy(request: NextRequest) {
   // identity exists. A client therefore cannot avoid admission control by
   // sending a junk or rotating `X-Forwarded-For`, and the ceiling is reported as
   // its own budget (`rateLimitScope`), never as a relabelled per-IP allowance.
-  // See `resolveClientKey` and `chargeAdmission` in `rate-limiter.ts`.
-  const client = resolveClientKey(requestHeaders);
+  //
+  // Which hop carries the identity follows the deployment's declared ingress
+  // model (`RATE_LIMIT_TRUSTED_INGRESS`, resolved here per request so a stub or
+  // restart is visible immediately): the leftmost hop for an ingress that sets
+  // the header, a hop from the right for one that appends it. Without a claim,
+  // the unasserted rule treats the header as client-supplied. See
+  // `resolveClientKey` and `chargeAdmission` in `rate-limiter.ts`.
+  const client = resolveClientKey(requestHeaders, resolveIngressClaim());
   const method = request.method;
 
   /**
@@ -310,6 +340,24 @@ export function proxy(request: NextRequest) {
       }
     }
     return response;
+  };
+
+  /**
+   * Records which budget refused, for the health-surface refusal window.
+   *
+   * The 429 body deliberately does not say which budget refused, so one probe
+   * cannot tell the shared ceiling from a per-client bucket; the reason is
+   * recorded here instead, where it makes ceiling saturation alertable without
+   * making it probeable. `chargeAdmission` cannot report `limited` with a null
+   * reason, so the guard is for the type rather than a case that happens — and a
+   * refusal that somehow carried no reason is recorded as nothing, not guessed
+   * at. See `src/lib/observability/refusal-window.ts` (SEC-02).
+   */
+  const recordRefusal = (
+    surface: string,
+    reason: ReturnType<typeof chargeAdmission>["refusedBy"],
+  ) => {
+    if (reason !== null) recordAdmissionRefusal({ surface, budget: reason });
   };
 
   /** 429 response carrying the full security-header set, not just CSP. */
@@ -356,6 +404,7 @@ export function proxy(request: NextRequest) {
   if (method === "POST" && !pathname.startsWith("/_next")) {
     const result = chargeAdmission(workflowSessionLimiter, client.key);
     if (result.limited) {
+      recordRefusal("method-post", result.refusedBy);
       return tooManyRequests(
         { error: "Too many requests. Please try again later." },
         result.retryAfterSeconds,
@@ -392,6 +441,7 @@ export function proxy(request: NextRequest) {
   ) {
     const result = chargeAdmission(referenceReadLimiter, client.key);
     if (result.limited) {
+      recordRefusal("reference-read", result.refusedBy);
       return tooManyRequests(
         { error: "Too many requests. Please try again later." },
         result.retryAfterSeconds,
@@ -411,6 +461,7 @@ export function proxy(request: NextRequest) {
   if (routePolicy) {
     const result = chargeAdmission(routePolicy.limiter, client.key);
     if (result.limited) {
+      recordRefusal(routePolicy.path, result.refusedBy);
       return tooManyRequests(routePolicy.limitedBody, result.retryAfterSeconds);
     }
   }

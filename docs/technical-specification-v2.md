@@ -236,8 +236,11 @@ protects the local workflow contract, while the server refuses private-context r
 - `script-src 'self' 'nonce-<per-request>' 'strict-dynamic'` + `'wasm-unsafe-eval'` (Tesseract
   OCR) + `'unsafe-eval'` in development only; `script-src-attr 'none'`. No `'unsafe-inline'`
   for scripts.
-- `style-src 'self' 'unsafe-inline'` (React/Next styles; the script nonce is the audit
-  boundary).
+- `style-src 'self' 'nonce-<per-request>'` + `style-src-attr 'none'` in production, with
+  `'unsafe-inline'` confined to development. No rendered style attribute remains: the timeline's
+  two computed values (exported width, tooltip position) are written through the CSSOM, and its
+  colours, cursors and white export card come from Tailwind classes, SVG presentation attributes
+  and a drawn `<rect>` (audit SEC-03).
 - `img-src 'self' data: blob:`, `font-src 'self' data:`, `worker-src 'self'` (no `blob:`;
   the OCR worker spawns with `workerBlobURL: false` because production Trusted Types refuses
   blob worker URLs), `media-src 'self' blob:`, `manifest-src 'self'`, `frame-src 'none'`,

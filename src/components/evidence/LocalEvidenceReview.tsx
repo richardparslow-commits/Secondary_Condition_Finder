@@ -7,6 +7,7 @@ import {
   type EvidenceAnalysis,
   type EvidenceExcerpt,
 } from "@/lib/evidence/extract";
+import { parseStoredEvidence } from "@/lib/evidence/storage";
 
 const EMPTY_SNAPSHOT = "[]";
 
@@ -24,23 +25,17 @@ function subscribe(): () => void {
   return () => undefined;
 }
 
-function parseAnalyses(raw: string): EvidenceAnalysis[] {
-  try {
-    const parsed = JSON.parse(raw) as unknown;
-    if (!Array.isArray(parsed)) return [];
-    return parsed.filter((item): item is EvidenceAnalysis => Boolean(item && typeof item === "object" && (item as EvidenceAnalysis).version === 1));
-  } catch {
-    return [];
-  }
-}
-
 function flatten(analyses: EvidenceAnalysis[]): EvidenceExcerpt[] {
   return analyses.flatMap((analysis) => analysis.excerpts);
 }
 
 export function LocalEvidenceReview() {
   const snapshot = useSyncExternalStore(subscribe, getSnapshot, () => EMPTY_SNAPSHOT);
-  const analyses = useMemo(() => parseAnalyses(snapshot), [snapshot]);
+  // Audit HARD-01: the retained payload is read through the store's own guard
+  // (byte ceiling before `JSON.parse`, retention window, per-field ceilings)
+  // rather than parsed here, so this surface cannot disagree with the analyzer
+  // about what the store holds.
+  const analyses = useMemo(() => parseStoredEvidence(snapshot), [snapshot]);
   const excerpts = useMemo(() => flatten(analyses), [analyses]);
   const nexus = excerpts.filter((excerpt) => excerpt.strength === "nexus-relevant");
   const supporting = excerpts.filter((excerpt) => excerpt.strength === "supporting");

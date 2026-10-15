@@ -105,7 +105,7 @@ export function DiagnosedStep() {
         <p className="mx-auto mt-3 max-w-3xl text-lg">Select conditions you have been formally diagnosed with and want to evaluate in this research session.</p>
       </header>
 
-      <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" aria-label="Workflow progress">
+      <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" role="group" aria-label="Workflow progress">
         <strong className="text-blue-700">1 Diagnosed</strong><span>2 Service-connected</span><span>3 Ratings</span><span>4 Documents</span><span>5 Connections</span><span>6 Evidence</span>
       </div>
 
@@ -127,7 +127,7 @@ export function DiagnosedStep() {
       ) : (
         <form onSubmit={onSubmit} aria-describedby={validationId}>
           <div className="ui-grid">
-            <aside className="ui-card">
+            <aside className="ui-card" aria-label="How to use this step">
               <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">i</span><h2 className="text-xl font-bold">How to Use This Step</h2></div>
               <div className="space-y-5 text-sm">
                 <div><h3 className="font-bold">Search or browse</h3><p className="mt-1">Browse the condition catalog and select each diagnosis you want to research.</p></div>
@@ -157,7 +157,7 @@ export function DiagnosedStep() {
               </ul>
             </fieldset>
 
-            <aside className="ui-stack">
+            <aside className="ui-stack" aria-label="Selected diagnosed conditions">
               <section className="ui-card">
                 <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">✓</span><h2 className="text-xl font-bold">Selected Diagnosed Conditions</h2></div>
                 {selectedConditions.length === 0 ? <p className="text-sm text-slate-600">No saved selections yet.</p> : <ul className="space-y-2">{selectedConditions.map((condition) => <li key={condition.id} className="rounded-lg border border-blue-200 bg-blue-50 px-3 py-2 text-sm font-medium text-blue-900">{condition.name}</li>)}</ul>}

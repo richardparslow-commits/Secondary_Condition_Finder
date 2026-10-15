@@ -3,10 +3,14 @@ import { describe, expect, it, vi, beforeEach } from "vitest";
 import {
   UNATTRIBUTED_ADMISSION_KEY,
   UNATTRIBUTED_ADMISSION_MAX_DEFAULT,
+  INGRESS_APPEND_MAX_HOPS,
+  UNIDENTIFIED_ADMISSION_KEY_PREFIX,
   chargeAdmission,
   createRateLimiter,
   isIpLiteral,
   rateLimitIdentityPolicy,
+  resolveIngressClaim,
+  unidentifiedAdmissionKey,
   rateLimitScope,
   resolveClientKey,
   unattributedAdmissionLimiter,
@@ -209,6 +213,91 @@ describe("resolveClientKey", () => {
   });
 });
 
+/**
+ * The declared ingress model decides *which hop* is an identity (SEC-02).
+ *
+ * Every case above relies on the default `unasserted` claim and is unchanged by
+ * this: the model is opt-in, and each model's rule is asserted here rather than
+ * inferred from the deployment.
+ */
+describe("resolveClientKey under a declared ingress model", () => {
+  const claim = (value: string) => resolveIngressClaim({ RATE_LIMIT_TRUSTED_INGRESS: value });
+
+  it("reads the leftmost hop for an ingress that sets the header", () => {
+    const headers = new Headers({ "x-forwarded-for": "203.0.113.7, 10.0.0.1" });
+    expect(resolveClientKey(headers, claim("set"))).toEqual({
+      key: "203.0.113.7",
+      source: "x-forwarded-for",
+    });
+    // `true` is the legacy spelling of the same model.
+    expect(resolveClientKey(headers, claim("true"))).toEqual({
+      key: "203.0.113.7",
+      source: "x-forwarded-for",
+    });
+  });
+
+  it("reads the declared hop from the right for an appending ingress", () => {
+    const headers = new Headers({ "x-forwarded-for": "10.0.0.1, 10.0.0.2, 203.0.113.7" });
+    expect(resolveClientKey(headers, claim("append"))).toEqual({
+      key: "203.0.113.7",
+      source: "x-forwarded-for",
+    });
+    expect(resolveClientKey(headers, claim("append:2"))).toEqual({
+      key: "10.0.0.2",
+      source: "x-forwarded-for",
+    });
+  });
+
+  // The defect the append model exists to close: with the unconditional leftmost
+  // rule, the hop the client writes is the bucket key, so rotating it mints a
+  // fresh allowance per request.
+  it("ignores every client-supplied hop in front of the appended peer", () => {
+    for (let index = 0; index < 5; index += 1) {
+      const headers = new Headers({ "x-forwarded-for": `198.51.100.${index}, 203.0.113.7` });
+      expect(resolveClientKey(headers, claim("append")).key).toBe("203.0.113.7");
+    }
+    // A client that pads with a blank entry cannot shift the declared position:
+    // positions count raw entries, one per appender.
+    const padded = new Headers({ "x-forwarded-for": "198.51.100.9, , 203.0.113.7" });
+    expect(resolveClientKey(padded, claim("append")).key).toBe("203.0.113.7");
+    // A blank entry *at* the declared position is not an identity: the ingress
+    // wrote nothing there, so the request is unattributed rather than keyed on
+    // whatever the client left behind.
+    const blankLast = new Headers({ "x-forwarded-for": "198.51.100.9, 203.0.113.7," });
+    expect(resolveClientKey(blankLast, claim("append"))).toEqual({ key: null, source: "invalid" });
+  });
+
+  it("does not read X-Real-IP under an appending ingress", () => {
+    // An appending ingress does not set X-Real-IP, so a value there is
+    // client-supplied: reading it would let a client choose its own bucket, or a
+    // victim's.
+    expect(resolveClientKey(new Headers({ "x-real-ip": "203.0.113.99" }), claim("append"))).toEqual(
+      { key: null, source: "none" },
+    );
+    // The single-hop caveat, stated as a contract rather than left implicit: with
+    // one hop there is nothing to distinguish an ingress-written value from a
+    // client-sent one, so `append` reads it (as the unasserted rule would) and
+    // `append:N` for N>1 is what makes the position checkable. A valid
+    // X-Real-IP is still never read.
+    const singleHop = new Headers({
+      "x-forwarded-for": "198.51.100.9",
+      "x-real-ip": "203.0.113.99",
+    });
+    expect(resolveClientKey(singleHop, claim("append"))).toEqual({
+      key: "198.51.100.9",
+      source: "x-forwarded-for",
+    });
+  });
+
+  // `append:2` declares two appenders (a CDN and the app proxy). A one-hop
+  // request did not traverse both, so its single value is not an identity — the
+  // property that makes a multi-appender claim falsifiable.
+  it("refuses a single-hop request under a declared multi-appender ingress", () => {
+    const single = new Headers({ "x-forwarded-for": "203.0.113.7" });
+    expect(resolveClientKey(single, claim("append:2"))).toEqual({ key: null, source: "invalid" });
+  });
+});
+
 describe("isIpLiteral", () => {
   it("accepts IPv4 and IPv6 literals", () => {
     for (const value of [
@@ -269,6 +358,83 @@ describe("rateLimitIdentityPolicy", () => {
         false,
       );
     }
+  });
+
+  // The claim is a model, so the report names the hop enforcement reads. That is
+  // what makes the claim auditable against what the ingress actually writes.
+  it("reports the asserted model and the hop it reads", () => {
+    expect(rateLimitIdentityPolicy({ RATE_LIMIT_TRUSTED_INGRESS: "overwrite" })).toMatchObject({
+      trustedIngress: true,
+      identity: "asserted",
+      model: "set",
+      header: "x-forwarded-for",
+      hop: "leftmost",
+      hopsFromRight: null,
+      fallback: "x-real-ip",
+    });
+
+    const append = rateLimitIdentityPolicy({ RATE_LIMIT_TRUSTED_INGRESS: "append" });
+    expect(append).toMatchObject({
+      trustedIngress: true,
+      identity: "asserted",
+      model: "append",
+      hop: "nth-from-right",
+      hopsFromRight: 1,
+      fallback: null,
+    });
+
+    const two = rateLimitIdentityPolicy({ RATE_LIMIT_TRUSTED_INGRESS: " append:2 " });
+    expect(two).toMatchObject({ model: "append", hopsFromRight: 2 });
+    expect(two.detail).toMatch(/hop 2 from the right/);
+  });
+
+  it("reports the unasserted model with the hop it still reads", () => {
+    expect(rateLimitIdentityPolicy({})).toMatchObject({
+      model: "unasserted",
+      hop: "leftmost",
+      hopsFromRight: null,
+      fallback: "x-real-ip",
+    });
+  });
+
+  it("accepts the documented append hop range and refuses anything outside it", () => {
+    expect(resolveIngressClaim({ RATE_LIMIT_TRUSTED_INGRESS: "append" })).toEqual({
+      model: "append",
+      hopsFromRight: 1,
+    });
+    expect(
+      resolveIngressClaim({ RATE_LIMIT_TRUSTED_INGRESS: `append:${INGRESS_APPEND_MAX_HOPS}` }),
+    ).toEqual({ model: "append", hopsFromRight: INGRESS_APPEND_MAX_HOPS });
+    for (const raw of ["append:0", `append:${INGRESS_APPEND_MAX_HOPS + 1}`, "append:", "append:1.5"]) {
+      expect(resolveIngressClaim({ RATE_LIMIT_TRUSTED_INGRESS: raw }), raw).toEqual({
+        model: "unasserted",
+        hopsFromRight: null,
+      });
+    }
+  });
+
+  // An unusable claim must never read as a verified ingress.
+  it("falls back to the unasserted model for an unrecognised claim", () => {
+    for (const raw of ["APPEND:X", "appended", "overwritten", "maybe", "trusted"]) {
+      expect(rateLimitIdentityPolicy({ RATE_LIMIT_TRUSTED_INGRESS: raw }), raw).toMatchObject({
+        trustedIngress: false,
+        identity: "self-declared",
+        model: "unasserted",
+      });
+    }
+  });
+
+  // What an identity-less request gets is part of the promise, so it is reported
+  // rather than left to be discovered from behaviour.
+  it("reports what a request with no identity gets, per model", () => {
+    const declared = rateLimitIdentityPolicy({ RATE_LIMIT_TRUSTED_INGRESS: "append:2" });
+    expect(declared.unidentified.policy).toBe("shared-per-client-bucket");
+    expect(declared.unidentified.keyTemplate).toBe(`${UNIDENTIFIED_ADMISSION_KEY_PREFIX}<limiter>`);
+
+    const fallback = rateLimitIdentityPolicy({ RATE_LIMIT_TRUSTED_INGRESS: "maybe" });
+    expect(fallback.unidentified.policy).toBe("ceiling");
+    expect(fallback.unidentified.keyTemplate).toBeNull();
+    expect(fallback.unidentified.detail).toMatch(/cannot be told apart from an honest client/);
   });
 });
 
@@ -406,6 +572,95 @@ describe("rateLimitScope", () => {
   it("says identity is asserted when the operator asserts an ingress", () => {
     const scope = rateLimitScope({ NODE_ENV: "production", RATE_LIMIT_TRUSTED_INGRESS: "true" });
     expect(scope.identity.identity).toBe("asserted");
+    expect(scope.identity.model).toBe("set");
     expect(scope.detail).toMatch(/per-validated-client/);
+  });
+
+  it("describes an appending ingress as per-ingress-observed-client", () => {
+    const scope = rateLimitScope({ NODE_ENV: "production", RATE_LIMIT_TRUSTED_INGRESS: "append:2" });
+    expect(scope.identity.model).toBe("append");
+    expect(scope.identity.hopsFromRight).toBe(2);
+    expect(scope.detail).toMatch(/per-ingress-observed-client/);
+  });
+});
+
+/**
+ * The identity-less path must not be *cheaper* than the identified one.
+ *
+ * The defect this pins: with only the shared ceiling bounding it, a request that
+ * presented a valid key got that surface's per-client limit (5–30 a minute as
+ * shipped) while the same request with a junk or absent header got the whole
+ * ceiling (6000 by default) — so declining to be identified was the best strategy
+ * available to a caller, and it spent the budget honest requests also pay into.
+ */
+describe("chargeAdmission with no usable identity", () => {
+  const declared = { RATE_LIMIT_TRUSTED_INGRESS: "set", RATE_LIMIT_UNATTRIBUTED_MAX: "1000" };
+  const undeclared = { RATE_LIMIT_UNATTRIBUTED_MAX: "1000" };
+
+  beforeEach(() => {
+    unattributedAdmissionLimiter(declared).reset();
+    unattributedAdmissionLimiter(undeclared).reset();
+  });
+
+  it("gives the class no more than the surface gives one client", () => {
+    const surface = createRateLimiter({ windowMs: 60_000, max: 3, name: "surface-x" });
+
+    let anonymous = 0;
+    while (!chargeAdmission(surface, null, declared).limited) anonymous += 1;
+    const refused = chargeAdmission(surface, null, declared);
+    expect(anonymous).toBe(3);
+    expect(refused.refusedBy).toBe("unidentified");
+
+    // The inversion, stated as a test: presenting an identity buys exactly what
+    // declining to present one buys, so there is nothing to gain by hiding.
+    surface.reset();
+    let identified = 0;
+    while (!chargeAdmission(surface, "1.2.3.4", declared).limited) identified += 1;
+    expect(identified).toBe(anonymous);
+
+    // Both are still charged to the aggregate ceiling as well.
+    const ceiling = unattributedAdmissionLimiter(declared);
+    expect(ceiling.check(UNATTRIBUTED_ADMISSION_KEY).count).toBeGreaterThan(anonymous);
+  });
+
+  it("shares one class bucket per surface, not one for the whole deployment", () => {
+    const first = createRateLimiter({ windowMs: 60_000, max: 2, name: "surface-one" });
+    const second = createRateLimiter({ windowMs: 60_000, max: 2, name: "surface-two" });
+
+    expect(chargeAdmission(first, null, declared).limited).toBe(false);
+    expect(chargeAdmission(first, null, declared).limited).toBe(false);
+    expect(chargeAdmission(first, null, declared).limited).toBe(true);
+    // Another surface's limited budget is its own: a class exhausted on one route
+    // does not spend the next route's allowance.
+    expect(chargeAdmission(second, null, declared).limited).toBe(false);
+  });
+
+  // The unasserted default is unchanged on purpose: without a declared ingress, an
+  // identity-less request cannot be told apart from an honest client of a
+  // deployment whose headers never arrive, so the class bucket would cap exactly
+  // that traffic.
+  it("leaves the unasserted default bounded by the ceiling, as before", () => {
+    const surface = createRateLimiter({ windowMs: 60_000, max: 1, name: "surface-y" });
+
+    let allowed = 0;
+    while (!chargeAdmission(surface, null, undeclared).limited) allowed += 1;
+    expect(allowed).toBe(unattributedAdmissionLimiter(undeclared).max);
+    expect(chargeAdmission(surface, null, undeclared).refusedBy).toBe("ceiling");
+  });
+
+  // A class key must be impossible to reach from a request, or a client could join
+  // (or exhaust) the shared bucket by sending the key's own text.
+  it("cannot collide a class bucket with a client key", () => {
+    const key = unidentifiedAdmissionKey("health");
+    expect(key).toBe(`${UNIDENTIFIED_ADMISSION_KEY_PREFIX}health`);
+    expect(isIpLiteral(key)).toBe(false);
+    expect(resolveClientKey(new Headers({ "x-forwarded-for": key }))).toEqual({
+      key: null,
+      source: "invalid",
+    });
+    expect(resolveClientKey(new Headers({ "x-real-ip": key }))).toEqual({
+      key: null,
+      source: "invalid",
+    });
   });
 });

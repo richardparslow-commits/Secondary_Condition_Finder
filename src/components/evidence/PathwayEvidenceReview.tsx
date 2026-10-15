@@ -14,6 +14,7 @@ import {
   type EvidenceAnalysis,
   type EvidenceExcerpt,
 } from "@/lib/evidence/extract";
+import { parseStoredEvidence } from "@/lib/evidence/storage";
 
 /**
  * PathwayEvidenceReview — Step 6 producer side of the per-hop evidence view.
@@ -53,20 +54,6 @@ function subscribe(): () => void {
   return () => undefined;
 }
 
-/** Fail-closed parse of the retained `EvidenceAnalysis[]` payload. */
-function parseAnalyses(raw: string): EvidenceAnalysis[] {
-  try {
-    const parsed = JSON.parse(raw) as unknown;
-    if (!Array.isArray(parsed)) return [];
-    return parsed.filter(
-      (item): item is EvidenceAnalysis =>
-        Boolean(item && typeof item === "object" && (item as EvidenceAnalysis).version === 1),
-    );
-  } catch {
-    return [];
-  }
-}
-
 /** Distinct, stable key for an excerpt that matched no hop of any pathway. */
 function unmatchedKey(excerpt: EvidenceExcerpt, index: number): string {
   return `${excerpt.sourceName}-${excerpt.locator}-${excerpt.category}-${index}`;
@@ -87,7 +74,10 @@ interface PathwayEvidenceReviewProps {
  */
 export function PathwayEvidenceReview({ pathways, conditionNameById }: PathwayEvidenceReviewProps) {
   const snapshot = useSyncExternalStore(subscribe, getSnapshot, () => EMPTY_SNAPSHOT);
-  const analyses = useMemo(() => parseAnalyses(snapshot), [snapshot]);
+  // Audit HARD-01: the retained payload is read through the store's own guard,
+  // not parsed here, so the hop view and the analyzer agree on what the store
+  // holds and a hostile payload is bounded before this subtree renders it.
+  const analyses = useMemo(() => parseStoredEvidence(snapshot), [snapshot]);
   return (
     <PathwayEvidenceReviewView
       pathways={pathways}

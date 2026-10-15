@@ -1,8 +1,16 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import scenarios from "../../../data/demo-scenarios.json";
 import { DisclaimerFooter } from "@/components/Disclaimer";
 import { ScenarioLaunchForm } from "@/components/ScenarioLaunchForm";
+
+// The manual-review route matrix requires a route title or an explicit
+// route-group title for every shipped route; the root layout's site-name title
+// alone is neither. Declared in `scripts/lib/public-routes.mjs`.
+export const metadata: Metadata = {
+  title: "Demo Scenarios | Secondary Condition Finder",
+};
 
 export default function ScenariosPage() {
   return (

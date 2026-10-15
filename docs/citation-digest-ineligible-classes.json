@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-10-14",
+  "reviewedBy": "repository policy session for issue #518 — see docs/citation-digest-ineligibility-policy-2026-10-14.md",
+  "authority": "docs/citation-verification-sop.md",
+  "policyBasis": "SOP (\"Content digests and tiered staleness\"): \"Dynamic pages whose body changes per fetch (search endpoints, rotating dashboards) must not receive a digest; omit it rather than record a value that will false-positive.\" A reference whose URL cannot yield a comparable body is therefore not part of the digest backlog — no human action can move it.",
+  "reviewWindowDays": 180,
+  "classes": [
+    {
+      "id": "pubmed-record-page",
+      "host": "pubmed.ncbi.nlm.nih.gov",
+      "pathPattern": "^/\\d+/?$",
+      "ineligibility": "dynamic-per-fetch",
+      "reason": "A digest is anchored to the reference's sourceUrl and is checked by re-fetching that URL. For a PubMed record page the audit's own fetch receives an anti-bot interstitial carrying a per-request token, so the body a probe can obtain is never the same body twice and is not the content the human verified. A digest recorded here could therefore never validate (it would report drift on every run) — exactly the false-positive the SOP forbids.",
+      "evidence": {
+        "observedOn": "2026-10-14",
+        "method": "Two GETs of the observation URL with the audit's user agent, 1.5 s apart, comparing HTTP status, byte length and sha256 of the body.",
+        "urls": ["https://pubmed.ncbi.nlm.nih.gov/30407234/"],
+        "observation": "Both fetches returned HTTP 203 with an identical 5,590-byte body whose contents differ in 22 bytes starting at offset 1,254 (sha256 059b4d20a6dd… vs 1149e5c12330…). The differing region is a per-request anti-bot challenge — `const challengeId = \"…\"` inside a \"Reload this page to continue\" block — so the probe receives the challenge envelope rather than the article record page.",
+        "affectedVerifiedReferences": 392
+      }
+    },
+    {
+      "id": "bot-walled-publisher-page",
+      "host": "academic.oup.com",
+      "pathPattern": "^/",
+      "ineligibility": "probe-blocked",
+      "reason": "The audit's probe is refused by this host with a bot-wall status (403/405/406), which the audit treats as unverifiable-by-automated-probe rather than decayed and for which no body is ever compared. A digest recorded against such a URL is inert: the mismatch check cannot run, so it neither detects drift nor can it be honoured — recording one would overstate what the probe can see.",
+      "evidence": {
+        "observedOn": "2026-10-14",
+        "method": "Two GETs of the observation URL with the audit's user agent, 0.8 s apart, comparing HTTP status, byte length and sha256 of the body.",
+        "urls": ["https://academic.oup.com/jcem/article/110/9/2453/8196671"],
+        "observation": "Both fetches returned HTTP 403 (the audit's bot-wall class) and the two refusal bodies were not byte-identical (5,488 vs 5,510 bytes), so no comparable body exists to hash or to re-compare.",
+        "affectedVerifiedReferences": 1
+      }
+    }
+  ]
+}

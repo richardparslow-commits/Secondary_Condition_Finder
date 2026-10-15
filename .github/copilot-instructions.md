@@ -42,7 +42,7 @@ This application heavily relies on strict JSON file parsing and cross-file refer
 - NEVER store full workflow state in cookies. The separate optional VA-account sandbox uses cookies only for opaque connection handles and short-lived callback binding; OAuth tokens stay in its encrypted server-side store. Never surface tokens, condition selections, or PII in URLs, logs, or screenshots.
 - NEVER send raw file bytes (PDFs/images) through Server Actions. Documents are processed browser-local in `src/lib/evidence/`; only sanitized, bounded extracted text is surfaced.
 - NEVER initialize client-side analytics, telemetry, or third-party SDKs. `connect-src` stays `'self'`.
-- NEVER weaken the nonce-based Content Security Policy in `src/proxy.ts` (no `'unsafe-inline'` for scripts, no third-party connect-src).
+- NEVER weaken the nonce-based Content Security Policy in `src/proxy.ts` (no `'unsafe-inline'` for scripts, and none for styles in production either — production is `style-src 'self' 'nonce-<n>'` + `style-src-attr 'none'`, so a rendered style must be a Tailwind class, an SVG presentation attribute, a drawn SVG shape, or a CSSOM write, never a JSX style attribute; no third-party connect-src).
 - NEVER hallucinate or guess URLs. If you do not have a verified URL, leave `url` null and set `verified: false`.
 
 ### 3. File Placement

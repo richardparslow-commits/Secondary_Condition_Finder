@@ -3,6 +3,438 @@
 All notable changes to Secondary Condition Finder. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/); merges are grouped by date, newest first.
 
+## 2026-10-15
+
+- **The real-browser gate now checks whether a link is distinguishable without its colour, and that
+  rule immediately found one that was not** (`accessibility`, R-05 follow-on, WCAG 1.4.1):
+  `e2e/a11y-contrast.mjs` ran exactly one axe rule — `color-contrast` — so every other
+  rendering-dependent rule was unmeasured in the shipped build. WCAG 1.4.1's
+  `link-in-text-block` is the same kind of rule for the same reason: it needs a layout engine and
+  computed colours, so jsdom returns it as `incomplete` (the mechanical skip that already keeps
+  `color-contrast` out of the jsdom gate), and a colour-only link could therefore reach a manual
+  review unnoticed. The gate now runs
+  `runOnly: { type: "rule", values: ["color-contrast", "link-in-text-block"] }` with the blocking bar
+  unchanged at critical/serious, and its first run flagged `/secondary` — `presumptive track`, inside
+  `div.ui-footer-note` — and two links on `/privacy/request`.
+
+  The failure is real, not stylistic. The link colour `--primary` `#1d4ed8` is **2.66:1** against body
+  text `#0f172a`, and **1.12:1** against the `text-gray-600` paragraph one `/privacy/request` link
+  sits inside; axe's condition for letting colour alone carry the distinction is 3:1, so a resting
+  underline is a Level A requirement here rather than a preference. `src/app/globals.css` now
+  underlines links inside text blocks at rest (`p a, li a, dd a, .ui-footer-note a, .ui-callout a,
+  .app-shell [role="note"] a`), repeated inside `@media (forced-colors: active)` with `!important`
+  because forced colours drop author colours and the underline is the one affordance that survives.
+  Button-styled links keep their own `text-decoration: none`, which is why the rule is scoped to text
+  blocks instead of to `a` at large: the application's button-as-link affordance carries a painted
+  surface that no `p a` type-selector rule should override.
+
+  The same real-browser sweep — Playwright with axe-core 4.14 and the installed Chrome 155 over all
+  26 shipped routes, a local instrument rather than a committed gate — found three more findings
+  outside jsdom's reach and drove their fixes: axe `region` reported the cross-link strip in
+  `src/app/presumptive/layout.tsx`, `src/app/secondary/suggestions/layout.tsx`,
+  `src/app/va-forms/layout.tsx` and `src/app/va-reference/layout.tsx` as page content outside any
+  landmark on 7 routes, so each is now a labelled `<nav>`; axe `landmark-unique` reported two unnamed
+  `<aside>` landmarks per two-column step, so each aside in `src/app/presumptive/page.tsx` and the six
+  `src/components/secondary/steps/*Step.tsx` now carries its own `aria-label`; and axe
+  `aria-prohibited-attr` reported the workflow-progress strip, whose `aria-label="Workflow progress"`
+  sat on a bare `div`, where the generic role prohibits it and the label therefore reached no
+  assistive technology — it is now `role="group"`. The sweep also cleared the matrix's emulable half
+  across those 26 routes: no axe delta and a visible focus ring under forced-colours emulation, 0
+  running animations and no element with a transition or animation duration above 0.15s under
+  `prefers-reduced-motion: reduce`, no horizontal overflow at 320 or 640 CSS px, the skip link present
+  and targeting the existing `#main-content` on 26/26, and one `main`, one `h1` and a `lang` on every
+  route. Every remaining automated `incomplete` colour-contrast node is an `aria-hidden` decorative
+  glyph, so automation leaves no unresolved *text* contrast node behind.
+
+  **Measured both ways.** The extended gate, run from an isolated copy of the tree with Chrome 155 and
+  chromedriver 155, exits **0**: 26/26 routes recorded, axe violations 0 on every route, 0 problems in
+  the per-run route inventory, and 33 degraded notes (the pre-existing 120-step/`distinct=1`
+  keyboard-walk note plus the recorded non-blocking `incomplete` rows). Removing **only** the
+  stylesheet rule from that same copy makes the gate exit **1** on `/secondary` with
+  `[serious] link-in-text-block … @ a[href$="presumptive"]`; the rule was then restored. The full
+  suite passes **380 files / 3722 tests**. `tests/a11y-contrast-gate.test.ts` (**7** cases) now pins
+  the two-rule list, and `tests/accessibility-ux-reliability.test.ts` (**11 → 12**) pins the underline
+  rule, its forced-colours repetition, the button opt-out, the four labelled layout navs, the six
+  `role="group"` progress strips, and the requirement that no `aside` in those seven surfaces is
+  unnamed.
+
+  What this is not: automated evidence, not human evidence. No tester, session date,
+  assistive-technology run, real Windows forced-colours session or real 200% zoom pass exists, the
+  committed gate runs `next dev` rather than the production build, and issue #195 remains open with
+  every workbook row still `NOT TESTED` — the manual keyboard, NVDA/VoiceOver, zoom/reflow and
+  interaction-state checks are unchanged in scope. This widens the automated half of that matrix; it
+  does not answer VA's accessibility question.
+
+- **An identity-less request is no longer given a larger allowance than an identified one**
+  (`security`, SEC-02b, found while auditing this path): `chargeAdmission` charged the shared admission
+  ceiling and then, when a request carried no usable identity, returned that ceiling result as the
+  decision — so a request with a junk or absent forwarding header was bounded by the shared ceiling
+  (**6000** charges a minute by default) while the *same* request presenting a valid key was bounded by
+  that surface's per-client limit (**5–30** a minute as shipped). Declining to be identified was the
+  cheapest strategy a caller had, and it drew down the aggregate budget honest requests also pay into.
+  Under a declared ingress model it was self-contradictory too: the operator had asserted that every
+  request traverses an ingress which writes the header, so such a request is not one of that
+  deployment's clients — and the code treated it more generously than a client.
+
+  Where an ingress model is declared, that class is now charged to one shared **class bucket per
+  surface, at that surface's own per-client limit** (`unidentified:<limiter>`,
+  `UNIDENTIFIED_ADMISSION_KEY_PREFIX`), through the same limiter object that enforces the per-client
+  limit — so the class gets exactly what one client gets, and the bound cannot drift from the budget it
+  is read off. `refusedBy` gains `unidentified`, the refusal window reports `byBudget.unidentified` (a
+  non-zero count means the declared model and the edge disagree), and
+  `components.rateLimit.identity.unidentified` reports the policy in force. The class key cannot
+  collide with a client key, because `resolveClientKey` returns a key only for a syntactically valid
+  IP literal. With no model declared the path is deliberately unchanged — an identity-less request
+  cannot then be told apart from an honest client of a deployment whose forwarding headers never
+  arrive, and capping that population at one client's allowance is the global-cap defect the old
+  shared `"unknown"` bucket represented.
+
+  `tests/rate-limiter.test.ts` (52 cases) pins the class allowance, the per-surface sharing, the
+  unchanged unasserted default and the unreachable class key, and `tests/api-route-rate-limit-coverage.test.ts`
+  (58) drives the real proxy to refuse the 31st identity-less request under `append` with the ceiling
+  untouched; restoring the pre-fix branch fails **4** of the new cases. What this does not fix: the
+  ceiling is still charged for every attempt, so an attacker can still draw the aggregate budget down —
+  the edge WAF remains the capacity layer for that — no hosted, direct-origin, two-instance or
+  cold-start run was performed, and SEC-02 stays open on its store and hosted-acceptance halves.
+
+- **`RATE_LIMIT_TRUSTED_INGRESS` now decides *which hop* of a forwarding header is a client identity
+  instead of only reporting that an ingress was claimed** (`security`, SEC-02): the variable was a
+  boolean, and enforcement applied one hard-coded rule to every deployment — the **leftmost**
+  `X-Forwarded-For` hop. That rule is correct only for an ingress that *sets* the header to the peer
+  it observed. An ingress that *appends* the peer to whatever the client sent leaves the client's own
+  value leftmost, so rotating it minted a fresh per-client allowance per request (the A2
+  discriminator in the
+  [SEC-02 hosted acceptance runbook](docs/sec-02-hosted-acceptance-runbook-2026-10-09.md)), and a
+  client that pre-seeded `X-Real-IP` could choose which bucket it was charged against.
+
+  The variable now selects a model, and the model decides the hop. `set` (aliases `true`,
+  `overwrite`, `platform`) reads the leftmost `X-Forwarded-For` hop with `X-Real-IP` as fallback.
+  `append` / `append:N` (N = 1..8) reads hop **N from the right**, which an appender writes *after* —
+  never instead of — whatever the client sent, so the client cannot choose or rotate its own bucket
+  and `X-Real-IP` is not read at all. An unset, unrecognised or out-of-range value stays
+  **unasserted** (the leftmost-hop rule), so a mangled claim can never read as a verified ingress,
+  and a request under `append:N` carrying fewer than N hops did not traverse every declared appender
+  and is unattributed — charged to the surface's shared bucket for identity-less requests rather than
+  to a hop the client sent (the allowance that class received, and the inversion it created, are the
+  entry above). The model's own limits are
+  published with it: a single hop is indistinguishable from a request that never traversed the
+  ingress, and declaring more appenders than exist turns a client-padded hop into the one that is
+  read — so the claim is still only as good as origin protection and an exact appender count.
+
+  `/api/health` reports it rather than assuming it: `components.rateLimit.identity` carries `model`,
+  `header`, `hop` (`leftmost` | `nth-from-right` | `none`), `hopsFromRight` and `fallback` beside the
+  existing `trustedIngress`/`identity`/`variable`/`detail` fields, so an operator can compare the hop
+  the code says it reads against what their ingress actually writes. `tests/rate-limiter.test.ts`
+  (47 cases) pins each model's hop rule — client-padded and blank entries, `X-Real-IP` never read
+  under `append`, the single-hop caveat as a stated contract, the whole claim grammar, and the
+  unasserted fallback — and a new `declared ingress model (SEC-02)` group in
+  `tests/api-route-rate-limit-coverage.test.ts` (57 cases) drives the real proxy for the two
+  discriminating cases, both falsified by removing the claim from the proxy call. Nothing here is
+  edge evidence: no hosted, direct-origin, two-instance or cold-start run was performed, and the
+  counters remain process-local, so no deployment-wide quota is claimed and SEC-02 stays open on its
+  store and hosted-acceptance halves.
+
+- **An inbound rate-limit refusal now says which budget refused, without telling the client**
+  (`security`/`observability`, SEC-02): `chargeAdmission` has always known whether the shared
+  admission ceiling or the client's own per-client bucket refused, and the `429` body has always
+  deliberately not said so — a single refusal must not tell a prober which budget it hit. The
+  consequence was the gap the deployment-readiness note recorded: ceiling saturation was not
+  directly alertable, so a 429 count could not be treated as a capacity signal.
+
+  `src/lib/observability/refusal-window.ts` keeps the last fifteen minutes of inbound refusals — at
+  most 256 retained events and 12 reported surface rows — and `/api/health` reports them as
+  `components.rateLimit.refusals`, forwarded from the capability report rather than re-derived by
+  the route. `src/proxy.ts` records each refusal against the surface that made it: `method-post`,
+  `reference-read`, or the matched route policy's path (for example `/api/health`). `byBudget`
+  (`ceiling`, `perClient`) with `ceilingShare` is the reading this exists for: a rising ceiling share
+  is aggregate pressure — many different clients refused inside one window — while per-client
+  refusals are individual clients at their own limit.
+
+  The row it retains is a bounded surface label and the budget **only**, never the client key, so no
+  address can reach the public health payload even though a client address is what the limiter
+  bucketed on. Its limits are published with it: the window is per instance, forgets rows on cold
+  start, and never sees a refusal the edge WAF answered itself, so a zero is not "no refusals
+  anywhere". `tests/admission-refusal-window.test.ts` pins all of it in 14 cases — the two-budget
+  split and `ceilingShare`, expiry, the retention cap, the reporting cap, caller-bounding of the
+  surface label and the budget, a malformed fact never throwing, an assertion that a refusal's
+  serialized form carries no address, three cases driving the real proxy, the health forwarding case,
+  and two wiring pins — with five of them failing when the proxy's record call is removed. Nothing
+  hosted is claimed: the counters remain process-local and SEC-02 stays open on its store and
+  hosted-acceptance halves.
+
+- **A Content-Security-Policy regression is now an operator-readable fact on `/api/health`, not only
+  a line in a visitor's browser console** (`security`/`observability`, R-05 follow-on):
+  `/api/csp-report` already redacted every browser violation report to a bounded, content-free event
+  and counted it as an OTel metric — and OTel here is a no-op without a collector, so in the deployed
+  application the *entire* observable for a policy regression was a console message on someone
+  else's machine. A deploy that starts blocking something (a new inline style under `style-src-attr
+  'none'`, a Trusted-Types script sink, an origin dropped from `connect-src`) was, from the
+  application's own surfaces, indistinguishable from a clean one.
+
+  `src/lib/observability/csp-violation-window.ts` keeps the last fifteen minutes of redacted
+  violations per directive, and `/api/health` reports them as `components.cspReports`: `received`,
+  `oversized`, `evicted`, `since`, `lastReceivedAt`, a most-reported-first `directives` list capped
+  at twelve rows, and a fixed `detail` sentence. The intake hands the window the bounded
+  directive/disposition pair only — **no document URL, blocked URL, source file, or sample has a
+  field to travel in** — so the public health payload can name *what* is being blocked without ever
+  carrying page content; `tests/csp-violation-health-report.test.ts` plants a real path, query,
+  blocked origin, chunk name, and sample and asserts none of them appears in the serialized body
+  (also verified against a production `next start` build: two violations and an oversized payload
+  posted with `curl`, then read back from `/api/health`). Retention is bounded twice — a rolling
+  window plus a 128-event cap whose overflow is counted as `evicted` — so an unauthenticated report
+  endpoint cannot grow the process, and both oversized paths (declared length, streaming overrun)
+  now record through one helper instead of two inline copies that could drift apart.
+
+  It is a report, never a health failure: the readiness verdict stays exactly catalog + sessionCrypto
+  + workflowSession + kbGraph, because a blocked inline style means one page rendered under an
+  unintended policy, not that the deployment cannot serve — making it a `503` would take the site
+  down over a policy finding. `scope: "process-local"` and the `detail` sentence say so, so a zero
+  is not misread as "no violations anywhere". Caught during its own verification: the first draft of
+  the structural test scanned the module's prose for the word `sample` and failed on the sentence
+  that *documents the absent field* — the assertions now strip comments before scanning, which is
+  the convention `tests/logging-sink-inventory.test.ts` already uses.
+
+- **Each route-covering run now publishes a route inventory report — every route's declared surfaces
+  against the evidence that run actually recorded** (`assurance`, R-05): `scripts/lib/public-routes.mjs`
+  had made the route set machine-checked, so a page could no longer ship without a visible decision
+  about which surfaces cover it. What nothing could see was the next failure shape: a gate keeping its
+  declaration while quietly stopping evidence. A route the loop skipped, a `summary.json` row whose
+  per-route evidence file was never written, a keyboard walk that recorded no advancement, a run that
+  records evidence for a page the manifest no longer declares — each left the gate green and the
+  published numbers simply smaller.
+
+  `scripts/lib/route-inventory-report.mjs` reconciles the two. It reads the surfaces the manifest
+  declares per route and the evidence a run left on disk (the contrast gate's `summary.json` rows plus
+  the files they name, a production route matrix, the workbook's human matrix), then holds one row per
+  declared route with its declared surfaces, the evidence recorded for it, and a status. The run
+  **fails** when a declared route has no recorded evidence, when evidence appears for a route the
+  manifest does not declare, when evidence is recorded for a route its own surface left out, when a
+  summary row claims an evidence file that is not on disk, when a keyboard walk recorded no tabbable
+  element, or when a production probe did not answer 200. Evidence that is present but weak — a Tab
+  walk that never reached a second element, axe `incomplete` nodes — is reported as *degraded* rather
+  than hidden or escalated into a failure, and the human-gated manual-review surface is reported as
+  awaiting evidence instead of failing a machine gate that cannot produce it (a workbook row that
+  exists but still reads untested counts as awaiting, not as recorded).
+
+  The R-05 contrast gate publishes the report on every run — `a11y-evidence/route-inventory-report.json`
+  and `.md`, written even when the walk itself failed, so a failed run still leaves the record of what
+  it did and did not cover — and CI prints the same table in the run's step summary beside the uploaded
+  `a11y-evidence/` artifact, without disturbing the step's exit status. `npm run report:route-inventory`
+  (`scripts/report-route-inventory.mjs`) produces the pair for a saved production matrix or for the
+  manual-review matrix, exiting 1 when it names a coverage problem and 2 when it cannot produce a
+  report at all. `/results`, the manifest's declared exclusion, is refused if a run ever records
+  evidence for it. Verified by `tests/route-inventory-report.test.ts` (24 tests: planted gaps, an
+  undeclared route, an out-of-surface route, a claimed-but-absent evidence file, absent/undecodable
+  summaries, both matrix shapes, workbook ticks, the human-surface accounting, and three CLI runs
+  through the real entry point) plus typecheck, lint and the full suite; the gate's own publication
+  path was exercised through the same module and CLI against a synthetic run, because this host has no
+  `chromedriver` and the browser walk cannot run here — that wiring is pinned structurally rather than
+  claimed as a browser pass.
+
+- **The browser-local evidence store has one reader now, not five** (`privacy`/`maintainability`, HARD-01
+  completion): the read guard added on 2026-10-14 bounded the store's own module, but four Step 6
+  surfaces — `EvidenceAnalysesProvider`, `LocalEvidenceReview`, `PathwayEvidenceMapper`, and
+  `PathwayEvidenceReview` — each read the same `sessionStorage` payload themselves, with a `JSON.parse`
+  and a `version === 1` check and nothing ahead of it. The same hand-edited, older-version, or
+  same-origin-replaced store was refused on one page and parsed in full on another, and the analyzer's
+  "some saved evidence could not be read" notice could not describe what the review page went on to
+  render.
+
+  `parseStoredEvidence(raw, limits)` is that one path, exported for callers that hold the payload
+  string rather than a `Storage` handle, and all four call it. Because a Step 6 reader has no depth
+  context it reads against `MAX_STORED_EVIDENCE_READ_LIMITS` — the *widest* envelope this app can
+  write — so a legitimate Extended store is never refused, and never trimmed to the Standard retention
+  window, by whichever page happened to open it first; the guard must not become a second, quieter
+  retention policy. The path also rejects a payload that is plainly over the ceiling by string length
+  before the UTF-8 encoder allocates anything, with the measured byte ceiling still behind it, because
+  an astral character is two code units and four bytes. `tests/evidence-storage-read-guard.test.tsx`
+  grew to 30 cases, adding the depth-less ceiling measured against every shipped envelope, the
+  byte-not-code-unit measurement, a full 200-source Extended store read back with nothing discarded,
+  the readable-records/ignored-record split through both the shared reader and the provider's exported
+  wrapper, two mounted cases that render a Step 6 surface against a hostile store (with a non-vacuity
+  control showing the old `version === 1` reader did accept that payload), and the structural invariant
+  that no component reading this store contains a `JSON.parse` of its own.
+
+- **A PDF whose load fails now destroys the worker that load created, on both OCR paths**
+  (`privacy`/`client availability`, REL-05 completion): pdf.js allocates its worker when the loading task is
+  created, so the rejected-load path is the one that must still reach `destroy()`. `document-extract.ts` was
+  fixed that way under HARD-01; the two component paths were not. In `runLocalOcr` the load await sat inside
+  the outer `try` but *before* the inner `try/finally` that owns `loadingTask.destroy()`, and in
+  `Dd214LocalAnalyzer` it sat before the `try/finally` that owns `task.destroy()`. A malformed PDF therefore
+  skipped the only `destroy()`: the analyzer nulled its task ref in an outer `finally` and left that worker
+  running for the life of the tab, while the DD-214 analyzer held the ref only until the *next* upload
+  overwrote it — after which the failed task was unreachable. Both awaits now sit inside the teardown `try`.
+  Three mounted cases drive the real components through their file inputs with a rejecting `getDocument` and
+  assert exactly one destroy per task, no OCR worker on the failure path, a handed-back surface, and no
+  orphaned task across a following successful upload; all three fail against the previous code (0 destroys).
+  The rest of REL-05 was already closed or superseded: the DD-214 analyzer's render, decode and text bounds
+  came from A06 (2026-10-13), and its submission promises are gone with the Server Action — the confirm path
+  is one synchronous, schema-validated browser-local write that reports a refused write instead of
+  continuing. A real-browser hostile-file stress test (image bomb, hung WASM, measured memory pressure) is
+  still unrun and is not claimed.
+
+## 2026-10-14
+
+- **Reading the browser-local evidence store is now bounded like writing it, and a partial restore
+  says so instead of loading in silence** (`privacy`, audit HARD-01): the store's write budgets bound
+  what *this app* writes, not what this app *reads*. `loadStoredEvidenceWithWarning` handed the raw
+  `sessionStorage` string straight to `JSON.parse` and then validated every entry it found, so a
+  store written by another version, edited by hand, or replaced by same-origin script decided how
+  much work the tab did before anything rendered — and when a record failed validation the only
+  observable outcome was a shorter list.
+
+  One read path now applies three guards in the order that matters. The payload is measured against
+  the caller's `storedBytes` **before** `JSON.parse` runs (a multi-megabyte string blocks the main
+  thread whether or not it parses). The retention window is sliced **before** validation, so an
+  oversized array costs one slice rather than one field-by-field check per entry. Every field a
+  renderer touches then has a ceiling above the largest envelope this app can produce — quote (shared
+  with the classifier's own `MAX_EXCERPT_QUOTE_CHARS`, so a quote this app wrote can never be refused
+  by the reader that validates it), source name, locator, excerpt count, and matched-term list — so
+  one hostile record cannot hand the UI a multi-megabyte quote or an unbounded array. Each ceiling is
+  asserted numerically above `EVIDENCE_DEPTH_LIMITS`, which is what stops the guard from quietly
+  becoming a second, tighter retention policy.
+
+  What changed for the Veteran is the disclosure. Validation failures inside the retained window are
+  counted and returned as `discardedEntries`, and both restore effects — first mount and depth
+  reload — now show a distinct notice ("Some saved evidence in this browser tab could not be read and
+  was ignored. Re-analyze any document missing from the list below.") alongside the readable
+  records, instead of the corrupt-store notice that would have claimed nothing was restored. Window
+  eviction is deliberately *not* reported as ignored: that is retention working, and crying loss over
+  it would train the notice out of usefulness. An over-ceiling payload is refused with the existing
+  fixed `"Saved evidence could not be read."` notice and a new `STORE_OVERSIZE` code; a `STORE_PARTIAL`
+  code covers the ignored-entries case. No branch ever logs or returns parser text or stored
+  content — a JSON `SyntaxError` message can carry document text — and every code stays a plain
+  string literal, so the PHI-logging boundary's scanned shapes still hold.
+
+- **The main evidence pipeline now runs its OCR under the same elapsed-work budget the DD-214 parser
+  got, and a hung page can no longer leave the tab busy forever** (`privacy`/`usability`, audit
+  HARD-01): `startOcrJobDeadline` existed and was armed in `Dd214LocalAnalyzer`, but `runLocalOcr` in
+  `LocalEvidenceAnalyzer` had only per-page boundary checks. A `page.render()` or `worker.recognize()`
+  promise that never settles never returns to a boundary, so the previous behaviour was a tab stuck
+  on "Reading selected documents locally…" with a live worker behind it. The deadline now arms per
+  run and terminates the live worker and pdf.js loading task, which rejects the awaited promise so
+  the run unwinds through its own `finally` chain; the loop also stops at the next page boundary once
+  the budget is spent, and unmount clears the timer with the rest of the teardown.
+
+  A budget stop is reported as what it is: recognition failures and render failures that happen after
+  expiry do not get blamed on a dead worker (the health probe is skipped, since this run already tore
+  that worker down), and the notices state how far the job got. The resume checkpoint is **kept** —
+  the pages the tab already paid for are not thrown away, and the next Local OCR run continues from
+  there — while partial text recognized before the stop is still reviewed. Teardown happens exactly
+  once from whichever owner gets there first: the run's `finally` blocks skip their own release when
+  the deadline already released the handles. Verified by a mounted suite that drives the real
+  component through the file input and the Local OCR action with a test-scaled budget, covering a
+  `recognize()` that never settles after a completed checkpoint, a stop before any page completed,
+  and a run that finishes inside the budget (no false positive); the pre-existing DD-214 mounted
+  deadline suite still passes.
+
+- **A DOCX archive bomb no longer reaches the extractor on a lying header, and a rejected PDF load
+  still destroys its pdf.js task** (`privacy`/`availability`, audit HARD-01): the DOCX preflight
+  validated the central directory's *declared* sizes, which a crafted archive is free to understate —
+  the entry that then inflates to gigabytes is the one the check just approved. `assertDocxDecompressionWithinLimits`
+  now measures what each entry actually expands to before `mammoth` sees the buffer: it re-walks the
+  central directory for each entry's authoritative method, compressed size and local-header offset,
+  counts stored entries from their declared size without inflating anything, and streams deflated
+  entries through `DecompressionStream("deflate-raw")` counting chunk lengths only — returning at the
+  cap and cancelling the reader, so peak extra memory is one decompressor chunk rather than the
+  expanded entry. Encrypted entries and unsupported methods are refused by name, a decompressor
+  rejection becomes this module's own bounded message instead of escaping as a `DOMException`, and an
+  engine without `"deflate-raw"` skips the measurement and keeps the declared-size preflight in force
+  rather than pretending to have measured. `tests/evidence-docx-archive-bounds.test.ts` builds the
+  ZIP fixtures by hand (no library expresses a lying header): an honest archive passes both
+  preflights, the same bomb bytes with honest headers are caught by the declared preflight (the
+  non-vacuity control), a 64 MB bomb declaring 4 KB passes the declared preflight and is refused by
+  the measured bound, and stored entries are counted without inflation. Separately, `extractPdfEvidence`
+  awaited `loadingTask.promise` *outside* the `try`, and pdf.js allocates its worker when the task is
+  created — so a rejected load skipped `finally { await loadingTask.destroy(); }` and leaked the
+  worker. The await is now inside the `try`, pinned by a mocked-failure case asserting `destroy()`
+  runs exactly once.
+
+- **Production stops authorizing inline styles, and the React constraint that justified them was
+  not real** (`security`, audit SEC-03): `src/proxy.ts` shipped `style-src 'self' 'unsafe-inline'` in
+  production, and the last audit recorded that as a P1/Medium policy gap — *"contrary to the
+  requested CSP requirement"* — while `SECURITY.md` documented it as an unavoidable React
+  limitation: React's `style` prop writes an HTML style attribute, and a nonce can never authorize an
+  attribute. The argument was sound about the *policy*, and wrong about the *code*: a walk of `src/`
+  found seven style attributes in the entire tree, all in `ConditionTimelineVisualization.tsx`, and
+  no dependency that emits one (the runtime tree has no component library at all — `next`, `react`,
+  `react-dom`, `zod`, `jose`, `pdfjs-dist`, `tesseract.js`, `mammoth`, `langsmith`, `server-only`,
+  `@opentelemetry/api`).
+
+  Each value now has an honest non-attribute form rather than a converted one. The five legend
+  swatches became inline `<svg>` lines carrying `stroke`/`strokeWidth`/`strokeDasharray` presentation
+  attributes, the three `cursor` values became the SVG `cursor` presentation attribute, the wrapper's
+  `maxWidth: 100%` became `max-w-full`, and the exported white card became a drawn
+  `<rect fill="#ffffff">` — a Tailwind class would have painted the page but silently vanished from
+  the downloaded SVG, because an export carries no stylesheet. The two genuinely computed values are
+  written through the CSSOM from ref callbacks: the SVG's exported `min-width` and the tooltip's
+  pointer-relative position. `element.style` is a DOM API, not the content attribute the policy
+  governs, and a ref callback runs in the commit phase — before paint — so the first frame is already
+  correct and nothing flashes unpositioned. Production now emits `style-src 'self' 'nonce-{nonce}'`
+  plus `style-src-attr 'none'`; development keeps `style-src 'self' 'unsafe-inline'` because the
+  Next.js dev overlay and React's dev tooling inject inline markup, and that branch never runs in a
+  deployment.
+
+  The fix is enforced in both directions rather than asserted in prose. `tests/low-severity-remediation.test.ts`
+  drives the real `proxy()` and checks the emitted header, stubs `NODE_ENV=development` to prove the
+  surviving allowance is branch-scoped rather than merely commented, and walks `src/` for the two JSX
+  shapes that produce a style attribute so a reintroduction fails CI instead of shipping;
+  `tests/deployment-readiness.test.ts` pins the production/development split at the source. The test
+  that previously *required* `style-src 'self' 'unsafe-inline'` is replaced rather than deleted — it
+  now asserts the opposite contract, because the requested behaviour changed and a green suite that
+  still demanded the old policy would have been the reason nothing could ever change here.
+
+  Verified on a production build (`npm run build`, exit 0) served locally: every one of **24 routes**
+  returns HTML with **zero** style attributes and zero `<style>` elements; the emitted header carries
+  the nonce on `style-src` and `style-src-attr 'none'` on every route checked; and in the real browser
+  the changed timeline renders with 5 hoverable connectors, a drawn white `<rect>`, eight
+  `cursor="pointer"` targets and a tooltip positioned to `left: 620px; top: 146px` — with **no element
+  holding a refused style attribute** anywhere in the checked documents and **zero**
+  `securitypolicyviolation` events. A deliberate control (`setAttribute('style', 'color: red')` leaving
+  the attribute in the DOM while `style.color` stays empty, plus the browser's "Refused to apply
+  inline style … style-src-attr 'none'" console error) proves the policy is live, so the clean result
+  is a measurement rather than a vacuous one. **Not claimed:** no hosted CSP report review was
+  performed, `script-src` is unchanged, and browsers without `style-src-attr` fall back to
+  `style-src`, which no longer allows `'unsafe-inline'` — a refused style, never a permitted one.
+
+- **The shared consumer budget's admit/refuse pressure is a reported runtime fact, so a
+  throttled fleet is visible before VA answers `429`** (`va`, audit A03): the rolling budget that
+  bounds the whole fleet's live VA traffic refused attempts silently. An instance that had
+  refused a hundred upstream attempts looked exactly like an idle one on `/api/health`, and the
+  first evidence of throttling was the upstream's own `429` — by which point every affected
+  request had already been served from local reference data and the cause had to be
+  reconstructed from warn lines.
+
+  Every reservation decision now records its outcome in process-local counters
+  (`src/lib/va/consumer-budget-pressure.ts`) at the same statement that makes the decision, and
+  `src/app/api/health/route.ts` forwards them as `components.vaConsumerBudget`, beside the
+  budget's own bounds (`maxRequests`, `windowMs`, `optIn`, `variable`) and the gate that decides
+  whether it is enforced at all (`store.mode`, `store.distributed`, `store.blockedBy`, the
+  operator's next action when it is not). The regime it reports is one of three, because the
+  honest reading differs by deployment: `fleet-shared` when every upstream attempt here reserves
+  a slot in the fleet's one window, `unenforced` when live VA access is refused before any
+  attempt (so the zeroes mean "nothing was sent", not "nothing was throttled"), and
+  `not-required` in a single-process runtime where the per-instance outbound budget is the whole
+  budget. This is also the one capability in the aggregate runtime report that can be at full
+  strength *while* distributed, since a shared atomic window is the fleet-wide form of that
+  budget rather than a weaker version of it; that exception is now asserted in
+  `tests/runtime-capabilities.test.ts` instead of being inherited.
+
+  The counters are written by the decision rather than by an observer, so `admitted + refused`
+  is exactly the number of decisions the instance made and the report cannot drift from the code
+  that decides: the refusal vocabulary is the list `reserveVaSharedConsumerSlot` branches on, and
+  `tests/va-consumer-budget-pressure.test.ts` derives that set from the source in both
+  directions, so a new refusal path cannot be added without a reason the report can carry.
+  `pressure.refusedInLastWindow` and `lastRefusalReason` say whether the throttling is happening
+  *now*, and `pressure.pacing.chargedReservations` is the earliest warning of all, because a
+  charge is applied only when the upstream itself reported less remaining quota than the fleet's
+  window believed. The counters are **per instance** and labelled as such (`pressure.scope`),
+  resetting on cold start, so they do not sum to a fleet total unaided — but a refusal is an
+  event rather than a rate, so any non-zero `refused` is true of the fleet as a whole. Nothing
+  in the projection comes from a request, a cache key, or the coordinator's URL and token, and
+  it is deliberately **not** a health failure: an exhausted or unenforced budget is the
+  documented fallback path, not a reason to take the deployment out of service.
+
 ## 2026-10-11
 
 - **The manual Section 508 session was blocked on a remediation that had not landed, and the

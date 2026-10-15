@@ -42,6 +42,17 @@ import type { FleetScenario } from "./helpers/fleet-scenario-budgets";
 const KV_URL = "https://example.upstash.io";
 const CIRCUIT_MARKER_KEY = "va:ref:circuit:va-forms";
 const CIRCUIT_DEADLINE_KEY = "va:ref:circuit-deadline:va-forms";
+/**
+ * Whether a KV command targets a consumer-budget window key, whatever command
+ * carries it: the reservation is one atomic script, and a regression to a
+ * different command on the same keys must still be counted here.
+ */
+function isBudgetCommand(command: string[]): boolean {
+  return command
+    .slice(1)
+    .some((part) => String(part).startsWith("va:ref:budget:"));
+}
+
 /** Bucket-aligned fixed clock so budget/cardinality windows cannot roll over mid-test. */
 const FIXED_NOW = 1_700_000_040_000;
 
@@ -302,31 +313,27 @@ describe("VA fleet simulation — unique-query storm", () => {
       // The storm runs at one instant, so the rolling window's predecessor term
       // is read at most — never incremented — and one bucket holds the whole
       // storm.
-      const firstBudgetIncr = fleet.events.findIndex(
-        (event) =>
-          event.kind === "kv" &&
-          event.command[0] === "INCR" &&
-          String(event.command[1]).startsWith("va:ref:budget:"),
+      const firstBudgetDecision = fleet.events.findIndex(
+        (event) => event.kind === "kv" && isBudgetCommand(event.command),
       );
       const firstUpstream = fleet.events.findIndex((event) => event.kind === "upstream");
-      expect(firstBudgetIncr).toBeGreaterThanOrEqual(0);
-      expect(firstUpstream).toBeGreaterThan(firstBudgetIncr);
+      expect(firstBudgetDecision).toBeGreaterThanOrEqual(0);
+      expect(firstUpstream).toBeGreaterThan(firstBudgetDecision);
       const budgetKeys = new Set(
         fleet
-          .kvCommandsNamed("INCR")
-          .map((command) => String(command[1]))
+          .events.filter(
+            (event): event is Extract<FleetEvent, { kind: "kv" }> =>
+              event.kind === "kv" && isBudgetCommand(event.command),
+          )
+          .map((event) => String(event.command[3] ?? event.command[1]))
           .filter((key) => key.startsWith("va:ref:budget:")),
       );
       expect(budgetKeys.size).toBe(1);
-      expect(
-        fleet
-          .kvCommandsNamed("EXPIRE")
-          .some(
-            (command) =>
-              command[1] === [...budgetKeys][0] &&
-              command[2] === String(VA_SHARED_CONSUMER_COUNTER_TTL_SECONDS),
-          ),
-      ).toBe(true);
+      // One atomic decision per attempt, and the window counter it writes is
+      // bounded by a lifetime rather than left to accumulate (audit A03).
+      expect(fleet.kv.scriptExecutions).toHaveLength(totalRequests);
+      expect(fleet.kv.remainingTtlMs([...budgetKeys][0])).toBeGreaterThan(0);
+      expect(VA_SHARED_CONSUMER_COUNTER_TTL_SECONDS).toBeGreaterThan(0);
 
       // Finite cardinality: one admitted write per live view, no more than the
       // namespace cap, and no raw query ever becomes key material.
@@ -412,17 +419,17 @@ describe("VA fleet simulation — 429 flare, cooldown, and single probe", () => 
 
       // Phase 2 — brand-new instances see the fleet cooldown and never fetch.
       const upstreamBefore = fleet.upstreamEvents().length;
-      const budgetIncrsBefore = fleet
-        .kvCommandsNamed("INCR")
-        .filter((command) => String(command[1]).startsWith("va:ref:budget:")).length;
+      const budgetDecisionsBefore = fleet
+        .kvCommandsNamed("EVAL")
+        .filter((command) => isBudgetCommand(command)).length;
       const steady = await createFleet(10);
       const steadyResults = await Promise.all(
         steady.map((instance, i) => instance.sandbox.fetchVaForms(`steady-${i}`)),
       );
       expect(fleet.upstreamEvents()).toHaveLength(upstreamBefore);
       expect(
-        fleet.kvCommandsNamed("INCR").filter((command) => String(command[1]).startsWith("va:ref:budget:")),
-      ).toHaveLength(budgetIncrsBefore); // a blocked request spends no quota
+        fleet.kvCommandsNamed("EVAL").filter((command) => isBudgetCommand(command)),
+      ).toHaveLength(budgetDecisionsBefore); // a blocked request spends no quota
       for (const result of steadyResults) {
         expect(result.success).toBe(false);
         expect(result.error).toContain("circuit open");
@@ -573,9 +580,7 @@ describe("VA fleet simulation — degraded shared store (slow, near the deadline
       expect(probe.error).toMatch(/shared rate-limit\/cache coordinator/);
       expect(fleet.upstreamEvents()).toHaveLength(0);
       expect(
-        fleet
-          .kvCommandsNamed("INCR")
-          .filter((command) => String(command[1]).startsWith("va:ref:budget:")),
+        fleet.kvCommandsNamed("EVAL").filter((command) => isBudgetCommand(command)),
       ).toHaveLength(0);
       expect(fleet.kv.get(budgetKey)).toBeNull();
 
@@ -676,10 +681,7 @@ describe("VA fleet simulation — shared-store outage mid-storm", () => {
       expect(outageEvents.filter((event) => event.kind === "upstream")).toHaveLength(0);
       expect(
         outageEvents.filter(
-          (event) =>
-            event.kind === "kv" &&
-            event.command[0] === "INCR" &&
-            String(event.command[1]).startsWith("va:ref:budget:"),
+          (event) => event.kind === "kv" && isBudgetCommand(event.command),
         ),
       ).toHaveLength(0);
       expect(

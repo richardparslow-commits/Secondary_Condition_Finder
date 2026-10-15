@@ -129,11 +129,19 @@ document). Fastest; loses per-batch review.
 - [ ] Delete merged remote branches; keep local branches until the probes pass.
 
 ### Known accepted state — record it, do NOT "fix" it on landing day
-- The citation-decay gate **will flag** undigested-verified **395 > `MAX_UNDIGESTED_VERIFIED_REFS`
-  383** (`scripts/audit-citation-decay.js`). Batch 92's qualified-human decision: the pin is
-  deliberately NOT raised and no digests are backfilled (PubMed pages are dynamic per fetch; the
-  SOP forbids false-positive digests and pin raises to accommodate debt). The `citation-decay-watch`
-  workflow surfacing this is expected; record and escalate, never edit the pin to go green.
+- **Superseded 2026-10-14 by issue #518 — expect the citation-decay gate to be green, or green with a
+disclosed exclusion.** The state recorded here was: the gate **will flag** undigested-verified **395 >
+  `MAX_UNDIGESTED_VERIFIED_REFS` 383**, with batch 92's qualified-human decision to record the overflow
+  rather than raise the pin (PubMed pages are dynamic per fetch, the SOP forbids false-positive digests,
+  and no pin is raised to accommodate debt). Issue #518 then showed what that state costs: the weekly
+  probe failed on that count alone — zero link rot, zero content drift, zero stale — and asked a
+  qualified human to re-verify references that had not decayed, because no human action can move a
+  reference the SOP forbids digesting. The corpus-wide pin is gone; `npm run citations:decay` now
+  ratchets only the digest-eligible backlog (`MAX_UNDIGESTED_ELIGIBLE_VERIFIED_REFS`) and declares the
+  excluded URL classes, with their measurement and a review window, in
+  `docs/citation-digest-ineligible-classes.json` — see `docs/citation-digest-ineligibility-policy-2026-10-14.md`.
+  A register that is missing or past its window fails the gate, so a red decay run is still possible and
+  still means something. The standing rule is unchanged: **never edit a pin to go green.**
 - `CRG_REDUNDANCY_BASELINE` 29 and the citation-verification ratchet counts are deliberate,
   ledger-commented pins. Escalation rule for all gates: **stop, record, escalate to a
   qualified human — never raise a pin to make CI green.** The 29 redundancy conflicts are

@@ -328,7 +328,22 @@ jobs:
         if: steps.build.outcome == 'success'
         run: |
           set -o pipefail
-          node e2e/a11y-contrast.mjs 2>&1 | tee ci-a11y-contrast.log
+          status=0
+          node e2e/a11y-contrast.mjs 2>&1 | tee ci-a11y-contrast.log || status=$?
+          # Publish this run's route inventory (each route's declared surfaces
+          # against the evidence actually recorded) in the run's own summary:
+          # the table holds one row per declared route whether or not the walk
+          # reached it, so a route the gate silently stopped covering is visible
+          # here as well as in the uploaded a11y-evidence/ artifact.
+          if [ -f a11y-evidence/route-inventory-report.md ]; then
+            {
+              echo
+              echo "## Per-run route inventory (R-05 contrast surface)"
+              echo
+              cat a11y-evidence/route-inventory-report.md
+            } >> "$GITHUB_STEP_SUMMARY" || true
+          fi
+          exit "$status"
         continue-on-error: true
         id: a11y_contrast
       - name: Collect diagnostic summary

@@ -142,11 +142,69 @@ describe("R-03.3 — SAST via Semgrep (the report's listed alternative)", () => 
     expect(source).toMatch(/Semgrep with a TypeScript ruleset/);
   });
 
-  it("fails findable findings without echoing source excerpts into logs or artifacts", () => {
-    expect(source).toContain("no source excerpts are echoed");
+  /**
+   * Two claims this workflow made were false, and this is what replaced them.
+   *
+   * "WARN/INVENTORY findings are surfaced in the step summary" could not hold:
+   * `--severity ERROR` selects only ERROR-severity rules (semgrep CLI reference:
+   * "Report findings only from rules matching the supplied severity level"), so
+   * no WARNING/INVENTORY finding ever reaches the output. "No source excerpts
+   * are echoed into logs or artifacts" also could not hold: semgrep's text
+   * formatter prints the matched source lines, and this job was printing them.
+   * `--json` moves them into a file nothing prints and nothing uploads, and the
+   * sanitized rule/file/line list is what travels onward.
+   */
+  it("collects only what its command can collect, and says which severity that is", () => {
+    expect(source).toContain("--severity ERROR");
+    expect(source).toContain("--error");
+    // The corrected statement, in the workflow, the summary and the record.
+    expect(source).toContain("WARNING/INVENTORY findings are not selected by it");
+    expect(source).toContain("--severity ERROR");
+    expect(source).not.toMatch(/WARN\/INVENTORY summarized/i);
+    // The old live claim is gone; the phrase survives only inside the record of
+    // the correction itself.
+    expect(source).not.toContain("Findings are printed as sanitised rule/file/line/location text");
+    expect(source).toContain("were false and are corrected here");
+  });
+
+  it("keeps the matched source lines in a file that is neither printed nor uploaded", () => {
+    expect(source).toContain("--json");
+    expect(source).toContain("src scripts > semgrep-sast.json");
+    // stderr stays on the runner's log: that is where the engine's diagnostics
+    // have to be readable when the gate cannot run at all.
+    expect(source).not.toContain("2> semgrep-sast.log");
+    expect(source).toContain('finding.get("path")');
+    expect(source).not.toContain("cat semgrep-sast.json");
     expect(source).not.toContain("upload-artifact");
-    expect(source).not.toContain('issues: write');
+  });
+
+  it("lets a scheduled failure reach a human through one tracking issue", () => {
+    // The repository rule from dependency-scheduled-audit.yml's header: every
+    // scheduled workflow must be able to fail visibly without a commit. This
+    // was the last one that could not (docs/sast-monitor-handoff-policy-2026-10-14.md).
+    expect(source).toContain("issues: write");
+    expect(source).toContain("record-sast-outcome:");
+    expect(source).toContain("if: always() && github.event_name != 'pull_request'");
+    expect(source).toContain("Close");
+    expect(source).toContain('"close"');
+    expect(source).toContain("--reason");
+    expect(source).toContain("completed");
+    // The scan job stays read-only; a PR run's own check is its signal.
+    const scanJob = source.slice(source.indexOf("jobs:"), source.indexOf("record-sast-outcome:"));
+    expect(scanJob).not.toContain("issues: write");
+    expect(scanJob).not.toContain("permissions:");
+  });
+
+  it("carries the findings to the issue as a job output, not as an artifact", () => {
+    expect(source).toContain("finding_detail: ${{ steps.scan.outputs.finding_detail }}");
+    expect(source).toContain("FINDING_DETAIL: ${{ needs.semgrep.outputs.finding_detail }}");
+    expect(source).not.toContain("download-artifact");
+  });
+
+  it("never grants write access it does not need", () => {
     expect(source).not.toContain('pull-requests: write');
+    expect(source).not.toContain("security-events: write");
+    expect(source).not.toContain("contents: write");
   });
 });
 

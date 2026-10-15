@@ -53,9 +53,21 @@ const RUNTIME_FACT_USAGE =
 const EXPECTED_IDS: RuntimeCapabilityId[] = [
   "circuitBreaker",
   "rateLimit",
+  "vaConsumerBudget",
   "vaLiveIntegration",
   "vaReferenceCache",
 ];
+
+/**
+ * The one capability that can be at full strength *while* distributed.
+ *
+ * A shared atomic window is the fleet-wide *form* of the consumer budget rather
+ * than a weaker version of it, so `vaConsumerBudget` is full strength when it is
+ * enforced and reduced only when a prerequisite is missing (and live VA access is
+ * refused outright in that state). It is listed here so the invariant assertion
+ * below states the exception out loud instead of inheriting it.
+ */
+const DISTRIBUTED_FULL_IDS: RuntimeCapabilityId[] = ["vaConsumerBudget"];
 
 function listSourceFiles(directory: string): string[] {
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
@@ -212,13 +224,14 @@ describe("what this deployment gives up", () => {
 
     expect(distributed).toBe(true);
     expect([...summary.reduced].sort()).toEqual(EXPECTED_IDS);
-    expect(summary.detail).toMatch(/4 of 4/);
+    expect(summary.detail).toMatch(/5 of 5/);
     for (const capability of Object.values(capabilities)) {
       expect(capability.full, capability.id).toBe(false);
     }
     // A future capability that stays at full strength while distributed belongs in
-    // this list too, but it must change this assertion on purpose rather than
-    // inherit the claim.
+    // DISTRIBUTED_FULL_IDS too, but it must change this assertion on purpose
+    // rather than inherit the claim.
+    expect(DISTRIBUTED_FULL_IDS).toEqual(["vaConsumerBudget"]);
   });
 
   it("names the consequence for each control, not just its label", () => {
@@ -226,6 +239,7 @@ describe("what this deployment gives up", () => {
 
     expect(capabilities.vaLiveIntegration.detail).toMatch(/shared rate-limit\/cache coordinator/);
     expect(capabilities.vaReferenceCache.detail).toMatch(/counters cannot move/);
+    expect(capabilities.vaConsumerBudget.detail).toMatch(/VA_SHARED_CONSUMER_BUDGET=true/);
     expect(capabilities.rateLimit.detail).toMatch(/instance count/);
     expect(capabilities.circuitBreaker.detail).toMatch(/does not protect the others/);
   });
@@ -237,7 +251,7 @@ describe("what this deployment gives up", () => {
       .map((capability) => capability.id)
       .sort();
 
-    expect(refusing).toEqual(["vaLiveIntegration", "vaReferenceCache"]);
+    expect(refusing).toEqual(["vaConsumerBudget", "vaLiveIntegration", "vaReferenceCache"]);
   });
 
   it("exposes every scope through the summary map", () => {
@@ -246,6 +260,7 @@ describe("what this deployment gives up", () => {
     expect(summary.scopes).toEqual({
       vaLiveIntegration: "disabled",
       vaReferenceCache: "disabled",
+      vaConsumerBudget: "unenforced",
       rateLimit: "per-instance",
       circuitBreaker: "per-instance",
     });
@@ -260,6 +275,12 @@ describe("GET /api/health surfaces the aggregate", () => {
     const { GET } = await import("@/app/api/health/route");
 
     vi.stubEnv("NODE_ENV", "production");
+    // The consumer budget is enforced only with its opt-in and a coordinator, so
+    // the distributed reading below is pinned to the unenforced one explicitly
+    // rather than to whatever the shell happens to export.
+    vi.stubEnv("VA_SHARED_CONSUMER_BUDGET", "");
+    vi.stubEnv("VA_REFERENCE_SHARED_CACHE_URL", "");
+    vi.stubEnv("VA_REFERENCE_SHARED_CACHE_TOKEN", "");
     const production = await (await GET()).json();
 
     expect(production.components.runtime.distributed).toBe(true);
@@ -267,6 +288,7 @@ describe("GET /api/health surfaces the aggregate", () => {
     expect(production.components.runtime.capabilities).toEqual({
       vaLiveIntegration: "disabled",
       vaReferenceCache: "disabled",
+      vaConsumerBudget: "unenforced",
       rateLimit: "per-instance",
       circuitBreaker: "per-instance",
     });
@@ -279,6 +301,9 @@ describe("GET /api/health surfaces the aggregate", () => {
     );
     expect(production.components.vaReferenceCache.scope).toBe(
       production.components.runtime.capabilities.vaReferenceCache,
+    );
+    expect(production.components.vaConsumerBudget.scope).toBe(
+      production.components.runtime.capabilities.vaConsumerBudget,
     );
 
     vi.stubEnv("NODE_ENV", "test");

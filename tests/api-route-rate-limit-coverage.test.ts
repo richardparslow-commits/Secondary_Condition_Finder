@@ -11,10 +11,15 @@ import {
   findApiRouteLimitPolicy,
 } from "@/lib/api-route-policies";
 import {
+  healthLimiter,
   referenceReadLimiter,
   unattributedAdmissionLimiter,
   workflowSessionLimiter,
 } from "@/lib/rate-limiter";
+import {
+  admissionRefusalWindowReport,
+  clearAdmissionRefusalWindow,
+} from "@/lib/observability/refusal-window";
 import { proxy } from "@/proxy";
 
 /**
@@ -547,5 +552,119 @@ describe("shared admission ceiling (SEC-02)", () => {
       expect(send({ "x-forwarded-for": "192.0.2.9" }).status).toBe(200);
     }
     expect(send({ "x-forwarded-for": "192.0.2.9" }).status).toBe(429);
+  });
+});
+
+/**
+ * `RATE_LIMIT_TRUSTED_INGRESS` as an **enforcement** switch, not a reporting
+ * label (SEC-02).
+ *
+ * The unasserted rule keys on the hop the client writes, which is the correct
+ * rule only for an ingress that overwrites the header. An ingress that *appends*
+ * the observed peer needs the opposite end read, and that is what the declared
+ * model changes — measured here through the real proxy rather than asserted from
+ * the configuration.
+ */
+describe("declared ingress model (SEC-02)", () => {
+  /** `healthLimiter`'s per-client max, so 31 requests must produce one refusal. */
+  const CLIENT_BUDGET = 30;
+
+  const sendHealth = (headers: Record<string, string>) =>
+    proxy(new NextRequest("https://example.test/api/health", { headers }));
+
+  beforeEach(() => {
+    healthLimiter.reset();
+    unattributedAdmissionLimiter(process.env).reset();
+    clearAdmissionRefusalWindow();
+  });
+
+  afterEach(() => {
+    vi.unstubAllEnvs();
+    healthLimiter.reset();
+    unattributedAdmissionLimiter().reset();
+    clearAdmissionRefusalWindow();
+  });
+
+  it("keys an appending ingress on the ingress-observed hop, not the client's", () => {
+    vi.stubEnv("RATE_LIMIT_TRUSTED_INGRESS", "append");
+
+    for (let index = 0; index < CLIENT_BUDGET; index += 1) {
+      const response = sendHealth({ "x-forwarded-for": `198.51.100.${index}, 203.0.113.7` });
+      expect(response.status, `request ${index + 1}`).toBe(200);
+    }
+
+    // Every request carried a fresh client-written hop beside one constant
+    // appended hop, so all 31 share one bucket and the last is refused.
+    expect(sendHealth({ "x-forwarded-for": "198.51.100.250, 203.0.113.7" }).status).toBe(429);
+  });
+
+  it("reads the declared appender's hop when the client pads the header", () => {
+    // `append:2` declares two appenders (a CDN and the app proxy), so the second
+    // entry from the right is the app proxy's value. A client that pads the
+    // header with its own rotating value in front of both cannot move the key.
+    vi.stubEnv("RATE_LIMIT_TRUSTED_INGRESS", "append:2");
+
+    const spoofed = (index: number) => `198.51.100.${index}, 203.0.113.7, 203.0.113.8`;
+    for (let index = 0; index < CLIENT_BUDGET; index += 1) {
+      expect(sendHealth({ "x-forwarded-for": spoofed(index) }).status, `request ${index + 1}`).toBe(
+        200,
+      );
+    }
+    expect(sendHealth({ "x-forwarded-for": spoofed(250) }).status).toBe(429);
+  });
+
+  // The contrast that makes the model mean something: without a claim the same
+  // rotating hops each mint a bucket, which is exactly the A2 failure the runbook
+  // records for an edge that passes the header through.
+  it("still keys an unasserted deployment on the client's own hop", () => {
+    for (let index = 0; index <= CLIENT_BUDGET; index += 1) {
+      const response = sendHealth({ "x-forwarded-for": `198.51.100.${index}, 203.0.113.7` });
+      expect(response.status, `request ${index + 1}`).toBe(200);
+    }
+  });
+
+  // The inversion this closes: without a declared model an identity-less request is
+  // admitted until the shared ceiling is spent, so hiding your identity bought a
+  // bound far above the one a keyed client gets. Declaring the model charges the
+  // class of identity-less requests to the surface's own budget instead.
+  it("does not let an unidentified request draw on the whole ceiling", () => {
+    vi.stubEnv("RATE_LIMIT_TRUSTED_INGRESS", "append");
+    vi.stubEnv("RATE_LIMIT_UNATTRIBUTED_MAX", "5000");
+    unattributedAdmissionLimiter(process.env).reset();
+
+    for (let index = 0; index < CLIENT_BUDGET; index += 1) {
+      const response = proxy(
+        new NextRequest("https://example.test/api/health", { headers: {} }),
+      );
+      expect(response.status, `request ${index + 1}`).toBe(200);
+    }
+    expect(proxy(new NextRequest("https://example.test/api/health", { headers: {} })).status).toBe(
+      429,
+    );
+    // The refusal is the class bucket, not the ceiling: the aggregate budget is
+    // nowhere near spent, which is exactly what "no larger allowance" means here.
+    expect(admissionRefusalWindowReport().byBudget).toEqual({
+      ceiling: 0,
+      perClient: 0,
+      unidentified: 1,
+    });
+  });
+
+  it("bounds a request that does not carry the declared hop count", () => {
+    vi.stubEnv("RATE_LIMIT_TRUSTED_INGRESS", "append:2");
+    vi.stubEnv("RATE_LIMIT_UNATTRIBUTED_MAX", "3");
+    unattributedAdmissionLimiter(process.env).reset();
+
+    // One hop where two appenders are declared: the request did not traverse the
+    // ingress, so it is unattributed and bounded by the ceiling rather than keyed
+    // on the value it sent. This is the observable form of the position check —
+    // the ceiling refuses it after three charges, where an identity would have
+    // had the full per-client budget.
+    for (let index = 0; index < 3; index += 1) {
+      expect(sendHealth({ "x-forwarded-for": "203.0.113.7" }).status, `request ${index + 1}`).toBe(
+        200,
+      );
+    }
+    expect(sendHealth({ "x-forwarded-for": "203.0.113.7" }).status).toBe(429);
   });
 });

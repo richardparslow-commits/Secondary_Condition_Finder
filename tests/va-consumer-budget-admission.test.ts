@@ -2,7 +2,9 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 
 import {
   reserveVaSharedConsumerSlot,
+  SHARED_CONSUMER_WINDOW_SCRIPT,
   VA_SHARED_CONSUMER_COUNTER_TTL_SECONDS,
+  VA_SHARED_CONSUMER_DECISION,
   VA_SHARED_CONSUMER_MAX_REQUESTS,
   VA_SHARED_CONSUMER_WINDOW_MS,
 } from "@/lib/va/reference-shared-cache";
@@ -20,22 +22,31 @@ import { createFakeSharedKv } from "./helpers/fake-shared-kv";
  * real Redis-REST fake, so the pinned behaviour is the function's, not a
  * restatement of it.
  *
- * Three pre-fix defects each own a case below, and each case fails if its guard
- * is removed:
+ * The whole decision — the successor fence, the predecessor read, the increment,
+ * the counter's lifetime, and the comparison — is one atomic server-side
+ * operation (`SHARED_CONSUMER_WINDOW_SCRIPT`), so this suite also pins the shape
+ * of the exchange: **one command per attempt**, never a read-then-decide pair.
+ * Concurrency itself is proven separately, against the store's own recorded
+ * timeline, in `tests/va-consumer-budget-concurrency.test.ts`.
+ *
+ * Each pre-fix defect owns a case below, and each case fails if its guard is
+ * removed:
  *
  *   1. `floor(now / 60000)` admitted 60 reservations at 59,999 ms and 60 more
  *      at 60,000 ms — **120 admissions against a budget of 60, one millisecond
- *      apart**. The rolling window charges the current bucket together with a
- *      weighted overlap of its predecessor, so the boundary burst is refused
- *      and refills gradually (`boundary burst`, `pacing`, `absent predecessor`).
+ *      apart**. The rolling rule refuses the burst and refills gradually
+ *      (`boundary burst`, `pacing`, `absent predecessor`).
  *   2. `Number.isFinite` accepted a fractional counter — a synthetic `1.5`
- *      authorised a slot (`fractional and malformed counters`). Counters must
- *      now be non-negative safe integers, and an erroring reply is refused
- *      rather than read.
- *   3. The `EXPIRE` reply was never inspected, so a counter that could never be
- *      given a lifetime still authorised a slot — and the store kept one
- *      permanent key per window. A refused lifetime now refuses the slot and
- *      removes the key (`a counter without a lifetime`).
+ *      authorised a slot (`fractional and malformed counters`). The decision
+ *      code must now be a known non-negative safe integer in either encoding, an
+ *      erroring reply is refused rather than read, and an unreadable code is
+ *      refused rather than defaulted.
+ *   3. The predecessor read and the decision were separate commands, and a
+ *      counter's lifetime was established by a *later* `EXPIRE` that could fail
+ *      or never run. Both are now inside the one operation, so the lifetime is
+ *      established atomically (`a counter's lifetime`) and a reservation for a
+ *      window the store has already moved past is refused before anything is
+ *      written (`a superseded window`).
  *
  * A fresh window with an absent predecessor counter is a positive control: the
  * full budget is available, so these cases cannot pass by refusing everything.
@@ -150,9 +161,11 @@ describe("VA shared consumer budget — conservative rolling admission", () => {
     }
     expect(admitted.filter(Boolean)).toHaveLength(VA_SHARED_CONSUMER_MAX_REQUESTS);
 
-    // An absent predecessor is a read miss, not an error: the counter starts at
-    // one and no `INCR` is spent on the predecessor key.
-    expect(kv.executed.some((command) => command[0] === "GET")).toBe(true);
+    // An absent predecessor is a miss, not an error, and it costs no command of
+    // its own: every attempt is exactly one atomic decision, and the skipped
+    // window's own counter was never written.
+    expect(kv.executed).toHaveLength(2 * VA_SHARED_CONSUMER_MAX_REQUESTS);
+    expect(kv.executed.every((command) => command[0] === "EVAL")).toBe(true);
     expect(kv.get(budgetKey(1))).toBeNull();
   });
 
@@ -171,23 +184,55 @@ describe("VA shared consumer budget — conservative rolling admission", () => {
     expect(kv.get(budgetKey(1))).toBe("1");
   });
 
-  it("applies one bounded counter lifetime per window, longer than the window", async () => {
+  it("establishes the counter's lifetime in the same atomic step as the increment", async () => {
+    vi.useFakeTimers({ now: 1_000 });
     const kv = createFakeSharedKv();
     routeFetchTo(kv);
 
-    for (let index = 0; index < 5; index += 1) {
-      expect(await reserveVaSharedConsumerSlot(env, 1_000)).toBe(true);
-    }
+    expect(await reserveVaSharedConsumerSlot(env, 1_000)).toBe(true);
 
-    const expirations = kv.executed.filter((command) => command[0] === "EXPIRE");
-    expect(expirations).toHaveLength(1);
-    expect(expirations[0][1]).toBe(budgetKey(0));
-    expect(expirations[0][2]).toBe(String(VA_SHARED_CONSUMER_COUNTER_TTL_SECONDS));
+    // One command produced both the counter and its lifetime: there is no
+    // window in which a reservation has been made against a counter that the
+    // store may keep forever.
+    expect(kv.executed).toEqual([
+      ["EVAL", SHARED_CONSUMER_WINDOW_SCRIPT, "3", budgetKey(0), budgetKey(-1), budgetKey(1),
+        String(VA_SHARED_CONSUMER_MAX_REQUESTS), "1000", String(VA_SHARED_CONSUMER_WINDOW_MS),
+        String(VA_SHARED_CONSUMER_COUNTER_TTL_SECONDS)],
+    ]);
+    expect(kv.remainingTtlMs(budgetKey(0))).toBe(VA_SHARED_CONSUMER_COUNTER_TTL_SECONDS * 1000);
+
+    // Later reservations in the same window do not push the expiry out: the
+    // lifetime is one bound per window, not a sliding extension.
+    vi.advanceTimersByTime(5_000);
+    expect(await reserveVaSharedConsumerSlot(env, 6_000)).toBe(true);
+    expect(kv.remainingTtlMs(budgetKey(0))).toBe(
+      VA_SHARED_CONSUMER_COUNTER_TTL_SECONDS * 1000 - 5_000,
+    );
+
     // The lifetime outlives the window so the next window can read this counter
     // as its predecessor, and still expires so keys cannot accumulate.
     expect(VA_SHARED_CONSUMER_COUNTER_TTL_SECONDS * 1000).toBeGreaterThan(
       VA_SHARED_CONSUMER_WINDOW_MS,
     );
+  });
+
+  it("refuses a reservation for a window the store has already moved past", async () => {
+    const kv = createFakeSharedKv();
+    routeFetchTo(kv);
+
+    // A window exists for the bucket after the one this reservation names: the
+    // fleet has already moved on, so this call is a straggler (a stalled attempt
+    // or a lagging clock). Deciding it would decide it against a predecessor
+    // other instances are still writing — the latency-released version of the
+    // boundary burst — so it is refused before anything is written.
+    expect(await reserveVaSharedConsumerSlot(env, VA_SHARED_CONSUMER_WINDOW_MS)).toBe(true);
+    expect(await reserveVaSharedConsumerSlot(env, VA_SHARED_CONSUMER_WINDOW_MS - 1)).toBe(false);
+
+    expect(kv.get(budgetKey(0))).toBeNull();
+    expect(kv.scriptExecutions.at(-1)?.code).toBe(
+      VA_SHARED_CONSUMER_DECISION.supersededWindow,
+    );
+    expect(kv.scriptExecutions.at(-1)?.count).toBe(0);
   });
 
   it("lets an abandoned window expire instead of accumulating in the store", async () => {
@@ -214,14 +259,27 @@ describe("VA shared consumer budget — strict command validation", () => {
     }
   });
 
-  it("accepts an integer counter encoded as a number or a digit string", async () => {
-    stubCommandReplies(() => ({ result: 3 }));
-    await expect(reserveVaSharedConsumerSlot(env, 0)).resolves.toBe(true);
+  it("accepts the admitted code in either Redis-REST encoding, wrapped or not", async () => {
+    const admitted = VA_SHARED_CONSUMER_DECISION.admitted;
+    for (const result of [admitted, String(admitted), [admitted], [String(admitted)]]) {
+      stubCommandReplies(() => ({ result: result as unknown }));
+      await expect(
+        reserveVaSharedConsumerSlot(env, 0),
+        `decision ${JSON.stringify(result)} must authorise a slot`,
+      ).resolves.toBe(true);
+    }
+  });
 
-    // Redis-REST replies are integers in either encoding; the confirmation of a
-    // counter's lifetime is held to the same rule.
-    stubCommandReplies((command) => ({ result: command[0] === "EXPIRE" ? "1" : "1" }));
-    await expect(reserveVaSharedConsumerSlot(env, 0)).resolves.toBe(true);
+  it("refuses an unknown decision code instead of defaulting it", async () => {
+    // A code nobody defined is a store this module does not understand; the only
+    // safe reading of it is "no slot".
+    for (const result of [0, 9, 6, [1, 1], [], 1e9]) {
+      stubCommandReplies(() => ({ result: result as unknown }));
+      await expect(
+        reserveVaSharedConsumerSlot(env, 0),
+        `decision ${JSON.stringify(result)} must not authorise a slot`,
+      ).resolves.toBe(false);
+    }
   });
 
   it("refuses a counter reply that carries a Redis body error at HTTP 200", async () => {
@@ -237,44 +295,39 @@ describe("VA shared consumer budget — strict command validation", () => {
     }
   });
 
-  it("refuses a counter it cannot give a lifetime, and removes the key", async () => {
+  it("refuses when the store cannot execute the atomic decision", async () => {
     const kv = createFakeSharedKv();
     routeFetchTo(kv);
-    kv.failCommand("EXPIRE");
+    kv.failCommand("EVAL");
 
     expect(await reserveVaSharedConsumerSlot(env, 0)).toBe(false);
-    // The lifetime-less counter is deleted rather than left to accumulate.
+    // Nothing was written: the whole decision is the one command that failed.
     expect(kv.get(budgetKey(0))).toBeNull();
-    expect(kv.executed.some((command) => command[0] === "DEL")).toBe(true);
+    expect(kv.scriptExecutions).toEqual([]);
   });
 
-  it("refuses a lifetime the store did not confirm", async () => {
-    // `EXPIRE` answers 0 when it set no timeout; that is not a confirmed
-    // lifetime, so the slot is refused.
+  it("refuses when the predecessor counter is invalid or the exchange errors", async () => {
+    // The predecessor's own validity is checked inside the decision, so a
+    // corrupted counter cannot become arithmetic fuel.
+    for (const corrupted of ["not-a-counter", "1.5", "-1", "0x2", " 1", "1 ", "1".repeat(16)]) {
+      const kv = createFakeSharedKv();
+      routeFetchTo(kv);
+      kv.seed(budgetKey(0), corrupted, 600_000);
+      await expect(
+        reserveVaSharedConsumerSlot(env, VA_SHARED_CONSUMER_WINDOW_MS),
+        `predecessor ${JSON.stringify(corrupted)} must not authorise a slot`,
+      ).resolves.toBe(false);
+      expect(kv.scriptExecutions.at(-1)?.code).toBe(
+        VA_SHARED_CONSUMER_DECISION.predecessorInvalid,
+      );
+      // Refused before the increment, so the current window spent nothing.
+      expect(kv.get(budgetKey(1))).toBeNull();
+    }
+
+    // An erroring reply is a refusal even when it also carries a decision code.
     stubCommandReplies((command) => ({
-      result: command[0] === "INCR" ? 1 : command[0] === "EXPIRE" ? 0 : null,
-    }));
-    await expect(reserveVaSharedConsumerSlot(env, 0)).resolves.toBe(false);
-  });
-
-  it("refuses when the predecessor counter is unreadable, invalid, or erroring", async () => {
-    const kv = createFakeSharedKv();
-    routeFetchTo(kv);
-    kv.seed(budgetKey(0), "not-a-counter", 600_000);
-    await expect(
-      reserveVaSharedConsumerSlot(env, VA_SHARED_CONSUMER_WINDOW_MS),
-    ).resolves.toBe(false);
-
-    const unreadable = createFakeSharedKv();
-    routeFetchTo(unreadable);
-    unreadable.failCommand("GET");
-    await expect(
-      reserveVaSharedConsumerSlot(env, VA_SHARED_CONSUMER_WINDOW_MS),
-    ).resolves.toBe(false);
-
-    stubCommandReplies((command) => ({
-      result: command[0] === "INCR" ? 1 : null,
-      ...(command[0] === "GET" ? { error: "ERR synthetic read failure" } : {}),
+      result: VA_SHARED_CONSUMER_DECISION.admitted,
+      ...(command[0] === "EVAL" ? { error: "ERR synthetic decision failure" } : {}),
     }));
     await expect(
       reserveVaSharedConsumerSlot(env, VA_SHARED_CONSUMER_WINDOW_MS),

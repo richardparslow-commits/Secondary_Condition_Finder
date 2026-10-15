@@ -180,11 +180,11 @@ export function EvidenceStep({ snapshot }: EvidenceStepProps) {
   return (
     <main>
       <header className="page-hero text-center"><p className="ui-kicker">Step 6 of 6</p><h1>Evidence &amp; Research Checklist</h1><p className="mx-auto mt-3 max-w-3xl text-lg">Review evidence questions for the same diagnosed non-service-connected conditions evaluated in Step 5. This page does not add new diagnoses, determine eligibility, or decide whether a relationship has been medically established.</p></header>
-      <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" aria-label="Workflow progress"><span>✓ Diagnosed</span><span>✓ Service-connected</span><span>✓ Ratings</span><span>✓ Documents</span><span>✓ Connections</span><strong className="text-blue-700">6 Evidence</strong><span className="ml-auto no-print"><PrintReportButton label="Print this checklist" /></span></div>
+      <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" role="group" aria-label="Workflow progress"><span>✓ Diagnosed</span><span>✓ Service-connected</span><span>✓ Ratings</span><span>✓ Documents</span><span>✓ Connections</span><strong className="text-blue-700">6 Evidence</strong><span className="ml-auto no-print"><PrintReportButton label="Print this checklist" /></span></div>
       <RegulatoryPreflightStatus snapshot={snapshot} changes={relevantChanges} />
 
       <div className="ui-grid">
-        <aside className="ui-card">
+        <aside className="ui-card" aria-label="Condition summary">
           <SymptomDiscussionReview prompts={symptomDiscussionPrompts} />
           <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">✓</span><h2 className="text-xl font-bold">Condition Summary</h2></div>
           <p className="ui-kicker">Already service connected</p>
@@ -206,7 +206,7 @@ export function EvidenceStep({ snapshot }: EvidenceStepProps) {
         </section>
         </EvidenceAnalysesProvider>
 
-        <aside className="ui-stack">
+        <aside className="ui-stack" aria-label="Consultation summary">
           <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">⇩</span><h2 className="text-xl font-bold">Consultation Summary</h2></div><p className="mb-4 text-sm">Downloads are in the Pathway Evidence Mapping section below: the standalone summary, or one combined file with the mapping plus summary.</p></section>
           <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">✎</span><h2 className="text-xl font-bold">Research Notes</h2></div><p className="text-sm">Use your own secure notes or records to track questions such as potential nexus literature, providers to ask, symptom history, and missing treatment records. This app does not store free-text research notes on the server.</p></section>
           <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">→</span><h2 className="text-xl font-bold">Next Steps</h2></div><ol className="space-y-3 text-sm"><li><strong>1.</strong> Review the relationship rationale and citations for each non-service-connected diagnosis.</li><li><strong>2.</strong> Compare mapped evidence gaps with exact local excerpts and any reported context match.</li><li><strong>3.</strong> Discuss causation, contribution, or aggravation questions with a qualified provider.</li><li><strong>4.</strong> Consider an accredited representative, attorney, or VSO.</li></ol></section>

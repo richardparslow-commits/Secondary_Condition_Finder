@@ -56,9 +56,13 @@ function stubDistributedKv(options: { upstreamPayload: unknown }): string[][] {
         }
         if (command[0] === "INCR") return okJson({ result: 1 });
         // Redis answers EXPIRE with integer 1 when it set the timeout, and the
-        // consumer budget validates that reply (audit A03). A fixture that
+        // cache-write budget validates that reply (audit A03). A fixture that
         // answered "OK" here would be stubbing a reply the store never sends.
         if (command[0] === "EXPIRE") return okJson({ result: 1 });
+        // The consumer budget decides in one atomic script and validates the
+        // code it returns; 1 is its "admitted". Answering a generic "OK" here
+        // would be stubbing a reply the store never sends, and it fails closed.
+        if (command[0] === "EVAL") return okJson({ result: 1 });
         return okJson({ result: "OK" });
       }
       return okJson(options.upstreamPayload);

@@ -481,8 +481,20 @@ Therefore the fix is **one line plus a sweep**, not a new colour decision:
 >    comment; the pinned `actions/dependency-review-action@v4.8.3` call is kept
 >    in-file for the one-line swap-back once Code Security is purchased.
 > 3. `codeql-sast.yml` → Semgrep SAST — `semgrep/semgrep:1.180.0`, `p/typescript`,
->    ERROR severity gates the job via `--error`; WARN/INVENTORY summarized;
->    source excerpts never echoed; `data/`/`tmp/` excluded.
+>    ERROR severity gates the job via `--error`; `data/`/`tmp/` excluded.
+>    **Correction (2026-10-14).** This entry also claimed "WARN/INVENTORY
+>    summarized; source excerpts never echoed", and neither was true. `--severity
+>    ERROR` selects ERROR-severity rules only, so no WARNING/INVENTORY finding
+>    ever reached the output, and semgrep's text formatter prints the matched
+>    source lines — which this job was piping into its log. The scan now writes
+>    `--json` to a file nothing prints and nothing uploads, and only rule id,
+>    file and line travel onward. A *scheduled* run of this workflow also had no
+>    way to notify anyone: a red run in a private repository's Actions history is
+>    not a notification, and this was the last scheduled monitor here without a
+>    hand-off. Scheduled and manual runs now maintain one tracking issue in both
+>    directions, like the other scheduled monitors, and label a gate that could
+>    not run as *not a finding* rather than as a finding
+>    ([policy record](docs/sast-monitor-handoff-policy-2026-10-14.md)).
 >
 > The single-gate rule held: no second merge-blocking vote beside `audit:high`.
 > The gate paid for itself on its first run — one real Semgrep ERROR finding
@@ -636,6 +648,8 @@ Doing so also converts part of the `ConditionTimelineVisualization` manual-evide
 **Validation.** E2E job green on `main`; a seeded contrast violation makes it red; screenshots and axe JSON retained as build artifacts and referenced in the Section 508 workbook. Confirm explicitly that the Trusted Types gate did **not** need relaxing to achieve this — a `git diff` on `TrustedTypesGate.tsx` and the CSP config should be empty.
 
 **Acceptance.** Automated real-browser contrast evidence exists for all key routes and is reproducible from a pinned commit.
+
+**Addendum (2026-10-15) — the gate runs a second rule, and four findings it surfaced are fixed.** The spec's axe call was widened from `color-contrast` alone to `runOnly: { type: "rule", values: ["color-contrast", "link-in-text-block"] }`; the blocking bar stays critical/serious. The second rule (WCAG 1.4.1, links distinguishable without colour) found real defects in the working tree on its first run: `/secondary` (the "presumptive track" link at 2.66:1 against its surrounding text) and `/privacy/request` (one link at 1.12:1 against the `text-gray-600` paragraph it sits in, another at 2.66:1), each underlined only on hover. Fixed by underlining in-text links at rest in `src/app/globals.css` (`p a`, `li a`, `dd a`, `.ui-footer-note a`, `.ui-callout a`, `.app-shell [role="note"] a`, repeated under `@media (forced-colors: active)`), leaving button-styled links' own `text-decoration: none` intact. A local real-browser emulation sweep (Playwright + axe-core 4.14 + Chrome 155, all 26 routes — a local instrument, not a committed gate) additionally found three rendering-adjacent defects now fixed with guards: `region` (the cross-link strip sat outside any landmark in four layout files, affecting 7 routes → labelled `<nav>`), `landmark-unique` (two unnamed `aside` landmarks per two-column step → each now named) and `aria-prohibited-attr` (`aria-label="Workflow progress"` on a bare `div` → `role="group"` on all six step components). Measured both ways: the extended gate exits **0** from an isolated copy of the tree with Chrome 155 + chromedriver 155 (26/26 routes recorded, axe violations 0, 0 route-inventory problems) and exits **1** on `/secondary` when only the stylesheet rule is removed; the full suite passes **380 files / 3722 tests**. Pins updated: `tests/a11y-contrast-gate.test.ts` (7 cases) and `tests/accessibility-ux-reliability.test.ts` (11 → **12 cases**). None of this is human evidence: the acceptance above concerns automated evidence existing and being reproducible, and the manual review this feeds is unchanged and still open under #195.
 
 ### 5.6 R-06 — Scope narrative and `api-client.ts` positioning
 

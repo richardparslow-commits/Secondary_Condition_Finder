@@ -12,6 +12,7 @@ import {
   evidenceAnalysisStorageKey,
   type EvidenceAnalysis,
 } from "@/lib/evidence/extract";
+import { parseStoredEvidence } from "@/lib/evidence/storage";
 
 export const EMPTY_EVIDENCE_ANALYSES_SNAPSHOT = "[]";
 
@@ -36,22 +37,17 @@ export function subscribeToEvidenceAnalyses(): () => void {
   return () => undefined;
 }
 
-/** Fail-closed parse of the retained `EvidenceAnalysis[]` payload. */
+/**
+ * Fail-closed, bounded read of the retained `EvidenceAnalysis[]` payload.
+ *
+ * Delegates to the store's read guard (audit HARD-01) rather than parsing the
+ * raw string here: a reader that validated only `version === 1` accepted a
+ * hand-edited payload of any size and handed the subtree records no writer ever
+ * produced. This reader has no depth context, so the guard applies the widest
+ * envelope this app can write (see `MAX_STORED_EVIDENCE_READ_LIMITS`).
+ */
 export function parseStoredEvidenceAnalyses(raw: string): EvidenceAnalysis[] {
-  try {
-    const parsed = JSON.parse(raw) as unknown;
-    if (!Array.isArray(parsed)) return [];
-    return parsed.filter(
-      (item): item is EvidenceAnalysis =>
-        Boolean(
-          item &&
-            typeof item === "object" &&
-            (item as EvidenceAnalysis).version === 1,
-        ),
-    );
-  } catch {
-    return [];
-  }
+  return parseStoredEvidence(raw);
 }
 
 const EvidenceAnalysesContext = createContext<EvidenceAnalysis[] | null>(null);

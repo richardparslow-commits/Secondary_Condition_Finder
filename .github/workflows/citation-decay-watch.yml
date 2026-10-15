@@ -24,7 +24,16 @@ concurrency:
 jobs:
   decay-probe:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    # 60 minutes, not 20. The sweep probes every unique live URL twice (HEAD,
+    # then GET) through a 4-worker pool with a per-host spacing floor, so its
+    # wall time is ~1.7k URLs at >=600 ms spacing (plus each host's response
+    # time, the adaptive back-off after throttling, and bounded host
+    # cooldowns). That is comfortably past the old 20-minute budget, which
+    # cancelled the job mid-sweep and reported nothing at all -- the same
+    # false-negative shape the probe fixes below, one layer up. A host that
+    # keeps asking for quiet is dropped for the remainder of the run rather
+    # than out-waited, so throttling shortens this job instead of extending it.
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
@@ -58,10 +67,20 @@ jobs:
               '- content drift: ' + report.contentDriftCount,
               '- content drift detectable: ' + report.contentDriftDetectable +
                 ' (' + report.contentDriftCoveragePercent + '% of ' + report.verifiedReferenceCount +
-                ' verified references carry a digest; ' + report.verifiedWithoutDigestCount +
-                ' await a qualified-human digest, ratchet ' + report.maxUndigestedVerifiedRefs + ')',
+                ' verified references carry a digest)',
+              '- digest-eligible backlog: ' + report.digestEligibleWithoutDigestCount + ' of ' +
+                report.digestEligibleReferenceCount + ' digest-eligible verified references await a ' +
+                'qualified-human digest, ratchet ' + report.maxUndigestedEligibleVerifiedRefs,
+              '- digest-ineligible (declared class, no digest possible): ' +
+                report.digestIneligibleWithoutDigestCount + ' of ' + report.verifiedWithoutDigestCount +
+                ' undigested; register reviewed ' + report.digestIneligibilityRegister.reviewedOn +
+                ', expires ' + report.digestIneligibilityRegister.reviewExpiresOn,
               '- stale (tiered windows): ' + report.staleCount,
               '- bot-blocked (unverifiable by probe): ' + report.botBlockedUnverifiableCount,
+              '- throttled / unresponsive (unverifiable by probe): ' + report.throttledUnverifiableCount,
+              '- probe coverage (URLs that produced a verdict): ' + report.probeCoveragePercent + '% (' +
+                report.definitiveVerdictUrlCount + ' of ' + report.uniqueUrlsProbed + ' probed URLs; ' +
+                report.unverifiableByProbeUrlCount + ' could not be verified by this probe)',
               '- unverified (debt ratcheted by citations:audit, not gated here): ' + report.unverifiedCount,
               '- ceiling usage (link rot + stale + drift): ' + report.citationCeilingUsage + '/' + report.citationCeiling,
               '',
@@ -80,7 +99,13 @@ jobs:
 
   track-decay:
     needs: decay-probe
-    if: always() && needs.decay-probe.result == 'failure'
+    # Runs after any completed probe so one job maintains both directions: it
+    # opens or updates the tracking issue when the probe fails, and closes it
+    # once a scheduled run is green — the pattern the scheduled dependency audit
+    # already uses. Without the close half, a gate that failed on a signal it
+    # could never clear would leave an issue asking a human to re-verify
+    # references that had not decayed (issue #518, 2026-10-05).
+    if: always()
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -89,23 +114,44 @@ jobs:
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
       # The report is written in the decay-probe workspace; fetch it from the
-      # run's artifacts so this job can build the tracking-issue body.
+      # run's artifacts so this job can build the tracking-issue body. A probe
+      # that never started (a cancelled or failed earlier step) uploads no
+      # artifact at all, which is reported below rather than crashing here.
       - name: Download decay report artifact
+        continue-on-error: true
         uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5
         with:
           name: citation-decay-report-${{ github.run_id }}
-      - name: Open or update citation decay tracking issue
+      - name: Maintain citation decay tracking issue
         env:
           GH_TOKEN: ${{ github.token }}
+          PROBE_RESULT: ${{ needs.decay-probe.result }}
         run: |
           set -o pipefail
           node --input-type=module - <<'NODE'
           import { execFileSync } from "node:child_process";
           import { readFileSync } from "node:fs";
 
-          const raw = readFileSync("citation-decay-report.json", "utf8");
-          // Tolerate a leading banner (see the probe step's comment).
-          const report = JSON.parse(raw.slice(raw.indexOf("{")));
+          // Tolerate a leading banner (see the probe step's comment), and a
+          // report that never arrived: a cancelled or timed-out sweep leaves an
+          // empty capture, and an unstarted one leaves none. Either way this job
+          // says so and leaves the issue alone, because a probe that did not
+          // complete is not evidence of decay — it is exactly the false signal
+          // this workflow exists to avoid. The probe job's own status reports
+          // the failure.
+          let report = null;
+          try {
+            const raw = readFileSync("citation-decay-report.json", "utf8");
+            report = JSON.parse(raw.slice(raw.indexOf("{")));
+          } catch {
+            report = null;
+          }
+          if (!report) {
+            console.log(
+              `No usable decay report for this run (probe result: ${process.env.PROBE_RESULT}): the sweep did not complete, so no tracking-issue change was made.`,
+            );
+            process.exit(0);
+          }
           const title = "Citation decay detected — re-verification required";
           const marker = "<!-- citation-decay-watch -->";
 
@@ -118,14 +164,24 @@ jobs:
             "re-verify or withdraw the flagged references under",
             "docs/citation-verification-sop.md. This issue is maintained by the",
             "citation-decay-watch workflow; it updates in place while decay",
-            "persists and is not auto-closed.",
+            "persists and closes when a scheduled run is green again.",
+            "",
+            "**A reference listed as throttled or unresponsive was NOT checked**, so it was not",
+            "found dead and nothing about it needs re-verifying: the host refused this run's",
+            "automated probe (425/429, or any response carrying `Retry-After`) or never answered.",
+            "Probe coverage below states how much of the sweep produced a verdict; a low figure",
+            "means this run's \"no link rot\" is a narrower claim, not a clean one.",
             "",
             `| metric | count |`,
             `| --- | --- |`,
             `| link rot | ${report.linkRotCount} |`,
             `| content drift | ${report.contentDriftCount} |`,
-            `| content drift detectable | ${report.contentDriftDetectable} (${report.contentDriftCoveragePercent}% digest coverage) |`,
-            `| verified refs awaiting a digest | ${report.verifiedWithoutDigestCount}/${report.verifiedReferenceCount} (ratchet ${report.maxUndigestedVerifiedRefs}) |`,
+            `| content drift detectable | ${report.contentDriftDetectable} (${report.contentDriftCoveragePercent}% of ${report.verifiedReferenceCount} verified references carry a digest) |`,
+            `| digest-eligible backlog | ${report.digestEligibleWithoutDigestCount}/${report.digestEligibleReferenceCount} await a qualified-human digest (ratchet ${report.maxUndigestedEligibleVerifiedRefs}) |`,
+            `| digest-ineligible (declared class, no digest possible) | ${report.digestIneligibleWithoutDigestCount} of ${report.verifiedWithoutDigestCount} undigested — register reviewed ${report.digestIneligibilityRegister.reviewedOn}, expires ${report.digestIneligibilityRegister.reviewExpiresOn} |`,
+            `| bot-blocked (unverifiable by probe) | ${report.botBlockedUnverifiableCount} |`,
+            `| throttled / unresponsive (unverifiable by probe) | ${report.throttledUnverifiableCount} |`,
+            `| probe coverage (URLs that produced a verdict) | ${report.probeCoveragePercent}% (${report.definitiveVerdictUrlCount} of ${report.uniqueUrlsProbed} probed; ${report.unverifiableByProbeUrlCount} unverifiable) |`,
             `| stale | ${report.staleCount} |`,
             `| unverified (debt ratcheted by citations:audit, not gated here) | ${report.unverifiedCount} |`,
             `| ceiling usage (link rot + stale + drift) | ${report.citationCeilingUsage}/${report.citationCeiling} |`,
@@ -138,6 +194,18 @@ jobs:
             "",
             "## Stale (past tiered window)",
             ...(report.stale.length ? top(report.stale, "citation") : ["- none"]),
+            "",
+            "## Throttled or unresponsive (not checked — not decay)",
+            ...(report.throttledUnverifiable.length
+              ? top(report.throttledUnverifiable, "sourceUrl").map(
+                  (line, index) =>
+                    `${line} (${report.throttledUnverifiable[index].reason}${
+                      report.throttledUnverifiable[index].retryAfterSeconds
+                        ? `, Retry-After ${report.throttledUnverifiable[index].retryAfterSeconds}s`
+                        : ""
+                    })`,
+                )
+              : ["- none"]),
             "",
             `Run: ${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`,
             "",
@@ -152,7 +220,26 @@ jobs:
           ]).trim();
           const matches = JSON.parse(existing || "[]").filter((issue) => issue.title === title);
 
-          if (matches.length > 0) {
+          const outcome = process.env.PROBE_RESULT;
+
+          if (outcome !== "failure") {
+            // Green, or a run that never completed a probe. A green run closes
+            // the tracking issue instead of leaving a stale failure notice open.
+            if (outcome === "success" && matches.length > 0) {
+              gh([
+                "issue",
+                "close",
+                String(matches[0].number),
+                "--reason",
+                "completed",
+                "--comment",
+                "The scheduled citation decay probe is green again — no link rot, no content drift, no stale reference, and the digest-eligible backlog is at or under its ratchet — so this tracking issue closes automatically. It reopens if a later scheduled run fails.",
+              ]);
+              console.log(`Closed tracking issue #${matches[0].number}`);
+            } else {
+              console.log(`Probe result ${outcome}: no tracking-issue change.`);
+            }
+          } else if (matches.length > 0) {
             gh(["issue", "edit", String(matches[0].number), "--body", body]);
             console.log(`Updated tracking issue #${matches[0].number}`);
           } else {

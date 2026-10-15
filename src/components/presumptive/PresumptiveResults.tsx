@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useMemo } from "react";
 
 import { DisclaimerFooter } from "@/components/Disclaimer";
+import { PrivacyDeletionCue } from "@/components/privacy/PrivacyDeletionCue";
 import { AccreditedRepresentativeFinder } from "@/components/va/AccreditedRepresentativeFinder";
 import { SECONDARY_CAUSED_BY_TITLE } from "@/lib/legal/secondary-title";
 import { clearPresumptiveLocalState } from "@/lib/presumptive/browser-history";
@@ -171,6 +172,17 @@ function PresumptiveResultsBody({
       <button type="button" onClick={clearHistory} className="ui-button-secondary mt-3">
         Clear saved service history
       </button>
+
+      {/* Clearing removes what this browser holds; it cannot reach what the
+          application keeps. The pointer is the same shared component the
+          secondary track's completion controls render, so a visitor who has
+          just cleared their service history can start a deletion request from
+          here instead of only from the policy — and the sentence says which
+          deletion this control performed. Guarded by
+          tests/privacy-deletion-pointer.test.tsx. */}
+      <div className="mt-2">
+        <PrivacyDeletionCue clearedStatement="Clearing saved service history clears what this browser holds." />
+      </div>
 
       <h1 className="mt-3 text-2xl font-semibold tracking-tight">
         Presumptions that may apply

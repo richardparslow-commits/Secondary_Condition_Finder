@@ -45,6 +45,11 @@ e2e-artifacts/
 # R-05 real-browser contrast evidence is produced at run time and uploaded as
 # a CI artifact; it is never committed.
 a11y-evidence/
+# Per-run route inventory report (declared surfaces vs recorded evidence). The
+# gate writes it into a11y-evidence/; a manual `npm run report:route-inventory`
+# writes it at the repository root. Run output either way, never committed.
+/route-inventory-report.json
+/route-inventory-report.md
 *.trace.zip
 chromedriver.log
 chromedriver-*.log
@@ -143,6 +148,10 @@ yarn-error.log*
 # local state; Python prototype leftovers.
 # ----------------------------------------------------------------------------
 /Secondary_Condition_Finder/
+# Local scratch: isolated copies, browser-driver evidence and throwaway probes
+# used to verify a change without disturbing a running dev server. Never a
+# source of truth, never shipped.
+/tmp/
 .aider*
 .implement/
 CLAUDE.md

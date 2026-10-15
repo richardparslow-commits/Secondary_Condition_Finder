@@ -160,9 +160,18 @@ jobs:
         run: |
           set -euo pipefail
 
+          # Every public route the manifest marks for production
+          # (scripts/lib/public-routes.mjs). The set is pinned by
+          # tests/public-route-manifest.test.ts, so a new page is either probed
+          # here or recorded as excluded with a reason — it cannot fall out of
+          # this matrix silently. /results (a 307 shim to /secondary) and
+          # /runtime-readiness (probed by the dedicated readiness step below,
+          # which also asserts the readiness marker) are the declared exclusions.
           routes=(
             "/"
             "/about"
+            "/get-records"
+            "/pathways"
             "/secondary"
             "/secondary/condition-caused-by"
             "/secondary/condition-aggravation"
@@ -181,7 +190,9 @@ jobs:
             "/va-reference"
             "/va-reference/service-branches"
             "/privacy"
+            "/privacy/request"
             "/terms"
+            "/va-account"
           )
 
           probe_status() {

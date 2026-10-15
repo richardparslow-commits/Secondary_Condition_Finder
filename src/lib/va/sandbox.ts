@@ -32,6 +32,7 @@ import {
   recordVaOutboundCircuitOutcome,
 } from "./outbound-circuit";
 import {
+  applyVaConsumerPacingGuidance,
   reserveVaSharedConsumerSlot,
   vaSharedConsumerBudgetEnabled,
 } from "./reference-shared-cache";
@@ -449,6 +450,16 @@ async function requestVaJson<T>(args: {
         redirect: "error",
         signal: controller.signal,
       });
+
+      if (distributed) {
+        // Audit A03: the upstream's own `ratelimit-remaining`/`reset` guidance is
+        // the only statement anyone has about the quota the shared consumer
+        // budget is approximating, and it arrives on successful responses as
+        // well as on failures — so it is read before the status is judged. The
+        // call is tightening-only and never throws: a store that refuses the
+        // charge leaves the reservation path's fail-closed pacing as it was.
+        await applyVaConsumerPacingGuidance(response.headers);
+      }
 
       if (!response.ok) {
         const durationMs = Date.now() - startedAt;

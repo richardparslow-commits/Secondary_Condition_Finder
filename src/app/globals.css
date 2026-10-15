@@ -32,6 +32,27 @@ html { background: var(--background); color-scheme: light; }
 body { margin: 0; background: var(--background); color: var(--foreground); font-family: Arial, Helvetica, sans-serif; line-height: 1.55; overflow-wrap: anywhere; }
 a { color: var(--primary); text-underline-offset: 3px; }
 a:hover { color: var(--primary-hover); }
+/* WCAG 1.4.1 (Level A, and a Revised Section 508 baseline criterion): a link
+   inside a block of text must be distinguishable from the text around it
+   without relying on colour. Colour alone does not do it here — --primary
+   #1d4ed8 is 2.66:1 against body text #0f172a and 1.12:1 against the muted
+   #4a5565 prose on `/privacy`, both under the 3:1 that would let colour carry
+   the distinction — so the underline belongs at rest, not only on hover.
+   Measured, not assumed: the R-05 real-browser gate's `link-in-text-block`
+   rule flagged `/secondary` ("presumptive track") and `/privacy/request`
+   (2 links) in the shipped build before this rule existed. It is scoped to
+   text blocks rather than to `a` at large because button-styled links
+   (`.ui-button`, `.ui-button-secondary`, the normalized legacy button classes
+   and `.skip-link`) carry a visible surface and deliberately set their own
+   `text-decoration: none`, which outranks these type-selector rules. */
+p a,
+li a,
+dd a,
+.ui-footer-note a,
+.ui-callout a,
+.app-shell [role="note"] a {
+  text-decoration: underline;
+}
 button, input, select, textarea { font: inherit; }
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 
@@ -194,6 +215,17 @@ button, input, select, textarea { font: inherit; }
     forced-color-adjust: auto;
   }
   .ui-icon { border: 1px solid CanvasText; }
+  /* Forced colours drop author colours, so a link whose only distinction was
+     colour would otherwise vanish into the surrounding text. Underline is the
+     one affordance forced-colours mode preserves. */
+  p a,
+  li a,
+  dd a,
+  .ui-footer-note a,
+  .ui-callout a,
+  .app-shell [role="note"] a {
+    text-decoration: underline !important;
+  }
 }
 
 @media print {

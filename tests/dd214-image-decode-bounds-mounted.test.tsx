@@ -38,24 +38,31 @@ const h = vi.hoisted(() => ({
   /** Page number → text-layer text (`null` = page has no text layer). */
   pageText: {} as Record<number, string | null>,
   numPages: 3,
+  /** REL-05: a PDF whose load itself rejects (malformed structure). */
+  pdfLoadRejects: false,
+  pdfDestroys: 0,
 }));
 
 vi.mock("pdfjs-dist/legacy/build/pdf.mjs", () => ({
   GlobalWorkerOptions: { workerSrc: "about:blank" },
   getDocument: () => ({
-    promise: Promise.resolve({
-      numPages: h.numPages,
-      getPage: async (page: number) => ({
-        getViewport: ({ scale }: { scale: number }) => ({ width: 600 * scale, height: 800 * scale }),
-        getTextContent: async () => {
-          const text = h.pageText[page] ?? null;
-          return { items: text ? text.split(" ").map((str) => ({ str })) : [] };
-        },
-        render: () => ({ promise: Promise.resolve() }),
-        cleanup: () => {},
-      }),
-    }),
-    destroy: async () => {},
+    promise: h.pdfLoadRejects
+      ? Promise.reject(new Error("Invalid PDF structure"))
+      : Promise.resolve({
+          numPages: h.numPages,
+          getPage: async (page: number) => ({
+            getViewport: ({ scale }: { scale: number }) => ({ width: 600 * scale, height: 800 * scale }),
+            getTextContent: async () => {
+              const text = h.pageText[page] ?? null;
+              return { items: text ? text.split(" ").map((str) => ({ str })) : [] };
+            },
+            render: () => ({ promise: Promise.resolve() }),
+            cleanup: () => {},
+          }),
+        }),
+    destroy: async () => {
+      h.pdfDestroys += 1;
+    },
   }),
 }));
 
@@ -139,6 +146,8 @@ beforeEach(() => {
   h.pendingRejects = [];
   h.pageText = { 1: "TEXT PAGE ONE", 2: null, 3: "TEXT PAGE THREE" };
   h.numPages = 3;
+  h.pdfLoadRejects = false;
+  h.pdfDestroys = 0;
   setItemSpy = vi.spyOn(Storage.prototype, "setItem");
   // jsdom has no 2D context; the component must still be driven through its
   // real render path, so the context is stubbed rather than the path skipped.
@@ -265,6 +274,45 @@ describe("DD-214 elapsed-work budget and cancellation (A06)", () => {
     // A cancelled run must not report a deadline stop on top of the cancel.
     expect(screen.queryByText(/reached the .*-minute limit/i)).toBeNull();
     expect(setItemSpy).not.toHaveBeenCalled();
+  });
+});
+
+describe("a rejected PDF load still tears its task down (REL-05)", () => {
+  it("destroys the loading task when the load itself rejects", async () => {
+    h.pdfLoadRejects = true;
+    render(<Dd214LocalAnalyzer locations={[]} />);
+    selectFile(pdfFile());
+
+    // The load really failed, and the surface said so instead of going quiet.
+    expect(await screen.findByText(/Invalid PDF structure/)).toBeTruthy();
+    await drain();
+
+    // pdf.js allocates its worker when the task is created, so the task a
+    // failed load created must still be destroyed. Awaiting the load outside
+    // the teardown try skipped this and left it for the tab's lifetime.
+    expect(h.pdfDestroys).toBe(1);
+    // Nothing was decoded or recognized, and the tab was handed back.
+    expect(h.workerCreations).toBe(0);
+    expect(h.recognizeInputs).toHaveLength(0);
+    expect(screen.queryByRole("button", { name: "Cancel extraction" })).toBeNull();
+    expect(screen.queryByText("Verify your service history")).toBeNull();
+  });
+
+  it("does not carry a failed task into the next upload", async () => {
+    h.pdfLoadRejects = true;
+    render(<Dd214LocalAnalyzer locations={[]} />);
+    selectFile(pdfFile());
+    await screen.findByText(/Invalid PDF structure/);
+    await drain();
+    expect(h.pdfDestroys).toBe(1);
+
+    // A second upload replaces the task handle with its own, so anything not
+    // destroyed before that point is unreachable for the rest of the visit.
+    h.pdfLoadRejects = false;
+    selectFile(pdfFile());
+    expect(await screen.findByText(/DD-214 text extracted locally/i)).toBeTruthy();
+    await drain();
+    expect(h.pdfDestroys).toBe(2);
   });
 });
 

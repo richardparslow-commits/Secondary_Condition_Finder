@@ -20,9 +20,10 @@
  * (asserted by an audit contract, not merely intended).
  *
  * What runs, per key route:
- *   1. Full axe scan with `color-contrast` ENABLED — the rule set the other
- *      suites cannot see. Blocking impacts are critical/serious, the same bar
- *      as the jsdom gate in `tests/setup/accessibility.ts`.
+ *   1. The rendering-dependent axe rules — `color-contrast` and
+ *      `link-in-text-block` — the rule set the other suites cannot measure.
+ *      Blocking impacts are critical/serious, the same bar as the jsdom gate in
+ *      `tests/setup/accessibility.ts`.
  *   2. A keyboard walk: send Tab, and after every step assert
  *      `document.activeElement` reports visible client rects (an invisibly
  *      focused element has none) and that the walk actually advanced across
@@ -37,6 +38,13 @@ import { spawn } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { setTimeout as delay } from "node:timers/promises";
+
+import { contrastRoutes } from "../scripts/lib/public-routes.mjs";
+import {
+  buildRouteInventoryReport,
+  readContrastEvidence,
+  writeRouteInventoryReport,
+} from "../scripts/lib/route-inventory-report.mjs";
 
 const ELEMENT_KEY = "element-6066-11e4-a52e-4f735466cecf";
 const APP_PORT = Number(process.env.A11Y_E2E_APP_PORT ?? 3400);
@@ -59,34 +67,23 @@ const AXE_SCAN_TIMEOUT_MS = 45_000;
 const KEYBOARD_WALK_MAX_STEPS = 120;
 
 /**
- * Key routes. `/results` is an HTTP 307 redirect shim to `/secondary`, so the
- * scan targets its real destination; the list covers the shipped surface the
- * Lighthouse §5.5 intent applies to.
+ * The routes this scan covers, read from the machine-checked public-route
+ * manifest (`scripts/lib/public-routes.mjs`) rather than from a copy here.
+ *
+ * The copy this replaces scanned 22 of the 26 reviewed routes —
+ * `/privacy/request`, `/secondary/upload`, `/presumptive/results` and
+ * `/runtime-readiness` were absent — so the gate's own "audits every shipped
+ * route, not a hand-picked subset" claim was not true of the list it ran. The
+ * manifest derives the route set from `src/app/**\/page.tsx`, and
+ * `tests/public-route-manifest.test.ts` fails when a shipped route is missing
+ * from it: a new page joins this scan by existing rather than by being
+ * remembered here.
+ *
+ * `/results` is the one route the manifest leaves out: it is an HTTP 307
+ * redirect shim to `/secondary`, renders no content of its own, and the scan
+ * targets its real destination instead.
  */
-const ROUTES = [
-  { path: "/", label: "home" },
-  { path: "/get-records", label: "get-records" },
-  { path: "/pathways", label: "pathways" },
-  { path: "/presumptive", label: "presumptive" },
-  { path: "/privacy", label: "privacy" },
-  { path: "/scenarios", label: "scenarios" },
-  { path: "/secondary", label: "secondary" },
-  { path: "/secondary/diagnosed", label: "secondary-diagnosed" },
-  { path: "/secondary/service-connected", label: "secondary-service-connected" },
-  { path: "/secondary/condition-caused-by", label: "secondary-condition-caused-by" },
-  { path: "/secondary/condition-aggravation", label: "secondary-condition-aggravation" },
-  { path: "/secondary/evidence", label: "secondary-evidence" },
-  { path: "/secondary/suggestions", label: "secondary-suggestions" },
-  { path: "/secondary/legal", label: "secondary-legal" },
-  { path: "/secondary/ratings", label: "secondary-ratings" },
-  { path: "/about", label: "about" },
-  { path: "/terms", label: "terms" },
-  { path: "/va-account", label: "va-account" },
-  { path: "/va-forms", label: "va-forms" },
-  { path: "/va-forms/finder", label: "va-forms-finder" },
-  { path: "/va-reference", label: "va-reference" },
-  { path: "/va-reference/service-branches", label: "va-reference-service-branches" },
-];
+const ROUTES = contrastRoutes();
 
 const children = [];
 let sessionId;
@@ -254,9 +251,19 @@ async function navigateToPath(route) {
 }
 
 /**
- * Run axe's color-contrast rule against the live document and return the
- * raw report. The screen-size argument is pass-through deterministic and the
+ * Run the rendering-dependent axe rules against the live document and return
+ * the raw report. The screen-size argument is pass-through deterministic and the
  * results stringified so script evaluation return values stay JSON-safe.
+ *
+ * Two rules, both of which need a real layout and real computed colours:
+ *
+ *   - `color-contrast` — the rule the jsdom gate documents as skipped.
+ *   - `link-in-text-block` (WCAG 1.4.1) — whether a link inside a block of text
+ *     is distinguishable without colour. jsdom returns it as `incomplete` for
+ *     the same mechanical reason, so the shipped build could carry a
+ *     colour-only link into a manual review unnoticed; that is exactly what
+ *     happened — this gate's first run with the rule enabled flagged
+ *     `/secondary` and `/privacy/request` in the working tree.
  */
 async function runContrastScan(route) {
   const bootIndicator = await webdriver("POST", `/session/${sessionId}/execute/sync`, {
@@ -276,7 +283,9 @@ async function runContrastScan(route) {
       script: `
         const done = arguments[arguments.length - 1];
         window.axe
-          .run(document, { runOnly: { type: "rule", values: ["color-contrast"] } })
+          .run(document, {
+            runOnly: { type: "rule", values: ["color-contrast", "link-in-text-block"] },
+          })
           .then((results) => done(JSON.stringify({
             passes: results.passes.length,
             violations: results.violations.map((v) => ({
@@ -421,24 +430,89 @@ async function auditRoute(route) {
   };
 }
 
+/**
+ * Publishes the per-run route inventory report for this run of the gate.
+ *
+ * The summary this writes is the run's claim; the report reads the evidence back
+ * off disk — the `summary.json` rows and the per-route files they name — and
+ * reconciles that claim against the routes the manifest declares for this
+ * surface. So a route the loop skipped, or a summary row whose evidence file was
+ * never written, shows up as a named problem instead of a shorter list.
+ *
+ * Every audit is written to disk before this runs, so it is called on both
+ * paths: a failed walk still publishes the record of what it did and did not
+ * cover.
+ */
+function publishRouteInventoryReport() {
+  const read = readContrastEvidence({ directory: EVIDENCE_DIR });
+  const report = buildRouteInventoryReport({
+    surface: "contrast",
+    records: read.records,
+    evidenceProblems: read.problems,
+    generatedAt: read.generatedAt,
+    run: {
+      id: process.env.GITHUB_RUN_ID ?? null,
+      label: process.env.GITHUB_EVENT_NAME ?? null,
+      commit: process.env.GITHUB_SHA ?? null,
+    },
+  });
+  const { markdownPath, markdown } = writeRouteInventoryReport({
+    report,
+    base: path.join(EVIDENCE_DIR, "route-inventory-report"),
+  });
+  // Printed, not merely written: the CI log is the first thing a reader opens,
+  // and the point of the report is that a coverage gap is visible there.
+  console.log(markdown);
+  checkpoint(`route inventory report for this run: ${markdownPath}`);
+  return { report, markdownPath };
+}
+
 async function runJourney() {
   fs.mkdirSync(EVIDENCE_DIR, { recursive: true });
   const summaries = [];
-  for (const route of ROUTES) {
-    const summary = await auditRoute(route);
-    summaries.push(summary);
-    checkpoint(
-      `${route.path}: contrast passes=${summary.contrastPasses}, violations=${summary.contrastViolations}, ` +
-        `incomplete=${summary.contrastIncomplete}, keyboard steps=${summary.keyboardSteps}, ` +
-        `distinct=${summary.keyboardDistinctElements}`,
-    );
+  let journeyFailure = null;
+
+  try {
+    for (const route of ROUTES) {
+      const summary = await auditRoute(route);
+      summaries.push(summary);
+      checkpoint(
+        `${route.path}: contrast passes=${summary.contrastPasses}, violations=${summary.contrastViolations}, ` +
+          `incomplete=${summary.contrastIncomplete}, keyboard steps=${summary.keyboardSteps}, ` +
+          `distinct=${summary.keyboardDistinctElements}`,
+      );
+    }
+    checkpoint(`completed audit of ${summaries.length} routes; evidence in ${EVIDENCE_DIR}/`);
+  } catch (error) {
+    journeyFailure = error;
   }
+
   fs.writeFileSync(
     path.join(EVIDENCE_DIR, "summary.json"),
     JSON.stringify({ generatedAt: new Date().toISOString(), routes: summaries }, null, 2),
     "utf8",
   );
-  checkpoint(`completed audit of ${summaries.length} routes; evidence in ${EVIDENCE_DIR}/`);
+
+  let report = null;
+  try {
+    report = publishRouteInventoryReport().report;
+  } catch (publishError) {
+    // Best-effort: a publishing failure must not mask a failed walk, which is
+    // the more specific error. It is reported as the failure when there is no
+    // walk error to report instead.
+    if (!journeyFailure) journeyFailure = publishError;
+    else checkpoint(`route inventory report could not be published: ${publishError?.message ?? publishError}`);
+  }
+
+  if (journeyFailure) throw journeyFailure;
+
+  if (report && report.problems.length > 0) {
+    throw new Error(
+      `the per-run route inventory report names ${report.problems.length} coverage problem(s), so this surface ` +
+        "stopped covering at least one route it declares:\n" +
+        report.problems.map((problem) => `  - ${problem}`).join("\n"),
+    );
+  }
 }
 
 async function cleanup() {

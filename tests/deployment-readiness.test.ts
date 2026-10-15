@@ -155,13 +155,27 @@ describe("production deployment readiness", () => {
     expect(proxy).not.toMatch(/script-src[^;\n]*'unsafe-inline'/);
   });
 
-  it("pins style-src unsafe-inline as an intentional React constraint while blocking script-src unsafe-inline", () => {
+  it("authorizes production styles by nonce, refusing the style attribute, and keeps the inline-style allowance to development", () => {
     const proxy = read("src/proxy.ts");
 
-    // style-src 'unsafe-inline' is intentional: React's style={{}} prop writes
-    // style="" HTML attributes directly on DOM elements, which CSP cannot nonce.
-    // This is documented in SECURITY.md and the three tech-spec docs.
-    expect(proxy).toContain("style-src 'self' 'unsafe-inline'");
+    // SEC-03: production styles were previously authorized with 'unsafe-inline'
+    // because React's `style` prop writes an HTML style attribute, which no nonce
+    // can reach. Every rendered style is now declarative (Tailwind classes, SVG
+    // presentation attributes, a drawn rect) or written through the CSSOM, so the
+    // production policy is a nonce plus `style-src-attr 'none'`.
+    expect(proxy).toContain("style-src 'self' 'nonce-");
+    expect(proxy).toContain("style-src-attr 'none'");
+
+    // The one surviving style-src 'unsafe-inline' is the development branch (the
+    // Next.js dev overlay injects inline markup); it must not be reachable
+    // without the `isDevelopment` guard.
+    const styleLines = proxy
+      .split("\n")
+      .filter((line) => line.includes("style-src"));
+    const unsafeInlineStyleLines = styleLines.filter((line) => line.includes("'unsafe-inline'"));
+    expect(unsafeInlineStyleLines).toHaveLength(1);
+    expect(unsafeInlineStyleLines[0]).toContain("[");
+    expect(proxy).toMatch(/isDevelopment\s*\n\s*\? \["style-src 'self' 'unsafe-inline'"\]/);
 
     // script-src must NEVER contain unsafe-inline — nonce-based script execution
     // is the actual XSS boundary. This is the non-negotiable security contract.
@@ -344,5 +358,41 @@ describe("health readiness truthfulness (REL-04)", () => {
     expect(rateLimit.store.mode).toBe("process-local");
     expect(rateLimit.store.distributed).toBe(false);
     expect(rateLimit.store.blockedBy).toBe("no-store-provisioned");
+
+    // SEC-02b: what an identity-less request gets is reported rather than inferred.
+    // With no ingress model declared it is still bounded by the ceiling alone, so an
+    // operator cannot mistake the class bucket for a control that is in force.
+    const unidentified = rateLimit.identity.unidentified as Record<string, unknown>;
+    expect(unidentified.policy).toBe("ceiling");
+    expect(unidentified.keyTemplate).toBeNull();
+    expect(typeof unidentified.detail).toBe("string");
+    const refusals = (component(body, "rateLimit") as Record<string, unknown>).refusals as {
+      byBudget: Record<string, number>;
+    };
+    expect(refusals.byBudget.unidentified).toBe(0);
+  });
+
+  it("reports the declared ingress model and the hop enforcement reads", async () => {
+    vi.stubEnv("NODE_ENV", "production");
+    vi.stubEnv("RATE_LIMIT_TRUSTED_INGRESS", "append:2");
+
+    const { body } = await health();
+    const identity = component(body, "rateLimit").identity as Record<string, unknown>;
+
+    // SEC-02's ingress half: an operator can read *which end* of the forwarding
+    // header enforcement trusts, so the claim can be checked against what the
+    // ingress actually writes instead of being taken on trust.
+    expect(identity.identity).toBe("asserted");
+    expect(identity.model).toBe("append");
+    expect(identity.header).toBe("x-forwarded-for");
+    expect(identity.hop).toBe("nth-from-right");
+    expect(identity.hopsFromRight).toBe(2);
+    expect(identity.fallback).toBeNull();
+
+    // SEC-02b: and a declared model puts the identity-less class bucket in force,
+    // which is the policy the same report has to name for the runbook's A3.
+    const unidentified = identity.unidentified as Record<string, unknown>;
+    expect(unidentified.policy).toBe("shared-per-client-bucket");
+    expect(unidentified.keyTemplate).toBe("unidentified:<limiter>");
   });
 });

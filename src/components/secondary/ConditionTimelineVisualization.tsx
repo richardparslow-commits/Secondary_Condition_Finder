@@ -164,6 +164,40 @@ export function ConditionTimelineVisualization({
 
   const yForIndex = (index: number) => firstLaneY + index * (laneHeight + laneGap);
 
+  /**
+   * Dynamic geometry is written through the CSSOM, never as an HTML `style`
+   * attribute.
+   *
+   * Production CSP is `style-src 'self' 'nonce-…'` plus `style-src-attr 'none'`
+   * (audit SEC-03), so every style attribute the browser parses — server-rendered
+   * or client-rendered — is refused. `element.style` is not that attribute: it is a
+   * DOM API the policy does not (and cannot) cover, which is why the two
+   * genuinely computed values below (the exported width and the tooltip's
+   * pointer-relative position) are set here instead. A ref callback runs in the
+   * commit phase, before paint, so the first frame is already correct and
+   * nothing flashes unpositioned.
+   *
+   * Everything that could be expressed declaratively is: fixed values through
+   * Tailwind classes, palette colours and cursors through SVG presentation
+   * attributes, and the exported white card as a drawn `<rect>`.
+   */
+  const attachSvg = useCallback(
+    (node: SVGSVGElement | null) => {
+      svgRef.current = node;
+      if (node) node.style.minWidth = `${contentW}px`;
+    },
+    [contentW],
+  );
+
+  const positionTooltip = useCallback(
+    (node: HTMLDivElement | null) => {
+      if (!node || !tooltip) return;
+      node.style.left = `${Math.min(contentW - 240, Math.max(8, tooltip.x))}px`;
+      node.style.top = `${Math.max(8, tooltip.y - 56)}px`;
+    },
+    [contentW, tooltip],
+  );
+
   // download
   const downloadSvg = useCallback(() => {
     const svg = svgRef.current;
@@ -336,15 +370,21 @@ export function ConditionTimelineVisualization({
       <div className="flex flex-wrap gap-3 border-b border-slate-100 bg-white px-4 py-2 text-xs">
         {legendItems.map((item) => (
           <span key={item.label} className="inline-flex items-center gap-1.5">
-            <span
-              aria-hidden="true"
-              className="inline-block h-0.5 w-5 rounded"
-              style={{
-                background: item.color,
-                borderTop: item.dashed ? `2px dashed ${item.color}` : `2px solid ${item.color}`,
-                height: item.dashed ? 0 : 3,
-              }}
-            />
+            {/* The swatch's colour and dash is a per-item palette value, which
+                SVG presentation attributes carry without a `style` attribute
+                (SEC-03). Solid = the previous 3px line, dashed = 2px. */}
+            <svg aria-hidden="true" width={20} height={4} viewBox="0 0 20 4" className="shrink-0">
+              <line
+                x1={0}
+                y1={2}
+                x2={20}
+                y2={2}
+                stroke={item.color}
+                strokeWidth={item.dashed ? 2 : 3}
+                strokeDasharray={item.dashed ? "4 3" : undefined}
+                strokeLinecap="round"
+              />
+            </svg>
             <span className="text-slate-600">{item.label}</span>
           </span>
         ))}
@@ -356,22 +396,20 @@ export function ConditionTimelineVisualization({
 
       <div
         ref={wrapperRef}
-        className="relative overflow-x-auto overflow-y-hidden bg-white"
-        style={{ maxWidth: "100%" }}
+        className="relative max-w-full overflow-x-auto overflow-y-hidden bg-white"
         onMouseLeave={() => {
           setTooltip(null);
           setHoverConn(null);
         }}
       >
         <svg
-          ref={svgRef}
+          ref={attachSvg}
           role="img"
           aria-labelledby={titleId}
           width={contentW}
           height={contentH}
           viewBox={`0 0 ${contentW} ${contentH}`}
           className="block select-none"
-          style={{ minWidth: contentW, background: "#ffffff" }}
         >
           <title id={titleId}>Condition timeline from {range.min} to {range.max}</title>
           <desc>
@@ -379,6 +417,13 @@ export function ConditionTimelineVisualization({
             {nscConditions.length} not-service-connected conditions with authored causal connectors
             color-coded by pathway type.
           </desc>
+
+          {/* White card as drawn content rather than a CSS `background`: an
+              exported SVG/PNG carries no stylesheet, and it may not be a
+              `style` attribute (SEC-03). Non-rendered `title`/`desc` stay
+              first so the accessible name is unchanged; painting order puts
+              this behind everything that follows. */}
+          <rect x={0} y={0} width={contentW} height={contentH} fill="#ffffff" />
 
           {/* axis line */}
           <line
@@ -509,7 +554,7 @@ export function ConditionTimelineVisualization({
                   setHoverConn(null);
                   setTooltip(null);
                 }}
-                style={{ cursor: "pointer" }}
+                cursor="pointer"
               >
                 <path
                   d={`M ${x1} ${y1} C ${mx} ${y1 + curve}, ${mx} ${y2 - curve}, ${x2} ${y2}`}
@@ -593,7 +638,7 @@ export function ConditionTimelineVisualization({
                   fontSize={12}
                   fontWeight={700}
                   fill="#0f172a"
-                  style={{ cursor: "pointer" }}
+                  cursor="pointer"
                   onClick={() => setActiveId((v) => (v === cond.id ? null : cond.id))}
                   role="button"
                   tabIndex={0}
@@ -642,7 +687,7 @@ export function ConditionTimelineVisualization({
                       })
                     }
                     onMouseLeave={() => setTooltip(null)}
-                    style={{ cursor: "pointer" }}
+                    cursor="pointer"
                     onClick={() => setActiveId((v) => (v === cond.id ? null : cond.id))}
                     tabIndex={0}
                     role="button"
@@ -720,11 +765,8 @@ export function ConditionTimelineVisualization({
             data. Guarded by tests/canvas-rendered-surface.test.ts. */}
         {tooltip && (
           <div
+            ref={positionTooltip}
             className="pointer-events-none absolute z-10 max-w-[min(22rem,90%)] rounded-lg border border-slate-200 bg-slate-900 px-3 py-2 text-sm leading-relaxed text-white shadow-xl"
-            style={{
-              left: Math.min(contentW - 240, Math.max(8, tooltip.x)),
-              top: Math.max(8, tooltip.y - 56),
-            }}
             role="status"
             aria-live="polite"
           >

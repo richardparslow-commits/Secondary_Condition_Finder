@@ -5,6 +5,7 @@ import {
   extractCspViolationEvent,
 } from "@/lib/observability/csp-report";
 import { recordCspViolation } from "@/lib/observability/csp-metrics";
+import { recordCspViolationFact } from "@/lib/observability/csp-violation-window";
 
 /**
  * CSP / Trusted-Types violation report endpoint.
@@ -23,6 +24,14 @@ import { recordCspViolation } from "@/lib/observability/csp-metrics";
  * CSP response headers (reports are JSON posts, not browsing contexts) and
  * from the security matcher so report delivery never itself triggers
  * violations.
+ *
+ * Every accepted report is recorded twice over, with the same redacted event:
+ * as a best-effort OTel metric (`csp-metrics.ts`) and as a fact in the recent
+ * violation window (`csp-violation-window.ts`) that `/api/health` reports. The
+ * metric is a no-op without a collector, so the window is what makes a policy
+ * regression visible to an operator in the deployed application; it is handed
+ * the bounded directive/disposition pair only, never an origin, URL, or sample,
+ * because the health payload is public.
  */
 
 export const dynamic = "force-dynamic";
@@ -59,6 +68,28 @@ function rateLimited(key: string): boolean {
   }
   bucket.count += 1;
   return bucket.count > WINDOW_LIMIT;
+}
+
+/**
+ * Records a payload that was rejected before it could be attributed (declared
+ * length over the cap, or the streaming read overrunning it). Both oversized
+ * paths report the same fact, so they cannot drift apart.
+ */
+function recordOversizedReport(): void {
+  recordCspViolation({
+    effectiveDirective: "unknown",
+    disposition: "enforce",
+    documentOrigin: "unknown",
+    blockedOrigin: null,
+    sourceFileOrigin: null,
+    sampleFingerprint: null,
+    oversized: true,
+  });
+  recordCspViolationFact({
+    effectiveDirective: "unknown",
+    disposition: "enforce",
+    oversized: true,
+  });
 }
 
 function clientKey(request: NextRequest): string {
@@ -125,15 +156,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
   // then enforced while streaming so the allocation itself stays bounded.
   const declaredLength = Number(request.headers.get("content-length") ?? "0");
   if (Number.isFinite(declaredLength) && declaredLength > CSP_REPORT_MAX_BODY_BYTES) {
-    recordCspViolation({
-      effectiveDirective: "unknown",
-      disposition: "enforce",
-      documentOrigin: "unknown",
-      blockedOrigin: null,
-      sourceFileOrigin: null,
-      sampleFingerprint: null,
-      oversized: true,
-    });
+    recordOversizedReport();
     return new NextResponse(null, { status: 204 });
   }
 
@@ -151,15 +174,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     return new NextResponse(null, { status: 204 });
   }
   if (oversized) {
-    recordCspViolation({
-      effectiveDirective: "unknown",
-      disposition: "enforce",
-      documentOrigin: "unknown",
-      blockedOrigin: null,
-      sourceFileOrigin: null,
-      sampleFingerprint: null,
-      oversized: true,
-    });
+    recordOversizedReport();
     return new NextResponse(null, { status: 204 });
   }
 
@@ -174,6 +189,12 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
   const event = extractCspViolationEvent(parsed);
   if (event) {
     recordCspViolation(event);
+    // The window gets the two bounded fields only — no origin, no fingerprint —
+    // so nothing a report contains can reach the public health payload.
+    recordCspViolationFact({
+      effectiveDirective: event.effectiveDirective,
+      disposition: event.disposition,
+    });
   }
   return new NextResponse(null, { status: 204 });
 }
