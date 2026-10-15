@@ -45,6 +45,6 @@ jobs:
             echo '# Controlled VA production connectivity — not application activation'
             echo "Commit: $GITHUB_SHA"
             echo "Run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
-            echo 'No API key, raw payload, or upstream headers are retained. This check does not close #287.'
+            echo 'No API key, raw payload, or upstream headers are retained. This check closes no issue, and #287 was closed as not pursued on 2026-10-15.'
           } >> "$GITHUB_STEP_SUMMARY"
           node scripts/verify-va-production-reference.mts --confirm-va-production-access | tee -a "$GITHUB_STEP_SUMMARY"
