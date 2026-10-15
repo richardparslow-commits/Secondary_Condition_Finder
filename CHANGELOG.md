@@ -11,8 +11,10 @@ All notable changes to Secondary Condition Finder. Format loosely follows
   `code`/`state` … is a hosting-account fact, not a source fact" — and that was wrong in one direction. The platform
   documents **no** query-parameter scrubbing anywhere: request details in Runtime Logs include the request's *search
   parameters*, a Log Drain carries `proxy.path`, documented as the "request path with query parameters", the only
-  drain privacy control documented is IP hiding (Pro/Enterprise), and the one documented query-parameter filter
-  (`beforeSend` in Web Analytics) applies to analytics events rather than to runtime logs or drains. The scrubbing
+  drain privacy control documented is IP hiding, and the one documented query-parameter filter
+  (`beforeSend` in Web Analytics) applies to analytics events rather than to runtime logs or drains. Each of those
+  four claims is cited to the page it was read from, with a verbatim quote, in the register's gate B source list —
+  a platform-behaviour claim that cannot be re-read is the same defect in a new place. The scrubbing
   question is therefore answerable without the account, and the answer is that no scrub exists to configure — only the
   drain, plan-tier, retention and access facts are account-side. The closure is a dated per-sink record in
   `docs/external-manual-gates-status.md`: the sink table, three findings with their dispositions (a documented absence
