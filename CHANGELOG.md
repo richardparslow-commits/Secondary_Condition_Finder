@@ -5,6 +5,27 @@ All notable changes to Secondary Condition Finder. Format loosely follows
 
 ## 2026-10-15
 
+- **H-02 gate A (hosting log retention and access-control review, #537) is closed on a recorded review of the hosting
+  platform's published log terms, with the account facts that were not read named and accepted** (`R-04`): the gate's
+  operator half needs the hosting account, and no hosting-account credential exists in the repository or on the machine
+  where this record was written, so the closure is a dated per-sink record of what the platform *documents* — Runtime
+  Logs retain 1 hour (Hobby) / 1 day (Pro) / 3 days (Enterprise) / 30 days with Observability Plus, build logs are
+  stored **indefinitely per deployment**, roles decide log access (the Pro `Viewer` role is excluded from observability
+  data), and 2FA/SAML can be enforced team-wide — together with an explicit list of the four facts only the account
+  could settle (plan tier, Observability Plus, whether a drain exists, role/2FA/SSO state) and the accountable owner's
+  dated acceptance of that residual. Nothing here claims an account inspection or a configured retention value. The
+  record lives in `docs/external-manual-gates-status.md` (gate A record, register row and completion boundary), with
+  the code-side sink inventory in `docs/hosting-log-and-callback-inventory.md`. The closure also exposed and fixed
+  three documentation defects: `docs/data-retention-policy.md` published **"30 days hot"** as the retention of the
+  platform sink, which is wrong for build logs (indefinite) and for every tier without Observability Plus; the register
+  inferred "no drain, therefore only the provider's own logs" from an absent `vercel.json`, but drains are configured
+  in the hosting account's dashboard or API and never in that file, so the source tree cannot answer it; and the gate's
+  trigger was recorded as "before the production-access submission" when the report's own criterion is "before
+  **credentialed hosted use**", which is not armed — the account sandbox is opt-in only
+  (`src/lib/va/account/config.ts`) and #287 is closed as not pursued. H-02 is **not** complete: gate B (#538,
+  callback-URL scrubbing) stays open with its live platform half unverified, and the report's H-02 close-out box stays
+  unchecked. No retention value, access control, or scrubbing behaviour is now claimed as verified that was not
+  verified, and the reopen criterion is recorded for whichever row a plan, drain, or authentication change makes stale.
 - **Issue #518 (citation decay — re-verification required) is closed by a green probe run, and the closure record
   is written down** (`citation-decay`): the issue was opened on 2026-10-05 by a scheduled run that failed with zero
   link rot, drift or staleness, purely because an observability ratchet counted 398 undigested references against a

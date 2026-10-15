@@ -118,7 +118,7 @@ describe("Phase 3 production-access package contracts", () => {
     { issue: 195, status: "OPEN / HUMAN-ONLY", securityStatus: "OPEN" },
     { issue: 213, status: "COMPLETE / CLOSED", securityStatus: "CLOSED" },
     { issue: 287, status: "CLOSED / NOT PURSUED", securityStatus: "CLOSED" },
-    { issue: 537, status: "OPEN / EXTERNALLY OPERATED", securityStatus: "OPEN" },
+    { issue: 537, status: "CLOSED / RECORDED WITH RESIDUAL ACCEPTED", securityStatus: "CLOSED" },
     { issue: 538, status: "OPEN / EXTERNALLY OPERATED", securityStatus: "OPEN" },
     { issue: 539, status: "OPEN / HUMAN-APPROVAL", securityStatus: "OPEN" },
   ])("names the accountable owner for R-04 gate #$issue in the register and runbooks", ({ issue, status, securityStatus }) => {
