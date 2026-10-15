@@ -167,8 +167,14 @@ describe("citation-decay-watch surfaces content-drift observability", () => {
   it("names the register's review dates wherever the ineligible count is shown", () => {
     // The exclusion is justified by a measurement with a shelf life, so a
     // reader must be able to see when it was last checked and when it lapses.
-    expect(workflow.match(/report\.digestIneligibilityRegister\.reviewedOn/g)?.length).toBe(2);
-    expect(workflow.match(/report\.digestIneligibilityRegister\.reviewExpiresOn/g)?.length).toBe(2);
+    // Three human-facing surfaces carry the ineligible count: the weekly step
+    // summary, the tracking-issue body the probe writes when it fails, and the
+    // body the close path writes when it goes green. The third was added on
+    // 2026-10-15 with the closure record for #518 — a closed issue that printed
+    // the count without its measurement would be the one surface where an
+    // exclusion could look permanent.
+    expect(workflow.match(/report\.digestIneligibilityRegister\.reviewedOn/g)?.length).toBe(3);
+    expect(workflow.match(/report\.digestIneligibilityRegister\.reviewExpiresOn/g)?.length).toBe(3);
   });
 
   it("keeps the shell-embedded summary JS free of backticks", () => {
@@ -241,6 +247,42 @@ describe("citation-decay-watch maintains its tracking issue in both directions",
     // The marker must survive so a later failure updates this issue instead of
     // opening a duplicate.
     expect(greenBody).toContain("marker,");
+    // The closed body must carry the same metric set as the failure body: a
+    // closure that hides the populations the failure disclosed (declared
+    // ineligibility, unverifiable-by-probe, delegated debt) would report a
+    // cleaner world than the run observed.
+    for (const label of [
+      "digest-ineligible (declared class, no digest possible)",
+      "bot-blocked (unverifiable by probe)",
+      "throttled / unresponsive (unverifiable by probe)",
+      "probe coverage (URLs that produced a verdict)",
+      "debt ratcheted by citations:audit, not gated here",
+      "ceiling usage (link rot + stale + drift)",
+    ]) {
+      expect(greenBody, label).toContain(label);
+    }
+    expect(greenBody).toContain("report.digestIneligibilityRegister.reviewedOn");
+  });
+
+  /**
+   * The lookup searches `--state open`, so a later failure creates a new
+   * tracking issue; this one is not reopened. A closure message that promises a
+   * reopen is the same untrue statement on the issue surface that the open/close
+   * maintenance exists to remove.
+   */
+  it("does not promise that a closed tracking issue reopens", () => {
+    // Scoped to the emitted strings, not the whole payload: the source comment
+    // above `greenBody` explains the old promise and therefore names it.
+    const greenBody = issueJs.slice(issueJs.indexOf("const greenBody"));
+    expect(greenBody).not.toMatch(/reopen/i);
+    // The close `--comment` is one line; the green body opens with a similar
+    // sentence, so match the comment's own wording instead.
+    const closeComment = issueJs
+      .split("\n")
+      .find((line) => line.includes("The scheduled citation decay probe is green again — no link rot"));
+    expect(closeComment, "the close comment must be present").toBeDefined();
+    expect(closeComment).not.toMatch(/reopen/i);
+    expect(closeComment).toContain("A later scheduled run that fails opens a new tracking issue");
   });
 
   it("closes nothing on a run whose probe never completed", () => {
