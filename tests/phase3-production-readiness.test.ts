@@ -117,7 +117,7 @@ describe("Phase 3 production-access package contracts", () => {
     { issue: 189, status: "COMPLETE / CLOSED", securityStatus: "CLOSED" },
     { issue: 195, status: "OPEN / HUMAN-ONLY", securityStatus: "OPEN" },
     { issue: 213, status: "COMPLETE / CLOSED", securityStatus: "CLOSED" },
-    { issue: 287, status: "OPEN / EXTERNALLY BLOCKED", securityStatus: "OPEN" },
+    { issue: 287, status: "CLOSED / NOT PURSUED", securityStatus: "CLOSED" },
     { issue: 537, status: "OPEN / EXTERNALLY OPERATED", securityStatus: "OPEN" },
     { issue: 538, status: "OPEN / EXTERNALLY OPERATED", securityStatus: "OPEN" },
     { issue: 539, status: "OPEN / HUMAN-APPROVAL", securityStatus: "OPEN" },

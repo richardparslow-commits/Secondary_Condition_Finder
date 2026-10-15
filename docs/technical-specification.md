@@ -340,11 +340,11 @@ Counts and identities are contract-enforced: `npm run kb:validate` + `tests/…c
 | `VA_SANDBOX_ENABLED` | `false` | Legacy sandbox-only gate when `VA_API_ENABLED` is unset. |
 | `VA_FORMS_SANDBOX_API_KEY` | unset | VA Forms sandbox credential (server-only). |
 | `VA_BENEFITS_REFERENCE_SANDBOX_API_KEY` | unset | Benefits Reference Data sandbox credential. |
-| `VA_FORMS_PRODUCTION_API_KEY` | unset | VA Forms production credential — external VA production access is a separate gate (`#287`). |
+| `VA_FORMS_PRODUCTION_API_KEY` | unset | VA Forms production credential — external VA production access is a separate gate (`#287`, closed as not pursued on 2026-10-15). |
 | `VA_BENEFITS_REFERENCE_PRODUCTION_API_KEY` | unset | Benefits Reference Data production credential — same gate. |
 | `VA_ACCREDITED_REP_ENABLED` | `false` | Per-service accredited-representative locator flag — gates the Idea #8 directory lookup independently of the generic VA gate. |
 | `VA_ACCREDITED_REP_SANDBOX_API_KEY` | unset | Accredited-representative sandbox credential (key issuance = Phase 3.1 gate; missing key fails closed before fetch, breaker stays closed). |
-| `VA_ACCREDITED_REP_PRODUCTION_API_KEY` | unset | Accredited-representative production credential — same `#287` external-access gate. |
+| `VA_ACCREDITED_REP_PRODUCTION_API_KEY` | unset | Accredited-representative production credential — the same external-access gate (`#287`, closed as not pursued on 2026-10-15). |
 | `VA_FORMS_SANDBOX_BASE_URL` | `https://sandbox-api.va.gov/services/va_forms/v0` | Per-service SANDBOX origin override (must be `https` on `https://sandbox-api.va.gov`). |
 | `VA_BENEFITS_REFERENCE_SANDBOX_BASE_URL` | `https://sandbox-api.va.gov/services/benefits-reference-data/v1` | Same. |
 | `VA_FORMS_PRODUCTION_BASE_URL` | `https://api.va.gov/services/va_forms/v0` | Per-service PROD origin override (must be `https` on `https://api.va.gov`). |

@@ -187,5 +187,5 @@ Before answering VA's accessibility question:
 - [ ] Runtime/credential description matches `docs/va-api-runtime-configuration.md`.
 - [x] #189 is closed only with objective sanitized credentialed evidence.
 - [ ] #195 is closed only with objective manual accessibility evidence recorded in the workbook.
-- [ ] Issue #287 remains open until VA production access is granted and live production connectivity is verified.
+- [x] Issue #287 is closed: the VA public-reference production transition was recorded as not pursued on 2026-10-15, and no VA production grant or live production connectivity is claimed.
 - [ ] No unsupported business, accessibility, security-certification, regulatory-compliance, or production-access claim is included.

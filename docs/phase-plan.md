@@ -104,7 +104,7 @@ This is objective current evidence, not a permanent submission-time guarantee. T
 - [ ] Final 30–60 minute demo rehearsal completed without blockers using synthetic/non-sensitive data.
 - [ ] Fresh exact-commit CI, Vercel deployment, alias convergence, and Production Runtime Readiness verified immediately before submission.
 
-Issue #287 tracks the eventual VA public-reference production transition. Production mode must remain disabled until VA production access is granted, production credentials are installed server-side, and live production connectivity is objectively verified.
+Issue #287 tracked the eventual VA public-reference production transition and was closed on 2026-10-15 as a recorded scope decision: that transition is not pursued, and the labelled local catalog fallback is the intended steady state. Production mode stays disabled until VA production access is granted, production credentials are installed server-side, and live production connectivity is objectively verified — the unchanged threshold for any revived activation.
 
 ---
 

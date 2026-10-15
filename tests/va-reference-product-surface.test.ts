@@ -149,7 +149,11 @@ describe("VA reference product surfaces", () => {
     expect(docs).toContain("#189 is already complete with credentialed sandbox evidence");
     expect(docs).toContain("A fallback page returning HTTP 200 is not production API evidence");
     expect(docs).toContain("VA_SHARED_CONSUMER_BUDGET=true");
-    expect(docs).toContain("Close #287 only after the grant, controlled evidence, deployed-runtime verification, full CI and deployment readiness");
+    // Issue #287 closed on 2026-10-15 as a recorded scope decision (activation not
+    // pursued). The activation threshold must still be stated, and the closure must
+    // stay distinguishable from a completed transition.
+    expect(docs).toContain("VA production activation is not being pursued");
+    expect(docs).toContain("If activation is ever revived, it must be tracked as a new issue and may be closed only after the grant, controlled evidence, deployed-runtime verification, full CI and deployment readiness all have objective recorded evidence");
     expect(docs).toContain("VA_PRODUCTION_ACCESS_GRANTED");
   });
 });

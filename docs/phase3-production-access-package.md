@@ -254,4 +254,4 @@ Repository implementation and production runtime lineage are healthy on the curr
 - final deployed-app rehearsal passes; and
 - fresh exact-commit production readiness is verified immediately before submission.
 
-Issues #287 and #537/#538 remain the external gates for VA production-reference access and the hosting log retention/callback-scrubbing reviews. Configuration readiness is not the same as granted/verified production API access, and no operator review is implied by this package.
+Issues #537/#538 remain the external gates for the hosting log retention and callback-scrubbing reviews. Issue #287 was closed on 2026-10-15 as a recorded scope decision — the VA public-reference production transition is not pursued — so this package makes no production-reference access request: the labelled local catalog fallback is the intended steady state, and no VA grant, credential, or live production connectivity is claimed or implied.

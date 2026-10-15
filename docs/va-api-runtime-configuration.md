@@ -20,7 +20,7 @@ A refused production selection still reports the requested `environment=producti
 
 ## Production grant is not connectivity evidence
 
-`VA_PRODUCTION_ACCESS_GRANTED=true` acknowledges an actual VA grant for the requested services; it does not prove connectivity. Keep the application's `VA_API_ENABLED=false` until a controlled check succeeds. Issue #287 remains open through grant, controlled check, deliberate activation, exact-build deployment verification and live source-status checks. A fallback page returning HTTP 200 is not production API evidence.
+`VA_PRODUCTION_ACCESS_GRANTED=true` acknowledges an actual VA grant for the requested services; it does not prove connectivity. Keep the application's `VA_API_ENABLED=false` unless a controlled check has succeeded and activation was deliberately approved. Issue #287 was closed on 2026-10-15 as a recorded scope decision — production activation is not pursued — so its threshold (grant, controlled check, deliberate activation, exact-build deployment verification and live source-status checks) is not outstanding today, but it still governs any revived activation. A fallback page returning HTTP 200 is not production API evidence.
 
 ## Service-specific, server-only configuration
 
@@ -102,7 +102,7 @@ The [operator CLI](../scripts/verify-va-production-reference.mts) uses the appli
 5. Review and attach the successful sanitized workflow evidence to #287. This establishes controlled service connectivity **only**. It does not establish the deployed application's budget/circuit/cache behavior or approve user-facing activation.
 6. With explicit operator approval, configure the application's server-only production keys and shared coordinator, then deliberately select `VA_API_ENV=production`, `VA_PRODUCTION_ACCESS_GRANTED=true`, `VA_API_ENABLED=true`, and `VA_SHARED_CONSUMER_BUDGET=true`. Never activate the unrelated account or locator services by implication.
 7. Run full CI and Production Runtime Readiness on the exact deployed SHA. Open `/va-forms/finder` and run a public `21-526EZ` search, plus `/va-reference` and `/va-reference/service-branches`, in a real browser. The finder search is submitted in the request body, so the page URL never carries the query — verify that on the deployed build rather than expecting a `?q=` URL. Require actual `va-production-api` provenance, expected production labels, valid data, retrieval timestamp and shared hit behavior across instances. Verify disabled/missing-coordinator/outage/429 behavior and rollback; a local fallback 200 does not pass this step. Do not claim distributed correctness based on the one-process CLI.
-8. Close #287 only after the grant, controlled evidence, deployed-runtime verification, full CI and deployment readiness all have objective recorded evidence. No workflow here closes it automatically.
+8. **VA production activation is not being pursued.** Issue #287 was closed on 2026-10-15 as a recorded scope decision: the labelled local catalog fallback is the intended steady state, and no VA production grant, credential, authorized controlled check, activation or live `va-production-api` provenance is claimed. Everything above remains implemented and fails closed exactly as before. If activation is ever revived, it must be tracked as a new issue and may be closed only after the grant, controlled evidence, deployed-runtime verification, full CI and deployment readiness all have objective recorded evidence. No workflow here closes an issue automatically.
 
 ### Rollback
 
@@ -113,4 +113,4 @@ Immediately set application `VA_API_ENABLED=false` (do not rely on the legacy sa
 - Secondary recommendations are computed independently of administrative VA terminology.
 - Service-branch context does not change presumptive matching.
 - Exact normalized names or curated aliases are used, not fuzzy terminology matching.
-- #189 sandbox evidence, #195 human accessibility evidence and #287 production-transition evidence are distinct gates. Passing one cannot close another.
+- #189 sandbox evidence, #195 human accessibility evidence and #287 production-transition evidence are distinct gates. #287 closed on a scope decision rather than on evidence, and passing one gate cannot close another.

@@ -5,6 +5,24 @@ All notable changes to Secondary Condition Finder. Format loosely follows
 
 ## 2026-10-15
 
+- **Issue #287 (VA public-reference production transition) is closed as a recorded scope decision — production
+  activation is not pursued, not completed** (`va-reference`, governance): the gate's own threshold is five
+  operator steps that all require a real VA production grant — the grant itself, installed server-side
+  production credentials, a controlled connectivity check performed while application access stays disabled,
+  deliberate enablement with a verified shared coordinator, and live `va-production-api` provenance on the
+  exact deployed SHA. None of that existed, so none of it could be asserted; the gate closed on the accountable
+  owner's decision that the labelled local catalog fallback is the intended steady state, and the closure record
+  says so explicitly rather than implying the steps were performed. Nothing about the runtime changed: the
+  fail-closed tri-state `disabled`/`sandbox`/`production` resolver, the `VA_PRODUCTION_ACCESS_GRANTED`
+  acknowledgement, the controlled-check workflow and CLI, the shared consumer budget and circuit, and the
+  operator runbook all remain implemented and inert, and any future activation is a new issue under the same
+  threshold. Recorded in `docs/external-manual-gates-status.md` (section, R-04 register row and completion
+  boundary), `docs/deployment-readiness.md`, `docs/security-operations.md`, `docs/phase3-submission-checklist.md`,
+  `docs/phase3-production-access-package.md`, `docs/phase-plan.md`, `docs/audit-issue-list-ordered-by-priority.md`,
+  `docs/va-api-runtime-configuration.md`, `docs/va-account-sandbox.md`, `docs/phase2-sandbox-integration.md`,
+  `docs/technical-specification.md` and `VA_Lighthouse_Readiness_Report.md`, and pinned by
+  `tests/phase3-production-readiness.test.ts` and `tests/va-reference-product-surface.test.ts`, which now also
+  asserts that the activation threshold stays stated for a revived activation.
 - **The real-browser gate now checks whether a link is distinguishable without its colour, and that
   rule immediately found one that was not** (`accessibility`, R-05 follow-on, WCAG 1.4.1):
   `e2e/a11y-contrast.mjs` ran exactly one axe rule — `color-contrast` — so every other

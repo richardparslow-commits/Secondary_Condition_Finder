@@ -5,7 +5,7 @@
 This phase implements `/va-account` for **Veterans acting for themselves using VA-approved sandbox test accounts**. It is disabled by default and cannot select production endpoints. It is separate from the existing public Forms/Benefits Reference Data production request.
 
 - B01: sandbox implementation of S256 PKCE/ACG, verified OIDC identity, rating-summary reads and existing-claim-status reads. Credentialed end-to-end proof still requires issued VA client registrations and matching callback URIs. This is not a completed all-API integration.
-- B02 / #287: **externally blocked** until VA grants the requested production access and an authorized identified-build connectivity check succeeds. This phase neither enables production nor claims approval.
+- B02 / #287: **not pursued.** Issue #287 was closed on 2026-10-15 as a recorded scope decision — no VA production grant is claimed and the labelled local catalog fallback is the intended steady state — so there is no production access for this account phase to inherit. This phase still neither enables production nor claims approval.
 - B03 / #195: human accessibility evidence remains open; automated checks cannot sign off Section 508.
 - Claims submission and Benefits Intake document upload are deferred. No `.write` scope, representative demographic headers, arbitrary veteran identifier, uploaded records, or mutation routes exist in this phase.
 
@@ -81,7 +81,7 @@ The client sends a same-origin POST then navigates at top level to the fixed san
 5. Final build identity, CI/readiness lineage, host log/query/body policy, WAF/forwarded-header settings, secret rotation and reviewed callback sanitation.
 6. Identified-build human accessibility findings/retests/sign-off. Never manufacture PASS or close #195 from automation.
 
-Grant and connectivity are distinct: after an explicit grant and authorized check procedure, public-reference acknowledgement may enable that controlled check; #287 stays open until connectivity evidence succeeds. No account production path is implemented in this phase. Real production work requires a separately reviewed release after the freeze.
+Grant and connectivity are distinct: after an explicit grant and authorized check procedure, public-reference acknowledgement may enable that controlled check. #287 was closed on 2026-10-15 without either event occurring (activation not pursued), so no grant and no connectivity evidence is claimed. No account production path is implemented in this phase. Real production work requires a separately reviewed release after the freeze.
 
 ## Verification and remaining limits
 

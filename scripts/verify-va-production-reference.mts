@@ -145,7 +145,7 @@ export async function verifyProductionReference({
 async function main() {
   const args = process.argv.slice(2);
   if (args.length === 1 && args[0] === "--help") {
-    console.log("Usage: node scripts/verify-va-production-reference.mts --confirm-va-production-access\nRequires a real VA production grant and both production keys in server-only environment variables. Does not activate the app, test the deployed runtime, or close #287.");
+    console.log("Usage: node scripts/verify-va-production-reference.mts --confirm-va-production-access\nRequires a real VA production grant and both production keys in server-only environment variables. Does not activate the app or test the deployed runtime, and closes no issue: #287 was closed as not pursued on 2026-10-15, so this check is retained only for a future, separately tracked activation.");
     return;
   }
   if (args.length !== 1 || args[0] !== "--confirm-va-production-access") {
