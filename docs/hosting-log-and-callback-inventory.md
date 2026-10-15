@@ -17,11 +17,19 @@ it does not establish a retention period or an access control, and it closed
 neither issue on its own. The code-side half is an *input* to the reviews; the
 per-sink record and each gate's disposition live in the
 [ownership register](external-manual-gates-status.md), which is the canonical
-record. As of 2026-10-15 that register closes **gate A (#537)** on a reviewed
-record of the platform's published log terms, with the account facts that remain
-unread named and accepted there, and keeps **gate B (#538)**
-**OPEN / EXTERNALLY OPERATED** — the live scrubbing half still has to be read
-from the account.
+record. As of 2026-10-15 that register closes **gate A (#537)** and **gate B
+(#538)** — each on a dated record of what the platform *documents*, with the
+account facts that remain unread named and accepted there.
+
+**Correction to an earlier revision of this paragraph (2026-10-15).** It said
+gate B was still open because "the live scrubbing half still has to be read from
+the account". That was half wrong, and the error mattered in one direction: it
+treated the platform's scrubbing behaviour as an account secret. It is not one.
+The platform publishes what its logs contain and documents no query-parameter
+scrubbing at all, so the scrubbing question is answerable from the platform's
+terms — the account only decides whether a drain exists, on what plan, and for
+how long logs are retained. Part 3 now separates those two kinds of fact, and
+Part 4's gate B procedure is rewritten accordingly.
 
 ## Part 1 — Application log sinks (code side)
 
@@ -117,17 +125,49 @@ Guarantees, each pinned by
    replayed or CSRF-crafted callback fails closed. This bounds the value of a
    leaked code; it is not log evidence.
 
-What the code cannot establish — the actual gate:
+What the code cannot establish — the actual gate. Two different kinds of fact
+were conflated here before 2026-10-15; they are separated now, because only the
+second is an account reading:
 
-- The hosting provider's request/access logs may still retain the callback
-  **request line**, which contains `code` and `state`. Those logs are
-  platform-side; the repository can neither read nor scrub them.
-- Whether the platform scrubs query parameters on the way in, how long request
-  and runtime logs (and any drain destination) are retained, and who can read or
-  export them are hosting-account facts, not source facts.
+**Published platform behaviour (answerable without the account, verified
+2026-10-15 against the platform's own documentation):**
+
+- The platform's request logs record the request line **including its query
+  string**. Runtime Logs detail a request's *search parameters*, and a Log Drain
+  carries `proxy.path`, documented as the "request path with query parameters".
+  A callback request therefore arrives in the logs with `code` and `state` as
+  sent.
+- **No documented setting removes them.** The platform documents no
+  query-parameter redaction for runtime logs, function logs, or drains on any
+  plan; the only privacy control documented for a drain is **IP hiding**
+  (Pro/Enterprise), which does not touch the path or query string; and the one
+  documented query-parameter filter (`beforeSend` in Web Analytics) applies to
+  analytics events, not to runtime logs or drains. "Check whether a scrubbing
+  rule removes `code`/`state`" (the earlier gate B step 2) was therefore the
+  wrong instruction — the finding to record is that no such rule exists to
+  configure.
+- The request line is recorded **whether or not the request is answered**, and
+  failures are filterable by status, so a callback that fails closed is still
+  logged. Neither disabling the sandbox nor a 503 keeps the request line out of
+  the logs.
+
+**Account facts (not readable from this repository or by any code here):**
+whether a drain is configured for this project, the plan tier, the retention
+period actually in force, and who can read or export the logs. These are the same
+four facts gate A names as its unread residual, and they are the reason both
+closure records are terms-and-behaviour records rather than account inspections.
 
 No code-side sink gap was found in this inventory. The residual for gate B is
-therefore external: the platform's own logs.
+therefore external and platform-side: the callback request line is retained,
+readable, and not scrubbed. What bounds it is not scrubbing but *reachability* —
+the callback paths are inert while the sandbox account config is absent (both
+handlers return a fixed 503 before reading any parameter, per Part 2), they are
+the only consumers of a code, and `completeAccountLogin` consumes the transaction
+single-use before the exchange. A request line logged today therefore carries an
+attacker-supplied or stale value, not a live one. Gate B closed on that record on
+2026-10-15: the retained request line is the accepted residual, and **credentialed
+hosted use** — the moment a live code could exist — is the trigger that must be
+read from the account first.
 
 ## Part 4 — Operator review procedure
 
@@ -151,17 +191,28 @@ Gate B — callback-URL scrubbing:
 
 1. Confirm the shipped callback surfaces from Part 2 against the deployment (a
    route inventory, not a memory of the issue text).
-2. Check whether the platform's request logging captures the full request line
-   including the query string, and whether any configured scrubbing rule removes
-   `code`, `state` or all query parameters.
+2. Record the platform's documented behaviour from Part 3 rather than hunting for
+   a setting that does not exist: the request line reaches Runtime Logs and any
+   drain **with its query string**, and the platform documents no
+   query-parameter scrubbing for either. Then read the account-side facts that
+   remain: plan tier, whether a drain exists, the retention in force in each sink,
+   and who can read or export it (the same readings gate A needs).
 3. If the sandbox account config is enabled in the deployment, exercise the
    synthetic callback path with a test account and search each sink for the
-   callback request line for the review window; otherwise record that the
-   sandbox was disabled and inspect a captured request-log sample instead.
+   callback request line for the review window. If it is disabled — the shipped
+   state — record that instead, together with the two code-side facts that stand
+   in for it: both handlers return a fixed 503 **before** reading any parameter,
+   so no live code can exist or be consumed, and a logged request line can only
+   carry an attacker-supplied or stale value.
 4. Record the outcome as one of: confirmed not retained; confirmed scrubbed;
-   retained and remediated (with the remediation and a retest date). A retained
-   code/state is a finding and must be remediated and retested before the gate
-   closes.
+   retained and **remediated** (with the remediation and a retest date); or
+   retained and **named as an accepted residual** with the mitigation that bounds
+   it and the trigger that reopens the question. The platform documents no way to
+   scrub, so the third option is often unavailable and the fourth is the honest
+   one — but it is only available with the residual named, its mitigation stated,
+   and the account-side readings listed as the reopen condition. A retained
+   code/state is a finding in every case; what changes is whether the finding can
+   be remediated at all, and the record must say which it is.
 
 Record for each gate: review date (UTC), hosting account/project, the sink
 identifiers, the retention/access/scrubbing facts, and the reviewer.
@@ -179,12 +230,19 @@ any Veteran data. Sink and policy *names* and dates are the evidence.
   the accountable owner's dated acceptance of that residual. It is not a read of
   the account. Reopen under the original criterion if credentialed hosted use is
   pursued, or if a plan, drain, or 2FA/SSO change makes a row stale.
-- **#538 (gate B)** closes when the callback-surface inventory, the
-  platform-scrubbing finding, and the fixed-outcome statement are recorded the
-  same way, with any finding remediated and retested.
+- **#538 (gate B)** — **closed 2026-10-15** in the
+  [ownership register](external-manual-gates-status.md): the callback-surface
+  inventory, the platform's documented (absent) scrubbing, and the fixed-outcome
+  statement are recorded per sink, with the retained request line named as the
+  owner's accepted residual and credentialed hosted use kept as the trigger that
+  reopens it. Its three findings and their dispositions are in Part 3. Like gate
+  A, it is not a read of the hosting account. Reopen as a new issue if
+  credentialed hosted use is pursued, or if the platform publishes a
+  query-parameter scrub control or a plan/drain change alters the sink set.
 
 Repository tests, a green CI run, a passing HTTP check, or this document cannot
-close a gate. The register's own record above is what closes gate A, and it does
-so by naming what it could not read; gate B stays **OPEN / EXTERNALLY OPERATED**
-until the platform's own scrubbing behaviour is read from the account, and the
-code-side inventory here is the operator's input rather than the review.
+close a gate. The register's own record is what closed both gates, and each closes
+by naming what it could not read; the code-side inventory here is the operator's
+input rather than the review. Neither closure is an account inspection, which is
+why the report's H-02 close-out box stays unchecked and why the account-side
+readings are the reopen condition rather than a formality.
