@@ -23,15 +23,22 @@ import { PRIVACY_COMPLETION_DAYS, PRIVACY_CONTACT_EMAIL } from "@/lib/privacy/in
 //      the exact sentence the approver is being asked to accept. Changing one is
 //      allowed — but only deliberately, by editing the pin, which is the point
 //      at which someone has to re-read it as the signed text.
-//   2. **The sign-off surfaces must be able to carry the criterion's facts.**
-//      The report matrix and the production-access package have to name full
-//      name, affiliation, decision and date, and must state that no approval is
-//      recorded. A filled-in row fails this suite, so closing #539 requires
-//      touching the record deliberately instead of by accreting prose.
+//   2. **The sign-off surfaces carry the criterion's facts, recorded or not.**
+//      The report matrix and the production-access package name full name,
+//      affiliation, decision and date. On 2026-10-15 the R-01 row was filled
+//      deliberately — *accept as published*, by the accountable operator — and
+//      this pin was updated with it, which is exactly the act the paragraph
+//      above requires. The channel row now records a *dated negative finding*
+//      (`privacy@secondaryconditionfinder.org` is at a domain that does not
+//      resolve), and the send/receive outcome stays unrecorded because the test
+//      cannot run. Neither direction may happen quietly: no fabricated approval,
+//      and no filled-in channel that nothing here can honestly verify.
 //
-// Everything here is repository-side. No approver, decision, date, mailbox
-// liveness result, named handler or send/receive outcome is recorded, and no
-// test can manufacture one: the human half of #539 stays human.
+// Everything here is repository-side except the operator's own decision, which
+// is recorded with a name and a date. No mailbox liveness result, no evidence
+// that the named handler reads or answers mail, and no send/receive outcome is
+// recorded, and no test can manufacture one: the channel half of #539 stays
+// external.
 
 const privacy = readFileSync(resolve(process.cwd(), "src/app/privacy/page.tsx"), "utf8");
 const terms = readFileSync(resolve(process.cwd(), "src/app/terms/page.tsx"), "utf8");
@@ -190,14 +197,25 @@ describe("privacy policy deletion right and contact channel (R-01 / B-02)", () =
     expect(policy).toMatch(/not the privacy-request channel/);
   });
 
-  it("gives the sign-off surfaces the fields gate #539 requires, with nothing recorded", () => {
+  it("records the R-01 approval and holds the channel and the other rows open", () => {
     const matrix = flat(report);
     expect(matrix).toContain("| Organization / affiliation |");
     expect(matrix).toContain(
       "https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/539",
     );
-    expect(matrix).toContain("☐ Accept the deletion right and the 45-day commitment as published");
-    expect(matrix).toContain("No approval is recorded in this matrix.");
+    // The gate's criterion, recorded: name, affiliation, decision, date — and
+    // the caveat that approving text verifies no channel.
+    expect(matrix).toContain("| **Richard Parslow** |");
+    expect(matrix).toContain("**Accept as published**");
+    expect(matrix).toContain("**2026-10-15**");
+    expect(matrix).toContain("no separate legal approver engaged");
+    expect(matrix).toContain("This approval covers the published text only and verifies no channel");
+    // The recorded row must not be read as closing the issue, and the superseded
+    // sentence must be gone rather than left standing next to it.
+    expect(matrix).toContain("**One approval is recorded in this matrix, and only one.**");
+    expect(matrix).not.toContain("No approval is recorded in this matrix.");
+    // The other rows stay blank: only the R-01 decision was made.
+    expect(matrix).toContain("still a pending human decision");
 
     const pkg = flat(accessPackage);
     expect(pkg).toContain("## Privacy approval and monitored contact");
@@ -212,21 +230,33 @@ describe("privacy policy deletion right and contact channel (R-01 / B-02)", () =
     ]) {
       expect(pkg).toContain(field);
     }
-    // Every field is recorded as unset. A filled cell fails here on purpose:
-    // recording an approver is the human step, and it must be a deliberate
-    // change to this pin and to the register, not a quiet edit.
-    // Read the rows from the unflattened source: flattening collapses newlines,
-    // and these cells are one per line by construction.
+    // Read the values from the unflattened source: these cells are one per line
+    // by construction, and flattening collapses the newlines between them.
     const rows = accessPackage.split("| Field | Recorded value |")[1]?.split("\n## ")[0] ?? "";
-    const recordedCells = rows
+    const cells = rows
       .split("\n")
       .filter((line) => line.startsWith("| ") && !line.includes("---"))
-      .map((line) => line.split("|").slice(2).join("|"));
-    expect(recordedCells.length).toBeGreaterThanOrEqual(7);
-    for (const cell of recordedCells) {
-      expect(cell, "every sign-off field must read as unrecorded").toMatch(/\(not recorded/);
-    }
-    // The package also has to list the gate as a submission blocker.
-    expect(pkg).toContain("issue #539 has the operator/privacy approval recorded above");
+      .map((line) => line.split("|")[2] ?? "");
+    expect(cells).toHaveLength(7);
+    const [name, affiliation, decision, date, channel, handler, test] = cells;
+    expect(name).toContain("Richard Parslow");
+    expect(affiliation).toContain("no separate legal approver engaged");
+    expect(decision).toContain("**Accept as published**");
+    expect(decision).toContain("it verifies no channel");
+    expect(date).toContain("2026-10-15");
+    // The channel is a recorded *negative finding*, not an unrecorded field.
+    expect(channel).toContain("**No — a dated negative finding (2026-10-15).**");
+    expect(channel).toContain("NXDOMAIN");
+    expect(channel, "a channel row without the finding is an unfilled field").not.toMatch(
+      /\(not recorded/,
+    );
+    expect(handler).toContain("Richard Parslow");
+    // The send/receive outcome stays open, and says why it cannot be recorded.
+    expect(test).toContain("Outcome: **not recorded**");
+    expect(test).toContain("cannot run until the address resolves");
+    // The package still lists the gate as a submission blocker.
+    expect(pkg).toContain(
+      "issue #539's recorded approval, named handler and fulfilment procedure are in place",
+    );
   });
 });
