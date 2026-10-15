@@ -231,17 +231,19 @@ Use `SECURITY.md` and `docs/security-operations.md` as the operating sources. Re
 
 The published deletion right, the 45-day completion commitment, the narrow statutory exceptions, and the monitored contact channel are in the [privacy policy](/privacy) section 8, mirrored in Terms section 7, and reachable through the `/privacy/request` intake page. The application does not operate a phone intake channel; VA's benefits line is published for completeness and labeled as not an intake channel for this application.
 
-This package carries the approval surface for that language, because issue [#539](https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/539) closes only with recorded human sign-off. **No approval is recorded here yet** — the fields below are unset, and nothing on this page may be read as an approval, a verified mailbox, or a completed send/receive test.
+This package carries the approval surface for that language, because issue [#539](https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/539) closes only with recorded human sign-off. The **approval is now recorded** (2026-10-15), and the fulfilment procedure with a named handler is published alongside it. The **contact channel is not verified**, and the reason is worse than "unverified": the only published address is at a domain that does not resolve. Nothing on this page may be read as a verified mailbox or as a completed send/receive test.
+
+**Gate status: OPEN / CHANNEL UNVERIFIED.** Recorded on this surface: the approver's name, affiliation, decision and date; the named handler; and the fulfilment procedure. Outstanding: a channel that resolves and receives mail, and the sanitized send/receive-test outcome, which cannot be produced before it does. The gate closes on those two, not on any edit to this repository.
 
 | Field | Recorded value |
 | --- | --- |
-| Approver full name | *(not recorded)* |
-| Approver organization / affiliation | *(not recorded)* |
-| Decision on the deletion right and the 45-day commitment | *(not recorded)* |
-| Decision date | *(not recorded)* |
-| Monitored contact channel confirmed live | *(not recorded — mailbox `privacy@secondaryconditionfinder.org` is published; liveness is unverified here)* |
-| Named handler for the channel | *(not recorded)* |
-| Sanitized send/receive test outcome and fulfillment procedure | *(not recorded)* |
+| Approver full name | Richard Parslow |
+| Approver organization / affiliation | Sole operator of this application (independent developer); no separate legal approver engaged |
+| Decision on the deletion right and the 45-day commitment | **Accept as published** (2026-10-15) — the deletion right, the 45-day completion commitment, the statutory exceptions with a reason on any partial handling, and the intake route, as pinned verbatim by `tests/privacy-rights-contact.test.ts`. The decision covers the published text only; it verifies no channel |
+| Decision date | 2026-10-15 |
+| Monitored contact channel confirmed live | **No — a dated negative finding (2026-10-15).** `privacy@secondaryconditionfinder.org` is at a domain that does not resolve: `MX`/`NS` return NXDOMAIN with the `.org` registry's own SOA as authority, from two independent DNS-over-HTTPS resolvers (Cloudflare and Google); `RDAP`/`whois` return no domain record; and a control name resolves normally in the same environment. Both deployed pages publish the address, so a request sent there arrives nowhere. Owner decision recorded: register the domain and operate the mailbox, per the [fulfilment procedure](privacy-request-fulfilment-procedure.md) §8 |
+| Named handler for the channel | Richard Parslow (`richardparslow-commits`), with the continuity rule in the [fulfilment procedure](privacy-request-fulfilment-procedure.md) §2 |
+| Sanitized send/receive test outcome and fulfillment procedure | Procedure: **recorded** ([privacy request fulfilment procedure](privacy-request-fulfilment-procedure.md)). Outcome: **not recorded** — the test cannot run until the address resolves and receives mail |
 
 ## Current readiness status
 
@@ -249,7 +251,7 @@ Repository implementation and production runtime lineage are healthy on the curr
 
 - issue #189 has objective credentialed sandbox success evidence;
 - issue #195 has objective manual accessibility evidence;
-- issue #539 has the operator/privacy approval recorded above, with the monitored channel confirmed live and a named handler;
+- issue #539's recorded approval, named handler and fulfilment procedure are in place **and the published privacy-request address actually receives mail** — it does not today: the address's domain does not resolve, so a request sent there arrives nowhere;
 - applicant/business facts and final public URLs are supplied;
 - final deployed-app rehearsal passes; and
 - fresh exact-commit production readiness is verified immediately before submission.

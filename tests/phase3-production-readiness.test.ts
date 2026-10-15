@@ -120,7 +120,7 @@ describe("Phase 3 production-access package contracts", () => {
     { issue: 287, status: "CLOSED / NOT PURSUED", securityStatus: "CLOSED" },
     { issue: 537, status: "CLOSED / RECORDED WITH RESIDUAL ACCEPTED", securityStatus: "CLOSED" },
     { issue: 538, status: "CLOSED / RECORDED WITH RESIDUAL ACCEPTED", securityStatus: "CLOSED" },
-    { issue: 539, status: "OPEN / HUMAN-APPROVAL", securityStatus: "OPEN" },
+    { issue: 539, status: "OPEN / CHANNEL UNVERIFIED", securityStatus: "OPEN / CHANNEL UNVERIFIED" },
   ])("names the accountable owner for R-04 gate #$issue in the register and runbooks", ({ issue, status, securityStatus }) => {
     const gates = readRepoFile("docs/external-manual-gates-status.md");
     const deployment = readRepoFile("docs/deployment-readiness.md");
