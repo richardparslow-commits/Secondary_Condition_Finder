@@ -73,10 +73,12 @@ describe("loadStoredEvidenceWithWarning (finding #11)", () => {
     expect(loadStoredEvidenceWithWarning(null)).toEqual({
       analyses: [],
       parseError: null,
+      discardedEntries: 0,
     });
     expect(loadStoredEvidenceWithWarning(storageWith(null))).toEqual({
       analyses: [],
       parseError: null,
+      discardedEntries: 0,
     });
   });
 

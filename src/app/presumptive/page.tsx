@@ -60,7 +60,7 @@ export default async function PresumptivePage({ searchParams }: PresumptivePageP
       )}
 
       <div className="ui-grid">
-        <aside className="ui-stack">
+        <aside className="ui-stack" aria-label="Eligibility basics">
           <section className="ui-card">
             <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">✓</span><h2 className="text-xl font-bold">Eligibility Basics</h2></div>
             <ul className="list-disc space-y-3 pl-5 text-sm"><li>Qualifying active military service is required.</li><li>The presumption must match a recognized exposure, location, period, or other statutory/regulatory criterion.</li><li>A current diagnosed condition is still required.</li><li>A separate medical nexus opinion generally is not required when the applicable presumption is satisfied.</li></ul>
@@ -88,7 +88,7 @@ export default async function PresumptivePage({ searchParams }: PresumptivePageP
           </div>
         </section>
 
-        <aside className="ui-stack">
+        <aside className="ui-stack" aria-label="How matching works">
           <section className="ui-card">
             <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">?</span><h2 className="text-xl font-bold">How Matching Works</h2></div>
             <ul className="space-y-4 text-sm"><li><strong>Location.</strong><p>Your selected service locations are compared with catalog exposure rules.</p></li><li><strong>Dates.</strong><p>When provided, service dates are compared with qualifying periods.</p></li><li><strong>Service branch.</strong><p>Your branch selection is stored as administrative reference context only and does not change the presumptive match.</p></li><li><strong>Recognized conditions.</strong><p>Results show catalog conditions associated with matched presumptive rules.</p></li></ul>

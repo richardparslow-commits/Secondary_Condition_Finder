@@ -52,16 +52,18 @@ The current repository/hosting lineage has objective Vercel production and runti
 - a reduced-motion ruleset for users who request reduced motion;
 - a polite atomic live-status contract for the browser-local `/va-reference` filter count;
 - polite atomic live-status contracts for local evidence extraction notices and excerpt-summary changes;
-- safeguards that keep the manual Section 508 result pending until human evidence exists.
+- safeguards that keep the manual Section 508 result pending until human evidence exists;
+- since 2026-10-15, the WCAG 1.4.1 contract that a link inside a block of text is underlined at rest (in `src/app/globals.css`, including under forced colours) while button-styled links keep their `text-decoration: none` opt-out; and
+- since 2026-10-15, the landmark contract that the four layout cross-link strips are labelled `<nav>` landmarks, the six workflow-progress strips are named `role="group"` containers rather than unlabelled `div`s, and every two-column step's `aside` landmarks carry distinguishing names.
 
 The real-browser CI journey additionally exercises the six-step Secondary workflow at a phone-sized viewport, horizontal-overflow checks, app-owned validation transitions, and partial-answer preservation. Other route-specific tests cover selected form-label, source-label, privacy, evidence-processing, and workflow behaviors.
 
 Two further suites guard properties jsdom cannot compute, by scanning source analytically instead of rendering:
 
-- `tests/design-token-contrast.test.ts` (8 tests) reads the real hex values out of `src/app/globals.css`, asserts the WCAG relative-luminance ratio for every text/background pair the application can produce, and scans `src/` so the off-token `text-slate-500` class that caused finding H-01 cannot be reintroduced. This is remediation task **R-02**.
+- `tests/design-token-contrast.test.ts` (16 tests) reads the real hex values out of `src/app/globals.css`, asserts the WCAG relative-luminance ratio for every text/background pair the application can produce, and scans `src/` so the off-token `text-slate-500` class that caused finding H-01 cannot be reintroduced. This is remediation task **R-02**.
 - `tests/legal-notice-legibility.test.ts` (20 tests) enforces remediation task **R-07**: no legal, privacy, safety, or verification notice may render at 12px; `uppercase` may appear only on the one allowlisted table-header row whose columns are single short words; no stylesheet may declare `text-transform: uppercase`; and the `.ui-kicker` eyebrow class must stay at ≥ 14px with no wide letter-spacing. It scans components **and** stylesheets, because a CSS class reaches the rendered page exactly as a Tailwind utility does.
 
-Both run in the normal suite and therefore gate inside the existing CI `verify` job with no additional wiring. Neither observes a rendered pixel — they are source-level contracts, not measurements. The rendered pixel **is** now measured by remediation task **R-05** (`e2e/a11y-contrast.mjs`, implemented 2026-10-11): a separate real-browser spec runs axe's `color-contrast` rule **enabled** in live headless Chrome across 22 shipped routes, plus a Tab-walk that asserts visible focus on every focused element. It gates in the same CI job (`a11y_contrast` step, re-failed by the aggregator) and uploads per-route axe reports as artifacts. The gate was proven by seeding a sub-AA token (fails) and restoring it (passes).
+Both run in the normal suite and therefore gate inside the existing CI `verify` job with no additional wiring. Neither observes a rendered pixel — they are source-level contracts, not measurements. The rendered pixel **is** now measured by remediation task **R-05** (`e2e/a11y-contrast.mjs`, implemented 2026-10-11): a separate real-browser spec runs the rendering-dependent axe rules — `color-contrast` **enabled**, plus `link-in-text-block` (WCAG 1.4.1, added 2026-10-15: the first run with that rule enabled flagged `/secondary` and `/privacy/request`, see the 2026-10-15 section below) — in live headless Chrome across every reviewed shipped route — 26 of them, and the route list is derived from `scripts/lib/public-routes.mjs` rather than kept in the spec, so a new page is scanned by existing — plus a Tab-walk that asserts visible focus on every focused element. It gates in the same CI job (`a11y_contrast` step, re-failed by the aggregator) and uploads per-route axe reports as artifacts. The gate was proven by seeding a sub-AA token (fails) and restoring it (passes). Since 2026-10-15 each run also publishes a per-run route inventory report (`a11y-evidence/route-inventory-report.md`, mirrored into the CI step summary) that reconciles every declared route's surfaces against the evidence that run actually recorded, and fails the run when a declared route has none, when evidence appears for a route the manifest does not declare, or when a summary row claims an evidence file that is not on disk — so a route the walk stops covering is a named row in a failing run rather than a quietly shorter audit. That report describes coverage, not conformance, and it does not attest any rendered state this table leaves to the manual pass.
 
 These assertions are regression evidence only. They do not test every applicable accessibility requirement and do not replace human browser/assistive-technology testing.
 
@@ -111,6 +113,39 @@ jsdom has no rasterizer, so the accessibility run emits `Not implemented: HTMLCa
 
 **Residual, not waived:** no automated check in this repository inspects rasterized pixels, so a defect that changed only the drawing would still pass CI. The drawn surface's meaning stays reachable without the bitmap (the table fallback) and its raster export is user-initiated, which is why this is recorded rather than engineered around: installing a native `canvas` package would put a rasterizer into a node-environment suite for evidence that still could not certify what the graphic looks like. Verifying the drawing itself belongs to the human review in `docs/section508-manual-review-workbook.md` (#195), with the other manual items. The jsdom `Not implemented` line is expected under this disposition and is not a failure.
 
+## Automated real-browser findings and remediation (2026-10-15)
+
+Everything in this section is automated evidence. It fills no row of `docs/section508-manual-review-workbook.md`, answers no conformance question, and leaves issue #195 exactly where it was for human evidence.
+
+The R-05 real-browser gate measured colour contrast only. Three rendering-dependent properties were therefore outside every automated surface: whether a link inside a block of text is distinguishable **without colour** (WCAG 1.4.1, Level A), and two structural rules that need a real DOM — `region` and `landmark-unique` — plus one ARIA-in-HTML defect that axe can only flag as `incomplete` in a headless pass (`aria-prohibited-attr`). The gate now runs `link-in-text-block` alongside `color-contrast`, and a local real-browser sweep with axe's wider rule set surveyed all 26 shipped routes for the rest. All four findings below came from those measurements, not from a code review.
+
+| Finding | Rule and impact | Where | Fix |
+|---|---|---|---|
+| Links inside a block of text were distinguished by colour alone | `link-in-text-block`, serious, WCAG 1.4.1 (Level A) | `/secondary` (`<a href="/presumptive">presumptive track</a>` in `div.ui-footer-note`), `/privacy/request` (the `/privacy` link inside a `text-gray-600` paragraph at **1.12:1**, and the VA privacy link in a list item at **2.66:1**) | `src/app/globals.css`: `p a, li a, dd a, .ui-footer-note a, .ui-callout a, .app-shell [role="note"] a { text-decoration: underline; }`, repeated inside `@media (forced-colors: active)` |
+| The layout cross-link strip was page content outside any landmark | `region`, moderate (best practice) | 7 routes across `src/app/presumptive/layout.tsx`, `src/app/secondary/suggestions/layout.tsx`, `src/app/va-forms/layout.tsx`, `src/app/va-reference/layout.tsx` | each strip is now a labelled `<nav aria-label="…">`, so landmark navigation reaches it |
+| Two unnamed `aside` landmarks per two-column step | `landmark-unique`, moderate | `/presumptive` and the six `src/components/secondary/steps/*Step.tsx` surfaces, once their second column renders | every `aside` now carries a distinguishing `aria-label` |
+| `aria-label="Workflow progress"` on a bare `div` | `aria-prohibited-attr` (reported `incomplete`) | the six workflow step components | the strip is now `role="group" aria-label="Workflow progress"`, so the name is exposed instead of discarded |
+
+The link rule is scoped to text blocks rather than to `a` at large because button-styled links (`.ui-button`, `.ui-button-secondary`, the normalized legacy button classes and `.skip-link`) carry a visible surface and set their own `text-decoration: none`, which outranks the type-selector rule. Under forced colours the author palette is dropped, so the underline is repeated there with `!important`: it is the one affordance that survives into a high-contrast theme.
+
+### What guards it
+
+- `e2e/a11y-contrast.mjs` runs `runOnly: { type: "rule", values: ["color-contrast", "link-in-text-block"] }`. The blocking bar is unchanged at critical/serious, so the 1.4.1 rule blocks rather than being recorded.
+- `tests/a11y-contrast-gate.test.ts` (**7 cases**) pins which rules the real-browser gate runs, so the second rule cannot be dropped without a failing test.
+- `tests/accessibility-ux-reliability.test.ts` grew **11 → 12 cases**: the stylesheet rule and its forced-colours repetition, the button opt-out, the four labelled layout navs, the six `role="group"` progress strips, and the named asides.
+
+### Measured verification, in both directions
+
+The extended gate was run locally from an isolated copy of the tree with **Chrome 155** and **chromedriver 155**, the same WebDriver stack CI uses: it exits **0**, records **26/26** routes, reports **axe violations 0 on every route** and **0 problems** in the per-run route inventory, with 33 *degraded* notes (the pre-existing 120-step/distinct=1 keyboard-walk note plus the recorded non-blocking `incomplete` rows). Removing **only** the stylesheet rule from that copy makes the same gate exit **1** on `/secondary` — `[serious] link-in-text-block … @ a[href$="presumptive"]` (2.66:1) — and the rule was then restored. The full suite passes: `npx vitest run` **380 files / 3722 tests**.
+
+The wider survey was a local instrument (Playwright + axe-core **4.14** + installed Chrome 155, dev server, all 26 routes), not a committed gate. After the fixes it reports `link-in-text-block`, `region`, `landmark-unique` and `aria-prohibited-attr` clean on all 26 routes, and it also measured, on the same routes: no axe delta and a visible focus ring under forced-colours emulation; under `prefers-reduced-motion: reduce`, 0 running animations and 0 elements with a transition or animation duration above 0.15s; no horizontal overflow at **320** or **640** CSS px on any route; a skip link present and targeting the existing `#main-content` on **26/26**; and exactly one `main`, one `h1` and a `lang` on every route.
+
+**The instrument's own limits, recorded rather than smoothed over.** It ran against the dev server, which is what the committed gate also does. Its keyboard-repeat and "invisible focus" counters were polluted by Next.js's dev-tools `nextjs-portal` (0×0, dev-only) and by re-keying repeated widgets whose tag, class and text are identical, which produced one false "focus never advanced" signal; a direct trace of that route (`/secondary/diagnosed`) shows focus advancing normally — skip link, then the condition checkboxes — so **no keyboard trap was found**, and those counters are not evidence of one. Emulated forced colours, emulated reduced motion and viewport widths are emulation: they are not a Windows high-contrast session, not a real 200% zoom pass, and not a substitute for the human rows below.
+
+### What is still manual
+
+The workbook's human rows are unchanged and still blocking: keyboard-only traversal and focus order on the deployed build, keyboard traps and disclosure/file-input behaviour, NVDA and VoiceOver announcements and reading order, error identification, a real 200% zoom/reflow pass, interaction-dependent rendered states, a real Windows forced-colors/high-contrast session, and the final conformance determination. One useful note for that session: the `incomplete` colour-contrast nodes the automated evidence retains are all `aria-hidden` decorative glyphs, so automation leaves **no** unresolved text-contrast node behind.
+
 ## Required manual route and workflow scope
 
 Issue #195 and the workbook require at minimum every route the application ships. `docs/section508-manual-review-workbook.md` holds the authoritative, complete matrix; this list is the summary:
@@ -130,11 +165,14 @@ Issue #195 and the workbook require at minimum every route the application ships
 - `/va-reference/service-branches`;
 - `/get-records`;
 - `/scenarios`;
-- `/privacy`;
+- `/privacy` — the privacy policy, including §8 (deletion right, 45-day commitment, exceptions);
+- `/privacy/request` — the privacy request intake, which prepares the message in the visitor's own mail client and submits nothing to the application;
 - `/terms`;
 - `/runtime-readiness`.
 
 `/results` is excluded: it is an HTTP 307 redirect shim to `/secondary` and renders no content of its own. The exclusion is recorded in the workbook rather than left implicit, so an unlisted route is never mistaken for a reviewed one.
+
+This list is not maintained by hand. `scripts/lib/public-routes.mjs` derives the shipped route set from `src/app/**/page.tsx` and declares each route's document title and title owner, its workbook row, whether the real-browser contrast and keyboard gate scans it, and whether the production route matrix probes it; `tests/public-route-manifest.test.ts` fails if any of those consumers disagrees with what ships. A route added later therefore cannot be missing from this summary, from the workbook matrix it summarizes, or from the automated gates.
 
 A route returning HTTP 200 is only reachability evidence. It does not establish an accessibility pass.
 
@@ -155,14 +193,16 @@ A route returning HTTP 200 is only reachability evidence. It does not establish 
 | Accessible names / labels for interactive workflow controls | Route/component regression tests where implemented | Partial | Must be reviewed across deployed flows |
 | Legal/safety notice text size (≥14px) and label casing | Analytical source scan (`tests/legal-notice-legibility.test.ts`, R-07) | Verified structurally | Positive low-vision evidence; rendered size at 200% zoom still needs human review |
 | Design-token contrast ratios | Analytical source scan (`tests/design-token-contrast.test.ts`, R-02) | Verified structurally | Positive evidence for token pairs only |
-| **Real-browser color contrast** | Axe `color-contrast` (enabled) in live headless Chrome over 22 shipped routes, in CI (`e2e/a11y-contrast.mjs`, R-05, 2026-10-11) | **Verified (automated)** | Positive evidence on the dev-rendered build per CI run; specific *rendered states behind user input* on the deployed app still benefit from the manual workbook pass |
+| **Real-browser color contrast** | Axe `color-contrast` (enabled) in live headless Chrome over 26 shipped routes, in CI (`e2e/a11y-contrast.mjs`, R-05, 2026-10-11; route list derived from `scripts/lib/public-routes.mjs`) | **Verified (automated)** | Positive evidence on the dev-rendered build per CI run; specific *rendered states behind user input* on the deployed app still benefit from the manual workbook pass |
+| **Link distinguishability without colour (WCAG 1.4.1)** | Axe `link-in-text-block` in the same real-browser run, blocking at serious (`e2e/a11y-contrast.mjs`, R-05, added 2026-10-15) | **Verified (automated)** — two findings remediated 2026-10-15 | Positive evidence for the resting state of every in-text link on the 26 scanned routes; links that appear only after user interaction still belong to the manual pass |
+| **Rendered landmark structure (region / landmark uniqueness)** | Axe `region`, `landmark-unique` and `aria-prohibited-attr` in a local real-browser sweep (Playwright, axe-core 4.14, Chrome 155, 26 routes, 2026-10-15; a local instrument, not a committed gate) | **Verified (local measurement)** — four findings remediated 2026-10-15 | Positive evidence for the surveyed states; moderate/best-practice rules, and the screens' post-interaction states, remain for the manual pass |
 | **Keyboard focus visibility (automated walk)** | Tab-walk asserting visible client rects on every focused element (same spec, R-05) | **Verified (automated)** | Focus *order* and trap behavior remain manual; see rows below |
 | Keyboard-only traversal and focus order | Human deployed-app test | **Pending** | Blocking manual evidence |
 | Keyboard traps / disclosure/file-input behavior | Human deployed-app test | **Pending** | Blocking manual evidence |
 | Screen-reader announcements and reading order | NVDA and VoiceOver human test | **Pending** | Blocking manual evidence |
 | Error identification and instructions | Human deployed workflow test | **Pending** | Blocking manual evidence |
 | Zoom/reflow at 200% | Human browser test | **Pending** | Blocking manual evidence |
-| Color contrast across rendered states | Automated real-browser axe pass (R-05) + manual review of input-dependent states | Automated base verified; rendered-state edge cases pending | Automated pass covers static render of 22 routes; the workbook's manual check adds states that only appear during user interaction |
+| Color contrast across rendered states | Automated real-browser axe pass (R-05) + manual review of input-dependent states | Automated base verified; rendered-state edge cases pending | Automated pass covers static render of 26 routes; the workbook's manual check adds states that only appear during user interaction |
 | Windows high-contrast / forced-colors behavior | Human OS/browser test | **Pending** | Blocking manual evidence |
 | Complete Section 508 / WCAG 2.0 A+AA conformance determination | Evidence review | **Pending** | Do not answer “Yes” until supportable |
 | Disabled-control affordance, its text contrast, and the flip between states | Analytical source scan plus real-browser computed-style measurements (`tests/design-token-contrast.test.ts`, R-09/L-02) | Verified structurally and measured | Positive evidence for the normalized buttons at their resting disabled state; other disabled states remain a manual review item |

@@ -123,7 +123,7 @@ export function RatingsStep() {
   return (
     <main>
       <header className="page-hero text-center"><p className="ui-kicker">Step 3 of 6</p><h1>Disability Ratings</h1><p className="mx-auto mt-3 max-w-3xl text-lg">Select the current VA evaluation for each service-connected condition in this research session, or choose not to provide it.</p></header>
-      <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" aria-label="Workflow progress"><span>✓ Diagnosed</span><span>✓ Service-connected</span><strong className="text-blue-700">3 Ratings</strong><span>4 Documents</span><span>5 Connections</span><span>6 Evidence</span></div>
+      <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" role="group" aria-label="Workflow progress"><span>✓ Diagnosed</span><span>✓ Service-connected</span><strong className="text-blue-700">3 Ratings</strong><span>4 Documents</span><span>5 Connections</span><span>6 Evidence</span></div>
 
       {validationMessage && (
         <div id={validationId} role="alert" className="ui-callout mb-5 text-sm">
@@ -133,7 +133,7 @@ export function RatingsStep() {
 
       <form onSubmit={onSubmit} aria-describedby={validationId}>
         <div className="ui-grid">
-          <aside className="ui-stack">
+          <aside className="ui-stack" aria-label="Why ratings matter">
             <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">%</span><h2 className="text-xl font-bold">Why Ratings Matter</h2></div><p className="text-sm">Ratings provide current context for the service-connected disabilities in this research session. The app does not calculate or predict a VA rating decision.</p></section>
             <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">✓</span><h2 className="text-xl font-bold">Accepted Values</h2></div><div className="grid grid-cols-3 gap-2">{ratingOptions.map((rating) => <span key={rating.label} className="rounded-lg border border-slate-200 px-2 py-2 text-center text-sm font-semibold text-blue-700">{rating.label}</span>)}</div><p className="mt-3 text-xs text-slate-600">You may also choose “I prefer not to answer.”</p></section>
           </aside>
@@ -154,7 +154,7 @@ export function RatingsStep() {
             <div className="ui-callout mt-5 text-sm"><strong>Important:</strong> Use the rating currently in effect, not a future or requested increase. You can revise these selections before continuing.</div>
           </section>
 
-          <aside className="ui-stack">
+          <aside className="ui-stack" aria-label="Current summary">
             <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">Σ</span><h2 className="text-xl font-bold">Current Summary</h2></div><ul className="space-y-3">{serviceConnectedConditionIds.map((id) => { const name = catalogById.get(id)?.name ?? id; const rating = ratingsByConditionId[id]; return <li key={id} className="flex justify-between gap-3 border-b border-slate-100 pb-2 text-sm"><span className="font-medium">{name}</span><strong className="text-blue-700">{rating === null ? "Not provided" : typeof rating === "number" ? `${rating}%` : "—"}</strong></li>; })}</ul></section>
             <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">i</span><h2 className="text-xl font-bold">Helpful Reminder</h2></div><p className="text-sm">This is a research aid, not a rating calculator or decision. VA evaluates ratings under the applicable schedule and the complete evidentiary record.</p></section>
           </aside>

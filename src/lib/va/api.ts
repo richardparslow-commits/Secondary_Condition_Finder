@@ -27,6 +27,16 @@ import { clampRetryAfterCooldownMs, parseRetryAfterMs } from "./circuit-breaker"
  *      are derived from an upstream-controlled document, so returning them would
  *      hand an attacker-shaped structure to whatever logs or renders it. The
  *      caller gets `ok: false` and nothing else, which is all the fallback needs.
+ *   4. **Upstream rate-limit guidance may only tighten.**
+ *      `parseVaApiRateLimitGuidance` reads the `remaining`/`limit`/`reset`
+ *      headers the upstream sends about *its own* quota, and
+ *      `planVaApiConsumerPacing` turns them into the one action this adapter
+ *      takes on them: extra reservations charged against the shared consumer
+ *      budget (audit A03). Guidance that is absent, malformed, self-
+ *      inconsistent, or in an encoding this adapter cannot read produces **no**
+ *      action, and no input can ever produce a *smaller* charge or a relaxed
+ *      budget — a confirmed VA policy could relax the pacing, but nothing in
+ *      this repo may assume that policy.
  *
  * Nothing here performs I/O or reads configuration, so the policy is
  * exhaustively testable without a network, a clock, or a runtime environment.
@@ -176,6 +186,194 @@ export function planVaApiRateLimitRetry(args: {
     // turns into the smallest legal delay instead of a second concurrent burst.
     delayMs: Math.max(instructed, vaApiRetryDelayMs(args.attempt, args.random)),
     retryAfterMs: instructed,
+  };
+}
+
+/**
+ * Header families that carry rate-limit guidance, lowercase.
+ *
+ * `x-ratelimit-*` is the spelling VA's own documentation uses; `ratelimit-*` is
+ * the IETF draft spelling that gateway-fronted services also emit. Both are
+ * accepted because a consumer that only understands one of them silently stops
+ * hearing the upstream — the failure mode this whole block exists to avoid.
+ */
+export const VA_API_RATE_LIMIT_HEADER_PREFIXES: readonly string[] = [
+  "x-ratelimit-",
+  "ratelimit-",
+];
+
+/**
+ * Largest upstream reset this adapter will read as delay-seconds.
+ *
+ * A `reset` value is only usable if it plausibly *is* a delay. The two encodings
+ * in the wild are delay-seconds (small) and epoch-seconds (~1.7e9), and reading
+ * an epoch value as a delay would hold the fleet for decades, so anything above
+ * this bound (one hour) is treated as an encoding this adapter cannot read and
+ * the guidance is discarded rather than guessed at.
+ */
+export const VA_API_RATE_LIMIT_RESET_MAX_SECONDS = 3600;
+
+/** What the upstream said about its own quota for this consumer. */
+export interface VaApiRateLimitGuidance {
+  /** Requests the upstream says this consumer still has in its window. */
+  remaining: number;
+  /** The upstream's window limit, when it disclosed one. */
+  limit: number | null;
+  /** Seconds until the upstream's window resets, when it disclosed one. */
+  resetSeconds: number | null;
+}
+
+/**
+ * A header source: a `Headers` instance, or a plain map (normalized
+ * case-insensitively here) so the policy can be exercised from a fixture.
+ */
+export type VaApiRateLimitHeaderSource =
+  | { get(name: string): string | null }
+  | Record<string, string | number | null | undefined>;
+
+function readHeader(source: VaApiRateLimitHeaderSource, name: string): unknown {
+  const getter = (source as { get?: unknown }).get;
+  if (typeof getter === "function") {
+    return (source as { get(name: string): string | null }).get(name);
+  }
+  for (const [key, value] of Object.entries(source as Record<string, unknown>)) {
+    if (key.toLowerCase() === name) return value;
+  }
+  return null;
+}
+
+/**
+ * Read one header as a non-negative integer, strictly.
+ *
+ * No coercion: `1.5`, `-1`, `0x2`, `1e3`, `" 5 "`-style padding inside a
+ * non-string, a JSON `true`, and an empty value are all refused. A counter the
+ * adapter cannot read exactly is a counter it must not act on.
+ */
+function readStrictHeaderInteger(raw: unknown): number | null {
+  if (typeof raw === "number") {
+    return Number.isSafeInteger(raw) && raw >= 0 ? raw : null;
+  }
+  if (typeof raw !== "string") return null;
+  const trimmed = raw.trim();
+  if (!/^\d{1,15}$/.test(trimmed)) return null;
+  const value = Number(trimmed);
+  return Number.isSafeInteger(value) ? value : null;
+}
+
+/** Look the header up under each accepted prefix. Absent is not unusable. */
+function readGuidanceField(
+  source: VaApiRateLimitHeaderSource,
+  field: "remaining" | "limit" | "reset",
+): { present: boolean; value: number | null } {
+  for (const prefix of VA_API_RATE_LIMIT_HEADER_PREFIXES) {
+    const raw = readHeader(source, `${prefix}${field}`);
+    if (raw === null || raw === undefined) continue;
+    return { present: true, value: readStrictHeaderInteger(raw) };
+  }
+  return { present: false, value: null };
+}
+
+/**
+ * Read the upstream's rate-limit guidance, or `null` when it cannot be trusted.
+ *
+ * Every ambiguity resolves to `null`, because "no guidance" keeps the budget at
+ * its conservative default while a guessed number would change fleet behaviour
+ * on the strength of a header this adapter did not understand:
+ *
+ *   - `remaining` must be present and a strict non-negative integer;
+ *   - `limit`, when present, must be a strict integer of at least 1, and the
+ *     document is refused outright when `remaining > limit` (a pair that cannot
+ *     both be true is evidence the encoding is not what it appears to be);
+ *   - `reset`, when present, must be a strict integer within
+ *     `VA_API_RATE_LIMIT_RESET_MAX_SECONDS`.
+ */
+export function parseVaApiRateLimitGuidance(
+  headers: VaApiRateLimitHeaderSource,
+): VaApiRateLimitGuidance | null {
+  const remaining = readGuidanceField(headers, "remaining");
+  if (!remaining.present || remaining.value === null) return null;
+
+  const limit = readGuidanceField(headers, "limit");
+  if (limit.present && (limit.value === null || limit.value < 1)) return null;
+  if (limit.value !== null && remaining.value > limit.value) return null;
+
+  const reset = readGuidanceField(headers, "reset");
+  if (
+    reset.present &&
+    (reset.value === null || reset.value > VA_API_RATE_LIMIT_RESET_MAX_SECONDS)
+  ) {
+    return null;
+  }
+
+  return { remaining: remaining.value, limit: limit.value, resetSeconds: reset.value };
+}
+
+/** Why the upstream guidance changed nothing about the consumer budget. */
+export type VaApiConsumerPacingNoAdaptationReason =
+  /** No header, or one this adapter refuses to read (see the parser). */
+  | "no-guidance"
+  /** The upstream's remaining quota meets or exceeds the local budget. */
+  | "headroom-ample"
+  /** The upstream says its window resets immediately. */
+  | "reset-imminent";
+
+/**
+ * The one action guidance can produce: reservations to charge the shared budget.
+ *
+ * There is deliberately no `adapt: true` variant that *reduces* the budget or
+ * grants an allowance, so no code path here can relax the fleet's pacing.
+ */
+export type VaApiConsumerPacingDecision =
+  | { adapt: false; reason: VaApiConsumerPacingNoAdaptationReason }
+  | { adapt: true; reason: "quota-deficit"; extraReservations: number };
+
+/**
+ * Turn upstream rate-limit guidance into a charge against the consumer budget.
+ *
+ * The shared budget approximates VA's per-consumer quota with a local rolling
+ * window (`VA_SHARED_CONSUMER_MAX_REQUESTS` per
+ * `VA_SHARED_CONSUMER_WINDOW_MS`). When the upstream states how much quota is
+ * actually left, that statement is strictly more informative than the
+ * approximation, and the conservative way to use it is to charge the local
+ * counter for the difference: a consumer with `remaining` left against a budget
+ * of `maxRequests` is charged `maxRequests - remaining`, so the fleet admits
+ * about as many further attempts as the upstream says it has and no more.
+ *
+ * The `reset` term spreads that charge over the window the upstream still says
+ * it is short for — a reset due in a quarter of the window charges a quarter of
+ * the deficit, because the upstream refills at the reset — and a reset already
+ * due (`0`) charges nothing at all. When the upstream discloses **no** reset,
+ * the full deficit is charged: the unknown case takes the more restrictive
+ * branch, never the looser one.
+ *
+ * The result is bounded to `[1, maxRequests]`, so one response can never charge
+ * more than a whole window's budget, and it is always a positive integer, so a
+ * deficit can never round down to "no action".
+ */
+export function planVaApiConsumerPacing(args: {
+  guidance: VaApiRateLimitGuidance | null | undefined;
+  /** The budget's cap per window, e.g. `VA_SHARED_CONSUMER_MAX_REQUESTS`. */
+  maxRequests: number;
+  /** The budget's window length, e.g. `VA_SHARED_CONSUMER_WINDOW_MS`. */
+  windowMs: number;
+}): VaApiConsumerPacingDecision {
+  const guidance = args.guidance;
+  if (!guidance) return { adapt: false, reason: "no-guidance" };
+
+  const deficit = args.maxRequests - Math.min(guidance.remaining, args.maxRequests);
+  if (deficit <= 0) return { adapt: false, reason: "headroom-ample" };
+
+  const resetMs = guidance.resetSeconds === null ? null : guidance.resetSeconds * 1000;
+  const scale =
+    resetMs === null || !Number.isFinite(args.windowMs) || args.windowMs <= 0
+      ? 1
+      : Math.min(1, resetMs / args.windowMs);
+  if (scale === 0) return { adapt: false, reason: "reset-imminent" };
+
+  return {
+    adapt: true,
+    reason: "quota-deficit",
+    extraReservations: Math.min(args.maxRequests, Math.max(1, Math.ceil(deficit * scale))),
   };
 }
 

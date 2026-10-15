@@ -461,10 +461,13 @@ describe("VA shared reference cache — finding #3 (multi-instance miss rate)", 
         // Shared circuit coordination read: no cooldown marker is published.
         if (command[0] === "GET") return okJson({ result: null });
         // Redis answers EXPIRE with integer 1 when it set the timeout. The
-        // consumer budget validates that reply (audit A03), so a fixture that
+        // cache-write budget validates that reply (audit A03), so a fixture that
         // answered "OK" here would be stubbing a reply the store never sends
         // and would fail the admission closed.
         if (command[0] === "EXPIRE") return okJson({ result: 1 });
+        // The consumer budget is one atomic script whose reply is a decision
+        // code the reservation validates (audit A03): 1 is "admitted".
+        if (command[0] === "EVAL") return okJson({ result: 1 });
         return okJson({ result: "OK" });
       }
       return new Response(JSON.stringify({ data: [] }), {
@@ -494,6 +497,8 @@ describe("VA shared reference cache — finding #3 (multi-instance miss rate)", 
         const command = JSON.parse(String(init?.body ?? "[]")) as unknown[];
         if (command[0] === "INCR") return okJson({ result: 1 });
         if (command[0] === "MGET") return okJson({ result: [null, null] });
+        // The consumer budget's atomic decision; 1 is "admitted" (audit A03).
+        if (command[0] === "EVAL") return okJson({ result: 1 });
         return okJson({ result: null });
       }
       return new Response("oops", { status: 503 });

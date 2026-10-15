@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "policy": "Every advisory npm reports for this repository's dependency tree must be classified here: what it affects, whether it ships, whether a patched release exists, how hostile input would have to reach it, and what is reviewed on a schedule. `npm run audit:disposition` fails on an unclassified advisory (new debt), on a record that no longer matches the tree (drift, a resolved advisory, a moved version), on a patched release that exists but has not been taken (the upgrade must land instead of being tracked), and on a review window that has expired. Severity enforcement for production dependencies stays with `npm run audit:high`; this register governs inventory completeness, classification and freshness.",
+  "reviewWindowDays": 180,
+  "owner": "Richard Parslow (`richardparslow-commits`)",
+  "authority": "SECURITY.md, `## Supported Code` (the dependency-audit and advisory paragraph) — the published owner policy that a dev-only advisory with no patched release stays tracked and visible rather than waived, and that `npm audit fix --force` into an older major line is never the resolution. This register records that policy per advisory, with the reachability evidence each entry rests on; it does not create a new risk acceptance.",
+  "entries": [
+    {
+      "advisory": "GHSA-vfj7-8cjw-p6xm",
+      "url": "https://github.com/advisories/GHSA-vfj7-8cjw-p6xm",
+      "title": "braces vulnerable to stack-exhaustion denial of service through deeply nested patterns",
+      "severity": "high",
+      "advisoryRange": "<=3.0.3",
+      "patchedVersion": null,
+      "disposition": "tracked-no-fix",
+      "ships": "dev-tooling",
+      "affectedPackages": [
+        "@next/eslint-plugin-next",
+        "braces",
+        "eslint-config-next",
+        "fast-glob",
+        "micromatch"
+      ],
+      "paths": [
+        {
+          "package": "braces",
+          "version": "3.0.3",
+          "lockPath": "node_modules/braces",
+          "dependencyPath": [
+            "eslint-config-next@16.3.8 (devDependency)",
+            "@next/eslint-plugin-next@16.3.8",
+            "fast-glob@3.3.1",
+            "micromatch@4.0.8",
+            "braces@3.0.3"
+          ]
+        }
+      ],
+      "reachability": "The affected code runs only when the ESLint toolchain expands glob patterns, which happens in developer and CI environments and never in a served request. The patterns are repository-authored configuration (`eslint.config.mjs`) and file paths produced by the linter itself; the advisory needs a deeply nested pattern supplied by whoever controls that configuration. Reaching it therefore requires commit access to the lint configuration, and the observable damage is wasted CI runner time, bounded by the job's `timeout-minutes` — not data loss, disclosure, privilege escalation, or a production path. No hostile pattern is present in `eslint.config.mjs`. The installed `braces@3.0.3` is already the newest published release.",
+      "compensatingControls": [
+        "Dev-only: the lockfile marks the whole chain `dev: true`, so it is absent from the runtime tree — `npm run audit:high` (`--omit=dev --audit-level=high`, the enforced production gate) never reports it.",
+        "The only pattern source is reviewed, repository-authored ESLint configuration; no user, request, VA payload, or uploaded document reaches this code path.",
+        "`npm audit fix --force` is not used: npm's proposed resolution is a downgrade to `eslint-config-next@14.2.35` (two major lines back from 16.3.8), which would be a larger and untested supply-chain change than the advisory it removes.",
+        "CI runner exposure is bounded by the job `timeout-minutes`; lint is not part of any user-facing request path."
+      ],
+      "reproduction": [
+        "npm run audit:high:all   # reports the five-entry chain; braces carries the advisory",
+        "npm view braces version  # 3.0.3 — the installed version is the newest published release",
+        "curl -s https://api.github.com/advisories/GHSA-vfj7-8cjw-p6xm | grep -i patched   # first_patched_version is absent"
+      ],
+      "reviewedAt": "2026-10-14"
+    },
+    {
+      "advisory": "GHSA-hp3w-g68c-fv3c",
+      "url": "https://github.com/advisories/GHSA-hp3w-g68c-fv3c",
+      "title": "sprintf-js vulnerable to denial of service through unbounded precision specifiers",
+      "severity": "moderate",
+      "advisoryRange": "<=1.1.3",
+      "patchedVersion": null,
+      "disposition": "tracked-no-fix",
+      "ships": "runtime",
+      "affectedPackages": [
+        "argparse",
+        "mammoth",
+        "sprintf-js"
+      ],
+      "paths": [
+        {
+          "package": "sprintf-js",
+          "version": "1.0.3",
+          "lockPath": "node_modules/sprintf-js",
+          "dependencyPath": [
+            "mammoth@1.12.2 (runtime dependency)",
+            "mammoth/node_modules/argparse@1.0.10",
+            "sprintf-js@1.0.3"
+          ]
+        },
+        {
+          "package": "argparse",
+          "version": "1.0.10",
+          "lockPath": "node_modules/mammoth/node_modules/argparse",
+          "dependencyPath": [
+            "mammoth@1.12.2 (runtime dependency)",
+            "mammoth/node_modules/argparse@1.0.10"
+          ]
+        }
+      ],
+      "reachability": "The vulnerable function is reached only through `argparse`'s own error-message formatting, and `argparse` is required in exactly one place in the installed tree: `mammoth/bin/mammoth`, the package's CLI entry point. The library path is clean — none of the 82 files under `node_modules/mammoth/lib` references `argparse` or `sprintf-js`. This application imports the library (`await import(\"mammoth\")` then `mammoth.extractRawText({ arrayBuffer })`, `src/lib/evidence/document-extract.ts`) and contains no `child_process` use anywhere in `src/`, so it never executes that CLI and never supplies an argument vector or format string. The module is present on disk because npm installs a dependency's `bin` requirements alongside its library, not because the application loads it: it is outside the application's import graph, and no request, document, or VA payload reaches it. The installed `sprintf-js@1.0.3` is not the newest release (1.1.3 exists) but the advisory covers every published version, `<=1.1.3`.",
+      "compensatingControls": [
+        "Not in the application's import graph: the only requirer of `argparse` is `node_modules/mammoth/bin/mammoth`, an entry point the application never invokes.",
+        "`src/` contains no `child_process`/`execFile`/`spawn` call, pinned by `tests/dependency-advisory-disposition.test.ts`, so no code path can run that CLI.",
+        "The affected library runs in the browser, not on the server: DOCX text extraction is part of the browser-local evidence pipeline, and the existing extraction bounds (byte, page, and character budgets) already limit work on any document.",
+        "DOCX extraction is optional and user-initiated; a failed or refused document degrades to the manual path rather than blocking a workflow.",
+        "Upgrading `mammoth` does not remove the chain: `mammoth@1.13.0` (the newest release) still declares `argparse ~1.0.3`, and no published `sprintf-js` or `braces` release is outside the advisory range, so no upgrade path exists today."
+      ],
+      "reproduction": [
+        "grep -rn 'require(\"argparse\")' node_modules/mammoth/bin node_modules/mammoth/lib   # only bin/mammoth matches",
+        "node -e 'const fs=require(\"fs\"),p=require(\"path\");let hits=0;for(const f of fs.readdirSync(\"node_modules/mammoth/lib\",{recursive:true})){const s=path.join(\"node_modules/mammoth/lib\",f);if(fs.statSync(s).isFile()&&/\\.js$/.test(f)&&/argparse|sprintf/.test(fs.readFileSync(s,\"utf8\")))hits++;}console.log(\"lib files referencing argparse/sprintf:\",hits);'   # 0",
+        "grep -rn 'child_process\\|execFile\\|spawn(' src/   # no matches",
+        "npm view mammoth@1.13.0 dependencies --json   # argparse ~1.0.3 — the newest release keeps the chain",
+        "curl -s https://api.github.com/advisories/GHSA-hp3w-g68c-fv3c | grep -i patched   # first_patched_version is absent"
+      ],
+      "reviewedAt": "2026-10-14"
+    }
+  ]
+}

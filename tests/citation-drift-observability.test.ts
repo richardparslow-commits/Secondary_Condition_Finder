@@ -3,27 +3,44 @@ import { describe, expect, it } from "vitest";
 import {
   buildReport,
   hashContent,
-  MAX_UNDIGESTED_VERIFIED_REFS,
+  loadDigestIneligibilityRegister,
+  MAX_UNDIGESTED_ELIGIBLE_VERIFIED_REFS,
 } from "../scripts/audit-citation-decay";
 
 /**
  * Contract tests for content-drift observability in the citation-decay audit.
  *
- * A `contentDigest` may only be recorded by the qualified human who verified
- * the source and is anchored to that verification's `sourceCheckedOn` date, so
- * no script may backfill one (docs/citation-verification-sop.md). That makes
- * the digest population a monotonic backlog, and it creates a reporting hazard:
- * `contentDriftCount: 0` is emitted both when every digested source still
- * matches and when nothing was digest-comparable at all. These tests pin that
- * the report distinguishes the two, and that the backlog cannot grow past
- * MAX_UNDIGESTED_VERIFIED_REFS without failing the audit.
+ * Two hazards are pinned here.
+ *
+ * 1. `contentDriftCount: 0` is emitted both when every digested source still
+ *    matches and when nothing was digest-comparable at all, so the report must
+ *    distinguish the two: a `contentDigest` may only be recorded by the
+ *    qualified human who verified the source (docs/citation-verification-sop.md),
+ *    and its coverage is stated rather than implied (FAIL-002's ratchet).
+ *
+ * 2. The ratchet may only measure a backlog a human can actually move. A digest
+ *    is anchored to the reference's `sourceUrl` and checked by re-fetching it,
+ *    so for some URLs — PubMed record pages, which the probe is served as a
+ *    per-request anti-bot interstitial; bot-walled publisher pages — no digest
+ *    can ever validate, and the SOP requires omitting one rather than recording
+ *    a false positive. Pinning the whole corpus-wide backlog made this gate
+ *    unsatisfiable: on 2026-10-14 it failed at 398 undigested against a pin of
+ *    383 with zero link rot, drift or staleness, and the auto-opened tracking
+ *    issue asked for re-verification of references that had not decayed (issue
+ *    #518). The ratchet now counts the digest-eligible backlog, and the
+ *    ineligible classes are declared with their measurement in
+ *    docs/citation-digest-ineligible-classes.json — a register that fails closed
+ *    when it is missing, malformed or past its review window.
  *
  * The HTTP probe is not exercised here (no network in unit tests); an empty
  * probeResults map means every URL probe is skipped, isolating the counting.
  */
 
 const TODAY = "2026-09-25";
+/** Eligible: not declared in the register, so a digest here is achievable. */
 const URL = "https://example.gov/source";
+/** Declared ineligible: the probe's own fetch of this URL is never comparable. */
+const PUBMED_URL = "https://pubmed.ncbi.nlm.nih.gov/30407234/";
 
 type Ref = Record<string, unknown>;
 
@@ -52,15 +69,31 @@ function verifiedRef(overrides: Ref = {}): Ref {
   };
 }
 
-/** `count` verified references with no digest — the ratchet's population. */
+/** `count` verified references on eligible URLs with no digest. */
 function undigested(count: number): Ref[] {
   return Array.from({ length: count }, (_, i) =>
     verifiedRef({ sourceUrl: `${URL}?n=${i}`, citation: `citation-${i}` }),
   );
 }
 
-function report(refs: Ref[]) {
-  return buildReport(corpus(refs), new Map(), TODAY);
+/** `count` verified references in a declared digest-ineligible class. */
+function ineligible(count: number): Ref[] {
+  return Array.from({ length: count }, (_, i) =>
+    verifiedRef({ sourceUrl: `${PUBMED_URL}?pmid=${i}`, citation: `pubmed-${i}` }),
+  );
+}
+
+/** The shipped register, optionally patched to exercise a fault. */
+function shippedRegister(patch: Record<string, unknown> = {}): Record<string, unknown> {
+  const { register } = loadDigestIneligibilityRegister();
+  return { ...(register as Record<string, unknown>), ...patch };
+}
+
+function report(refs: Ref[], register?: unknown) {
+  // `undefined` exercises the audit's own default: the register on disk.
+  return register === undefined
+    ? buildReport(corpus(refs), new Map(), TODAY)
+    : buildReport(corpus(refs), new Map(), TODAY, register);
 }
 
 describe("content-drift observability", () => {
@@ -133,32 +166,43 @@ describe("content-drift observability", () => {
 
     expect(result.verifiedReferenceCount).toBe(0);
     expect(result.contentDriftCoveragePercent).toBe(100);
+    expect(result.digestEligibleCoveragePercent).toBe(100);
     expect(result.contentDriftDetectable).toBe(false);
   });
 });
 
-describe("undigested-verified ratchet", () => {
-  it("exposes the pin in the report so the ceiling is visible to readers", () => {
-    expect(report([]).maxUndigestedVerifiedRefs).toBe(MAX_UNDIGESTED_VERIFIED_REFS);
+describe("digest-eligible ratchet", () => {
+  it("exposes the pin and the eligible population in the report", () => {
+    const result = report([]);
+
+    expect(result.maxUndigestedEligibleVerifiedRefs).toBe(MAX_UNDIGESTED_ELIGIBLE_VERIFIED_REFS);
+    expect(result.digestEligibleWithoutDigestCount).toBe(0);
+    expect(result.digestIneligibleWithoutDigestCount).toBe(0);
+    expect(result.digestEligibleReferenceCount).toBe(0);
   });
 
   it("passes at exactly the baseline without raising a structural flag", () => {
-    const result = report(undigested(MAX_UNDIGESTED_VERIFIED_REFS));
+    const result = report(undigested(MAX_UNDIGESTED_ELIGIBLE_VERIFIED_REFS));
 
-    expect(result.verifiedWithoutDigestCount).toBe(MAX_UNDIGESTED_VERIFIED_REFS);
+    expect(result.digestEligibleWithoutDigestCount).toBe(MAX_UNDIGESTED_ELIGIBLE_VERIFIED_REFS);
     expect(result.status).toBe("PASS");
     expect(result.structuralFlags).toEqual([]);
   });
 
-  it("fails one reference over the baseline and names the SOP as the remedy", () => {
-    const result = report(undigested(MAX_UNDIGESTED_VERIFIED_REFS + 1));
+  it("fails one eligible reference over the baseline and names the SOP as the remedy", () => {
+    const result = report(undigested(MAX_UNDIGESTED_ELIGIBLE_VERIFIED_REFS + 1));
 
     expect(result.status).toBe("FAIL");
     expect(result.structuralFlagCount).toBe(1);
     const flag = result.structuralFlags[0];
     expect(flag.reason).toMatch(/content-drift observability regressed/);
-    expect(flag.reason).toContain(`ratchet baseline ${MAX_UNDIGESTED_VERIFIED_REFS}`);
+    expect(flag.reason).toContain(`ratchet baseline ${MAX_UNDIGESTED_ELIGIBLE_VERIFIED_REFS}`);
     expect(flag.reason).toContain("docs/citation-verification-sop.md");
+    // The remedy must point at the register that decides eligibility, so the
+    // reader can tell a missing digest from an impossible one.
+    expect(flag.reason).toContain("docs/citation-digest-ineligible-classes.json");
+    expect(flag.reason).toMatch(/measured class list/);
+    expect(flag.reason).toMatch(/not headroom/);
     // The failure must not be attributable to a per-reference defect.
     expect(flag.file).toBe("(corpus-wide)");
     expect(result.staleCount).toBe(0);
@@ -166,13 +210,140 @@ describe("undigested-verified ratchet", () => {
   });
 
   it("lets recording digests shrink the backlog back under the pin", () => {
-    const refs = undigested(MAX_UNDIGESTED_VERIFIED_REFS + 1);
+    const refs = undigested(MAX_UNDIGESTED_ELIGIBLE_VERIFIED_REFS + 1);
     // Simulate the qualified-human step: one more digest recorded.
     refs[0].contentDigest = `sha256-${hashContent("newly verified body")}`;
 
     const result = report(refs);
 
-    expect(result.verifiedWithoutDigestCount).toBe(MAX_UNDIGESTED_VERIFIED_REFS);
+    expect(result.digestEligibleWithoutDigestCount).toBe(MAX_UNDIGESTED_ELIGIBLE_VERIFIED_REFS);
     expect(result.status).toBe("PASS");
+  });
+
+  it("never counts a declared digest-ineligible reference against the pin", () => {
+    // Issue #518 regression: this is the population the SOP forbids digesting,
+    // and the gate used to fail because of it alone.
+    const refs = [...undigested(MAX_UNDIGESTED_ELIGIBLE_VERIFIED_REFS), ...ineligible(400)];
+
+    const result = report(refs);
+
+    expect(result.digestEligibleWithoutDigestCount).toBe(MAX_UNDIGESTED_ELIGIBLE_VERIFIED_REFS);
+    expect(result.digestIneligibleWithoutDigestCount).toBe(400);
+    expect(result.digestIneligibleByClass["pubmed-record-page"]).toBe(400);
+    expect(result.status).toBe("PASS");
+    expect(result.structuralFlags).toEqual([]);
+  });
+
+  it("still fails when only the eligible backlog grows, however large the excluded class", () => {
+    const refs = [
+      ...undigested(MAX_UNDIGESTED_ELIGIBLE_VERIFIED_REFS + 1),
+      ...ineligible(400),
+    ];
+
+    const result = report(refs);
+
+    expect(result.status).toBe("FAIL");
+    expect(result.structuralFlagCount).toBe(1);
+    // The excluded population is disclosed inside the failure, not silently dropped.
+    expect(result.structuralFlags[0].reason).toContain("400 further verified references");
+    expect(result.structuralFlags[0].reason).toContain("pubmed-record-page");
+  });
+
+  it("keeps the corpus-wide count as the sum of both populations", () => {
+    const refs = [...undigested(2), ...ineligible(3)];
+
+    const result = report(refs);
+
+    expect(result.verifiedWithoutDigestCount).toBe(5);
+    expect(result.verifiedWithoutDigestCount).toBe(
+      result.digestEligibleWithoutDigestCount + result.digestIneligibleWithoutDigestCount,
+    );
+  });
+
+  it("scores coverage against the achievable population as well as the whole corpus", () => {
+    const digested = hashContent("stable page body");
+    const result = report([
+      verifiedRef({ contentDigest: `sha256-${digested}` }),
+      verifiedRef({ sourceUrl: `${URL}?n=2` }),
+      ...ineligible(3),
+    ]);
+
+    // One of two eligible references carries a digest...
+    expect(result.digestEligibleReferenceCount).toBe(2);
+    expect(result.digestEligibleCoveragePercent).toBe(50);
+    // ...while corpus-wide coverage stays at one of five, which is the honest
+    // number for a reader asking how much drift detection can see.
+    expect(result.contentDriftCoveragePercent).toBe(20);
+  });
+
+  it("treats an unknown or unparsable URL as eligible, so it cannot escape the pin", () => {
+    const result = report([
+      undigested(MAX_UNDIGESTED_ELIGIBLE_VERIFIED_REFS)[0],
+      verifiedRef({ sourceUrl: "not a url", citation: "unparsable" }),
+      verifiedRef({ sourceUrl: `${URL}?n=9`, citation: "plain" }),
+    ]);
+
+    expect(result.digestEligibleWithoutDigestCount).toBe(3);
+    expect(result.digestIneligibleWithoutDigestCount).toBe(0);
+  });
+});
+
+describe("digest-ineligibility register fails closed", () => {
+  const APPLIED =
+    "Re-measure each declared class (two fetches of its observation URL, comparing HTTP status, byte length and sha256)";
+
+  it("flags a register that cannot be read at all", () => {
+    const result = report([verifiedRef()], null);
+
+    expect(result.status).toBe("FAIL");
+    const flag = result.structuralFlags.find((entry) => /register unusable/.test(entry.reason));
+    expect(flag).toBeDefined();
+    expect(flag?.reason).toContain(APPLIED);
+    // The register summary must not claim classes it could not read.
+    expect(result.digestIneligibilityRegister.classes).toEqual([]);
+    expect(result.digestIneligibilityRegister.expired).toBe(false);
+  });
+
+  it("flags a malformed class instead of reading it as an exemption", () => {
+    const result = report(
+      [verifiedRef()],
+      shippedRegister({ classes: [{ id: "half-written", host: "example.gov" }] }),
+    );
+
+    expect(result.status).toBe("FAIL");
+    const flag = result.structuralFlags.find((entry) => /register unusable/.test(entry.reason));
+    expect(flag?.reason).toContain("pathPattern must be a non-empty string");
+    expect(flag?.reason).toContain("must be an object recording the measurement");
+  });
+
+  it("flags an expired review window rather than treating the classes as permanent", () => {
+    const result = report(
+      [verifiedRef()],
+      shippedRegister({ reviewedOn: "2020-01-01" }),
+    );
+
+    expect(result.status).toBe("FAIL");
+    expect(result.digestIneligibilityRegister.expired).toBe(true);
+    expect(result.digestIneligibilityRegister.reviewExpiresOn).toBe("2020-06-29");
+    const flag = result.structuralFlags.find((entry) => /review expired/.test(entry.reason));
+    expect(flag?.reason).toContain("measured on 2020-01-01");
+    expect(flag?.reason).toContain(APPLIED);
+    // The eligible backlog itself was fine: only the register's freshness failed.
+    expect(result.digestEligibleWithoutDigestCount).toBe(1);
+  });
+
+  it("discloses the declared classes and the review dates it applied", () => {
+    const result = report([verifiedRef()]);
+
+    expect(result.digestIneligibilityRegister.issues).toEqual([]);
+    expect(result.digestIneligibilityRegister.expired).toBe(false);
+    expect(result.digestIneligibilityRegister.reviewedOn).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(result.digestIneligibilityRegister.reviewExpiresOn).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(result.digestIneligibilityRegister.classes.map((entry) => entry.id)).toContain(
+      "pubmed-record-page",
+    );
+    expect(result.digestIneligibilityRegister.classes.map((entry) => entry.host)).toContain(
+      "pubmed.ncbi.nlm.nih.gov",
+    );
   });
 });

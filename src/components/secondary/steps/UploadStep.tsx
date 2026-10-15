@@ -122,7 +122,7 @@ export function UploadStep() {
     <main>
       <VoiceInputHotkeyBridge />
       <header className="page-hero text-center"><p className="ui-kicker">Step 4 of 6</p><h1>Supporting Documents</h1><p className="mx-auto mt-3 max-w-3xl text-lg">Optionally review evidence and add limited medication or treatment context that may help identify authored pathways worth discussing with a qualified professional.</p></header>
-      <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" aria-label="Workflow progress"><span>✓ Diagnosed</span><span>✓ Service-connected</span><span>✓ Ratings</span><strong className="text-blue-700">4 Documents</strong><span>5 Connections</span><span>6 Evidence</span></div>
+      <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" role="group" aria-label="Workflow progress"><span>✓ Diagnosed</span><span>✓ Service-connected</span><span>✓ Ratings</span><strong className="text-blue-700">4 Documents</strong><span>5 Connections</span><span>6 Evidence</span></div>
 
       {validationMessage && (
         <div role="alert" className="ui-callout mb-5 text-sm">
@@ -131,7 +131,7 @@ export function UploadStep() {
       )}
 
       <div className="ui-grid">
-        <aside className="ui-card">
+        <aside className="ui-card" aria-label="Optional evidence review">
           <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">✓</span><h2 className="text-xl font-bold">Optional Evidence Review</h2></div>
           <p className="text-sm">Use this step if you want the app to identify exact source excerpts that may be useful for later review with a qualified provider or accredited representative.</p>
           <div className="ui-divider" />
@@ -206,7 +206,7 @@ export function UploadStep() {
           </form>
         </section>
 
-        <aside className="ui-stack">
+        <aside className="ui-stack" aria-label="What strong evidence includes">
           <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">★</span><h2 className="text-xl font-bold">What Strong Evidence Often Includes</h2></div><ul className="list-disc space-y-3 pl-5 text-sm"><li>Current diagnosis and treatment records</li><li>A timeline showing onset and progression</li><li>Relevant treatment history and medication records</li><li>A clinician-authored medical opinion addressing causation or aggravation when medical expertise is required</li><li>Evidence discussing alternative causes when clinically relevant</li></ul></section>
           <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">→</span><h2 className="text-xl font-bold">Current Run</h2></div><ul className="space-y-2 text-sm">{serviceConnectedConditionIds.map((id) => { const condition = byId.get(id); if (!condition) return null; const rating = ratingsByConditionId[id]; return <li key={id} className="flex justify-between gap-3 border-b border-slate-100 pb-2"><span className="font-medium">{condition.name}</span><span className="text-blue-700">{rating === null ? "Not provided" : `${rating}%`}</span></li>; })}</ul>{(medications.length > 0 || treatments.length > 0) && <p className="mt-4 text-xs text-slate-600">Optional context saved: {medications.length} medication item(s), {treatments.length} treatment item(s).</p>}</section>
         </aside>

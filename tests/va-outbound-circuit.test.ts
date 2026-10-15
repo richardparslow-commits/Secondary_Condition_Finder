@@ -16,7 +16,9 @@ import {
 } from "@/lib/va/circuit-breaker";
 import {
   reserveVaSharedConsumerSlot,
+  SHARED_CONSUMER_WINDOW_SCRIPT,
   VA_SHARED_CONSUMER_MAX_REQUESTS,
+  VA_SHARED_CONSUMER_WINDOW_MS,
 } from "@/lib/va/reference-shared-cache";
 import {
   clearVaApiOutboundRateLimitState,
@@ -52,6 +54,7 @@ const config: VaApiConfig = {
 };
 
 const KV_HOST = "https://kv.example.test";
+const BUDGET_PREFIX = "va:ref:budget:";
 const FORM_MARKER_KEY = "va:ref:circuit:va-forms";
 const FORM_DEADLINE_KEY = "va:ref:circuit-deadline:va-forms";
 const FORM_PROBE_KEY = "va:ref:circuit-probe:va-forms";
@@ -249,8 +252,13 @@ describe("VA shared circuit coordination — distributed runtimes", () => {
     await expect(
       reserveVaSharedConsumerSlot(undefined, windowBase + VA_SHARED_CONSUMER_MAX_REQUESTS),
     ).resolves.toBe(false);
-    // The window counter is bounded by a TTL, not left to accumulate.
-    expect(kv.executed.some((command) => command[0] === "EXPIRE")).toBe(true);
+    // The window counter is bounded by a TTL, not left to accumulate, and the
+    // lifetime is established inside the same atomic decision (audit A03).
+    const bucket = Math.floor(windowBase / VA_SHARED_CONSUMER_WINDOW_MS);
+    expect(
+      kv.remainingTtlMs(`${BUDGET_PREFIX}${bucket}`),
+    ).toBeGreaterThan(0);
+    expect(kv.executed.every((command) => command[0] === "EVAL")).toBe(true);
   });
 
   it("reserves a shared consumer slot for every retry attempt", async () => {
@@ -267,7 +275,10 @@ describe("VA shared circuit coordination — distributed runtimes", () => {
     const result = await fetchVaForms(undefined, { config });
     expect(result.success).toBe(true);
     expect(upstream).toHaveBeenCalledTimes(2);
-    const reservations = kv.executed.filter((command) => command[0] === "INCR");
+    // One atomic reservation per attempt, including the retry (audit A03).
+    const reservations = kv.executed.filter((command) =>
+      command.some((part) => String(part).startsWith(BUDGET_PREFIX)),
+    );
     expect(reservations).toHaveLength(2);
   });
 
@@ -379,7 +390,11 @@ describe("VA shared circuit coordination — distributed runtimes", () => {
         const href = String(input);
         if (!href.startsWith(KV_HOST)) return upstream();
         const command = JSON.parse(String(init?.body ?? "[]")) as string[];
-        if (command[0] === "INCR") return okJson({ error: "ERR" });
+        // The consumer budget's single decision command fails at HTTP 200 with
+        // an error body; the circuit's own scripts still run.
+        if (command[0] === "EVAL" && command[1] === SHARED_CONSUMER_WINDOW_SCRIPT) {
+          return okJson({ error: "ERR" });
+        }
         return kv.respond(init);
       }),
     );

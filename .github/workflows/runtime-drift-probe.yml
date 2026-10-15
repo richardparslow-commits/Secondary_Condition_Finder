@@ -20,6 +20,16 @@
 # tracking issue is opened/updated (same pattern as citation-decay-watch) and
 # is auto-edited back and closed when the next scheduled run is green again.
 #
+# Hand-off (corrected 2026-10-14). The drift details are uploaded from the job
+# that writes them, and the tracking-issue body is built from the probe job's
+# own output rather than from that artifact. Previously the upload lived in a
+# separate job with no checkout — so it could not see the probe's `drift.txt`,
+# which lives in another runner's workspace — and the reporting job downloaded
+# the artifact without depending on that uploader, so the two raced. Either way
+# the download step failed before the reporting payload ran and the issue was
+# never opened: the probe could detect drift and not tell anyone
+# (docs/runtime-drift-probe-handoff-policy-2026-10-14.md).
+#
 # Scheduled daily at 04:11 UTC, off the hour to avoid the scheduled-run
 # thundering herd, and offset from the other scheduled workflows
 # (citation-decay-watch Monday 06:07, CodeQL Wednesday 03:33) so they never
@@ -50,6 +60,9 @@ jobs:
     outputs:
       drifted: ${{ steps.check.outputs.drifted }}
       summary_lines: ${{ steps.check.outputs.summary_lines }}
+      # The drift lines themselves, so the tracking-issue job never depends on
+      # artifact plumbing (see the header comment).
+      drift_lines: ${{ steps.check.outputs.drift_lines }}
     steps:
       - name: Probe production readiness and health
         id: check
@@ -150,12 +163,34 @@ jobs:
             echo "drifted=true" >> "$GITHUB_OUTPUT"
             printf '%s\n' "${drift[@]}" > "$tmp_dir/drift.txt"
             cp "$tmp_dir/drift.txt" ./drift.txt
+            # Publish the same lines as a job output: the reporting job builds
+            # its issue body from this, not from the uploaded artifact, because
+            # job workspaces are separate and an artifact download that races an
+            # upload used to kill the whole notification path.
+            {
+              echo "drift_lines<<DRIFT_LINES_EOF"
+              printf '%s\n' "${drift[@]}"
+              echo "DRIFT_LINES_EOF"
+            } >> "$GITHUB_OUTPUT"
             exit 1
           else
             echo "drifted=false" >> "$GITHUB_OUTPUT"
             echo "Drift probe green: readiness ready=true, health healthy."
             exit 0
           fi
+
+      # Uploaded from the job that wrote it, and `always()` so a drifted run
+      # still retains the evidence in the run's artifacts. A green run has no
+      # drift file, which is why the no-files case is silent rather than a
+      # warning on every scheduled run.
+      - name: Upload drift details
+        if: always()
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
+        with:
+          name: runtime-drift-details-${{ github.run_id }}
+          path: drift.txt
+          retention-days: 30
+          if-no-files-found: ignore
 
   report-drift:
     needs: probe
@@ -167,21 +202,26 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
-      - name: Download drift details from the probe job
-        uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5
-        with:
-          name: runtime-drift-details-${{ github.run_id }}
       - name: Open or update runtime drift tracking issue
         env:
           GH_TOKEN: ${{ github.token }}
+          # The probe's own output, so this job never reads another job's
+          # workspace or races an artifact upload.
+          DRIFT_LINES: ${{ needs.probe.outputs.drift_lines }}
         shell: bash
         run: |
           set -o pipefail
           node --input-type=module - <<'NODE'
           import { execFileSync } from "node:child_process";
-          import { readFileSync } from "node:fs";
 
-          const driftLines = readFileSync("drift.txt", "utf8").trim().split("\n");
+          // Drift details come from the probe job's output. When it is empty
+          // this job still reports the drift — the outcome is known from the
+          // probe's own failure — rather than dying on a missing file, which is
+          // exactly how this notification used to be lost.
+          const driftLines = (process.env.DRIFT_LINES ?? "")
+            .split("\n")
+            .map((line) => line.trim())
+            .filter((line) => line.length > 0);
           const title = "Production runtime readiness or health has drifted from ready/healthy";
           const marker = "<!-- runtime-drift-probe -->";
 
@@ -196,7 +236,11 @@ jobs:
             "secret, re-run Production Runtime Readiness on the fixed commit).",
             "",
             "## Current drift",
-            ...driftLines.map((line) => `- ${line}`),
+            ...(driftLines.length > 0
+              ? driftLines.map((line) => `- ${line}`)
+              : [
+                  "- Drift was detected but this run did not carry its details (the probe's output was empty). Read the run's step summary and log to see which signal failed.",
+                ]),
             "",
             `Run: ${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`,
             "",
@@ -247,15 +291,3 @@ jobs:
             echo "No open tracking issue; nothing to close." >> "$GITHUB_STEP_SUMMARY"
           fi
 
-  upload-drift-artifact:
-    needs: probe
-    if: failure() && needs.probe.result == 'failure'
-    runs-on: ubuntu-latest
-    timeout-minutes: 3
-    steps:
-      - name: Upload drift details
-        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
-        with:
-          name: runtime-drift-details-${{ github.run_id }}
-          path: drift.txt
-          retention-days: 30

@@ -45,8 +45,26 @@ jobs:
           npm ci 2>&1 | tail -5
           npm run audit:high 2>&1 | tee ci-audit-scheduled.log
 
+      # A10 (audit issue list, item 25). `audit:high` audits production
+      # dependencies by severity; this gate holds the whole tree — dev tooling
+      # included — to the dated record in docs/dependency-advisory-disposition.json,
+      # so a scheduled run is where an advisory that was merely *tracked* gets
+      # re-checked for two things a workstation cache cannot answer: a repaired
+      # release published upstream, and a review window that has expired. The
+      # registry lookup is deliberately part of the scheduled run only; the
+      # per-merge gate in ci.yml stays network-free and deterministic.
+      # Deliberately NOT `continue-on-error`: like the severity audit above, a
+      # scheduled run must be able to fail visibly without a commit. The
+      # issue-recording steps below carry their own `if:` conditions, so they
+      # still run after this step fails.
+      - name: Re-check advisory dispositions against the advisory database
+        id: disposition
+        run: |
+          set -o pipefail
+          npm run audit:disposition:registry 2>&1 | tee ci-audit-disposition-scheduled.log
+
       - name: Record audit failure as a tracking issue
-        if: steps.audit.outcome == 'failure'
+        if: steps.audit.outcome == 'failure' || steps.disposition.outcome == 'failure'
         env:
           GH_TOKEN: ${{ github.token }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
@@ -63,13 +81,15 @@ jobs:
             --repo "$GITHUB_REPOSITORY" --json number --jq '.[0].number // ""')"
 
           {
-            echo "A scheduled \`npm run audit:high\` run reported a high or critical advisory that the currently pinned production dependency tree does not satisfy."
+            echo "A scheduled dependency audit failed. Which gate failed (`audit:high` severity, or the A10 disposition check) is read from the step outcomes below and the run log."
             echo ""
             echo "- Run that failed: $RUN_URL"
             echo "- Commit audited: \`${{ github.sha }}\`"
             echo "- Generated: $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+            echo "- \`npm run audit:high\` (production severity): ${{ steps.audit.outcome }}"
+            echo "- \`npm run audit:disposition:registry\` (A10 record): ${{ steps.disposition.outcome }}"
             echo ""
-            echo "Remediate by upgrading the affected production dependency (or its replacement), not by weakening \`audit:high\`. Re-run this workflow manually (\`workflow_dispatch\`) to confirm the fix; the issue closes itself when a scheduled run is green again."
+            echo "For a severity failure, upgrade the affected production dependency (or its replacement) — never weaken \`audit:high\`. For an A10 failure, classify the new advisory in \`docs/dependency-advisory-disposition.json\`, refresh the entry whose review window expired, or land the upgrade whose patched release now exists. Re-run this workflow manually (\`workflow_dispatch\`) to confirm the fix; the issue closes itself when a scheduled run is green again."
             echo ""
             echo "Advisory details, package names, and paths are read from the run log; nothing from the audit output is pasted into this issue body so a newly published advisory timestamp cannot be misread as a breach date."
           } > "$body_file"
@@ -84,7 +104,7 @@ jobs:
           fi
 
       - name: Close resolved audit tracking issue
-        if: steps.audit.outcome == 'success'
+        if: steps.audit.outcome == 'success' && steps.disposition.outcome == 'success'
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
@@ -94,5 +114,5 @@ jobs:
             --repo "$GITHUB_REPOSITORY" --json number --jq '.[0].number // ""')"
           if [ -n "$issue_url" ]; then
             gh issue close "$issue_url" --repo "$GITHUB_REPOSITORY" --reason completed \
-              --comment "Scheduled \`npm run audit:high\` run is green again (${GITHUB_SHA:-unknown}); closing this tracking issue automatically. Open it again with the workflow_dispatch run if it reopens."
+              --comment "Scheduled dependency audits are green again — both \`npm run audit:high\` and the A10 disposition re-check passed (${GITHUB_SHA:-unknown}); closing this tracking issue automatically. Open it again with the workflow_dispatch run if it reopens."
           fi

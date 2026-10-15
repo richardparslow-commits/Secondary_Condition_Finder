@@ -10,10 +10,33 @@
 # This workflow therefore runs Semgrep (OSS engine, no GitHub feature gate)
 # with the p/typescript ruleset on PRs touching code, on a weekly schedule, and
 # on demand. It gates on ERROR-severity findings only — findings of that
-# severity fail the job with the matched rule, file and line printed into the
-# failing log; WARN/INVENTORY findings are surfaced in the step summary without
-# blocking. Findings are printed as sanitised rule/file/line/location text; no
-# source excerpts are echoed into logs or artifacts.
+# severity fail the job.
+#
+# It could not tell anyone about a *scheduled* failure until 2026-10-14
+# (docs/sast-monitor-handoff-policy-2026-10-14.md). A red run in a private
+# repository's Actions history is not a notification, and this was the last
+# scheduled monitor in the repository with no hand-off at all — the same defect
+# its three siblings were repaired for in the days before it. Scheduled and
+# manual runs now maintain one tracking issue in both directions, fed by a
+# sanitized finding list carried as a job output: no artifact, no source text.
+# PR runs deliberately do not touch the issue; their own check is the signal
+# the author is already looking at.
+#
+# Two claims this file used to make were false and are corrected here:
+#   - "WARN/INVENTORY findings are surfaced in the step summary". `--severity
+#     ERROR` selects only ERROR-severity rules (semgrep CLI reference: "Report
+#     findings only from rules matching the supplied severity level"), so no
+#     WARNING/INVENTORY finding ever reaches this workflow's output. Making that
+#     visibility real needs a second pass over the same tree; it is left as a
+#     recorded follow-up rather than implied.
+#   - "no source excerpts are echoed into logs or artifacts". Semgrep's text
+#     formatter prints the matched source lines, and it was printing them into
+#     this job's log. The scan now writes `--json` to a file that is never
+#     printed and never uploaded, and only rule id, file and line travel
+#     onward. (That JSON does contain the matched lines — which is exactly why
+#     it stays in the ephemeral workspace. The engine's own stderr diagnostics
+#     still reach the run log, which is what a maintainer needs when the gate
+#     cannot run.)
 
 name: Semgrep SAST
 
@@ -37,39 +60,228 @@ jobs:
     timeout-minutes: 20
     container:
       image: semgrep/semgrep:1.180.0
+    # The sanitized finding list, for the tracking-issue job. A job output
+    # rather than an artifact, so nothing the scan writes is ever uploaded —
+    # the JSON report holds the matched source lines.
+    outputs:
+      semgrep_exit_code: ${{ steps.scan.outputs.semgrep_exit_code }}
+      finding_detail: ${{ steps.scan.outputs.finding_detail }}
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
-      - name: Scan src/ and scripts/ with the TypeScript ruleset (ERROR gates, WARN/INVENTORY reported)
+      - name: Scan src/ and scripts/ with the TypeScript ruleset (ERROR findings gate)
         id: scan
         shell: bash
+        # Deliberately no `set -e`: semgrep's own exit status is the gate, and
+        # the sanitized detail and the outputs below must exist before this
+        # step reports that status. The step's last command is `exit
+        # "$exit_code"`, so the verdict is still semgrep's.
         run: |
           set -o pipefail
-          # OSS Semgrep, remote registry rulesets; error findings → job failure
-          # with their rule id/file/line echoed, warn/inventory → non-blocking
-          # summary so the grep-style noise is visible without failing merges.
           semgrep scan \
             --config p/typescript \
             --severity ERROR \
             --error \
+            --json \
             --exclude 'tmp/' \
             --exclude 'data/' \
             --exclude 'tests/' \
             --metrics=off \
-            src scripts 2>&1 | tee semgrep-sast.log
+            src scripts > semgrep-sast.json
+          exit_code=$?
 
-      - name: Record non-blocking findings in the step summary
+          # stderr is deliberately NOT redirected: it carries the engine's own
+          # progress and diagnostics into the run log, where a maintainer can
+          # read them. The JSON is the only place the matched source lines
+          # exist, and it goes to a file nothing prints and nothing uploads.
+
+          # Sanitized detail: rule id, file and line only, never the matched
+          # source text. Read out of the JSON (the only place the excerpts
+          # exist), never printed and never uploaded. python3 is part of the
+          # engine's own runtime image and is the only consumer here; an
+          # extraction failure leaves the detail empty on purpose, so the
+          # report job says the detail was unavailable instead of inventing one.
+          finding_detail="$(python3 - <<'PY'
+          import json
+          import sys
+
+          try:
+              with open("semgrep-sast.json", encoding="utf-8") as handle:
+                  report = json.load(handle)
+          except Exception:
+              sys.exit(0)
+          if not isinstance(report, dict):
+              sys.exit(0)
+
+          findings = report.get("results") or []
+          for finding in findings[:20]:
+              start = finding.get("start") or {}
+              print("- `%s` — `%s:%s`" % (
+                  finding.get("check_id"),
+                  finding.get("path"),
+                  start.get("line"),
+              ))
+          if len(findings) > 20:
+              print("- … and %d more finding(s), not listed here" % (len(findings) - 20))
+          PY
+          )"
+
+          {
+            echo "semgrep_exit_code=${exit_code}"
+            echo "finding_detail<<SEMGREP_SAST_DETAIL_EOF"
+            printf '%s\n' "${finding_detail}"
+            echo "SEMGREP_SAST_DETAIL_EOF"
+          } >> "$GITHUB_OUTPUT"
+
+          # semgrep exits 1 when ERROR-severity findings exist and 2/7 when the
+          # scan itself could not run; both fail this step, and the tracking job
+          # distinguishes them from this exit code.
+          exit "$exit_code"
+
+      - name: Record the scan outcome and its sanitized findings
         if: always()
+        env:
+          SCAN_OUTCOME: ${{ steps.scan.outcome }}
+          SEMGREP_EXIT_CODE: ${{ steps.scan.outputs.semgrep_exit_code }}
+          FINDING_DETAIL: ${{ steps.scan.outputs.finding_detail }}
         shell: bash
         run: |
           {
             echo "## Semgrep SAST"
             echo ""
-            echo "Ruleset: \`p/typescript\` (ERROR severity gated via --error)."
-            echo "Findings are rule id, file and line only — no source excerpts are echoed here or into artifacts."
-            if [ -f semgrep-sast.log ]; then
+            echo "Ruleset: \`p/typescript\`; the gate is ERROR-severity findings (\`--severity ERROR --error\`), so this scan collects ERROR findings only — WARNING/INVENTORY findings are not selected by it and are not summarized here."
+            echo ""
+            echo "- step outcome: ${SCAN_OUTCOME:-unavailable}"
+            echo "- semgrep exit code: ${SEMGREP_EXIT_CODE:-unavailable}"
+            echo "- matched source lines: not printed — the JSON report stays in the runner and is not uploaded; the log carries semgrep's own diagnostics"
+            echo ""
+            if [ "${SEMGREP_EXIT_CODE:-}" = "0" ]; then
+              echo "Result: the scan completed with 0 ERROR-severity findings."
+            elif [ -n "${FINDING_DETAIL:-}" ]; then
+              echo "Result: semgrep reported ERROR-severity findings. Rule id, file and line only:"
               echo ""
-              echo '```'
-              grep -E '(^src/|^scripts/|severity|finding)' semgrep-sast.log | grep -vE '(\.py|\.json[0-9]?"?$)' | head -40
-              echo '```'
+              echo "${FINDING_DETAIL}"
+            else
+              echo "Result: the scan did not complete and carried no finding detail (exit ${SEMGREP_EXIT_CODE:-unavailable}). Read the run log for the engine's own diagnostics — this run says nothing about the code either way."
             fi
           } >> "$GITHUB_STEP_SUMMARY"
+
+  record-sast-outcome:
+    needs: semgrep
+    # Scheduled and manual runs only. A PR run's failing check is the signal its
+    # author is already looking at, and a PR must not open an issue about code
+    # that may never merge — so the PR path is excluded by event, not by
+    # reasoning about merge state. `always()` keeps the issue maintained even
+    # though the scan job is expected to fail here.
+    if: always() && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    timeout-minutes: 5
+    steps:
+      - name: Maintain the Semgrep SAST tracking issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SCAN_RESULT: ${{ needs.semgrep.result }}
+          SEMGREP_EXIT_CODE: ${{ needs.semgrep.outputs.semgrep_exit_code }}
+          FINDING_DETAIL: ${{ needs.semgrep.outputs.finding_detail }}
+        run: |
+          set -o pipefail
+          node --input-type=module - <<'NODE'
+          import { execFileSync } from "node:child_process";
+
+          // The last scheduled monitor in this repository that could fail
+          // without telling anyone (docs/sast-monitor-handoff-policy-2026-10-14.md).
+          // Everything this job needs arrives as data: the scan's result and
+          // the sanitized rule/file/line list. It reads no file from the scan
+          // job's workspace (job workspaces are separate runners) and downloads
+          // no artifact, so there is no hand-off hop left to fail.
+          const result = (process.env.SCAN_RESULT || "").trim();
+          const exitCode = (process.env.SEMGREP_EXIT_CODE || "").trim();
+          const detail = (process.env.FINDING_DETAIL || "").trim();
+          const runUrl = `${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`;
+          const title = "Scheduled Semgrep SAST failure — review the scan";
+          const marker = "<!-- semgrep-sast -->";
+
+          // Exit code 1 is semgrep's "findings at the gated severity" verdict.
+          // Anything else non-zero means the scan itself did not complete (a
+          // remote ruleset fetch failure exits 7, an unexpected failure 2).
+          // Those are different claims about the world, and the body must not
+          // call both of them findings.
+          const findingsReported = exitCode === "1";
+
+          const headline = findingsReported
+            ? "The scheduled Semgrep SAST scan reported ERROR-severity findings in `src/` or `scripts/`."
+            : `The scheduled Semgrep SAST scan did not complete, so this run is **not a finding**: semgrep exited ${exitCode || "unavailable"} and no ERROR-severity finding was reported. The gate could not do its job.`;
+
+          const findingSection = findingsReported
+            ? [
+                "Findings reported by the scan (rule id, file, line — no source text is copied here):",
+                "",
+                detail || "- The scan reported findings but this run did not carry their locations. Read the run's step summary and log.",
+              ]
+            : [
+                "This run says nothing about the code. Read the run log for the engine's own diagnostics (rule counts, paths, the ruleset fetch error) — no matched source line is printed there either.",
+              ];
+
+          const body = [
+            marker,
+            headline,
+            "",
+            `- Run that failed: ${runUrl}`,
+            `- Commit scanned: \`${process.env.GITHUB_SHA || "unknown"}\``,
+            `- Generated: ${new Date().toISOString().replace(/\.\d{3}Z$/, "Z")}`,
+            `- \`semgrep\` exit code: ${exitCode || "unavailable"}`,
+            "",
+            ...findingSection,
+            "",
+            "Fix the finding at its cause, or record why it is not applicable — never lower the gate (`--severity ERROR --error` is the contract, and `audit:high` remains the separate dependency gate). Re-run this workflow manually (`workflow_dispatch`) to confirm the fix; the issue closes itself when a scheduled or manual run is clean again.",
+            "",
+            "This issue is maintained by the `codeql-sast.yml` workflow: it updates in place while the failure persists, and it is closed with a comment when the scan comes back clean.",
+            "",
+          ].join("\n");
+
+          // `--repo` on every call: this job has no checkout, so `gh` has no
+          // remote to infer the repository from.
+          const gh = (args) => execFileSync("gh", [...args, "--repo", process.env.GITHUB_REPOSITORY], {
+            encoding: "utf8",
+          });
+          const existing = gh([
+            "issue",
+            "list",
+            "--state",
+            "open",
+            "--search",
+            `${title} in:title`,
+            "--json",
+            "number,title",
+          ]).trim();
+          const matches = JSON.parse(existing || "[]").filter((issue) => issue.title === title);
+
+          if (result !== "failure") {
+            // A green run closes the tracking issue instead of leaving a notice
+            // asking for work that is already done; a cancelled or skipped run
+            // is not a green result, so the close is guarded by the success
+            // branch rather than by "not failure".
+            if (result === "success" && matches.length > 0) {
+              gh([
+                "issue",
+                "close",
+                String(matches[0].number),
+                "--reason",
+                "completed",
+                "--comment",
+                "The scheduled Semgrep SAST scan is clean again — no ERROR-severity finding in `src/` or `scripts/` — so this tracking issue closes automatically. It reopens if a later scheduled or manual run fails.",
+              ]);
+              console.log(`Closed tracking issue #${matches[0].number}`);
+            } else {
+              console.log(`Scan result ${result}: no tracking-issue change.`);
+            }
+          } else if (matches.length > 0) {
+            gh(["issue", "edit", String(matches[0].number), "--body", body]);
+            console.log(`Updated tracking issue #${matches[0].number}`);
+          } else {
+            gh(["issue", "create", "--title", title, "--body", body]);
+            console.log("Opened new tracking issue");
+          }
+          NODE

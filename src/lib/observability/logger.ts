@@ -97,6 +97,7 @@ const SAFE_MESSAGES = new Set([
   "va shared cache invalidation epoch advanced", "va shared cache invalidation epoch unavailable",
   "va shared fetch lease granted", "va shared fetch lease contended", "va shared fetch lease released", "va shared fetch lease unavailable",
   "va shared kv command failed",
+  "va shared consumer budget paced by upstream guidance", "va shared consumer budget unavailable", "va shared consumer budget exhausted",
   "shared circuit probe lease granted", "shared circuit probe lease released", "shared circuit cooldown published", "shared circuit cooldown publish incomplete",
 ]);
 /** Code-controlled message families (never attacker input). */

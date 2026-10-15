@@ -19,6 +19,8 @@
       "controlReferences": [],
       "setsForwardingHeaders": null,
       "overwritesClientSuppliedForwardingHeaders": null,
+      "appendsForwardingHeaders": null,
+      "appenderCount": null,
       "stripsClientSuppliedForwardingHeaders": null
     },
     "originProtection": {
@@ -43,7 +45,10 @@
       },
       "RATE_LIMIT_TRUSTED_INGRESS": {
         "valueDuringRun": null,
-        "setOnlyAfterGroupAPassed": null
+        "declaredModel": null,
+        "declaredHopsFromRight": null,
+        "setOnlyAfterGroupAPassed": null,
+        "matchesObservedEdgeBehaviour": null
       }
     }
   },
@@ -54,7 +59,12 @@
       "scope": null,
       "identity": {
         "trustedIngress": null,
-        "identity": null
+        "identity": null,
+        "model": null,
+        "header": null,
+        "hop": null,
+        "hopsFromRight": null,
+        "fallback": null
       },
       "ceiling": {
         "max": null,
@@ -103,6 +113,7 @@
         {
           "probe": "A4_xRealIpFallback",
           "edgeSetsOrOverwritesXRealIp": null,
+          "readUnderDeclaredModel": null,
           "note": null
         }
       ],
@@ -116,7 +127,11 @@
           "met": null
         },
         {
-          "check": "The edge sets (not merely passes through) the forwarding header",
+          "check": "The edge sets (not merely passes through) the forwarding header, or appends the observed peer to it",
+          "met": null
+        },
+        {
+          "check": "The declared RATE_LIMIT_TRUSTED_INGRESS model and hop match the behaviour and appender count Group A observed (set for an overwriting edge; append or append:N for an appending one)",
           "met": null
         }
       ],

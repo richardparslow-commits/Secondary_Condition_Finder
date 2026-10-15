@@ -198,8 +198,14 @@ export function Dd214LocalAnalyzer({ locations }: Props) {
         const bytes = new Uint8Array(await file.arrayBuffer());
         const task = pdfjs.getDocument({ data: bytes });
         pdfTaskRef.current = task;
-        const doc = await task.promise;
         try {
+          // REL-05: the load await belongs inside the teardown try. pdf.js
+          // allocates its worker when the task is created, so a load that
+          // rejects (a malformed or crafted file) is exactly the case that must
+          // still reach the `task.destroy()` below. Awaiting it outside skipped
+          // that finally, and the next upload replaced `pdfTaskRef.current`
+          // with its own task — so the failed one was never destroyed at all.
+          const doc = await task.promise;
           const total = doc.numPages;
           const limit = Math.min(total, limits.pdfPages);
           if (total > limit) {

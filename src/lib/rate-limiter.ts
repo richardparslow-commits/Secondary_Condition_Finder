@@ -172,14 +172,16 @@ export function createRateLimiter(options: RateLimiterOptions = {}): RateLimiter
   return { check, reset, name, windowMs, max };
 }
 
-/** The per-client limiter, plus the shared ceiling that already charged it. */
+/** The per-client limiter, plus the shared bounds that already charged it. */
 export interface AdmissionResult extends CheckResult {
   /**
-   * Which budget refused the request, if any. `ceiling` is the shared cap
-   * (aggregate or unattributed traffic); `per-client` is this client's own
-   * bucket. A caller can therefore log the reason without re-deriving it.
+   * Which budget refused the request, if any. `ceiling` is the shared cap over
+   * aggregate and unattributed traffic; `per-client` is this client's own bucket;
+   * `unidentified` is the shared class bucket an identity-less request is charged
+   * to where the deployment has declared an ingress model. A caller can therefore
+   * report the reason without re-deriving it.
    */
-  refusedBy: "ceiling" | "per-client" | null;
+  refusedBy: "ceiling" | "per-client" | "unidentified" | null;
 }
 
 // ---------------------------------------------------------------------------
@@ -329,7 +331,7 @@ export function rateLimitScope(
   if (isDistributedRuntime(env)) {
     return {
       scope: "per-instance",
-      detail: `${identity.identity === "asserted" ? "per-validated-client" : "per-client (key only as trustworthy as the forwarding header)"} limits apply per instance, so the aggregate is roughly the configured limit x instance count; the edge WAF remains the capacity layer`,
+      detail: `${clientKeyRegime(identity)} limits apply per instance, so the aggregate is roughly the configured limit x instance count; the edge WAF remains the capacity layer`,
       identity,
       ceiling,
       store,
@@ -338,11 +340,22 @@ export function rateLimitScope(
 
   return {
     scope: "single-process",
-    detail: `${identity.identity === "asserted" ? "per-validated-client" : "per-client (key only as trustworthy as the forwarding header)"} limits apply to the whole deployment`,
+    detail: `${clientKeyRegime(identity)} limits apply to the whole deployment`,
     identity,
     ceiling,
     store,
   };
+}
+
+/**
+ * What the per-client keys are worth here, in the model's own terms: the
+ * append model keys on a hop the client cannot write, the set model on a hop the
+ * declared ingress wrote, and the unasserted model on whatever a client sent.
+ */
+function clientKeyRegime(identity: RateLimitIdentityPolicy): string {
+  if (identity.model === "append") return "per-ingress-observed-client";
+  if (identity.identity === "asserted") return "per-validated-client";
+  return "per-client (key only as trustworthy as the forwarding header)";
 }
 
 // ---------------------------------------------------------------------------
@@ -415,25 +428,126 @@ export function isIpLiteral(value: string): boolean {
 }
 
 /**
- * Whether an operator has **asserted** that requests reach this process only
- * through an ingress that sets (not merely passes through) the forwarding
- * headers — for example a platform edge or a reverse proxy that overwrites
- * `X-Forwarded-For` with the observed peer address.
+ * Whether an operator has **asserted how** the ingress in front of this process
+ * presents the observed peer address — and, when they have, which end of
+ * `X-Forwarded-For` that makes authoritative.
  *
- * This is a deployment claim, so it is opt-in and named: nothing in this
- * repository can verify it, and a limiter that *assumed* it while the claim was
- * false would launder client-supplied data into an identity. The assertion
- * changes what the runtime reports about itself (see `rateLimitScope`), and it
- * is what an operator should set only after checking their ingress behaviour.
- * The admission ceiling below bounds abuse whether or not the claim holds.
+ * The value is a **model**, not a boolean, because "trusted ingress" is two
+ * different deployments with two different correct hop rules:
+ *
+ *   - `set` (aliases `true`, `overwrite`, `platform`) — the ingress *sets* the
+ *     forwarding header to the peer it observed, so the **leftmost** hop is the
+ *     ingress's value. This is the rule the limiter applied unconditionally
+ *     before the model existed.
+ *   - `append` / `append:N` — the ingress *appends* the peer it observed to
+ *     whatever the client sent, so the peer is hop **N from the right** and
+ *     every hop before it is client-supplied. This is the common shape for a
+ *     proxy or CDN in front of the app, and the unconditional leftmost rule was
+ *     *wrong* for it: the client's own first hop was the bucket key, so rotating
+ *     it minted a fresh allowance per request — the A2 discriminator in the
+ *     SEC-02 hosted-acceptance runbook — and a client that pre-seeded
+ *     `X-Real-IP` could choose which bucket it was charged against.
+ *
+ * Making the claim a model is what turns it into a mechanism: enforcement
+ * follows the declaration instead of applying one hard-coded rule, so an
+ * appending ingress no longer has to be replaced with an overwriting one to get
+ * a key the client cannot choose, and the deployment can be audited by comparing
+ * the hop this module reports using against what the ingress actually writes.
+ * What the claim cannot do is make itself true — it only decides *which end* is
+ * trusted — so it stays opt-in, named and reported
+ * (`rateLimitIdentityPolicy`), and the admission ceiling below bounds abuse
+ * whether or not the claim holds.
+ *
+ * `append` is the model with the weakest verifiable shape: a request carrying
+ * exactly one hop is indistinguishable from one that never traversed the
+ * ingress. Declare `append:2` or higher when a CDN *and* the app proxy both
+ * append, because then a request that did not traverse every declared appender
+ * carries fewer hops and is unattributed instead of keyed on a client-supplied
+ * value. No model substitutes for origin protection: a client that can reach the
+ * origin directly can always present its own single hop.
  */
 export const RATE_LIMIT_TRUSTED_INGRESS_VARIABLE = "RATE_LIMIT_TRUSTED_INGRESS";
 
+/** How the declared ingress presents the peer address. */
+export type IngressModel = "unasserted" | "set" | "append";
+
+/**
+ * Highest `append:N` hop accepted. A mangled value cannot move the trusted
+ * position arbitrarily far along a header the client may also be writing.
+ */
+export const INGRESS_APPEND_MAX_HOPS = 8;
+
+/** A resolved ingress claim: the model, plus the hop for `append`. */
+export interface IngressClaim {
+  model: IngressModel;
+  /** For `append`: which hop from the right the ingress wrote. */
+  hopsFromRight: number | null;
+}
+
+const UNASSERTED_INGRESS: IngressClaim = { model: "unasserted", hopsFromRight: null };
+
+const SET_MODEL_TOKENS = new Set(["true", "set", "overwrite", "platform"]);
+const APPEND_MODEL_TOKEN = /^append(?::(\d{1,2}))?$/;
+
+/**
+ * Resolve the operator's ingress claim.
+ *
+ * An unreadable value (`1`, `yes`, `append:0`, `append:99`, a placeholder, an
+ * unknown word) resolves to **unasserted** rather than throwing or guessing: for
+ * a claim nothing here can verify, the only safe direction is the rule that
+ * trusts the header less, and `rateLimitIdentityPolicy` then reports
+ * `model: "unasserted"`, so the unusable value is visible on `/api/health`
+ * instead of silently reading as a verified ingress.
+ */
+export function resolveIngressClaim(
+  env: RuntimeEnvironment = process.env,
+): IngressClaim {
+  const raw = env[RATE_LIMIT_TRUSTED_INGRESS_VARIABLE]?.trim().toLowerCase();
+  if (!raw) return UNASSERTED_INGRESS;
+  if (SET_MODEL_TOKENS.has(raw)) return { model: "set", hopsFromRight: null };
+
+  const append = APPEND_MODEL_TOKEN.exec(raw);
+  if (append) {
+    const hops = append[1] === undefined ? 1 : Number(append[1]);
+    if (hops >= 1 && hops <= INGRESS_APPEND_MAX_HOPS) {
+      return { model: "append", hopsFromRight: hops };
+    }
+  }
+
+  return UNASSERTED_INGRESS;
+}
+
 export interface RateLimitIdentityPolicy {
-  /** True only when the operator explicitly asserted verifiable ingress. */
+  /** True only when the operator explicitly asserted an ingress model. */
   trustedIngress: boolean;
   /** Outcome for the operator: is key identity verified or self-declared? */
   identity: "asserted" | "self-declared";
+  /** Which ingress behaviour was asserted, and therefore which hop is read. */
+  model: IngressModel;
+  /** Header an identity is read from, or null when none is read. */
+  header: "x-forwarded-for" | "x-real-ip" | null;
+  /** Which hop of that header carries the observed peer. */
+  hop: "leftmost" | "nth-from-right" | "none";
+  /** For `append`, the hop counted from the right; null for the other models. */
+  hopsFromRight: number | null;
+  /** Whether `X-Real-IP` is consulted when the primary header yields nothing. */
+  fallback: "x-real-ip" | null;
+  /**
+   * What a request with **no usable identity** gets on a limited surface.
+   *
+   * `ceiling` (the unasserted default) leaves it bounded by the shared aggregate
+   * budget, because without a declared ingress an identity-less request cannot be
+   * separated from an honest client of a deployment whose headers never arrive.
+   * `shared-per-client-bucket` is the declared-ingress policy: the class is charged
+   * to one bucket per surface at that surface's own per-client limit, so declining
+   * to present an identity is no longer cheaper than presenting one.
+   */
+  unidentified: {
+    policy: "ceiling" | "shared-per-client-bucket";
+    /** Key template of the shared class bucket, or null under the ceiling policy. */
+    keyTemplate: string | null;
+    detail: string;
+  };
   /** Variable that changes this; named so it is greppable in the deployment. */
   variable: string;
   /** Operator-facing explanation, including what is *not* verified. */
@@ -443,23 +557,64 @@ export interface RateLimitIdentityPolicy {
 export function rateLimitIdentityPolicy(
   env: RuntimeEnvironment = process.env,
 ): RateLimitIdentityPolicy {
-  const asserted =
-    env[RATE_LIMIT_TRUSTED_INGRESS_VARIABLE]?.trim().toLowerCase() === "true";
+  const claim = resolveIngressClaim(env);
 
-  if (asserted) {
+  if (claim.model === "append") {
+    const hops = claim.hopsFromRight ?? 1;
+    const position = hops === 1 ? "hop 1 from the right" : `hop ${hops} from the right`;
     return {
       trustedIngress: true,
       identity: "asserted",
+      model: "append",
+      header: "x-forwarded-for",
+      hop: "nth-from-right",
+      hopsFromRight: hops,
+      fallback: null,
+      unidentified: {
+        policy: "shared-per-client-bucket",
+        keyTemplate: `${UNIDENTIFIED_ADMISSION_KEY_PREFIX}<limiter>`,
+        detail: `this deployment declares an ingress model, so a request carrying no usable identity did not traverse it and is not one of its clients: such requests share one bucket per surface at that surface's own per-client limit (${UNIDENTIFIED_ADMISSION_KEY_PREFIX}<limiter>) instead of drawing on the aggregate ceiling alone, which gave them a larger allowance than an identified client; a refusal charged to that bucket is reported as unidentified, and it means the declared model and the edge disagree`,
+      },
       variable: RATE_LIMIT_TRUSTED_INGRESS_VARIABLE,
-      detail: `the deployment asserts that ${RATE_LIMIT_TRUSTED_INGRESS_VARIABLE}=true means its ingress sets the forwarding headers; per-client limits are keyed on a validated IP literal`,
+      detail: `the deployment asserts that ${RATE_LIMIT_TRUSTED_INGRESS_VARIABLE}=append${hops === 1 ? "" : `:${hops}`} means its ingress appends the observed peer to X-Forwarded-For, so the key is ${position} — written after (never instead of) whatever the client sent — and X-Real-IP is not an identity here because an appending ingress does not set it; declare the exact number of appenders in the path, because with more declared than present a client that pads the header with an extra value becomes the hop that is read; a request carrying fewer than ${hops} hop${hops === 1 ? "" : "s"} did not traverse every declared appender and is unattributed rather than keyed on a client-supplied value`,
+    };
+  }
+
+  if (claim.model === "set") {
+    return {
+      trustedIngress: true,
+      identity: "asserted",
+      model: "set",
+      header: "x-forwarded-for",
+      hop: "leftmost",
+      hopsFromRight: null,
+      fallback: "x-real-ip",
+      unidentified: {
+        policy: "shared-per-client-bucket",
+        keyTemplate: `${UNIDENTIFIED_ADMISSION_KEY_PREFIX}<limiter>`,
+        detail: `this deployment declares an ingress model, so a request carrying no usable identity did not traverse it and is not one of its clients: such requests share one bucket per surface at that surface's own per-client limit (${UNIDENTIFIED_ADMISSION_KEY_PREFIX}<limiter>) instead of drawing on the aggregate ceiling alone, which gave them a larger allowance than an identified client; a refusal charged to that bucket is reported as unidentified, and it means the declared model and the edge disagree`,
+      },
+      variable: RATE_LIMIT_TRUSTED_INGRESS_VARIABLE,
+      detail: `the deployment asserts that ${RATE_LIMIT_TRUSTED_INGRESS_VARIABLE}=set means its ingress sets the forwarding headers to the peer it observed; per-client limits are keyed on a validated IP literal read from the leftmost X-Forwarded-For hop, with X-Real-IP as fallback`,
     };
   }
 
   return {
     trustedIngress: false,
     identity: "self-declared",
+    model: "unasserted",
+    header: "x-forwarded-for",
+    hop: "leftmost",
+    hopsFromRight: null,
+    fallback: "x-real-ip",
+    unidentified: {
+      policy: "ceiling",
+      keyTemplate: null,
+      detail:
+        "no ingress model is declared, so a request with no usable identity cannot be told apart from an honest client of a deployment whose forwarding headers never arrive; it is bounded by the shared admission ceiling, and charging that whole population to one bucket at a client's own limit would cap it at one client's allowance",
+    },
     variable: RATE_LIMIT_TRUSTED_INGRESS_VARIABLE,
-    detail: `no ingress is asserted, so a per-client key is only as trustworthy as the header that carried it (${RATE_LIMIT_TRUSTED_INGRESS_VARIABLE}=true records a verified ingress); the shared admission ceiling caps abuse that rotates keys either way`,
+    detail: `no ingress is asserted, so a per-client key is only as trustworthy as the header that carried it (${RATE_LIMIT_TRUSTED_INGRESS_VARIABLE}=set or append:N records the ingress model and moves the trusted hop); the shared admission ceiling caps abuse that rotates keys either way`,
   };
 }
 
@@ -555,16 +710,53 @@ export function unattributedAdmissionLimiter(
 }
 
 /**
+ * Bucket key prefix for the shared class of identity-less requests.
+ *
+ * Namespaced so it can never collide with a per-client key: `resolveClientKey`
+ * returns a key only for a syntactically valid IP literal, and no IP literal
+ * contains this prefix, so the class bucket and a client bucket cannot be the same
+ * map entry even if a limiter is misconfigured.
+ */
+export const UNIDENTIFIED_ADMISSION_KEY_PREFIX = "unidentified:";
+
+/** The one bucket every identity-less request on a surface shares. */
+export function unidentifiedAdmissionKey(limiterName: string): string {
+  return `${UNIDENTIFIED_ADMISSION_KEY_PREFIX}${limiterName}`;
+}
+
+/**
  * Charge one limited surface: the shared ceiling, plus the per-client bucket when
- * a validated identity exists. Returns the result that should decide the response.
+ * a validated identity exists — and, where the deployment has declared an ingress
+ * model, a shared **class bucket** when no identity is present. Returns the result
+ * that should decide the response.
  *
  * Order matters: the ceiling is charged first, so a request that is refused for
- * exceeding it is still counted against it, and an unattributed request always
- * has exactly one budget rather than two charges against the same map entry.
+ * exceeding it is still counted against it, and one request is never charged
+ * twice to the same map entry.
  *
- * Both budgets are still fixed windows, so a burst straddling a boundary can
- * pass up to 2× the budget — the module header's stated trade-off, which the
- * returned `refusedBy` reason does not change.
+ * **Why the identity-less path gets its own bucket.** Leaving that path bounded by
+ * the ceiling alone made non-attribution *cheaper than attribution*: with the
+ * shipped limits, a request presenting a valid key gets 5–30 charges a minute
+ * while the same request with a junk or absent header got the whole ceiling
+ * (6000 by default). Sending no usable identity was therefore the best available
+ * strategy for a caller, and it drew down the shared budget every honest request
+ * also pays into. Where a deployment has declared how its ingress writes the
+ * header, an identity-less request is by that claim not one of its clients, so the
+ * class is charged to one bucket per surface at **that surface's own limit** — the
+ * class gets exactly what one client gets, enforced by the same limiter object
+ * that enforces the per-client limit, so the bound and the reported number cannot
+ * drift.
+ *
+ * Under the unasserted default nothing changes, deliberately: without a declared
+ * ingress an identity-less request cannot be told apart from an honest client of a
+ * deployment whose headers never arrive, and capping the class at one client's
+ * allowance would cap *that* traffic — the global-cap defect the shared `"unknown"`
+ * bucket represented. The policy is reported (`rateLimitIdentityPolicy().unidentified`)
+ * rather than left to be discovered from behaviour.
+ *
+ * Every budget is still a fixed window, so a burst straddling a boundary can pass
+ * up to 2× the budget — the module header's stated trade-off, which the returned
+ * `refusedBy` reason does not change.
  */
 export function chargeAdmission(
   perClientLimiter: RateLimiter,
@@ -573,7 +765,15 @@ export function chargeAdmission(
 ): AdmissionResult {
   const ceiling = unattributedAdmissionLimiter(env).check(UNATTRIBUTED_ADMISSION_KEY);
   if (ceiling.limited) return { ...ceiling, refusedBy: "ceiling" };
-  if (clientKey === null) return { ...ceiling, refusedBy: null };
+
+  if (clientKey === null) {
+    if (resolveIngressClaim(env).model === "unasserted") {
+      return { ...ceiling, refusedBy: null };
+    }
+    const unidentified = perClientLimiter.check(unidentifiedAdmissionKey(perClientLimiter.name));
+    return { ...unidentified, refusedBy: unidentified.limited ? "unidentified" : null };
+  }
+
   const perClient = perClientLimiter.check(clientKey);
   return { ...perClient, refusedBy: perClient.limited ? "per-client" : null };
 }
@@ -584,11 +784,29 @@ export interface ClientKeyResolution {
   source: ClientKeySource;
 }
 
-/** First hop of a comma-separated forwarding header: `"client, proxy1"` → `"client"`. */
+/** Leftmost hop of a comma-separated forwarding header: `"client, proxy1"` → `"client"`. */
 function firstHop(headerValue: string | null): string | null {
   if (!headerValue) return null;
   const first = headerValue.split(",")[0]?.trim();
   return first ? first : null;
+}
+
+/**
+ * The Nth entry from the right of a comma-separated forwarding header.
+ *
+ * Positions are counted over the **raw** entry list, so a blank entry still
+ * occupies its position: an appender writes one entry per hop, and a client that
+ * sends a trailing comma or an empty value must not be able to shift which
+ * entry the declared appender wrote. Returns `null` when the header carries
+ * fewer than `fromRight` entries, or when the entry at that position is blank.
+ */
+function hopFromRight(headerValue: string | null, fromRight: number): string | null {
+  if (!headerValue) return null;
+  const entries = headerValue.split(",");
+  const index = entries.length - fromRight;
+  if (index < 0) return null;
+  const value = entries[index]?.trim();
+  return value ? value : null;
 }
 
 /**
@@ -616,17 +834,50 @@ function firstHop(headerValue: string | null): string | null {
  * (`isIpLiteral`), so a hostname, path fragment, or fresh random token cannot
  * mint a private bucket and never reach a limit.
  *
- * `X-Forwarded-For` is preferred; `X-Real-IP` is accepted next because it is what
- * nginx-style reverse proxies set. An unusable `X-Forwarded-For` hop does not
- * mask a usable `X-Real-IP`: attribution takes the first header that yields a
- * valid literal, because discarding a real observation in favour of reporting
- * "unattributed" is strictly less information for the same admission charge.
+ * **Which hop is read follows the declared ingress model** (`IngressClaim`, from
+ * `RATE_LIMIT_TRUSTED_INGRESS`). Without a claim, the historical rule applies:
+ * `X-Forwarded-For` is preferred and `X-Real-IP` is accepted next, because it is
+ * what nginx-style reverse proxies set, and an unusable `X-Forwarded-For` hop
+ * does not mask a usable `X-Real-IP` — attribution takes the first header that
+ * yields a valid literal, because discarding a real observation in favour of
+ * reporting "unattributed" is strictly less information for the same admission
+ * charge. A deployment may instead declare that its ingress **appends** the
+ * observed peer (`append`/`append:N`), and then the key is hop N from the right
+ * and the client-supplied hops in front of it are never read: otherwise the
+ * leftmost hop — the value the client chooses — decides the bucket, so rotating
+ * it mints a fresh allowance per request. `X-Real-IP` is deliberately not
+ * consulted under that model, because an appending ingress does not set it, so a
+ * value there is client-supplied and would let a client choose which bucket it
+ * is charged against.
+ *
  * Both headers are only as trustworthy as the ingress in front of the app —
  * which is what `rateLimitIdentityPolicy` records, and why the edge WAF remains
  * the capacity layer.
  */
-export function resolveClientKey(requestHeaders: Headers): ClientKeyResolution {
-  const forwarded = firstHop(requestHeaders.get("x-forwarded-for"));
+export function resolveClientKey(
+  requestHeaders: Headers,
+  claim: IngressClaim = UNASSERTED_INGRESS,
+): ClientKeyResolution {
+  const forwardedHeader = requestHeaders.get("x-forwarded-for");
+
+  if (claim.model === "append") {
+    const observed = hopFromRight(forwardedHeader, claim.hopsFromRight ?? 1);
+    if (observed !== null) {
+      return isIpLiteral(observed)
+        ? { key: observed, source: "x-forwarded-for" }
+        : { key: null, source: "invalid" };
+    }
+    // No hop at the declared position: the ingress did not write this request's
+    // header — it was stripped, or the request never traversed it. Reporting
+    // `invalid` rather than falling back to a client-supplied value is the whole
+    // point of declaring a hop count, and it is what makes `append:2` verifiable.
+    return {
+      key: null,
+      source: forwardedHeader === null || forwardedHeader.trim() === "" ? "none" : "invalid",
+    };
+  }
+
+  const forwarded = firstHop(forwardedHeader);
   if (forwarded !== null && isIpLiteral(forwarded)) {
     return { key: forwarded, source: "x-forwarded-for" };
   }

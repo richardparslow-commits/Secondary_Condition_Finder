@@ -3,92 +3,77 @@ import path from "node:path";
 
 import { describe, expect, it } from "vitest";
 
+import {
+  PUBLIC_ROUTES,
+  ROOT_LAYOUT,
+  effectiveTitle,
+  manifestProblems,
+  publishedTitle,
+  titleChain,
+} from "../scripts/lib/public-routes.mjs";
+
 function read(relativePath: string): string {
   return fs.readFileSync(path.join(process.cwd(), relativePath), "utf8");
 }
 
-const EXPECTED_PAGE_TITLES = [
-  ["src/app/about/page.tsx", "About | Secondary Condition Finder"],
-  ["src/app/terms/page.tsx", "Terms | Secondary Condition Finder"],
-  ["src/app/secondary/page.tsx", "Secondary Workflow | Secondary Condition Finder"],
-  ["src/app/secondary/diagnosed/page.tsx", "Diagnosed Conditions | Secondary Condition Finder"],
-  ["src/app/secondary/service-connected/page.tsx", "Service-Connected Conditions | Secondary Condition Finder"],
-  ["src/app/secondary/upload/page.tsx", "Supporting Documents | Secondary Condition Finder"],
-  ["src/app/presumptive/page.tsx", "Presumptive Research | Secondary Condition Finder"],
-  ["src/app/va-forms/page.tsx", "VA Form Reference | Secondary Condition Finder"],
-  ["src/app/va-reference/page.tsx", "Disability Reference | Secondary Condition Finder"],
-  ["src/app/pathways/page.tsx", "Claim Pathways | Secondary Condition Finder"],
-  ["src/app/privacy/request/page.tsx", "Privacy Request | Secondary Condition Finder"],
-] as const;
-
-const EXPECTED_LAYOUT_TITLES = [
-  ["src/app/privacy/layout.tsx", "Privacy | Secondary Condition Finder"],
-  ["src/app/secondary/layout.tsx", "Secondary Workflow | Secondary Condition Finder"],
-  ["src/app/secondary/ratings/layout.tsx", "Disability Ratings | Secondary Condition Finder"],
-  ["src/app/secondary/suggestions/layout.tsx", "Connection Review | Secondary Condition Finder"],
-  ["src/app/secondary/evidence/layout.tsx", "Evidence & Research Checklist | Secondary Condition Finder"],
-  ["src/app/presumptive/layout.tsx", "Presumptive Research | Secondary Condition Finder"],
-] as const;
-
-describe("manual accessibility route document titles", () => {
+/**
+ * Document titles for every shipped route.
+ *
+ * The route list *and* the expected titles come from
+ * `scripts/lib/public-routes.mjs`; this suite used to carry its own list, which
+ * named 17 of the 26 reviewed routes. A page added to `src/app` with no title,
+ * or with a title nobody declared, was therefore outside the check that exists
+ * to catch exactly that. Now the inventory parity assertions below fail on an
+ * undeclared page, and every declared route is checked.
+ *
+ * Each route's title is also resolved from disk rather than trusted: the
+ * nearest `title:` in the page-then-layout chain is what a browser tab shows, so
+ * if a page grows its own metadata the effective owner moves and the manifest
+ * has to be updated in the same change.
+ */
+describe("shipped route document titles", () => {
   it("keeps the home title descriptive without adding a redundant suffix", () => {
-    const source = read("src/app/layout.tsx");
+    const source = read(ROOT_LAYOUT);
     expect(source).toContain('title: "Secondary Condition Finder"');
   });
 
-  it.each(EXPECTED_PAGE_TITLES)("publishes the expected page title in %s", (sourcePath, title) => {
-    const source = read(sourcePath);
-    expect(source).toContain(`title: "${title}"`);
+  it("declares exactly the pages that ship, so no route escapes these checks", () => {
+    expect(manifestProblems()).toEqual([]);
   });
 
-  it.each(EXPECTED_LAYOUT_TITLES)("publishes the expected inherited title in %s", (sourcePath, title) => {
-    const source = read(sourcePath);
-    expect(source).toContain(`title: "${title}"`);
+  it.each(PUBLIC_ROUTES)("publishes the declared title for $path from $titleOwner", (entry) => {
+    const published = publishedTitle(entry.titleOwner);
+    expect(published, `${entry.titleOwner} publishes no title`).not.toBeNull();
+    expect(published).toBe(entry.title);
   });
 
-  it("covers every manual review route with either a route title or an explicit route-group title", () => {
-    const titleOwnerByRoute = new Map<string, string>([
-      ["/", "src/app/layout.tsx"],
-      ["/about", "src/app/about/page.tsx"],
-      ["/privacy", "src/app/privacy/layout.tsx"],
-      ["/privacy/request", "src/app/privacy/request/page.tsx"],
-      ["/terms", "src/app/terms/page.tsx"],
-      ["/secondary", "src/app/secondary/page.tsx"],
-      ["/secondary/diagnosed", "src/app/secondary/diagnosed/page.tsx"],
-      ["/secondary/service-connected", "src/app/secondary/service-connected/page.tsx"],
-      ["/secondary/ratings", "src/app/secondary/ratings/layout.tsx"],
-      ["/secondary/upload", "src/app/secondary/upload/page.tsx"],
-      ["/secondary/suggestions", "src/app/secondary/suggestions/layout.tsx"],
-      ["/secondary/evidence", "src/app/secondary/evidence/layout.tsx"],
-      ["/presumptive", "src/app/presumptive/page.tsx"],
-      ["/presumptive/results", "src/app/presumptive/layout.tsx"],
-      ["/va-forms", "src/app/va-forms/page.tsx"],
-      ["/va-reference", "src/app/va-reference/page.tsx"],
-      ["/pathways", "src/app/pathways/page.tsx"],
-    ]);
+  it.each(PUBLIC_ROUTES)("resolves $titleOwner as the effective title for $path", (entry) => {
+    const effective = effectiveTitle(entry);
+    expect(effective, `${entry.path} resolves no title at all`).not.toBeNull();
+    expect(effective).toEqual({ owner: entry.titleOwner, title: entry.title });
+  });
 
-    expect([...titleOwnerByRoute.keys()]).toEqual([
-      "/",
-      "/about",
-      "/privacy",
-      "/privacy/request",
-      "/terms",
-      "/secondary",
-      "/secondary/diagnosed",
-      "/secondary/service-connected",
-      "/secondary/ratings",
-      "/secondary/upload",
-      "/secondary/suggestions",
-      "/secondary/evidence",
-      "/presumptive",
-      "/presumptive/results",
-      "/va-forms",
-      "/va-reference",
-      "/pathways",
-    ]);
-
-    for (const sourcePath of titleOwnerByRoute.values()) {
-      expect(read(sourcePath)).toMatch(/title:\s*"[^"]+"/);
+  it("titles every reviewed route from the route itself or an explicit route-group layout", () => {
+    // The two exemptions are the home route (whose title legitimately is the
+    // application shell title) and the excluded redirect shim. Anything else
+    // inheriting only `src/app/layout.tsx` would land in a browser tab reading
+    // the site name and nothing about the page.
+    const exempt = new Set(["/", "/results"]);
+    for (const entry of PUBLIC_ROUTES) {
+      if (exempt.has(entry.path)) continue;
+      expect(
+        entry.titleOwner,
+        `${entry.path} would inherit only the root layout's site-name title`,
+      ).not.toBe(ROOT_LAYOUT);
     }
+  });
+
+  it("keeps the resolved title chain nearest-first, ending at the root layout", () => {
+    expect(titleChain("src/app/secondary/evidence/page.tsx")).toEqual([
+      "src/app/secondary/evidence/page.tsx",
+      "src/app/secondary/evidence/layout.tsx",
+      "src/app/secondary/layout.tsx",
+      "src/app/layout.tsx",
+    ]);
   });
 });

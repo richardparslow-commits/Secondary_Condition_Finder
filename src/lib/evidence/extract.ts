@@ -59,6 +59,17 @@ export interface EvidenceAnalysis {
   supportingCount: number;
 }
 
+/**
+ * Bounds on one excerpt's quote.
+ *
+ * Exporting them keeps the *writer* and the *reader* on one number: the storage
+ * read guard rejects an over-long quote as a corrupt record, so a quote this
+ * module generates at or below `MAX_EXCERPT_QUOTE_CHARS` can never be refused
+ * by the loader that reads it back (audit HARD-01).
+ */
+export const MIN_EXCERPT_QUOTE_CHARS = 6;
+export const MAX_EXCERPT_QUOTE_CHARS = 1200;
+
 const CLINICIAN_CREDENTIALS = new Set<ClinicianCredential>([
   "physician",
   "psychologist",
@@ -283,7 +294,9 @@ export function analyzeEvidenceText(
       // ("2/2 OSA", "dx PTSD", "s/p CVA") to reach the classifier; anything
       // shorter is noise. Nexus relevance is still gated on a matched
       // selected-condition term, so short non-condition lines stay inert.
-      if (sentence.length < 6 || sentence.length > 1200) continue;
+      if (sentence.length < MIN_EXCERPT_QUOTE_CHARS || sentence.length > MAX_EXCERPT_QUOTE_CHARS) {
+        continue;
+      }
       let category = classifyCategory(sentence);
       const matched = matchingTerms(sentence, conditionTerms);
       // Under a Diagnosis:/Assessment: header, a line naming a selected

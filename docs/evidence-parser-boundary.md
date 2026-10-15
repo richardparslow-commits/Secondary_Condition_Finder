@@ -22,7 +22,7 @@ Evidence parsers (`src/lib/evidence/`) execute **exclusively in the browser**. T
 | `src/lib/evidence/document-extract.ts` | PDF/DOCX/text extraction from `File` objects | `pdfjs-dist`, `mammoth`, `File.arrayBuffer()`, `File.text()` |
 | `src/lib/evidence/dd214-extract.ts` | DD-214 structured data extraction; slices at the caller's `EvidenceLimits.textChars` and discloses truncation, validates real calendar dates, and minimizes SSN layouts by shape | `File` API |
 | `src/lib/evidence/ocr-session.ts` | Browser-local OCR primitives: canvas pixel-area cap, declared-dimension image-decode bound (`planImageDecode`) with no decode on the refusal path, five-minute elapsed-work budget (`startOcrJobDeadline`), page-ordered text assembly under the review budget, page-burst yields, resume checkpoints, worker health probe, factory-only worker spawn | `canvas`, `sessionStorage`, `createImageBitmap`, `Worker` |
-| `src/lib/evidence/storage.ts` | `sessionStorage` read/write for extracted evidence | `sessionStorage` |
+| `src/lib/evidence/storage.ts` | `sessionStorage` read/write for extracted evidence, with a bounded read guard (byte ceiling before `JSON.parse`, retention window before validation, per-field ceilings, ignored-entry accounting) and the one reader every consumer of the store uses (`parseStoredEvidence`) | `sessionStorage` |
 | `src/lib/evidence/limits.ts` | Byte/char/page limits for Standard and Extended depth modes | None |
 | `src/lib/evidence/document-kind.ts` | Document kind detection | None |
 | `src/lib/evidence/condition-terms.ts` | Condition term normalization | None |
@@ -74,7 +74,7 @@ This audit runs in CI and blocks merges on violations.
 
 - `connect-src 'self'` prevents any evidence data from leaving the browser
 - Evidence is stored only in `sessionStorage:evidence-analysis:v1` (tab-scoped)
-- Maximum stored evidence is bounded by `STANDARD_LIMITS.storedBytes` (256 KB) or `EXTENDED` mode (3 MB)
+- Maximum stored evidence is bounded by `STANDARD_LIMITS.storedBytes` (256 KB) or `EXTENDED` mode (3 MB) on write **and** on read: the stored payload is measured against the caller's ceiling before it is parsed, so a store written by another version, edited by hand, or replaced by same-origin script cannot make the tab parse an unbounded value
 
 ## Adding New Evidence Parser Modules
 
@@ -94,7 +94,10 @@ Every browser-local extraction is bounded **before** it allocates, because a Vet
 - **Elapsed work.** An OCR job runs under a five-minute budget. A per-page boundary check cannot stop a `recognize()` or `page.render()` promise that never settles, so the owning component arms a timer that terminates the live worker and loading task, which rejects the awaited promise and unwinds the run through its normal teardown.
 - **Decode size.** A direct image upload is measured from its container header (PNG, JPEG, GIF, BMP, WebP, TIFF) and refused when the declared pixel count or either dimension exceeds the ceiling, or when the header cannot be read at all. An accepted image renders through the same canvas pixel-area cap the PDF path uses, so what reaches the OCR worker is bounded by construction. Refusals are shown with the measured size and always restate that the file never left the tab.
 - **Retained text.** Per-page text is joined in **page order** under the depth limit's character budget, so a truncated review is the document's prefix rather than whichever pass (text layer or OCR) ran first, and truncation is disclosed.
-- **Teardown.** Cancel, the elapsed-work deadline, and unmount share one teardown path; a worker or pdf.js task already terminated by that path is not terminated a second time inside a `finally`.
+- **Teardown.** Cancel, the elapsed-work deadline, and unmount share one teardown path; a worker or pdf.js task already terminated by that path is not terminated a second time inside a `finally`. Both browser-local OCR pipelines run under the same budget — the DD-214 analyzer and the main evidence pipeline — so a hung recognition is stopped in either.
+- **Stored excerpts.** Reading the browser-local store is bounded like writing it. The payload is measured against the active depth ceiling **before** `JSON.parse` runs, the retention window is applied **before** per-entry validation, and every field a renderer touches has its own ceiling above the largest envelope this app writes (quote, source name, locator, excerpt count, matched terms). A record that fails validation is ignored and **counted**, and the surface discloses how many were ignored instead of restoring a partial store in silence; a payload over the ceiling is refused with the same fixed notice a corrupt store gets. Neither path ever echoes parser text or stored content — a JSON syntax error can carry document text — and the observability codes are fixed strings (`STORE_UNREADABLE`, `STORE_OVERSIZE`, `STORE_PARTIAL`).
+
+  **Every reader of that store goes through the one path.** The Step 6 surfaces (the analyses provider and its gap-coverage chips, the local excerpt review, the pathway mapper, and the per-hop review) hold the payload string rather than a `Storage` handle, so each of them called `parseStoredEvidence` with `MAX_STORED_EVIDENCE_READ_LIMITS` — the widest envelope this app can write — instead of parsing the payload itself. A reader without depth context cannot know whether the store was written under Standard or Extended retention, and a ceiling narrower than a shipped envelope would refuse or trim a legitimate Extended store on whichever page opened it first; that is why the depth-less reader takes the maximum rather than a default.
 
 ## Cross-References
 

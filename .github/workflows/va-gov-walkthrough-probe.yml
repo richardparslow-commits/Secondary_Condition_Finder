@@ -40,11 +40,20 @@ jobs:
         id: probe
         run: |
           set -o pipefail
+          # In --json mode the probe writes exactly one JSON document to stdout
+          # (progress and per-URL lines go to stderr), so this redirect captures a
+          # parseable report. It did not until 2026-10-14: the probe's progress
+          # banner sat ahead of the JSON, both readers below parsed the whole
+          # file, and on a run with genuine route rot the tracking job died on
+          # JSON.parse and never opened the issue it exists to open
+          # (docs/va-gov-probe-handoff-policy-2026-10-14.md). Both readers still
+          # slice from the first `{` so a banner can never do that again.
           node scripts/probe-va-gov-links.js --json > va-gov-walkthrough-probe-report.json
           exit_code=$?
           node --input-type=module -e "
             import { readFileSync, writeFileSync } from 'node:fs';
-            const report = JSON.parse(readFileSync('va-gov-walkthrough-probe-report.json', 'utf8'));
+            const raw = readFileSync('va-gov-walkthrough-probe-report.json', 'utf8');
+            const report = JSON.parse(raw.slice(raw.indexOf('{')));
             const lines = [
               '# VA.gov walkthrough link probe',
               '',
@@ -74,7 +83,12 @@ jobs:
 
   track-rot:
     needs: link-probe
-    if: always() && needs.link-probe.result == 'failure'
+    # Runs after any completed probe so one job maintains the issue in both
+    # directions: it opens or updates the tracking issue when the probe fails,
+    # and closes it once a scheduled run is green. The open-only half was the
+    # other half of the 2026-10-14 hand-off defect: a notice that outlives its
+    # cause is its own false signal (see the citation-decay-watch workflow).
+    if: always()
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -83,26 +97,50 @@ jobs:
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
       # The report is written in the link-probe workspace; fetch it from the
-      # run's artifacts so this job can build the tracking-issue body.
+      # run's artifacts so this job can build the tracking-issue body. A probe
+      # that never started uploads no artifact, which is reported below rather
+      # than crashing here.
       - name: Download probe report artifact
+        continue-on-error: true
         uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5
         with:
           name: va-gov-walkthrough-probe-report-${{ github.run_id }}
-      - name: Open or update walkthrough route-rot tracking issue
+      - name: Maintain walkthrough route-rot tracking issue
         env:
           GH_TOKEN: ${{ github.token }}
+          PROBE_RESULT: ${{ needs.link-probe.result }}
         run: |
           set -o pipefail
           node --input-type=module - <<'NODE'
           import { execFileSync } from "node:child_process";
           import { readFileSync } from "node:fs";
 
-          const report = JSON.parse(readFileSync("va-gov-walkthrough-probe-report.json", "utf8"));
+          // Tolerate a leading banner, and a report that never arrived: a probe
+          // that was cancelled or never started leaves an empty capture or none
+          // at all. Either way this job says so and changes no issue, because a
+          // probe that did not complete is not evidence of route rot — the
+          // link-probe job's own status reports that failure.
+          let report = null;
+          try {
+            const raw = readFileSync("va-gov-walkthrough-probe-report.json", "utf8");
+            report = JSON.parse(raw.slice(raw.indexOf("{")));
+          } catch {
+            report = null;
+          }
+          if (!report) {
+            console.log(
+              `No usable walkthrough probe report for this run (probe result: ${process.env.PROBE_RESULT}): no tracking-issue change was made.`,
+            );
+            process.exit(0);
+          }
           const title = "VA.gov walkthrough route rot detected — update deep links";
           const marker = "<!-- va-gov-walkthrough-probe -->";
 
           const dead = (report.dead ?? []).map((r) => `- \`${r.url}\` → HTTP ${r.finalStatus}`).join("\n");
           const broken = (report.serverErrors ?? []).map((r) => `- \`${r.url}\` → HTTP ${r.finalStatus}`).join("\n");
+          const notChecked = (report.unreachable ?? [])
+            .map((r) => `- \`${r.url}\`${r.error ? ` → ${r.error}` : ` → HTTP ${r.finalStatus}`}`)
+            .join("\n");
 
           const body = [
             marker,
@@ -111,8 +149,13 @@ jobs:
             "to match VA.gov's current flow, then walk the affected steps manually",
             "before publishing — this probe verifies routes, not the sign-in",
             "experience. This issue is maintained by the va-gov-walkthrough-probe",
-            "workflow; it updates in place while rot persists and is not",
-            "auto-closed.",
+            "workflow; it updates in place while rot persists and closes when a",
+            "scheduled run is green again.",
+            "",
+            "**A route listed as unreachable was NOT checked**, so it was not found dead",
+            "and nothing about it needs updating: the probe's request timed out, DNS",
+            "failed, it exceeded its redirect allowance, or VA.gov answered a rate-limit",
+            "response. Nothing below is a claim about those routes.",
             "",
             `| metric | count |`,
             `| --- | --- |`,
@@ -127,6 +170,9 @@ jobs:
             "## Server errors (VA.gov returned 5xx)",
             broken || "- none",
             "",
+            "## Unreachable (not checked — not dead)",
+            notChecked || "- none",
+            "",
             `Run: ${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`,
             "",
           ].join("\n");
@@ -140,7 +186,27 @@ jobs:
           ]).trim();
           const matches = JSON.parse(existing || "[]").filter((issue) => issue.title === title);
 
-          if (matches.length > 0) {
+          const outcome = process.env.PROBE_RESULT;
+
+          if (outcome !== "failure") {
+            // Green, or a run that never completed a probe. A green run closes the
+            // tracking issue instead of leaving a stale notice asking for work that
+            // is already done.
+            if (outcome === "success" && matches.length > 0) {
+              gh([
+                "issue",
+                "close",
+                String(matches[0].number),
+                "--reason",
+                "completed",
+                "--comment",
+                "The scheduled VA.gov walkthrough link probe is green again — every deep-linked route resolves (a sign-in redirect counts as the route being alive) — so this tracking issue closes automatically. It reopens if a later scheduled run finds a dead route.",
+              ]);
+              console.log(`Closed tracking issue #${matches[0].number}`);
+            } else {
+              console.log(`Probe result ${outcome}: no tracking-issue change.`);
+            }
+          } else if (matches.length > 0) {
             gh(["issue", "edit", String(matches[0].number), "--body", body]);
             console.log(`Updated tracking issue #${matches[0].number}`);
           } else {

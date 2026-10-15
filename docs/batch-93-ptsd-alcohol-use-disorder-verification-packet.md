@@ -113,6 +113,8 @@ None of the three references carries a `contentDigest`. Per the batch-92 disclos
 
 Consequence stated openly: the reference uses enter `verified: true` without digests, so the decay audit's verified-without-digest population moves 398 → 401 against `MAX_UNDIGESTED_VERIFIED_REFS` (**383**, already exceeded and policy-documented since batch 92). The pin is **never raised** to accommodate new debt.
 
+*(Updated 2026-10-14, issue #518: the corpus-wide pin named above no longer exists. It counted references the SOP itself forbids digesting — a PubMed record page is served to the decay probe as a per-request anti-bot interstitial, so a digest recorded against that URL could never validate — which meant no human action could clear it, and made the scheduled probe fail on that count alone with nothing decayed. `npm run citations:decay` therefore ratchets only the **digest-eligible** backlog (`MAX_UNDIGESTED_ELIGIBLE_VERIFIED_REFS`, currently 5) and excludes the measured, expiring classes declared in `docs/citation-digest-ineligible-classes.json`. Landing these three anchors accordingly moves the **digest-ineligible** PubMed population 392 → 395 and leaves the eligible backlog at its pin. See `docs/citation-digest-ineligibility-policy-2026-10-14.md`.)*
+
 ## Landing condition and exact post-verification state
 
 **Landing is verbatim:** on all-three approval, the held edge is authored exactly as preserved — rank 21 of `data/knowledge-base/ptsd.json` (after the current 20), ASSOCIATION_ONLY, hypothesized-only, `NOT_ESTABLISHED`, with the three references entering as `verified: true` and any recorded narrowing applied to the edge/note text first.

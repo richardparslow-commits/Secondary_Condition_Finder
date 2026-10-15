@@ -257,11 +257,11 @@ export function SuggestionsStep({ snapshot, vaReference }: SuggestionsStepProps)
           This step starts with each diagnosis you marked as not service connected. Under each one, it lists only your already service-connected conditions that have an authored published relationship worth evaluating as a possible cause, contributor, aggravating condition, treatment pathway, or other medical connection. It does not generate new diagnoses or list conditions you did not select.
         </p>
       </header>
-      <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" aria-label="Workflow progress"><span>✓ Diagnosed</span><span>✓ Service-connected</span><span>✓ Ratings</span><span>✓ Documents</span><strong className="text-blue-700">5 Connections</strong><span>6 Evidence</span><span className="ml-auto no-print"><PrintReportButton /></span></div>
+      <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" role="group" aria-label="Workflow progress"><span>✓ Diagnosed</span><span>✓ Service-connected</span><span>✓ Ratings</span><span>✓ Documents</span><strong className="text-blue-700">5 Connections</strong><span>6 Evidence</span><span className="ml-auto no-print"><PrintReportButton /></span></div>
       <RegulatoryPreflightStatus snapshot={snapshot} changes={relevantChanges} />
 
       <div className="ui-grid">
-        <aside className="ui-card">
+        <aside className="ui-card" aria-label="Conditions being compared">
           <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">✓</span><h2 className="text-xl font-bold">Conditions Being Compared</h2></div>
           <h3 className="font-bold">Diagnosed, not service connected</h3>
           {nonServiceConnectedNames.length > 0 ? <div className="mt-2 flex flex-wrap gap-2">{nonServiceConnectedNames.map((name) => <span key={name} className="rounded-lg border border-amber-200 bg-amber-50 px-2.5 py-1 text-xs text-amber-950">{name}</span>)}</div> : <p className="mt-2 text-sm text-slate-600">Every diagnosed condition in this review is already marked service connected.</p>}
@@ -303,7 +303,7 @@ export function SuggestionsStep({ snapshot, vaReference }: SuggestionsStepProps)
           </SecondarySuggestionsTabs>
         </section>
 
-        <aside className="ui-stack">
+        <aside className="ui-stack" aria-label="How to interpret results">
           <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">i</span><h2 className="text-xl font-bold">How to Interpret Results</h2></div><ul className="space-y-4 text-sm"><li><strong>Starts with diagnoses you already reported.</strong><p>Step 5 does not suggest new medical conditions. Every top-level result is a diagnosis you selected in Step 1 and marked not service connected in Step 2.</p></li><li><strong>Only existing service-connected conditions appear underneath.</strong><p>A service-connected condition is listed only when the published knowledge base contains an authored relationship to that specific non-service-connected diagnosis.</p></li><li><strong>No match is not a negative medical opinion.</strong><p>If no published relationship is shown, the tool is reporting only that its current curated mappings do not support a match for the selected combination.</p></li><li><strong>Direction and pathway still require evidence.</strong><p>Cause, aggravation, treatment effects, intermediate steps, and other pathway theories must be evaluated against your individual chronology and medical evidence.</p></li><li><strong>Legal and clinical sources have different roles.</strong><p>Administrative or legal authority does not itself establish the medical relationship.</p></li><li><strong>Context match is not proof.</strong><p>A medication/treatment match means only that your reported term appears in authored mapping text.</p></li></ul></section>
           <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">✓</span><h2 className="text-xl font-bold">Next Review</h2></div><p className="text-sm">Step 6 is limited to the same diagnosed non-service-connected conditions and the relationship evidence shown here. It does not reintroduce unrelated possible secondary diagnoses.</p></section>
         </aside>

@@ -4,10 +4,8 @@ import { useMemo, useSyncExternalStore } from "react";
 
 import { ConsultationSummaryDownload } from "@/components/ConsultationSummaryDownload";
 import { formatClaimSummary } from "@/lib/engine/export";
-import {
-  evidenceAnalysisStorageKey,
-  type EvidenceAnalysis,
-} from "@/lib/evidence/extract";
+import { evidenceAnalysisStorageKey } from "@/lib/evidence/extract";
+import { parseStoredEvidence } from "@/lib/evidence/storage";
 import {
   combineMappingWithClaimSummary,
   formatPathwayEvidenceMapping,
@@ -33,19 +31,6 @@ function subscribe(): () => void {
   // Evidence excerpts are written on Step 4 before this component mounts on
   // Step 6. No live subscription is required while the review page is open.
   return () => undefined;
-}
-
-function parseAnalyses(raw: string): EvidenceAnalysis[] {
-  try {
-    const parsed = JSON.parse(raw) as unknown;
-    if (!Array.isArray(parsed)) return [];
-    return parsed.filter(
-      (item): item is EvidenceAnalysis =>
-        Boolean(item && typeof item === "object" && (item as EvidenceAnalysis).version === 1),
-    );
-  } catch {
-    return [];
-  }
 }
 
 const STATUS_CHIP: Record<PathwayEvidenceStatus, { className: string; label: string }> = {
@@ -102,7 +87,10 @@ interface Props {
 
 export function PathwayEvidenceMapper({ results, recommendations }: Props) {
   const snapshot = useSyncExternalStore(subscribe, getSnapshot, () => EMPTY_SNAPSHOT);
-  const analyses = useMemo(() => parseAnalyses(snapshot), [snapshot]);
+  // Audit HARD-01: read the store through its own guard so this surface cannot
+  // render a record the writer could not have produced (or work unbounded on a
+  // payload that never came from this app).
+  const analyses = useMemo(() => parseStoredEvidence(snapshot), [snapshot]);
   const hasAnalyses = analyses.length > 0;
   const mappedRows = useMemo(() => mapEvidenceToPathways(results, analyses), [results, analyses]);
 

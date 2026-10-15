@@ -304,7 +304,15 @@ decision **elects the `depressive-disorder` target**: no anchor diagnoses persis
 election is preserved in the held artifact. No `contentDigest` is recorded on any of the eleven — PubMed
 record pages are dynamic per fetch and the SOP requires omission over false-positive digests — so
 undigested-verified is 395 against `MAX_UNDIGESTED_VERIFIED_REFS` 383, deliberately NOT raised; the
-qualified-human decision of 2026-09-29 accepts the flagged state pending a future policy session. Each
+qualified-human decision of 2026-09-29 accepts the flagged state pending a future policy session.
+(**Resolved 2026-10-14 — that session. Issue #518 showed what the accepted state cost: the scheduled
+probe failed on this count alone, with zero link rot, content drift or staleness, and asked for
+re-verification of references that had not decayed, because no human action can move a reference the SOP
+forbids digesting. The corpus-wide pin quoted above no longer exists: `npm run citations:decay` ratchets
+only the digest-eligible backlog (`MAX_UNDIGESTED_ELIGIBLE_VERIFIED_REFS`) and declares the excluded
+classes, with their measurement, in `docs/citation-digest-ineligible-classes.json`; see
+`docs/citation-digest-ineligibility-policy-2026-10-14.md`. Nothing above is rewritten — the 2026-09-29
+decision and the 383 it names stand as the record of that date.**) Each
 artifact now carries a `landingRecord` with its adaptations and reviewer decisions; the `heldEdges` bodies
 are preserved verbatim as the pre-landing record. The batch-89 (PTSD stress-flare) and batch-90
 (schizophrenia tardive-dyskinesia) held sets remain held pending their own verification passes. The

@@ -132,6 +132,69 @@ describe("accessibility and UX content contracts", () => {
     expect(css).toContain("@media (prefers-reduced-motion: reduce)");
   });
 
+  it("keeps links inside text blocks distinguishable without colour, and landmarks named", () => {
+    // Found by the R-05 real-browser gate's `link-in-text-block` rule (WCAG 1.4.1)
+    // after that rule was added to it, and by axe's `region`/`landmark-unique`
+    // rules in a live browser: `/secondary` and `/privacy/request` shipped
+    // colour-only in-text links (2.66:1 and 1.12:1 against the surrounding text —
+    // under the 3:1 that would let colour carry the distinction), the layout
+    // cross-link strips sat outside any landmark, the workflow-progress strips
+    // carried an `aria-label` on a bare `div` (prohibited on a generic role, so
+    // the label was exposed to nobody), and each two-column step rendered two
+    // unnamed `aside` landmarks.
+    const css = readFileSync("src/app/globals.css", "utf8");
+
+    // The underline belongs at rest, in every text-block context the app renders
+    // (`div.ui-footer-note` on /secondary, `p`/`li` on /privacy, /privacy/request
+    // and /terms), and again under forced colours where author colours are gone.
+    expect(css).toMatch(/p a,\nli a,\ndd a,\n\.ui-footer-note a,\n\.ui-callout a,/);
+    const forcedColorsBlock = css.split("@media (forced-colors: active)")[1] ?? "";
+    expect(forcedColorsBlock).toContain("text-decoration: underline !important");
+    // Button-styled links keep their opt-out, which is why the rule is scoped to
+    // text blocks rather than to `a` at large.
+    expect(css).toMatch(/\.ui-button,[\s\S]*text-decoration: none;/);
+
+    for (const layout of [
+      "src/app/presumptive/layout.tsx",
+      "src/app/secondary/suggestions/layout.tsx",
+      "src/app/va-forms/layout.tsx",
+      "src/app/va-reference/layout.tsx",
+    ]) {
+      const source = readFileSync(layout, "utf8");
+      expect(source).toContain('<nav aria-label=');
+      expect(source).toContain("</nav>");
+      expect(source).not.toContain('<div className="mx-auto max-w-5xl px-6 pt-5');
+    }
+
+    for (const step of [
+      "src/components/secondary/steps/DiagnosedStep.tsx",
+      "src/components/secondary/steps/ServiceConnectedStep.tsx",
+      "src/components/secondary/steps/RatingsStep.tsx",
+      "src/components/secondary/steps/UploadStep.tsx",
+      "src/components/secondary/steps/EvidenceStep.tsx",
+      "src/components/secondary/steps/SuggestionsStep.tsx",
+    ]) {
+      const source = readFileSync(step, "utf8");
+      expect(source).toContain('role="group" aria-label="Workflow progress"');
+    }
+
+    for (const surface of [
+      "src/app/presumptive/page.tsx",
+      "src/components/secondary/steps/DiagnosedStep.tsx",
+      "src/components/secondary/steps/ServiceConnectedStep.tsx",
+      "src/components/secondary/steps/RatingsStep.tsx",
+      "src/components/secondary/steps/UploadStep.tsx",
+      "src/components/secondary/steps/EvidenceStep.tsx",
+      "src/components/secondary/steps/SuggestionsStep.tsx",
+    ]) {
+      const source = readFileSync(surface, "utf8");
+      // Two `aside` landmarks in one document are indistinguishable to a
+      // screen-reader user unless each carries its own name.
+      expect(source).not.toMatch(/<aside className="ui-(card|stack)">/);
+      expect(source).toMatch(/<aside className="ui-(card|stack)" aria-label="/);
+    }
+  });
+
   it("announces dynamic reference and evidence status changes without exposing extra data", () => {
     const referenceExplorer = readFileSync(
       "src/components/va/DisabilityReferenceExplorer.tsx",

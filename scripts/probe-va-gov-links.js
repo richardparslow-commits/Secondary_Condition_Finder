@@ -25,6 +25,17 @@
  *
  * Exit codes: 0 = no dead links; 1 = at least one dead route
  * (404/410); 2 = infrastructure error (probe itself could not run).
+ *
+ * Output contract: in `--json` mode stdout carries exactly one JSON document
+ * and nothing else, because the scheduled workflow captures stdout with
+ * `> va-gov-walkthrough-probe-report.json`. Progress and per-URL lines go to
+ * stderr there, where a human still reads them in the run log. This is not
+ * cosmetic: until 2026-10-14 the progress banner was written ahead of the JSON
+ * on stdout, both workflow readers parsed the whole captured file, and so a run
+ * whose deep link had genuinely rotted died on `JSON.parse` — the step summary
+ * was silently dropped and the tracking issue was never opened, which left the
+ * probe unable to report the exact failure it exists to catch
+ * (docs/va-gov-probe-handoff-policy-2026-10-14.md).
  */
 
 const fs = require("fs");
@@ -49,6 +60,24 @@ const VERDICT_AUTH_REDIRECT = "auth-redirect";
 const VERDICT_SERVER_ERROR = "server-error";
 const VERDICT_UNREACHABLE = "unreachable";
 const VERDICT_DEAD = "dead";
+
+/**
+ * Routes this probe's two kinds of output. In `--json` mode the human-readable
+ * lines go to stderr and stdout receives one JSON document, so a shell redirect
+ * captures something `JSON.parse` accepts. Without `--json` (the maintainer run,
+ * `npm run probe:va-gov-walkthrough`) everything stays on stdout as before.
+ * Injected streams keep that routing testable without spawning a process.
+ */
+function createOutput({ json = false, stdout = process.stdout, stderr = process.stderr } = {}) {
+  return {
+    note(message) {
+      (json ? stderr : stdout).write(`${message}\n`);
+    },
+    report(value) {
+      if (json) stdout.write(`${JSON.stringify(value, null, 2)}\n`);
+    },
+  };
+}
 
 /**
  * Extracts `url: "…"` literals from the authored walkthrough module source.
@@ -215,6 +244,7 @@ function buildReport(results) {
 }
 
 async function main() {
+  const out = createOutput({ json: process.argv.includes("--json") });
   let urls;
   try {
     urls = loadWalkthroughUrls();
@@ -225,7 +255,7 @@ async function main() {
     return;
   }
 
-  console.log(
+  out.note(
     `va-gov-walkthrough-probe: probing ${urls.length} walkthrough deep-link(s)…`,
   );
   const results = await probeAll(urls);
@@ -233,22 +263,21 @@ async function main() {
 
   for (const result of results) {
     const status = result.finalStatus ?? (result.error ? "ERR" : "n/a");
-    console.log(
+    out.note(
       `  [${result.verdict}] ${result.url} (status ${status}${result.hops ? `, ${result.hops} redirect(s)` : ""})`,
     );
   }
-  console.log(
+  out.note(
     `va-gov-walkthrough-probe: ${report.status} — ${report.aliveCount} alive, ${report.deadCount} dead, ${report.serverErrorCount} server-error, ${report.unreachableCount} unreachable.`,
   );
 
-  if (process.argv.includes("--json")) {
-    console.log(JSON.stringify(report, null, 2));
-  }
+  out.report(report);
 
   process.exitCode = report.status === "FAIL" ? 1 : 0;
 }
 
 module.exports = {
+  createOutput,
   VERDICT_ALIVE,
   VERDICT_AUTH_REDIRECT,
   VERDICT_SERVER_ERROR,

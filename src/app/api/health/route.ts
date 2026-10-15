@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import { loadKbGraph } from "@/lib/kb/graph";
+import { cspViolationWindowReport } from "@/lib/observability/csp-violation-window";
 import { runtimeCapabilities } from "@/lib/runtime-capabilities";
 import {
   openSessionPayload,
@@ -148,8 +149,8 @@ function checkVaConfig(): ComponentCheck & { enabled?: boolean; environment?: st
  *
  * Health check endpoint used by Vercel monitoring and the production readiness
  * workflow. Returns component-level status for catalog, session crypto, the
- * configured workflow session, the CRG adjacency graph, VA API config, and
- * circuit breaker state.
+ * configured workflow session, the CRG adjacency graph, VA API config, circuit
+ * breaker state, and the shared consumer budget's admit/refuse pressure.
  *
  * Response schema (see docs/api-specification.md):
  * - status: "healthy" | "degraded"
@@ -164,14 +165,42 @@ function checkVaConfig(): ComponentCheck & { enabled?: boolean; environment?: st
  * - components.vaReferenceCache: { scope, detail, hits, misses, hitRate } —
  *   `scope: "disabled"` means the counters are structurally frozen at zero and
  *   must not be read as "a cache that has not been used yet"
+ * - components.vaConsumerBudget: { status, latencyMs, scope, detail, budget,
+ *   store, pressure } — whether the fleet's upstream traffic is bounded by one
+ *   shared window here (`fleet-shared` / `unenforced` / `not-required`), the
+ *   budget's own bounds and gate, and the admit/refuse pressure this instance has
+ *   accumulated (A03): `pressure.refused` rising is the fleet being throttled,
+ *   readable before VA answers 429, and `pressure.pacing.chargedReservations` is
+ *   the earliest warning — the upstream itself said the remaining quota is short.
+ *   These counters are per-instance and reset on cold start; a refusal is an
+ *   event, so any non-zero count is true of the fleet as a whole
  * - components.rateLimit: { status, latencyMs, scope, detail, identity, ceiling,
- *   store } — whether application-level rate limiting is per-instance here,
- *   since the effective limit scales with instance count and is not otherwise
- *   observable; `identity` records whether per-client keys rest on an asserted
- *   ingress or on client-supplied headers, `ceiling` is the shared budget that
- *   bounds unattributed and key-rotating traffic (read off the limiter that
- *   enforces it, so the report and the behaviour are one number), and `store`
- *   records whether those counters are deployment-wide or process-local
+ *   store, refusals } — whether application-level rate limiting is per-instance
+ *   here, since the effective limit scales with instance count and is not
+ *   otherwise observable; `identity` records whether per-client keys rest on an
+ *   asserted ingress model or on client-supplied headers — and, for an asserted
+ *   model, which hop of the header that model makes authoritative — `ceiling` is
+ *   the shared budget that bounds unattributed and key-rotating traffic (read off
+ *   the limiter that enforces it, so the report and the behaviour are one number),
+ *   and `store` records whether those counters are deployment-wide or
+ *   process-local. `refusals` is the reason a refusal happened, counted here
+ *   because the 429 body deliberately does not say which budget refused:
+ *   `byBudget.ceiling` with a rising `ceilingShare` is aggregate pressure (many
+ *   different clients refused in one window), `byBudget.perClient` is individual
+ *   clients at their own limit, and both are per-instance and reset on cold
+ *   start. It carries surface labels and counts only — never the client key — so
+ *   no address can reach this (public) payload
+ * - components.cspReports: { status, latencyMs, scope, windowMs, maxEvents,
+ *   received, oversized, evicted, since, lastReceivedAt, directives,
+ *   directivesOmitted, detail } — the CSP / Trusted-Types violations browsers
+ *   reported in the last few minutes, so a policy regression is an operator-
+ *   readable fact here instead of only a browser-console line. Carries fact
+ *   names and counts only: no document URL, blocked URL, source file or sample
+ *   can reach this (public) payload, because the window is handed the bounded
+ *   directive/disposition pair. `scope` is `process-local` — reports are
+ *   accepted where the POST lands — and `received > 0` is the signal that some
+ *   deploy is blocking something the policy did not intend; it never changes
+ *   overall health
  * - components.runtime: { status, latencyMs, distributed, reduced, capabilities,
  *   detail } — the aggregate answer to "what does this deployment give up?",
  *   covering every process-local control (including live VA access and the
@@ -194,10 +223,12 @@ export async function GET() {
     const vaConfig = checkVaConfig();
     const circuit = getCircuitSnapshot();
     const cacheCounters = peekCacheCounters();
+    const cspReports = cspViolationWindowReport();
     // Scopes come from the single capabilities report, never re-derived here, so a
     // control cannot grow a health field that disagrees with its own behaviour.
     const capabilities = runtimeCapabilities();
     const cacheScope = capabilities.capabilities.vaReferenceCache;
+    const consumerBudget = capabilities.capabilities.vaConsumerBudget;
     const rateLimit = capabilities.capabilities.rateLimit;
 
     const components = {
@@ -222,6 +253,20 @@ export async function GET() {
             ? Math.round((cacheCounters.hits / (cacheCounters.hits + cacheCounters.misses)) * 100)
             : null,
       },
+      // A report, never a health failure: an exhausted or unenforced budget is the
+      // documented degradation path (the request falls back to local reference
+      // data), not a reason to take the deployment out of service — exactly as a
+      // disabled live integration is reported `ok` above. The scope and the
+      // pressure fields are where the operator reads what is actually happening.
+      vaConsumerBudget: {
+        status: "ok" as const,
+        latencyMs: 0,
+        scope: consumerBudget.scope,
+        detail: consumerBudget.detail,
+        // The control's own facts (budget bounds, gate, per-instance pressure),
+        // forwarded rather than re-derived here.
+        ...consumerBudget.details,
+      },
       rateLimit: {
         status: "ok" as const,
         latencyMs: 0,
@@ -230,6 +275,18 @@ export async function GET() {
         // The control's own facts (identity trust, enforced ceiling, store
         // regime), forwarded rather than re-derived here.
         ...rateLimit.details,
+      },
+      // A report, never a health failure — exactly like the budget and the
+      // limiter above. A blocked inline style or script sink means a page is
+      // rendering under an unintended policy, which an operator must see; it
+      // does not mean the deployment cannot serve, and making it a 503 would
+      // take the site down over a policy finding. The window's own facts are
+      // forwarded rather than re-derived here, so the report and the counting
+      // cannot disagree.
+      cspReports: {
+        status: "ok" as const,
+        latencyMs: 0,
+        ...cspReports,
       },
       runtime: {
         status: "ok" as const,

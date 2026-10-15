@@ -38,7 +38,7 @@ describe("local evidence hydration contract", () => {
     // the restored state and the next commit cannot disagree. See
     // tests/local-evidence-extraction-fence.test.tsx for the A07 contract.
     expect(analyzer).toContain(
-      "const restoreTimer = window.setTimeout(() => {\n      const { analyses, parseError } = loadStoredEvidenceWithWarning(\n        getSessionStorage(),\n      );\n      applyAnalyses(analyses);",
+      "const restoreTimer = window.setTimeout(() => {\n      const { analyses, parseError, discardedEntries } = loadStoredEvidenceWithWarning(\n        getSessionStorage(),\n      );\n      applyAnalyses(analyses);",
     );
     expect(analyzer).toContain(
       "return () => window.clearTimeout(restoreTimer);",
@@ -61,10 +61,13 @@ describe("local evidence hydration contract", () => {
     expect(analyzer).toContain("} catch {\n    return null;\n  }");
     expect(storage).toContain("const raw = storage.getItem(evidenceAnalysisStorageKey);");
     expect(storage).toContain("} catch {\n    return [];\n  }");
-    // The warning variant is fail-closed too: parse failures return an empty
-    // store plus a fixed, content-free code for observability instead of
-    // throwing or echoing the parser message / stored record text.
-    expect(storage).toContain('return { analyses: [], parseError: "Saved evidence could not be read." };');
+    // The warning variant is fail-closed too: parse failures (including a
+    // payload over the read byte ceiling) return an empty store plus a fixed,
+    // content-free notice for observability instead of throwing or echoing the
+    // parser message / stored record text.
+    expect(storage).toContain(
+      'return { analyses: [], parseError: "Saved evidence could not be read.", discardedEntries: 0 };',
+    );
     expect(storage).not.toContain("parseError: message");
     expect(storage).not.toContain("rawPreview");
     expect(storage).not.toContain("first500");

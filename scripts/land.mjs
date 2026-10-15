@@ -12,7 +12,12 @@
  *
  * It reads the required check names from the live ruleset rather than
  * hard-coding them, so adding/renaming a required check never silently
- * weakens the wait.
+ * weakens the wait. Reading them is fail-closed: if the ruleset cannot be read
+ * (a failed `gh api` call, a non-JSON or non-array body) or the base branch
+ * declares no required checks at all, the script stops instead of watching
+ * whatever checks the PR happens to report. "I could not read the gate" is
+ * never treated as "there is no gate", and an unverifiable gate is never
+ * reported as passed or handed to `gh pr merge`.
  *
  * Usage:
  *   npm run land -- -m "Commit subject\n\nBody"
@@ -25,8 +30,14 @@
  * base branch, never force-pushes, never force-merges, never deletes a branch
  * whose merge failed, and leaves the PR open on any check failure.
  */
-import { execFileSync, spawnSync } from "node:child_process";
+import { spawnSync } from "node:child_process";
 import process from "node:process";
+
+import {
+  LAND_API_PATHS,
+  LandRequiredChecksError,
+  resolveRequiredChecks,
+} from "./lib/land-required-checks.mjs";
 
 const FOOTER =
   "Generated with Codebuff 🤖\nCo-Authored-By: Codebuff <noreply@codebuff.com>";
@@ -128,36 +139,32 @@ Options:
       --no-merge         Stop once the required checks pass; leave the PR open.
       --no-delete-branch Keep the remote/local branch after merge.
       --no-footer        Omit the "Generated with Codebuff" co-author footer.
-      --interval <sec>   Poll interval for checks (default: 10).
-      --timeout <min>    Overall check-wait timeout (default: 60).
+      --interval <sec>   Poll interval for checks (default: 10; fractions allowed).
+      --timeout <min>    Overall check-wait timeout (default: 60; fractions allowed).
       --dry-run          Print the plan and change nothing.
   -h, --help             Show this help.
 
 It reads the required status checks from the live branch ruleset, so renaming
-or adding a required check cannot silently weaken the wait.
+or adding a required check cannot silently weaken the wait. That read is
+fail-closed: if the ruleset cannot be read, or the base branch declares no
+required checks, the script stops rather than watching every check the PR
+happens to report — with no verifiable gate it refuses to declare checks
+passed or to merge.
 `;
 
+/**
+ * Read the base branch's required checks, or explain why that is impossible.
+ * Both reads are captured rather than streamed so the policy module can
+ * classify them; classic protection is only read when the ruleset declares no
+ * required checks. Nothing here swallows a failure: every unreadable or empty
+ * answer throws, so no caller can mistake it for "no required checks".
+ */
 function requiredChecks(ownerRepo, base) {
-  // Rulesets first (this repo uses one); fall back to classic protection.
-  const names = new Set();
-  const rules = api(`repos/${ownerRepo}/rules/branches/${base}`, { allowFailure: true });
-  try {
-    for (const rule of JSON.parse(rules.stdout || "[]")) {
-      if (rule?.type !== "required_status_checks") continue;
-      for (const check of rule?.parameters?.required_status_checks ?? []) {
-        if (check?.context) names.add(check.context);
-      }
-    }
-  } catch { /* not JSON / no rulesets */ }
-  if (names.size === 0) {
-    const prot = api(`repos/${ownerRepo}/branches/${base}/protection`, { allowFailure: true });
-    try {
-      for (const c of JSON.parse(prot.stdout || "{}")?.required_status_checks?.contexts ?? []) {
-        names.add(c);
-      }
-    } catch { /* classic protection not enabled */ }
-  }
-  return [...names];
+  return resolveRequiredChecks({
+    rules: api(LAND_API_PATHS.rules(ownerRepo, base), { allowFailure: true }),
+    readProtection: () => api(LAND_API_PATHS.protection(ownerRepo, base), { allowFailure: true }),
+    base,
+  });
 }
 
 function ghJson(args, { allowFailure = true } = {}) {
@@ -194,42 +201,58 @@ function stagingPlan(opts) {
 }
 
 async function waitForChecks(prNumber, required, opts) {
+  // Not reachable through `main`, which refuses to continue without a resolved
+  // list; kept as a last line of defence so no future caller can turn an empty
+  // list back into "watch everything and call it passed".
+  if (!Array.isArray(required) || required.length === 0) {
+    die("no required status checks were resolved; refusing to watch every check the PR happens to report and declare them passed");
+  }
   const deadline = Date.now() + opts.timeoutMinutes * 60_000;
   const requiredSet = new Set(required);
   let announced = false;
+  // What the last poll still had not seen, so the timeout explains the actual
+  // gap rather than blaming every required check.
+  let lastMissing = [...required];
   while (Date.now() < deadline) {
     const checks = ghJson(["pr", "checks", String(prNumber), "--json", "name,state,bucket"]) ?? [];
-    const relevant = requiredSet.size > 0
-      ? checks.filter((c) => requiredSet.has(c.name))
-      : checks;
-    if (relevant.length > 0) {
-      if (!announced) {
-        console.log(`\nWatching ${relevant.length}${requiredSet.size ? " required" : ""} check(s): ${relevant.map((c) => c.name).join(", ")}`);
-        announced = true;
-      }
-      const terminal = (b) => ["pass", "fail", "skipping", "cancel"].includes(b);
-      const pending = relevant.filter((c) => !terminal(c.bucket));
-      const failed = relevant.filter((c) => c.bucket === "fail" || c.bucket === "cancel");
-      const summary = relevant.map((c) => `${c.name}=${c.bucket}`).join("  ");
-      process.stdout.write(`\r  ${summary}                    `);
-      if (failed.length > 0) {
-        console.log();
-        console.error(`\nland: required check(s) failed: ${failed.map((c) => c.name).join(", ")}`);
-        return { ok: false, checks: relevant };
-      }
-      if (pending.length === 0) {
-        console.log();
-        console.log(`\nAll ${relevant.length} required check(s) passed.`);
-        return { ok: true, checks: relevant };
-      }
-    } else {
-      process.stdout.write(`\r  waiting for checks to register...        `);
+    const relevant = checks.filter((c) => requiredSet.has(c.name));
+    const observed = new Map(relevant.map((c) => [c.name, c]));
+    // A required check the PR has not reported yet — because its workflow is
+    // still queueing, was renamed, or was filtered out of this run — is not a
+    // passing check. Counting only what happens to be reported is how a PR that
+    // showed a single green subset was once announced as "all required checks
+    // passed"; every name in the resolved list must be terminal-green before
+    // this call can succeed.
+    const missing = required.filter((name) => !observed.has(name));
+    lastMissing = missing;
+    if (!announced) {
+      console.log(`\nWatching ${required.length} required check(s): ${required.join(", ")}`);
+      announced = true;
+    }
+    const terminal = (b) => ["pass", "fail", "skipping", "cancel"].includes(b);
+    const pending = relevant.filter((c) => !terminal(c.bucket));
+    const failed = relevant.filter((c) => c.bucket === "fail" || c.bucket === "cancel");
+    const summary = required
+      .map((name) => `${name}=${observed.get(name)?.bucket ?? "not reported"}`)
+      .join("  ");
+    process.stdout.write(`\r  ${summary}                    `);
+    if (failed.length > 0) {
+      console.log();
+      console.error(`\nland: required check(s) failed: ${failed.map((c) => c.name).join(", ")}`);
+      return { ok: false, checks: relevant, missing };
+    }
+    if (missing.length === 0 && pending.length === 0) {
+      console.log();
+      console.log(`\nAll ${required.length} required check(s) passed.`);
+      return { ok: true, checks: relevant, missing: [] };
     }
     await sleep(opts.interval * 1000);
   }
   console.log();
-  console.error(`\nland: timed out after ${opts.timeoutMinutes} minute(s) waiting for checks.`);
-  return { ok: false, checks: [] };
+  console.error(
+    `\nland: timed out after ${opts.timeoutMinutes} minute(s) waiting for required checks; nothing was declared passed.`,
+  );
+  return { ok: false, checks: [], missing: lastMissing };
 }
 
 async function main() {
@@ -254,9 +277,16 @@ async function main() {
   const ownerRepo = (ghJson(["repo", "view", "--json", "nameWithOwner"]) ?? {}).nameWithOwner;
   if (!ownerRepo) die("could not resolve the GitHub repository");
 
-  const required = requiredChecks(ownerRepo, opts.base);
+  let resolved;
+  try {
+    resolved = requiredChecks(ownerRepo, opts.base);
+  } catch (error) {
+    if (error instanceof LandRequiredChecksError) die(error.message);
+    throw error;
+  }
+  const required = resolved.names;
   console.log(`land: branch '${branch}' -> '${opts.base}' on ${ownerRepo}`);
-  console.log(`land: required checks from ruleset: ${required.length ? required.join(", ") : "(none declared — will watch all)"}`);
+  console.log(`land: required checks from the ${resolved.source}: ${required.join(", ")}`);
 
   const message = opts.footer ? `${opts.message.trim()}\n\n${FOOTER}` : opts.message.trim();
   const subject = message.split("\n")[0];
@@ -278,7 +308,7 @@ async function main() {
     console.log(`\ncommit subject: ${subject}`);
     console.log(`push: git push -u origin ${branch}`);
     console.log(`pr:   gh pr create --base ${opts.base} --head ${branch}`);
-    console.log(`wait: ${required.join(", ") || "all checks"} (interval ${opts.interval}s, timeout ${opts.timeoutMinutes}m)`);
+    console.log(`wait: ${required.join(", ")} (interval ${opts.interval}s, timeout ${opts.timeoutMinutes}m)`);
     console.log(`merge: ${opts.merge ? `gh pr merge --${opts.method}${opts.deleteBranch ? " --delete-branch" : ""}` : "(disabled: --no-merge)"}`);
     return;
   }
@@ -324,6 +354,11 @@ async function main() {
   // 5. Watch required checks.
   const watched = await waitForChecks(pr.number, required, opts);
   if (!watched.ok) {
+    if (watched.missing?.length) {
+      console.error(
+        `land: these required checks never reported on PR #${pr.number}: ${watched.missing.join(", ")}`,
+      );
+    }
     console.error(`\nland: not merging. Inspect: gh pr checks ${pr.number}  (PR ${pr.url})`);
     process.exit(1);
   }

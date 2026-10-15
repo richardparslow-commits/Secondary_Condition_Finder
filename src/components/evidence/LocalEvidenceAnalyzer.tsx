@@ -27,12 +27,15 @@ import {
   computeOcrRenderMetrics,
   createLocalOcrWorker,
   loadOcrCheckpoint,
+  OCR_JOB_DEADLINE_MS,
   OCR_PAGES_PER_CHUNK,
   probeWorkerHealth,
   releaseCanvas,
   saveOcrCheckpoint,
   sourceFingerprintForFile,
+  startOcrJobDeadline,
   yieldToBrowser,
+  type OcrJobDeadline,
 } from "@/lib/evidence/ocr-session";
 import {
   clearStoredEvidence,
@@ -99,6 +102,13 @@ function getSessionStorage(): Storage | null {
 // Diagnostics contain a fixed code only, never parser messages or record text.
 const STORAGE_CORRUPTED_WARNING =
   "Saved evidence in this browser tab could not be read and was not restored. It may have been corrupted; re-analyze the affected documents.";
+
+// HARD-01: a store whose retained entries fail validation still loads the
+// entries that are readable, so the notice has to say what was ignored rather
+// than imply the whole store was lost. Discarding records without a word is the
+// silent data loss this read guard exists to prevent.
+const STORAGE_PARTIAL_WARNING =
+  "Some saved evidence in this browser tab could not be read and was ignored. Re-analyze any document missing from the list below.";
 
 function saveStored(
   analyses: EvidenceAnalysis[],
@@ -179,6 +189,27 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
   // cancellation, not a second teardown.
   const activeOcrWorkerRef = useRef<Awaited<ReturnType<typeof createLocalOcrWorker>> | null>(null);
   const activePdfTaskRef = useRef<{ destroy: () => Promise<void> } | null>(null);
+  // A06 parity with Dd214LocalAnalyzer: the elapsed-work budget handle for the
+  // live OCR job. The per-page checks stop at the next page boundary, so a
+  // render or `recognize()` that never settles would keep the worker alive and
+  // the tab busy forever; the deadline terminates the live worker/task instead,
+  // which rejects the awaited promise so the run unwinds through its own
+  // finally chain.
+  const deadlineRef = useRef<OcrJobDeadline | null>(null);
+
+  /**
+   * Stops whatever is running right now: the live OCR worker and the pdf.js
+   * loading task. Unmount and the elapsed-work deadline share this one path, so
+   * "stopped" cannot mean two slightly different things.
+   */
+  function terminateActiveRun() {
+    const worker = activeOcrWorkerRef.current;
+    const task = activePdfTaskRef.current;
+    activeOcrWorkerRef.current = null;
+    activePdfTaskRef.current = null;
+    void worker?.terminate().catch(() => {});
+    void task?.destroy().catch(() => {});
+  }
 
   useEffect(() => {
     return () => {
@@ -190,18 +221,17 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
   // before this teardown and a detached run cannot be resurrected by it.
   useEffect(() => {
     return () => {
-      const worker = activeOcrWorkerRef.current;
-      const task = activePdfTaskRef.current;
-      activeOcrWorkerRef.current = null;
-      activePdfTaskRef.current = null;
-      void worker?.terminate().catch(() => {});
-      void task?.destroy().catch(() => {});
+      terminateActiveRun();
+      // The budget belongs to the run this unmount just stopped; left armed, it
+      // would only fire against a worker that is already gone.
+      deadlineRef.current?.clear();
+      deadlineRef.current = null;
     };
   }, []);
 
   useEffect(() => {
     const restoreTimer = window.setTimeout(() => {
-      const { analyses, parseError } = loadStoredEvidenceWithWarning(
+      const { analyses, parseError, discardedEntries } = loadStoredEvidenceWithWarning(
         getSessionStorage(),
       );
       applyAnalyses(analyses);
@@ -210,6 +240,12 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
           prev.includes(STORAGE_CORRUPTED_WARNING)
             ? prev
             : [...prev, STORAGE_CORRUPTED_WARNING],
+        );
+      } else if (discardedEntries > 0) {
+        setWarnings((prev) =>
+          prev.includes(STORAGE_PARTIAL_WARNING)
+            ? prev
+            : [...prev, STORAGE_PARTIAL_WARNING],
         );
       }
     }, 0);
@@ -229,7 +265,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
   useEffect(() => {
     if (depth === "standard") return;
     const reloadTimer = window.setTimeout(() => {
-      const { analyses, parseError } = loadStoredEvidenceWithWarning(
+      const { analyses, parseError, discardedEntries } = loadStoredEvidenceWithWarning(
         getSessionStorage(),
         EVIDENCE_DEPTH_LIMITS[depth],
       );
@@ -239,6 +275,12 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
           prev.includes(STORAGE_CORRUPTED_WARNING)
             ? prev
             : [...prev, STORAGE_CORRUPTED_WARNING],
+        );
+      } else if (discardedEntries > 0) {
+        setWarnings((prev) =>
+          prev.includes(STORAGE_PARTIAL_WARNING)
+            ? prev
+            : [...prev, STORAGE_PARTIAL_WARNING],
         );
       }
     }, 0);
@@ -484,6 +526,24 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
     setBusy(true);
     const generation = (extractionGenerationRef.current += 1);
     const isCurrentGeneration = () => generation === extractionGenerationRef.current;
+    // A06 parity: hard elapsed-work budget for this one job. The loop also
+    // checks it at every page boundary, but a boundary check alone cannot reach
+    // a page whose render or `recognize()` never settles — the timer terminates
+    // the live worker and loading task, which rejects the awaited promise so
+    // this run unwinds through its normal finally chain instead of pinning the
+    // tab busy forever. Because that teardown already released both handles,
+    // the finallys below skip their own teardown once the budget has fired:
+    // teardown happens exactly once, from whichever owner got there first.
+    let deadlineExpired = false;
+    const deadline = startOcrJobDeadline(OCR_JOB_DEADLINE_MS, () => {
+      deadlineExpired = true;
+      terminateActiveRun();
+    });
+    deadlineRef.current = deadline;
+    const deadlineNotice = (lastCompletedPage: number): string =>
+      `${row.sourceName}: partial OCR only — the ${OCR_JOB_DEADLINE_MS / 60000}-minute browser-local job limit was reached${
+        lastCompletedPage > 0 ? ` after page ${lastCompletedPage}` : " before any page completed"
+      }. Pages recognized so far are kept and the job can be resumed.`;
     setMessage(null);
     setWarnings([]);
     setOcrProgress("Preparing the browser-local OCR worker…");
@@ -507,8 +567,13 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
         const bytes = new Uint8Array(await row.file.arrayBuffer());
         const loadingTask = pdfjs.getDocument({ data: bytes });
         activePdfTaskRef.current = loadingTask;
-        const pdfDocument = await loadingTask.promise;
         try {
+          // REL-05: the load await sits inside the try whose finally destroys
+          // the task. pdf.js starts its worker with the task, so a load that
+          // rejects (malformed PDF, worker spawn failure) is exactly the case
+          // that must still reach `loadingTask.destroy()` below; awaiting it
+          // outside left that worker alive for the life of the tab.
+          const pdfDocument = await loadingTask.promise;
           // #7: validate untrusted page count before using it as a loop bound
           const totalPages = pdfDocument.numPages;
           if (!Number.isInteger(totalPages) || totalPages <= 0) {
@@ -546,6 +611,14 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
             // A07 fence: abandon a detached run at the next page boundary
             // instead of recognizing and checkpointing on.
             if (!isCurrentGeneration()) return;
+            // A06: a job past its elapsed-work budget stops here rather than
+            // continuing to work a tab that is already past the point where
+            // browser-local OCR is a good trade. The partial text is kept and
+            // the checkpoint stays, so the next run resumes.
+            if (deadline.exceeded()) {
+              nextWarnings.push(deadlineNotice(pageNumber - 1));
+              break;
+            }
             setOcrProgress(`OCR page ${pageNumber} of ${readLimit} in ${row.sourceName}…`);
             let page: Awaited<ReturnType<typeof pdfDocument.getPage>> | null = null;
             try {
@@ -570,8 +643,15 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
               try {
                 await page.render({ canvas, viewport }).promise;
               } catch (renderError) {
-                const detail = renderError instanceof Error ? renderError.message : String(renderError);
                 releaseCanvas(canvas);
+                // The deadline destroys the loading task, which is the likelier
+                // cause of a render rejection once the budget has fired; report
+                // that reason instead of a pdf.js teardown message.
+                if (deadlineExpired) {
+                  nextWarnings.push(deadlineNotice(pageNumber - 1));
+                  break;
+                }
+                const detail = renderError instanceof Error ? renderError.message : String(renderError);
                 nextWarnings.push(`${row.sourceName}: page ${pageNumber} render failed (${detail}) — skipped.`);
                 continue;
               }
@@ -580,8 +660,16 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
                 const result = await worker.recognize(canvas);
                 text = (result?.data?.text ?? "").trim();
               } catch (recognizeError) {
-                const detail = recognizeError instanceof Error ? recognizeError.message : String(recognizeError);
                 releaseCanvas(canvas);
+                // Terminating the worker rejects the in-flight recognition. That
+                // is the budget working, not a dead worker, so it stops the job
+                // with the honest reason rather than probing a worker this run
+                // has already torn down.
+                if (deadlineExpired) {
+                  nextWarnings.push(deadlineNotice(pageNumber - 1));
+                  break;
+                }
+                const detail = recognizeError instanceof Error ? recognizeError.message : String(recognizeError);
                 // Probe worker health: a dead WASM worker (typical OOM) must
                 // stop the loop — retrying every remaining page only burns
                 // minutes and accumulates garbage — while a page-specific
@@ -670,11 +758,20 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
           if (abortedForDeadWorker) {
             // Keep the checkpoint so the next Local OCR run resumes where the
             // dead worker stopped.
+          } else if (deadlineExpired) {
+            // Same reason for the elapsed-work stop: a job that ran out of
+            // budget resumes from the last completed page instead of
+            // re-recognizing pages the tab already paid for.
           } else {
             clearOcrCheckpoint(storage);
           }
           if (segments.length === 0) {
             nextWarnings.push(`${row.sourceName}: OCR produced no readable text.`);
+            if (deadlineExpired) {
+              setMessage(
+                `${row.sourceName}: browser-local OCR stopped at the ${OCR_JOB_DEADLINE_MS / 60000}-minute job limit before any page produced text. Run Local OCR again to resume.`,
+              );
+            }
           } else {
             const analysis = analyzeEvidenceSegments(
               withUserLocatorPrefix(segments, locatorPrefix),
@@ -686,20 +783,35 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
             setMessage(
               abortedForDeadWorker
                 ? `Local OCR paused for ${row.sourceName} after ${ocrPages} page(s): the OCR worker stopped responding. Run Local OCR again on this document to resume from where it stopped.`
-                : `Local OCR completed for ${row.sourceName}: ${ocrPages} page(s) recognized in this browser tab.`,
+                : deadlineExpired
+                  ? `Local OCR paused for ${row.sourceName} after ${ocrPages} page(s): the ${OCR_JOB_DEADLINE_MS / 60000}-minute browser-local job limit was reached. Run Local OCR again on this document to resume from where it stopped.`
+                  : `Local OCR completed for ${row.sourceName}: ${ocrPages} page(s) recognized in this browser tab.`,
             );
           }
         } finally {
-          await loadingTask.destroy();
+          if (!deadlineExpired) await loadingTask.destroy();
         }
       } finally {
-        await worker.terminate();
+        if (!deadlineExpired) await worker.terminate();
       }
     } catch (error) {
-      const detail = error instanceof Error ? error.message : "Unknown OCR error";
-      nextWarnings.push(`${row.sourceName}: browser-local OCR failed (${detail}).`);
-      setMessage(`${row.sourceName} could not be OCR'd locally.`);
+      if (deadlineExpired) {
+        // The budget is the reason this unwound; the teardown error it produced
+        // (a rejected recognize/render promise) would only mislead.
+        nextWarnings.push(
+          `${row.sourceName}: partial OCR only — the ${OCR_JOB_DEADLINE_MS / 60000}-minute browser-local job limit was reached. Pages recognized so far are kept and the job can be resumed.`,
+        );
+        setMessage(
+          `Local OCR paused for ${row.sourceName}: the ${OCR_JOB_DEADLINE_MS / 60000}-minute browser-local job limit was reached. Run Local OCR again on this document to resume from where it stopped.`,
+        );
+      } else {
+        const detail = error instanceof Error ? error.message : "Unknown OCR error";
+        nextWarnings.push(`${row.sourceName}: browser-local OCR failed (${detail}).`);
+        setMessage(`${row.sourceName} could not be OCR'd locally.`);
+      }
     } finally {
+      deadline.clear();
+      if (deadlineRef.current === deadline) deadlineRef.current = null;
       activeOcrWorkerRef.current = null;
       activePdfTaskRef.current = null;
       // A07: a detached run writes no state either — its warnings and progress

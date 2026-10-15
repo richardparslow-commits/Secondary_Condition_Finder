@@ -1,18 +1,27 @@
 import "server-only";
 
+import { admissionRefusalWindowReport } from "./observability/refusal-window";
 import { rateLimitScope } from "./rate-limiter";
 import { isDistributedRuntime, type RuntimeEnvironment } from "./runtime-deployment";
 import { circuitBreakerScope } from "./va/circuit-breaker";
+import { readVaConsumerBudgetPressure } from "./va/consumer-budget-pressure";
 import { vaReferenceCacheScope } from "./va/reference-cache";
+import {
+  VA_SHARED_CONSUMER_BUDGET_VARIABLE,
+  VA_SHARED_CONSUMER_MAX_REQUESTS,
+  VA_SHARED_CONSUMER_WINDOW_MS,
+  vaSharedConsumerBudgetScope,
+} from "./va/reference-shared-cache";
 import { vaLiveIntegrationScope } from "./va/runtime-state";
 
 /**
  * What does this deployment give up?
  *
  * Several controls here depend on process-local state, and each behaves
- * differently once more than one process serves traffic. Two **refuse** to run at
- * all (live VA access, the VA reference cache); two keep running but **weaker**
- * than written (application rate limiting, the VA circuit breaker).
+ * differently once more than one process serves traffic. Three **refuse** to run
+ * at all (live VA access, the VA reference cache, the shared consumer budget);
+ * two keep running but **weaker** than written (application rate limiting, the VA
+ * circuit breaker).
  *
  * Before this module, each control answered that question only inside its own
  * file, if at all. An operator reading `/api/health` could see a hit/miss counter
@@ -32,6 +41,7 @@ import { vaLiveIntegrationScope } from "./va/runtime-state";
 export type RuntimeCapabilityId =
   | "vaLiveIntegration"
   | "vaReferenceCache"
+  | "vaConsumerBudget"
   | "rateLimit"
   | "circuitBreaker";
 
@@ -64,9 +74,13 @@ export interface RuntimeCapability {
    * capability's own detail cannot be invented by the endpoint that displays it.
    * `rateLimit` uses this for the two limits of its promise — whether per-client
    * keys rest on an asserted ingress, and whether the counters are
-   * deployment-wide — plus the ceiling it actually enforces (SEC-02). A capability
-   * that adds keys here must pin them in tests, because health asserts nothing
-   * about their shape.
+   * deployment-wide — plus the ceiling it actually enforces and the refusals this
+   * instance has already made, split by the budget that made them (SEC-02).
+   * `vaConsumerBudget` uses it for the budget's own bounds and gate (`budget`,
+   * `store`) and for the admit/refuse pressure it has accumulated on this
+   * instance (`pressure`), which is the one reading that says the fleet is being
+   * throttled before VA answers `429` (A03). A capability that adds keys here must
+   * pin them in tests, because health asserts nothing about their shape.
    */
   details?: Record<string, unknown>;
   /**
@@ -122,12 +136,16 @@ function summarize(
 /**
  * Every process-local-dependent control, with this runtime's regime for each.
  *
- * `full` is `!isDistributedRuntime(env)` for all four today: in a single-process
- * runtime per-instance state *is* global, and in a distributed one none of these
- * four can be at full strength. A future capability that stays full while
- * distributed belongs here too, but it must also change the invariant assertion
- * in `tests/runtime-capabilities.test.ts` — deliberately, since that is a claim
- * worth stating out loud rather than inheriting.
+ * `full` is `!isDistributedRuntime(env)` for four of the five: in a single-process
+ * runtime per-instance state *is* global, and in a distributed one none of those
+ * four can be at full strength. `vaConsumerBudget` is the documented exception —
+ * a shared atomic window is the fleet-wide form of that budget rather than a
+ * weaker version of it, so it is full strength while distributed *and* enforced,
+ * and `unenforced` when the opt-in or the coordinator is missing (in which case
+ * live VA access is refused outright). The invariant assertion in
+ * `tests/runtime-capabilities.test.ts` names that exception explicitly, because a
+ * capability that stays full while distributed is a claim worth stating out loud
+ * rather than inheriting.
  */
 export function runtimeCapabilities(
   env: RuntimeEnvironment = process.env,
@@ -136,8 +154,13 @@ export function runtimeCapabilities(
 
   const vaLive = vaLiveIntegrationScope(env);
   const cache = vaReferenceCacheScope(env);
+  const budget = vaSharedConsumerBudgetScope(env);
   const limiter = rateLimitScope(env);
   const breaker = circuitBreakerScope(env);
+  // Read at report time, so the numbers in the body are the ones this instance
+  // has accumulated by the time it answers — no caching layer between the counter
+  // and the field that shows it.
+  const pressure = readVaConsumerBudgetPressure({ windowMs: VA_SHARED_CONSUMER_WINDOW_MS });
 
   const capabilities: RuntimeCapabilityReport = {
     vaLiveIntegration: {
@@ -166,6 +189,35 @@ export function runtimeCapabilities(
       detail: cache.detail,
       sources: ["src/lib/va/reference-cache.ts"],
     },
+    vaConsumerBudget: {
+      id: "vaConsumerBudget",
+      label: "Shared VA consumer budget",
+      behavior: "refuses",
+      full: budget.full,
+      scope: budget.scope,
+      detail: budget.detail,
+      details: {
+        // The budget's own bounds, read off the module that enforces them, so the
+        // reported window and the applied window cannot drift apart.
+        budget: {
+          maxRequests: VA_SHARED_CONSUMER_MAX_REQUESTS,
+          windowMs: VA_SHARED_CONSUMER_WINDOW_MS,
+          optIn: budget.optIn,
+          variable: VA_SHARED_CONSUMER_BUDGET_VARIABLE,
+        },
+        store: {
+          mode: budget.configured ? "shared-coordinator" : "no-coordinator",
+          distributed,
+          blockedBy: budget.blockedBy,
+        },
+        pressure,
+      },
+      sources: [
+        "src/lib/va/reference-shared-cache.ts",
+        // The adapter is where the budget is actually consulted, once per upstream
+        // attempt including retries, and where the missing opt-in is refused.
+        "src/lib/va/sandbox.ts",
+      ],    },
     rateLimit: {
       id: "rateLimit",
       label: "Application rate limiting",
@@ -177,6 +229,12 @@ export function runtimeCapabilities(
         identity: limiter.identity,
         ceiling: limiter.ceiling,
         store: limiter.store,
+        // Read at report time, like the consumer budget's pressure beside it: the
+        // refusals this instance has already decided, split by the budget that
+        // refused them. The 429 body deliberately does not name that budget, so
+        // this is where aggregate pressure becomes readable rather than inferred
+        // from a refusal count (SEC-02).
+        refusals: admissionRefusalWindowReport(),
       },
       sources: ["src/lib/rate-limiter.ts"],
     },
