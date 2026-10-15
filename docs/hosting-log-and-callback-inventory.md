@@ -133,19 +133,23 @@ second is an account reading:
 2026-10-15 against the platform's own documentation):**
 
 - The platform's request logs record the request line **including its query
-  string**. Runtime Logs detail a request's *search parameters*, and a Log Drain
-  carries `proxy.path`, documented as the "request path with query parameters".
+  string**. Runtime Logs list a request's
+  ["Search Params" — "Search parameters of the request path"](https://vercel.com/docs/logs/runtime),
+  and a Log Drain carries `proxy.path`, documented as the
+  ["Request path with query parameters"](https://vercel.com/docs/drains/reference/logs).
   A callback request therefore arrives in the logs with `code` and `state` as
   sent.
 - **No documented setting removes them.** The platform documents no
   query-parameter redaction for runtime logs, function logs, or drains on any
-  plan; the only privacy control documented for a drain is **IP hiding**
-  (Pro/Enterprise), which does not touch the path or query string; and the one
+  plan; the only privacy control documented for a drain is
+  [IP hiding](https://vercel.com/docs/drains/security), which does not touch the
+  path or query string and is documented as an IP-address control; and the one
   documented query-parameter filter (`beforeSend` in Web Analytics) applies to
-  analytics events, not to runtime logs or drains. "Check whether a scrubbing
-  rule removes `code`/`state`" (the earlier gate B step 2) was therefore the
-  wrong instruction — the finding to record is that no such rule exists to
-  configure.
+  analytics events, not to runtime logs or drains
+  ([redacting sensitive data](https://vercel.com/docs/analytics/redacting-sensitive-data)).
+  "Check whether a scrubbing rule removes `code`/`state`" (the earlier gate B
+  step 2) was therefore the wrong instruction — the finding to record is that no
+  such rule exists to configure.
 - The request line is recorded **whether or not the request is answered**, and
   failures are filterable by status, so a callback that fails closed is still
   logged. Neither disabling the sandbox nor a 503 keeps the request line out of

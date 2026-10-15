@@ -94,7 +94,36 @@ describe("H-02 gate B — the per-sink scrubbing record (#538)", () => {
       expect(record, `gate B record no longer covers the ${sink} sink`).toContain(sink);
     }
     expect(section).toContain("2026-10-15");
-    expect(record).toContain("https://");
+  });
+
+  it("cites each platform claim to the page it was read from", () => {
+    // A behaviour claim the reader cannot re-read is the defect this gate
+    // existed to remove, so the record must name retrievable sources rather
+    // than assert the platform's behaviour from memory.
+    for (const source of [
+      "https://vercel.com/docs/logs/runtime",
+      "https://vercel.com/docs/drains/reference/logs",
+      "https://vercel.com/docs/drains/security",
+      "https://vercel.com/docs/analytics/redacting-sensitive-data",
+    ]) {
+      expect(record, `gate B record lost its source ${source}`).toContain(source);
+    }
+    // And the quotes are marked as the platform's own wording, not paraphrase.
+    expect(record).toContain("the quotes are the platform's own wording");
+    expect(record).toMatch(/Search parameters of the request path/);
+    expect(record).toMatch(/Request path with query parameters/);
+    // Every source is dated, so a stale citation is visible as stale.
+    expect(record).toMatch(/opened and read on \*\*2026-10-15\*\*/);
+    // The inventory carries the same citations, so the two cannot disagree
+    // about what the platform documents.
+    for (const source of [
+      "https://vercel.com/docs/logs/runtime",
+      "https://vercel.com/docs/drains/reference/logs",
+      "https://vercel.com/docs/drains/security",
+      "https://vercel.com/docs/analytics/redacting-sensitive-data",
+    ]) {
+      expect(flat(inventory), `inventory lost its source ${source}`).toContain(source);
+    }
   });
 
   it("carries each finding with an explicit disposition", () => {
