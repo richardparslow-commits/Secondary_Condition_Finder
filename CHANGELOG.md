@@ -5,6 +5,18 @@ All notable changes to Secondary Condition Finder. Format loosely follows
 
 ## 2026-10-15
 
+- **A green citation-decay run now restates the tracking issue instead of closing a stale failure body**
+  (`citation-decay`, issue #518): the close half added on 2026-10-14 closed the tracking issue but left the
+  body the probe wrote when it failed — the failing metric table, and in #518's case the sentence "is not
+  auto-closed" — sitting beside a `completed` state, so the closed record contradicted itself and the
+  numbers a reader would check were the failure's, not the run's. `track-decay` now rewrites the body from
+  the same report before closing it, with the drift count qualified by its detectability (a bare
+  `content drift | 0` reads clean on a dimension no reference in the corpus can be checked on) and probe
+  coverage stated, then closes with the same comment as before. Verified end-to-end against a fake `gh` and
+  a green report rather than by inspection: pre-fix the run emitted only `issue close 518`, post-fix it
+  emits `issue edit 518 --body <green figures>` followed by the close. Pinned by
+  `tests/decay-watch-artifact-handoff.test.ts` (27 → 28 cases), and both shell-embedded JS payloads in the
+  workflow are syntax-checked with `node --check`.
 - **Issue #287 (VA public-reference production transition) is closed as a recorded scope decision — production
   activation is not pursued, not completed** (`va-reference`, governance): the gate's own threshold is five
   operator steps that all require a real VA production grant — the grant itself, installed server-side

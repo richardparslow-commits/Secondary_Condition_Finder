@@ -218,6 +218,31 @@ describe("citation-decay-watch maintains its tracking issue in both directions",
     expect(workflow).not.toContain("is not auto-closed");
   });
 
+  /**
+   * Closing an issue whose body still carries the failing table is the same
+   * false signal as an issue that outlives its cause, one step later: the
+   * closed record would show the failure beside a "completed" state, and the
+   * #518 body opened on 2026-10-05 says in words that it is never auto-closed.
+   * The close path must restate the green run's own numbers, and must qualify
+   * the drift count the way both failure surfaces already do.
+   */
+  it("rewrites the tracking issue body from the green report before closing it", () => {
+    expect(issueJs).toContain(
+      'gh(["issue", "edit", String(matches[0].number), "--body", greenBody]);',
+    );
+    const greenBody = issueJs.slice(issueJs.indexOf("const greenBody"));
+    expect(greenBody.length).toBeGreaterThan(200);
+    expect(greenBody).toContain("report.linkRotCount");
+    expect(greenBody).toContain("report.staleCount");
+    expect(greenBody).toContain("report.maxUndigestedEligibleVerifiedRefs");
+    expect(greenBody).toContain("report.probeCoveragePercent");
+    // A green drift count must not be published without its detectability.
+    expect(greenBody).toContain("detectable: ${report.contentDriftDetectable}");
+    // The marker must survive so a later failure updates this issue instead of
+    // opening a duplicate.
+    expect(greenBody).toContain("marker,");
+  });
+
   it("closes nothing on a run whose probe never completed", () => {
     // A cancelled or skipped probe is not a green result, so the close is
     // guarded by the success branch rather than by "not failure".
