@@ -12,12 +12,16 @@ surfaces ship, and what the code already guarantees about a `code` or `state`.
 That is what this document records, verified against the working tree on
 **2026-10-13**.
 
-**This document is not the operator review.** It is not evidence for gates A or
-B, it does not establish a retention period or an access control, and it does
-not close #537 or #538. Both gates stay
-**OPEN / EXTERNALLY OPERATED** in the [ownership register](external-manual-gates-status.md).
-The live half stays with the accountable operator, and the register records what
-that half must produce.
+**This document is not the operator review.** It is not evidence for either gate,
+it does not establish a retention period or an access control, and it closed
+neither issue on its own. The code-side half is an *input* to the reviews; the
+per-sink record and each gate's disposition live in the
+[ownership register](external-manual-gates-status.md), which is the canonical
+record. As of 2026-10-15 that register closes **gate A (#537)** on a reviewed
+record of the platform's published log terms, with the account facts that remain
+unread named and accepted there, and keeps **gate B (#538)**
+**OPEN / EXTERNALLY OPERATED** — the live scrubbing half still has to be read
+from the account.
 
 ## Part 1 — Application log sinks (code side)
 
@@ -46,11 +50,20 @@ silently. In summary, every application-emitted record goes through one of:
 - **A content-free violation-report intake** (`/api/csp-report`): bounded status
   codes only, and the raw report body is never logged.
 
-The repository declares **no log drain and no custom sink configuration**: there
-is no `vercel.json` and no drain/collector configuration in the tree. The only
-sinks that can receive these records are therefore the hosting provider's own
-request, runtime and edge logs — which is exactly why gate A is
-externally operated and cannot be answered from source.
+The repository configures **no log drain and no custom collector**: there is no
+`vercel.json` and no drain/collector configuration in the tree. That is a
+statement about the source tree, and deliberately *not* a statement about the
+deployment. Log drains on this platform are configured in the hosting account
+(dashboard or API) and **not** in `vercel.json`, so an absent `vercel.json`
+cannot establish that no drain exists: a drain could be forwarding these records
+to a third-party destination and this repository would not see it. The platform's
+runtime logs also cover only static requests that serve cache, with full
+static-request coverage available only through a drain, and drained records carry
+the request path *with its query parameters*. The sink set this application can
+reach is therefore the provider's runtime logs, its build logs (retained
+indefinitely per deployment), and **any account-configured drain** — the last of
+which only the account can show, which is precisely why gate A is externally
+operated and why its record names that fact as unread rather than assuming it.
 
 ## Part 2 — Callback surfaces that actually ship
 
@@ -159,14 +172,19 @@ any Veteran data. Sink and policy *names* and dates are the evidence.
 
 ## Part 5 — What would close these gates
 
-- **#537 (gate A)** closes when the dated, per-sink retention/access/redaction
-  record above is entered in the issue and in the
-  [ownership register](external-manual-gates-status.md), with the reviewer named.
+- **#537 (gate A)** — **closed 2026-10-15** in the
+  [ownership register](external-manual-gates-status.md): the dated, per-sink
+  record there is taken from the platform's published retention/access/
+  redaction terms, names the account-level facts that were not read, and carries
+  the accountable owner's dated acceptance of that residual. It is not a read of
+  the account. Reopen under the original criterion if credentialed hosted use is
+  pursued, or if a plan, drain, or 2FA/SSO change makes a row stale.
 - **#538 (gate B)** closes when the callback-surface inventory, the
   platform-scrubbing finding, and the fixed-outcome statement are recorded the
   same way, with any finding remediated and retested.
 
 Repository tests, a green CI run, a passing HTTP check, or this document cannot
-close either gate. Until the operator evidence lands, both stay
-**OPEN / EXTERNALLY OPERATED**, and the code-side inventory above is the
-operator's input rather than the review.
+close a gate. The register's own record above is what closes gate A, and it does
+so by naming what it could not read; gate B stays **OPEN / EXTERNALLY OPERATED**
+until the platform's own scrubbing behaviour is read from the account, and the
+code-side inventory here is the operator's input rather than the review.
