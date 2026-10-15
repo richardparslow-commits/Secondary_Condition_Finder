@@ -5,6 +5,35 @@ All notable changes to Secondary Condition Finder. Format loosely follows
 
 ## 2026-10-15
 
+- **H-02 gate B (OAuth callback-URL log scrubbing review, #538) is closed on a recorded review of the platform's
+  *documented* logging behaviour, with the retained callback request line named and accepted as its residual**
+  (`R-04`): the gate's outstanding half had been recorded as a hosting-account fact — "whether the platform scrubs
+  `code`/`state` … is a hosting-account fact, not a source fact" — and that was wrong in one direction. The platform
+  documents **no** query-parameter scrubbing anywhere: request details in Runtime Logs include the request's *search
+  parameters*, a Log Drain carries `proxy.path`, documented as the "request path with query parameters", the only
+  drain privacy control documented is IP hiding (Pro/Enterprise), and the one documented query-parameter filter
+  (`beforeSend` in Web Analytics) applies to analytics events rather than to runtime logs or drains. The scrubbing
+  question is therefore answerable without the account, and the answer is that no scrub exists to configure — only the
+  drain, plan-tier, retention and access facts are account-side. The closure is a dated per-sink record in
+  `docs/external-manual-gates-status.md`: the sink table, three findings with their dispositions (a documented absence
+  of scrubbing, a request line that is logged whether or not the request is answered, and single-use consumption that
+  makes a retained code dead on arrival), the owner's accepted residual, the preserved trigger and the reopen
+  criterion. What bounds the exposure is **reachability, not scrubbing**: both callback handlers return a fixed 503
+  *before reading any parameter* while the sandbox config is absent
+  (`src/app/api/auth/callback/route.ts`, `/va-account/oauth/{service}/[operation]`), so no live authorization code can
+  exist while the sandbox is opt-in and not armed; `completeAccountLogin` consumes the transaction single-use before
+  the token exchange and binds the callback to an HttpOnly transaction cookie; and every callback response is
+  `private, no-store` with `Referrer-Policy: no-referrer`. Nothing here claims scrubbing was configured, tested or
+  observed, no retention value is established (gate A's residual stands), and *credentialed hosted use* remains the
+  trigger that reopens the gate. The closure also repaired the documentation defects the same way gate A's did: the
+  register and the code-side inventory no longer call the platform's scrubbing behaviour an account fact; the
+  inventory's gate B procedure no longer sends an operator looking for a scrubbing rule that cannot be configured, and
+  its outcome menu now admits "retained and named as an accepted residual" beside "remediated"; the retention policy
+  states outright that no URL is scrubbed before it is logged, for any request path and not only the callback; and the
+  report's H-02 finding carries a dated status that keeps "recorded from published behaviour" separate from "reviewed
+  on the account", so the §8 close-out box stays unchecked and H-02 is not marked resolved. The closure set is pinned
+  by `tests/oauth-callback-scrubbing-record.test.ts` and by the gate B block of
+  `tests/hosting-log-retention-record.test.ts`.
 - **H-02 gate A (hosting log retention and access-control review, #537) is closed on a recorded review of the hosting
   platform's published log terms, with the account facts that were not read named and accepted** (`R-04`): the gate's
   operator half needs the hosting account, and no hosting-account credential exists in the repository or on the machine
@@ -24,7 +53,8 @@ All notable changes to Secondary Condition Finder. Format loosely follows
   **credentialed hosted use**", which is not armed — the account sandbox is opt-in only
   (`src/lib/va/account/config.ts`) and #287 is closed as not pursued. H-02 is **not** complete: gate B (#538,
   callback-URL scrubbing) stays open with its live platform half unverified, and the report's H-02 close-out box stays
-  unchecked. No retention value, access control, or scrubbing behaviour is now claimed as verified that was not
+  unchecked. *(Superseded later the same day by the #538 entry above, which closed gate B; H-02's close-out box remains
+  unchecked for the reason recorded there.)* No retention value, access control, or scrubbing behaviour is now claimed as verified that was not
   verified, and the reopen criterion is recorded for whichever row a plan, drain, or authentication change makes stale.
 - **Issue #518 (citation decay — re-verification required) is closed by a green probe run, and the closure record
   is written down** (`citation-decay`): the issue was opened on 2026-10-05 by a scheduled run that failed with zero

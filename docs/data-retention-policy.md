@@ -58,6 +58,8 @@ See `src/lib/va/runtime-state.ts` for the production boundary: live VA traffic i
 
 If an external log aggregator or log drain (e.g., Axiom, Datadog) is configured in the hosting account, its retention replaces the platform figures above and must be documented here. A drain is configured in the hosting account, not in this repository, so a drain's existence cannot be ruled out from the file tree — the gate A review record names that as one of the unread account facts.
 
+The platform documents **no** query-parameter redaction for runtime logs or for a drain on any documented plan, so a logged or drained request path carries its query string as sent; its only documented drain privacy control hides IP addresses. No record on this page therefore claims that a URL is scrubbed before it is logged. For the OAuth callback request line — the one path that can carry a temporary authorization code — the accepted residual and the reachability bound that stands in for scrubbing are recorded per sink in the [gate B record](external-manual-gates-status.md#issue-538--oauth-callback-url-log-scrubbing-review-h-02-gate-b).
+
 There is **no** application event-persistence backend for workflow or recommendation history in the current baseline. Allowlisted workflow and recommendation events are nevertheless written to the structured platform-log sink above; these are operational event logs, not a per-user history database.
 
 ---

@@ -34,8 +34,11 @@ import { describe, expect, it } from "vitest";
  *    use" — a different event, and the one that decides whether the gate is
  *    armed. (It is not: the account sandbox is opt-in only.)
  * 4. A closure is where a record is most likely to overclaim. So the closure
- *    must state what it could not read, H-02 must stay incomplete while gate B
- *    is open, and the retention actually in force must stay unestablished.
+ *    must state what it could not read, H-02 must stay incomplete while neither
+ *    H-02 record is an account read (gate B has since closed the same way, on
+ *    the platform's documented behaviour — see
+ *    `tests/oauth-callback-scrubbing-record.test.ts`), and the retention
+ *    actually in force must stay unestablished.
  */
 
 const read = (rel: string) => readFileSync(resolve(process.cwd(), rel), "utf8");
@@ -163,16 +166,17 @@ describe("H-02 gate A — the per-sink record (#537)", () => {
     expect(sinkSet).toMatch(/request path \*with its query parameters\*|with their query parameters/);
   });
 
-  it("keeps a closure from ticking H-02 while gate B is open", () => {
+  it("keeps the closure from ticking H-02 on records that are not account reads", () => {
     // The completion boundary is where the register states which gates remain
     // open, so the pairing is asserted there rather than in the gate section.
     const boundary = flat(gates.split("## Completion boundary")[1] ?? "");
-    expect(boundary).toContain("gate A is recorded");
+    expect(boundary).toContain("gate A and gate B are both recorded");
     expect(boundary).toContain("H-02 is not complete");
-    // Gate B is untouched by this closure and stays externally operated.
+    // Gate B closed on its own record the same day rather than being absorbed
+    // by this one — and explicitly not as an account read.
     const gateB = gates.split("## Issue #538 — ")[1]?.split("\n## ")[0] ?? "";
-    expect(gateB).toContain("OPEN / EXTERNALLY OPERATED");
-    expect(flat(gateB)).toMatch(/live scrubbing|hosting provider's own request\/access logs/);
+    expect(gateB).toContain("CLOSED / RECORDED WITH RESIDUAL ACCEPTED");
+    expect(flat(gateB)).toContain("It is not a read of the hosting account");
     // Gate B carries the same trigger, so the two H-02 gates cannot drift.
     expect(flat(gateB)).toContain("credentialed hosted use");
     // The report's close-out box covers both gates, so it stays unchecked.
@@ -180,8 +184,11 @@ describe("H-02 gate A — the per-sink record (#537)", () => {
       .split("\n")
       .find((line) => line.startsWith("- [") && line.includes("**H-02**"));
     expect(h02Box, "report lost its H-02 close-out box").toBeDefined();
-    expect(h02Box!.startsWith("- [ ]"), "H-02 must stay unchecked while gate B is open").toBe(true);
-    expect(h02Box).toContain("Gate B is still open");
+    expect(
+      h02Box!.startsWith("- [ ]"),
+      "H-02 must stay unchecked while neither H-02 record is an account read",
+    ).toBe(true);
+    expect(h02Box).toContain("No operator review of the hosting account was performed");
   });
 
   it("records the reopen criterion instead of promising the review was performed", () => {
