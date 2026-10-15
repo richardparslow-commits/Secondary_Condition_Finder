@@ -5,6 +5,21 @@ All notable changes to Secondary Condition Finder. Format loosely follows
 
 ## 2026-10-15
 
+- **Issue #518 (citation decay — re-verification required) is closed by a green probe run, and the closure record
+  is written down** (`citation-decay`): the issue was opened on 2026-10-05 by a scheduled run that failed with zero
+  link rot, drift or staleness, purely because an observability ratchet counted 398 undigested references against a
+  pin of 383 — a population no human could move, since the SOP forbids digesting the URLs that made it up. The
+  cause was fixed on 2026-10-14 (digest-ineligibility register plus the throttle/coverage policy), but closure is
+  automatic and needs a green *run*, and neither run in between produced one: the 2026-10-12 scheduled run was
+  cancelled after 20 m 20 s against that run's 20-minute job budget, which `track-decay` could not survive. A
+  dispatch of `citation-decay-watch` on `main` at `f5cee6e5` completed the probe in 8 m 29 s and closed the issue
+  ([run 38765411435](https://github.com/richardparslow-commits/Secondary_Condition_Finder/actions/runs/38765411435)):
+  `status: PASS`, link rot / drift / stale all 0, ceiling usage 0/10, digest-eligible backlog 5 against a pin of 5,
+  and 393 of 398 undigested references inside the declared, unexpired digest-ineligible class. Coverage is stated,
+  not implied: 40.1% (597 of 1,487 probed URLs), so "no link rot" is a claim about those URLs, not the corpus. The
+  closure record and the ten-day delay are written into
+  `docs/citation-digest-ineligibility-policy-2026-10-14.md`, with a pointer from the probe-outcome policy. This
+  closes no verification decision: no reference was re-verified or digested, and the eligible pin was not lowered.
 - **A green citation-decay run now restates the tracking issue instead of closing a stale failure body**
   (`citation-decay`, issue #518): the close half added on 2026-10-14 closed the tracking issue but left the
   body the probe wrote when it failed — the failing metric table, and in #518's case the sentence "is not

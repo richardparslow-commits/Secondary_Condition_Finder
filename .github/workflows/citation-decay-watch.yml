@@ -219,20 +219,29 @@ jobs:
           // from the same report, with the drift figure qualified by its
           // detectability, because contentDriftCount reads 0 on a dimension no
           // reference in the corpus can be checked on.
+          // The close path's own wording must match what the next failure does:
+          // the lookup below searches `--state open`, so a later failure opens a
+          // NEW tracking issue rather than reopening this one. "It reopens" was
+          // the same class of untrue statement on the issue surface that this
+          // whole mechanism exists to avoid.
           const greenBody = [
             marker,
             "The scheduled citation decay probe is green again: nothing decayed and no",
             "re-verification work is outstanding, so this tracking issue closed",
-            "automatically. It reopens if a later scheduled run fails.",
+            "automatically. A later scheduled run that fails opens a new tracking issue.",
             "",
             "| metric | count |",
             "| --- | --- |",
             `| link rot | ${report.linkRotCount} |`,
             `| content drift | ${report.contentDriftCount} (detectable: ${report.contentDriftDetectable}, ${report.contentDriftCoveragePercent}% digest coverage) |`,
-            `| stale | ${report.staleCount} |`,
             `| digest-eligible backlog | ${report.digestEligibleWithoutDigestCount}/${report.digestEligibleReferenceCount} await a qualified-human digest (ratchet ${report.maxUndigestedEligibleVerifiedRefs}) |`,
-            `| ceiling usage (link rot + stale + drift) | ${report.citationCeilingUsage}/${report.citationCeiling} |`,
+            `| digest-ineligible (declared class, no digest possible) | ${report.digestIneligibleWithoutDigestCount} of ${report.verifiedWithoutDigestCount} undigested — register reviewed ${report.digestIneligibilityRegister.reviewedOn}, expires ${report.digestIneligibilityRegister.reviewExpiresOn} |`,
+            `| bot-blocked (unverifiable by probe) | ${report.botBlockedUnverifiableCount} |`,
+            `| throttled / unresponsive (unverifiable by probe) | ${report.throttledUnverifiableCount} |`,
             `| probe coverage (URLs that produced a verdict) | ${report.probeCoveragePercent}% (${report.definitiveVerdictUrlCount} of ${report.uniqueUrlsProbed} probed; ${report.unverifiableByProbeUrlCount} unverifiable) |`,
+            `| stale | ${report.staleCount} |`,
+            `| unverified (debt ratcheted by citations:audit, not gated here) | ${report.unverifiedCount} |`,
+            `| ceiling usage (link rot + stale + drift) | ${report.citationCeilingUsage}/${report.citationCeiling} |`,
             "",
             `Run: ${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`,
             "",
@@ -261,7 +270,7 @@ jobs:
                 "--reason",
                 "completed",
                 "--comment",
-                "The scheduled citation decay probe is green again — no link rot, no stale reference, and the digest-eligible backlog is at or under its ratchet — so this tracking issue closes automatically and its body now carries this run's numbers. It reopens if a later scheduled run fails.",
+                "The scheduled citation decay probe is green again — no link rot, no stale reference, and the digest-eligible backlog is at or under its ratchet — so this tracking issue closes automatically and its body now carries this run's numbers. A later scheduled run that fails opens a new tracking issue.",
               ]);
               console.log(`Closed tracking issue #${matches[0].number}`);
             } else {
