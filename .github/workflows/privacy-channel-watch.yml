@@ -1,0 +1,181 @@
+name: Privacy Channel Watch
+
+# Scheduled watch for the published privacy-request channel — gate C / issue #539
+# (R-01 §9), whose first completion item is that the channel "resolves and receives mail".
+#
+# The 2026-10-15 finding recorded that `privacy@secondaryconditionfinder.org` sits at a
+# domain that does not resolve, and a reading like that goes stale in both directions:
+# once the operator registers the name and operates the mailbox, the channel can break
+# again — a lapsed registration, a deleted MX record, a mail host that stops accepting
+# the address — and nothing in this repository would notice. `scripts/watch-privacy-channel.mjs`
+# compares a fresh reading against the committed accepted state in
+# `docs/privacy-channel-watch-state.json` and reports only what changed, so the watch
+# neither re-announces the recorded state every night nor lets a break go unmentioned.
+#
+# Deliberately a separate workflow rather than a `schedule:` block elsewhere: its subject
+# is an external channel, not this repository's build, and a scheduled run must be able to
+# fail visibly without a commit (the rule dependency-scheduled-audit.yml states). Like that
+# workflow and the live regression monitor, it transports a verdict it does not compute:
+# exit 1 is a channel regression and exit 2 means the watch could not read the facts, which
+# is reported as a watch fault rather than as a verdict about the channel.
+#
+# What a green run here does NOT mean: the watch reads DNS and a registry. It cannot see a
+# mailbox, so it is never evidence that a privacy request would be read or answered. §8 step
+# 4 of the fulfilment procedure — a real message from outside the domain, sent by the
+# operator — stays a human act, and so does recording its sanitized outcome in the gate.
+
+on:
+  schedule:
+    # Daily 04:41 UTC — off the hour, and offset from the live regression monitor
+    # (05:23 daily) and the Monday audits (06:07, 06:17) so their start queues never align.
+    - cron: "41 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  # One watch at a time: overlapping runs would read the same facts twice and post the
+  # same transition to the tracking issue twice.
+  group: privacy-channel-watch
+  cancel-in-progress: false
+
+env:
+  WATCH_ISSUE_TITLE: "Privacy channel watch: published privacy-request address"
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: 22
+          # No `cache: npm`: the watch reads DNS, the `.org` registry and a committed state
+          # file using only the toolchain Node already provides. There is nothing to install,
+          # so there is no lockfile to cache and no dependency that can drift under it.
+
+      - name: Run the privacy channel watch
+        id: watch
+        # Not `continue-on-error`: exit 1 (channel regressed or outlived its review date) and
+        # exit 2 (the watch could not read the facts) are both signals this workflow exists to
+        # surface. The reporting steps below are gated on this step's outcome and outputs.
+        # Deliberately no `--record`: a scheduled run may observe, never re-baseline.
+        run: |
+          set -o pipefail
+          node scripts/watch-privacy-channel.mjs --github-output="$GITHUB_OUTPUT" 2>&1 | tee watch.log
+
+      - name: Publish the watch report to the run summary
+        if: always()
+        run: |
+          set -o pipefail
+          awk '/^## Privacy channel watch/{buf=""} {buf=buf $0 "\n"} END{print buf}' watch.log >> "$GITHUB_STEP_SUMMARY"
+          {
+            echo ""
+            echo "- Watch verdict: \`${{ steps.watch.outputs.status }}\` (exit ${{ steps.watch.outputs.exit_code }})"
+            echo "- Accepted state: \`docs/privacy-channel-watch-state.json\` at \`${{ github.sha }}\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload the watch evidence
+        if: always()
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v4
+        with:
+          name: privacy-channel-watch-${{ github.run_id }}
+          path: |
+            watch.log
+            docs/privacy-channel-watch-state.json
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Tell a human what changed
+        if: always() && (steps.watch.outcome == 'failure' || steps.watch.outputs.alert == 'true')
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          STATUS: ${{ steps.watch.outputs.status }}
+          EXIT_CODE: ${{ steps.watch.outputs.exit_code }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          umask 077
+          tmp_dir="$(mktemp -d)"
+          trap 'rm -rf "$tmp_dir"' EXIT
+          body_file="$tmp_dir/privacy-channel.md"
+
+          # Scoped to this workflow's own issue title so no other issue is touched.
+          issue_url="$(gh issue list --state open --search "${WATCH_ISSUE_TITLE} in:title" \
+            --repo "$GITHUB_REPOSITORY" --json number --jq '.[0].number // ""')"
+
+          # The watch's own markdown report, verbatim: it names the verdict, the registry
+          # readings and the accepted state, so the issue never restates a reading by hand.
+          awk '/^## Privacy channel watch/{buf=""} {buf=buf $0 "\n"} END{print buf}' watch.log > "$body_file"
+          {
+            echo ""
+            echo "### What to do next"
+            case "$STATUS" in
+              regression)
+                echo "The channel was accepted as live and is no longer reachable. Check, in order: the domain's"
+                echo "registration and expiry, the \`NS\` records, the \`MX\` records, and whether the mail host still"
+                echo "accepts the published address (\`node scripts/verify-privacy-channel.mjs --smtp\`)."
+                ;;
+              pending-expired)
+                echo "The channel is still dead and has outlived the review date its acceptance carried. The owner's"
+                echo "recorded decision was to register the domain and operate the mailbox; that date has passed, so this"
+                echo "is no longer a pending action. Either do it — the registration and mailbox checklist is §8 of the"
+                echo "fulfilment procedure — or record a new acceptance with \`--record --accept-dead=\"<reason>\" --review-by=<date>\`,"
+                echo "which is a dated decision rather than a fix."
+                ;;
+              recovered)
+                echo "The published address now has a mail route, so steps 1–3 of §8 appear to be done. Record the state"
+                echo "(\`node scripts/watch-privacy-channel.mjs --record\`), then run step 4 — a message sent **from outside the domain**"
+                echo "to the published address — and record its sanitized outcome in the gate C record. A green watch is not that"
+                echo "test: this watch cannot see a mailbox, and it is never evidence that a request would be read."
+                ;;
+              could-not-run)
+                echo "The watch could not read the facts, so this is a fault in the watch rather than a verdict about the"
+                echo "channel. Re-run the workflow; if it repeats, read the run log and the uploaded evidence."
+                ;;
+              *)
+                echo "See the report above."
+                ;;
+            esac
+            echo ""
+            echo "- Run: $RUN_URL"
+            echo "- Verdict: \`$STATUS\` (watch exit $EXIT_CODE)"
+            echo "- Commit watched: \`${{ github.sha }}\`"
+            echo "- Generated: $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+            echo "- Accepted state: \`docs/privacy-channel-watch-state.json\`"
+            echo ""
+            echo "This watch reports on DNS and on the \`.org\` registry. It cannot see a mailbox, so no run of it — green or"
+            echo "red — is evidence that a privacy request would be read or answered."
+          } >> "$body_file"
+
+          if [ -n "$issue_url" ]; then
+            gh issue comment "$issue_url" --repo "$GITHUB_REPOSITORY" --body-file "$body_file"
+            echo "Updated open tracking issue #$issue_url." >> "$GITHUB_STEP_SUMMARY"
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" \
+              --title "$WATCH_ISSUE_TITLE" \
+              --body-file "$body_file"
+          fi
+
+      - name: Close the tracking issue when there is nothing new
+        # Green and known-open both mean "nothing changed": the channel is deliverable as
+        # accepted, or it is dead exactly as the accepted state records. Neither is news.
+        if: steps.watch.outcome == 'success' && steps.watch.outputs.alert != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          STATUS: ${{ steps.watch.outputs.status }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          issue_url="$(gh issue list --state open --search "${WATCH_ISSUE_TITLE} in:title" \
+            --repo "$GITHUB_REPOSITORY" --json number --jq '.[0].number // ""')"
+          if [ -n "$issue_url" ]; then
+            gh issue close "$issue_url" --repo "$GITHUB_REPOSITORY" --reason completed \
+              --comment "Closed automatically: the privacy channel watch reports nothing new (\`$STATUS\`, ${GITHUB_SHA:-unknown}). The accepted state and the gate C record remain the authority on the promise; this watch only reports whether the published address still resolves and has a mail route."
+          else
+            echo "Nothing new (\`$STATUS\`); no open tracking issue." >> "$GITHUB_STEP_SUMMARY"
+          fi
