@@ -36,6 +36,25 @@ DNS, so no request can be delivered to it.**
 | Control, same environment and minute: `MX` for `vercel.com` | Resolves normally (five MX answers); `.org` TLD nameservers resolve normally |
 | Behaviour of the environment's recursive resolvers for the name | `SERVFAIL` rather than `NXDOMAIN`; recorded because it was observed, and not relied on. The two authoritative DoH readings above are the evidence, and they agree: no mail route exists |
 
+**Re-verification (2026-10-16): unchanged, and now with the registry's own
+answer.** A second dated reading, taken before any registration work begins, found
+the same state and strengthened the evidence for it:
+
+| Reading | Result |
+| --- | --- |
+| `NS`, `SOA`, `MX`, `A`, `TXT` for the name, Cloudflare and Google DoH | **NXDOMAIN** at both resolvers, authority again the `.org` registry's own SOA. Nothing has changed since 2026-10-15 |
+| `_dmarc` TXT for the name | **NXDOMAIN** — there is no mail authentication record either, because there is no name to carry one |
+| Registry RDAP — the `.org` registry itself (`rdap.publicinterestregistry.org`) | **HTTP 404** for the name |
+| Control, same endpoint and minute: `wikipedia.org` and `example.org` | **HTTP 200**, each with registration status and nameservers — so the 404 above means *not registered*, rather than an endpoint that always fails |
+| Control, same endpoint: a `.com` name (`vercel.com`) | **HTTP 404** — expected on a `.org` registry, and the reason a name outside `.org` cannot validate this reading |
+| `rdap.org` for the name **and** for a registered control | **HTTP 403 for both.** Corrected here: the 2026-10-15 record cited `RDAP`/`whois` as returning "no domain record", but this environment answers 403 for a name that demonstrably *is* registered, so that reading was never usable as evidence. The registry reading with its positive controls replaces it; the earlier sentence is left standing as the dated record it was rather than quietly rewritten |
+
+The re-verification changes no conclusion — the name is **unregistered and
+available to register**, and no mail route exists, so the two unchecked items in
+section 9 stay unchecked — and it changes one method: availability is now read from
+the registry that issues the name, against positive controls, instead of from a
+redirect service that answers 403 in this environment.
+
 Consequences, stated plainly:
 
 - A Veteran who follows the published instruction and sends a request gets no
@@ -172,6 +191,58 @@ Owner action, in order. Each line is verifiable, which is why they are separate.
 6. Confirm the address reaches a human (the named handler in section 2) rather than a
    mailbox nobody reads.
 
+### What "publish MX records" means, concretely
+
+Four records, published at whichever DNS provider holds the domain's nameservers.
+The MX targets and the SPF host come from the mail provider's own setup screen,
+because several providers issue region- or account-specific values — publish what
+that screen shows rather than a value copied from elsewhere.
+
+| Type | Name | Value | Why it is there |
+| --- | --- | --- | --- |
+| `MX` | `@` (`secondaryconditionfinder.org`) | the mail provider's inbound host(s); priority `10`, plus `20` if the provider lists a second | this is the record that makes mail arrive at all |
+| `TXT` | `@` | `v=spf1 include:<the provider's SPF host> ~all` | lets the handler's replies pass SPF instead of being filtered as spam |
+| `TXT` | `_dmarc` | `v=DMARC1; p=none; rua=mailto:privacy@secondaryconditionfinder.org` | DMARC started in monitor mode while the domain is new; tighten to `p=quarantine` once replies are flowing |
+| `TXT` | `@` | the provider's domain-verification value, where it issues one | some providers require ownership proof before the mailbox is enabled |
+
+Verify each step rather than assuming it, from any machine with `dig` (`nslookup`
+works too):
+
+```bash
+dig +short NS secondaryconditionfinder.org     # resolves once the domain is registered
+dig +short MX secondaryconditionfinder.org     # the mail route: step 3's evidence
+dig +short TXT secondaryconditionfinder.org    # SPF, and any verification value
+dig +short TXT _dmarc.secondaryconditionfinder.org
+```
+
+Registry side, for whether the name is registered at all — `404` means
+unregistered, `200` means registered, and the second line is the control that makes
+the first line mean something (this endpoint answers `404` for other TLDs):
+
+```bash
+curl -s -o /dev/null -w '%{http_code}\n' https://rdap.publicinterestregistry.org/rdap/domain/secondaryconditionfinder.org
+curl -s -o /dev/null -w '%{http_code}\n' https://rdap.publicinterestregistry.org/rdap/domain/example.org
+```
+
+Registering the name and choosing the mail provider are purchases in the operator's
+own account: no credential in this repository can perform them, and none should be
+added in order to.
+
+Steps 1–3 are checkable rather than assertable: [`scripts/verify-privacy-channel.mjs`](../scripts/verify-privacy-channel.mjs)
+(`npm run verify:privacy-channel`) reads the address from `src/lib/privacy/intake.ts` rather
+than retyping it, queries both resolvers and the `.org` registry with a positive control,
+and exits **0** when a mail route exists, **1** when it does not (naming what is missing),
+or **2** when the reading itself failed. With `--smtp` it also asks the mail host whether it
+would accept the published address, stopping at `RCPT TO`: it sends no message, so it cannot
+substitute for step 4, and its own output says so.
+
+Steps 1–3 are also **watched** rather than only measured once:
+[`privacy-channel-watch.yml`](../.github/workflows/privacy-channel-watch.yml) runs the verifier daily
+and compares the reading against an accepted state, raising a tracking issue when the channel is
+recovered, regresses, outlives its review date, or when the watch itself cannot read the facts — and
+staying silent while the channel is dead exactly as recorded. A green watch is **not** step 4: it
+reads DNS and the registry, never a mailbox.
+
 Steps 4–6 are the gate's "verified live monitored contact channel with a named
 handler and a sanitized send/receive-test outcome". The repository can record
 them; it cannot perform them.
@@ -189,7 +260,8 @@ Gate C closes when **all** of these are recorded, and not before:
 - [x] The named handler recorded (section 2).
 - [x] The fulfilment procedure recorded (this document).
 - [ ] **The channel resolves and receives mail** (section 8, steps 1–4) — currently
-      unmet, on the 2026-10-15 finding in section 1.
+      unmet, on the 2026-10-15 finding in section 1, re-verified 2026-10-16: the name
+      is still NXDOMAIN and the registry reports it unregistered.
 - [ ] **The sanitized send/receive test outcome recorded** (section 8, steps 5–6) —
       currently unmet, and it cannot be recorded before the mailbox exists.
 

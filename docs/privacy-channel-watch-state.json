@@ -1,0 +1,20 @@
+{
+  "purpose": "Accepted state for scripts/watch-privacy-channel.mjs. `expected` is what the published privacy-request channel has been accepted as; `reviewBy` is the date by which a dead channel must stop being a pending operator action. Written only by --record, and a dead channel cannot be recorded without a reason and a review date.",
+  "expected": "dead",
+  "acceptedAt": "2026-10-16",
+  "acceptedBy": "Richard Parslow (richardparslow-commits)",
+  "gate": "#539 (gate C, R-01 §9)",
+  "reason": "the domain is not registered, so the published address cannot receive mail; the owner's recorded decision (2026-10-15) is to register secondaryconditionfinder.org and operate the mailbox at privacy@secondaryconditionfinder.org rather than rewrite the published promise",
+  "reviewBy": "2026-11-15",
+  "lastObservedAt": "2026-10-16T02:04:02.949Z",
+  "lastObserved": {
+    "deliverable": false,
+    "registrySubject": 404,
+    "mx": [],
+    "reasons": [
+      "the name is not registered (registry RDAP 404, against a 200 control)",
+      "no NS answers: the name does not resolve",
+      "no MX answers: no mail route exists, so nothing can be delivered"
+    ]
+  }
+}
