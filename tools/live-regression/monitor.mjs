@@ -207,7 +207,12 @@ const report = md.filter((l) => l !== null).join("\n");
 mkdirSync(RESULTS, { recursive: true });
 writeFileSync(join(RESULTS, `monitor-${stamp}.md`), report + "\n");
 writeFileSync(join(RESULTS, `monitor-${stamp}.json`), JSON.stringify({ verdict, seed, generatedAt: stamp, summary: S, now, race, newlyFailing, stillFailing, recovered, flaked, unknownChecks, missingChecks, baselineSource: baseline.source }, null, 2));
-writeFileSync(join(HERE, "state", "latest.json"), JSON.stringify({ at: stamp, verdict, newlyFailing: newlyFailing.map((c) => c.name), stillFailing: stillFailing.map((c) => c.name), race }, null, 2));
+// Deliberately not `latest.json`. The app's regulatory preflight cache reads
+// `path.join(cacheDir, "latest.json")` with a runtime cache directory, so the bundler
+// cannot bound the path and resolves that basename against the project: any same-named
+// file is traced into a server artifact and `npm run audit:traces` fails on it, which is
+// exactly what happened to this record. Keep the name, or the deployment gate fails.
+writeFileSync(join(HERE, "state", "last-verdict.json"), JSON.stringify({ at: stamp, verdict, newlyFailing: newlyFailing.map((c) => c.name), stillFailing: stillFailing.map((c) => c.name), race }, null, 2));
 
 if (UPDATE) {
   const updated = {

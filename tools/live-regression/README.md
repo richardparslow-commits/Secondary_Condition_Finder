@@ -129,6 +129,15 @@ deliberate known failure**: the React `#418` race reproduces ~20/20 at 400 kbps 
 `notes/HYDRATION-ROOT-CAUSE.md`), so the canary is tracked, not newly failing. It flips to recovered — and should be
 accepted — once the scheduler gate ships in the application.
 
+### The record's name must not collide with a dynamic read
+
+Each run rewrites `state/last-verdict.json`: the one-word verdict, the check names it raises, and the race canary. It is
+deliberately **not** called `latest.json`, and the name is not cosmetic. The app's regulatory preflight cache reads
+`path.join(cacheDir, "latest.json")` with a runtime cache directory, so the bundler cannot bound the path and resolves
+that basename against the project — a same-named file is traced into the server artifacts that touch the cache, and
+`npm run audit:traces` fails on it (it did, on exactly this file). A generated record is not worth a deployment gate, so
+the name stays.
+
 ### Flakes are reported, not raised
 
 The harness replays a failing journey with the same seed; a failure that does not reproduce is classified as a flake
