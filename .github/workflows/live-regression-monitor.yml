@@ -1,0 +1,161 @@
+name: Live Regression Monitor
+
+# Scheduled regression monitoring for the production practice application
+# (https://lifeinsurancebrokeradvocate.com/practice-application).
+#
+# Every per-merge gate in this repository tests code we can build locally; this
+# application is hosted elsewhere, so the only way a regression becomes visible
+# without a human looking is a schedule. `tools/live-regression/monitor.mjs` runs
+# the randomized journey suite plus the React #418 race canary and reports
+# *newly* failing checks — checks failing now that were passing when the baseline
+# in `tools/live-regression/state/baseline.json` was last accepted — so a run does
+# not re-open an already-tracked defect, and a green run closes the tracking issue
+# it previously opened.
+#
+# Deliberately a separate workflow rather than a `schedule:` block on any existing
+# job: its failure modes (the hosted app is down, the pages changed shape, the
+# browser canary regressed) have nothing to do with merge gating, and a scheduled
+# run must be able to fail visibly without a commit — the same reasoning as
+# dependency-scheduled-audit.yml.
+#
+# The monitor owns the verdict. This workflow only transports it: it never decides
+# pass/fail from log text, and exit code 2 (monitor could not run) is reported as a
+# monitor fault rather than as an application regression.
+
+on:
+  schedule:
+    # Daily 05:23 UTC — off the hour and offset from the other scheduled
+    # workflows (audit 06:17 Mon, citation watch 06:07 Mon, CodeQL 03:33 Wed).
+    - cron: "23 5 * * *"
+  workflow_dispatch:
+    inputs:
+      runs:
+        description: "Randomized journeys to run"
+        required: false
+        default: "8"
+      race:
+        description: "Race-canary loads (0 disables)"
+        required: false
+        default: "20"
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  # One monitor at a time: overlapping runs would measure the same deploy twice
+  # and double-comment the tracking issue.
+  group: live-regression-monitor
+  cancel-in-progress: false
+
+env:
+  MONITOR_ISSUE_TITLE: "Live regression monitor: practice application"
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: tools/live-regression/package-lock.json
+      - name: Install the monitor's toolchain
+        # Real Chrome, not Chromium: `live-suite.mjs` launches `channel: "chrome"`,
+        # which is the configuration every campaign so far was measured with. Set
+        # PLAYWRIGHT_CHANNEL=chromium here and add an override in the harness before
+        # changing this.
+        run: |
+          set -o pipefail
+          npm ci --prefix tools/live-regression --no-audit --no-fund 2>&1 | tail -5
+          npx --prefix tools/live-regression playwright install --with-deps chrome 2>&1 | tail -5
+      - name: Run the live regression monitor
+        id: monitor
+        # Not `continue-on-error`: exit 1 is the failure signal this workflow exists
+        # to surface, and the reporting steps below are gated on this step's outcome.
+        run: |
+          set -o pipefail
+          node tools/live-regression/monitor.mjs \
+            --runs=${{ github.event.inputs.runs || 8 }} \
+            --race=${{ github.event.inputs.race || 20 }} \
+            2>&1 | tee monitor.log
+      - name: Publish the monitor report to the run summary
+        if: always()
+        run: |
+          set -o pipefail
+          # The report is the monitor's own markdown, printed verbatim: the last
+          # "## Live regression monitor" block in the log.
+          awk '/^## Live regression monitor/{buf=""} {buf=buf $0 "\n"} END{print buf}' monitor.log >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload monitor artifacts
+        if: always()
+        # TODO: pin to a SHA like the other actions once the monitor is adopted into
+        # the release routine; referenced by major tag until then.
+        uses: actions/upload-artifact@v4
+        with:
+          name: live-regression-monitor-${{ github.run_id }}
+          path: |
+            tools/live-regression/results/monitor-*
+            tools/live-regression/results/evidence/
+            monitor.log
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Open or update the tracking issue
+        if: steps.monitor.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          umask 077
+          tmp_dir="$(mktemp -d)"
+          trap 'rm -rf "$tmp_dir"' EXIT
+          body_file="$tmp_dir/monitor-failure.md"
+
+          # Scoped to this workflow's own title so no other issue is touched.
+          issue_url="$(gh issue list --state open --search "${MONITOR_ISSUE_TITLE} in:title" \
+            --repo "$GITHUB_REPOSITORY" --json number --jq '.[0].number // ""')"
+
+          # The monitor's own report, verbatim — it already distinguishes newly
+          # failing checks from known ones, so the issue never claims a tracked
+          # defect is new.
+          awk '/^## Live regression monitor/{buf=""} {buf=buf $0 "\n"} END{print buf}' monitor.log > "$body_file"
+          {
+            echo ""
+            echo "- Run: $RUN_URL"
+            echo "- Commit monitored: \`${{ github.sha }}\`"
+            echo "- Generated: $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+            echo ""
+            echo "Triage from the run's artifacts (per-journey JSON, screenshot/HTML captured at failure time). Reproduce"
+            echo "locally with the \`--seed\` printed in the report, then either fix the application or — when the change is"
+            echo "intended — accept it into the baseline with \`node tools/live-regression/monitor.mjs --update-baseline\`."
+            echo "A green scheduled run closes this issue automatically."
+          } >> "$body_file"
+
+          if [ -n "$issue_url" ]; then
+            gh issue comment "$issue_url" --repo "$GITHUB_REPOSITORY" --body-file "$body_file"
+            echo "Updated open tracking issue #$issue_url" >> "$GITHUB_STEP_SUMMARY"
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" \
+              --title "$MONITOR_ISSUE_TITLE" \
+              --body-file "$body_file"
+          fi
+
+      - name: Close the tracking issue when the monitor is green
+        if: steps.monitor.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          issue_url="$(gh issue list --state open --search "${MONITOR_ISSUE_TITLE} in:title" \
+            --repo "$GITHUB_REPOSITORY" --json number --jq '.[0].number // ""')"
+          if [ -n "$issue_url" ]; then
+            gh issue close "$issue_url" --repo "$GITHUB_REPOSITORY" --reason completed \
+              --comment "The scheduled live regression monitor is green again — no check is failing that was passing when the baseline was accepted (${GITHUB_SHA:-unknown}). Closing automatically; the next failing run reopens a tracking issue."
+          else
+            echo "Monitor green; no open tracking issue." >> "$GITHUB_STEP_SUMMARY"
+          fi

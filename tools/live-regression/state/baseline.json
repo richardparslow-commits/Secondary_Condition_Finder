@@ -1,0 +1,117 @@
+{
+  "updatedAt": "2026-10-16T01:10:39Z",
+  "source": "100/100 desktop + 25/25 phone-viewport journeys (suite v5), results/gate-100-desktop.json and gate-25-mobile.json",
+  "checks": {
+    "http_2xx": {
+      "pass": 100,
+      "fail": 0
+    },
+    "no_bot_challenge": {
+      "pass": 100,
+      "fail": 0
+    },
+    "disclaimer_visible": {
+      "pass": 100,
+      "fail": 0
+    },
+    "counter_starts_at_zero": {
+      "pass": 100,
+      "fail": 0
+    },
+    "identity_inputs_accept_values": {
+      "pass": 100,
+      "fail": 0
+    },
+    "condition_checkboxes_accept_selection": {
+      "pass": 77,
+      "fail": 0
+    },
+    "ticking_conditions_keeps_page_healthy": {
+      "pass": 77,
+      "fail": 0
+    },
+    "every_answer_counts_at_most_once": {
+      "pass": 100,
+      "fail": 0
+    },
+    "counter_never_over_counts_answers": {
+      "pass": 100,
+      "fail": 0
+    },
+    "counter_tracks_observed_advances": {
+      "pass": 100,
+      "fail": 0
+    },
+    "counter_never_exceeds_max": {
+      "pass": 100,
+      "fail": 0
+    },
+    "autosaves_draft_without_clicking_save": {
+      "pass": 100,
+      "fail": 0
+    },
+    "counter_restored_after_reload": {
+      "pass": 100,
+      "fail": 0
+    },
+    "answers_restored_after_reload": {
+      "pass": 100,
+      "fail": 0
+    },
+    "identity_restored_after_reload": {
+      "pass": 100,
+      "fail": 0
+    },
+    "consent_boxes_not_persisted": {
+      "pass": 100,
+      "fail": 0
+    },
+    "save_draft_gives_feedback": {
+      "pass": 100,
+      "fail": 0
+    },
+    "print_invokes_window_print": {
+      "pass": 100,
+      "fail": 0
+    },
+    "clear_draft_resets_state": {
+      "pass": 100,
+      "fail": 0
+    },
+    "no_console_errors": {
+      "pass": 100,
+      "fail": 0
+    },
+    "no_page_errors": {
+      "pass": 100,
+      "fail": 0
+    },
+    "no_hydration_mismatch": {
+      "pass": 100,
+      "fail": 0
+    },
+    "no_hydration_dom_wipe": {
+      "pass": 100,
+      "fail": 0
+    },
+    "no_failed_requests_from_app": {
+      "pass": 100,
+      "fail": 0
+    },
+    "no_submission_left_the_browser": {
+      "pass": 100,
+      "fail": 0
+    },
+    "no_swallowed_errors": {
+      "pass": 100,
+      "fail": 0
+    }
+  },
+  "raceGate": {
+    "kbps": 400,
+    "latency": 150,
+    "runs": 20,
+    "mismatches": 20,
+    "note": "KNOWN FAILURE, tracked not new: the React #418 streaming-hydration race (facebook/react#37321) reproduces at these settings. See notes/HYDRATION-ROOT-CAUSE.md. It becomes 0 once the scheduler gate ships; run monitor.mjs --update-baseline to record that."
+  }
+}

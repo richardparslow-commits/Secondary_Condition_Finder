@@ -1,0 +1,19 @@
+{
+  "name": "live-regression-monitor",
+  "private": true,
+  "description": "Scheduled randomized regression monitor for the production practice application (lifeinsurancebrokeradvocate.com/practice-application).",
+  "type": "module",
+  "scripts": {
+    "monitor": "node monitor.mjs",
+    "suite": "node live-suite.mjs",
+    "race-gate": "node hydration-race-gate.mjs",
+    "submit:dry": "node e2e-send-submission.mjs --dry",
+    "submit:live": "node e2e-send-submission.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "playwright": "1.64.1"
+  }
+}
