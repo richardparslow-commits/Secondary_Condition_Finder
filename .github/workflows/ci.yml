@@ -374,6 +374,25 @@ jobs:
           npm run stress:hostile 2>&1 | tee ci-hostile-stress.log
         continue-on-error: true
         id: hostile_stress
+      # Release gate for the Sites Worker: the OCR model is served through the
+      # `/tesseract/eng.traineddata.gz` rewrite, and a regression there is only
+      # observable in the built Worker under workerd — jsdom, Node and the route
+      # tests all see the source, not the artifact the Sites upload contains.
+      # `--sites` builds with the Sites OpenNext config and bindings and asserts
+      # the rewrite's 200, gzip content type, immutable cache policy, single
+      # nosniff/CORP headers, `OCR_MODEL_SHA256` digest match against both the
+      # route and the pinned package copy, and that no `public/` copy can mask
+      # the rewrite. CI has no checkout prepared by Sites — the generated
+      # `freebuff.open-next.config.ts` is gitignored — so it builds with the
+      # committed equivalent in `scripts/ci/sites-open-next.config.ts`. The
+      # aggregator below re-fails on this step, so a red smoke blocks the merge.
+      - name: Run Sites Worker smoke check (OCR rewrite gate)
+        if: steps.build.outcome == 'success'
+        run: |
+          set -o pipefail
+          npm run smoke:worker -- --sites --sites-config scripts/ci/sites-open-next.config.ts 2>&1 | tee ci-sites-worker-smoke.log
+        continue-on-error: true
+        id: sites_worker_smoke
       - name: Collect diagnostic summary
         if: always()
         id: diagnostics
@@ -408,11 +427,12 @@ jobs:
             echo "- browser-a11y-contrast (R-05): ${{ steps.a11y_contrast.outcome }}"
             echo "- browser-a11y-full (Playwright): ${{ steps.a11y_full.outcome }}"
             echo "- hostile-file-stress (REL-05): ${{ steps.hostile_stress.outcome }}"
+            echo "- sites-worker-smoke (OCR rewrite): ${{ steps.sites_worker_smoke.outcome }}"
             echo "- priv01-scope job: ${{ needs.priv01_scope.result }}"
             echo "- priv01-sentinel job: ${{ needs.priv01_sentinel.result }}"
             echo
             echo "## Failure excerpts"
-            for log in ci-governance.log ci-branch-rules.log ci-install.log ci-audit.log ci-audit-all.log ci-audit-disposition.log ci-citations.log ci-kb-validate.log ci-me-compliance.log ci-crg.log ci-crg-graph.log ci-lint.log ci-typecheck.log ci-test-composition.log ci-test.log ci-fleet.log ci-build.log ci-artifact-traces.log ci-e2e.log ci-a11y-contrast.log ci-a11y-full.log ci-hostile-stress.log; do
+            for log in ci-governance.log ci-branch-rules.log ci-install.log ci-audit.log ci-audit-all.log ci-audit-disposition.log ci-citations.log ci-kb-validate.log ci-me-compliance.log ci-crg.log ci-crg-graph.log ci-lint.log ci-typecheck.log ci-test-composition.log ci-test.log ci-fleet.log ci-build.log ci-artifact-traces.log ci-e2e.log ci-a11y-contrast.log ci-a11y-full.log ci-hostile-stress.log ci-sites-worker-smoke.log; do
               if [ -f "$log" ]; then
                 echo
                 echo "### $log"
@@ -455,7 +475,7 @@ jobs:
           if [ "${{ needs.priv01_scope.result }}" != "success" ] || \
              [ "${{ needs.priv01_sentinel.result }}" = "failure" ] || \
              [ "${{ needs.priv01_sentinel.result }}" = "cancelled" ] || \
-             [ "${{ steps.governance.outcome }}" = "failure" ] || [ "${{ steps.branch_rules.outcome }}" = "failure" ] || [ "${{ steps.install.outcome }}" = "failure" ] || [ "${{ steps.audit.outcome }}" = "failure" ] || [ "${{ steps.audit_disposition.outcome }}" = "failure" ] || [ "${{ steps.citations.outcome }}" = "failure" ] || [ "${{ steps.kb_validate.outcome }}" = "failure" ] || [ "${{ steps.me_compliance.outcome }}" = "failure" ] || [ "${{ steps.crg.outcome }}" = "failure" ] || [ "${{ steps.crg_graph.outcome }}" = "failure" ] || [ "${{ steps.lint.outcome }}" = "failure" ] || [ "${{ steps.typecheck.outcome }}" = "failure" ] || [ "${{ steps.test_composition.outcome }}" = "failure" ] || [ "${{ steps.test.outcome }}" = "failure" ] || [ "${{ steps.fleet.outcome }}" = "failure" ] || [ "${{ steps.build.outcome }}" = "failure" ] ||             [ "${{ steps.artifact_traces.outcome }}" = "failure" ] || [ "${{ steps.e2e.outcome }}" = "failure" ] || [ "${{ steps.a11y_contrast.outcome }}" = "failure" ] ||             [ "${{ steps.a11y_full.outcome }}" = "failure" ] || [ "${{ steps.hostile_stress.outcome }}" = "failure" ]; then
+             [ "${{ steps.governance.outcome }}" = "failure" ] || [ "${{ steps.branch_rules.outcome }}" = "failure" ] || [ "${{ steps.install.outcome }}" = "failure" ] || [ "${{ steps.audit.outcome }}" = "failure" ] || [ "${{ steps.audit_disposition.outcome }}" = "failure" ] || [ "${{ steps.citations.outcome }}" = "failure" ] || [ "${{ steps.kb_validate.outcome }}" = "failure" ] || [ "${{ steps.me_compliance.outcome }}" = "failure" ] || [ "${{ steps.crg.outcome }}" = "failure" ] || [ "${{ steps.crg_graph.outcome }}" = "failure" ] || [ "${{ steps.lint.outcome }}" = "failure" ] || [ "${{ steps.typecheck.outcome }}" = "failure" ] || [ "${{ steps.test_composition.outcome }}" = "failure" ] || [ "${{ steps.test.outcome }}" = "failure" ] || [ "${{ steps.fleet.outcome }}" = "failure" ] || [ "${{ steps.build.outcome }}" = "failure" ] ||             [ "${{ steps.artifact_traces.outcome }}" = "failure" ] || [ "${{ steps.e2e.outcome }}" = "failure" ] || [ "${{ steps.a11y_contrast.outcome }}" = "failure" ] ||             [ "${{ steps.a11y_full.outcome }}" = "failure" ] || [ "${{ steps.hostile_stress.outcome }}" = "failure" ] || [ "${{ steps.sites_worker_smoke.outcome }}" = "failure" ]; then
             echo "One or more CI gates failed. See the diagnostic summary and artifact."
             exit 1
           fi

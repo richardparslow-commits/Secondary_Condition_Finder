@@ -33,7 +33,10 @@
  *
  * `--sites` builds the same Worker with the Sites OpenNext config
  * (`freebuff.open-next.config.ts`, including its R2 incremental cache and
- * Durable Object queue/tag cache bindings) instead of the minimal smoke config,
+ * Durable Object queue/tag cache bindings) instead of the minimal smoke config;
+ * `--sites-config <path>` overrides which config that is, which is how CI builds
+ * without the gitignored file Sites generates (it passes
+ * `scripts/ci/sites-open-next.config.ts`),
  * then additionally proves the OCR model path end to end: the
  * `/tesseract/eng.traineddata.gz` rewrite answers 200 with the model's gzip
  * content type, immutable cache policy and single CORP/nosniff headers; its
@@ -48,6 +51,7 @@
  *   npm run smoke:worker                 # full OpenNext build, then probe
  *   npm run smoke:worker -- --skip-build # reuse an existing .open-next build
  *   npm run smoke:worker -- --sites      # Sites OpenNext config + OCR checks
+ *   npm run smoke:worker -- --sites --sites-config scripts/ci/sites-open-next.config.ts
  *   npm run smoke:worker -- --port 8799  # fixed port (default: a free one)
  *
  * Exit codes: 0 — every check passed; 1 — the build failed, the Worker did not
@@ -130,13 +134,20 @@ const ROUTES = [
 ];
 
 function parseArguments(argv) {
-  const options = { skipBuild: false, sites: false, port: null, help: false };
+  const options = { skipBuild: false, sites: false, sitesConfig: null, port: null, help: false };
   for (let index = 0; index < argv.length; index += 1) {
     const argument = argv[index];
     if (argument === "--skip-build") {
       options.skipBuild = true;
     } else if (argument === "--sites") {
       options.sites = true;
+    } else if (argument === "--sites-config") {
+      const value = argv[index + 1];
+      index += 1;
+      if (!value || value.startsWith("--")) {
+        throw new Error("--sites-config expects a path to an OpenNext config");
+      }
+      options.sitesConfig = value;
     } else if (argument === "--help" || argument === "-h") {
       options.help = true;
     } else if (argument === "--port") {
@@ -673,6 +684,10 @@ async function main() {
         "  --sites       build with freebuff.open-next.config.ts and verify the\n" +
         "                OCR model rewrite and digest (cannot be combined with\n" +
         "                --skip-build)\n" +
+        "  --sites-config <path>\n" +
+        "                the Sites OpenNext config to build with (default:\n" +
+        "                freebuff.open-next.config.ts, which Sites generates);\n" +
+        "                CI passes the committed scripts/ci/sites-open-next.config.ts\n" +
         "  --port <n>    fixed port (default: a free ephemeral port)\n",
     );
     return 0;
@@ -685,12 +700,21 @@ async function main() {
     );
   }
 
+  if (options.sitesConfig && !options.sites) {
+    throw new Error(
+      "--sites-config only applies to --sites: the default smoke build writes its own minimal config",
+    );
+  }
+
   if (!options.skipBuild) {
     if (options.sites) {
-      if (!fs.existsSync(SITES_OPEN_NEXT_CONFIG)) {
+      // A prepared checkout has the file Sites generates; CI passes its own
+      // committed equivalent instead, because that file is gitignored.
+      const sitesConfig = path.resolve(ROOT, options.sitesConfig ?? SITES_OPEN_NEXT_CONFIG);
+      if (!fs.existsSync(sitesConfig)) {
         throw new Error(
-          `${path.relative(ROOT, SITES_OPEN_NEXT_CONFIG)} is missing; prepare the checkout for ` +
-            "Sites before running --sites",
+          `${path.relative(ROOT, sitesConfig)} is missing; prepare the checkout for ` +
+            "Sites before running --sites, or pass --sites-config <path>",
         );
       }
       await runCommand(
@@ -699,7 +723,7 @@ async function main() {
           "build",
           "--skipWranglerConfigCheck",
           "--openNextConfigPath",
-          path.relative(ROOT, SITES_OPEN_NEXT_CONFIG),
+          path.relative(ROOT, sitesConfig),
         ],
         "opennextjs-cloudflare build (Sites config, runs next build)",
       );
