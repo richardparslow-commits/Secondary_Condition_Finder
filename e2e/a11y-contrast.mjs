@@ -106,6 +106,11 @@ const COLOR_SCHEME_PASSES = [
 ];
 /** Bounded by keystroke count, not page size, so the walk cannot hang. */
 const KEYBOARD_WALK_MAX_STEPS = 120;
+// A route can be measured while its render is still arriving; CI recorded no
+// tabbable element on /secondary/evidence in one run and one in the next, on the
+// same commit. Re-probe for a bounded window before recording "empty".
+const KEYBOARD_PROBE_ATTEMPTS = 10;
+const KEYBOARD_PROBE_DELAY_MS = 500;
 
 /**
  * WebDriver key values. `\uE000` is the protocol's NULL key, not Tab: pressing
@@ -609,45 +614,56 @@ async function runSeededKeyboardControl() {
  * on. Bounded by step count.
  */
 async function runKeyboardWalk(route) {
-  const focusInitialised = await webdriver("POST", `/session/${sessionId}/execute/sync`, {
-    script: `
-      const focusables = Array.from(document.querySelectorAll(
-        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
-      )).filter((el) => el.tagName !== arguments[0] && !el.closest(arguments[0].toLowerCase()));
-      // The selector overcounts: an element inside a collapsed disclosure or a
-      // display:none container still matches it but is not in the tab order, so
-      // expecting a second distinct target because the selector found two of
-      // them would fail a walk that is behaving correctly. The count that the
-      // advancement rule compares against is the visible subset.
-      const visible = focusables.filter((el) => {
-        if (el.getClientRects().length === 0) return false;
-        const style = window.getComputedStyle(el);
-        return style.visibility !== 'hidden' && style.display !== 'none';
-      });
-      if (visible.length === 0) return { state: "empty", tabbable: 0 };
-      // Identity for "did focus move?" is the element reference, kept page-side.
-      // A tag-plus-label signature cannot answer it: /secondary/diagnosed ships
-      // 819 checkboxes whose accessible names come from their wrapping label, so
-      // every one of them read as the same empty string and a walk that did
-      // advance looked stuck. Reference equality is exact and mutates nothing
-      // React owns.
-      visible[0].focus();
-      // The baseline is the element now focused, not null. Leaving it null made
-      // the walk's first keystroke count as an advance even when it moved
-      // nothing, and — because the element the walk starts on is tabbable but
-      // was never counted — made a two-element page record one distinct target
-      // after covering both. See the advancement rule below.
-      const started = document.activeElement === visible[0];
-      window.__r05KeyboardLast = started ? visible[0] : null;
-      return {
-        state: started ? "focused" : "noop",
-        tabbable: visible.length,
-      };
-    `,
-    args: [DEV_OVERLAY_TAG],
-  });
+  // A route can still be rendering when the walk starts: on the same commit,
+  // CI recorded no tabbable element at all for /secondary/evidence in one run
+  // and a single one in the next, while the local run recorded one. Re-probe
+  // briefly before recording "empty", so a render that is one tick late is not
+  // reported as a coverage gap; a route that never renders a focusable element
+  // still ends up with `state: "empty"` and still fails the route inventory.
+  let focusInitialised = null;
+  for (let attempt = 0; attempt < KEYBOARD_PROBE_ATTEMPTS; attempt += 1) {
+    focusInitialised = await webdriver("POST", `/session/${sessionId}/execute/sync`, {
+      script: `
+        const focusables = Array.from(document.querySelectorAll(
+          'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        )).filter((el) => el.tagName !== arguments[0] && !el.closest(arguments[0].toLowerCase()));
+        // The selector overcounts: an element inside a collapsed disclosure or a
+        // display:none container still matches it but is not in the tab order, so
+        // expecting a second distinct target because the selector found two of
+        // them would fail a walk that is behaving correctly. The count that the
+        // advancement rule compares against is the visible subset.
+        const visible = focusables.filter((el) => {
+          if (el.getClientRects().length === 0) return false;
+          const style = window.getComputedStyle(el);
+          return style.visibility !== 'hidden' && style.display !== 'none';
+        });
+        if (visible.length === 0) return { state: "empty", tabbable: 0 };
+        // Identity for "did focus move?" is the element reference, kept page-side.
+        // A tag-plus-label signature cannot answer it: /secondary/diagnosed ships
+        // 819 checkboxes whose accessible names come from their wrapping label, so
+        // every one of them read as the same empty string and a walk that did
+        // advance looked stuck. Reference equality is exact and mutates nothing
+        // React owns.
+        visible[0].focus();
+        // The baseline is the element now focused, not null. Leaving it null made
+        // the walk's first keystroke count as an advance even when it moved
+        // nothing, and — because the element the walk starts on is tabbable but
+        // was never counted — made a two-element page record one distinct target
+        // after covering both. See the advancement rule below.
+        const started = document.activeElement === visible[0];
+        window.__r05KeyboardLast = started ? visible[0] : null;
+        return {
+          state: started ? "focused" : "noop",
+          tabbable: visible.length,
+        };
+      `,
+      args: [DEV_OVERLAY_TAG],
+    });
+    if (focusInitialised?.state !== "empty") break;
+    if (attempt + 1 < KEYBOARD_PROBE_ATTEMPTS) await delay(KEYBOARD_PROBE_DELAY_MS);
+  }
   if (focusInitialised?.state === "empty") {
-    checkpoint(`${route.path}: no tabbable elements; keyboard walk skipped`);
+    checkpoint(`${route.path}: no tabbable elements after ${KEYBOARD_PROBE_ATTEMPTS} probes; keyboard walk skipped`);
     return { steps: 0, distinctElements: 0, tabbableElements: 0 };
   }
   const tabbableElements = Number(focusInitialised?.tabbable ?? 0);

@@ -173,6 +173,17 @@ describe("R-05 real-browser contrast and keyboard gate", () => {
     expect(seed).toBeLessThan(spec.indexOf("for (const route of ROUTES)"));
   });
 
+  it("re-probes before recording a route as having nothing to focus", () => {
+    // Same commit, two CI runs: /secondary/evidence recorded no tabbable
+    // element in one and a single one in the next. A route measured while its
+    // render is still arriving must not be reported as a coverage gap, so the
+    // probe is retried for a bounded window before "empty" is accepted.
+    expect(spec).toContain("const KEYBOARD_PROBE_ATTEMPTS = 10;");
+    expect(spec).toContain("const KEYBOARD_PROBE_DELAY_MS = 500;");
+    expect(spec).toContain('if (focusInitialised?.state !== "empty") break;');
+    expect(spec).toContain("no tabbable elements after");
+  });
+
   it("measures app controls only, not the dev-only overlay render", () => {
     // `next dev` injects a tabbable `nextjs-portal` whose controls carry no
     // focus indicator and never ship. Counting it inflated the walk's numbers
