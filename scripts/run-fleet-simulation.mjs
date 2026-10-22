@@ -47,13 +47,26 @@
  *   FLEET_SIMULATION_BUDGET_MS=120000 npm run test:fleet # operator override (bypasses the ratchet)
  *   FLEET_GATE_ENV=local-arm64 npm run test:fleet        # name this machine class
  *
+ * WHY THE PASS LINE NAMES THE TIGHTEST PATH
+ * A suite-level PASS says the total fit; it does not say which coordination
+ * path has the least room left. Seven paths sharing one budget can each sit at
+ * 20% while the total is comfortable, and the one that is one CI-runner hiccup
+ * from failing is the one a reader needs to see. The suite therefore reports
+ * every bounded scenario's measurement to a file this gate reads, and the PASS
+ * line ends with the scenario closest to its bound (with its percentage and a
+ * NEAR LIMIT marker). The gate fails closed when that report is missing or
+ * unreadable: a PASS that cannot name its tightest path is not the evidence
+ * this gate claims.
+ *
  * Debugging knobs, never used by CI: `FLEET_SIMULATION_BUDGET_MS` bypasses the
- * ratchet for one run, and `FLEET_GATE_RATCHET_PATH` points at a different
- * state file. An overridden run is never recorded as evidence.
+ * ratchet for one run, `FLEET_GATE_RATCHET_PATH` points at a different state
+ * file, and `FLEET_SCENARIO_REPORT_PATH` redirects the per-scenario report. An
+ * overridden run is never recorded as evidence.
  *
  * Exit codes:
- *   0   suite passed within budget
- *   1   suite failed, could not start, or was terminated by a signal
+ *   0   suite passed within budget, and its tightest path was identified
+ *   1   suite failed, could not start, was terminated by a signal, or passed
+ *       without a readable per-scenario report
  *   2   invalid override, unusable or loosened ratchet state, or an unratified
  *       environment (the state file is committed, so this is a fail-closed
  *       configuration error, never an infrastructure one)
@@ -61,7 +74,8 @@
  */
 
 import { spawn } from "node:child_process";
-import { readFileSync, writeFileSync } from "node:fs";
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -70,9 +84,82 @@ const SUITE_PATH = "tests/va-fleet-simulation.test.ts";
 const VITEST_ENTRY = path.join(repoRoot, "node_modules", "vitest", "vitest.mjs");
 const DEFAULT_RATCHET_PATH = path.join(repoRoot, ".github", "fleet-budget-ratchet.json");
 const TIMEOUT_EXIT_CODE = 124;
+/** Set by this gate on the suite's environment; the suite appends JSON Lines. */
+const SCENARIO_REPORT_ENV = "FLEET_SCENARIO_REPORT_PATH";
 
 function isPositiveNumber(value) {
   return typeof value === "number" && Number.isFinite(value) && value > 0;
+}
+
+/**
+ * Read the per-scenario report the suite wrote. Absent, unreadable or
+ * malformed is a failure, not an empty list: the caller must not turn "no
+ * measurements" into a PASS line that simply omits its summary.
+ */
+export function readScenarioReport(file) {
+  let raw;
+  try {
+    raw = readFileSync(file, "utf8");
+  } catch (error) {
+    return { ok: false, reason: error instanceof Error ? error.message : String(error) };
+  }
+  const measurements = [];
+  const lines = raw.split("\n").filter((line) => line.trim().length > 0);
+  for (const [index, line] of lines.entries()) {
+    let parsed;
+    try {
+      parsed = JSON.parse(line);
+    } catch {
+      return { ok: false, reason: `line ${index + 1} is not JSON` };
+    }
+    const usable =
+      parsed &&
+      typeof parsed === "object" &&
+      typeof parsed.scenario === "string" &&
+      parsed.scenario.length > 0 &&
+      Number.isFinite(parsed.elapsedMs) &&
+      parsed.elapsedMs >= 0 &&
+      isPositiveNumber(parsed.budgetMs);
+    if (!usable) {
+      return { ok: false, reason: `line ${index + 1} is not a scenario measurement` };
+    }
+    measurements.push({
+      scenario: parsed.scenario,
+      elapsedMs: parsed.elapsedMs,
+      budgetMs: parsed.budgetMs,
+      nearLimit: parsed.nearLimit === true,
+    });
+  }
+  return { ok: true, measurements };
+}
+
+/**
+ * The measurement closest to its bound, by ratio rather than absolute time: a
+ * 900 ms path under a 1,000 ms bound is tighter than a 2,000 ms path under a
+ * 3,000 ms one, even though it is faster in milliseconds. Ties keep the first
+ * reported path, which is the suite's own order.
+ */
+export function selectTightestScenario(measurements) {
+  let tightest = null;
+  for (const measurement of measurements ?? []) {
+    if (!measurement || !isPositiveNumber(measurement.budgetMs)) continue;
+    if (!Number.isFinite(measurement.elapsedMs) || measurement.elapsedMs < 0) continue;
+    const ratio = measurement.elapsedMs / measurement.budgetMs;
+    if (!tightest || ratio > tightest.ratio) tightest = { ...measurement, ratio };
+  }
+  return tightest;
+}
+
+/** The PASS-line suffix: named path, its measurement, and how close it is. */
+export function formatTightestPath(measurement) {
+  const ratio = Number.isFinite(measurement.ratio)
+    ? measurement.ratio
+    : measurement.elapsedMs / measurement.budgetMs;
+  const marker = measurement.nearLimit ? " — NEAR LIMIT" : "";
+  return (
+    `tightest path: ${measurement.scenario} at ${Math.round(measurement.elapsedMs)} ms / ` +
+    `${measurement.budgetMs} ms (${(ratio * 100).toFixed(1)}% of bound${marker})`
+  );
 }
 
 /** `FLEET_SIMULATION_BUDGET_MS`: null when unset, `{ok:false}` when unusable. */
@@ -299,6 +386,7 @@ function printUsage() {
   console.log("                               (default: ci when CI is set, else local)");
   console.log("  FLEET_SIMULATION_BUDGET_MS   operator override, bypasses the ratchet (debugging only)");
   console.log("  FLEET_GATE_RATCHET_PATH      alternate ratchet state file (debugging only)");
+  console.log(`  ${SCENARIO_REPORT_ENV} redirect the per-scenario report (set by this gate)`);
 }
 
 /* ─── main ────────────────────────────────────────────────────────────────── */
@@ -357,10 +445,24 @@ function main() {
           `${observationsCount} observation(s), hard ceiling ${loaded.state.ceilingMs} ms)`),
   );
 
+  // The suite reports every bounded scenario's measurement here, so the PASS
+  // line can name the one with the least room left. An injected path (debugging)
+  // is used as-is; otherwise a private temp directory is cleaned up on exit.
+  const reportOverride = process.env[SCENARIO_REPORT_ENV]?.trim();
+  const reportDirectory = reportOverride
+    ? null
+    : mkdtempSync(path.join(os.tmpdir(), "fleet-scenario-report-"));
+  const reportPath = reportOverride || path.join(reportDirectory, "report.jsonl");
+  rmSync(reportPath, { force: true });
+  const cleanupReport = () => {
+    if (reportDirectory) rmSync(reportDirectory, { recursive: true, force: true });
+  };
+
   const startedAt = process.hrtime.bigint();
   const child = spawn(process.execPath, [VITEST_ENTRY, "run", SUITE_PATH], {
     cwd: repoRoot,
     stdio: "inherit",
+    env: { ...process.env, [SCENARIO_REPORT_ENV]: reportPath },
   });
 
   let budgetExceeded = false;
@@ -374,11 +476,15 @@ function main() {
   }, budget.ms);
 
   child.on("error", (error) => {
+    cleanupReport();
     console.error(`[fleet-gate] FAIL: could not start the suite: ${error.message}`);
   });
 
   child.on("close", (code, signal) => {
     clearTimeout(budgetTimer);
+    // Read before cleaning up: every branch of this handler may return.
+    const scenarioReport = readScenarioReport(reportPath);
+    cleanupReport();
     if (budgetExceeded) {
       process.exitCode = TIMEOUT_EXIT_CODE;
       return;
@@ -393,9 +499,29 @@ function main() {
       return;
     }
 
+    if (!scenarioReport.ok) {
+      console.error(
+        `[fleet-gate] FAIL: the suite passed but its per-scenario measurements could not be ` +
+          `read from ${reportPath} (${scenarioReport.reason}). A PASS that cannot name the ` +
+          `tightest path is not the evidence this gate claims; nothing was ratcheted.`,
+      );
+      process.exitCode = 1;
+      return;
+    }
+    const tightest = selectTightestScenario(scenarioReport.measurements);
+    if (!tightest) {
+      console.error(
+        "[fleet-gate] FAIL: the suite passed but reported no per-scenario measurements, so the " +
+          "gate cannot name the tightest path. Scenarios must run through withinScenarioBudget().",
+      );
+      process.exitCode = 1;
+      return;
+    }
+
     const measuredMs = Math.round(Number(process.hrtime.bigint() - startedAt) / 1e6);
     console.log(
-      `[fleet-gate] PASS: measured ${measuredMs} ms against a ${budget.ms} ms budget (${environment} environment).`,
+      `[fleet-gate] PASS: measured ${measuredMs} ms against a ${budget.ms} ms budget ` +
+        `(${environment} environment); ${formatTightestPath(tightest)}.`,
     );
 
     if (!record) {
