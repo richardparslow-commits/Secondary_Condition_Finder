@@ -75,12 +75,54 @@ describe("REL-05 hostile-file browser stress harness", () => {
     expect(script).toContain("the tab still answers while the OCR worker is stalled");
   });
 
+  it("induces real WASM pressure with a scan rendered at the canvas cap", () => {
+    // The page geometry is the point: 2048 pt × the base render scale of 2 is
+    // 4096 px per side, which is exactly OCR_MAX_CANVAS_AREA_PX (16,777,216).
+    // Smaller leaves pressure unmeasured; larger would be downscaled by the cap.
+    expect(script).toContain("const SCAN_PAGE_PT = 2048");
+    expect(script).toContain("const SCAN_PAGES = 2");
+    expect(script).toContain("const SCAN_TIMEOUT_MS = 4 * 60 * 1000");
+    expect(script).toContain("renderedPx: SCAN_PAGE_PT * 2");
+    // The scan must be a real, parseable PDF with a full-page raster and no text
+    // layer, so pdf.js decodes it and the OCR path runs on every page.
+    expect(script).toContain("function scannedPdf");
+    expect(script).toContain('/ColorSpace /DeviceGray /BitsPerComponent 8 /Filter /FlateDecode');
+    expect(script).toContain('startxref\\n${xrefOffset}');
+    expect(script).toContain("scannedPdf()");
+    expect(script).toContain("scanPageRaster");
+  });
+
+  it("measures process RSS, not only the JS heap, and fails when it cannot", () => {
+    expect(script).toContain("const WASM_RSS_FLOOR_BYTES = 64 * 1024 * 1024");
+    expect(script).toContain("const RSS_SAMPLE_INTERVAL_MS = 250");
+    expect(script).toContain("execFileSync(\"ps\", [\"-A\", \"-o\", \"pid=,ppid=,rss=,command=\"]");
+    expect(script).toContain("function browserRssBytes");
+    expect(script).toContain("function withRssSamples");
+    // Only the browser the harness launched counts — not the operator's own.
+    expect(script).toContain("BROWSER_COMMAND_PATTERN");
+    expect(script).toContain("const seen = new Set([process.pid])");
+    // Peak, not before/after, because OCR frees buffers between pages.
+    expect(script).toContain("Math.max(...samples)");
+    // Unmeasurable must not read as "no pressure".
+    expect(script).toContain("if (process.platform === \"win32\") return null");
+    expect(script).toContain("return browserProcesses === 0 ? null : total");
+    expect(script).toContain("the WASM-pressure claim stays unmeasured");
+    expect(script).toContain(
+      "real OCR of the scanned pages moves process RSS, not just the JS heap",
+    );
+    expect(script).toContain("rssDelta >= WASM_RSS_FLOOR_BYTES");
+    expect(script).toContain("a large scanned PDF is admitted and its OCR pass finishes");
+  });
+
   it("records an identified-build evidence file with the limits it does not claim", () => {
     expect(script).toContain('path.join(process.cwd(), ".next", "BUILD_ID")');
     expect(script).toContain("rev-parse");
     expect(script).toContain("buildId,");
     expect(script).toContain("const EVIDENCE_FILE = path.join(EVIDENCE_DIR, \"evidence.json\")");
-    expect(script).toContain("no real WASM out-of-memory was induced");
+    // Pressure is claimed, an induced OOM is not — and the evidence says so.
+    expect(script).toContain("no out-of-memory is forced");
+    expect(script).toContain("processRss");
+    expect(script).toContain("wasmPressureInduced");
     expect(script).toContain("notClaimed");
     // It must not become a green light: a failed check exits non-zero and names
     // the finding in the error.

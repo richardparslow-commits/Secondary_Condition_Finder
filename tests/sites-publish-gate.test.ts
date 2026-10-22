@@ -5,6 +5,11 @@ import path from "node:path";
 
 import { afterEach, describe, expect, it } from "vitest";
 
+import {
+  resolveSourceIdentity,
+  writeBuildIdentity,
+} from "../scripts/lib/sites-build-identity.mjs";
+
 /**
  * The publish gate has to be more than an advisory report: the Sites uploader
  * cannot start without `manifest.json`, so a rejected artifact must leave no
@@ -28,7 +33,10 @@ afterEach(() => {
   }
 });
 
-function makeArtifact(extraAssets: Record<string, number> = {}): string {
+function makeArtifact(
+  extraAssets: Record<string, number> = {},
+  identity: Record<string, unknown> | null = resolveSourceIdentity({ cwd: process.cwd() }),
+): string {
   const directory = fs.mkdtempSync(path.join(os.tmpdir(), "sites-publish-"));
   tempDirectories.push(directory);
 
@@ -54,6 +62,10 @@ function makeArtifact(extraAssets: Record<string, number> = {}): string {
       spa: false,
     }),
   );
+
+  // An artifact is only publishable with the identity of the checkout that
+  // built it, so the fixture carries the real current identity by default.
+  if (identity) writeBuildIdentity(directory, identity);
 
   return directory;
 }
@@ -140,6 +152,65 @@ describe("Sites publish gate", () => {
     expect(fs.existsSync(path.join(directory, "manifest.json"))).toBe(false);
     expect(fs.existsSync(path.join(directory, "manifest.rejected.json"))).toBe(true);
     expect(fs.existsSync(path.join(directory, "publish-attestation.json"))).toBe(false);
+  });
+
+  it("refuses an artifact built from a different commit, before the smoke runs", () => {
+    const current = resolveSourceIdentity({ cwd: process.cwd() });
+    const directory = makeArtifact({}, { ...current, commit: "a".repeat(40) });
+    fs.writeFileSync(path.join(directory, "publish-attestation.json"), "{}");
+
+    const result = runGate(directory);
+
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain(`built from commit ${"a".repeat(40)}`);
+    expect(result.stderr).toContain(current.commit);
+    expect(result.stderr).toContain("no upload can start");
+    // The smoke builds the Worker; refusing before it runs is the point.
+    expect(result.stdout).not.toContain("running the Worker smoke check");
+    expect(fs.existsSync(path.join(directory, "manifest.json"))).toBe(false);
+    expect(fs.existsSync(path.join(directory, "manifest.rejected.json"))).toBe(true);
+    expect(fs.existsSync(path.join(directory, "publish-attestation.json"))).toBe(false);
+  });
+
+  it("refuses an artifact with no build identity instead of assuming it matches", () => {
+    const directory = makeArtifact({}, null);
+
+    const result = runGate(directory);
+
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain("carries no readable build identity");
+    expect(result.stderr).toContain("npm run sites:stamp");
+    expect(result.stdout).not.toContain("running the Worker smoke check");
+    expect(fs.existsSync(path.join(directory, "manifest.json"))).toBe(false);
+  });
+
+  it("refuses an artifact built from different uncommitted content at the same commit", () => {
+    const current = resolveSourceIdentity({ cwd: process.cwd() });
+    const directory = makeArtifact({}, { ...current, fingerprint: "b".repeat(64) });
+
+    const result = runGate(directory);
+
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain("uncommitted worktree state differs");
+    expect(result.stderr).toContain("no upload can start");
+    expect(result.stdout).not.toContain("running the Worker smoke check");
+    expect(fs.existsSync(path.join(directory, "manifest.json"))).toBe(false);
+  });
+
+  it("attests the artifact and smoke build identities it compared", () => {
+    const directory = makeArtifact();
+
+    expect(runGate(directory).status).toBe(0);
+
+    const attestation = JSON.parse(
+      fs.readFileSync(path.join(directory, "publish-attestation.json"), "utf8"),
+    );
+    const current = resolveSourceIdentity({ cwd: process.cwd() });
+    expect(attestation.buildIdentity.matched).toBe(true);
+    expect(attestation.buildIdentity.artifact.commit).toBe(current.commit);
+    expect(attestation.buildIdentity.smoke.commit).toBe(current.commit);
+    expect(attestation.buildIdentity.artifact.fingerprint).toBe(current.fingerprint);
+    expect(typeof attestation.buildIdentity.artifact.stampedAt).toBe("string");
   });
 
   it("runs the Sites smoke by default, before it attests the upload", () => {
@@ -245,6 +316,7 @@ describe("Sites publish gate", () => {
     ) as { scripts?: Record<string, string> };
 
     expect(packageJson.scripts?.["publish:sites"]).toBe("node scripts/gate-sites-publish.mjs");
+    expect(packageJson.scripts?.["sites:stamp"]).toBe("node scripts/stamp-sites-build.mjs");
     expect(packageJson.scripts?.["deploy:guard:sites"]).toBe(
       "node scripts/audit-sites-artifact.mjs",
     );

@@ -32,7 +32,17 @@
  * The publish therefore builds the Worker once with its own `next build` before
  * uploading. That is deliberate: the claim is "this checkout's Worker passes",
  * not "the platform's artifact bytes are identical". The gate does not claim to
- * hash the uploaded bytes.
+ * hash the uploaded bytes — which is exactly why it has to know that the two
+ * refer to the same source. The smoke validates the checkout; it says nothing
+ * about an upload set that was built from an older commit and then left on disk.
+ * So before running the smoke the gate compares the artifact's
+ * `build-identity.json` (written by `scripts/stamp-sites-build.mjs` when the
+ * artifact is generated) with the identity of the checkout the smoke is about
+ * to run against. A different commit — or the same commit with a different
+ * uncommitted worktree — is refused, before the smoke spends its build, with a
+ * message naming both identities. An artifact with no stamp is refused too:
+ * "unknown provenance" is not "the same commit". Regenerate and re-stamp, or
+ * restamp only if the artifact really was built from the current state.
  *
  * This gate covers the repository's command path. A fresh platform build writes
  * a new `manifest.json` of its own, so the gate must be run after the artifact
@@ -47,9 +57,9 @@
  * success paths without a full build; leave it unset to run the real Sites
  * smoke, which is the only supported publish path.
  *
- * Exit codes: 0 clean, smoked and ready to upload, 1 rejected, absent or failed
- * the Worker smoke check (nothing to publish), 2 the manifest could not be
- * read.
+ * Exit codes: 0 clean, smoke-matched and ready to upload, 1 rejected, absent,
+ * unstamped or built from a different source than the smoke (nothing to
+ * publish), 2 the manifest or the checkout's identity could not be read.
  */
 
 import { spawnSync } from "node:child_process";
@@ -57,6 +67,12 @@ import fs from "node:fs";
 import path from "node:path";
 
 import { auditSitesArtifact, SITES_UPLOAD_BUDGET_BYTES } from "./audit-sites-artifact.mjs";
+import {
+  compareIdentities,
+  describeIdentity,
+  readBuildIdentity,
+  resolveSourceIdentity,
+} from "./lib/sites-build-identity.mjs";
 
 const MIB = 1024 * 1024;
 const DEFAULT_SMOKE_COMMAND = path.join("scripts", "smoke-worker.mjs");
@@ -174,7 +190,63 @@ function main() {
     return;
   }
 
-  // The upload set is sound; now prove the Worker it carries still behaves.
+  // Which checkout built this artifact? The smoke only speaks for the checkout
+  // it runs against, so an unstamped or differently-built upload set has to be
+  // refused before the smoke spends a build proving something about other code.
+  const artifactIdentity = readBuildIdentity(root);
+  if (!artifactIdentity) {
+    const rejected = quarantine(manifestPath);
+    fs.rmSync(attestationPath, { force: true });
+    console.error(
+      `[sites-publish] the artifact carries no readable build identity; manifest quarantined ` +
+        `at ${rejected}, so no upload can start. An upload set whose commit is unknown cannot be ` +
+        `checked against the Worker smoke run, so run \`npm run sites:stamp\` immediately after ` +
+        `generating the artifact and re-run this command.`,
+    );
+    process.exitCode = 1;
+    return;
+  }
+
+  let sourceIdentity;
+  try {
+    sourceIdentity = resolveSourceIdentity({ cwd: process.cwd() });
+  } catch (error) {
+    const rejected = quarantine(manifestPath);
+    fs.rmSync(attestationPath, { force: true });
+    console.error(
+      `[sites-publish] ${error instanceof Error ? error.message : String(error)}; the checkout ` +
+        `this publish would smoke cannot be identified, so manifest quarantined at ${rejected} ` +
+        `and no upload can start.`,
+    );
+    process.exitCode = 2;
+    return;
+  }
+
+  const identityCheck = compareIdentities(artifactIdentity, sourceIdentity);
+  if (!identityCheck.ok) {
+    const rejected = quarantine(manifestPath);
+    fs.rmSync(attestationPath, { force: true });
+    console.error(
+      identityCheck.reason === "commit"
+        ? `[sites-publish] the artifact was built from commit ${artifactIdentity.commit} ` +
+          `(${describeIdentity(artifactIdentity)}), but the Worker smoke check would run against ` +
+          `${sourceIdentity.commit} (${describeIdentity(sourceIdentity)}). The smoke proves the ` +
+          `current checkout works, not that this upload set came from it; manifest quarantined ` +
+          `at ${rejected}, so no upload can start. Regenerate the artifact from the commit you ` +
+          `mean to publish, stamp it, and re-run this command.`
+        : `[sites-publish] the artifact and the current checkout are both at commit ` +
+          `${sourceIdentity.commit}, but their uncommitted worktree state differs ` +
+          `(${artifactIdentity.fingerprint.slice(0, 12)} vs ${sourceIdentity.fingerprint.slice(0, 12)}). ` +
+          `The smoke would validate source the artifact was not built from; manifest quarantined ` +
+          `at ${rejected}, so no upload can start. Regenerate the artifact from the current ` +
+          `worktree, stamp it, and re-run this command.`,
+    );
+    process.exitCode = 1;
+    return;
+  }
+
+  // The upload set is sound and its source matches this checkout; now prove the
+  // Worker it carries still behaves.
   const smoke = runWorkerSmoke(smokeScript, smokeArgs);
   if (!smoke.ok) {
     const rejected = quarantine(manifestPath);
@@ -201,6 +273,24 @@ function main() {
         // Record what actually ran: an injected test double must not be
         // attested as the Sites smoke.
         smoke: { command: smoke.command, args: smoke.args, checkedAt: new Date().toISOString() },
+        // Both sides of the comparison this gate just made, so a later reader can
+        // see the artifact and the smoke ran against the same source.
+        buildIdentity: {
+          artifact: {
+            commit: artifactIdentity.commit,
+            dirty: artifactIdentity.dirty,
+            dirtyFiles: artifactIdentity.dirtyFiles,
+            fingerprint: artifactIdentity.fingerprint,
+            stampedAt: artifactIdentity.stampedAt,
+          },
+          smoke: {
+            commit: sourceIdentity.commit,
+            dirty: sourceIdentity.dirty,
+            dirtyFiles: sourceIdentity.dirtyFiles,
+            fingerprint: sourceIdentity.fingerprint,
+          },
+          matched: true,
+        },
         checkedAt: new Date().toISOString(),
       },
       null,
@@ -214,6 +304,10 @@ function main() {
       `(modules ${describeBytes(report.totals.modules)}, assets ${describeBytes(report.totals.assets)}, ` +
       `cache ${describeBytes(report.totals.cache)}), ${report.assets.length} asset file(s), ` +
       `${report.forked.length} forked`,
+  );
+  console.log(
+    `[sites-publish] build identity ${describeIdentity(artifactIdentity)} matches the ` +
+      `checkout the Worker smoke check ran against`,
   );
   console.log(`[sites-publish] ready to upload: ${manifestPath}`);
 }

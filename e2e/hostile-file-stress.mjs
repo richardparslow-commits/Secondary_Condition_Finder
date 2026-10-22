@@ -6,8 +6,9 @@
  * jsdom tests and recorded one thing it could not claim: a hostile file **in a
  * real browser**, under the real production headers, with measured memory. This
  * script is that evidence run. It boots the production build (`next start`; run
- * `npm run build` first) and drives `/presumptive` in Chromium through four
- * hostile inputs:
+ * `npm run build` first) and drives `/presumptive` in Chromium through five
+ * hostile inputs — four that must be refused or stalled, and one that is
+ * admitted precisely so real WASM pressure can be measured:
  *
  *   1. **Image bomb, dimension** — a PNG whose header declares 60000×120. The
  *      declared-dimension bound must refuse it (`dimension-too-large`) with the
@@ -23,6 +24,15 @@
  *      The tab must keep answering, and Cancel must terminate that worker and
  *      return the surface to an idle, usable state instead of leaving it busy
  *      forever.
+ *   5. **Large scanned PDF** — a real, artwork-bearing PDF whose pages are sized
+ *      so each page renders at the shared canvas cap (4096 × 4096 = 16,777,216
+ *      px², exactly `OCR_MAX_CANVAS_AREA_PX`). It is admitted, so Tesseract's
+ *      WASM core actually allocates for 16.7M pixels per page. This is the case
+ *      that induces real WASM pressure rather than modelling it, and it is
+ *      measured both ways: the renderer's JS heap (CDP) **and** process RSS for
+ *      the browser's process tree (`ps`). The JS heap is expected to stay small
+ *      while RSS climbs — that gap is the WASM memory the earlier run could not
+ *      see.
  *
  * Between the refusals it measures the JS heap across repeated bomb uploads, so
  * "refused before decode" is a measured allocation story rather than an
@@ -34,19 +44,25 @@
  * messages to the OCR worker. That is how "no worker was created" and "the
  * worker was terminated" are observed rather than inferred from the UI.
  *
- * What this does NOT claim: no real WASM OOM was induced, memory pressure is
- * observed through the Chromium JS heap (not RSS), and the run is one browser
- * build on one machine. Those limits are recorded with the evidence.
+ * What this does NOT claim: pressure is induced, but no out-of-memory is forced
+ * (nothing makes Tesseract fail on purpose), so this is not an OOM-recovery
+ * test. RSS is sampled from `ps` every 250 ms, so a spike between samples is not
+ * captured, and it sums the whole browser process tree rather than any single
+ * allocator's accounting. RSS sampling requires a POSIX host (CI is Linux); on
+ * Windows the pressure check fails with that reason instead of passing
+ * unmeasured. The run is one browser build on one machine. Those limits are
+ * recorded with the evidence.
  *
  * Evidence: `tmp/hostile-file-stress/evidence.json` holds every check, the
- * measured heap deltas, the commit and build id, and the browser version.
+ * measured heap and RSS deltas, the commit and build id, and the browser
+ * version.
  *
  * Ports: `HOSTILE_E2E_APP_PORT` (default 3402). Browser: the installed Chrome
  * channel, like the a11y gates; `HOSTILE_E2E_BROWSER=chromium` uses Playwright's
  * own Chromium.
  */
 
-import { spawn } from "node:child_process";
+import { execFileSync, spawn } from "node:child_process";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
@@ -73,6 +89,30 @@ const MEMORY_ITERATIONS = 8;
 /** Generous bound: the refusals are header-only, so the expected delta is ~0. */
 const MEMORY_GROWTH_LIMIT_BYTES = 24 * 1024 * 1024;
 const CANCEL_SETTLE_TIMEOUT_MS = 15_000;
+
+/**
+ * The synthetic scan's page geometry. `OCR_MAX_CANVAS_AREA_PX` is 16,777,216
+ * and `OCR_BASE_RENDER_SCALE` is 2, so 2048 × 2048 pt is the page that renders at
+ * exactly the cap: 2048 × 2 = 4096 per side, 4096² = the cap itself, still not
+ * downscaled. Anything larger is refused no work by the cap and anything
+ * smaller leaves WASM pressure on the table.
+ */
+const SCAN_PAGE_PT = 2048;
+/** Two such pages: enough for the pressure to be real, short of the 5-min OCR budget. */
+const SCAN_PAGES = 2;
+/** Above the OCR job's own deadline is useless; this stays inside it. */
+const SCAN_TIMEOUT_MS = 4 * 60 * 1000;
+/** RSS is a sampled quantity; 250 ms is fine-grained against a multi-second OCR pass. */
+const RSS_SAMPLE_INTERVAL_MS = 250;
+/**
+ * Floor for "real WASM pressure". One 16.7M-px Tesseract pass must materialise
+ * more than the 16.7 MB grayscale image inside the WASM heap (binarised copy,
+ * component arrays, line finding), on top of a 67 MB canvas. 64 MiB is well
+ * below what that costs and far above what an idle renderer drifts by.
+ */
+const WASM_RSS_FLOOR_BYTES = 64 * 1024 * 1024;
+/** Upper bound on samples kept in the evidence file. */
+const RSS_SAMPLE_LIMIT = 400;
 
 const children = [];
 let browser;
@@ -145,6 +185,128 @@ function solidPng(width, height) {
   ]);
 }
 
+/**
+ * One page of a synthetic scan: paper, a header rule, and dense word-shaped
+ * ink. Deterministic (an LCG, no `Math.random`), so two runs of the harness
+ * produce the same bytes and the same amount of OCR work. The strokes are
+ * vertical bars rather than solid blocks: they compress well enough to keep the
+ * PDF small while still giving Tesseract millions of edges to binarise.
+ */
+function scanPageRaster(size) {
+  const raster = Buffer.alloc(size * size, 0xf4);
+  for (let y = 96; y < 104; y += 1) raster.fill(0x22, y * size, (y + 1) * size);
+  let seed = 0x9e3779b9;
+  const next = () => {
+    seed = (seed * 1664525 + 1013904223) >>> 0;
+    return seed / 0x100000000;
+  };
+  const rightEdge = size - 150;
+  for (let band = 140; band < size - 130; band += 46) {
+    const bandHeight = 22 + Math.floor(next() * 8);
+    const top = Math.min(band, size - bandHeight - 1);
+    let x = 140;
+    while (x < rightEdge) {
+      const wordEnd = Math.min(rightEdge, x + 20 + Math.floor(next() * 90));
+      if (next() > 0.08) {
+        for (let y = top; y < top + bandHeight; y += 1) {
+          const row = y * size;
+          for (let px = x; px < wordEnd; px += 3) raster[row + px] = 0x1c;
+        }
+      }
+      x = wordEnd + 8 + Math.floor(next() * 12);
+    }
+  }
+  return raster;
+}
+
+/**
+ * A real, parseable PDF whose every page is one full-page grayscale raster.
+ *
+ * Hand-built (no dependency) with a correct cross-reference table, because
+ * pdf.js validates it: the point of this fixture is to be *admitted* and then
+ * cost a genuine decode + render + WASM recognition, which a malformed file
+ * cannot do. Each page declares no text layer, so the analyzer takes its OCR
+ * path for every page.
+ */
+function scannedPdf(pages = SCAN_PAGES, sizePt = SCAN_PAGE_PT) {
+  const chunks = [];
+  let offset = 0;
+  const push = (buffer) => {
+    chunks.push(buffer);
+    offset += buffer.length;
+  };
+  const offsets = new Map();
+  const startObject = (number) => {
+    offsets.set(number, offset);
+    push(Buffer.from(`${number} 0 obj\n`, "latin1"));
+  };
+  const endObject = () => push(Buffer.from("endobj\n", "latin1"));
+  const streamObject = (number, dictionary, payload) => {
+    startObject(number);
+    push(Buffer.from(`<< ${dictionary} /Length ${payload.length} >>\nstream\n`, "latin1"));
+    push(payload);
+    push(Buffer.from("\nendstream\n", "latin1"));
+    endObject();
+  };
+
+  push(Buffer.from("%PDF-1.4\n%\xE2\xE3\xCF\xD3\n", "latin1"));
+  // 1 catalog, 2 page tree, then a page / image / content triple per page.
+  const pageNumbers = Array.from({ length: pages }, (_, index) => 3 + index * 3);
+  startObject(1);
+  push(Buffer.from("<< /Type /Catalog /Pages 2 0 R >>\n", "latin1"));
+  endObject();
+  startObject(2);
+  push(
+    Buffer.from(
+      `<< /Type /Pages /Count ${pages} /Kids [${pageNumbers.map((number) => `${number} 0 R`).join(" ")}] >>\n`,
+      "latin1",
+    ),
+  );
+  endObject();
+
+  for (let index = 0; index < pages; index += 1) {
+    const pageNumber = pageNumbers[index];
+    const imageNumber = pageNumber + 1;
+    const contentNumber = pageNumber + 2;
+    const compressed = zlib.deflateSync(scanPageRaster(sizePt), { level: 6 });
+    startObject(pageNumber);
+    push(
+      Buffer.from(
+        `<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${sizePt} ${sizePt}] ` +
+          `/Resources << /XObject << /Im0 ${imageNumber} 0 R >> >> /Contents ${contentNumber} 0 R >>\n`,
+        "latin1",
+      ),
+    );
+    endObject();
+    streamObject(
+      imageNumber,
+      `/Type /XObject /Subtype /Image /Width ${sizePt} /Height ${sizePt} ` +
+        "/ColorSpace /DeviceGray /BitsPerComponent 8 /Filter /FlateDecode",
+      compressed,
+    );
+    streamObject(
+      contentNumber,
+      "",
+      Buffer.from(`q\n${sizePt} 0 0 ${sizePt} 0 0 cm\n/Im0 Do\nQ\n`, "latin1"),
+    );
+  }
+
+  const xrefOffset = offset;
+  const count = 2 + pages * 3;
+  let xref = `xref\n0 ${count + 1}\n0000000000 65535 f \n`;
+  for (let number = 1; number <= count; number += 1) {
+    xref += `${String(offsets.get(number) ?? 0).padStart(10, "0")} 00000 n \n`;
+  }
+  push(Buffer.from(xref, "latin1"));
+  push(
+    Buffer.from(
+      `trailer\n<< /Size ${count + 1} /Root 1 0 R >>\nstartxref\n${xrefOffset}\n%%EOF\n`,
+      "latin1",
+    ),
+  );
+  return Buffer.concat(chunks);
+}
+
 function writeFixtures() {
   const directory = fs.mkdtempSync(path.join(os.tmpdir(), "hostile-files-"));
   const files = {
@@ -152,11 +314,13 @@ function writeFixtures() {
     bombPixels: path.join(directory, "bomb-pixels.png"),
     malformedPdf: path.join(directory, "malformed.pdf"),
     small: path.join(directory, "small.png"),
+    largeScan: path.join(directory, "large-scan.pdf"),
   };
   fs.writeFileSync(files.bombDimension, pngWithDeclaredSize(60_000, 120));
   fs.writeFileSync(files.bombPixels, pngWithDeclaredSize(10_000, 10_000));
   fs.writeFileSync(files.malformedPdf, Buffer.from("this is not a PDF at all\n"));
   fs.writeFileSync(files.small, solidPng(16, 16));
+  fs.writeFileSync(files.largeScan, scannedPdf());
   return { directory, files };
 }
 
@@ -282,6 +446,104 @@ async function heapBytes(client) {
   return entry ? Math.round(entry.value) : null;
 }
 
+/* ─── process RSS (what the JS heap cannot show) ───────────────────────────── */
+
+const BROWSER_COMMAND_PATTERN = /chrome|chromium|headless_shell/i;
+
+/** The OS process table, or null where it cannot be read. */
+function readProcessTable() {
+  if (process.platform === "win32") return null;
+  try {
+    const output = execFileSync("ps", ["-A", "-o", "pid=,ppid=,rss=,command="], {
+      encoding: "utf8",
+      maxBuffer: 32 * 1024 * 1024,
+      timeout: 5_000,
+    });
+    const table = [];
+    for (const line of output.split("\n")) {
+      const match = line.trim().match(/^(\d+)\s+(\d+)\s+(\d+)\s+(.*)$/);
+      if (match) {
+        table.push({
+          pid: Number(match[1]),
+          ppid: Number(match[2]),
+          rssKb: Number(match[3]),
+          command: match[4],
+        });
+      }
+    }
+    return table;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Summed resident set size (bytes) of the browser's process tree.
+ *
+ * Only descendants of this Node process whose command is a browser binary are
+ * counted, so the operator's own Chrome cannot inflate the figure, and the
+ * renderer that hosts the WASM heap is included along with its helpers. `ps`
+ * reports RSS in kibibytes on both macOS and Linux. Returns null when the table
+ * cannot be read (Windows, or a `ps` that failed) rather than a misleading 0 —
+ * the caller must not read "unmeasurable" as "no pressure".
+ */
+function browserRssBytes() {
+  const table = readProcessTable();
+  if (!table) return null;
+  const childrenByParent = new Map();
+  for (const entry of table) {
+    const siblings = childrenByParent.get(entry.ppid);
+    if (siblings) siblings.push(entry);
+    else childrenByParent.set(entry.ppid, [entry]);
+  }
+  const seen = new Set([process.pid]);
+  const queue = [process.pid];
+  let total = 0;
+  let browserProcesses = 0;
+  while (queue.length > 0) {
+    const parent = queue.shift();
+    for (const child of childrenByParent.get(parent) ?? []) {
+      if (seen.has(child.pid)) continue;
+      seen.add(child.pid);
+      queue.push(child.pid);
+      if (BROWSER_COMMAND_PATTERN.test(child.command)) {
+        total += child.rssKb * 1024;
+        browserProcesses += 1;
+      }
+    }
+  }
+  return browserProcesses === 0 ? null : total;
+}
+
+/**
+ * Sample sampled-RSS while `run` executes, keeping the peak.
+ *
+ * A single before/after pair would miss the peak: Tesseract frees its image
+ * buffers between pages and the renderer returns canvases to the pool, so RSS
+ * can fall back before the run ends. The samples are recorded in the evidence
+ * so the peak is auditable rather than a number the harness asserts about
+ * itself.
+ */
+async function withRssSamples(run) {
+  const samples = [];
+  let stopping = false;
+  const sampler = (async () => {
+    while (!stopping) {
+      const sample = browserRssBytes();
+      if (sample !== null) {
+        if (samples.length < RSS_SAMPLE_LIMIT) samples.push(sample);
+      }
+      await delay(RSS_SAMPLE_INTERVAL_MS);
+    }
+  })();
+  try {
+    return { result: await run(), samples };
+  } finally {
+    stopping = true;
+    await sampler;
+  }
+}
+
 async function statusText(page) {
   return page.evaluate((selector) => {
     const element = document.querySelector(selector);
@@ -310,6 +572,112 @@ async function upload(page, file) {
 function record(checks, name, passed, detail, measured = {}) {
   checks.push({ name, passed, detail, measured });
   checkpoint(`${passed ? "PASS" : "FAIL"} ${name}${detail ? ` — ${detail}` : ""}`);
+}
+
+/**
+ * The only case that costs real memory: a full-resolution scanned PDF that the
+ * application accepts, so pdf.js decodes and renders 16.7M px per page and
+ * Tesseract's WASM core allocates for the same pixels. Measured both ways —
+ * CDP's JS heap for the page, and process RSS for the browser tree — because
+ * the WASM heap is not in the former, which is precisely why the earlier run
+ * could not see it.
+ */
+async function runScanPressureCase(page, client, files, checks) {
+  await page.evaluate(() => {
+    const audit = window.__hostileWorkerAudit;
+    audit.created = [];
+    audit.terminated = [];
+    audit.live = 0;
+    audit.stalledMessages = 0;
+    audit.stallPattern = null;
+  });
+
+  const previousMessage = (await statusText(page)) ?? "";
+  const rssBefore = browserRssBytes();
+  const heapBefore = await heapBytes(client);
+  const startedAt = Date.now();
+
+  let scanError = null;
+  let samples = [];
+  try {
+    const run = await withRssSamples(async () => {
+      await upload(page, files.largeScan);
+      await page.waitForFunction(
+        ({ fileInput, status, previous }) => {
+          const input = document.querySelector(fileInput);
+          if (!input || input.disabled) return false;
+          const message = (document.querySelector(status)?.textContent ?? "").trim();
+          // Wait for *this* run's terminal copy, not the previous case's message.
+          return (
+            message.length > 0 &&
+            message !== previous &&
+            /extracted|readable text|limit|could not|exceeds|supports PDF|failed/i.test(message)
+          );
+        },
+        { fileInput: FILE_INPUT, status: STATUS, previous: previousMessage },
+        { timeout: SCAN_TIMEOUT_MS },
+      );
+    });
+    samples = run.samples;
+  } catch (error) {
+    scanError = error instanceof Error ? error.message : String(error);
+  }
+
+  const elapsedMs = Date.now() - startedAt;
+  const rssAfter = browserRssBytes();
+  const heapAfter = await heapBytes(client);
+  const state = await audit(page);
+  const message = (await statusText(page)) ?? "";
+  const peakRss = samples.length > 0 ? Math.max(...samples) : null;
+  const rssDelta = rssBefore !== null && peakRss !== null ? peakRss - rssBefore : null;
+  const heapDelta = heapBefore !== null && heapAfter !== null ? heapAfter - heapBefore : null;
+  const ocrWorker = state.created.find((url) => url.includes(OCR_WORKER_URL)) ?? null;
+  const ocrTerminated = state.terminated.some((url) => url.includes(OCR_WORKER_URL));
+  const extracted = /extracted locally|No readable text/i.test(message);
+  const hitDeadline = /5-minute limit/i.test(message);
+
+  record(
+    checks,
+    "a large scanned PDF is admitted and its OCR pass finishes",
+    scanError === null && extracted && !hitDeadline && Boolean(ocrWorker) && ocrTerminated && state.live === 0,
+    `pages=${SCAN_PAGES} at ${SCAN_PAGE_PT}pt (rendered ${SCAN_PAGE_PT * 2}px square, the canvas cap); ` +
+      `${JSON.stringify(message)}; ocr worker=${ocrWorker ? "created" : "none"}, ` +
+      `terminated=${ocrTerminated}, live=${state.live}, ${Math.round(elapsedMs / 1000)}s` +
+      (scanError ? `; wait failed: ${scanError}` : ""),
+    {
+      pages: SCAN_PAGES,
+      pagePt: SCAN_PAGE_PT,
+      renderedPx: SCAN_PAGE_PT * 2,
+      elapsedMs,
+      liveWorkers: state.live,
+      hitDeadline,
+    },
+  );
+
+  record(
+    checks,
+    "real OCR of the scanned pages moves process RSS, not just the JS heap",
+    rssDelta !== null && rssDelta >= WASM_RSS_FLOOR_BYTES && (heapDelta === null || rssDelta > heapDelta),
+    rssDelta === null
+      ? "process RSS sampling is unavailable on this host (needs a POSIX `ps`); the WASM-pressure claim stays unmeasured"
+      : `rss ${rssBefore} -> peak ${peakRss} -> after ${rssAfter} bytes ` +
+        `(delta ${rssDelta}, floor ${WASM_RSS_FLOOR_BYTES}); ` +
+        `JS heap ${heapBefore} -> ${heapAfter} (delta ${heapDelta}); ` +
+        `${samples.length} sample(s)`,
+    {
+      rssBefore,
+      rssPeak: peakRss,
+      rssAfter,
+      rssDeltaBytes: rssDelta,
+      rssFloorBytes: WASM_RSS_FLOOR_BYTES,
+      jsHeapBefore: heapBefore,
+      jsHeapAfter: heapAfter,
+      jsHeapDeltaBytes: heapDelta,
+      rssSamples: samples,
+    },
+  );
+
+  return { rssBefore, rssPeak: peakRss, rssAfter, rssDelta, heapBefore, heapAfter, heapDelta, samples };
 }
 
 async function runStress(page, client, files) {
@@ -483,6 +851,10 @@ async function runStress(page, client, files) {
     `${JSON.stringify(cancelText)}; cancel buttons=${busyAfterCancel}`,
   );
 
+  // 6: the only case that costs real memory — a full-resolution scan that the
+  // application admits, so the WASM core actually allocates for it.
+  const pressure = await runScanPressureCase(page, client, files, checks);
+
   record(
     checks,
     "no unhandled page errors during the hostile run",
@@ -491,7 +863,7 @@ async function runStress(page, client, files) {
     { pageErrors },
   );
 
-  return checks;
+  return { checks, pressure };
 }
 
 /* ─── main ─────────────────────────────────────────────────────────────────── */
@@ -554,7 +926,7 @@ async function main() {
   const client = await context.newCDPSession(page);
   await client.send("Performance.enable");
 
-  const checks = await runStress(page, client, files);
+  const { checks, pressure } = await runStress(page, client, files);
   const problems = checks.filter((check) => !check.passed);
 
   const evidence = {
@@ -577,12 +949,34 @@ async function main() {
     limits: {
       memoryIterations: MEMORY_ITERATIONS,
       memoryGrowthLimitBytes: MEMORY_GROWTH_LIMIT_BYTES,
+      scanPages: SCAN_PAGES,
+      scanPagePt: SCAN_PAGE_PT,
+      scanRenderedPx: SCAN_PAGE_PT * 2,
+      rssFloorBytes: WASM_RSS_FLOOR_BYTES,
+      rssSampleIntervalMs: RSS_SAMPLE_INTERVAL_MS,
+    },
+    memory: {
+      jsHeap: {
+        before: pressure.heapBefore,
+        after: pressure.heapAfter,
+        deltaBytes: pressure.heapDelta,
+      },
+      processRss: {
+        before: pressure.rssBefore,
+        peak: pressure.rssPeak,
+        after: pressure.rssAfter,
+        deltaBytes: pressure.rssDelta,
+        samples: pressure.samples,
+      },
+      wasmPressureInduced: pressure.rssDelta !== null && pressure.rssDelta >= WASM_RSS_FLOOR_BYTES,
     },
     checks,
     totals: { checks: checks.length, passed: checks.length - problems.length, failed: problems.length },
     consoleErrors: consoleErrors.slice(0, 20),
     notClaimed: [
-      "no real WASM out-of-memory was induced; pressure is the Chromium JS heap, not process RSS",
+      "WASM memory pressure is induced with a full-resolution scan, but no out-of-memory is forced, so this is not an OOM-recovery test",
+      "process RSS is sampled from `ps` every 250 ms and summed over the browser's process tree, so a spike between samples is not captured and no single allocator's accounting is claimed",
+      "process RSS sampling requires a POSIX host; without it the pressure check fails rather than passing unmeasured",
       "one browser build on one machine; no Safari, Firefox, or mobile run",
     ],
   };

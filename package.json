@@ -68,6 +68,7 @@
     "deploy:guard:vercel": "node scripts/check-deploy-freeze.js --provider=vercel",
     "deploy:guard:sites": "node scripts/audit-sites-artifact.mjs",
     "publish:sites": "node scripts/gate-sites-publish.mjs",
+    "sites:stamp": "node scripts/stamp-sites-build.mjs",
     "regulatory:validate": "node scripts/validate-regulatory-actions.js",
     "regulatory:audit": "node scripts/audit-regulatory-intelligence.js",
     "regulatory:audit:markdown": "node scripts/audit-regulatory-intelligence.js --markdown",
