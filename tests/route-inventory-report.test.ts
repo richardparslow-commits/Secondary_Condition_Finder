@@ -296,6 +296,7 @@ describe("per-run route inventory report", () => {
               label: "about",
               keyboardSteps: 12,
               keyboardDistinctElements: 5,
+              keyboardTabbableElements: 4,
               contrastViolations: 0,
               contrastIncomplete: 0,
               evidenceFile: path.join(directory, "contrast-about.json"),
@@ -310,6 +311,9 @@ describe("per-run route inventory report", () => {
       expect(read.generatedAt).toBe("2026-10-15T00:00:00.000Z");
       expect([...read.records.keys()].sort()).toEqual(["/", "/about"]);
       expect(recordOf(read.records, "/")?.evidenceFilePresent).toBe(true);
+      // The empty-probe rule keys on this count; dropping it from the reader
+      // made every zero-step record look like a route with nothing to focus.
+      expect(recordOf(read.records, "/about")?.keyboardTabbableElements).toBe(4);
       // The claim without the file is the failure this reader exists to catch.
       expect(recordOf(read.records, "/about")?.evidenceFilePresent).toBe(false);
       expect(read.problems).toContainEqual(

@@ -189,6 +189,10 @@ export function readContrastEvidence({ directory, root = process.cwd() }) {
       evidenceFilePresent,
       keyboardSteps: finiteNumber(row.keyboardSteps),
       keyboardDistinctElements: finiteNumber(row.keyboardDistinctElements),
+      // The count the empty-probe check keys on: steps === 0 is only "no walk"
+      // when there was no tabbable element to focus. Without this field copied
+      // through, every zero-step record looked like an empty probe.
+      keyboardTabbableElements: finiteNumber(row.keyboardTabbableElements),
       contrastPasses: finiteNumber(row.contrastPasses),
       contrastViolations: finiteNumber(row.contrastViolations),
       contrastIncomplete: finiteNumber(row.contrastIncomplete),
