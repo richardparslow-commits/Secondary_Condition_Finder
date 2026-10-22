@@ -33,6 +33,7 @@
     "acceptance:sentinel": "node scripts/run-acceptance-sentinel.mjs",
     "verify:privacy-channel": "node scripts/verify-privacy-channel.mjs",
     "smoke:worker": "node scripts/smoke-worker.mjs",
+    "a11y:full": "node e2e/a11y-full.mjs",
     "verify:archil-persistence": "node --no-warnings --env-file-if-exists=.env.local scripts/verify-archil-persistence.mjs",
     "test:doc-lint": "vitest run tests/doc-lint.test.ts tests/doc-example-schema.test.ts tests/readme-consistency.test.ts",
     "ci:failure-report": "node scripts/ci-failure-report.js",
@@ -65,10 +66,13 @@
     "evidence:architecture": "node scripts/audit-evidence-architecture.js",
     "evidence:architecture:markdown": "node scripts/audit-evidence-architecture.js --markdown",
     "deploy:guard:vercel": "node scripts/check-deploy-freeze.js --provider=vercel",
+    "deploy:guard:sites": "node scripts/audit-sites-artifact.mjs",
+    "publish:sites": "node scripts/gate-sites-publish.mjs",
     "regulatory:validate": "node scripts/validate-regulatory-actions.js",
     "regulatory:audit": "node scripts/audit-regulatory-intelligence.js",
     "regulatory:audit:markdown": "node scripts/audit-regulatory-intelligence.js --markdown",
-    "regulatory:preflight:test": "vitest run tests/regulatory-preflight.test.ts"
+    "regulatory:preflight:test": "vitest run tests/regulatory-preflight.test.ts",
+    "stress:hostile": "node e2e/hostile-file-stress.mjs"
   },
   "dependencies": {
     "@opentelemetry/api": "1.10.0",
@@ -107,6 +111,7 @@
     "eslint": "9.39.5",
     "eslint-config-next": "16.4.2",
     "jsdom": "^30.1.2",
+    "playwright": "1.64.1",
     "tailwindcss": "4.3.3",
     "typescript": "5.9.3",
     "vitest": "4.1.12",

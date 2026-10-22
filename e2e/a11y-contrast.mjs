@@ -29,6 +29,12 @@
  *      focused element has none) and that the walk actually advanced across
  *      distinct interactive elements.
  *
+ * Before any route is audited, a control seeds one known sub-AA text pair into
+ * a page under the dark-host emulation and requires the same scan to report a
+ * blocking `color-contrast` violation. A dark pass that cannot fail when
+ * contrast is actually broken would otherwise be a second green light pass;
+ * the control fails the run instead, and records its own evidence.
+ *
  * Artifacts: per-route axe JSON results and a summary are written to
  * `a11y-evidence/` for the workflow to upload; the log stays bounded and free
  * of DOM dumps — raw per-node detail lives only in the JSON files.
@@ -63,8 +69,48 @@ const WORKFLOW_SESSION_SECRET =
 const EVIDENCE_DIR = process.env.A11Y_EVIDENCE_DIR ?? "a11y-evidence";
 const AXE_BLOCKING_IMPACTS = new Set(["critical", "serious"]);
 const AXE_SCAN_TIMEOUT_MS = 45_000;
+
+/**
+ * Host colour-scheme contexts. The app is deliberately light-only
+ * (`color-scheme: light` on `html`), but an operating system or embedding
+ * browser that prefers dark still changes the *host* context around it: native
+ * controls, scrollbars and any surface that did not paint its own background
+ * follow the host preference. Axe in a light-looking Chrome would never see
+ * that, so every route is scanned once in each context.
+ *
+ * `dark-host` is emulated through CDP (`Emulation.setEmulatedMedia`) rather
+ * than by launching a second browser or flipping a CSS class. A class would
+ * test the app's own theme switch, not the host preference; a launch flag
+ * would test one Chrome release's forced-dark implementation instead of the
+ * media feature the platform exposes. CDP changes exactly the query an OS/browser
+ * dark preference changes, and it is reset before the keyboard walk so that
+ * walk still runs in the default context.
+ */
+const COLOR_SCHEME_PASSES = [
+  {
+    id: "light",
+    media: "light",
+    label: "light host",
+    evidenceSuffix: "",
+  },
+  {
+    id: "dark-host",
+    media: "dark",
+    label: "dark host context",
+    evidenceSuffix: "-dark-host",
+  },
+];
 /** Bounded by keystroke count, not page size, so the walk cannot hang. */
 const KEYBOARD_WALK_MAX_STEPS = 120;
+
+/** Deterministic sub-AA pair: #888 on #777 is about 1.26:1. */
+const SEEDED_CONTRAST = {
+  id: "a11y-dark-contrast-seed",
+  text: "Seeded dark-host contrast control",
+  color: "#888888",
+  background: "#777777",
+};
+const SEEDED_CONTRAST_EVIDENCE = "contrast-seeded-dark-control.json";
 
 /**
  * The routes this scan covers, read from the machine-checked public-route
@@ -251,6 +297,32 @@ async function navigateToPath(route) {
 }
 
 /**
+ * Point Chrome's `prefers-color-scheme` at one host context, then prove the
+ * emulation took effect before anything is measured under it. A silent CDP
+ * refusal would otherwise turn the dark pass into a second light pass that
+ * always passes.
+ */
+async function emulateHostColorScheme(pass) {
+  await webdriver("POST", `/session/${sessionId}/goog/cdp/execute`, {
+    cmd: "Emulation.setEmulatedMedia",
+    params: {
+      features: [{ name: "prefers-color-scheme", value: pass.media }],
+    },
+  });
+  const prefersDark = await webdriver("POST", `/session/${sessionId}/execute/sync`, {
+    script: "return window.matchMedia('(prefers-color-scheme: dark)').matches",
+    args: [],
+  });
+  const expected = pass.media === "dark";
+  if (prefersDark !== expected) {
+    throw new Error(
+      `Chrome did not adopt the ${pass.label} preference: ` +
+        `prefers-color-scheme: dark reported ${prefersDark}, expected ${expected}`,
+    );
+  }
+}
+
+/**
  * Run the rendering-dependent axe rules against the live document and return
  * the raw report. The screen-size argument is pass-through deterministic and the
  * results stringified so script evaluation return values stay JSON-safe.
@@ -265,13 +337,15 @@ async function navigateToPath(route) {
  *     happened — this gate's first run with the rule enabled flagged
  *     `/secondary` and `/privacy/request` in the working tree.
  */
-async function runContrastScan(route) {
+async function runContrastScan(route, pass) {
   const bootIndicator = await webdriver("POST", `/session/${sessionId}/execute/sync`, {
     script: `${AXE_BOOTSTRAP}\n;return Boolean(window.axe);`,
     args: [],
   });
   if (bootIndicator !== true) {
-    throw new Error(`${route.path}: axe bootstrap did not take effect in the live page`);
+    throw new Error(
+      `${route.path} (${pass.label}): axe bootstrap did not take effect in the live page`,
+    );
   }
   // `execute/async` (not sync): axe.run returns a promise that completes
   // after the sync evaluation returns, so the callback form is required —
@@ -308,9 +382,97 @@ async function runContrastScan(route) {
   );
   const report = JSON.parse(raw);
   if (report.error) {
-    throw new Error(`${route.path}: axe contrast scan failed: ${report.error}`);
+    throw new Error(`${route.path} (${pass.label}): axe contrast scan failed: ${report.error}`);
   }
   return report;
+}
+
+/**
+ * Prove the dark-host pass can go red. The seed is a fixed sub-AA pair with
+ * explicit colours, so it does not depend on the app's palette or on a CSS
+ * token that a regression might also change. It is injected through CSSOM
+ * property writes rather than inline `style` attributes, because the production
+ * CSP's `style-src` nonce would refuse the latter.
+ *
+ * Returns the recorded result instead of throwing on a missed detection, so the
+ * caller can write the summary (including the failed control) before deciding.
+ */
+async function runSeededDarkContrastControl() {
+  const pass = COLOR_SCHEME_PASSES.find((candidate) => candidate.id === "dark-host");
+  if (!pass) throw new Error("the dark-host colour-scheme pass is not declared");
+
+  checkpoint("seeding a sub-AA text pair under the dark-host context");
+  await emulateHostColorScheme(pass);
+  await navigateToPath({ path: "/" });
+
+  const computed = await webdriver("POST", `/session/${sessionId}/execute/sync`, {
+    script: `
+      const id = arguments[0];
+      document.getElementById(id)?.remove();
+      const seed = document.createElement("p");
+      seed.id = id;
+      seed.textContent = arguments[1];
+      seed.style.setProperty("position", "fixed", "important");
+      seed.style.setProperty("left", "0", "important");
+      seed.style.setProperty("top", "0", "important");
+      seed.style.setProperty("z-index", "2147483647", "important");
+      seed.style.setProperty("margin", "0", "important");
+      seed.style.setProperty("padding", "12px", "important");
+      seed.style.setProperty("font-size", "16px", "important");
+      seed.style.setProperty("opacity", "1", "important");
+      seed.style.setProperty("color", arguments[2], "important");
+      seed.style.setProperty("background-color", arguments[3], "important");
+      document.body.appendChild(seed);
+      const style = window.getComputedStyle(seed);
+      return {
+        text: seed.textContent,
+        color: style.color,
+        background: style.backgroundColor,
+      };
+    `,
+    args: [SEEDED_CONTRAST.id, SEEDED_CONTRAST.text, SEEDED_CONTRAST.color, SEEDED_CONTRAST.background],
+  });
+
+  const contrast = await runContrastScan(
+    { path: "/ (seeded dark contrast control)" },
+    pass,
+  );
+
+  await webdriver("POST", `/session/${sessionId}/execute/sync`, {
+    script: "document.getElementById(arguments[0])?.remove(); return true;",
+    args: [SEEDED_CONTRAST.id],
+  });
+  await emulateHostColorScheme(COLOR_SCHEME_PASSES[0]);
+
+  const blocking = contrast.violations.filter((violation) =>
+    AXE_BLOCKING_IMPACTS.has(violation.impact ?? "unknown"),
+  );
+  const detected = blocking.find((violation) => violation.id === "color-contrast") ?? null;
+  const record = {
+    generatedAt: new Date().toISOString(),
+    pass: pass.id,
+    emulatedColorScheme: pass.media,
+    rule: "color-contrast",
+    seededElement: `<p id="${SEEDED_CONTRAST.id}">${SEEDED_CONTRAST.text}</p>`,
+    computed,
+    detected: detected
+      ? {
+          impact: detected.impact,
+          nodes: detected.nodes,
+          firstTarget: detected.firstTarget ?? null,
+          firstFailureSummary: detected.firstFailureSummary ?? null,
+        }
+      : null,
+    blockingViolations: blocking.length,
+    contrastViolations: contrast.violations.length,
+    passed: detected !== null,
+  };
+  fs.writeFileSync(
+    path.join(EVIDENCE_DIR, SEEDED_CONTRAST_EVIDENCE),
+    JSON.stringify(record, null, 2),
+    "utf8",
+  );
+  return record;
 }
 
 /**
@@ -386,47 +548,105 @@ async function runKeyboardWalk(route) {
 
 async function auditRoute(route) {
   checkpoint(`auditing ${route.path} (${route.label})`);
+  const passes = [];
+
+  for (const pass of COLOR_SCHEME_PASSES) {
+    await emulateHostColorScheme(pass);
+    await navigateToPath(route);
+
+    // The app opts out of host dark rendering. If this ever reports "normal"
+    // or "dark", native controls and any unpainted surface have silently
+    // followed the host preference, which is the condition this pass exists
+    // to catch.
+    const appColorScheme = await webdriver("POST", `/session/${sessionId}/execute/sync`, {
+      script: "return getComputedStyle(document.documentElement).colorScheme",
+      args: [],
+    });
+    if (appColorScheme !== "light") {
+      throw new Error(
+        `${route.path}: color-scheme is ${JSON.stringify(appColorScheme)} during the ${pass.label} pass — ` +
+          "the light palette must not be left to the host preference",
+      );
+    }
+
+    const contrast = await runContrastScan(route, pass);
+    const evidenceFile = path.join(
+      EVIDENCE_DIR,
+      `contrast-${route.label}${pass.evidenceSuffix}.json`,
+    );
+    // The raw file records which host context produced it. Without this, a
+    // reviewer reading the artifact cannot tell the dark pass actually ran
+    // under a dark preference, and a refused CDP override would look like a
+    // clean second light scan.
+    const evidence = {
+      hostContext: {
+        pass: pass.id,
+        emulatedColorScheme: pass.media,
+        documentColorScheme: appColorScheme,
+      },
+      ...contrast,
+    };
+    fs.writeFileSync(evidenceFile, JSON.stringify(evidence, null, 2), "utf8");
+
+    const blocking = contrast.violations.filter((violation) =>
+      AXE_BLOCKING_IMPACTS.has(violation.impact ?? "unknown"),
+    );
+    if (blocking.length > 0) {
+      throw new Error(
+        `${route.path}: real-browser color-contrast found ${blocking.length} blocking violation(s) ` +
+          `in the ${pass.label} pass:\n` +
+          blocking
+            .map(
+              (violation) =>
+                `  - [${violation.impact}] ${violation.id} (${violation.nodes} node(s)) — ${violation.help} @ ${violation.firstTarget}\n` +
+                `      ${violation.firstFailureSummary ?? ""}`.trimEnd(),
+            )
+            .join("\n") +
+          `\naxe raw report: ${path.relative(process.cwd(), evidenceFile)}`,
+      );
+    }
+    if (contrast.incomplete > 0) {
+      checkpoint(
+        `${route.path} (${pass.label}): axe reported ${contrast.incomplete} incomplete node(s) — recorded in evidence, not blocking`,
+      );
+    }
+
+    passes.push({
+      id: pass.id,
+      label: pass.label,
+      contrastPasses: contrast.passes,
+      contrastViolations: contrast.violations.length,
+      contrastIncomplete: contrast.incomplete,
+      evidenceFile: path.relative(process.cwd(), evidenceFile),
+    });
+  }
+
+  // Reset the media override before the keyboard walk: focus visibility is not
+  // a colour-scheme property, so it is measured once, in the shipped default
+  // context, rather than paying for a duplicate walk per route.
+  await emulateHostColorScheme(COLOR_SCHEME_PASSES[0]);
   await navigateToPath(route);
-
-  const contrast = await runContrastScan(route);
-  const evidenceFile = path.join(
-    EVIDENCE_DIR,
-    `contrast-${route.label}.json`,
-  );
-  fs.writeFileSync(evidenceFile, JSON.stringify(contrast, null, 2), "utf8");
-
-  const blocking = contrast.violations.filter((violation) =>
-    AXE_BLOCKING_IMPACTS.has(violation.impact ?? "unknown"),
-  );
-  if (blocking.length > 0) {
-    throw new Error(
-      `${route.path}: real-browser color-contrast found ${blocking.length} blocking violation(s):\n` +
-        blocking
-          .map(
-            (violation) =>
-              `  - [${violation.impact}] ${violation.id} (${violation.nodes} node(s)) — ${violation.help} @ ${violation.firstTarget}\n` +
-              `      ${violation.firstFailureSummary ?? ""}`.trimEnd(),
-          )
-          .join("\n") +
-        `\naxe raw report: ${path.relative(process.cwd(), evidenceFile)}`,
-    );
-  }
-  if (contrast.incomplete > 0) {
-    checkpoint(
-      `${route.path}: axe reported ${contrast.incomplete} incomplete node(s) — recorded in evidence, not blocking`,
-    );
-  }
-
   const keyboard = await runKeyboardWalk(route);
+
+  const light = passes.find((pass) => pass.id === "light");
+  const darkHost = passes.find((pass) => pass.id === "dark-host");
+  if (!light || !darkHost) {
+    throw new Error(`${route.path}: a colour-scheme pass produced no result`);
+  }
+
   return {
     route: route.path,
     label: route.label,
-    contrastPasses: contrast.passes,
-    contrastViolations: contrast.violations.length,
-    contrastIncomplete: contrast.incomplete,
+    contrastPasses: light.contrastPasses,
+    contrastViolations: light.contrastViolations,
+    contrastIncomplete: light.contrastIncomplete,
+    darkHostContrastPasses: darkHost.contrastPasses,
+    darkHostContrastViolations: darkHost.contrastViolations,
+    darkHostContrastIncomplete: darkHost.contrastIncomplete,
+    darkHostEvidenceFile: darkHost.evidenceFile,
     keyboardSteps: keyboard.steps,
     keyboardDistinctElements: keyboard.distinctElements,
-    evidenceFile: path.relative(process.cwd(), evidenceFile),
+    evidenceFile: light.evidenceFile,
   };
 }
 
@@ -470,16 +690,33 @@ function publishRouteInventoryReport() {
 async function runJourney() {
   fs.mkdirSync(EVIDENCE_DIR, { recursive: true });
   const summaries = [];
+  let seededControl = null;
   let journeyFailure = null;
 
   try {
+    seededControl = await runSeededDarkContrastControl();
+    checkpoint(
+      seededControl.passed
+        ? `seeded dark-host contrast control: ${seededControl.rule} detected ` +
+            `(${seededControl.detected?.impact}, ${seededControl.detected?.nodes} node(s))`
+        : "seeded dark-host contrast control was NOT detected — refusing to report a clean pass",
+    );
+    if (!seededControl.passed) {
+      throw new Error(
+        "the dark-host pass did not report the seeded sub-AA text pair as a blocking " +
+          "color-contrast violation, so a clean result from it would be vacuous\n" +
+          `control evidence: ${path.relative(process.cwd(), path.join(EVIDENCE_DIR, SEEDED_CONTRAST_EVIDENCE))}`,
+      );
+    }
+
     for (const route of ROUTES) {
       const summary = await auditRoute(route);
       summaries.push(summary);
       checkpoint(
-        `${route.path}: contrast passes=${summary.contrastPasses}, violations=${summary.contrastViolations}, ` +
-          `incomplete=${summary.contrastIncomplete}, keyboard steps=${summary.keyboardSteps}, ` +
-          `distinct=${summary.keyboardDistinctElements}`,
+        `${route.path}: light contrast passes=${summary.contrastPasses}, violations=${summary.contrastViolations}, ` +
+          `incomplete=${summary.contrastIncomplete}; dark-host passes=${summary.darkHostContrastPasses}, ` +
+          `violations=${summary.darkHostContrastViolations}, incomplete=${summary.darkHostContrastIncomplete}; ` +
+          `keyboard steps=${summary.keyboardSteps}, distinct=${summary.keyboardDistinctElements}`,
       );
     }
     checkpoint(`completed audit of ${summaries.length} routes; evidence in ${EVIDENCE_DIR}/`);
@@ -489,7 +726,11 @@ async function runJourney() {
 
   fs.writeFileSync(
     path.join(EVIDENCE_DIR, "summary.json"),
-    JSON.stringify({ generatedAt: new Date().toISOString(), routes: summaries }, null, 2),
+    JSON.stringify(
+      { generatedAt: new Date().toISOString(), seededControl, routes: summaries },
+      null,
+      2,
+    ),
     "utf8",
   );
 

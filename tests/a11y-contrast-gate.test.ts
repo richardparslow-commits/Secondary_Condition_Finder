@@ -38,6 +38,56 @@ describe("R-05 real-browser contrast and keyboard gate", () => {
     expect(accessibilitySetup).toContain('"color-contrast": { enabled: false }');
   });
 
+  it("scans every route in a light and a dark host context, and proves the emulation took effect", () => {
+    // The app is deliberately light-only, but a host that prefers dark still
+    // changes native controls and any unpainted surface. Both contexts are
+    // measured per route; CDP changes the actual media feature an OS or
+    // browser preference changes, and the result is verified before axe runs
+    // so a refused override cannot silently become a second light pass.
+    expect(spec).toContain("COLOR_SCHEME_PASSES");
+    expect(spec).toContain("for (const pass of COLOR_SCHEME_PASSES)");
+    expect(spec).toContain("prefers-color-scheme");
+    expect(spec).toContain("Emulation.setEmulatedMedia");
+    expect(spec).toContain("goog/cdp/execute");
+    expect(spec).toContain("did not adopt");
+    expect(spec).toContain('id: "dark-host"');
+    expect(spec).toContain('evidenceSuffix: "-dark-host"');
+    expect(spec).toContain("darkHostContrastViolations");
+    // Each raw evidence file names the host context that produced it, so a
+    // reviewer can distinguish the dark scan from a second light one.
+    expect(spec).toContain("hostContext");
+    expect(spec).toContain("emulatedColorScheme");
+    // The app must keep its declared light palette rather than inheriting the
+    // host preference, and the keyboard walk runs after the override is reset.
+    expect(spec).toContain("getComputedStyle(document.documentElement).colorScheme");
+    expect(spec).toContain("Reset the media override");
+  });
+
+  it("proves the dark-host pass can fail on a seeded sub-AA contrast violation", () => {
+    // The dark pass must not be able to return green for a broken palette. A
+    // fixed 1.26:1 pair is injected under the emulated dark preference, scanned
+    // by the same rules and blocking filter, and required to be reported.
+    expect(spec).toContain('id: "a11y-dark-contrast-seed"');
+    expect(spec).toContain('color: "#888888"');
+    expect(spec).toContain('background: "#777777"');
+    expect(spec).toContain("runSeededDarkContrastControl");
+    expect(spec).toContain('candidate.id === "dark-host"');
+    expect(spec).toContain("contrast-seeded-dark-control.json");
+    expect(spec).toContain("passed: detected !== null");
+    // CSSOM writes, not inline style attributes: the CSP style-src nonce would
+    // refuse a `style="…"` attribute on the seeded element.
+    expect(spec).toContain('seed.style.setProperty("color"');
+    expect(spec).toContain('seed.style.setProperty("background-color"');
+    // It runs through the same scan before any route is audited.
+    const call = spec.indexOf("= await runSeededDarkContrastControl();");
+    expect(call).toBeGreaterThan(-1);
+    expect(call).toBeLessThan(spec.indexOf("for (const route of ROUTES)"));
+    // Fail closed: a missed seed stops the run, and the summary still records it.
+    expect(spec).toContain("refusing to report a clean pass");
+    expect(spec).toContain("would be vacuous");
+    expect(spec).toContain("seededControl, routes: summaries");
+  });
+
   it("evaluates axe through WebDriver script evaluation instead of a DOM script sink", () => {
     // Inspect code, not the explanatory header comment (which documents what
     // is *refused*): strip block comments before asserting the source only

@@ -27,6 +27,7 @@ import { createFakeSharedKv } from "./helpers/fake-shared-kv";
 import {
   FLEET_SCENARIO_BUDGETS_MS,
   FLEET_SCENARIO_KEYS,
+  formatScenarioBudgetLine,
   scenarioBudgetFailure,
 } from "./helpers/fleet-scenario-budgets";
 import type { FleetScenario } from "./helpers/fleet-scenario-budgets";
@@ -229,19 +230,41 @@ function warmFormsView(query: string, title: string) {
 const observedScenarios = new Set<FleetScenario>();
 
 /**
- * Enforcement core: measures one body against one real-time bound. The clock
- * is `process.hrtime`, which fake timers never touch, so the bound measures
- * real wall clock even in scenarios that advance simulated time.
+ * Monotonic clock captured before any scenario installs fake timers.
+ *
+ * Vitest's fake timers (sinon under the hood) replace `process.hrtime` as well
+ * as `Date` and `performance`, and the replacement counts from the fake clock's
+ * origin, not from process start. Reading `process.hrtime.bigint()` inside a
+ * scenario that advances simulated time would therefore measure the fake clock
+ * and report a negative elapsed time. Saving the native function at import time
+ * keeps the measurement on real wall clock, which is what these bounds are
+ * about: a simulated `setTimeout(750)` should cost nothing, while a real
+ * 750 ms wait should count fully.
+ */
+const realHrtime = process.hrtime.bigint.bind(process.hrtime);
+
+/** Real (fake-timer-proof) milliseconds elapsed since a `realHrtime()` reading. */
+function realElapsedMs(startedAt: bigint): number {
+  return Number(realHrtime() - startedAt) / 1_000_000;
+}
+
+/**
+ * Enforcement core: measures one body against one real-time bound, using the
+ * clock saved above so scenarios that advance simulated time are still timed by
+ * real wall clock.
  */
 async function enforceScenarioBudget<T>(scenario: string, budgetMs: number, body: () => Promise<T>): Promise<T> {
-  const startedAt = process.hrtime.bigint();
+  const startedAt = realHrtime();
   let outcome: { ok: true; value: T } | { ok: false; error: unknown };
   try {
     outcome = { ok: true, value: await body() };
   } catch (error) {
     outcome = { ok: false, error };
   }
-  const elapsedMs = Number(process.hrtime.bigint() - startedAt) / 1_000_000;
+  const elapsedMs = realElapsedMs(startedAt);
+  // Print before deciding, so an over-budget path still shows its measurement
+  // in the gate log beside the failure that names it.
+  console.log(formatScenarioBudgetLine(scenario, elapsedMs, budgetMs));
   const failure = scenarioBudgetFailure(scenario, elapsedMs, budgetMs);
   if (!outcome.ok) throw outcome.error; // Preserve the original failure over the bound message.
   if (failure) throw new Error(failure);
@@ -904,6 +927,23 @@ describe("VA fleet simulation — epoch invalidation propagation", () => {
   );
 });
 
+/**
+ * Runs `body` with `console.log` captured. The self-checks below deliberately
+ * measure synthetic bodies, and their lines must not appear in the gate log as
+ * if they were real scenarios.
+ */
+async function captureFleetLog<T>(body: () => Promise<T>): Promise<{ lines: string[]; value: T }> {
+  const lines: string[] = [];
+  const log = vi.spyOn(console, "log").mockImplementation((line: unknown) => {
+    lines.push(String(line));
+  });
+  try {
+    return { lines, value: await body() };
+  } finally {
+    log.mockRestore();
+  }
+}
+
 describe("VA fleet simulation — per-scenario wall-clock bounds", () => {
   it("exercises every committed per-scenario bound", () => {
     // A scenario that is renamed or dropped without its bound being removed
@@ -911,14 +951,58 @@ describe("VA fleet simulation — per-scenario wall-clock bounds", () => {
     expect([...observedScenarios].sort()).toEqual([...FLEET_SCENARIO_KEYS].sort());
   });
 
-  it("fails a body that overruns its bound instead of passing silently", async () => {
-    await expect(
-      enforceScenarioBudget(
-        "self-check",
-        5,
-        () => new Promise((resolve) => setTimeout(resolve, 25)),
-      ),
-    ).rejects.toThrow(/self-check took \d+ ms of wall clock, past its 5 ms per-scenario bound/);
-    await expect(enforceScenarioBudget("self-check", 1_000, async () => "ok")).resolves.toBe("ok");
+  it("prints an overrun's measurement, then fails instead of passing silently", async () => {
+    const outcome: { failure: Error | null } = { failure: null };
+    const { lines } = await captureFleetLog(async () => {
+      try {
+        await enforceScenarioBudget(
+          "self-check",
+          5,
+          () => new Promise((resolve) => setTimeout(resolve, 25)),
+        );
+      } catch (error) {
+        outcome.failure = error as Error;
+      }
+    });
+
+    expect(outcome.failure?.message).toMatch(
+      /self-check took \d+ ms of wall clock, past its 5 ms per-scenario bound/,
+    );
+    // The measurement is printed before the decision, so an over-budget path is
+    // visible in the gate log beside the failure that names it.
+    expect(lines).toContainEqual(expect.stringMatching(/^\[fleet\] self-check: \d+ ms \/ 5 ms .*OVER BOUND/));
+
+    const passing = await captureFleetLog(() => enforceScenarioBudget("self-check", 1_000, async () => "ok"));
+    expect(passing.value).toBe("ok");
+    expect(passing.lines).toContainEqual(expect.stringMatching(/^\[fleet\] self-check: \d+ ms \/ 1000 ms /));
+  });
+
+  it("measures real wall clock even when the scenario installs fake timers", async () => {
+    // Most scenarios advance simulated time, and sinon's fake timers replace
+    // `process.hrtime` too. Reading the clock inside the body would then report
+    // the fake clock's origin as if it were the start of the run — a negative
+    // elapsed time printed against the bound, which is worse than no line at all.
+    let printed: string[] = [];
+    try {
+      const captured = await captureFleetLog(() =>
+        enforceScenarioBudget("fake-clock", 1_000, async () => {
+          vi.useFakeTimers({ now: FIXED_NOW });
+          await vi.advanceTimersByTimeAsync(10_000);
+          return "ok";
+        }),
+      );
+      printed = captured.lines;
+    } finally {
+      vi.useRealTimers();
+    }
+
+    const line = printed.find((entry) => entry.includes("[fleet] fake-clock:"));
+    expect(line, "no measurement line was printed for the fake-clock body").toBeDefined();
+    const measured = Number(/fake-clock: (-?\d+(?:\.\d+)?) ms/.exec(line!)?.[1]);
+    // 10 simulated seconds must cost ~none of the real-time bound, and the
+    // reading must never be negative.
+    expect(measured).toBeGreaterThanOrEqual(0);
+    expect(measured).toBeLessThan(1_000);
+    expect(line).not.toContain("OVER BOUND");
   });
 });

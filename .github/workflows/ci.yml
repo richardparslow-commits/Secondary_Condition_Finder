@@ -346,6 +346,34 @@ jobs:
           exit "$status"
         continue-on-error: true
         id: a11y_contrast
+      # Full-rule axe pass over every shipped route in Playwright. R-05 runs
+      # only the two rules that need a layout engine, and the jsdom gate never
+      # renders a page; this gate runs the WCAG 2.1 A/AA rule set against the
+      # production build of every route declared by `public-routes.mjs` and
+      # fails on serious/critical violations. It uses the runner's installed
+      # Chrome channel, so it adds a second real-browser check without
+      # downloading a second browser binary.
+      - name: Run Playwright axe gate on every route
+        if: steps.build.outcome == 'success'
+        run: |
+          set -o pipefail
+          npm run a11y:full 2>&1 | tee ci-a11y-full.log
+        continue-on-error: true
+        id: a11y_full
+      # REL-05: the hostile-file browser stress run the audit recorded as its one
+      # unrun evidence clause. It drives the production build's browser-local
+      # DD-214 analyzer with declared-size image bombs, a malformed PDF, repeated
+      # refusals under heap measurement, and a stalled OCR worker that Cancel
+      # must terminate. It found a real defect on its first run (a worker stalled
+      # during initialization survived cancel); the fix is pinned by
+      # tests/local-ocr-worker-spawn.test.ts. Evidence lands in the artifact.
+      - name: Run hostile-file browser stress test (REL-05)
+        if: steps.build.outcome == 'success'
+        run: |
+          set -o pipefail
+          npm run stress:hostile 2>&1 | tee ci-hostile-stress.log
+        continue-on-error: true
+        id: hostile_stress
       - name: Collect diagnostic summary
         if: always()
         id: diagnostics
@@ -378,11 +406,13 @@ jobs:
             echo "- artifact-traces: ${{ steps.artifact_traces.outcome }}"
             echo "- browser-e2e: ${{ steps.e2e.outcome }}"
             echo "- browser-a11y-contrast (R-05): ${{ steps.a11y_contrast.outcome }}"
+            echo "- browser-a11y-full (Playwright): ${{ steps.a11y_full.outcome }}"
+            echo "- hostile-file-stress (REL-05): ${{ steps.hostile_stress.outcome }}"
             echo "- priv01-scope job: ${{ needs.priv01_scope.result }}"
             echo "- priv01-sentinel job: ${{ needs.priv01_sentinel.result }}"
             echo
             echo "## Failure excerpts"
-            for log in ci-governance.log ci-branch-rules.log ci-install.log ci-audit.log ci-audit-all.log ci-audit-disposition.log ci-citations.log ci-kb-validate.log ci-me-compliance.log ci-crg.log ci-crg-graph.log ci-lint.log ci-typecheck.log ci-test-composition.log ci-test.log ci-fleet.log ci-build.log ci-artifact-traces.log ci-e2e.log ci-a11y-contrast.log; do
+            for log in ci-governance.log ci-branch-rules.log ci-install.log ci-audit.log ci-audit-all.log ci-audit-disposition.log ci-citations.log ci-kb-validate.log ci-me-compliance.log ci-crg.log ci-crg-graph.log ci-lint.log ci-typecheck.log ci-test-composition.log ci-test.log ci-fleet.log ci-build.log ci-artifact-traces.log ci-e2e.log ci-a11y-contrast.log ci-a11y-full.log ci-hostile-stress.log; do
               if [ -f "$log" ]; then
                 echo
                 echo "### $log"
@@ -413,6 +443,7 @@ jobs:
             ci-artifact-traces.json
             ci-priv01-sentinel-evidence.json
             a11y-evidence/
+            tmp/hostile-file-stress/
             .github/fleet-budget-ratchet.json
           retention-days: 14
       - name: Fail the job if any gate failed
@@ -424,7 +455,7 @@ jobs:
           if [ "${{ needs.priv01_scope.result }}" != "success" ] || \
              [ "${{ needs.priv01_sentinel.result }}" = "failure" ] || \
              [ "${{ needs.priv01_sentinel.result }}" = "cancelled" ] || \
-             [ "${{ steps.governance.outcome }}" = "failure" ] || [ "${{ steps.branch_rules.outcome }}" = "failure" ] || [ "${{ steps.install.outcome }}" = "failure" ] || [ "${{ steps.audit.outcome }}" = "failure" ] || [ "${{ steps.audit_disposition.outcome }}" = "failure" ] || [ "${{ steps.citations.outcome }}" = "failure" ] || [ "${{ steps.kb_validate.outcome }}" = "failure" ] || [ "${{ steps.me_compliance.outcome }}" = "failure" ] || [ "${{ steps.crg.outcome }}" = "failure" ] || [ "${{ steps.crg_graph.outcome }}" = "failure" ] || [ "${{ steps.lint.outcome }}" = "failure" ] || [ "${{ steps.typecheck.outcome }}" = "failure" ] || [ "${{ steps.test_composition.outcome }}" = "failure" ] || [ "${{ steps.test.outcome }}" = "failure" ] || [ "${{ steps.fleet.outcome }}" = "failure" ] || [ "${{ steps.build.outcome }}" = "failure" ] ||             [ "${{ steps.artifact_traces.outcome }}" = "failure" ] || [ "${{ steps.e2e.outcome }}" = "failure" ] || [ "${{ steps.a11y_contrast.outcome }}" = "failure" ]; then
+             [ "${{ steps.governance.outcome }}" = "failure" ] || [ "${{ steps.branch_rules.outcome }}" = "failure" ] || [ "${{ steps.install.outcome }}" = "failure" ] || [ "${{ steps.audit.outcome }}" = "failure" ] || [ "${{ steps.audit_disposition.outcome }}" = "failure" ] || [ "${{ steps.citations.outcome }}" = "failure" ] || [ "${{ steps.kb_validate.outcome }}" = "failure" ] || [ "${{ steps.me_compliance.outcome }}" = "failure" ] || [ "${{ steps.crg.outcome }}" = "failure" ] || [ "${{ steps.crg_graph.outcome }}" = "failure" ] || [ "${{ steps.lint.outcome }}" = "failure" ] || [ "${{ steps.typecheck.outcome }}" = "failure" ] || [ "${{ steps.test_composition.outcome }}" = "failure" ] || [ "${{ steps.test.outcome }}" = "failure" ] || [ "${{ steps.fleet.outcome }}" = "failure" ] || [ "${{ steps.build.outcome }}" = "failure" ] ||             [ "${{ steps.artifact_traces.outcome }}" = "failure" ] || [ "${{ steps.e2e.outcome }}" = "failure" ] || [ "${{ steps.a11y_contrast.outcome }}" = "failure" ] ||             [ "${{ steps.a11y_full.outcome }}" = "failure" ] || [ "${{ steps.hostile_stress.outcome }}" = "failure" ]; then
             echo "One or more CI gates failed. See the diagnostic summary and artifact."
             exit 1
           fi

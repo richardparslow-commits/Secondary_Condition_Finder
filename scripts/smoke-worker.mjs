@@ -31,9 +31,23 @@
  *     `public/_headers` declares for it — one COEP, one CORP, one cache rule —
  *     and never two copies of a baseline header.
  *
+ * `--sites` builds the same Worker with the Sites OpenNext config
+ * (`freebuff.open-next.config.ts`, including its R2 incremental cache and
+ * Durable Object queue/tag cache bindings) instead of the minimal smoke config,
+ * then additionally proves the OCR model path end to end: the
+ * `/tesseract/eng.traineddata.gz` rewrite answers 200 with the model's gzip
+ * content type, immutable cache policy and single CORP/nosniff headers; its
+ * bytes hash to `OCR_MODEL_SHA256` and match both the direct `/api/ocr-model`
+ * response and the postinstall package copy; and no static copy exists in
+ * `public/` that could mask the rewrite. That mode requires a checkout prepared
+ * for Sites (the generated config is present); it refuses `--skip-build`,
+ * because a reused `.open-next` tree was not necessarily built with those
+ * bindings.
+ *
  * Usage:
  *   npm run smoke:worker                 # full OpenNext build, then probe
  *   npm run smoke:worker -- --skip-build # reuse an existing .open-next build
+ *   npm run smoke:worker -- --sites      # Sites OpenNext config + OCR checks
  *   npm run smoke:worker -- --port 8799  # fixed port (default: a free one)
  *
  * Exit codes: 0 — every check passed; 1 — the build failed, the Worker did not
@@ -42,6 +56,7 @@
  */
 
 import { spawn } from "node:child_process";
+import crypto from "node:crypto";
 import fs from "node:fs";
 import http from "node:http";
 import net from "node:net";
@@ -60,6 +75,20 @@ const WRANGLER_CONFIG = path.join(OPEN_NEXT_DIR, "smoke.wrangler.jsonc");
  * config (no R2 or Durable Object bindings) into the ignored `tmp/` directory.
  */
 const OPEN_NEXT_CONFIG = path.join(ROOT, "tmp", "smoke.open-next.config.ts");
+/** The Sites-generated config; present only in a checkout prepared for publishing. */
+const SITES_OPEN_NEXT_CONFIG = path.join(ROOT, "freebuff.open-next.config.ts");
+
+/** Browser-local OCR model served through the Sites rewrite. */
+const OCR_MODEL_PATH = "/tesseract/eng.traineddata.gz";
+const OCR_MODEL_ROUTE = "/api/ocr-model";
+const OCR_MODEL_BUNDLE = path.join(ROOT, ".data-bundle", "ocr", "eng.traineddata.gz");
+const OCR_MODEL_PUBLIC_COPY = path.join(ROOT, "public", "tesseract", "eng.traineddata.gz");
+const OCR_MODEL_HEADERS = {
+  "content-type": "application/gzip",
+  "cache-control": "public, max-age=31536000, immutable",
+  "x-content-type-options": "nosniff",
+  "cross-origin-resource-policy": "same-origin",
+};
 
 /**
  * The same date the deployment build uses. A compatibility date newer than the
@@ -101,11 +130,13 @@ const ROUTES = [
 ];
 
 function parseArguments(argv) {
-  const options = { skipBuild: false, port: null, help: false };
+  const options = { skipBuild: false, sites: false, port: null, help: false };
   for (let index = 0; index < argv.length; index += 1) {
     const argument = argv[index];
     if (argument === "--skip-build") {
       options.skipBuild = true;
+    } else if (argument === "--sites") {
+      options.sites = true;
     } else if (argument === "--help" || argument === "-h") {
       options.help = true;
     } else if (argument === "--port") {
@@ -201,14 +232,16 @@ function request(pathname, port) {
       (res) => {
         const chunks = [];
         res.on("data", (chunk) => chunks.push(chunk));
-        res.on("end", () =>
+        res.on("end", () => {
+          const body = Buffer.concat(chunks);
           resolve({
             status: res.statusCode ?? 0,
             rawHeaders: res.rawHeaders,
             headers: (name) => headerValues(res.rawHeaders, name),
-            body: Buffer.concat(chunks).toString("utf8"),
-          }),
-        );
+            body: body.toString("utf8"),
+            bodyBuffer: body,
+          });
+        });
         res.on("error", reject);
       },
     );
@@ -286,6 +319,122 @@ function cspFailures(response, pathname) {
 
 function documentFailures(response, pathname) {
   return [...oneOfEachFailures(response, pathname), ...cspFailures(response, pathname)];
+}
+
+function sha256Hex(bytes) {
+  return crypto.createHash("sha256").update(bytes).digest("hex");
+}
+
+/** Read the pin from source rather than restating it, so it cannot drift. */
+function readPinnedOcrDigest() {
+  const source = fs.readFileSync(
+    path.join(ROOT, "src", "lib", "evidence", "ocr-model.ts"),
+    "utf8",
+  );
+  const match = source.match(/OCR_MODEL_SHA256\s*=\s*"([0-9a-f]{64})"/);
+  if (!match) {
+    throw new Error("could not read OCR_MODEL_SHA256 from src/lib/evidence/ocr-model.ts");
+  }
+  return match[1];
+}
+
+function ocrHeaderFailures(response, label) {
+  const failures = [];
+  for (const [name, expected] of Object.entries(OCR_MODEL_HEADERS)) {
+    const values = response.headers(name);
+    if (values.length !== 1) {
+      failures.push(
+        `${label}: expected exactly one ${name}, found ${values.length}` +
+          (values.length > 0 ? ` (${JSON.stringify(values)})` : ""),
+      );
+    } else if (values[0].toLowerCase() !== expected) {
+      failures.push(
+        `${label}: ${name} is ${JSON.stringify(values[0])}, expected ${JSON.stringify(expected)}`,
+      );
+    }
+  }
+  if (response.headers("content-encoding").length > 0) {
+    failures.push(
+      `${label}: response is content-encoded; tesseract.js expects the gzip file bytes`,
+    );
+  }
+  return failures;
+}
+
+/**
+ * Prove the Sites OCR path: the rewrite, the response contract, and the digest
+ * of the bytes actually served. A 200 alone would not distinguish the route
+ * from a static file, so the direct route and the pinned package copy are
+ * compared as well.
+ */
+async function checkOcrModel(port) {
+  const failures = [];
+  const rewritten = await request(OCR_MODEL_PATH, port);
+  const direct = await request(OCR_MODEL_ROUTE, port);
+
+  for (const [label, response] of [
+    [OCR_MODEL_PATH, rewritten],
+    [OCR_MODEL_ROUTE, direct],
+  ]) {
+    if (response.status !== 200) {
+      failures.push(`${label}: status ${response.status}, expected 200`);
+      continue;
+    }
+    failures.push(...ocrHeaderFailures(response, label));
+  }
+
+  if (rewritten.status === 200 && direct.status === 200) {
+    const expected = readPinnedOcrDigest();
+    const servedDigest = sha256Hex(rewritten.bodyBuffer);
+    if (rewritten.bodyBuffer.length !== direct.bodyBuffer.length) {
+      failures.push(
+        `${OCR_MODEL_PATH} and ${OCR_MODEL_ROUTE} serve different byte counts ` +
+          `(${rewritten.bodyBuffer.length} vs ${direct.bodyBuffer.length})`,
+      );
+    }
+    if (sha256Hex(direct.bodyBuffer) !== servedDigest) {
+      failures.push(`${OCR_MODEL_ROUTE} serves different bytes than the rewrite destination`);
+    }
+    if (servedDigest !== expected) {
+      failures.push(
+        `${OCR_MODEL_PATH}: served SHA-256 ${servedDigest}, expected ${expected}`,
+      );
+    }
+  }
+
+  if (!fs.existsSync(OCR_MODEL_BUNDLE)) {
+    failures.push(
+      `${path.relative(ROOT, OCR_MODEL_BUNDLE)} is missing; postinstall did not copy the pinned model`,
+    );
+  } else {
+    const expected = readPinnedOcrDigest();
+    const bundledDigest = sha256Hex(fs.readFileSync(OCR_MODEL_BUNDLE));
+    if (bundledDigest !== expected) {
+      failures.push(
+        `${path.relative(ROOT, OCR_MODEL_BUNDLE)}: SHA-256 ${bundledDigest}, expected ${expected}`,
+      );
+    }
+  }
+
+  if (fs.existsSync(OCR_MODEL_PUBLIC_COPY)) {
+    failures.push(
+      `${path.relative(ROOT, OCR_MODEL_PUBLIC_COPY)} exists, so a static copy could answer ` +
+        "the OCR path instead of the rewrite",
+    );
+  }
+
+  const nextConfig = fs.readFileSync(path.join(ROOT, "next.config.ts"), "utf8");
+  const declaresRewrite =
+    /source:\s*"\/tesseract\/eng\.traineddata\.gz"[\s\S]{0,120}?destination:\s*"\/api\/ocr-model"/.test(
+      nextConfig,
+    );
+  if (!declaresRewrite) {
+    failures.push(
+      "next.config.ts no longer declares /tesseract/eng.traineddata.gz -> /api/ocr-model",
+    );
+  }
+
+  return failures;
 }
 
 async function checkRoute(route, port) {
@@ -390,19 +539,59 @@ function writeOpenNextConfig() {
   );
 }
 
-/** Write the local preview config; the build itself needs no Wrangler config. */
-function writeWranglerConfig() {
+/**
+ * Write the local preview config; the build itself needs no Wrangler config.
+ *
+ * The Sites build binds an R2 incremental cache, an R2 bucket for files and two
+ * Durable Object classes, so `wrangler dev` needs those bindings declared or
+ * the Worker fails on the first request that touches one. They are local
+ * placeholders: no remote resource or account is involved.
+ */
+function writeWranglerConfig({ sites = false } = {}) {
   const config = {
     $schema: "../node_modules/wrangler/config-schema.json",
     name: "secondary-condition-finder-smoke",
     main: "./worker.js",
     compatibility_date: COMPATIBILITY_DATE,
-    compatibility_flags: ["nodejs_compat"],
+    compatibility_flags: sites
+      ? ["nodejs_compat", "global_fetch_strictly_public", "enable_ctx_exports"]
+      : ["nodejs_compat"],
+    // No `run_worker_first`: the local check lets the assets binding answer
+    // static paths directly and sends misses to the Worker. The Sites entry
+    // shim does the same `ASSETS` lookup itself before calling Next, so the
+    // split is equivalent here without reproducing that generated wrapper.
     assets: {
       directory: "./assets",
       binding: "ASSETS",
     },
   };
+  if (sites) {
+    Object.assign(config, {
+      d1_databases: [
+        {
+          binding: "DB",
+          database_name: "sites-smoke-db",
+          database_id: "00000000-0000-0000-0000-000000000001",
+        },
+      ],
+      r2_buckets: [
+        { binding: "NEXT_INC_CACHE_R2_BUCKET", bucket_name: "sites-smoke-cache" },
+        { binding: "FILES", bucket_name: "sites-smoke-files" },
+      ],
+      durable_objects: {
+        bindings: [
+          { name: "NEXT_CACHE_DO_QUEUE", class_name: "DOQueueHandler" },
+          { name: "NEXT_TAG_CACHE_DO_SHARDED", class_name: "DOShardedTagCache" },
+        ],
+      },
+      migrations: [
+        {
+          tag: "freebuff-next-v1",
+          new_sqlite_classes: ["DOQueueHandler", "DOShardedTagCache"],
+        },
+      ],
+    });
+  }
   fs.writeFileSync(WRANGLER_CONFIG, `${JSON.stringify(config, null, 2)}\n`);
 }
 
@@ -481,26 +670,55 @@ async function main() {
     process.stdout.write(
       "Build the OpenNext Worker and smoke-check it under wrangler dev.\n\n" +
         "  --skip-build  reuse an existing .open-next build\n" +
+        "  --sites       build with freebuff.open-next.config.ts and verify the\n" +
+        "                OCR model rewrite and digest (cannot be combined with\n" +
+        "                --skip-build)\n" +
         "  --port <n>    fixed port (default: a free ephemeral port)\n",
     );
     return 0;
   }
 
+  if (options.sites && options.skipBuild) {
+    throw new Error(
+      "--sites cannot be combined with --skip-build: a reused .open-next tree was not " +
+        "necessarily built with the Sites OpenNext config or its bindings",
+    );
+  }
+
   if (!options.skipBuild) {
-    writeOpenNextConfig();
-    try {
+    if (options.sites) {
+      if (!fs.existsSync(SITES_OPEN_NEXT_CONFIG)) {
+        throw new Error(
+          `${path.relative(ROOT, SITES_OPEN_NEXT_CONFIG)} is missing; prepare the checkout for ` +
+            "Sites before running --sites",
+        );
+      }
       await runCommand(
         binary("opennextjs-cloudflare"),
         [
           "build",
           "--skipWranglerConfigCheck",
           "--openNextConfigPath",
-          path.relative(ROOT, OPEN_NEXT_CONFIG),
+          path.relative(ROOT, SITES_OPEN_NEXT_CONFIG),
         ],
-        "opennextjs-cloudflare build (runs next build)",
+        "opennextjs-cloudflare build (Sites config, runs next build)",
       );
-    } finally {
-      fs.rmSync(OPEN_NEXT_CONFIG, { force: true });
+    } else {
+      writeOpenNextConfig();
+      try {
+        await runCommand(
+          binary("opennextjs-cloudflare"),
+          [
+            "build",
+            "--skipWranglerConfigCheck",
+            "--openNextConfigPath",
+            path.relative(ROOT, OPEN_NEXT_CONFIG),
+          ],
+          "opennextjs-cloudflare build (runs next build)",
+        );
+      } finally {
+        fs.rmSync(OPEN_NEXT_CONFIG, { force: true });
+      }
     }
   }
 
@@ -512,7 +730,7 @@ async function main() {
     }
   }
 
-  writeWranglerConfig();
+  writeWranglerConfig({ sites: options.sites });
   const port = options.port ?? (await freePort());
   const { child, log } = startWrangler(port);
 
@@ -531,6 +749,18 @@ async function main() {
         );
       } else {
         process.stdout.write(`  ✗ GET ${route.path}\n`);
+      }
+    }
+
+    if (options.sites) {
+      const ocrFailures = await checkOcrModel(port);
+      failures.push(...ocrFailures);
+      if (ocrFailures.length === 0) {
+        process.stdout.write(
+          `  ✓ GET ${OCR_MODEL_PATH} — 200 application/gzip, SHA-256 verified\n`,
+        );
+      } else {
+        process.stdout.write(`  ✗ GET ${OCR_MODEL_PATH} (rewrite + digest)\n`);
       }
     }
 
@@ -556,7 +786,8 @@ async function main() {
   }
 
   process.stdout.write(
-    `\n✓ Worker smoke check passed: ${ROUTES.length} routes, one security-header set each.\n`,
+    `\n✓ ${options.sites ? "Sites " : ""}Worker smoke check passed: ${ROUTES.length} routes, ` +
+      `one security-header set each${options.sites ? ", OCR rewrite and digest verified" : ""}.\n`,
   );
   return 0;
 }

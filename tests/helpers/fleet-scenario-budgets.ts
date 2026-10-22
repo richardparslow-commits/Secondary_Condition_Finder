@@ -40,6 +40,38 @@ export type FleetScenario = keyof typeof FLEET_SCENARIO_BUDGETS_MS;
 export const FLEET_SCENARIO_KEYS = Object.keys(FLEET_SCENARIO_BUDGETS_MS) as FleetScenario[];
 
 /**
+ * A scenario this close to its bound is worth seeing in the log before it
+ * fails. 75% leaves a quarter of the bound as headroom while still surfacing a
+ * path that has drifted to within a rounding error of the limit.
+ */
+export const FLEET_SCENARIO_NEAR_LIMIT_RATIO = 0.75;
+
+/**
+ * One line per scenario, printed by the gate's shared enforcement path so every
+ * bounded path is visible in CI output whether it passes or fails. The
+ * percentage makes a near-limit path stand out before the bound is crossed;
+ * the marker names the condition rather than leaving the reader to do the
+ * division.
+ */
+export function formatScenarioBudgetLine(
+  scenario: string,
+  elapsedMs: number,
+  budgetMs: number,
+): string {
+  const ratio = elapsedMs / budgetMs;
+  const marker =
+    ratio > 1
+      ? " — OVER BOUND"
+      : ratio >= FLEET_SCENARIO_NEAR_LIMIT_RATIO
+        ? " — NEAR LIMIT"
+        : "";
+  return (
+    `[fleet] ${scenario}: ${Math.round(elapsedMs)} ms / ${budgetMs} ms ` +
+    `(${(ratio * 100).toFixed(1)}% of bound${marker})`
+  );
+}
+
+/**
  * Fail closed on an over-budget scenario: returns a message naming the path,
  * the measured wall clock, and the bound, or null when the run stayed inside
  * the bound. Pure so the policy itself stays unit-testable.
