@@ -39,17 +39,30 @@ LANGSMITH_PROJECT=secondary-condition-finder
 
 Place them in `.env.local` for local dev or in **Vercel → Project Settings → Environment Variables** for Preview/Production. The variables are server-only — do not prefix with `NEXT_PUBLIC_`. `src/lib/observability/langsmith.ts` is `server-only` so a missing import on the client is a build error by design.
 
-Verify locally:
+Verify locally. No shipped request path runs the traced wrapper any more — the six-step workflow executes the engine in the browser — so walking Step 1 → Step 5 emits no trace. Verification is two out-of-band checks: the key authenticates and is scoped to the project, and an explicit trace is accepted. Neither prints the key.
 
 ```bash
-LANGSMITH_TRACING=true LANGSMITH_API_KEY=lsv2_pt_... npm run dev
-# visit /secondary/suggestions through the full workflow (Step 1 → Step 5)
-# → a `recommend` trace appears in LangSmith → Tracing → project secondary-condition-finder
+# 1) The key authenticates and can read the project (status code only).
+curl -s -o /dev/null -w '%{http_code}\n' \
+  -H "x-api-key: $(grep -E '^LANGSMITH_API_KEY=' .env.local | cut -d= -f2-)" \
+  'https://api.smith.langchain.com/api/v1/sessions?name=secondary-condition-finder'
+# 200 = valid and scoped. 401/403 = wrong, revoked, or wrong-scope key.
+
+# 2) An explicit trace is accepted by ingestion.
+LANGSMITH_TRACING=true node --env-file=.env.local --input-type=module -e '
+  const { traceable } = await import("langsmith/traceable");
+  const probe = traceable(async () => ({ ok: true }), {
+    name: "smoke-hello", run_type: "chain", project_name: "secondary-condition-finder",
+  });
+  await probe();
+  console.log("smoke trace submitted");
+'
+# → a `smoke-hello` run appears in LangSmith → Tracing → secondary-condition-finder
 ```
 
 The traced surface is deliberately redacted: `processInputs` ships only counts (`primaryConditions`, `diagnosedConditionIds` length, `hasTimeline`, `engineVersion`); `processOutputs` ships only bounded counts (`recommendationCount`, `recognizedPrimaries`, `unmappedPrimaries`). Exceptions are also a trace input in the installed SDK: its `traceable` wrapper records `String(error)` on rejection, so `recommendForTraceSafely` replaces thrown recommendation errors with a fixed message before the SDK sees them. Processor failures return fixed fallback DTOs. Synthetic sentinel regressions cover successful and failed paths. No raw intake text or document content is sent. Deployed LangSmith enablement, project settings and collector retention/access still require operator review.
 
-The suggestions page uses `recommendWithTracing` — when `LANGSMITH_TRACING !== "true"` it falls straight through to the synchronous `recommend` with no extra overhead or Promise cost beyond the `async` boundary. Do not trace additional request-derived functions without equivalent input/output redaction and a fixed-message exception boundary.
+`recommendWithTracing` is a server-side entry point for synthetic or public inputs only (`src/lib/engine/recommend-tracing.ts`); its current callers are tests, not request paths. When `LANGSMITH_TRACING !== "true"` it falls straight through to the synchronous `recommend` with no extra overhead or Promise cost beyond the `async` boundary. Do not trace additional request-derived functions without equivalent input/output redaction and a fixed-message exception boundary.
 
 ## 4) Connect Engine to GitHub so it can open automated diagnostic PRs
 
@@ -73,7 +86,7 @@ Recommended repository hygiene while Engine is enabled:
 
 1. Add `LANGSMITH_TRACING=true`, `LANGSMITH_API_KEY`, and `LANGSMITH_PROJECT` to **Vercel Project Settings → Environment Variables → Production** (and Preview if you want preview traces).
 2. Redeploy (Vercel redeploys pick up new env vars on the next deployment — they are not retroactive).
-3. Smoke Step 5 and confirm a `recommend` run appears in LangSmith for the `secondary-condition-finder` project.
+3. Do not expect a trace from the deployed app: nothing under `src/app` calls the traced wrapper, so a production visit emits no `recommend` run. Verify the key out of band with the two checks in §3, and record that outcome. `LANGSMITH_API_KEY` in Vercel only matters if a server path starts tracing again.
 4. No `next.config.ts` / CSP change is needed: tracing is a server-side `fetch` from the Next.js server to `api.smith.langchain.com`, not browser egress, so `connect-src 'self'` stays intact (see `docs/deployment-readiness.md` Browser security baseline).
 
 ## 6) Key rotation — the screenshot exposed `lsv2_pt_39a0...`
@@ -88,6 +101,8 @@ Do this now, even if the key was project-scoped and tracing was still `Waiting f
 4. Redeploy once after rotation if Vercel was configured with the old key.
 
 This guide deliberately includes only the prefix `lsv2_pt_39a0...` so the exposed secret is not repeated verbatim in version control. The full value should be removed from any shared artifacts (including the attached PDF) after rotation.
+
+**2026-10-22 — a second exposure.** The secret-scan gate found the *replacement* project key committed in `docs/langsmith-correctness-audit-2026-09-13.md`; the full value has been removed from the tree and is recorded as compromised. The same four steps above apply to it. That rotation was performed on 2026-10-22: the replacement passed both §3 checks and the exposed key was revoked with `403` confirmed. The procedure and the [rotation record](security-operations.md#rotation-procedure-and-record) live in the security operations runbook; a green scan did not close this — the recorded rotation does.
 
 ## 7) What this repository does NOT do
 

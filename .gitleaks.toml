@@ -1,0 +1,16 @@
+# gitleaks configuration for the secret-scan gate (`.github/workflows/secret-scan.yml`).
+#
+# This file deliberately adds no detection rules and no allowlists: it only
+# states that the scanner's shipped rule set applies, so a new credential shape
+# is caught by an upgrade to gitleaks rather than by an edit here.
+#
+# Reviewed false positives are annotated where they occur with a trailing
+# `gitleaks:allow` comment, not allowlisted by regex. An allowlist entry is
+# evaluated per field, so a regex-only entry suppresses that literal everywhere
+# in the scan — which is how the citation dashboard's localStorage key NAME
+# (a 34-character dashed identifier that generic-api-key reads as a secret) came
+# to be exempt across the whole tree instead of only the two files that publish
+# it. The inline annotation is line-scoped, lives beside the value it explains,
+# and is visible to the next reader of that line.
+[extend]
+useDefault = true

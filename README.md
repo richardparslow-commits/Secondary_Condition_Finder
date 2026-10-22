@@ -204,6 +204,23 @@ Open `http://localhost:3000`. `/scenarios` contains repeatable demo walkthroughs
 | `npm run report:route-inventory` | Publishes the per-run route inventory report — every route's declared surfaces against the evidence actually recorded — as JSON + markdown (`--surface=`, `--evidence-dir=`, `--matrix=`); exits 1 when it names a coverage gap |
 | `npm run stress:hostile` | REL-05 hostile-file browser stress run against the production build: declared-size image bombs, a malformed PDF, repeated refusals under heap measurement, a stalled OCR worker that Cancel must terminate, and a full-resolution scanned PDF that is admitted so real WASM pressure is measured in process RSS as well as the JS heap (writes `tmp/hostile-file-stress/evidence.json`) |
 
+Every push to `main` and every pull request (plus a manual dispatch) also run a
+secret scan over the **full commit history**
+(`.github/workflows/secret-scan.yml`):
+gitleaks `8.30.1`, pinned and SHA-256-verified against the upstream release,
+scanning every reachable commit because a diff-only scan reports a repository
+clean while its history still carries a key. The rule set stays the scanner's
+own; the one reviewed false positive is annotated at its line with
+`gitleaks:allow` rather than allowlisted by regex (an allowlist entry is
+matched per field, so a regex suppresses the literal across the whole scan), and
+`.gitleaksignore` records reviewed historical findings by exact
+commit/file/rule/line with a reason each — never a path exemption. A real
+LangSmith project key found by the first run was removed from the audit document
+that carried it; the key is recorded as compromised and rotated in
+[security operations](docs/security-operations.md) (section "Secret scanning and the LangSmith key exposure"),
+with the replacement verified and the exposed key revoked. No repository change
+could perform that rotation; the recorded revocation is the closure evidence.
+
 CI also builds the production app and runs real Chrome/ChromeDriver journeys for
 the secondary workflow and validation/error behavior, plus a production-boot
 smoke check (`e2e/pathways-smoke.mjs`) that fetches `/pathways` and asserts the
@@ -259,7 +276,12 @@ measured runs, so it tightens automatically as timing stabilizes and cannot
 silently drift looser. Each coordination path additionally carries its own
 committed per-scenario real-time bound, printed as one `[fleet] <path>: N ms /
 M ms (x% of bound)` line per run so a path drifting toward its limit is visible
-before it fails, and an unbounded coordination regression fails the build. A
+before it fails, and the gate's closing `PASS` line names the scenario closest to
+its own bound (with a `NEAR LIMIT` marker at 75%) so the tightest path is the last
+thing in the step log rather than something to reconstruct from seven lines. A
+run that passes without reporting per-scenario measurements fails the gate instead
+of printing a summary it cannot support. An unbounded coordination regression
+fails the build. A
 split network is simulated too: the partitioned half fails closed instead of
 serving stale values as live, and honors the reachable half's invalidation
 once it heals.
