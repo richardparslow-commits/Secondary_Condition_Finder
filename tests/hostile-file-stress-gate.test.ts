@@ -102,7 +102,21 @@ describe("REL-05 hostile-file browser stress harness", () => {
     expect(script).toContain("BROWSER_COMMAND_PATTERN");
     expect(script).toContain("const seen = new Set([process.pid])");
     // Peak, not before/after, because OCR frees buffers between pages.
-    expect(script).toContain("Math.max(...samples)");
+    expect(script).toContain("if (peak === null || sample > peak) peak = sample");
+    expect(script).toContain("const peakRss = sampledPeak");
+    // The peak is taken from every sample for the whole run, while the evidence
+    // history is capped: a 4-minute scan is ~960 samples at 250 ms, so a cap
+    // that also stopped observing would end after ~100 s and miss the
+    // high-memory phase on a slow host. The retained list keeps the peak too.
+    expect(script).toContain("sampleCount += 1");
+    expect(script).toContain("samples[samples.length - 1] = sample");
+    expect(script).toContain("rssSampleCount: sampleCount");
+    // The defect this pins: the peak used to be updated only inside the cap
+    // check, so it silently stopped moving when the history filled up.
+    const peakUpdate = script.indexOf("if (peak === null || sample > peak) peak = sample");
+    const retentionCap = script.indexOf("samples.length < RSS_SAMPLE_LIMIT");
+    expect(peakUpdate).toBeGreaterThan(-1);
+    expect(peakUpdate).toBeLessThan(retentionCap);
     // Unmeasurable must not read as "no pressure".
     expect(script).toContain("if (process.platform === \"win32\") return null");
     expect(script).toContain("return browserProcesses === 0 ? null : total");

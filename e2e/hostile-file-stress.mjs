@@ -111,7 +111,12 @@ const RSS_SAMPLE_INTERVAL_MS = 250;
  * below what that costs and far above what an idle renderer drifts by.
  */
 const WASM_RSS_FLOOR_BYTES = 64 * 1024 * 1024;
-/** Upper bound on samples kept in the evidence file. */
+/**
+ * Upper bound on samples **retained in the evidence file**. The peak is tracked
+ * on every sample for the whole operation, so this bounds the artifact rather
+ * than the observation: a four-minute scan is ~960 samples at 250 ms, and a
+ * cap that also stopped sampling would miss the high-memory phase on a slow host.
+ */
 const RSS_SAMPLE_LIMIT = 400;
 
 const children = [];
@@ -516,28 +521,40 @@ function browserRssBytes() {
 }
 
 /**
- * Sample sampled-RSS while `run` executes, keeping the peak.
+ * Sample RSS while `run` executes, keeping the peak over the whole operation.
  *
  * A single before/after pair would miss the peak: Tesseract frees its image
  * buffers between pages and the renderer returns canvases to the pool, so RSS
- * can fall back before the run ends. The samples are recorded in the evidence
- * so the peak is auditable rather than a number the harness asserts about
- * itself.
+ * can fall back before the run ends. The peak is therefore updated on *every*
+ * sample, for as long as the run lasts, while only a bounded history is written
+ * to the evidence. The retained history is not a substitute for the peak (it
+ * stops growing at `RSS_SAMPLE_LIMIT`), which is why the two are returned
+ * separately; when the cap is reached, the newest sample that exceeds the
+ * retained maximum replaces the last entry, so the recorded list still contains
+ * the peak it is presented beside.
  */
 async function withRssSamples(run) {
   const samples = [];
+  let sampleCount = 0;
+  let peak = null;
   let stopping = false;
   const sampler = (async () => {
     while (!stopping) {
       const sample = browserRssBytes();
       if (sample !== null) {
-        if (samples.length < RSS_SAMPLE_LIMIT) samples.push(sample);
+        sampleCount += 1;
+        if (peak === null || sample > peak) peak = sample;
+        if (samples.length < RSS_SAMPLE_LIMIT) {
+          samples.push(sample);
+        } else if (sample >= Math.max(...samples)) {
+          samples[samples.length - 1] = sample;
+        }
       }
       await delay(RSS_SAMPLE_INTERVAL_MS);
     }
   })();
   try {
-    return { result: await run(), samples };
+    return { result: await run(), samples, sampleCount, peak };
   } finally {
     stopping = true;
     await sampler;
@@ -599,6 +616,8 @@ async function runScanPressureCase(page, client, files, checks) {
 
   let scanError = null;
   let samples = [];
+  let sampleCount = 0;
+  let sampledPeak = null;
   try {
     const run = await withRssSamples(async () => {
       await upload(page, files.largeScan);
@@ -619,6 +638,8 @@ async function runScanPressureCase(page, client, files, checks) {
       );
     });
     samples = run.samples;
+    sampleCount = run.sampleCount;
+    sampledPeak = run.peak;
   } catch (error) {
     scanError = error instanceof Error ? error.message : String(error);
   }
@@ -628,7 +649,8 @@ async function runScanPressureCase(page, client, files, checks) {
   const heapAfter = await heapBytes(client);
   const state = await audit(page);
   const message = (await statusText(page)) ?? "";
-  const peakRss = samples.length > 0 ? Math.max(...samples) : null;
+  // The peak comes from every sample, not from the truncated evidence list.
+  const peakRss = sampledPeak;
   const rssDelta = rssBefore !== null && peakRss !== null ? peakRss - rssBefore : null;
   const heapDelta = heapBefore !== null && heapAfter !== null ? heapAfter - heapBefore : null;
   const ocrWorker = state.created.find((url) => url.includes(OCR_WORKER_URL)) ?? null;
@@ -663,7 +685,8 @@ async function runScanPressureCase(page, client, files, checks) {
       : `rss ${rssBefore} -> peak ${peakRss} -> after ${rssAfter} bytes ` +
         `(delta ${rssDelta}, floor ${WASM_RSS_FLOOR_BYTES}); ` +
         `JS heap ${heapBefore} -> ${heapAfter} (delta ${heapDelta}); ` +
-        `${samples.length} sample(s)`,
+        `${sampleCount} sample(s)` +
+        (samples.length < sampleCount ? `, ${samples.length} retained in evidence` : ""),
     {
       rssBefore,
       rssPeak: peakRss,
@@ -673,11 +696,23 @@ async function runScanPressureCase(page, client, files, checks) {
       jsHeapBefore: heapBefore,
       jsHeapAfter: heapAfter,
       jsHeapDeltaBytes: heapDelta,
+      rssSampleCount: sampleCount,
+      rssSamplesRetained: samples.length,
       rssSamples: samples,
     },
   );
 
-  return { rssBefore, rssPeak: peakRss, rssAfter, rssDelta, heapBefore, heapAfter, heapDelta, samples };
+  return {
+    rssBefore,
+    rssPeak: peakRss,
+    rssAfter,
+    rssDelta,
+    heapBefore,
+    heapAfter,
+    heapDelta,
+    samples,
+    sampleCount,
+  };
 }
 
 async function runStress(page, client, files) {
@@ -966,6 +1001,9 @@ async function main() {
         peak: pressure.rssPeak,
         after: pressure.rssAfter,
         deltaBytes: pressure.rssDelta,
+        // `samples` is a bounded, illustrative history; `sampleCount` is how
+        // many samples the peak was taken from (the scan may outlast the cap).
+        sampleCount: pressure.sampleCount,
         samples: pressure.samples,
       },
       wasmPressureInduced: pressure.rssDelta !== null && pressure.rssDelta >= WASM_RSS_FLOOR_BYTES,
@@ -976,6 +1014,7 @@ async function main() {
     notClaimed: [
       "WASM memory pressure is induced with a full-resolution scan, but no out-of-memory is forced, so this is not an OOM-recovery test",
       "process RSS is sampled from `ps` every 250 ms and summed over the browser's process tree, so a spike between samples is not captured and no single allocator's accounting is claimed",
+      "the peak is taken from every sample for the whole run, but only the first 400 samples are retained in this file, so `samples` is an illustrative history and `sampleCount` says how many the peak was taken from",
       "process RSS sampling requires a POSIX host; without it the pressure check fails rather than passing unmeasured",
       "one browser build on one machine; no Safari, Firefox, or mobile run",
     ],
