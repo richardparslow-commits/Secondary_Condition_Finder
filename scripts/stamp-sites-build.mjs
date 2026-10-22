@@ -11,7 +11,13 @@
  *   node scripts/stamp-sites-build.mjs [--dir=freebuff-sites-build]
  *
  * Exit codes: 0 stamped, 1 no artifact to stamp or the identity could not be
- * resolved (the artifact is left untouched, and the gate will refuse it).
+ * resolved, 2 the stamp could not be written (the artifact is left untouched in
+ * every failure case, and the gate will refuse it).
+ *
+ * A manifest quarantined by an earlier failed gate run is restored only after
+ * the stamp has been written. Restoring it first would make a failed stamp — no
+ * git, no HEAD, an unwritable directory — leave an uploader-visible manifest
+ * behind, undoing the quarantine that was there to stop an upload.
  */
 
 import fs from "node:fs";
@@ -40,14 +46,11 @@ function main() {
   const manifestPath = path.join(directory, "manifest.json");
   const rejectedPath = path.join(directory, "manifest.rejected.json");
   // A refused publish quarantines the manifest, so the usual sequence after a
-  // "no build identity" refusal is: stamp, then re-run the gate. Restore the
-  // quarantined manifest here for the same reason the gate does — the artifact
-  // is still on disk and the stamp describes it, not the quarantine.
-  if (!fs.existsSync(manifestPath) && fs.existsSync(rejectedPath)) {
-    fs.copyFileSync(rejectedPath, manifestPath);
-    console.log(`[sites-stamp] restored the quarantined manifest so it can be stamped`);
-  }
-  if (!fs.existsSync(manifestPath)) {
+  // "no build identity" refusal is: stamp, then re-run the gate. Whether the
+  // quarantine can be released depends on the stamp succeeding, so note both
+  // paths here and restore only after the stamp is written.
+  const manifestPresent = fs.existsSync(manifestPath);
+  if (!manifestPresent && !fs.existsSync(rejectedPath)) {
     console.error(
       `[sites-stamp] no manifest at ${manifestPath}; generate the Sites artifact ` +
         `before stamping it — a stamp describes an artifact, so there is nothing to describe yet`,
@@ -62,7 +65,11 @@ function main() {
   } catch (error) {
     console.error(
       `[sites-stamp] ${error instanceof Error ? error.message : String(error)}; ` +
-        `without a commit the artifact cannot be identified, so nothing was stamped`,
+        `without a commit the artifact cannot be identified, so nothing was stamped` +
+        (manifestPresent
+          ? ""
+          : ` and the quarantined manifest is left at ${rejectedPath} — fix the checkout, ` +
+            `then stamp and re-run the publish gate`),
     );
     process.exitCode = 1;
     return;
@@ -73,6 +80,14 @@ function main() {
     `[sites-stamp] ${path.relative(process.cwd(), file) || file}: ` +
       `${describeIdentity(identity)}, fingerprint ${identity.fingerprint.slice(0, 12)}`,
   );
+
+  // Only now that the stamp exists does releasing the quarantine help: an
+  // uploader cannot start without `manifest.json`, and a failure above must not
+  // hand it back.
+  if (!manifestPresent) {
+    fs.copyFileSync(rejectedPath, manifestPath);
+    console.log(`[sites-stamp] restored the quarantined manifest so it can be re-audited`);
+  }
   if (identity.dirty) {
     console.log(
       `[sites-stamp] the worktree has ${identity.dirtyFiles} uncommitted change(s); ` +

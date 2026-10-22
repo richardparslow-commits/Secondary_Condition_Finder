@@ -38,11 +38,22 @@
  * So before running the smoke the gate compares the artifact's
  * `build-identity.json` (written by `scripts/stamp-sites-build.mjs` when the
  * artifact is generated) with the identity of the checkout the smoke is about
- * to run against. A different commit — or the same commit with a different
- * uncommitted worktree — is refused, before the smoke spends its build, with a
- * message naming both identities. An artifact with no stamp is refused too:
- * "unknown provenance" is not "the same commit". Regenerate and re-stamp, or
- * restamp only if the artifact really was built from the current state.
+ * to run against. The fingerprint covers uncommitted tracked and untracked
+ * content and, explicitly, the gitignored `freebuff.open-next.config.ts` and
+ * `freebuff.wrangler.jsonc` — the configs that decide what the Sites build
+ * produces even though git does not track them. A different commit — or the
+ * same commit with a different uncommitted worktree — is refused, before the
+ * smoke spends its build, with a message naming both identities. An artifact
+ * with no stamp is refused too: "unknown provenance" is not "the same commit".
+ * Regenerate and re-stamp, or restamp only if the artifact really was built from
+ * the current state.
+ *
+ * The identity is resolved a second time after the smoke succeeds. The smoke
+ * builds and serves the Worker, which takes minutes; without the second check a
+ * file edited during that window would be attested as the source the smoke
+ * validated, when the smoke may have read the old content, the new content, or a
+ * mixture. A checkout that moved is quarantined like any other mismatch and no
+ * attestation is written.
  *
  * This gate covers the repository's command path. A fresh platform build writes
  * a new `manifest.json` of its own, so the gate must be run after the artifact
@@ -70,6 +81,7 @@ import { auditSitesArtifact, SITES_UPLOAD_BUDGET_BYTES } from "./audit-sites-art
 import {
   compareIdentities,
   describeIdentity,
+  differingBuildConfigs,
   readBuildIdentity,
   resolveSourceIdentity,
 } from "./lib/sites-build-identity.mjs";
@@ -226,6 +238,15 @@ function main() {
   if (!identityCheck.ok) {
     const rejected = quarantine(manifestPath);
     fs.rmSync(attestationPath, { force: true });
+    // A regenerated Sites config is invisible to `git status`, so naming the
+    // configs that changed is the only clue to why a clean-looking checkout no
+    // longer matches its own stamp.
+    const changedConfigs = differingBuildConfigs(artifactIdentity, sourceIdentity);
+    const configNote =
+      changedConfigs.length === 0
+        ? ""
+        : ` The gitignored build config(s) ${changedConfigs.join(", ")} — the smoke ` +
+          `would build with configuration the upload set was not built with.`;
     console.error(
       identityCheck.reason === "commit"
         ? `[sites-publish] the artifact was built from commit ${artifactIdentity.commit} ` +
@@ -238,8 +259,8 @@ function main() {
           `${sourceIdentity.commit}, but their uncommitted worktree state differs ` +
           `(${artifactIdentity.fingerprint.slice(0, 12)} vs ${sourceIdentity.fingerprint.slice(0, 12)}). ` +
           `The smoke would validate source the artifact was not built from; manifest quarantined ` +
-          `at ${rejected}, so no upload can start. Regenerate the artifact from the current ` +
-          `worktree, stamp it, and re-run this command.`,
+          `at ${rejected}, so no upload can start.${configNote} Regenerate the artifact from the ` +
+          `current worktree, stamp it, and re-run this command.`,
     );
     process.exitCode = 1;
     return;
@@ -256,6 +277,47 @@ function main() {
         `at ${rejected}, so no upload can start. Fix the Worker and re-run this command.`,
     );
     console.error(`[sites-publish] failing check: node ${[smoke.command, ...smoke.args].join(" ")}`);
+    process.exitCode = 1;
+    return;
+  }
+
+  // The smoke builds and serves the Worker, which takes minutes. The attestation
+  // claims that run validated *this* checkout, so resolve the identity again: a
+  // file edited mid-build would otherwise be attested as the source the smoke
+  // observed, when the smoke may have read the old content, the new content, or
+  // a mixture of both.
+  let recheckedIdentity;
+  try {
+    recheckedIdentity = resolveSourceIdentity({ cwd: process.cwd() });
+  } catch (error) {
+    const rejected = quarantine(manifestPath);
+    fs.rmSync(attestationPath, { force: true });
+    console.error(
+      `[sites-publish] ${error instanceof Error ? error.message : String(error)}; the checkout ` +
+        `could not be re-identified after the Worker smoke check, so the pairing cannot be ` +
+        `attested; manifest quarantined at ${rejected} and no upload can start.`,
+    );
+    process.exitCode = 2;
+    return;
+  }
+
+  const drift = compareIdentities(sourceIdentity, recheckedIdentity);
+  if (!drift.ok) {
+    const rejected = quarantine(manifestPath);
+    fs.rmSync(attestationPath, { force: true });
+    const movedConfigs = differingBuildConfigs(sourceIdentity, recheckedIdentity);
+    const configNote =
+      movedConfigs.length === 0
+        ? ""
+        : ` The gitignored build config(s) ${movedConfigs.join(", ")} moved during the build.`;
+    console.error(
+      `[sites-publish] the checkout changed while the Worker smoke check was running: ` +
+        `${describeIdentity(sourceIdentity)} (${sourceIdentity.fingerprint.slice(0, 12)}) before ` +
+        `the smoke, ${describeIdentity(recheckedIdentity)} (${recheckedIdentity.fingerprint.slice(0, 12)}) ` +
+        `after it. The smoke may have built a mixture of both, so it cannot be attested as ` +
+        `having validated one checkout; manifest quarantined at ${rejected}, so no upload can ` +
+        `start.${configNote} Re-run this command on a checkout that is not being edited.`,
+    );
     process.exitCode = 1;
     return;
   }
@@ -290,6 +352,9 @@ function main() {
             fingerprint: sourceIdentity.fingerprint,
           },
           matched: true,
+          // The identity was resolved again after the smoke, so the claim is not
+          // only about the state the command started in.
+          recheckedAt: new Date().toISOString(),
         },
         checkedAt: new Date().toISOString(),
       },
