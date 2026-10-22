@@ -174,6 +174,27 @@ describe("per-run route inventory report", () => {
     );
   });
 
+  it("reports a single-tabbable route as degraded, not as a missing walk", () => {
+    // A page whose only tabbable element is the one the walk focuses records
+    // 0 steps: the first Tab leaves the document, so the loop ends immediately.
+    // That is recorded evidence of one target, not an empty probe — CI failed
+    // /secondary/evidence on this and the run had walked the route.
+    const records = completeContrastRecords();
+    records.set(
+      "/about",
+      contrastRecord("/about", "about", {
+        keyboardSteps: 0,
+        keyboardDistinctElements: 1,
+        keyboardTabbableElements: 1,
+      }),
+    );
+    const report = contrastReport(records);
+    expect(report.problems).toEqual([]);
+    expect(report.degraded.join("\n")).toContain(
+      "/about: the keyboard walk pressed Tab but focus never reached a second element (distinct=1)",
+    );
+  });
+
   it("fails a summary row that carries no keyboard result at all", () => {
     const records = completeContrastRecords();
     records.set("/terms", contrastRecord("/terms", "terms", { keyboardSteps: null, keyboardDistinctElements: null }));

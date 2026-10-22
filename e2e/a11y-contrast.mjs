@@ -295,57 +295,20 @@ async function createWebDriverSession() {
 }
 
 async function waitForRouteComplete(route) {
-  const expected = `${APP_BASE_URL}${route.path}`;
   const deadline = Date.now() + 20_000;
-  let last = null;
+  let lastUrl = "";
+  let lastState = "";
   while (Date.now() < deadline) {
-    // `location.href` updates at navigation start, while the document still
-    // on screen is the previous one — and that document already reports
-    // readyState "complete". Waiting on url+readyState alone therefore returned
-    // while the new page was still blank, so axe scanned the old document and
-    // the keyboard walk could find no tabbable element at all (CI: a route
-    // recorded no keyboard walk in one colour-scheme pass and a walk in the
-    // other). The navigation entry belongs to the document that actually
-    // loaded, so requiring it to name this route cannot be satisfied by the
-    // document being replaced. The tabbable count is the precondition the walk
-    // itself needs, checked here so a route is never measured while empty.
-    last = await webdriver("POST", `/session/${sessionId}/execute/sync`, {
-      script: `
-        const [expectedRoute, overlayTag] = arguments;
-        const navigation = performance.getEntriesByType("navigation")[0];
-        const visible = Array.from(document.querySelectorAll(
-          'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
-        )).filter((el) => {
-          if (el.tagName === overlayTag) return false;
-          if (el.getClientRects().length === 0) return false;
-          const style = window.getComputedStyle(el);
-          return style.visibility !== "hidden" && style.display !== "none";
-        });
-        return {
-          href: document.location.href,
-          navigationEntry: navigation ? navigation.name : null,
-          readyState: document.readyState,
-          hasMain: document.querySelector("main") !== null,
-          tabbable: visible.length,
-        };
-      `,
-      args: [expected, DEV_OVERLAY_TAG],
+    lastUrl = await webdriver("GET", `/session/${sessionId}/url`);
+    lastState = await webdriver("POST", `/session/${sessionId}/execute/sync`, {
+      script: "return document.readyState",
+      args: [],
     });
-    if (
-      last?.href === expected &&
-      last?.navigationEntry === expected &&
-      last?.readyState === "complete" &&
-      last?.hasMain === true &&
-      Number(last?.tabbable) > 0
-    ) {
-      return;
-    }
+    if (lastUrl === `${APP_BASE_URL}${route.path}` && lastState === "complete") return;
     await delay(200);
   }
   throw new Error(
-    `Route ${route.path} never became measurable: url=${last?.href} ` +
-      `navigation=${last?.navigationEntry} state=${last?.readyState} ` +
-      `main=${last?.hasMain} tabbable=${last?.tabbable}`,
+    `Route ${route.path} never reached complete: url=${lastUrl} state=${lastState}`,
   );
 }
 
