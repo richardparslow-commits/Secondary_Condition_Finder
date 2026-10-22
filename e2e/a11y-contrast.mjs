@@ -631,10 +631,16 @@ async function runKeyboardWalk(route) {
       // every one of them read as the same empty string and a walk that did
       // advance looked stuck. Reference equality is exact and mutates nothing
       // React owns.
-      window.__r05KeyboardLast = null;
       visible[0].focus();
+      // The baseline is the element now focused, not null. Leaving it null made
+      // the walk's first keystroke count as an advance even when it moved
+      // nothing, and — because the element the walk starts on is tabbable but
+      // was never counted — made a two-element page record one distinct target
+      // after covering both. See the advancement rule below.
+      const started = document.activeElement === visible[0];
+      window.__r05KeyboardLast = started ? visible[0] : null;
       return {
-        state: document.activeElement === visible[0] ? "focused" : "noop",
+        state: started ? "focused" : "noop",
         tabbable: visible.length,
       };
     `,
@@ -647,7 +653,13 @@ async function runKeyboardWalk(route) {
   const tabbableElements = Number(focusInitialised?.tabbable ?? 0);
 
   let lastActive = null;
-  let distinctElements = 0;
+  // The element the walk starts on is in the tab order and the walk began
+  // focused on it, so it counts as one target. Counting from 0 compared what
+  // the keystrokes reached against a total that included the start element, so
+  // a page with two tabbables failed after the walk had covered both — the CI
+  // failure on /secondary/service-connected, where the first tabbable is the
+  // skip link and the second is the step's only link.
+  let distinctElements = focusInitialised?.state === "focused" ? 1 : 0;
   let step = 0;
   for (; step < KEYBOARD_WALK_MAX_STEPS; step += 1) {
     await pressTab();

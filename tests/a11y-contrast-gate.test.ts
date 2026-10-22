@@ -125,11 +125,17 @@ describe("R-05 real-browser contrast and keyboard gate", () => {
     expect(spec).toContain("actions: [\n          { type: \"keyDown\", value: WEBDRIVER_KEY_TAB }");
   });
 
-  it("requires the walk to advance past its own starting element", () => {
-    // One distinct element is also what a keystroke that moves nothing
-    // produces, because the walk scripts focus onto the first tabbable element
-    // before it presses anything. A page with two or more tabbable elements has
-    // to record at least two distinct targets.
+  it("counts the element the walk starts on, and still requires advancement past it", () => {
+    // The walk scripts focus onto the first tabbable element before it presses
+    // anything, so that element is a target the walk reached. Counting only
+    // what the keystrokes reached after it compared against a total that
+    // included it: CI failed /secondary/service-connected — skip link plus the
+    // step's single link — after a walk that had covered both, because the
+    // rule demanded two advances from a two-element page.
+    expect(spec).toContain('focusInitialised?.state === "focused" ? 1 : 0');
+    expect(spec).toContain("window.__r05KeyboardLast = started ? visible[0] : null;");
+    // A keystroke that moves nothing re-reports the start element, which the
+    // baseline now recognises as "same", so the rule still fails a dead key.
     expect(spec).toContain("tabbableElements > 1 && distinctElements < 2");
     expect(spec).toContain("keyboardTabbableElements: keyboard.tabbableElements");
     expect(spec).toContain("so keyboard coverage evidence failed");
