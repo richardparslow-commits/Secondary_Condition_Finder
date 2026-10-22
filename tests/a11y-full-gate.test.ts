@@ -54,6 +54,35 @@ describe("full-route axe gate (Playwright)", () => {
     expect(spec).not.toContain('"moderate"');
   });
 
+  it("re-scans every route under an emulated dark host and proves the emulation took", () => {
+    // The app is light-only, but a dark host still changes the context around it
+    // (native controls, scrollbars, unpainted surfaces). R-05 covers two rules in
+    // that context; this gate covers the full tag set in it too.
+    expect(spec).toContain("HOST_COLOR_SCHEMES");
+    expect(spec).toContain('id: "dark-host"');
+    expect(spec).toContain('media: "dark"');
+    expect(spec).toContain("page.emulateMedia({ colorScheme");
+    // Emulated before the navigation, so the scan never measures a repaint.
+    // Sliced from the route audit itself: the seeded control navigates first.
+    const routeAudit = spec.slice(spec.indexOf("async function auditRoute"));
+    expect(routeAudit.indexOf("page.emulateMedia({ colorScheme")).toBeGreaterThan(-1);
+    expect(routeAudit.indexOf("page.emulateMedia({ colorScheme")).toBeLessThan(
+      routeAudit.indexOf("const response = await page.goto"),
+    );
+    // A silently refused emulation would make the dark pass a second light pass.
+    expect(spec).toContain('window.matchMedia("(prefers-color-scheme: dark)")');
+    expect(spec).toContain("did not adopt the emulated preference");
+    // Every route is scanned in every context, and a missing dark pass is a
+    // failure, not a note: zero dark rows cannot read as a clean control.
+    expect(spec).toContain("for (const hostColorScheme of HOST_COLOR_SCHEMES)");
+    expect(spec).toContain("darkHostAuditedRouteCount");
+    expect(spec).toContain("the dark control is vacuous");
+    // Dark findings decide through the same impacts and the same throw path.
+    expect(spec).toContain("darkHostViolations");
+    expect(spec).toContain("darkHostBlocking");
+    expect(spec).toContain("hostSuffix");
+  });
+
   it("refuses a vacuous scan and records attributable evidence before failing", () => {
     expect(spec).toContain("axe inspected nothing");
     expect(spec).toContain("results.axeVersion");
@@ -62,8 +91,9 @@ describe("full-route axe gate (Playwright)", () => {
     // Written before the blocking violation or route error throws, so a red run
     // still uploads the report that explains it.
     const writeIndex = spec.indexOf("fs.writeFileSync(EVIDENCE_FILE");
-    // The real-scan call, not the seeded control's (which runs before evidence).
-    const throwIndex = spec.indexOf("throwGateFailure(problems, EVIDENCE_FILE)");
+    // The real-scan call, not a seeded control's (both run before evidence is
+    // written, and the last throw in the file is the route sweep's).
+    const throwIndex = spec.lastIndexOf("throwGateFailure(problems, EVIDENCE_FILE)");
     expect(writeIndex).toBeGreaterThan(-1);
     expect(throwIndex).toBeGreaterThan(writeIndex);
   });
@@ -92,6 +122,25 @@ describe("full-route axe gate (Playwright)", () => {
     // Both the control and the real findings decide through the same helpers.
     expect(spec.match(/gateProblems\(\{/g)?.length ?? 0).toBeGreaterThanOrEqual(3);
     expect(spec.match(/throwGateFailure\(/g)?.length ?? 0).toBeGreaterThanOrEqual(3);
+  });
+
+  it("proves the dark-host scan can report broken contrast on every run", () => {
+    // The emulation guard shows the dark pass is dark; this shows a dark scan
+    // still measures contrast, and that the failure names the dark pass.
+    expect(spec).toContain("runSeededDarkContrastControl(axeSource)");
+    expect(spec).toContain("SEEDED_DARK_CONTRAST");
+    expect(spec).toContain('color: "#888888"');
+    expect(spec).toContain('background: "#777777"');
+    expect(spec).toContain('rule: "color-contrast"');
+    expect(spec).toContain("failurePathExercised = error instanceof Error && error.message.includes(\"(dark host)\")");
+    expect(spec).toContain("the dark-host contrast seed was detected and named as a dark-host finding");
+    expect(spec).toContain("darkHostContrast");
+    // Its result joins the seeded control's failures, so it aborts the run too.
+    expect(spec).toContain("failures.push(...darkHostContrast.failures)");
+    // Still before the route sweep: a broken dark detector stops early.
+    expect(spec.indexOf("runSeededDarkContrastControl(axeSource)")).toBeLessThan(
+      spec.indexOf("const { routes, errors } = await auditAllRoutes"),
+    );
   });
 
   it("injects axe through the browser protocol without relaxing Trusted Types", () => {

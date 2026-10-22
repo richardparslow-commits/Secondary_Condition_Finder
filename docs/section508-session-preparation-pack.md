@@ -33,7 +33,7 @@ Run it immediately before testing and paste the resolved rows into the workbook'
 | Corroboration | Where | What it already establishes |
 |---|---|---|
 | R-05 contrast + keyboard gate | CI `verify` → `Run real-browser contrast and keyboard gate (R-05)`, evidence in the `ci-diagnostics-<run_id>` artifact | axe `color-contrast` and `link-in-text-block` clean on all 26 shipped routes, light host and emulated dark host; per-route evidence plus `route-inventory-report.md` |
-| Full-route axe gate | CI `verify` → `Run Playwright axe gate on every route`, `a11y-evidence/full-axe.json` | WCAG 2.1 A/AA rules clean, zero serious/critical, on every declared route |
+| Full-route axe gate | CI `verify` → `Run Playwright axe gate on every route`, `a11y-evidence/full-axe.json` | WCAG 2.1 A/AA rules clean, zero serious/critical, on every declared route, in both the light host and an emulated dark host |
 | Route coverage | `npm run report:route-inventory` | Which routes a run actually covered, and whether any evidence is missing or degraded |
 
 Read these as **corroboration of what the session is not being asked to re-measure**. Do not copy any of it into a result cell.
