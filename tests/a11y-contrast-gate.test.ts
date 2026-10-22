@@ -173,6 +173,20 @@ describe("R-05 real-browser contrast and keyboard gate", () => {
     expect(seed).toBeLessThan(spec.indexOf("for (const route of ROUTES)"));
   });
 
+  it("waits for the loaded document, not the one being replaced", () => {
+    // location.href updates at navigation start and the outgoing document is
+    // already readyState "complete", so waiting on those two alone let axe scan
+    // the previous page and left one colour-scheme pass with no keyboard walk
+    // at all (CI: /secondary/evidence). The navigation entry belongs to the
+    // document that actually loaded.
+    expect(spec).toContain('performance.getEntriesByType(\"navigation\")');
+    expect(spec).toContain("navigationEntry");
+    expect(spec).toContain("last?.navigationEntry === expected");
+    expect(spec).toContain("last?.hasMain === true");
+    expect(spec).toContain("Number(last?.tabbable) > 0");
+    expect(spec).toContain("never became measurable");
+  });
+
   it("measures app controls only, not the dev-only overlay render", () => {
     // `next dev` injects a tabbable `nextjs-portal` whose controls carry no
     // focus indicator and never ship. Counting it inflated the walk's numbers
