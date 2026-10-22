@@ -63,6 +63,7 @@ type EvidenceRecord = {
   evidenceFilePresent?: boolean;
   keyboardSteps?: number | null;
   keyboardDistinctElements?: number | null;
+  keyboardTabbableElements?: number | null;
 };
 
 /** One record out of a reader's map, typed for assertions. */
