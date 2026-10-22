@@ -189,6 +189,10 @@ export function readContrastEvidence({ directory, root = process.cwd() }) {
       evidenceFilePresent,
       keyboardSteps: finiteNumber(row.keyboardSteps),
       keyboardDistinctElements: finiteNumber(row.keyboardDistinctElements),
+      // The count the empty-probe check keys on: steps === 0 is only "no walk"
+      // when there was no tabbable element to focus. Without this field copied
+      // through, every zero-step record looked like an empty probe.
+      keyboardTabbableElements: finiteNumber(row.keyboardTabbableElements),
       contrastPasses: finiteNumber(row.contrastPasses),
       contrastViolations: finiteNumber(row.contrastViolations),
       contrastIncomplete: finiteNumber(row.contrastIncomplete),
@@ -333,9 +337,16 @@ function isMachineGated(surface) {
  */
 function inspectRecord(surface, record, { routePath, pushProblem, pushDegraded }) {
   if (surface === "contrast") {
-    if (record.keyboardSteps === 0) {
+    // "No walk" means the walk found nothing to focus. A route with a single
+    // tabbable element legitimately records 0 steps: the walk focuses that
+    // element, presses Tab, and focus leaves the document, so the loop ends on
+    // its first iteration with 0 steps / 1 distinct / 1 tabbable. Keying the
+    // failure on `steps === 0` alone read that as an empty probe and failed the
+    // run (CI: /secondary/evidence). The tabbable count distinguishes them: zero
+    // is the failure, one is the degraded "recorded but not demonstrated" row.
+    if (record.keyboardSteps === 0 && !(Number(record.keyboardTabbableElements) > 0)) {
       pushProblem(
-        `${routePath}: the contrast gate recorded no keyboard walk (its tabbable-element probe came back empty), ` +
+        `${routePath}: the contrast gate recorded no keyboard walk (no tabbable element was present to focus), ` +
           "so keyboard coverage for this route stopped without any assertion noticing",
       );
     } else if (record.keyboardSteps === null || record.keyboardDistinctElements === null) {

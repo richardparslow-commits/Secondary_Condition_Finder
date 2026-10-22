@@ -24,10 +24,15 @@
  *      `link-in-text-block` — the rule set the other suites cannot measure.
  *      Blocking impacts are critical/serious, the same bar as the jsdom gate in
  *      `tests/setup/accessibility.ts`.
- *   2. A keyboard walk: send Tab, and after every step assert
+ *   2. A keyboard walk: send the WebDriver TAB key and after every step assert
  *      `document.activeElement` reports visible client rects (an invisibly
- *      focused element has none) and that the walk actually advanced across
- *      distinct interactive elements.
+ *      focused element has none) and that the walk actually advanced past the
+ *      element the walk started on. A seeded two-button control proves the
+ *      keystroke itself moves focus before any route is walked: the walk used
+ *      to send `\uE000`, the protocol's NULL key, so nothing moved, every route
+ *      recorded `distinct=1`, and the only guard (`distinct < 1`) was satisfied
+ *      by the initial scripted focus. The advancement rule is relative to that
+ *      element for exactly that reason.
  *
  * Before any route is audited, a control seeds one known sub-AA text pair into
  * a page under the dark-host emulation and requires the same scan to report a
@@ -52,7 +57,6 @@ import {
   writeRouteInventoryReport,
 } from "../scripts/lib/route-inventory-report.mjs";
 
-const ELEMENT_KEY = "element-6066-11e4-a52e-4f735466cecf";
 const APP_PORT = Number(process.env.A11Y_E2E_APP_PORT ?? 3400);
 const DRIVER_PORT = Number(process.env.A11Y_E2E_DRIVER_PORT ?? 9515);
 const APP_BASE_URL = `http://127.0.0.1:${APP_PORT}`;
@@ -102,6 +106,30 @@ const COLOR_SCHEME_PASSES = [
 ];
 /** Bounded by keystroke count, not page size, so the walk cannot hang. */
 const KEYBOARD_WALK_MAX_STEPS = 120;
+// A route can be measured while its render is still arriving; CI recorded no
+// tabbable element on /secondary/evidence in one run and one in the next, on the
+// same commit. Re-probe for a bounded window before recording "empty".
+const KEYBOARD_PROBE_ATTEMPTS = 10;
+const KEYBOARD_PROBE_DELAY_MS = 500;
+
+/**
+ * WebDriver key values. `\uE000` is the protocol's NULL key, not Tab: pressing
+ * it moved nothing, so this gate's walk stayed on its first scripted focus
+ * target for all 120 steps and recorded `distinct=1` on every route — a vacuous
+ * pass reported as keyboard evidence (and as 26 `degraded` rows in the run's
+ * route inventory) until the keystroke was checked rather than assumed.
+ * `\uE004` is TAB.
+ */
+const WEBDRIVER_KEY_TAB = "\uE004";
+
+/** Deterministic two-focus-target control for the keystroke itself. */
+const SEEDED_KEYBOARD = {
+  firstId: "a11y-keyboard-seed-first",
+  secondId: "a11y-keyboard-seed-second",
+  firstText: "Seeded keyboard first target",
+  secondText: "Seeded keyboard second target",
+};
+const SEEDED_KEYBOARD_EVIDENCE = "keyboard-seeded-control.json";
 
 /** Deterministic sub-AA pair: #888 on #777 is about 1.26:1. */
 const SEEDED_CONTRAST = {
@@ -476,66 +504,226 @@ async function runSeededDarkContrastControl() {
 }
 
 /**
- * Focus the first tabbable element via script, then send Tab through the
- * WebDriver Actions API and after each step assert the focused element is
- * visible and that focus actually advanced. Bounded by step count.
+ * The dev-only overlay `next dev` injects. It is not part of the shipped app (the
+ * production build has no portal, which is why `a11y-full` runs there), it is
+ * tabbable, and none of its controls carries a focus indicator — so counting it
+ * inflates the walk's step numbers with elements that never ship and could let a
+ * real app control's absence go unnoticed. The walk measures app controls only.
  */
-async function runKeyboardWalk(route) {
-  const focusInitialised = await webdriver("POST", `/session/${sessionId}/execute/sync`, {
+const DEV_OVERLAY_TAG = "NEXTJS-PORTAL";
+
+/** One TAB keystroke through the WebDriver Actions API. */
+async function pressTab() {
+  await webdriver("POST", `/session/${sessionId}/actions`, {
+    actions: [
+      {
+        type: "key",
+        id: "r05-tab",
+        actions: [
+          { type: "keyDown", value: WEBDRIVER_KEY_TAB },
+          { type: "keyUp", value: WEBDRIVER_KEY_TAB },
+        ],
+      },
+    ],
+  });
+}
+
+/**
+ * Prove the keystroke itself moves focus before any route is walked.
+ *
+ * The per-route walk cannot answer that question on its own: it starts by
+ * scripting focus onto the first tabbable element, so a keystroke that moves
+ * nothing still yields one distinct element and passes a `distinct < 1` guard.
+ * This control seeds two adjacent buttons on a scratch page, focuses the first,
+ * presses the same TAB keystroke the walk uses, and requires focus to land on
+ * the second. A wrong key value or a refused Actions request fails the run here
+ * instead of quietly turning every route's walk into one focused element.
+ */
+async function runSeededKeyboardControl() {
+  checkpoint("seeding two focus targets to prove the TAB keystroke moves focus");
+  await navigateToPath({ path: "/" });
+
+  const seeded = await webdriver("POST", `/session/${sessionId}/execute/sync`, {
     script: `
-      const focusables = Array.from(document.querySelectorAll(
-        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
-      ));
-      if (focusables.length === 0) return "empty";
-      focusables[0].focus();
-      return document.activeElement === focusables[0] ? "focused" : "noop";
+      const [firstId, secondId, firstText, secondText] = arguments;
+      for (const id of [firstId, secondId]) document.getElementById(id)?.remove();
+      const make = (id, text) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.id = id;
+        button.textContent = text;
+        document.body.appendChild(button);
+        return button;
+      };
+      const first = make(firstId, firstText);
+      make(secondId, secondText);
+      first.focus();
+      return {
+        focused: document.activeElement === first,
+        documentActiveId: document.activeElement?.id ?? null,
+      };
     `,
+    args: [
+      SEEDED_KEYBOARD.firstId,
+      SEEDED_KEYBOARD.secondId,
+      SEEDED_KEYBOARD.firstText,
+      SEEDED_KEYBOARD.secondText,
+    ],
+  });
+
+  await pressTab();
+
+  const activeId = await webdriver("POST", `/session/${sessionId}/execute/sync`, {
+    script: "return document.activeElement?.id ?? null;",
     args: [],
   });
-  if (focusInitialised === "empty") {
-    checkpoint(`${route.path}: no tabbable elements; keyboard walk skipped`);
-    return { steps: 0, distinctElements: 0 };
-  }
 
-  let priorSignature = "";
-  let distinctElements = 0;
+  await webdriver("POST", `/session/${sessionId}/execute/sync`, {
+    script: `
+      const [firstId, secondId] = arguments;
+      for (const id of [firstId, secondId]) document.getElementById(id)?.remove();
+      return true;
+    `,
+    args: [SEEDED_KEYBOARD.firstId, SEEDED_KEYBOARD.secondId],
+  });
+
+  const record = {
+    generatedAt: new Date().toISOString(),
+    key: "TAB",
+    webdriverKeyValue: "\\uE004",
+    seededElements: [
+      `<button id="${SEEDED_KEYBOARD.firstId}">${SEEDED_KEYBOARD.firstText}</button>`,
+      `<button id="${SEEDED_KEYBOARD.secondId}">${SEEDED_KEYBOARD.secondText}</button>`,
+    ],
+    startedOn: seeded.focused ? SEEDED_KEYBOARD.firstId : seeded.documentActiveId,
+    focusedAfterTab: activeId,
+    advanced: activeId === SEEDED_KEYBOARD.secondId,
+  };
+  fs.writeFileSync(
+    path.join(EVIDENCE_DIR, SEEDED_KEYBOARD_EVIDENCE),
+    JSON.stringify(record, null, 2),
+    "utf8",
+  );
+  return record;
+}
+
+/**
+ * Focus the first tabbable element via script, then send TAB through the
+ * WebDriver Actions API and after each step assert the focused element is
+ * visible and that focus actually advanced past the element the walk started
+ * on. Bounded by step count.
+ */
+async function runKeyboardWalk(route) {
+  // A route can still be rendering when the walk starts: on the same commit,
+  // CI recorded no tabbable element at all for /secondary/evidence in one run
+  // and a single one in the next, while the local run recorded one. Re-probe
+  // briefly before recording "empty", so a render that is one tick late is not
+  // reported as a coverage gap; a route that never renders a focusable element
+  // still ends up with `state: "empty"` and still fails the route inventory.
+  let focusInitialised = null;
+  for (let attempt = 0; attempt < KEYBOARD_PROBE_ATTEMPTS; attempt += 1) {
+    focusInitialised = await webdriver("POST", `/session/${sessionId}/execute/sync`, {
+      script: `
+        const focusables = Array.from(document.querySelectorAll(
+          'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        )).filter((el) => el.tagName !== arguments[0] && !el.closest(arguments[0].toLowerCase()));
+        // The selector overcounts: an element inside a collapsed disclosure or a
+        // display:none container still matches it but is not in the tab order, so
+        // expecting a second distinct target because the selector found two of
+        // them would fail a walk that is behaving correctly. The count that the
+        // advancement rule compares against is the visible subset.
+        const visible = focusables.filter((el) => {
+          if (el.getClientRects().length === 0) return false;
+          const style = window.getComputedStyle(el);
+          return style.visibility !== 'hidden' && style.display !== 'none';
+        });
+        if (visible.length === 0) return { state: "empty", tabbable: 0 };
+        // Identity for "did focus move?" is the element reference, kept page-side.
+        // A tag-plus-label signature cannot answer it: /secondary/diagnosed ships
+        // 819 checkboxes whose accessible names come from their wrapping label, so
+        // every one of them read as the same empty string and a walk that did
+        // advance looked stuck. Reference equality is exact and mutates nothing
+        // React owns.
+        visible[0].focus();
+        // The baseline is the element now focused, not null. Leaving it null made
+        // the walk's first keystroke count as an advance even when it moved
+        // nothing, and — because the element the walk starts on is tabbable but
+        // was never counted — made a two-element page record one distinct target
+        // after covering both. See the advancement rule below.
+        const started = document.activeElement === visible[0];
+        window.__r05KeyboardLast = started ? visible[0] : null;
+        return {
+          state: started ? "focused" : "noop",
+          tabbable: visible.length,
+        };
+      `,
+      args: [DEV_OVERLAY_TAG],
+    });
+    if (focusInitialised?.state !== "empty") break;
+    if (attempt + 1 < KEYBOARD_PROBE_ATTEMPTS) await delay(KEYBOARD_PROBE_DELAY_MS);
+  }
+  if (focusInitialised?.state === "empty") {
+    checkpoint(`${route.path}: no tabbable elements after ${KEYBOARD_PROBE_ATTEMPTS} probes; keyboard walk skipped`);
+    return { steps: 0, distinctElements: 0, tabbableElements: 0 };
+  }
+  const tabbableElements = Number(focusInitialised?.tabbable ?? 0);
+
+  let lastActive = null;
+  // The element the walk starts on is in the tab order and the walk began
+  // focused on it, so it counts as one target. Counting from 0 compared what
+  // the keystrokes reached against a total that included the start element, so
+  // a page with two tabbables failed after the walk had covered both — the CI
+  // failure on /secondary/service-connected, where the first tabbable is the
+  // skip link and the second is the step's only link.
+  let distinctElements = focusInitialised?.state === "focused" ? 1 : 0;
   let step = 0;
   for (; step < KEYBOARD_WALK_MAX_STEPS; step += 1) {
-    await webdriver("POST", `/session/${sessionId}/actions`, {
-      actions: [
-        {
-          type: "key",
-          id: "r05-tab",
-          actions: [{ type: "keyDown", value: "\uE000" }, { type: "keyUp", value: "\uE000" }],
-        },
-      ],
-    });
+    await pressTab();
     const active = await webdriver("POST", `/session/${sessionId}/execute/sync`, {
       script: `
         const el = document.activeElement;
         if (!el || el === document.body) return null;
         const rects = el.getClientRects();
         const style = window.getComputedStyle(el);
+        const labelledBy = (el.getAttribute('aria-labelledby') || '')
+          .split(/\\s+/)
+          .filter(Boolean)
+          .map((id) => document.getElementById(id)?.textContent || '')
+          .join(' ')
+          .trim();
+        const label = (
+          el.getAttribute('aria-label') ||
+          labelledBy ||
+          (el.labels && el.labels[0] ? el.labels[0].textContent : '') ||
+          el.textContent ||
+          el.value ||
+          ''
+        ).replace(/\\s+/g, ' ').trim().slice(0, 120);
+        const sameAsPrevious = el === window.__r05KeyboardLast;
+        window.__r05KeyboardLast = el;
         return {
           tag: el.tagName,
-          label: (el.getAttribute('aria-label') || el.getAttribute('aria-labelledby') || el.textContent || '').slice(0, 120),
+          label,
           rects: rects.length,
           visibility: style.visibility,
           display: style.display,
+          sameAsPrevious,
         };
       `,
       args: [],
     });
     if (!active) break; // focus walked past the last tabbable — walk complete
+    // Focus can step into the dev-only overlay; skip those steps rather than
+    // ending the walk on an element the production build does not contain.
+    if (active.tag === DEV_OVERLAY_TAG) continue;
     if (active.rects === 0 || active.visibility === "hidden" || active.display === "none") {
       throw new Error(
         `${route.path}: keyboard step ${step + 1} focused an invisible element ` +
           `<${active.tag.toLowerCase()}> "${active.label}" — visible-focus evidence failed`,
       );
     }
-    const signature = `${active.tag}:${active.label}`;
-    if (signature !== priorSignature) distinctElements += 1;
-    priorSignature = signature;
+    if (!active.sameAsPrevious) distinctElements += 1;
+    lastActive = active;
   }
   if (distinctElements < 1) {
     throw new Error(
@@ -543,7 +731,20 @@ async function runKeyboardWalk(route) {
         "to any interactive element — keyboard coverage evidence failed",
     );
   }
-  return { steps: step, distinctElements };
+  // The walk starts by scripting focus onto the first tabbable element, so one
+  // distinct element is what a keystroke that moves nothing also produces. A
+  // page with two or more tabbable elements must therefore record at least two
+  // distinct targets, or this route's "traversal" is not traversal.
+  if (tabbableElements > 1 && distinctElements < 2) {
+    throw new Error(
+      `${route.path}: keyboard walk recorded ${distinctElements} distinct element(s) over ${step} step(s) ` +
+        `while ${tabbableElements} tabbable element(s) are present; every step reported ` +
+        `<${(lastActive?.tag ?? "none").toLowerCase()}> "${lastActive?.label ?? ""}" — the keystroke never moved focus ` +
+        `(see ${path.relative(process.cwd(), path.join(EVIDENCE_DIR, SEEDED_KEYBOARD_EVIDENCE))}), ` +
+        "so keyboard coverage evidence failed",
+    );
+  }
+  return { steps: step, distinctElements, tabbableElements };
 }
 
 async function auditRoute(route) {
@@ -646,6 +847,7 @@ async function auditRoute(route) {
     darkHostEvidenceFile: darkHost.evidenceFile,
     keyboardSteps: keyboard.steps,
     keyboardDistinctElements: keyboard.distinctElements,
+    keyboardTabbableElements: keyboard.tabbableElements,
     evidenceFile: light.evidenceFile,
   };
 }
@@ -691,6 +893,7 @@ async function runJourney() {
   fs.mkdirSync(EVIDENCE_DIR, { recursive: true });
   const summaries = [];
   let seededControl = null;
+  let seededKeyboardControl = null;
   let journeyFailure = null;
 
   try {
@@ -709,6 +912,21 @@ async function runJourney() {
       );
     }
 
+    seededKeyboardControl = await runSeededKeyboardControl();
+    checkpoint(
+      seededKeyboardControl.advanced
+        ? `seeded keyboard control: TAB moved focus from ${seededKeyboardControl.startedOn} ` +
+            `to ${seededKeyboardControl.focusedAfterTab}`
+        : "seeded keyboard control: TAB did NOT move focus — refusing to report keyboard traversal",
+    );
+    if (!seededKeyboardControl.advanced) {
+      throw new Error(
+        "the TAB keystroke did not move focus between two adjacent seeded buttons, so every route's " +
+          "keyboard walk would measure one scripted focus target and no traversal\n" +
+          `control evidence: ${path.relative(process.cwd(), path.join(EVIDENCE_DIR, SEEDED_KEYBOARD_EVIDENCE))}`,
+      );
+    }
+
     for (const route of ROUTES) {
       const summary = await auditRoute(route);
       summaries.push(summary);
@@ -716,7 +934,8 @@ async function runJourney() {
         `${route.path}: light contrast passes=${summary.contrastPasses}, violations=${summary.contrastViolations}, ` +
           `incomplete=${summary.contrastIncomplete}; dark-host passes=${summary.darkHostContrastPasses}, ` +
           `violations=${summary.darkHostContrastViolations}, incomplete=${summary.darkHostContrastIncomplete}; ` +
-          `keyboard steps=${summary.keyboardSteps}, distinct=${summary.keyboardDistinctElements}`,
+          `keyboard steps=${summary.keyboardSteps}, distinct=${summary.keyboardDistinctElements}, ` +
+          `tabbable=${summary.keyboardTabbableElements}`,
       );
     }
     checkpoint(`completed audit of ${summaries.length} routes; evidence in ${EVIDENCE_DIR}/`);
@@ -727,7 +946,7 @@ async function runJourney() {
   fs.writeFileSync(
     path.join(EVIDENCE_DIR, "summary.json"),
     JSON.stringify(
-      { generatedAt: new Date().toISOString(), seededControl, routes: summaries },
+      { generatedAt: new Date().toISOString(), seededControl, seededKeyboardControl, routes: summaries },
       null,
       2,
     ),

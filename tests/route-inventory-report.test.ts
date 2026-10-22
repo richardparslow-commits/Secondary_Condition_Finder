@@ -63,6 +63,7 @@ type EvidenceRecord = {
   evidenceFilePresent?: boolean;
   keyboardSteps?: number | null;
   keyboardDistinctElements?: number | null;
+  keyboardTabbableElements?: number | null;
 };
 
 /** One record out of a reader's map, typed for assertions. */
@@ -174,6 +175,27 @@ describe("per-run route inventory report", () => {
     );
   });
 
+  it("reports a single-tabbable route as degraded, not as a missing walk", () => {
+    // A page whose only tabbable element is the one the walk focuses records
+    // 0 steps: the first Tab leaves the document, so the loop ends immediately.
+    // That is recorded evidence of one target, not an empty probe — CI failed
+    // /secondary/evidence on this and the run had walked the route.
+    const records = completeContrastRecords();
+    records.set(
+      "/about",
+      contrastRecord("/about", "about", {
+        keyboardSteps: 0,
+        keyboardDistinctElements: 1,
+        keyboardTabbableElements: 1,
+      }),
+    );
+    const report = contrastReport(records);
+    expect(report.problems).toEqual([]);
+    expect(report.degraded.join("\n")).toContain(
+      "/about: the keyboard walk pressed Tab but focus never reached a second element (distinct=1)",
+    );
+  });
+
   it("fails a summary row that carries no keyboard result at all", () => {
     const records = completeContrastRecords();
     records.set("/terms", contrastRecord("/terms", "terms", { keyboardSteps: null, keyboardDistinctElements: null }));
@@ -275,6 +297,7 @@ describe("per-run route inventory report", () => {
               label: "about",
               keyboardSteps: 12,
               keyboardDistinctElements: 5,
+              keyboardTabbableElements: 4,
               contrastViolations: 0,
               contrastIncomplete: 0,
               evidenceFile: path.join(directory, "contrast-about.json"),
@@ -289,6 +312,9 @@ describe("per-run route inventory report", () => {
       expect(read.generatedAt).toBe("2026-10-15T00:00:00.000Z");
       expect([...read.records.keys()].sort()).toEqual(["/", "/about"]);
       expect(recordOf(read.records, "/")?.evidenceFilePresent).toBe(true);
+      // The empty-probe rule keys on this count; dropping it from the reader
+      // made every zero-step record look like a route with nothing to focus.
+      expect(recordOf(read.records, "/about")?.keyboardTabbableElements).toBe(4);
       // The claim without the file is the failure this reader exists to catch.
       expect(recordOf(read.records, "/about")?.evidenceFilePresent).toBe(false);
       expect(read.problems).toContainEqual(
