@@ -188,6 +188,11 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
   // run's own finally chain still releases both on every path; these refs add
   // cancellation, not a second teardown.
   const activeOcrWorkerRef = useRef<Awaited<ReturnType<typeof createLocalOcrWorker>> | null>(null);
+  // REL-05 parity with Dd214LocalAnalyzer: the worker factory is asynchronous,
+  // so a worker that stalls during its initialize handshake is not reachable
+  // through `activeOcrWorkerRef` yet. Aborting this controller terminates it
+  // from inside the factory on unmount or when the elapsed-work deadline fires.
+  const creationAbortRef = useRef<AbortController | null>(null);
   const activePdfTaskRef = useRef<{ destroy: () => Promise<void> } | null>(null);
   // A06 parity with Dd214LocalAnalyzer: the elapsed-work budget handle for the
   // live OCR job. The per-page checks stop at the next page boundary, so a
@@ -203,6 +208,8 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
    * "stopped" cannot mean two slightly different things.
    */
   function terminateActiveRun() {
+    creationAbortRef.current?.abort();
+    creationAbortRef.current = null;
     const worker = activeOcrWorkerRef.current;
     const task = activePdfTaskRef.current;
     activeOcrWorkerRef.current = null;
@@ -561,7 +568,10 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
       if (!pdfjs.GlobalWorkerOptions.workerSrc) {
         pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
       }
-      const worker = await createLocalOcrWorker();
+      const creation = new AbortController();
+      creationAbortRef.current = creation;
+      const worker = await createLocalOcrWorker({ signal: creation.signal });
+      if (creationAbortRef.current === creation) creationAbortRef.current = null;
       activeOcrWorkerRef.current = worker;
       try {
         const bytes = new Uint8Array(await row.file.arrayBuffer());

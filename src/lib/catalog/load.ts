@@ -4,6 +4,8 @@ import fs from "node:fs";
 import fsp from "node:fs/promises";
 import path from "node:path";
 
+import { hasDataFilesystem } from "@/lib/data/data-runtime";
+import { embeddedDataFiles } from "@/lib/data/embedded-data";
 import { parseDataJson } from "@/lib/data/parse-json";
 
 import {
@@ -18,32 +20,55 @@ const CATALOG_DIR = path.join(process.cwd(), "data", "conditions");
 let cached: ConditionCatalog | null = null;
 let inflight: Promise<ConditionCatalog> | null = null;
 
+/**
+ * Parse one catalog file into the shared accumulator.
+ *
+ * Shared by the disk and embedded sources so both apply the same schema,
+ * duplicate-identity refusal and error messages. `seen` records the file that
+ * first claimed an id, so a duplicate names the later file only.
+ */
+function appendCatalogFile(
+  file: string,
+  raw: string,
+  conditions: CatalogCondition[],
+  seen: Map<string, string>,
+): void {
+  const parsed = catalogFileSchema.safeParse(parseDataJson(raw));
+
+  if (!parsed.success) {
+    console.error("[catalog] Invalid catalog data");
+    throw new Error(`Invalid catalog file ${file}.`);
+  }
+
+  for (const condition of parsed.data.conditions) {
+    const previous = seen.get(condition.id);
+    if (previous) {
+      console.error("[catalog] Duplicate condition identity");
+      throw new Error(`Duplicate condition id in ${file}.`);
+    }
+    seen.set(condition.id, file);
+    conditions.push(condition);
+  }
+}
+
 async function readCatalog(): Promise<ConditionCatalog> {
+  const conditions: CatalogCondition[] = [];
+  const seen = new Map<string, string>();
+
+  if (!hasDataFilesystem()) {
+    for (const [file, raw] of embeddedDataFiles("catalog")) {
+      appendCatalogFile(file, raw, conditions, seen);
+    }
+    return conditionCatalogSchema.parse(conditions);
+  }
+
   const files = (await fsp.readdir(CATALOG_DIR))
     .filter((file) => file.endsWith(".json"))
     .sort();
 
-  const conditions: CatalogCondition[] = [];
-  const seen = new Map<string, string>();
-
   for (const file of files) {
     const raw = await fsp.readFile(path.join(CATALOG_DIR, file), "utf8");
-    const parsed = catalogFileSchema.safeParse(parseDataJson(raw));
-
-    if (!parsed.success) {
-      console.error("[catalog] Invalid catalog data");
-      throw new Error(`Invalid catalog file ${file}.`);
-    }
-
-    for (const condition of parsed.data.conditions) {
-      const previous = seen.get(condition.id);
-      if (previous) {
-        console.error("[catalog] Duplicate condition identity");
-        throw new Error(`Duplicate condition id in ${file}.`);
-      }
-      seen.set(condition.id, file);
-      conditions.push(condition);
-    }
+    appendCatalogFile(file, raw, conditions, seen);
   }
 
   return conditionCatalogSchema.parse(conditions);
@@ -85,32 +110,25 @@ export function loadConditionCatalogAsync(): Promise<ConditionCatalog> {
 export function loadConditionCatalog(): ConditionCatalog {
   if (cached) return cached;
 
+  const conditions: CatalogCondition[] = [];
+  const seen = new Map<string, string>();
+
+  if (!hasDataFilesystem()) {
+    for (const [file, raw] of embeddedDataFiles("catalog")) {
+      appendCatalogFile(file, raw, conditions, seen);
+    }
+    cached = conditionCatalogSchema.parse(conditions);
+    return cached;
+  }
+
   const files = fs
     .readdirSync(CATALOG_DIR)
     .filter((file) => file.endsWith(".json"))
     .sort();
 
-  const conditions: CatalogCondition[] = [];
-  const seen = new Map<string, string>();
-
   for (const file of files) {
     const raw = fs.readFileSync(path.join(CATALOG_DIR, file), "utf8");
-    const parsed = catalogFileSchema.safeParse(parseDataJson(raw));
-
-    if (!parsed.success) {
-      console.error("[catalog] Invalid catalog data");
-      throw new Error(`Invalid catalog file ${file}.`);
-    }
-
-    for (const condition of parsed.data.conditions) {
-      const previous = seen.get(condition.id);
-      if (previous) {
-        console.error("[catalog] Duplicate condition identity");
-        throw new Error(`Duplicate condition id in ${file}.`);
-      }
-      seen.set(condition.id, file);
-      conditions.push(condition);
-    }
+    appendCatalogFile(file, raw, conditions, seen);
   }
 
   cached = conditionCatalogSchema.parse(conditions);

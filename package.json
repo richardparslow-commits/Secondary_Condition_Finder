@@ -16,13 +16,14 @@
   },
   "scripts": {
     "dev": "next dev",
-    "predev": "npm run build:client-corpus",
+    "predev": "npm run build:client-corpus && npm run build:embedded-data",
     "build:client-corpus": "node scripts/build-client-corpus.mjs",
-    "prebuild": "npm run build:client-corpus",
+    "build:embedded-data": "node scripts/build-embedded-data.mjs",
+    "prebuild": "npm run build:client-corpus && npm run build:embedded-data",
     "build": "next build",
-    "build:azure": "AZURE_STATIC_WEB_APPS_BUILD=1 next build && node scripts/package-next-standalone.mjs",
+    "build:azure": "npm run build:embedded-data && AZURE_STATIC_WEB_APPS_BUILD=1 next build && node scripts/package-next-standalone.mjs",
     "start": "next start",
-    "postinstall": "node scripts/copy-pdf-worker.mjs && node scripts/build-client-corpus.mjs",
+    "postinstall": "node scripts/copy-pdf-worker.mjs && node scripts/build-client-corpus.mjs && node scripts/build-embedded-data.mjs",
     "lint": "eslint",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -31,6 +32,9 @@
     "test:fleet": "node scripts/run-fleet-simulation.mjs",
     "acceptance:sentinel": "node scripts/run-acceptance-sentinel.mjs",
     "verify:privacy-channel": "node scripts/verify-privacy-channel.mjs",
+    "smoke:worker": "node scripts/smoke-worker.mjs",
+    "a11y:full": "node e2e/a11y-full.mjs",
+    "verify:archil-persistence": "node --no-warnings --env-file-if-exists=.env.local scripts/verify-archil-persistence.mjs",
     "test:doc-lint": "vitest run tests/doc-lint.test.ts tests/doc-example-schema.test.ts tests/readme-consistency.test.ts",
     "ci:failure-report": "node scripts/ci-failure-report.js",
     "readme:snapshot": "node scripts/readme-snapshot-table.js",
@@ -62,18 +66,22 @@
     "evidence:architecture": "node scripts/audit-evidence-architecture.js",
     "evidence:architecture:markdown": "node scripts/audit-evidence-architecture.js --markdown",
     "deploy:guard:vercel": "node scripts/check-deploy-freeze.js --provider=vercel",
+    "deploy:guard:sites": "node scripts/audit-sites-artifact.mjs",
+    "publish:sites": "node scripts/gate-sites-publish.mjs",
     "regulatory:validate": "node scripts/validate-regulatory-actions.js",
     "regulatory:audit": "node scripts/audit-regulatory-intelligence.js",
     "regulatory:audit:markdown": "node scripts/audit-regulatory-intelligence.js --markdown",
-    "regulatory:preflight:test": "vitest run tests/regulatory-preflight.test.ts"
+    "regulatory:preflight:test": "vitest run tests/regulatory-preflight.test.ts",
+    "stress:hostile": "node e2e/hostile-file-stress.mjs"
   },
   "dependencies": {
-    "@opentelemetry/api": "1.9.0",
+    "@opentelemetry/api": "1.10.0",
     "@tesseract.js-data/eng": "1.0.0",
+    "disk": "1.8.0",
     "jose": "6.2.12",
     "langsmith": "0.10.3",
     "mammoth": "1.12.2",
-    "next": "16.3.8",
+    "next": "16.4.2",
     "pdfjs-dist": "6.3.289",
     "react": "19.2.8",
     "react-dom": "19.2.8",
@@ -86,9 +94,13 @@
     "postcss": ">=8.5.18",
     "js-yaml": "4.3.2",
     "nanoid": "3.3.18",
-    "sharp": "0.35.5"
+    "sharp": "0.35.5",
+    "@node-minify/core": {
+      "glob": "10.5.0"
+    }
   },
   "devDependencies": {
+    "@opennextjs/cloudflare": "1.20.12",
     "@tailwindcss/postcss": "4.3.3",
     "@testing-library/react": "^16.3.3",
     "@types/node": "22.20.1",
@@ -97,11 +109,13 @@
     "@vitejs/plugin-react": "6.0.4",
     "axe-core": "^4.14.0",
     "eslint": "9.39.5",
-    "eslint-config-next": "16.3.8",
+    "eslint-config-next": "16.4.2",
     "jsdom": "^30.1.2",
+    "playwright": "1.64.1",
     "tailwindcss": "4.3.3",
     "typescript": "5.9.3",
-    "vitest": "4.1.11"
+    "vitest": "4.1.12",
+    "wrangler": "4.148.0"
   },
   "allowScripts": {
     "sharp@0.35.5": true,

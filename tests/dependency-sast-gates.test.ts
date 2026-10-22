@@ -97,6 +97,16 @@ describe("R-03.2 — dependency manifest review on pull requests", () => {
     expect(source).toContain("-X PATCH \"repos/$GITHUB_REPOSITORY/issues/comments/");
   });
 
+  it("caps the quoted diff so a large manifest change still posts a comment", () => {
+    // GitHub rejects an issue comment body over 65,536 characters; a pure
+    // lockfile refresh can exceed that, which must degrade to an excerpt and
+    // not fail the job with HTTP 422.
+    expect(source).toContain("max_diff_chars=48000");
+    expect(source).toContain('head -c "$max_diff_chars" "$diff_file"');
+    expect(source).toContain("65,536 characters");
+    expect(source).toContain("excerpt only");
+  });
+
   it("does not silently swallow the plan constraint but documents the swap-back", () => {
     // Comments wrap the quoted error across lines, so assert on a fragment.
     expect(source).toMatch(/Advanced security has not been|Advanced Security not purchased/);

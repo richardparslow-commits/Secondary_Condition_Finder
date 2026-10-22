@@ -72,6 +72,11 @@ export function Dd214LocalAnalyzer({ locations }: Props) {
   // the elapsed-work deadline terminate the live worker/task immediately, which
   // rejects the awaited promise so the run unwinds through its own finally.
   const workerRef = useRef<Awaited<ReturnType<typeof createLocalOcrWorker>> | null>(null);
+  // REL-05: the construction window is its own teardown path. Until the worker
+  // factory returns, `workerRef` is empty, so a worker that stalls during its
+  // initialize handshake would survive cancel and the deadline; aborting this
+  // controller terminates it from inside the factory instead.
+  const creationAbortRef = useRef<AbortController | null>(null);
   const pdfTaskRef = useRef<{ destroy: () => Promise<void> } | null>(null);
   const deadlineRef = useRef<{ exceeded(): boolean; clear(): void } | null>(null);
 
@@ -81,6 +86,8 @@ export function Dd214LocalAnalyzer({ locations }: Props) {
     // completion controls navigate away, and a detached run must not keep a
     // worker (or a pdf.js document) alive behind the new page.
     cancelRequestedRef.current = true;
+    creationAbortRef.current?.abort();
+    creationAbortRef.current = null;
     const worker = workerRef.current;
     workerRef.current = null;
     if (worker) void worker.terminate().catch(() => {});
@@ -97,6 +104,8 @@ export function Dd214LocalAnalyzer({ locations }: Props) {
    * cannot mean three slightly different things.
    */
   function terminateActiveRun() {
+    creationAbortRef.current?.abort();
+    creationAbortRef.current = null;
     const worker = workerRef.current;
     workerRef.current = null;
     if (worker) void worker.terminate().catch(() => {});
@@ -186,9 +195,15 @@ export function Dd214LocalAnalyzer({ locations }: Props) {
       // `terminateActiveRun()` for cancel, deadline, and unmount.
       const spawnWorker = async () => {
         if (deadlineExpired || abandoned()) return null;
-        const created = await createLocalOcrWorker();
-        workerRef.current = created;
-        return created;
+        const controller = new AbortController();
+        creationAbortRef.current = controller;
+        try {
+          const created = await createLocalOcrWorker({ signal: controller.signal });
+          workerRef.current = created;
+          return created;
+        } finally {
+          if (creationAbortRef.current === controller) creationAbortRef.current = null;
+        }
       };
       if (isPdf) {
         // Legacy main build + legacy worker: see scripts/copy-pdf-worker.mjs

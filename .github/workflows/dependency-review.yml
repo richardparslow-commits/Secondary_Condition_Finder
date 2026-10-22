@@ -56,6 +56,17 @@ jobs:
 
           base="${{ github.event.pull_request.base.sha }}"
           head_sha="${{ github.event.pull_request.head.sha }}"
+
+          # GitHub rejects an issue-comment body over 65,536 characters, and a
+          # legitimate lockfile change can exceed that on its own (a real PR hit
+          # HTTP 422 here and failed this job). Quote at most $max_diff_chars
+          # characters of the diff so the comment always lands, and say plainly
+          # that it is an excerpt.
+          diff_file="$tmp_dir/manifests.diff"
+          git diff "$base" "$head_sha" -- package.json package-lock.json npm-shrinkwrap.json > "$diff_file"
+          max_diff_chars=48000
+          diff_chars="$(wc -c < "$diff_file" | tr -d '[:space:]')"
+
           {
             echo "## Dependency manifest changes"
             echo ""
@@ -64,7 +75,15 @@ jobs:
             echo "reviewer can see what the audit result already covers."
             echo ""
             echo '```diff'
-            git diff "$base" "$head_sha" -- package.json package-lock.json npm-shrinkwrap.json
+            if [ "$diff_chars" -le "$max_diff_chars" ]; then
+              cat "$diff_file"
+            else
+              head -c "$max_diff_chars" "$diff_file" || true
+              echo
+              echo "# ... excerpt only: $max_diff_chars of $diff_chars characters shown"
+              echo "# (GitHub caps a comment body at 65,536 characters.)"
+              echo "# Full diff: git diff $base $head_sha -- package.json package-lock.json"
+            fi
             echo '```'
             echo ""
             echo "Change size: \$(git diff --stat "$base" "$head_sha" -- package.json package-lock.json npm-shrinkwrap.json | tail -n 1)"

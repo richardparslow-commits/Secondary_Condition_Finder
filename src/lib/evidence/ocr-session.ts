@@ -529,6 +529,21 @@ export const LOCAL_OCR_WORKER_OPTIONS = {
   workerBlobURL: false,
 } as const;
 
+export interface LocalOcrWorkerCreationOptions {
+  /**
+   * Cancels the **construction window**. Aborting terminates the worker even
+   * while its `load`/`loadLanguage`/`initialize` handshake is still pending.
+   *
+   * Without this, a worker that stops answering during initialization is
+   * unreachable: the caller has no handle until this function returns, so
+   * cancel, the elapsed-work deadline and unmount all find an empty ref and the
+   * worker (and the tab's busy state) lives on. REL-05's hostile-file browser
+   * stress test reproduces exactly that with a stalled worker
+   * (`e2e/hostile-file-stress.mjs`).
+   */
+  signal?: AbortSignal;
+}
+
 /**
  * Direct client for the pinned Tesseract v6 worker protocol. No OCR library,
  * image encoding, model initialization or inference runs on the page. Canvas
@@ -536,7 +551,7 @@ export const LOCAL_OCR_WORKER_OPTIONS = {
  * them using OffscreenCanvas before handing them to Tesseract. File/Blob bytes
  * are read asynchronously and transferred, never posted to an HTTP endpoint.
  */
-export async function createLocalOcrWorker() {
+export async function createLocalOcrWorker(options: LocalOcrWorkerCreationOptions = {}) {
   const worker = new Worker("/tesseract/worker-guard.js");
   let sequence = 0;
   let closed = false;
@@ -545,6 +560,11 @@ export async function createLocalOcrWorker() {
     reject: (error: Error) => void;
   }>();
   const fail = (error: Error) => {
+    // One teardown per worker: an abort during initialization rejects the
+    // handshake, and the factory's own catch would otherwise terminate the
+    // same worker a second time (visible to an instrumented Worker and to the
+    // REL-05 browser audit, which counts terminate calls).
+    if (closed) return;
     for (const job of pending.values()) job.reject(error);
     pending.clear();
     closed = true;
@@ -552,6 +572,13 @@ export async function createLocalOcrWorker() {
   };
   worker.onerror = () => fail(new Error("Browser-local OCR worker failed."));
   worker.onmessageerror = () => fail(new Error("Browser-local OCR worker message failed."));
+  const cancelled = () => new Error("Browser-local OCR was cancelled.");
+  const onAbort = () => fail(cancelled());
+  if (options.signal?.aborted) {
+    onAbort();
+    throw cancelled();
+  }
+  options.signal?.addEventListener("abort", onAbort, { once: true });
   worker.onmessage = ({ data }) => {
     const job = pending.get(data.jobId);
     if (!job || data.status === "progress") return;
@@ -578,6 +605,10 @@ export async function createLocalOcrWorker() {
   } catch (error) {
     fail(new Error("Could not initialize browser-local OCR."));
     throw error;
+  } finally {
+    // The signal covers construction only; the returned client owns the worker
+    // from here (its `terminate()` is the teardown path).
+    options.signal?.removeEventListener("abort", onAbort);
   }
   return {
     async recognize(input: HTMLCanvasElement | File | Blob) {

@@ -146,7 +146,7 @@ client analytics SDK, and production `connect-src` stays first-party only.
 |-------------|--------|
 | **Node.js 22.x** | Enforced by the `engines` field in `package.json`. |
 | **npm** | The package manager of record — `package-lock.json` is committed. Use `npm ci` for a reproducible, CI-identical install. |
-| **Google Chrome + ChromeDriver** (E2E only) | Needed to run the real-browser journeys in `e2e/` locally (CI provisions its own). The ChromeDriver major version must match the installed Chrome major version, and `chromedriver` must be on `PATH` (the journeys also probe for a binary beside the runner script). |
+| **Google Chrome + ChromeDriver** (E2E only) | Needed to run the WebDriver journeys in `e2e/` locally (CI provisions its own). The ChromeDriver major version must match the installed Chrome major version, and `chromedriver` must be on `PATH` (the journeys also probe for a binary beside the runner script). The Playwright gates (`npm run a11y:full`, `npm run stress:hostile`) use the installed Chrome channel instead, and set `A11Y_FULL_BROWSER=chromium` / `HOSTILE_E2E_BROWSER=chromium` to use Playwright's own Chromium. |
 | **No external services required** | The app runs with development-only fallbacks; VA API adapters and outbound integrations are disabled by default (see [Configuration](#configuration)). |
 
 > `npm install` runs a postinstall step (`scripts/copy-pdf-worker.mjs`) that
@@ -202,6 +202,7 @@ Open `http://localhost:3000`. `/scenarios` contains repeatable demo walkthroughs
 | `npm run regulatory:validate` | Validates the provenanced regulatory-actions seed data |
 | `npm run regulatory:audit` | Regulatory-intelligence audit (add `:markdown` for the report form) |
 | `npm run report:route-inventory` | Publishes the per-run route inventory report — every route's declared surfaces against the evidence actually recorded — as JSON + markdown (`--surface=`, `--evidence-dir=`, `--matrix=`); exits 1 when it names a coverage gap |
+| `npm run stress:hostile` | REL-05 hostile-file browser stress run against the production build: declared-size image bombs, a malformed PDF, repeated refusals under heap measurement, and a stalled OCR worker that Cancel must terminate (writes `tmp/hostile-file-stress/evidence.json`) |
 
 CI also builds the production app and runs real Chrome/ChromeDriver journeys for
 the secondary workflow and validation/error behavior, plus a production-boot
@@ -256,8 +257,9 @@ invariants under a ratcheted wall-clock budget: the enforced limit is the
 tighter of the committed environment cap and a budget derived from recent
 measured runs, so it tightens automatically as timing stabilizes and cannot
 silently drift looser. Each coordination path additionally carries its own
-committed per-scenario real-time bound, so one path cannot consume the suite
-budget unnoticed, and an unbounded coordination regression fails the build. A
+committed per-scenario real-time bound, printed as one `[fleet] <path>: N ms /
+M ms (x% of bound)` line per run so a path drifting toward its limit is visible
+before it fails, and an unbounded coordination regression fails the build. A
 split network is simulated too: the partitioned half fails closed instead of
 serving stale values as live, and honors the reachable half's invalidation
 once it heals.
@@ -286,7 +288,7 @@ src/lib/va/               Environment-aware public-reference adapters/cache
 src/app/                  App Router pages
 src/components/           UI components
 tests/                    Vitest regression/contract tests
-e2e/                      Real-browser Chrome/ChromeDriver journeys
+e2e/                      Real-browser journeys (Chrome/ChromeDriver, plus Playwright gates)
 docs/                     Product, operations, accessibility, and runtime docs
 ```
 

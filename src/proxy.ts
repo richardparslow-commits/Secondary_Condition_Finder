@@ -127,6 +127,16 @@ function normalizePathname(pathname: string): string {
  * `Strict-Transport-Security` (RFC 6797) and ignore `X-Frame-Options`
  * duplicates, so a *weaker* duplicate would silently downgrade protection.
  *
+ * These are deliberately NOT set on a successful `NextResponse.next()` pass.
+ * The config `headers()` pipeline already applies them to every response the
+ * framework renders, and on the Cloudflare/OpenNext runtime the two sources
+ * are *concatenated* rather than replaced — a Worker response carried
+ * `Strict-Transport-Security: ..., ...` and `X-Frame-Options: DENY, DENY`,
+ * which RFC 6797 treats as a repeated directive (the header is ignored) and
+ * XFO parsers reject. One owner per response keeps both values valid:
+ * `next.config.ts` for framework responses, this table for the responses the
+ * middleware constructs before the framework sees them.
+ *
  * `Referrer-Policy` intentionally uses `no-referrer` (stricter than the
  * common `strict-origin-when-cross-origin` baseline) to match the config.
  */
@@ -495,13 +505,15 @@ export function proxy(request: NextRequest) {
       headers: requestHeaders,
     },
   });
+  // CSP and its reporting headers are not in `next.config.ts` (the nonce is
+  // per-request), so the pass sets them here. The baseline hardening headers
+  // are deliberately left to the config's `headers()`: the OpenNext/Workers
+  // runtime concatenates the two sources instead of replacing them, and the
+  // resulting `DENY, DENY` / repeated-directive HSTS header is invalid.
   if (!isCspReportRequest) {
     response.headers.set("Content-Security-Policy", contentSecurityPolicy);
     response.headers.set("Report-To", buildReportToJson());
     response.headers.set("Reporting-Endpoints", REPORTING_ENDPOINTS_VALUE);
-  }
-  for (const [key, value] of Object.entries(STANDARD_SECURITY_HEADERS)) {
-    response.headers.set(key, value);
   }
   return clearRetiredWorkflowCookie(response);
 }

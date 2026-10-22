@@ -1,0 +1,41 @@
+# Static-asset response headers for the Cloudflare (Sites) deployment.
+#
+# Assets are served by the Workers assets binding *before* the Next.js worker
+# sees the request, so `next.config.ts` `headers()` never runs for them. The
+# document itself is Cross-Origin Isolated (`Cross-Origin-Embedder-Policy:
+# require-corp`), which the browser-local WASM OCR and PDF pipelines need; a
+# nested worker script fetched from an isolated document must carry the same
+# policy or Chrome refuses it with `net::ERR_BLOCKED_BY_RESPONSE` and OCR dies
+# before tesseract starts. These rules give the worker scripts the same
+# isolation policy the page has.
+#
+# Verified against `wrangler dev` (workerd): with these rules the OCR guard
+# worker spawns, loads the WASM core and language data, and recognizes text.
+#
+# Keep the framework cache rule in sync with the Sites build output.
+/_next/static/*
+  Cache-Control: public,max-age=31536000,immutable
+
+# Unversioned worker assets: NOT immutable.
+#
+# The URLs are fixed while the copied package files change on an upgrade, so
+# `immutable` would let a browser keep an old tesseract worker/WASM core (or
+# PDF.js worker) for a year and pair it with a new page bundle. One hour bounds
+# that skew; `must-revalidate` prevents a stale response after the window.
+# The identical policy is emitted by next.config.ts `headers()` for Node hosts.
+# `/tesseract/eng.traineddata.gz` is not an asset and does not match this rule:
+# it is rewritten to /api/ocr-model, whose response is digest-pinned and keeps
+# its own one-year `immutable` header.
+#
+# Compression is left to the host: Cloudflare's assets binding negotiates
+# Brotli/gzip for JavaScript. Do not add `Content-Encoding` (it would suppress
+# or double-apply compression) or `no-transform` (it forbids compression).
+/tesseract/*
+  Cross-Origin-Embedder-Policy: require-corp
+  Cross-Origin-Resource-Policy: same-origin
+  Cache-Control: public,max-age=3600,must-revalidate
+
+/pdf.worker.min.mjs
+  Cross-Origin-Embedder-Policy: require-corp
+  Cross-Origin-Resource-Policy: same-origin
+  Cache-Control: public,max-age=3600,must-revalidate

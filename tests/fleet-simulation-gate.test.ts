@@ -18,6 +18,8 @@ import {
 import {
   FLEET_SCENARIO_BUDGETS_MS,
   FLEET_SCENARIO_KEYS,
+  FLEET_SCENARIO_NEAR_LIMIT_RATIO,
+  formatScenarioBudgetLine,
   scenarioBudgetFailure,
 } from "./helpers/fleet-scenario-budgets";
 
@@ -446,6 +448,37 @@ describe("fleet-simulation wall-clock budget", () => {
       // No single path may be allowed to consume the whole suite budget.
       expect(boundMs, scenario).toBeLessThan(localBudgetMs);
     }
+  });
+
+  it("prints each scenario's measurement against its bound, marking near-limit paths", () => {
+    expect(FLEET_SCENARIO_NEAR_LIMIT_RATIO).toBe(0.75);
+
+    expect(formatScenarioBudgetLine("probe-admission", 100, 1_000)).toBe(
+      "[fleet] probe-admission: 100 ms / 1000 ms (10.0% of bound)",
+    );
+    // The marker is the point: a path inside the bound but with little headroom
+    // must stand out before it becomes a failure.
+    expect(formatScenarioBudgetLine("probe-admission", 750, 1_000)).toBe(
+      "[fleet] probe-admission: 750 ms / 1000 ms (75.0% of bound — NEAR LIMIT)",
+    );
+    expect(formatScenarioBudgetLine("single-flight-wait", 1_200, 2_500)).toContain(
+      "(48.0% of bound)",
+    );
+    expect(formatScenarioBudgetLine("probe-admission", 1_201, 1_000)).toBe(
+      "[fleet] probe-admission: 1201 ms / 1000 ms (120.1% of bound — OVER BOUND)",
+    );
+  });
+
+  it("prints through the shared enforcement path, before the failure decision", () => {
+    const suite = fs.readFileSync(path.join(ROOT, "tests", "va-fleet-simulation.test.ts"), "utf8");
+    const logging = suite.indexOf(
+      "console.log(formatScenarioBudgetLine(scenario, elapsedMs, budgetMs));",
+    );
+    expect(logging).toBeGreaterThan(-1);
+    // Every bounded test reaches this path through withinScenarioBudget, so no
+    // scenario can be measured without also being printed.
+    expect(suite).toContain("return enforceScenarioBudget(scenario, FLEET_SCENARIO_BUDGETS_MS[scenario], body)");
+    expect(suite.indexOf("if (failure) throw new Error(failure);")).toBeGreaterThan(logging);
   });
 
   it("names the overrunning path in the failure message", () => {
