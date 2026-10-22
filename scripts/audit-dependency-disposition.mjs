@@ -24,7 +24,9 @@
  *     class that disagrees with the lockfile's dev flags, or an expired review
  *     window (the record drifted away from the tree);
  *   - a repaired release that now exists, and any entry marked
- *     `upgrade-required` (the upgrade is owed, not a tracking note).
+ *     `upgrade-required` (the upgrade is owed, not a tracking note);
+ *   - an advisory marked `withdrawn-upstream` that the audit reports again (the
+ *     withdrawal did not hold), which is the inverse of the staleness check.
  *
  * Severity enforcement for production dependencies deliberately stays with
  * `npm run audit:high`; this gate governs inventory completeness, classification
@@ -120,7 +122,13 @@ async function main() {
   let registry = null;
   const registryFailures = [];
   if (checkRegistry) {
-    const ids = (register.entries ?? []).map((entry) => entry.advisory).filter(Boolean);
+    // A withdrawn advisory no longer exists in the database, so asking OSV for
+    // its repair version would fail closed on a 404 for a record that is
+    // correct. Only live classifications are re-checked.
+    const ids = (register.entries ?? [])
+      .filter((entry) => entry?.disposition !== "withdrawn-upstream")
+      .map((entry) => entry.advisory)
+      .filter(Boolean);
     const resolved = await resolveRegistryPatches(ids, lookupOsv);
     registry = resolved.patches;
     registryFailures.push(...resolved.failures);
