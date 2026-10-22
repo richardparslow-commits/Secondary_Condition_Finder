@@ -4,6 +4,8 @@ import { describe, expect, it } from "vitest";
 
 import { AUTOMATIC_TRACE_EXPORT } from "@/lib/observability/telemetry-policy";
 
+import { maskNonCode, scanConsoleSites } from "../scripts/lib/phi-logging-scan.mjs";
+
 /**
  * Logging-sink inventory (B08 residual).
  *
@@ -103,13 +105,21 @@ describe("logging-sink inventory (B08)", () => {
 
   it("touches console directly from exactly the reviewed call sites", () => {
     // Shapes are governed by tests/phi-logging-boundary.test.ts; this pins
-    // membership so a new direct call site fails here first.
+    // membership so a new direct call site fails here first. Detection uses the
+    // same masked scanner as that suite: a plain `includes("console.")` also
+    // matches a hostname in prose or an error string (`console.archil.com`),
+    // which reported a config-only module as a log sink.
     const consoleFiles = SOURCE_FILES.map(relative)
-      .filter((file) => read(file).includes("console."))
+      .filter((file) => scanConsoleSites(maskNonCode(read(file))).length > 0)
       .sort();
     expect(consoleFiles).toEqual(
       [
         "src/app/api/error.tsx",
+        // The OCR model route is the one place a missing or unverifiable
+        // language model would otherwise be a silent 502: a fixed string with
+        // no arguments (the error may carry an upstream URL or body), pinned
+        // by tests/phi-logging-boundary.test.ts.
+        "src/app/api/ocr-model/route.ts",
         "src/app/error.tsx",
         "src/app/presumptive/error.tsx",
         "src/app/secondary/error.tsx",
@@ -124,6 +134,15 @@ describe("logging-sink inventory (B08)", () => {
         "src/lib/workflow-session-crypto.ts",
       ].sort(),
     );
+  });
+
+  it("does not mistake a vendor hostname for a console call site", () => {
+    // Regression for the false positive that motivated the masked scan: an
+    // interactive help string may name a vendor console without logging
+    // anything, and must not have to be listed as a reviewed sink.
+    const vendorHostname = 'const help = "Create a key at https://console.archil.com/api-keys";';
+    expect(scanConsoleSites(maskNonCode(vendorHostname))).toHaveLength(0);
+    expect(scanConsoleSites(maskNonCode('console.error("failed");'))).toHaveLength(1);
   });
 
   it("keeps LangSmith wiring in one server-only module nothing invokes", () => {

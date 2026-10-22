@@ -332,6 +332,14 @@ const EGRESS_PATTERN =
  * or console sink, failures returned as values.
  */
 const REVIEWED_EGRESS_FILES = [
+  // `/api/ocr-model` is server-only and fetches one fixed, digest-pinned public
+  // file (`@tesseract.js-data/eng` via jsDelivr, or an https mirror named by
+  // `OCR_MODEL_URL`). The request carries no user data, the response is checked
+  // against a hard-coded SHA-256 before any byte is served, and the browser's
+  // only request is same-origin. Moving the 10.4 MiB language model out of the
+  // Sites upload made this server-side call necessary; it replaces a public
+  // asset, not a client-side request.
+  "src/app/api/ocr-model/route.ts",
   "src/components/va-account/SandboxConnectForm.tsx",
   "src/lib/va/account/store.ts",
   "src/lib/va/account/transport.ts",

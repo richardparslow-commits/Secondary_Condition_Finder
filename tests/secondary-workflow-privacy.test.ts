@@ -170,7 +170,10 @@ describe("workflow privacy", () => {
     // it requires the sanitization review (tests/telemetry-policy.test.ts).
     expect(packageJson).not.toContain("@vercel/otel");
     expect(packageLock).not.toContain("@vercel/otel");
-    expect(packageJson).toContain('"@opentelemetry/api": "1.9.0"');
+    // 1.10.0 replaces the `module`-condition ESM entry that OpenNext's Node
+    // middleware bundling could not resolve from the traced copy; the policy
+    // assertion below (no automatic exporter) is unchanged.
+    expect(packageJson).toContain('"@opentelemetry/api": "1.10.0"');
     expect(packageJson).not.toContain("@microsoft/applicationinsights-web");
     expect(packageLock).not.toContain("@microsoft/applicationinsights-web");
 

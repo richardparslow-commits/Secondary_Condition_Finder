@@ -4,9 +4,10 @@ import fs from "node:fs";
 import fsp from "node:fs/promises";
 import path from "node:path";
 
-import { parseDataJson } from "@/lib/data/parse-json";
-
 import { loadConditionCatalog, loadConditionCatalogAsync } from "@/lib/catalog/load";
+import { hasDataFilesystem } from "@/lib/data/data-runtime";
+import { embeddedDataFiles } from "@/lib/data/embedded-data";
+import { parseDataJson } from "@/lib/data/parse-json";
 
 import {
   conditionMappingSchema,
@@ -27,35 +28,54 @@ let inflightKb: Promise<KnowledgeBase> | null = null;
 let inflightPublishedIds: Promise<Set<string>> | null = null;
 
 /**
+ * Parse and admit one mapping file into the shared accumulator.
+ *
+ * Shared by the disk and embedded sources so both enforce the same schema and
+ * filename↔id identity, with the same fixed diagnostics. The id check is what
+ * makes a mapping's filename part of its identity; skipping it on the embedded
+ * path would ship a corpus whose files and ids could disagree.
+ */
+function appendMappingFile(file: string, raw: string, mappings: ConditionMapping[]): void {
+  const parsed = conditionMappingSchema.safeParse(parseDataJson(raw));
+
+  if (!parsed.success) {
+    console.error("[knowledge-base] Invalid mapping data");
+    throw new Error(`Invalid mapping in ${file}.`);
+  }
+
+  const expectedId = path.basename(file, ".json");
+  if (parsed.data.id !== expectedId) {
+    console.error(`[knowledge-base] Mapping id mismatch in ${file}: id is "${parsed.data.id}", expected "${expectedId}".`);
+    throw new Error(
+      `Mapping id mismatch in ${file}: id is "${parsed.data.id}", expected "${expectedId}".`,
+    );
+  }
+
+  mappings.push(parsed.data);
+}
+
+/**
  * Reads and validates every mapping file.
  *
  * Validation failures throw rather than degrade. A malformed mapping in a
  * claims tool is a correctness problem, not something to silently skip.
  */
 async function readKnowledgeBase(): Promise<KnowledgeBase> {
-  const files = (await fsp.readdir(KB_DIR))
-    .filter((file) => file.endsWith(".json"))
-    .sort();
-
   const mappings: ConditionMapping[] = [];
-  for (const file of files) {
-    const raw = await fsp.readFile(`${KB_DIR}/${file}`, "utf8");
-    const parsed = conditionMappingSchema.safeParse(parseDataJson(raw));
 
-    if (!parsed.success) {
-      console.error("[knowledge-base] Invalid mapping data");
-      throw new Error(`Invalid mapping in ${file}.`);
+  if (!hasDataFilesystem()) {
+    for (const [file, raw] of embeddedDataFiles("knowledgeBase")) {
+      appendMappingFile(file, raw, mappings);
     }
+  } else {
+    const files = (await fsp.readdir(KB_DIR))
+      .filter((file) => file.endsWith(".json"))
+      .sort();
 
-    const expectedId = path.basename(file, ".json");
-    if (parsed.data.id !== expectedId) {
-      console.error(`[knowledge-base] Mapping id mismatch in ${file}: id is "${parsed.data.id}", expected "${expectedId}".`);
-      throw new Error(
-        `Mapping id mismatch in ${file}: id is "${parsed.data.id}", expected "${expectedId}".`,
-      );
+    for (const file of files) {
+      const raw = await fsp.readFile(`${KB_DIR}/${file}`, "utf8");
+      appendMappingFile(file, raw, mappings);
     }
-
-    mappings.push(parsed.data);
   }
 
   const parsed = knowledgeBaseSchema.parse(mappings);
@@ -84,30 +104,22 @@ export function loadKnowledgeBaseAsync(): Promise<KnowledgeBase> {
 export function loadKnowledgeBase(): KnowledgeBase {
   if (cached) return cached;
 
-  const files = fs
-    .readdirSync(KB_DIR)
-    .filter((file) => file.endsWith(".json"))
-    .sort();
+  const mappings: ConditionMapping[] = [];
 
-  const mappings: ConditionMapping[] = files.map((file) => {
-    const raw = fs.readFileSync(`${KB_DIR}/${file}`, "utf8");
-    const parsed = conditionMappingSchema.safeParse(parseDataJson(raw));
-
-    if (!parsed.success) {
-      console.error("[knowledge-base] Invalid mapping data");
-      throw new Error(`Invalid mapping in ${file}.`);
+  if (!hasDataFilesystem()) {
+    for (const [file, raw] of embeddedDataFiles("knowledgeBase")) {
+      appendMappingFile(file, raw, mappings);
     }
+  } else {
+    const files = fs
+      .readdirSync(KB_DIR)
+      .filter((file) => file.endsWith(".json"))
+      .sort();
 
-    const expectedId = path.basename(file, ".json");
-    if (parsed.data.id !== expectedId) {
-      console.error(`[knowledge-base] Mapping id mismatch in ${file}: id is "${parsed.data.id}", expected "${expectedId}".`);
-      throw new Error(
-        `Mapping id mismatch in ${file}: id is "${parsed.data.id}", expected "${expectedId}".`,
-      );
+    for (const file of files) {
+      appendMappingFile(file, fs.readFileSync(`${KB_DIR}/${file}`, "utf8"), mappings);
     }
-
-    return parsed.data;
-  });
+  }
 
   const parsed = knowledgeBaseSchema.parse(mappings);
   validateKnowledgeBaseAgainstCatalog(loadConditionCatalog(), parsed);
@@ -117,27 +129,47 @@ export function loadKnowledgeBase(): KnowledgeBase {
 }
 
 /**
+ * Admit one published id from raw mapping text.
+ *
+ * The published-index path deliberately skips the full schema: badges need only
+ * `id` and `draft`, and a mapping the full loader would reject must not fail a
+ * badge query. It still parses JSON, so malformed text throws exactly as it
+ * does on the disk path.
+ */
+function appendPublishedId(raw: string, published: Set<string>): void {
+  const parsed = JSON.parse(raw) as unknown;
+  if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return;
+
+  const id = (parsed as { id?: unknown }).id;
+  const draft = (parsed as { draft?: unknown }).draft;
+  if (typeof id !== "string" || id.length === 0) return;
+  if (draft === true) return;
+  published.add(id);
+}
+
+/**
  * Lightweight published-mapping index used by Step 1 "database mapped" badges.
  *
  * This avoids the full schema + cross-catalog validation path when callers only
  * need published ids. Full validation remains in loadKnowledgeBase().
  */
 async function readPublishedMappingIds(): Promise<Set<string>> {
+  const published = new Set<string>();
+
+  if (!hasDataFilesystem()) {
+    for (const [, raw] of embeddedDataFiles("knowledgeBase")) {
+      appendPublishedId(raw, published);
+    }
+    return published;
+  }
+
   const files = (await fsp.readdir(KB_DIR))
     .filter((file) => file.endsWith(".json"))
     .sort();
 
-  const published = new Set<string>();
   for (const file of files) {
     const raw = await fsp.readFile(`${KB_DIR}/${file}`, "utf8");
-    const parsed = JSON.parse(raw) as unknown;
-    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) continue;
-
-    const id = (parsed as { id?: unknown }).id;
-    const draft = (parsed as { draft?: unknown }).draft;
-    if (typeof id !== "string" || id.length === 0) continue;
-    if (draft === true) continue;
-    published.add(id);
+    appendPublishedId(raw, published);
   }
 
   return published;
@@ -163,22 +195,23 @@ export function loadPublishedMappingIdsAsync(): Promise<Set<string>> {
 export function loadPublishedMappingIds(): Set<string> {
   if (publishedMappingIdsCached) return new Set(publishedMappingIdsCached);
 
+  const published = new Set<string>();
+
+  if (!hasDataFilesystem()) {
+    for (const [, raw] of embeddedDataFiles("knowledgeBase")) {
+      appendPublishedId(raw, published);
+    }
+    publishedMappingIdsCached = published;
+    return new Set(publishedMappingIdsCached);
+  }
+
   const files = fs
     .readdirSync(KB_DIR)
     .filter((file) => file.endsWith(".json"))
     .sort();
 
-  const published = new Set<string>();
   for (const file of files) {
-    const raw = fs.readFileSync(`${KB_DIR}/${file}`, "utf8");
-    const parsed = JSON.parse(raw) as unknown;
-    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) continue;
-
-    const id = (parsed as { id?: unknown }).id;
-    const draft = (parsed as { draft?: unknown }).draft;
-    if (typeof id !== "string" || id.length === 0) continue;
-    if (draft === true) continue;
-    published.add(id);
+    appendPublishedId(fs.readFileSync(`${KB_DIR}/${file}`, "utf8"), published);
   }
 
   publishedMappingIdsCached = published;

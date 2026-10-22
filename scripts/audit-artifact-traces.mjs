@@ -61,8 +61,22 @@ const RETIRED_DATA_DIRS = ["data/knowledge-base-quarantine/"];
  * `data/` is the app-wide runtime data include. `public/` is static assets. The
  * bare `node_modules` (no slash) is the symlinked directory itself in an
  * isolated build. Anything else inside the project is a leak.
+ *
+ * `.data-bundle/ocr/` is the one exception under the install artifact: the
+ * pinned, digest-verified traineddata that `/api/ocr-model` reads on Node. It is
+ * not a public asset (the Sites upload budget cannot hold it) and it is not
+ * source, so without this prefix a Node deployment would silently stop carrying
+ * the model and would fall back to fetching it from the pinned CDN at runtime.
+ * The prefix is narrow on purpose: the generated embedded-data files beside it
+ * are compiled into the bundle and must not also ship as raw bytes.
  */
-const ALLOWED_PROJECT_PREFIXES = ["node_modules/", ".next/", "data/", "public/"];
+const ALLOWED_PROJECT_PREFIXES = [
+  "node_modules/",
+  ".next/",
+  "data/",
+  "public/",
+  ".data-bundle/ocr/",
+];
 const ALLOWED_PROJECT_FILES = new Set(["package.json", "node_modules"]);
 
 /** The generated standalone entrypoint, which sits at the app root. */

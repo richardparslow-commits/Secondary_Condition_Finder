@@ -180,7 +180,8 @@ const allSourceFiles = asSourceFiles(SRC);
  * workflow / client-corpus / evidence libraries they import, and the client
  * components that render them.
  */
-const clientSurface = [
+const clientSurface = ([
+
   ...STEP_PAGES.map((page) => readSource(page)),
   ...asSourceFiles(path.join(SRC, "lib", "secondary-workflow")),
   ...asSourceFiles(path.join(SRC, "lib", "client-corpus")),
@@ -195,7 +196,12 @@ const clientSurface = [
   readSource("src/lib/presumptive/use-browser-history.ts"),
   readSource("src/lib/presumptive/cross-link.ts"),
   readSource("src/app/presumptive/results/secondary-cross-link.ts"),
-];
+  // `server-only` modules can never enter the client graph — Next fails the
+  // build if a client component imports one — so client transport rules do not
+  // apply. The OCR model route's contract (`src/lib/evidence/ocr-model.ts`) is
+  // the one such module in these directories: it names a CDN URL server-side
+  // and never runs in a browser tab.
+] as SourceFile[]).filter((file) => !/^import\s+"server-only";/m.test(file.source));
 
 /** The text inside the parentheses that open at `openIndex`, or null if unbalanced. */
 function parenthesizedBody(source: string, openIndex: number): string | null {

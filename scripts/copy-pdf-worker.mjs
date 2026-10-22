@@ -30,28 +30,35 @@ copyIfExists(
   "PDF.js worker (legacy build with typed-array polyfills)",
 );
 
-// Browser-local OCR assets, self-hosted so OCR never makes an external network
-// request (production CSP keeps connect-src to 'self').
+// Browser-local OCR assets, self-hosted so the BROWSER never makes an external
+// network request (production CSP keeps connect-src to 'self').
 const ocrDir = path.join(process.cwd(), "public", "tesseract");
 copyIfExists(
   path.join(process.cwd(), "node_modules", "tesseract.js", "dist", "worker.min.js"),
   path.join(ocrDir, "worker.min.js"),
   "tesseract.js worker",
 );
+// One asset, not two: `tesseract-core-simd.wasm.js` is the SINGLE-FILE build —
+// its emscripten glue carries the WebAssembly module inline as a
+// `data:application/octet-stream;base64,` URI, so the sibling 3.3 MiB
+// `tesseract-core-simd.wasm` is never requested (verified: the glue has no
+// `wasmBinaryFile`). Shipping it as well spent 3.3 MiB of the Sites upload
+// budget on bytes no browser fetches.
 copyIfExists(
   path.join(process.cwd(), "node_modules", "tesseract.js-core", "tesseract-core-simd.wasm.js"),
   path.join(ocrDir, "tesseract-core-simd.wasm.js"),
-  "tesseract wasm loader",
+  "tesseract wasm core (single-file build)",
 );
-copyIfExists(
-  path.join(process.cwd(), "node_modules", "tesseract.js-core", "tesseract-core-simd.wasm"),
-  path.join(ocrDir, "tesseract-core-simd.wasm"),
-  "tesseract wasm core",
-);
+// The 10.4 MiB traineddata is NOT copied into public/. The Sites uploader
+// budgets all modules + assets at 32 MiB, and the Worker already uses most of
+// it; a public copy made every publish fail. The file goes to the install
+// bundle instead, where `/api/ocr-model` serves it same-origin: Node reads this
+// copy, Workers fetches the digest-pinned package file and caches it. The
+// browser still requests `/tesseract/eng.traineddata.gz`, unchanged.
 copyIfExists(
   path.join(process.cwd(), "node_modules", "@tesseract.js-data", "eng", "4.0.0", "eng.traineddata.gz"),
-  path.join(ocrDir, "eng.traineddata.gz"),
-  "tesseract English traineddata",
+  path.join(process.cwd(), ".data-bundle", "ocr", "eng.traineddata.gz"),
+  "tesseract English traineddata (served by /api/ocr-model)",
 );
 
 // Cross-Origin Isolation probe worker (authored here — the only source of

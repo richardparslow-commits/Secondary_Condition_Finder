@@ -161,3 +161,8 @@ CLAUDE.md
 .freebuff/
 __pycache__/
 *.pyc
+/freebuff-sites-build/
+/.open-next/
+/.wrangler/
+# Install artifacts: embedded copy of data/ for runtimes without a filesystem.
+/.data-bundle/

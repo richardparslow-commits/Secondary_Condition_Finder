@@ -185,6 +185,35 @@ describe("deployment artifact trace gate — unrelated project files", () => {
     expect(result.stderr).toContain("data/knowledge-base-quarantine/retired.json");
   });
 
+  it("allows the digest-pinned OCR model the route reads, and nothing else beside it", () => {
+    // `/api/ocr-model` reads `.data-bundle/ocr/eng.traineddata.gz` on Node. The
+    // file is an install artifact, but it is the route's runtime input, so the
+    // route's trace legitimately carries it; the generated embedded-data files
+    // in the same directory are compiled into the bundle and are still leaks.
+    // This trace lives one level deeper than PAGE_TRACE, so every entry needs
+    // the extra `../` to resolve against the project root rather than `.next/`.
+    const ocrTracePath = "../../../../../";
+    const ocr = (relativePath: string) => `${ocrTracePath}${relativePath}`;
+    const root = artifactDir({
+      ".data-bundle/ocr/eng.traineddata.gz": "model\n",
+      ".data-bundle/embedded-data.generated.json": { gzip: "..." },
+      ".next/server/app/api/ocr-model/route.js.nft.json": nft([
+        ocr("package.json"),
+        ocr("node_modules/dep/index.js"),
+        ocr("data/knowledge-base/alpha.json"),
+        ocr("data/knowledge-base/beta.json"),
+        ocr(".data-bundle/ocr/eng.traineddata.gz"),
+        ocr(".data-bundle/embedded-data.generated.json"),
+      ]),
+    });
+
+    const result = run(root);
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain("1 unrelated project file(s) traced");
+    expect(result.stderr).toContain(".data-bundle/embedded-data.generated.json");
+    expect(result.stderr).not.toContain("eng.traineddata.gz");
+  });
+
   it("does not misread a package's own src directory as project source", () => {
     // `node_modules/<pkg>/src/**` is package content, not this project's source;
     // flagging it would make the gate permanently red and therefore ignored.

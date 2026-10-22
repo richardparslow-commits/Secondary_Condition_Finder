@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import { getSharp, optimizeImage } from "next/dist/server/image-optimizer";
+import { getSharp, optimizeImage } from "next/dist/server/image-optimizer/transform";
 
 import {
   openSessionPayload,

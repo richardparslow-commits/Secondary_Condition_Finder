@@ -2,6 +2,7 @@ import { NextRequest } from "next/server";
 
 import { beforeEach, describe, expect, it } from "vitest";
 
+import nextConfig from "../next.config";
 import {
   adminCacheClearLimiter,
   healthLimiter,
@@ -128,17 +129,34 @@ describe("rate-limit path normalization", () => {
 });
 
 describe("security headers on every response", () => {
-  it("attaches the OWASP baseline to successful proxy passes", () => {
+  it("leaves the OWASP baseline to next.config on successful proxy passes", async () => {
     const response = proxy(request("/secondary"));
 
-    expect(response.headers.get("Strict-Transport-Security")).toBe(
-      "max-age=31536000; includeSubDomains",
+    // One owner per response. next.config's headers() applies these to every
+    // framework response; setting them here as well is not replaced but
+    // concatenated by the OpenNext/Workers runtime, producing an invalid
+    // `DENY, DENY` / repeated-directive HSTS value (the browser then ignores
+    // XFO and may drop HSTS entirely).
+    for (const key of [
+      "Strict-Transport-Security",
+      "X-Content-Type-Options",
+      "X-Frame-Options",
+      "Referrer-Policy",
+    ]) {
+      expect(response.headers.get(key)).toBeNull();
+    }
+
+    const rules = (await nextConfig.headers?.()) ?? [];
+    const baseline = rules.find((rule) => rule.source === "/:path*");
+    const values = Object.fromEntries(
+      (baseline?.headers ?? []).map((header) => [header.key, header.value]),
     );
-    expect(response.headers.get("X-Content-Type-Options")).toBe("nosniff");
-    expect(response.headers.get("X-Frame-Options")).toBe("DENY");
-    // Matches next.config.ts's (stricter) Referrer-Policy so responses never
-    // carry conflicting duplicate values depending on their origin.
-    expect(response.headers.get("Referrer-Policy")).toBe("no-referrer");
+    expect(values).toMatchObject({
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+      "X-Content-Type-Options": "nosniff",
+      "X-Frame-Options": "DENY",
+      "Referrer-Policy": "no-referrer",
+    });
   });
 
   it("attaches CSP and both reporting headers to 429 rate-limit blocks", async () => {
@@ -183,14 +201,16 @@ describe("security headers on every response", () => {
 });
 
 describe("CSP report endpoint scoping", () => {
-  it("omits CSP and reporting headers on the report endpoint but keeps the baseline", () => {
+  it("omits CSP and reporting headers on the report endpoint", () => {
     const response = proxy(request("/api/csp-report"));
 
     expect(response.headers.get("Content-Security-Policy")).toBeNull();
     expect(response.headers.get("Report-To")).toBeNull();
     expect(response.headers.get("Reporting-Endpoints")).toBeNull();
-    expect(response.headers.get("X-Content-Type-Options")).toBe("nosniff");
-    expect(response.headers.get("X-Frame-Options")).toBe("DENY");
+    // The baseline still reaches this path through next.config's headers()
+    // (the real matcher excludes `/api/csp-report` from the proxy entirely).
+    expect(response.headers.get("X-Content-Type-Options")).toBeNull();
+    expect(response.headers.get("X-Frame-Options")).toBeNull();
   });
 });
 

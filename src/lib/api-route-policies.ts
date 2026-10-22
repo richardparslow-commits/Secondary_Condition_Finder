@@ -105,6 +105,11 @@ export const API_ROUTE_LIMIT_POLICIES: readonly ApiRouteLimitPolicy[] = [
  * explicit decision on the record rather than an oversight.
  */
 export const API_ROUTES_WITHOUT_LIMITER: Readonly<Record<string, string>> = {
+  "/api/ocr-model":
+    "Serves one immutable, digest-pinned public language-data file to the " +
+    "browser-local OCR worker; every caller receives identical bytes, no user " +
+    "input is accepted, and the response is cached. Rate limiting it would break " +
+    "legitimate OCR loads without protecting any privileged resource.",
   "/api/csp-report":
     "Excluded from the proxy matcher entirely so a browser can always deliver a " +
     "CSP/Trusted-Types violation report; policing it would suppress the very " +

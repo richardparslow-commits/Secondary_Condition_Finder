@@ -90,6 +90,43 @@ export function crossOriginIsolationSource(
   return `/((?!${alternatives.join("|")}).*)`;
 }
 
+/**
+ * Cache policy for the unversioned static worker assets (`public/tesseract/*`
+ * and `public/pdf.worker.min.mjs`).
+ *
+ * `immutable` is deliberately absent. Those URLs do not change when the
+ * pinned `tesseract.js` / `pdfjs-dist` packages are upgraded, so a
+ * year-long immutable entry would outlive a deploy and pair a stale worker or
+ * WASM core with a new page bundle. One hour bounds that skew while still
+ * avoiding a re-download of the 4.5 MiB core on a reload; `must-revalidate`
+ * forbids serving the stale copy once the window closes.
+ *
+ * The same value is written into `public/_headers` for the Sites assets
+ * binding, which answers before the Next.js worker and therefore never runs
+ * `headers()`. `tests/static-asset-delivery.test.ts` pins both copies and
+ * refuses `immutable` or a TTL beyond a day on these unversioned paths.
+ */
+export const STATIC_ASSET_CACHE_CONTROL = "public,max-age=3600,must-revalidate";
+
+/**
+ * Paths the cache policy covers, in Next.js `headers()` source syntax.
+ *
+ * The worker files are listed individually rather than as `/tesseract/:path*`
+ * because `/tesseract/eng.traineddata.gz` is a rewrite to `/api/ocr-model`,
+ * not an asset. A directory wildcard matched the incoming request and
+ * replaced the route's one-year `immutable` header with this one-hour policy
+ * (observed on a dev server), which would make every OCR model load
+ * revalidate. A test enumerates `public/tesseract/` so a new asset cannot be
+ * added without being listed here.
+ */
+export const STATIC_ASSET_CACHE_SOURCES = [
+  "/tesseract/worker.min.js",
+  "/tesseract/worker-guard.js",
+  "/tesseract/coi-probe.js",
+  "/tesseract/tesseract-core-simd.wasm.js",
+  "/pdf.worker.min.mjs",
+] as const;
+
 const isAzureStaticWebAppsBuild = process.env.AZURE_STATIC_WEB_APPS_BUILD === "1";
 
 /**
@@ -133,6 +170,18 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   // Do not advertise the exact Next.js version on every response.
   poweredByHeader: false,
+  /**
+   * Compress responses on Node hosts (Docker, Azure, `next start`).
+   *
+   * This is Next.js's default, pinned explicitly because it is the only
+   * server-side compression the app controls: the worker assets are plain
+   * JavaScript, so they compress well, and switching this off would silently
+   * send the 4.5 MiB OCR core uncompressed. This setting does not reach the
+   * Sites deployment — Cloudflare's assets binding negotiates Brotli/gzip
+   * itself — so `public/_headers` must never declare `Content-Encoding` or
+   * `no-transform` for those files.
+   */
+  compress: true,
   /**
    * App-wide file-tracing include for the filesystem-backed knowledge base —
    * intentionally NOT scoped per route.
@@ -182,12 +231,29 @@ const nextConfig: NextConfig = {
    * so `asyncWebAssembly` (or the Turbopack equivalent under the `turbopack`
    * key) would configure a feature the app does not use.
    */
+  /**
+   * Serve the OCR language model from its route, not from `public/`.
+   *
+   * The 10.4 MiB traineddata cannot live in the Sites upload (32 MiB for the
+   * whole deployment, Worker included), but tesseract.js still requests the
+   * canonical same-origin path. The route reads the pinned postinstall copy on
+   * Node and a digest-verified copy of the same package file on Workers; see
+   * `src/lib/evidence/ocr-model.ts`. Keeping the URL stable is what lets the
+   * browser stay same-origin (`connect-src 'self'`) with no client change.
+   */
+  async rewrites() {
+    return [{ source: "/tesseract/eng.traineddata.gz", destination: "/api/ocr-model" }];
+  },
   async headers() {
     return [
       {
         source: "/:path*",
         headers: securityHeaders,
       },
+      ...STATIC_ASSET_CACHE_SOURCES.map((source) => ({
+        source,
+        headers: [{ key: "Cache-Control", value: STATIC_ASSET_CACHE_CONTROL }],
+      })),
       {
         source: crossOriginIsolationSource(),
         headers: crossOriginIsolationHeaders,

@@ -5,6 +5,8 @@ import path from "node:path";
 
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import { indexById } from "@/lib/catalog/lookup";
+import { hasDataFilesystem } from "@/lib/data/data-runtime";
+import { embeddedDataFiles } from "@/lib/data/embedded-data";
 
 import { assertNoCausationCycle } from "./graph-cycle-policy";
 import { loadKnowledgeBase } from "./load";
@@ -70,7 +72,16 @@ function adjacencyFileNames(dir: string): string[] {
 }
 
 function readNodeMapping(dir: string, file: string): KbNodeMapping {
-  const raw = fs.readFileSync(path.join(dir, file), "utf8");
+  return readNodeMappingRaw(file, fs.readFileSync(path.join(dir, file), "utf8"));
+}
+
+/**
+ * Parse one adjacency node from raw text.
+ *
+ * Shared by the disk and embedded sources so both enforce the same schema and
+ * filename↔nodeId identity before a traversal can rely on the graph.
+ */
+function readNodeMappingRaw(file: string, raw: string): KbNodeMapping {
   let parsedJson: unknown;
   try {
     parsedJson = JSON.parse(raw) as unknown;
@@ -130,12 +141,20 @@ export function loadKbGraphFromDir(
   dir: string = KB_GRAPH_DIR,
   knowledgeBase?: KnowledgeBase,
 ): Map<string, KbNodeMapping> {
-  const files = adjacencyFileNames(dir);
+  // A Worker has no filesystem, so the runtime default directory is served
+  // from the build-time copy. An explicit directory (tooling/tests) keeps its
+  // disk contract; that seam only runs on a Node host in the first place.
+  const embedded = !hasDataFilesystem() && dir === KB_GRAPH_DIR
+    ? new Map(embeddedDataFiles("graph"))
+    : null;
+  const files = embedded ? [...embedded.keys()].sort() : adjacencyFileNames(dir);
   const nodes: KbNodeMapping[] = [];
   const owners = new Map<string, string>();
 
   for (const file of files) {
-    const node = readNodeMapping(dir, file);
+    const node = embedded
+      ? readNodeMappingRaw(file, embedded.get(file) ?? "")
+      : readNodeMapping(dir, file);
     // Defense-in-depth: unreachable while the filename↔nodeId check above
     // holds (two files cannot both own one id), retained so a future relaxation
     // of that check cannot silently admit an ambiguous adjacency list.

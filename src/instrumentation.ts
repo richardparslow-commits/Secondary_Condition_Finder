@@ -1,3 +1,5 @@
+import { hasDataFilesystem } from "@/lib/data/data-runtime";
+import { installEmbeddedData } from "@/lib/data/embedded-bootstrap";
 import { AUTOMATIC_TRACE_EXPORT } from "@/lib/observability/telemetry-policy";
 
 export function register() {
@@ -10,6 +12,13 @@ export function register() {
     // Deliberately empty while the policy is disabled: enabling this branch
     // requires the sanitizing processor plus the collector review first.
   }
+  // Runtimes without a filesystem (Cloudflare Workers) serve `data/` from the
+  // build-time bundle installed here. This is synchronous and one-time so the
+  // request path stays a pure memory read; on Node the disk loaders are used
+  // and the bundle is never parsed. Must run before the first request — Next
+  // calls register() once per server process, ahead of dispatch.
+  if (!hasDataFilesystem()) installEmbeddedData();
+
   if (process.env.NEXT_RUNTIME === "edge") return;
   // Custom OTEL metrics (recommendation latency, VA API latency/errors,
   // evidence parser) are registered lazily via src/lib/observability/logger.ts
