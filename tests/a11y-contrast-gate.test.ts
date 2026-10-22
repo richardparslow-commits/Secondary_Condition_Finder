@@ -85,7 +85,7 @@ describe("R-05 real-browser contrast and keyboard gate", () => {
     // Fail closed: a missed seed stops the run, and the summary still records it.
     expect(spec).toContain("refusing to report a clean pass");
     expect(spec).toContain("would be vacuous");
-    expect(spec).toContain("seededControl, routes: summaries");
+    expect(spec).toContain("seededControl, seededKeyboardControl, routes: summaries");
   });
 
   it("evaluates axe through WebDriver script evaluation instead of a DOM script sink", () => {
@@ -112,6 +112,72 @@ describe("R-05 real-browser contrast and keyboard gate", () => {
     expect(spec).toContain("getClientRects");
     expect(spec).toContain("focus never advanced");
     expect(spec).toContain("focused an invisible element");
+  });
+
+  it("sends the TAB key, not the protocol's NULL key", () => {
+    // \uE000 is WebDriver's NULL key. The walk sent it for every "Tab" step, so
+    // focus never moved; each route recorded 120 steps / distinct=1 and the
+    // gate's `distinct < 1` guard was satisfied by the initial scripted focus.
+    // Measured on Chrome 156 before the fix: NULL leaves activeElement
+    // unchanged, TAB advances it.
+    expect(spec).toContain('const WEBDRIVER_KEY_TAB = "\\uE004"');
+    expect(spec).not.toContain('value: "\\uE000"');
+    expect(spec).toContain("actions: [\n          { type: \"keyDown\", value: WEBDRIVER_KEY_TAB }");
+  });
+
+  it("requires the walk to advance past its own starting element", () => {
+    // One distinct element is also what a keystroke that moves nothing
+    // produces, because the walk scripts focus onto the first tabbable element
+    // before it presses anything. A page with two or more tabbable elements has
+    // to record at least two distinct targets.
+    expect(spec).toContain("tabbableElements > 1 && distinctElements < 2");
+    expect(spec).toContain("keyboardTabbableElements: keyboard.tabbableElements");
+    expect(spec).toContain("so keyboard coverage evidence failed");
+  });
+
+  it("identifies advancement by element reference, not by a tag-and-label signature", () => {
+    // /secondary/diagnosed ships 819 checkboxes named by their wrapping label,
+    // but neither aria-label nor textContent on the input, so a `tag:label`
+    // signature read every checkbox as the same value and a walk that did
+    // advance appeared stuck. The walk keeps the previous element page-side and
+    // compares references.
+    expect(spec).toContain("window.__r05KeyboardLast");
+    expect(spec).toContain("el === window.__r05KeyboardLast");
+    expect(spec).toContain("sameAsPrevious");
+    expect(spec).toContain("if (!active.sameAsPrevious) distinctElements += 1;");
+    expect(spec).not.toContain("priorSignature");
+    // Evidence labels still name the control: fall back to the wrapping label
+    // so a checkbox reads as its condition rather than as an empty string.
+    expect(spec).toContain("el.labels");
+  });
+
+  it("proves the TAB keystroke moves focus on a seeded control before walking routes", () => {
+    // The per-route guard alone cannot distinguish a working key from a dead
+    // one on a page that exposes a single tabbable element, so the run seeds two
+    // adjacent buttons and requires focus to move between them.
+    expect(spec).toContain("runSeededKeyboardControl");
+    expect(spec).toContain('firstId: "a11y-keyboard-seed-first"');
+    expect(spec).toContain('secondId: "a11y-keyboard-seed-second"');
+    expect(spec).toContain("keyboard-seeded-control.json");
+    expect(spec).toContain("seededKeyboardControl.advanced");
+    expect(spec).toContain("refusing to report keyboard traversal");
+    expect(spec).toContain("seededKeyboardControl, routes: summaries");
+    const seed = spec.indexOf("= await runSeededKeyboardControl();");
+    expect(seed).toBeGreaterThan(-1);
+    expect(seed).toBeLessThan(spec.indexOf("for (const route of ROUTES)"));
+  });
+
+  it("measures app controls only, not the dev-only overlay render", () => {
+    // `next dev` injects a tabbable `nextjs-portal` whose controls carry no
+    // focus indicator and never ship. Counting it inflated the walk's numbers
+    // with elements the production build does not contain.
+    expect(spec).toContain('const DEV_OVERLAY_TAG = "NEXTJS-PORTAL"');
+    expect(spec).toContain("el.closest(arguments[0].toLowerCase())");
+    expect(spec).toContain("if (active.tag === DEV_OVERLAY_TAG) continue;");
+    // The selector overcounts elements that are not in the tab order, so the
+    // expected second target is the visible subset, not every selector match.
+    expect(spec).toContain("const visible = focusables.filter");
+    expect(spec).toContain("tabbable: visible.length");
   });
 
   it("writes per-route axe evidence and a summary for artifact upload", () => {
