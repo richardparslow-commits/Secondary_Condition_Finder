@@ -18,6 +18,13 @@
  * the stamp has been written. Restoring it first would make a failed stamp — no
  * git, no HEAD, an unwritable directory — leave an uploader-visible manifest
  * behind, undoing the quarantine that was there to stop an upload.
+ *
+ * The release itself is atomic: the rejected manifest is copied to a sibling
+ * temporary file and renamed into place. A direct copy that failed halfway would
+ * leave a truncated `manifest.json` that an uploader could read while this
+ * command exits non-zero; the rename means the manifest is either the complete
+ * quarantined copy or absent (and still refused), and the temporary file is
+ * removed on failure.
  */
 
 import fs from "node:fs";
@@ -83,9 +90,22 @@ function main() {
 
   // Only now that the stamp exists does releasing the quarantine help: an
   // uploader cannot start without `manifest.json`, and a failure above must not
-  // hand it back.
+  // hand it back. Copy beside the manifest and rename, so a failed restore
+  // leaves no partial `manifest.json` for an uploader to read: within one
+  // directory the rename is atomic, while a direct copy can stop halfway.
   if (!manifestPresent) {
-    fs.copyFileSync(rejectedPath, manifestPath);
+    const restorePath = path.join(directory, `.manifest.json.${process.pid}.restore`);
+    try {
+      fs.copyFileSync(rejectedPath, restorePath);
+      fs.renameSync(restorePath, manifestPath);
+    } catch (error) {
+      fs.rmSync(restorePath, { force: true });
+      throw new Error(
+        `could not restore the quarantined manifest from ${rejectedPath} to ${manifestPath} ` +
+          `(${error instanceof Error ? error.message : String(error)}); the quarantine is left in ` +
+          `place, so the publish gate still refuses the artifact`,
+      );
+    }
     console.log(`[sites-stamp] restored the quarantined manifest so it can be re-audited`);
   }
   if (identity.dirty) {

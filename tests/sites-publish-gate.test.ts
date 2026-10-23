@@ -528,6 +528,14 @@ describe("Sites stamp command", () => {
     expect(result.status).toBe(0);
     expect(fs.existsSync(path.join(directory, "build-identity.json"))).toBe(true);
     expect(fs.existsSync(path.join(directory, "manifest.json"))).toBe(true);
+    // The rename publishes the complete copy: identical bytes, no temporary left
+    // beside the manifest.
+    expect(fs.readFileSync(path.join(directory, "manifest.json"), "utf8")).toBe(
+      fs.readFileSync(path.join(directory, "manifest.rejected.json"), "utf8"),
+    );
+    expect(
+      fs.readdirSync(directory).filter((name) => name.startsWith(".manifest.json")),
+    ).toEqual([]);
     // The stamp is written before the quarantine is released.
     expect(result.stdout.indexOf("build-identity.json")).toBeGreaterThan(-1);
     expect(result.stdout.indexOf("build-identity.json")).toBeLessThan(
@@ -552,5 +560,72 @@ describe("Sites stamp command", () => {
     expect(fs.existsSync(path.join(directory, "manifest.rejected.json"))).toBe(true);
     expect(fs.existsSync(path.join(directory, "build-identity.json"))).toBe(false);
     expect(result.stderr).toContain("quarantined manifest is left at");
+  });
+
+  it("keeps the quarantine when the stamp itself cannot be written", () => {
+    const repository = makeRepository();
+    const directory = makeArtifact({}, null);
+    fs.renameSync(
+      path.join(directory, "manifest.json"),
+      path.join(directory, "manifest.rejected.json"),
+    );
+    // The identity resolves, then the stamp write fails: a directory occupies
+    // the stamp path. This is the case the old order got wrong — it restored
+    // the manifest first, so an unwritable stamp still handed the uploader a
+    // manifest and undid the refusal.
+    fs.mkdirSync(path.join(directory, "build-identity.json"));
+
+    const result = runStamp(directory, repository);
+
+    expect(result.status).toBe(2);
+    expect(result.stderr).toContain("build-identity.json");
+    expect(fs.existsSync(path.join(directory, "manifest.json"))).toBe(false);
+    expect(fs.existsSync(path.join(directory, "manifest.rejected.json"))).toBe(true);
+    // The failed restore path never ran, and left no temporary beside it.
+    expect(
+      fs.readdirSync(directory).filter((name) => name.startsWith(".manifest.json")),
+    ).toEqual([]);
+  });
+
+  it("leaves no manifest when the quarantine release fails", () => {
+    const repository = makeRepository();
+    const directory = makeArtifact({}, null);
+    const rejectedPath = path.join(directory, "manifest.rejected.json");
+    fs.renameSync(path.join(directory, "manifest.json"), rejectedPath);
+    // The stamp succeeds; the restore cannot read its source. A direct copy
+    // could leave a truncated `manifest.json` here, which an uploader would read
+    // while this command exits 2. The temporary-then-rename release must leave
+    // no manifest at all and clean up after itself.
+    fs.chmodSync(rejectedPath, 0o000);
+
+    try {
+      const result = runStamp(directory, repository);
+
+      expect(result.status).toBe(2);
+      expect(result.stderr).toContain("could not restore the quarantined manifest");
+      expect(fs.existsSync(path.join(directory, "manifest.json"))).toBe(false);
+      expect(fs.existsSync(rejectedPath)).toBe(true);
+      expect(fs.existsSync(path.join(directory, "build-identity.json"))).toBe(true);
+      expect(
+        fs.readdirSync(directory).filter((name) => name.startsWith(".manifest.json")),
+      ).toEqual([]);
+    } finally {
+      fs.chmodSync(rejectedPath, 0o600);
+    }
+  });
+
+  it("releases the quarantine through a sibling rename, not a direct copy", () => {
+    const source = fs.readFileSync(
+      path.join(process.cwd(), "scripts", "stamp-sites-build.mjs"),
+      "utf8",
+    );
+    const copyToTemporary = source.indexOf("fs.copyFileSync(rejectedPath, restorePath)");
+    const rename = source.indexOf("fs.renameSync(restorePath, manifestPath)");
+
+    expect(copyToTemporary).toBeGreaterThan(-1);
+    expect(rename).toBeGreaterThan(copyToTemporary);
+    // The defect this pins: releasing the quarantine with a direct copy could
+    // stop halfway and leave a publishable, truncated manifest.
+    expect(source).not.toContain("fs.copyFileSync(rejectedPath, manifestPath)");
   });
 });
