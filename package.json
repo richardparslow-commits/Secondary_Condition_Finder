@@ -57,6 +57,7 @@
     "audit:high:all": "npm audit --audit-level=high",
     "audit:disposition": "node scripts/audit-dependency-disposition.mjs",
     "audit:disposition:registry": "node scripts/audit-dependency-disposition.mjs --check-registry",
+    "audit:dependabot": "node scripts/reconcile-dependabot-alerts.mjs",
     "audit:crg": "node scripts/audit-crg-graph.js",
     "audit:crg:graph": "node --no-warnings scripts/audit-crg.ts",
     "audit:traces": "node scripts/audit-artifact-traces.mjs",
