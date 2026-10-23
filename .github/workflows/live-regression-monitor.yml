@@ -90,9 +90,10 @@ jobs:
           awk '/^## Live regression monitor/{buf=""} {buf=buf $0 "\n"} END{print buf}' monitor.log >> "$GITHUB_STEP_SUMMARY"
       - name: Upload monitor artifacts
         if: always()
-        # TODO: pin to a SHA like the other actions once the monitor is adopted into
-        # the release routine; referenced by major tag until then.
-        uses: actions/upload-artifact@v4
+        # Pinned like every other action here: this workflow is active on a daily
+        # schedule, and a force-updated major tag must not be able to change what
+        # an evidence-producing job executes.
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: live-regression-monitor-${{ github.run_id }}
           path: |
