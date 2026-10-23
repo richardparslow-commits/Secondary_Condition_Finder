@@ -71,6 +71,8 @@ import zlib from "node:zlib";
 
 import { chromium } from "playwright";
 
+import { sampleRssWhileRunning } from "../scripts/lib/rss-sampler.mjs";
+
 const APP_PORT = Number(process.env.HOSTILE_E2E_APP_PORT ?? 3402);
 const APP_BASE_URL = `http://127.0.0.1:${APP_PORT}`;
 const ROUTE = "/presumptive";
@@ -523,42 +525,18 @@ function browserRssBytes() {
 /**
  * Sample RSS while `run` executes, keeping the peak over the whole operation.
  *
- * A single before/after pair would miss the peak: Tesseract frees its image
- * buffers between pages and the renderer returns canvases to the pool, so RSS
- * can fall back before the run ends. The peak is therefore updated on *every*
- * sample, for as long as the run lasts, while only a bounded history is written
- * to the evidence. The retained history is not a substitute for the peak (it
- * stops growing at `RSS_SAMPLE_LIMIT`), which is why the two are returned
- * separately; when the cap is reached, the newest sample that exceeds the
- * retained maximum replaces the last entry, so the recorded list still contains
- * the peak it is presented beside.
+ * The loop itself lives in `scripts/lib/rss-sampler.mjs` so the peak-over-
+ * retention behaviour can be unit-tested without booting a browser; this
+ * wrapper supplies the only measurement this harness accepts — the browser
+ * process tree it launched — and the harness's own interval and cap.
  */
 async function withRssSamples(run) {
-  const samples = [];
-  let sampleCount = 0;
-  let peak = null;
-  let stopping = false;
-  const sampler = (async () => {
-    while (!stopping) {
-      const sample = browserRssBytes();
-      if (sample !== null) {
-        sampleCount += 1;
-        if (peak === null || sample > peak) peak = sample;
-        if (samples.length < RSS_SAMPLE_LIMIT) {
-          samples.push(sample);
-        } else if (sample >= Math.max(...samples)) {
-          samples[samples.length - 1] = sample;
-        }
-      }
-      await delay(RSS_SAMPLE_INTERVAL_MS);
-    }
-  })();
-  try {
-    return { result: await run(), samples, sampleCount, peak };
-  } finally {
-    stopping = true;
-    await sampler;
-  }
+  return sampleRssWhileRunning({
+    run,
+    sample: browserRssBytes,
+    intervalMs: RSS_SAMPLE_INTERVAL_MS,
+    retainLimit: RSS_SAMPLE_LIMIT,
+  });
 }
 
 async function statusText(page) {

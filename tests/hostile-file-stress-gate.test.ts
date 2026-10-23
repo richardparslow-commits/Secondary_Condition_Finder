@@ -7,6 +7,10 @@ const script = fs.readFileSync(
   path.join(process.cwd(), "e2e", "hostile-file-stress.mjs"),
   "utf8",
 );
+const sampler = fs.readFileSync(
+  path.join(process.cwd(), "scripts", "lib", "rss-sampler.mjs"),
+  "utf8",
+);
 
 /**
  * REL-05's closing evidence is a real-browser hostile-file run, not another
@@ -102,19 +106,20 @@ describe("REL-05 hostile-file browser stress harness", () => {
     expect(script).toContain("BROWSER_COMMAND_PATTERN");
     expect(script).toContain("const seen = new Set([process.pid])");
     // Peak, not before/after, because OCR frees buffers between pages.
-    expect(script).toContain("if (peak === null || sample > peak) peak = sample");
     expect(script).toContain("const peakRss = sampledPeak");
-    // The peak is taken from every sample for the whole run, while the evidence
-    // history is capped: a 4-minute scan is ~960 samples at 250 ms, so a cap
-    // that also stopped observing would end after ~100 s and miss the
-    // high-memory phase on a slow host. The retained list keeps the peak too.
-    expect(script).toContain("sampleCount += 1");
-    expect(script).toContain("samples[samples.length - 1] = sample");
     expect(script).toContain("rssSampleCount: sampleCount");
+    // The sampling loop lives in a browser-free module so its peak-over-
+    // retention behaviour is proven by a unit test (tests/rss-sampler.test.ts)
+    // rather than only pinned as source order. The harness must still delegate
+    // with its own interval, cap and the process tree it launched.
+    expect(script).toContain("sampleRssWhileRunning({");
+    expect(script).toContain("sample: browserRssBytes");
+    expect(script).toContain("intervalMs: RSS_SAMPLE_INTERVAL_MS");
+    expect(script).toContain("retainLimit: RSS_SAMPLE_LIMIT");
     // The defect this pins: the peak used to be updated only inside the cap
     // check, so it silently stopped moving when the history filled up.
-    const peakUpdate = script.indexOf("if (peak === null || sample > peak) peak = sample");
-    const retentionCap = script.indexOf("samples.length < RSS_SAMPLE_LIMIT");
+    const peakUpdate = sampler.indexOf("if (peak === null || value > peak) peak = value");
+    const retentionCap = sampler.indexOf("samples.length < retainLimit");
     expect(peakUpdate).toBeGreaterThan(-1);
     expect(peakUpdate).toBeLessThan(retentionCap);
     // Unmeasurable must not read as "no pressure".
