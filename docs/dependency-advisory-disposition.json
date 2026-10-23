@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "policy": "Every advisory npm reports for this repository's dependency tree must be classified here: what it affects, whether it ships, whether a patched release exists, how hostile input would have to reach it, and what is reviewed on a schedule. `npm run audit:disposition` fails on an unclassified advisory (new debt), on a record that no longer matches the tree (drift, a resolved advisory, a moved version), on a patched release that exists but has not been taken (the upgrade must land instead of being tracked), and on a review window that has expired. Severity enforcement for production dependencies stays with `npm run audit:high`; this register governs inventory completeness, classification and freshness.",
+  "policy": "Every advisory npm reports for this repository's dependency tree must be classified here: what it affects, whether it ships, whether a patched release exists, how hostile input would have to reach it, and what is reviewed on a schedule. `npm run audit:disposition` fails on an unclassified advisory (new debt), on a record that no longer matches the tree (drift, a resolved advisory, a moved version), on a patched release that exists but has not been taken (the upgrade must land instead of being tracked), and on a review window that has expired. An advisory the advisory database withdraws may stay recorded as `withdrawn-upstream` with the date and evidence of the withdrawal; the gate then requires that advisory to be absent from the audit and fails if it is reported again, because a withdrawal that stopped holding is live debt. Severity enforcement for production dependencies stays with `npm run audit:high`; this register governs inventory completeness, classification and freshness. The scheduled registry re-check (`npm run audit:disposition:registry`) also reads each live entry's withdrawal state, because a withdrawal makes the audit stop reporting an advisory and would otherwise surface as unnamed drift on a later gated run.",
   "reviewWindowDays": 180,
   "owner": "Richard Parslow (`richardparslow-commits`)",
   "authority": "SECURITY.md, `## Supported Code` (the dependency-audit and advisory paragraph) — the published owner policy that a dev-only advisory with no patched release stays tracked and visible rather than waived, and that `npm audit fix --force` into an older major line is never the resolution. This register records that policy per advisory, with the reachability evidence each entry rests on; it does not create a new risk acceptance.",
@@ -45,7 +45,8 @@
       "reproduction": [
         "npm run audit:high:all   # reports the five-entry chain; braces carries the advisory",
         "npm view braces version  # 3.0.3 — the installed version is the newest published release",
-        "curl -s https://api.github.com/advisories/GHSA-vfj7-8cjw-p6xm | grep -i patched   # first_patched_version is absent"
+        "curl -s https://api.github.com/advisories/GHSA-vfj7-8cjw-p6xm | grep -i patched   # first_patched_version is absent",
+        "curl -s https://api.github.com/advisories/GHSA-vfj7-8cjw-p6xm | grep withdrawn_at   # no output when re-checked on 2026-10-22 — still a live advisory"
       ],
       "reviewedAt": "2026-10-14"
     },
@@ -56,7 +57,9 @@
       "severity": "moderate",
       "advisoryRange": "<=1.1.3",
       "patchedVersion": null,
-      "disposition": "tracked-no-fix",
+      "disposition": "withdrawn-upstream",
+      "withdrawnAt": "2026-10-22",
+      "withdrawnEvidence": "curl -s https://api.github.com/advisories/GHSA-hp3w-g68c-fv3c | grep withdrawn_at   # 2026-10-22T19:21:04Z; the same advisory is absent from `npm audit --json` while sprintf-js@1.0.3 and mammoth@1.12.2 remain installed, so this is a registry withdrawal, not a resolved package",
       "ships": "runtime",
       "affectedPackages": [
         "argparse",
@@ -84,7 +87,7 @@
           ]
         }
       ],
-      "reachability": "The vulnerable function is reached only through `argparse`'s own error-message formatting, and `argparse` is required in exactly one place in the installed tree: `mammoth/bin/mammoth`, the package's CLI entry point. The library path is clean — none of the 82 files under `node_modules/mammoth/lib` references `argparse` or `sprintf-js`. This application imports the library (`await import(\"mammoth\")` then `mammoth.extractRawText({ arrayBuffer })`, `src/lib/evidence/document-extract.ts`) and contains no `child_process` use anywhere in `src/`, so it never executes that CLI and never supplies an argument vector or format string. The module is present on disk because npm installs a dependency's `bin` requirements alongside its library, not because the application loads it: it is outside the application's import graph, and no request, document, or VA payload reaches it. The installed `sprintf-js@1.0.3` is not the newest release (1.1.3 exists) but the advisory covers every published version, `<=1.1.3`.",
+      "reachability": "Withdrawn upstream on 2026-10-22 (advisory published 2026-09-24): the advisory database no longer lists it as a vulnerability, and `npm audit` stopped reporting it while the affected packages stayed installed. This entry is kept as the dated historical record of why the installed runtime chain was tolerated, not as an active risk; the gate fails if the advisory is reported again. Historically: the vulnerable function was reached only through `argparse`'s own error-message formatting, and `argparse` is required in exactly one place in the installed tree: `mammoth/bin/mammoth`, the package's CLI entry point. The library path is clean — none of the 82 files under `node_modules/mammoth/lib` references `argparse` or `sprintf-js`. This application imports the library (`await import(\"mammoth\")` then `mammoth.extractRawText({ arrayBuffer })`, `src/lib/evidence/document-extract.ts`) and contains no `child_process` use anywhere in `src/`, so it never executes that CLI and never supplies an argument vector or format string. The module is present on disk because npm installs a dependency's `bin` requirements alongside its library, not because the application loads it: it is outside the application's import graph, and no request, document, or VA payload reaches it. The installed `sprintf-js@1.0.3` is not the newest release (1.1.3 exists) but the advisory covers every published version, `<=1.1.3`.",
       "compensatingControls": [
         "Not in the application's import graph: the only requirer of `argparse` is `node_modules/mammoth/bin/mammoth`, an entry point the application never invokes.",
         "`src/` contains no `child_process`/`execFile`/`spawn` call, pinned by `tests/dependency-advisory-disposition.test.ts`, so no code path can run that CLI.",
@@ -97,9 +100,10 @@
         "node -e 'const fs=require(\"fs\"),p=require(\"path\");let hits=0;for(const f of fs.readdirSync(\"node_modules/mammoth/lib\",{recursive:true})){const s=path.join(\"node_modules/mammoth/lib\",f);if(fs.statSync(s).isFile()&&/\\.js$/.test(f)&&/argparse|sprintf/.test(fs.readFileSync(s,\"utf8\")))hits++;}console.log(\"lib files referencing argparse/sprintf:\",hits);'   # 0",
         "grep -rn 'child_process\\|execFile\\|spawn(' src/   # no matches",
         "npm view mammoth@1.13.0 dependencies --json   # argparse ~1.0.3 — the newest release keeps the chain",
-        "curl -s https://api.github.com/advisories/GHSA-hp3w-g68c-fv3c | grep -i patched   # first_patched_version is absent"
+        "curl -s https://api.github.com/advisories/GHSA-hp3w-g68c-fv3c | grep -i patched   # first_patched_version is absent",
+        "curl -s https://api.github.com/advisories/GHSA-hp3w-g68c-fv3c | grep withdrawn_at   # 2026-10-22T19:21:04Z — re-check this before reusing the record"
       ],
-      "reviewedAt": "2026-10-14"
+      "reviewedAt": "2026-10-22"
     }
   ]
 }

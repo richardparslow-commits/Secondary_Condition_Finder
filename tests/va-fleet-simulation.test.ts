@@ -27,10 +27,12 @@ import { createFakeSharedKv } from "./helpers/fake-shared-kv";
 import {
   FLEET_SCENARIO_BUDGETS_MS,
   FLEET_SCENARIO_KEYS,
+  FLEET_SCENARIO_NEAR_LIMIT_RATIO,
   formatScenarioBudgetLine,
+  recordScenarioMeasurement,
   scenarioBudgetFailure,
 } from "./helpers/fleet-scenario-budgets";
-import type { FleetScenario } from "./helpers/fleet-scenario-budgets";
+import type { FleetScenario, FleetScenarioMeasurement } from "./helpers/fleet-scenario-budgets";
 
 /**
  * Multi-instance fleet simulation: every "instance" gets its own module
@@ -253,7 +255,12 @@ function realElapsedMs(startedAt: bigint): number {
  * clock saved above so scenarios that advance simulated time are still timed by
  * real wall clock.
  */
-async function enforceScenarioBudget<T>(scenario: string, budgetMs: number, body: () => Promise<T>): Promise<T> {
+async function enforceScenarioBudget<T>(
+  scenario: string,
+  budgetMs: number,
+  body: () => Promise<T>,
+  onMeasured?: (measurement: FleetScenarioMeasurement) => void,
+): Promise<T> {
   const startedAt = realHrtime();
   let outcome: { ok: true; value: T } | { ok: false; error: unknown };
   try {
@@ -265,6 +272,12 @@ async function enforceScenarioBudget<T>(scenario: string, budgetMs: number, body
   // Print before deciding, so an over-budget path still shows its measurement
   // in the gate log beside the failure that names it.
   console.log(formatScenarioBudgetLine(scenario, elapsedMs, budgetMs));
+  onMeasured?.({
+    scenario,
+    elapsedMs: Math.round(elapsedMs),
+    budgetMs,
+    nearLimit: elapsedMs / budgetMs >= FLEET_SCENARIO_NEAR_LIMIT_RATIO,
+  });
   const failure = scenarioBudgetFailure(scenario, elapsedMs, budgetMs);
   if (!outcome.ok) throw outcome.error; // Preserve the original failure over the bound message.
   if (failure) throw new Error(failure);
@@ -274,7 +287,15 @@ async function enforceScenarioBudget<T>(scenario: string, budgetMs: number, body
 /** Runs one scenario under its committed real-time bound. */
 async function withinScenarioBudget<T>(scenario: FleetScenario, body: () => Promise<T>): Promise<T> {
   observedScenarios.add(scenario);
-  return enforceScenarioBudget(scenario, FLEET_SCENARIO_BUDGETS_MS[scenario], body);
+  return enforceScenarioBudget(
+    scenario,
+    FLEET_SCENARIO_BUDGETS_MS[scenario],
+    body,
+    // Reported so the gate's PASS line can name the path closest to its bound;
+    // the synthetic self-checks above deliberately omit this and stay out of
+    // the report.
+    recordScenarioMeasurement,
+  );
 }
 
 /**

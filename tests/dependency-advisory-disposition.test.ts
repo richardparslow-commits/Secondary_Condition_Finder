@@ -13,16 +13,22 @@ import {
   patchedVersionFromOsv,
   resolveRegistryPatches,
   validateDispositionRegister,
+  withdrawnAtFromOsv,
 } from "../scripts/lib/dependency-advisory-disposition.mjs";
 
 /**
  * A10 (audit issue list, item 25): "track a compatible patched dependency path
  * or an explicit evidence-based tooling risk disposition."
  *
- * No patched path exists to track. `braces` is affected across its entire
- * published range (`introduced: 0` … `last_affected: 3.0.3`, and 3.0.3 *is* the
- * newest release) and `sprintf-js` likewise (`… last_affected: 1.1.3`, the
- * newest release); npm's proposed resolution is `npm audit fix --force`, which
+ * No patched path exists to track for `braces`, which is affected across its
+ * entire published range (`introduced: 0` … `last_affected: 3.0.3`, and 3.0.3
+ * *is* the newest release). The second entry is different as of 2026-10-22: the
+ * `sprintf-js` advisory (`GHSA-hp3w-g68c-fv3c`) was **withdrawn upstream**, so
+ * the register keeps it as a dated `withdrawn-upstream` record whose claim is
+ * that the audit does *not* report it. That state is checked in the opposite
+ * direction from live debt — reported again means the withdrawal did not hold —
+ * so a withdrawal cannot be used as a way to park an advisory. npm's proposed
+ * resolution for the live entry is `npm audit fix --force`, which
  * downgrades `eslint-config-next` from 16.3.8 to 14.2.35 — two major lines back,
  * and exactly what SECURITY.md forbids. So the disposition branch is the one that
  * has to be honest, and honesty that is only prose rots. This suite is what keeps
@@ -64,6 +70,8 @@ type DispositionEntry = {
   advisoryRange: string;
   patchedVersion: string | null;
   disposition: string;
+  withdrawnAt?: string;
+  withdrawnEvidence?: string;
   ships: string;
   affectedPackages: string[];
   paths: DispositionPath[];
@@ -339,6 +347,43 @@ describe("A10 dependency advisory disposition — the policy fails closed", () =
     expect(codes(result)).not.toContain(DISPOSITION_FAILURE.UNREGISTERED);
   });
 
+  it("passes an advisory the registry withdrew and the audit no longer reports", () => {
+    // The claim a withdrawn entry makes is an absence. It is accepted only when
+    // that absence is real, and it is not chased by the active-risk checks: an
+    // old review date on a risk that no longer exists is not staleness.
+    const register = baselineRegister({
+      entries: [
+        baselineEntry({
+          disposition: "withdrawn-upstream",
+          withdrawnAt: "2026-10-22",
+          withdrawnEvidence: "curl -s https://api.github.com/advisories/GHSA-abcd-efgh-ijkl | grep withdrawn_at",
+          reviewedAt: daysAgo(400),
+        }),
+      ],
+    });
+    const result = evaluate({ register, report: linearChainReport([]) });
+    expect(result.failures).toEqual([]);
+    expect(result.notes.join(" ")).toContain("recorded as withdrawn upstream (2026-10-22)");
+  });
+
+  it("fails when a withdrawn advisory is reported again", () => {
+    // A withdrawal that stopped holding is live debt, and the entry cannot sit
+    // in the withdrawn state to avoid the checks a live entry would face.
+    const register = baselineRegister({
+      entries: [
+        baselineEntry({
+          disposition: "withdrawn-upstream",
+          withdrawnAt: "2026-10-22",
+          withdrawnEvidence: "curl -s https://api.github.com/advisories/GHSA-abcd-efgh-ijkl | grep withdrawn_at",
+        }),
+      ],
+    });
+    const result = evaluate({ register });
+    expect(codes(result)).toEqual([DISPOSITION_FAILURE.WITHDRAWN_REPORTED]);
+    expect(result.failures[0].detail).toContain("withdrawn upstream on 2026-10-22");
+    expect(result.failures[0].detail).toContain("reports it again");
+  });
+
   it("fails when the reported severity changes", () => {
     const report = linearChainReport([{ ...BASELINE, severity: "critical" }]);
     expect(codes(evaluate({ report }))).toEqual([DISPOSITION_FAILURE.SEVERITY_DRIFT]);
@@ -463,6 +508,29 @@ describe("A10 dependency advisory disposition — register shape is validated", 
       (register) => register.entries.push(baselineEntry()),
       "is duplicated",
     ],
+    [
+      "a withdrawn entry with no withdrawal date",
+      (register) => {
+        register.entries[0].disposition = "withdrawn-upstream";
+        register.entries[0].withdrawnEvidence = "checked against the advisory API";
+      },
+      "withdrawnAt must be an ISO date",
+    ],
+    [
+      "a withdrawn entry with no evidence",
+      (register) => {
+        register.entries[0].disposition = "withdrawn-upstream";
+        register.entries[0].withdrawnAt = "2026-10-22";
+      },
+      "withdrawnEvidence must record how the withdrawal was checked",
+    ],
+    [
+      "a live entry claiming a withdrawal",
+      (register) => {
+        register.entries[0].withdrawnAt = "2026-10-22";
+      },
+      "only apply to a withdrawn-upstream entry",
+    ],
   ];
 
   for (const [label, mutate, expected] of malformed) {
@@ -533,6 +601,30 @@ describe("A10 dependency advisory disposition — registry lookups fail closed",
     expect(resolved.failures).toEqual([]);
     expect(resolved.patches.get("GHSA-abcd-efgh-ijkl")).toBeNull();
   });
+
+  it("reads the withdrawal timestamp out of an OSV document", () => {
+    expect(withdrawnAtFromOsv({ withdrawn: "2026-10-22T19:21:04Z" })).toBe("2026-10-22T19:21:04Z");
+    // A live advisory's document has no `withdrawn` field at all, and OSV still
+    // answers 200 for a withdrawn one — so the body, not the status, decides.
+    expect(withdrawnAtFromOsv({ affected: [] })).toBeNull();
+  });
+
+  it("names a withdrawal on a live entry instead of reading it as 'no patch'", async () => {
+    const resolved = await resolveRegistryPatches(["GHSA-vfj7-8cjw-p6xm"], () => ({
+      patchedVersion: null,
+      withdrawnAt: "2026-10-22T19:21:04Z",
+    }));
+    expect(resolved.failures).toEqual([
+      {
+        code: DISPOSITION_FAILURE.REGISTRY_WITHDRAWN,
+        detail: expect.stringContaining("withdrawn-upstream"),
+      },
+    ]);
+    expect(resolved.failures[0].detail).toContain("2026-10-22T19:21:04Z");
+    // A withdrawn advisory has no repair answer, so it must not enter the patch
+    // map — otherwise the gate would also report a patch that does not exist.
+    expect(resolved.patches.has("GHSA-vfj7-8cjw-p6xm")).toBe(false);
+  });
 });
 
 describe("A10 dependency advisory disposition — the real register matches the tree", () => {
@@ -543,12 +635,22 @@ describe("A10 dependency advisory disposition — the real register matches the 
   it("classifies exactly the advisories npm reports for this tree", () => {
     const result = evaluateDependencyDisposition({ report, register, lockfile });
     expect(result.failures).toEqual([]);
-    const ids = advisoriesFromAuditReport(report).map((advisory) => advisory.id);
-    expect(ids.sort()).toEqual([
-      "GHSA-hp3w-g68c-fv3c",
-      "GHSA-vfj7-8cjw-p6xm",
-    ]);
-    expect(register.entries.map((entry) => entry.advisory).sort()).toEqual(ids.sort());
+    const reportedIds = advisoriesFromAuditReport(report)
+      .map((advisory) => advisory.id)
+      .sort();
+    // One live chain is reported; the second entry is the withdrawn record,
+    // and it is exactly the advisory the refreshed capture no longer contains.
+    expect(reportedIds).toEqual(["GHSA-vfj7-8cjw-p6xm"]);
+    const activeIds = register.entries
+      .filter((entry) => entry.disposition !== "withdrawn-upstream")
+      .map((entry) => entry.advisory)
+      .sort();
+    expect(activeIds).toEqual(reportedIds);
+    expect(
+      register.entries
+        .filter((entry) => entry.disposition === "withdrawn-upstream")
+        .map((entry) => entry.advisory),
+    ).toEqual(["GHSA-hp3w-g68c-fv3c"]);
   });
 
   it("keeps the captured report's own counts consistent with its entries", () => {
@@ -559,20 +661,31 @@ describe("A10 dependency advisory disposition — the real register matches the 
     }, {});
     expect(report.auditReportVersion).toBe(2);
     expect(report.metadata.vulnerabilities.high).toBe(counted.high);
-    expect(report.metadata.vulnerabilities.moderate).toBe(counted.moderate);
-    // Five high entries are one advisory chain (braces → … → eslint-config-next)
-    // and three moderate entries are one (sprintf-js → argparse → mammoth).
+    expect(report.metadata.vulnerabilities.moderate ?? 0).toBe(counted.moderate ?? 0);
+    // Five high entries are one advisory chain (braces → … → eslint-config-next).
+    // The three moderate entries that formed the sprintf-js chain are absent:
+    // that advisory was withdrawn upstream on 2026-10-22, and a captured report
+    // taken after the withdrawal must not keep asserting it.
     expect(counted.high).toBe(5);
-    expect(counted.moderate).toBe(3);
+    expect(counted.moderate ?? 0).toBe(0);
+    expect(Object.values(counted).reduce((total, value) => total + value, 0)).toBe(5);
+    expect(report.metadata.vulnerabilities.total).toBe(5);
   });
 
-  it("records every entry as tracked with no patched version", () => {
+  it("records a dated state and no patched version on every entry", () => {
     for (const entry of register.entries) {
-      expect(entry.disposition, entry.advisory).toBe("tracked-no-fix");
       expect(entry.patchedVersion, entry.advisory).toBeNull();
       expect(entry.reviewedAt, entry.advisory).toMatch(/^\d{4}-\d{2}-\d{2}$/);
       expect(entry.compensatingControls.length, entry.advisory).toBeGreaterThan(0);
       expect(entry.reproduction.length, entry.advisory).toBeGreaterThan(0);
+      if (entry.disposition === "withdrawn-upstream") {
+        // The withdrawal is a checked fact with a date and a way to re-check it,
+        // not a label that can be applied to silence a live advisory.
+        expect(entry.withdrawnAt, entry.advisory).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+        expect(entry.withdrawnEvidence, entry.advisory).toContain("withdrawn_at");
+      } else {
+        expect(entry.disposition, entry.advisory).toBe("tracked-no-fix");
+      }
     }
   });
 
@@ -617,6 +730,13 @@ describe("A10 dependency advisory disposition — the real register matches the 
       (candidate) => candidate.advisory === "GHSA-hp3w-g68c-fv3c",
     )!;
     expect(entry.ships).toBe("runtime");
+    // The production tree still contains the chain; what changed is the
+    // advisory's status upstream, which is why this is a dated record rather
+    // than live debt.
+    expect(entry.disposition).toBe("withdrawn-upstream");
+    expect(
+      advisoriesFromAuditReport(report).map((advisory) => advisory.id),
+    ).not.toContain("GHSA-hp3w-g68c-fv3c");
     // mammoth is a runtime dependency that ships a CLI; its `bin` is what pulls
     // argparse (and thus sprintf-js) into the tree the library path never loads.
     expect(lockfile.packages["node_modules/mammoth"].bin).toEqual({ mammoth: "bin/mammoth" });
@@ -691,6 +811,17 @@ describe("A10 dependency advisory disposition — the CLI behaves as the gate", 
       };
     }
   }
+
+  it("does not ask the advisory database about a withdrawn entry", () => {
+    // OSV has no document for a withdrawn advisory, so looking it up would fail
+    // closed on a record that is correct. The scheduled registry re-check must
+    // skip it; live entries are still looked up.
+    const cli = read(CLI);
+    expect(cli).toContain('entry?.disposition !== "withdrawn-upstream"');
+    const skip = cli.indexOf('entry?.disposition !== "withdrawn-upstream"');
+    expect(skip).toBeGreaterThan(-1);
+    expect(skip).toBeLessThan(cli.indexOf("resolveRegistryPatches(ids, lookupOsv)"));
+  });
 
   it("passes on the real register and reports machine-readable output", () => {
     const result = runCli(`--report=${REPORT_FIXTURE}`, "--json");

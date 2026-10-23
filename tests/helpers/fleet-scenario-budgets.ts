@@ -1,3 +1,5 @@
+import { appendFileSync } from "node:fs";
+
 /**
  * Per-scenario wall-clock bounds for the VA fleet simulation.
  *
@@ -45,6 +47,44 @@ export const FLEET_SCENARIO_KEYS = Object.keys(FLEET_SCENARIO_BUDGETS_MS) as Fle
  * path that has drifted to within a rounding error of the limit.
  */
 export const FLEET_SCENARIO_NEAR_LIMIT_RATIO = 0.75;
+
+/**
+ * Where `scripts/run-fleet-simulation.mjs` asks the suite to write its
+ * per-scenario measurements. The gate reads the file after the suite exits so
+ * its PASS line can name the path closest to its bound; unset, nothing is
+ * written and the suite behaves exactly as before.
+ */
+export const FLEET_SCENARIO_REPORT_ENV = "FLEET_SCENARIO_REPORT_PATH";
+
+export interface FleetScenarioMeasurement {
+  scenario: string;
+  elapsedMs: number;
+  budgetMs: number;
+  nearLimit: boolean;
+}
+
+/**
+ * Append one real measurement to the gate's report (JSON Lines).
+ *
+ * Only the bounded scenarios record here: the synthetic self-checks in the
+ * suite deliberately overrun tiny budgets to prove the enforcement path, and
+ * those lines must not compete for "closest to its bound" in the gate's
+ * summary. A write failure is reported loudly but does not fail the suite — the
+ * gate then fails closed on the missing report, which is the honest outcome.
+ */
+export function recordScenarioMeasurement(measurement: FleetScenarioMeasurement): void {
+  const target = process.env[FLEET_SCENARIO_REPORT_ENV]?.trim();
+  if (!target) return;
+  try {
+    appendFileSync(target, `${JSON.stringify(measurement)}\n`, "utf8");
+  } catch (error) {
+    console.error(
+      `[fleet] WARNING: could not report the ${measurement.scenario} measurement to ${target} ` +
+        `(${error instanceof Error ? error.message : String(error)}); the gate cannot name the ` +
+        `tightest path without it.`,
+    );
+  }
+}
 
 /**
  * One line per scenario, printed by the gate's shared enforcement path so every

@@ -267,7 +267,7 @@ ${data}
 (function () {
   "use strict";
   var DATA = JSON.parse(document.getElementById("dashboard-data").textContent);
-  var STORE_KEY = "citation-verification-decisions-v1";
+  var STORE_KEY = "citation-verification-decisions-v1"; // gitleaks:allow (localStorage key name, not a credential)
   var state = {};
   try { state = JSON.parse(localStorage.getItem(STORE_KEY) || "{}"); } catch (e) { state = {}; }
 

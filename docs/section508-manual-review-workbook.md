@@ -6,6 +6,8 @@ Use this workbook to record the human accessibility evidence required by issue #
 
 This workbook is an evidence-recording aid, not a certification. Automated CI, browser E2E, production runtime checks, and source-level accessibility assertions are supporting evidence only and must not be copied into the manual-result columns as substitutes for human testing.
 
+Before the session, read [the session preparation pack](section508-session-preparation-pack.md). It turns each row below into a procedure and records what automation has already measured, so the tester spends the session observing and recording rather than designing the test. It fills no row of this workbook and deliberately decides no result.
+
 ## Test-data rule
 
 Use synthetic/sample conditions and synthetic PDF, DOCX, and text evidence only. Do **not** use a real Veteran's medical records, PII, PHI, service history, claim number, credentials, or other sensitive production data.

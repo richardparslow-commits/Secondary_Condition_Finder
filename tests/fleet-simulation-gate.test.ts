@@ -8,11 +8,14 @@ import { describe, expect, it } from "vitest";
 import {
   deriveBudgetMs,
   formatState,
+  formatTightestPath,
   loadRatchetState,
   parseOverride,
+  readScenarioReport,
   recordObservation,
   resolveBudget,
   resolveEnvironment,
+  selectTightestScenario,
   validateRatchetState,
 } from "../scripts/run-fleet-simulation.mjs";
 import {
@@ -261,6 +264,90 @@ describe("fleet budget ratchet policy", () => {
   });
 });
 
+describe("fleet per-scenario report and PASS summary", () => {
+  it("names the scenario closest to its bound by ratio, not by absolute time", () => {
+    const tightest = selectTightestScenario([
+      // 900 ms of 3,000 is 30%; 700 ms of 1,000 is 70% and is the one to surface.
+      { scenario: "budget-reserve-storm", elapsedMs: 900, budgetMs: 3_000, nearLimit: false },
+      { scenario: "probe-admission", elapsedMs: 700, budgetMs: 1_000, nearLimit: true },
+      { scenario: "single-flight-wait", elapsedMs: 100, budgetMs: 2_500, nearLimit: false },
+    ]);
+
+    expect(tightest?.scenario).toBe("probe-admission");
+    expect(formatTightestPath(tightest)).toBe(
+      "tightest path: probe-admission at 700 ms / 1000 ms (70.0% of bound — NEAR LIMIT)",
+    );
+  });
+
+  it("has no tightest path when nothing was measured", () => {
+    expect(selectTightestScenario([])).toBeNull();
+    expect(selectTightestScenario(undefined)).toBeNull();
+  });
+
+  it("treats an unreadable or malformed report as a failure, never as an empty pass", () => {
+    const missing = readScenarioReport(
+      path.join(os.tmpdir(), `no-such-fleet-report-${process.pid}.jsonl`),
+    );
+    expect(missing.ok).toBe(false);
+
+    const directory = fs.mkdtempSync(path.join(os.tmpdir(), "fleet-report-"));
+    const file = path.join(directory, "report.jsonl");
+
+    fs.writeFileSync(file, "{ not json\n", "utf8");
+    expect(readScenarioReport(file).ok).toBe(false);
+
+    // A line without a bound is not a measurement.
+    fs.writeFileSync(file, `${JSON.stringify({ scenario: "probe-admission" })}\n`, "utf8");
+    expect(readScenarioReport(file).ok).toBe(false);
+
+    fs.writeFileSync(
+      file,
+      `${JSON.stringify({ scenario: "probe-admission", elapsedMs: 10, budgetMs: 1000, nearLimit: false })}\n`,
+      "utf8",
+    );
+    expect(readScenarioReport(file)).toMatchObject({
+      ok: true,
+      measurements: [{ scenario: "probe-admission", elapsedMs: 10, budgetMs: 1000 }],
+    });
+  });
+
+  it("reports every bounded scenario to the gate, and no synthetic self-check", () => {
+    const directory = fs.mkdtempSync(path.join(os.tmpdir(), "fleet-report-run-"));
+    const report = path.join(directory, "report.jsonl");
+
+    const result = runFleetGate({ FLEET_SCENARIO_REPORT_PATH: report });
+
+    expect(result.status).toBe(0);
+    expect(result.stdout).toContain("tightest path:");
+    const reported = fs
+      .readFileSync(report, "utf8")
+      .split("\n")
+      .filter((line) => line.trim().length > 0)
+      .map((line) => JSON.parse(line) as { scenario: string; budgetMs: number });
+    // The suite's self-checks deliberately overrun 5 ms budgets to prove the
+    // enforcement path; they must never compete for "closest to its bound".
+    expect(reported.map((entry) => entry.scenario).sort()).toEqual([...FLEET_SCENARIO_KEYS].sort());
+    for (const entry of reported) {
+      expect(entry.budgetMs, entry.scenario).toBe(
+        FLEET_SCENARIO_BUDGETS_MS[entry.scenario as keyof typeof FLEET_SCENARIO_BUDGETS_MS],
+      );
+    }
+  }, 60_000);
+
+  it("fails the gate when the suite passes but reports no scenario measurements", () => {
+    // A directory that does not exist makes every report write fail, which is
+    // the same state as a writer regression: the suite itself still passes.
+    const unwritable = path.join(os.tmpdir(), `no-such-fleet-dir-${process.pid}`, "report.jsonl");
+
+    const result = runFleetGate({ FLEET_SCENARIO_REPORT_PATH: unwritable });
+
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain("per-scenario measurements could not be read");
+    expect(result.stderr).toContain("tightest path is not the evidence this gate claims");
+    expect(result.stdout).not.toContain("[fleet-gate] PASS");
+  }, 60_000);
+});
+
 describe("fleet budget ratchet state validation", () => {
   const valid: RatchetState = {
     schemaVersion: 1,
@@ -476,9 +563,16 @@ describe("fleet-simulation wall-clock budget", () => {
     );
     expect(logging).toBeGreaterThan(-1);
     // Every bounded test reaches this path through withinScenarioBudget, so no
-    // scenario can be measured without also being printed.
-    expect(suite).toContain("return enforceScenarioBudget(scenario, FLEET_SCENARIO_BUDGETS_MS[scenario], body)");
-    expect(suite.indexOf("if (failure) throw new Error(failure);")).toBeGreaterThan(logging);
+    // scenario can be measured without also being printed *and* reported to the
+    // gate — the PASS-line summary reads the same chokepoint, not a parallel one.
+    expect(suite).toContain("return enforceScenarioBudget(");
+    expect(suite).toContain("FLEET_SCENARIO_BUDGETS_MS[scenario],");
+    expect(suite).toContain("recordScenarioMeasurement,");
+    const reported = suite.indexOf("onMeasured?.({");
+    expect(reported).toBeGreaterThan(logging);
+    // Like the printed line, the measurement is reported before the decision, so
+    // an over-budget path still reaches the gate's summary.
+    expect(suite.indexOf("if (failure) throw new Error(failure);")).toBeGreaterThan(reported);
   });
 
   it("names the overrunning path in the failure message", () => {

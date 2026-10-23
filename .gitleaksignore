@@ -1,0 +1,34 @@
+# Reviewed gitleaks findings, one fingerprint per line
+# (commit:file:rule:line). This file suppresses a finding at a specific commit;
+# it does not exempt a path. A new occurrence of any shape below, in any new
+# commit, is still reported and still fails the scan.
+#
+# Each entry records why the value was not a live credential in the shipped
+# tree, and what changed. Entries are kept after the code is fixed because git
+# history is immutable — deleting one only makes the scan fail again.
+
+# Citation-verification dashboard: the localStorage key NAME for saved review
+# decisions, matched by generic-api-key's entropy heuristic. Not a secret. The
+# current tree marks that one line with a `gitleaks:allow` annotation instead of
+# allowlisting it (see .gitleaks.toml for why an allowlist entry was removed).
+63cebf7752b82f08b5d0cb1469d172f261fa9e38:scripts/generate-citation-verification-dashboard.js:generic-api-key:270
+49050ca4b55553281c951ecc5349b4ae3d018322:docs/citation-verification-dashboard.html:generic-api-key:11175
+
+# Test fixtures: placeholder values shaped like API keys, used to exercise
+# session and treatment parsing. Test-only; never live credentials. Both were
+# later removed from the test sources themselves.
+02201f17d92dfe1e7c373754fbcc5c8ed50da309:tests/symptom-session-roundtrip.test.ts:generic-api-key:19
+cc8a13d6628b7aeee3b7fdb236ba50df89f11d3f:tests/priority2-medication-treatment.test.ts:generic-api-key:21
+
+# Health probe: a fixed, non-secret probe string used only to prove the session
+# cipher round-trips. Replaced on 2026-10-22 with a per-call random value, so the
+# shipped source no longer contains a credential-shaped literal.
+471def964c0ad995ab736c2999ddcf4ba2ccdf54:src/app/api/health/route.ts:generic-api-key:36
+
+# LangSmith project key: a REAL project key committed in an audit document and
+# removed from the tree on 2026-10-22 (the document now carries
+# lsv2_pt_REDACTED). This entry is not a clearance: the key was treated as
+# compromised and rotated the same day (replacement verified, exposed key revoked
+# with 403), recorded in docs/security-operations.md. The fingerprint stays
+# because history is immutable; the recorded revocation is what closes it.
+0e0465d27cceefde82a01d037dd2460475f9d82a:docs/langsmith-correctness-audit-2026-09-13.md:generic-api-key:177

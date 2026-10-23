@@ -25,7 +25,11 @@
  *     advisory severity, a changed set of affected packages, a moved installed
  *     version, a ship classification that no longer matches the lockfile, a
  *     patched release that now exists, or an expired review window all fail —
- *     so the register cannot drift away from the tree it describes.
+ *     so the register cannot drift away from the tree it describes. The one
+ *     state that inverts that direction is `withdrawn-upstream`: an advisory
+ *     the advisory database has withdrawn is expected to be **absent** from the
+ *     audit, so the gate fails if it is reported again rather than waiting for
+ *     a human to notice that the claim stopped holding.
  *
  * Severity enforcement for production dependencies deliberately stays with
  * `npm run audit:high` (`--omit=dev --audit-level=high`). This module governs
@@ -44,6 +48,12 @@ export const DISPOSITION_FAILURE = Object.freeze({
   UNREGISTERED: "unregistered-advisory",
   /** The register classifies an advisory the audit no longer reports. */
   NOT_REPORTED: "registered-advisory-not-reported",
+  /**
+   * The register records an advisory as withdrawn upstream, but the audit
+   * reports it again — the withdrawal either did not stick or was reverted, so
+   * the entry must be re-classified as live debt instead of staying withdrawn.
+   */
+  WITHDRAWN_REPORTED: "withdrawn-advisory-reported",
   /** The advisory's severity in the register is not the reported severity. */
   SEVERITY_DRIFT: "advisory-severity-drift",
   /** The affected package set in the register is not the reported set. */
@@ -60,6 +70,13 @@ export const DISPOSITION_FAILURE = Object.freeze({
   STALE_REVIEW: "review-window-expired",
   /** `--check-registry` could not reach the advisory registry (fail closed). */
   REGISTRY_UNAVAILABLE: "advisory-registry-unavailable",
+  /**
+   * `--check-registry` found that the registry withdrew a live classification.
+   * The audit will stop reporting it, so the entry must be reclassified as
+   * `withdrawn-upstream` with the observed date instead of failing later as
+   * drift under a code that does not name the cause.
+   */
+  REGISTRY_WITHDRAWN: "advisory-withdrawn-upstream",
   /** The audit report could not be read at all. */
   REPORT_UNAVAILABLE: "audit-report-unavailable",
 });
@@ -68,7 +85,15 @@ const ADVISORY_ID = /^GHSA-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}$/;
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 const SEVERITIES = ["low", "moderate", "high", "critical"];
 const SHIP_CLASSES = ["runtime", "dev-tooling"];
-const DISPOSITIONS = ["tracked-no-fix", "upgrade-required"];
+/**
+ * `withdrawn-upstream` is the state for an advisory the advisory database has
+ * withdrawn: it is no longer a reported vulnerability, while the package and the
+ * register's historical reachability evidence remain in the tree. The state is
+ * not a waiver — the gate requires such an entry to be **absent** from the audit
+ * and fails if it is reported again.
+ */
+const DISPOSITIONS = ["tracked-no-fix", "upgrade-required", "withdrawn-upstream"];
+const WITHDRAWN = "withdrawn-upstream";
 const REQUIRED_ENTRY_FIELDS = [
   "advisory",
   "url",
@@ -150,6 +175,20 @@ export function validateDispositionRegister(register) {
     }
     if (!DISPOSITIONS.includes(entry.disposition)) {
       issues.push(`${at}.disposition must be one of ${DISPOSITIONS.join(", ")}`);
+    }
+    if (entry.disposition === WITHDRAWN) {
+      if (!ISO_DATE.test(String(entry.withdrawnAt ?? ""))) {
+        issues.push(`${at}.withdrawnAt must be an ISO date on a withdrawn-upstream entry`);
+      }
+      if (!isNonEmptyString(entry.withdrawnEvidence)) {
+        issues.push(
+          `${at}.withdrawnEvidence must record how the withdrawal was checked on a withdrawn-upstream entry`,
+        );
+      }
+    } else if (entry.withdrawnAt !== undefined || entry.withdrawnEvidence !== undefined) {
+      issues.push(
+        `${at}.withdrawnAt/withdrawnEvidence only apply to a withdrawn-upstream entry — a live classification cannot claim a withdrawal`,
+      );
     }
     if (entry.patchedVersion !== null && !isNonEmptyString(entry.patchedVersion)) {
       issues.push(`${at}.patchedVersion must be null or a version string`);
@@ -339,6 +378,23 @@ export function evaluateDependencyDisposition({
     const at = entry.advisory ?? "(unnamed advisory)";
     const advisory = byId.get(entry.advisory);
 
+    // A withdrawn advisory is expected to be absent from the audit. That is the
+    // claim the entry makes, so it is checked in the opposite direction from a
+    // live classification: reported again means the withdrawal did not hold.
+    if (entry.disposition === WITHDRAWN) {
+      if (advisory) {
+        fail(
+          DISPOSITION_FAILURE.WITHDRAWN_REPORTED,
+          `${at} is recorded as withdrawn upstream on ${entry.withdrawnAt}, but the audit reports it again (${advisory.severity}) — re-classify it as live debt or remove the dependency`,
+        );
+      } else {
+        notes.push(
+          `${at} is recorded as withdrawn upstream (${entry.withdrawnAt}) and the audit does not report it`,
+        );
+      }
+      continue;
+    }
+
     if (!advisory) {
       fail(
         DISPOSITION_FAILURE.NOT_REPORTED,
@@ -427,7 +483,7 @@ export function evaluateDependencyDisposition({
 
   if (reported.length === 0) {
     notes.push(
-      "the full-tree audit reports no advisories — the register entries above are now stale and this gate fails until they are removed",
+      "the full-tree audit reports no advisories — every entry not marked withdrawn-upstream is now stale, and this gate fails until those are refreshed",
     );
   }
   notes.push(
@@ -460,11 +516,28 @@ export function patchedVersionFromOsv(document) {
 }
 
 /**
+ * Read the withdrawal timestamp out of an OSV document. OSV keeps serving the
+ * document for a withdrawn advisory — with `withdrawn` set — rather than
+ * returning 404, so a successful lookup is not evidence that the advisory is
+ * live. `patchedVersionFromOsv` alone reads a withdrawal as "no `fixed` event,
+ * therefore no patch", which passes the weekly check and only surfaces later as
+ * `registered-advisory-not-reported` once `npm audit` stops reporting it.
+ *
+ * @param {unknown} document
+ * @returns {string | null}
+ */
+export function withdrawnAtFromOsv(document) {
+  return isNonEmptyString(document?.withdrawn) ? document.withdrawn : null;
+}
+
+/**
  * Turn advisory-registry lookups into the map `evaluateDependencyDisposition`
  * expects. `lookup` resolves an advisory id to a repaired version (or to an
- * object carrying `patchedVersion`); a lookup that throws is reported as
- * REGISTRY_UNAVAILABLE rather than silently read as "no patch exists", because
- * detecting a newly published patch is the entire purpose of the check.
+ * object carrying `patchedVersion` and `withdrawnAt`); a lookup that throws is
+ * reported as REGISTRY_UNAVAILABLE rather than silently read as "no patch
+ * exists", because detecting a newly published patch is the entire purpose of
+ * the check. A lookup that reports a withdrawal is a named failure for the same
+ * reason: it is the one state where "no patch" is not a clean answer.
  *
  * @param {string[]} advisoryIds
  * @param {(id: string) => unknown} lookup
@@ -476,6 +549,14 @@ export async function resolveRegistryPatches(advisoryIds, lookup) {
   for (const id of advisoryIds) {
     try {
       const result = await lookup(id);
+      const withdrawnAt = isPlainObject(result) ? result.withdrawnAt : null;
+      if (isNonEmptyString(withdrawnAt)) {
+        failures.push({
+          code: DISPOSITION_FAILURE.REGISTRY_WITHDRAWN,
+          detail: `${id}: the advisory database withdrew this advisory at ${withdrawnAt} — \`npm audit\` will stop reporting it, so reclassify the entry as withdrawn-upstream with withdrawnAt and this evidence; leaving it live fails the next gate run as drift under a code that does not name the cause`,
+        });
+        continue;
+      }
       const patched = isPlainObject(result) ? result.patchedVersion : result;
       patches.set(id, isNonEmptyString(patched) ? patched : null);
     } catch (error) {

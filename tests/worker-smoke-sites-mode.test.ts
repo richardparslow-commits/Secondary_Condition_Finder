@@ -5,6 +5,13 @@ import { describe, expect, it } from "vitest";
 
 const spec = readFileSync(resolve(process.cwd(), "scripts/smoke-worker.mjs"), "utf8");
 const docs = readFileSync(resolve(process.cwd(), "docs/deployment-readiness.md"), "utf8");
+const ci = readFileSync(resolve(process.cwd(), ".github/workflows/ci.yml"), "utf8");
+/** The committed stand-in CI builds with, because Sites' own file is gitignored. */
+const ciConfig = readFileSync(
+  resolve(process.cwd(), "scripts/ci/sites-open-next.config.ts"),
+  "utf8",
+);
+const gitignore = readFileSync(resolve(process.cwd(), ".gitignore"), "utf8");
 
 /**
  * `--sites` is the only check that serves the Worker built from the Sites
@@ -24,6 +31,55 @@ describe("Worker smoke check --sites mode", () => {
     expect(spec).toContain('binding: "DB"');
     // A reused tree was not necessarily built with the Sites bindings.
     expect(spec).toContain("--sites cannot be combined with --skip-build");
+  });
+
+  it("accepts a committed config for a checkout Sites has not prepared", () => {
+    // The generated `freebuff.open-next.config.ts` is gitignored, so CI cannot
+    // build `--sites` without a checked-in equivalent. The override is opt-in:
+    // the default stays the file Sites writes.
+    expect(spec).toContain('argument === "--sites-config"');
+    expect(spec).toContain("sitesConfig: null");
+    expect(spec).toContain('"--sites-config expects a path to an OpenNext config"');
+    expect(spec).toContain("--sites-config only applies to --sites");
+    expect(spec).toContain("path.resolve(ROOT, options.sitesConfig ?? SITES_OPEN_NEXT_CONFIG)");
+    expect(spec).toContain('"freebuff.open-next.config.ts"');
+    expect(spec).toContain("path.relative(ROOT, sitesConfig)");
+    expect(docs).toContain("--sites-config");
+  });
+
+  it("builds with the committed CI config, which a checkout actually has", () => {
+    // A gitignored file cannot be a CI input: the template must be tracked, name
+    // the same overrides Sites generates, and be the path CI passes.
+    expect(gitignore).not.toContain("sites-open-next.config.ts");
+    expect(ciConfig).toContain('from "@opennextjs/cloudflare"');
+    expect(ciConfig).toContain("r2-incremental-cache");
+    expect(ciConfig).toContain("overrides/queue/do-queue");
+    expect(ciConfig).toContain("do-sharded-tag-cache");
+    expect(ciConfig).toContain("incrementalCache: r2");
+    expect(ciConfig).toContain("tagCache: tags({ baseShardSize: 4 })");
+    // The bindings the smoke asserts must be the ones this config needs.
+    expect(spec).toContain("NEXT_INC_CACHE_R2_BUCKET");
+    expect(spec).toContain("NEXT_CACHE_DO_QUEUE");
+    expect(spec).toContain("NEXT_TAG_CACHE_DO_SHARDED");
+  });
+
+  it("runs in CI after the build, enforced by the aggregator", () => {
+    // OCR rewrite regressions must fail a release, not be discovered at publish.
+    expect(ci).toContain("- name: Run Sites Worker smoke check (OCR rewrite gate)");
+    expect(ci).toContain(
+      "npm run smoke:worker -- --sites --sites-config scripts/ci/sites-open-next.config.ts",
+    );
+    expect(ci).toContain("id: sites_worker_smoke");
+    expect(ci.indexOf("- name: Run build")).toBeLessThan(
+      ci.indexOf("- name: Run Sites Worker smoke check"),
+    );
+    expect(ci).toContain("steps.sites_worker_smoke.outcome");
+    expect(ci).toContain("ci-sites-worker-smoke.log");
+    // Only after a build: the smoke rebuilds the Worker, so a failed `npm run
+    // build` is already the failure to report.
+    expect(ci).toMatch(
+      /Run Sites Worker smoke check[\s\S]{0,200}steps\.build\.outcome == 'success'/,
+    );
   });
 
   it("verifies the OCR rewrite against the route and the pinned source", () => {

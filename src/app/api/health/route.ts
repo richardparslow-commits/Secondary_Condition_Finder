@@ -1,3 +1,5 @@
+import { randomBytes } from "node:crypto";
+
 import { NextResponse } from "next/server";
 
 import { loadConditionCatalog } from "@/lib/catalog/load";
@@ -40,8 +42,11 @@ async function checkSessionCrypto(): Promise<ComponentCheck> {
   const started = Date.now();
   try {
     const probe = { kind: "health-probe", version: 1, at: Date.now() };
-    // Use an ephemeral secret for the probe so health never depends on env config.
-    const secret = "health-probe-ephemeral-secret-32-plus-characters-long";
+    // An ephemeral per-call secret, generated rather than written down: the probe
+    // proves the cipher round-trips without depending on env config, and keeping
+    // no credential-shaped literal in the source leaves a secret scanner nothing
+    // to flag (and nothing to leak).
+    const secret = randomBytes(32).toString("base64url");
     const sealed = sealSessionPayload(probe, secret);
     const opened = openSessionPayload(sealed, secret) as typeof probe | null;
     if (!opened || opened.kind !== probe.kind) throw new Error("Session crypto round-trip failed");

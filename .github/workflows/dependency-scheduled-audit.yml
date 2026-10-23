@@ -49,9 +49,11 @@ jobs:
       # dependencies by severity; this gate holds the whole tree — dev tooling
       # included — to the dated record in docs/dependency-advisory-disposition.json,
       # so a scheduled run is where an advisory that was merely *tracked* gets
-      # re-checked for two things a workstation cache cannot answer: a repaired
-      # release published upstream, and a review window that has expired. The
-      # registry lookup is deliberately part of the scheduled run only; the
+      # re-checked for things a workstation cache cannot answer: a repaired
+      # release published upstream, the registry having withdrawn the advisory
+      # (which makes `npm audit` stop reporting it), and an expired review
+      # window. The registry lookup is deliberately part of the scheduled run
+      # only; the
       # per-merge gate in ci.yml stays network-free and deterministic.
       # Deliberately NOT `continue-on-error`: like the severity audit above, a
       # scheduled run must be able to fail visibly without a commit. The
@@ -89,7 +91,7 @@ jobs:
             echo "- \`npm run audit:high\` (production severity): ${{ steps.audit.outcome }}"
             echo "- \`npm run audit:disposition:registry\` (A10 record): ${{ steps.disposition.outcome }}"
             echo ""
-            echo "For a severity failure, upgrade the affected production dependency (or its replacement) — never weaken \`audit:high\`. For an A10 failure, classify the new advisory in \`docs/dependency-advisory-disposition.json\`, refresh the entry whose review window expired, or land the upgrade whose patched release now exists. Re-run this workflow manually (\`workflow_dispatch\`) to confirm the fix; the issue closes itself when a scheduled run is green again."
+            echo "For a severity failure, upgrade the affected production dependency (or its replacement) — never weaken \`audit:high\`. For an A10 failure, classify the new advisory in \`docs/dependency-advisory-disposition.json\`, refresh the entry whose review window expired, record an entry the database has withdrawn as \`withdrawn-upstream\` with its timestamp, or land the upgrade whose patched release now exists. Re-run this workflow manually (\`workflow_dispatch\`) to confirm the fix; the issue closes itself when a scheduled run is green again."
             echo ""
             echo "Advisory details, package names, and paths are read from the run log; nothing from the audit output is pasted into this issue body so a newly published advisory timestamp cannot be misread as a breach date."
           } > "$body_file"
