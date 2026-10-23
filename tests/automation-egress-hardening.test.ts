@@ -61,6 +61,36 @@ describe("automation and CI hardening", () => {
     expect(source).not.toMatch(/actions\/(?:checkout|setup-node|upload-artifact)@v\d+/);
   });
 
+  it("pins every marketplace action in every workflow to an immutable commit", () => {
+    // The rule already covered ci.yml, the ClickUp notifier, the secret scan and
+    // the scheduled watches individually. Two active workflows were missed:
+    // pr-508-compliance.yml (the per-PR accessibility gate) and the
+    // live-regression-monitor's artifact upload still used mutable @v4 tags, so
+    // a force-updated tag could change what an active gate executes. The
+    // invariant is checked over the directory instead of per workflow, so a new
+    // workflow joins the rule by existing.
+    const workflowsDir = path.join(process.cwd(), ".github/workflows");
+    const workflows = fs.readdirSync(workflowsDir).filter((name) => /\.ya?ml$/.test(name));
+    expect(workflows).toContain("pr-508-compliance.yml");
+    expect(workflows).toContain("live-regression-monitor.yml");
+
+    let refs = 0;
+    for (const name of workflows) {
+      const source = read(`.github/workflows/${name}`);
+      for (const match of source.matchAll(/^\s*-?\s*uses:\s*(\S+)/gm)) {
+        const ref = match[1];
+        // Local actions and container references are not marketplace refs.
+        if (ref.startsWith("./") || ref.startsWith("docker://")) continue;
+        refs += 1;
+        expect(ref, `${name}: ${ref} is not pinned to a commit`).toMatch(
+          /^[^@\s]+@[0-9a-f]{40}$/,
+        );
+      }
+    }
+    // A mis-derived scan must not pass vacuously.
+    expect(refs).toBeGreaterThan(10);
+  });
+
   it("pins the secrets-bearing ClickUp notifier to immutable action commits", () => {
     const source = read(".github/workflows/ci-to-clickup.yml");
 
