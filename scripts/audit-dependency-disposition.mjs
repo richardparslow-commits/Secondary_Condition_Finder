@@ -49,6 +49,7 @@ import {
   evaluateDependencyDisposition,
   patchedVersionFromOsv,
   resolveRegistryPatches,
+  withdrawnAtFromOsv,
 } from "./lib/dependency-advisory-disposition.mjs";
 
 const repositoryRoot = process.cwd();
@@ -91,7 +92,11 @@ function parseAuditReport(raw) {
   return JSON.parse(raw.slice(start));
 }
 
-/** Ask OSV for the repair version of one advisory. Network use is opt-in. */
+/**
+ * Ask OSV for the repair version and withdrawal state of one advisory.
+ * Network use is opt-in. OSV answers a withdrawn advisory with 200 and a
+ * `withdrawn` timestamp, so the body — not the status — decides liveness.
+ */
 async function lookupOsv(advisoryId) {
   const response = await fetch(`${OSV_ENDPOINT}/${advisoryId}`, {
     headers: { accept: "application/json" },
@@ -99,7 +104,11 @@ async function lookupOsv(advisoryId) {
   if (!response.ok) {
     throw new Error(`OSV responded ${response.status} ${response.statusText}`);
   }
-  return { patchedVersion: patchedVersionFromOsv(await response.json()) };
+  const document = await response.json();
+  return {
+    patchedVersion: patchedVersionFromOsv(document),
+    withdrawnAt: withdrawnAtFromOsv(document),
+  };
 }
 
 async function main() {
@@ -122,9 +131,9 @@ async function main() {
   let registry = null;
   const registryFailures = [];
   if (checkRegistry) {
-    // A withdrawn advisory no longer exists in the database, so asking OSV for
-    // its repair version would fail closed on a 404 for a record that is
-    // correct. Only live classifications are re-checked.
+    // A withdrawn entry already records its withdrawal, so there is nothing
+    // live left to re-check; asking about it would only restate `withdrawnAt`.
+    // Only live classifications are re-checked.
     const ids = (register.entries ?? [])
       .filter((entry) => entry?.disposition !== "withdrawn-upstream")
       .map((entry) => entry.advisory)
@@ -171,7 +180,7 @@ async function main() {
   const summary =
     `  ${advisories.length} advisory chain(s) reported by the full-tree audit; ` +
     `${(register.entries ?? []).length} classified in ${REGISTER_PATH} (review window ${windowDays} days)` +
-    `${checkRegistry ? "; repair versions re-checked against the advisory database" : ""}.\n`;
+    `${checkRegistry ? "; repair versions and withdrawal state re-checked against the advisory database" : ""}.\n`;
   for (const advisory of advisories) {
     process.stdout.write(
       `    ${advisory.id} [${advisory.severity}] ${advisory.packages.join(", ")} — ${advisory.advisoryRange}\n`,

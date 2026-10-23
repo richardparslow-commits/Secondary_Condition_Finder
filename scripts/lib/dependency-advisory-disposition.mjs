@@ -70,6 +70,13 @@ export const DISPOSITION_FAILURE = Object.freeze({
   STALE_REVIEW: "review-window-expired",
   /** `--check-registry` could not reach the advisory registry (fail closed). */
   REGISTRY_UNAVAILABLE: "advisory-registry-unavailable",
+  /**
+   * `--check-registry` found that the registry withdrew a live classification.
+   * The audit will stop reporting it, so the entry must be reclassified as
+   * `withdrawn-upstream` with the observed date instead of failing later as
+   * drift under a code that does not name the cause.
+   */
+  REGISTRY_WITHDRAWN: "advisory-withdrawn-upstream",
   /** The audit report could not be read at all. */
   REPORT_UNAVAILABLE: "audit-report-unavailable",
 });
@@ -509,11 +516,28 @@ export function patchedVersionFromOsv(document) {
 }
 
 /**
+ * Read the withdrawal timestamp out of an OSV document. OSV keeps serving the
+ * document for a withdrawn advisory — with `withdrawn` set — rather than
+ * returning 404, so a successful lookup is not evidence that the advisory is
+ * live. `patchedVersionFromOsv` alone reads a withdrawal as "no `fixed` event,
+ * therefore no patch", which passes the weekly check and only surfaces later as
+ * `registered-advisory-not-reported` once `npm audit` stops reporting it.
+ *
+ * @param {unknown} document
+ * @returns {string | null}
+ */
+export function withdrawnAtFromOsv(document) {
+  return isNonEmptyString(document?.withdrawn) ? document.withdrawn : null;
+}
+
+/**
  * Turn advisory-registry lookups into the map `evaluateDependencyDisposition`
  * expects. `lookup` resolves an advisory id to a repaired version (or to an
- * object carrying `patchedVersion`); a lookup that throws is reported as
- * REGISTRY_UNAVAILABLE rather than silently read as "no patch exists", because
- * detecting a newly published patch is the entire purpose of the check.
+ * object carrying `patchedVersion` and `withdrawnAt`); a lookup that throws is
+ * reported as REGISTRY_UNAVAILABLE rather than silently read as "no patch
+ * exists", because detecting a newly published patch is the entire purpose of
+ * the check. A lookup that reports a withdrawal is a named failure for the same
+ * reason: it is the one state where "no patch" is not a clean answer.
  *
  * @param {string[]} advisoryIds
  * @param {(id: string) => unknown} lookup
@@ -525,6 +549,14 @@ export async function resolveRegistryPatches(advisoryIds, lookup) {
   for (const id of advisoryIds) {
     try {
       const result = await lookup(id);
+      const withdrawnAt = isPlainObject(result) ? result.withdrawnAt : null;
+      if (isNonEmptyString(withdrawnAt)) {
+        failures.push({
+          code: DISPOSITION_FAILURE.REGISTRY_WITHDRAWN,
+          detail: `${id}: the advisory database withdrew this advisory at ${withdrawnAt} — \`npm audit\` will stop reporting it, so reclassify the entry as withdrawn-upstream with withdrawnAt and this evidence; leaving it live fails the next gate run as drift under a code that does not name the cause`,
+        });
+        continue;
+      }
       const patched = isPlainObject(result) ? result.patchedVersion : result;
       patches.set(id, isNonEmptyString(patched) ? patched : null);
     } catch (error) {

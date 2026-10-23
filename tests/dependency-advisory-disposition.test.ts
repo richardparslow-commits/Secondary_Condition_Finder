@@ -13,6 +13,7 @@ import {
   patchedVersionFromOsv,
   resolveRegistryPatches,
   validateDispositionRegister,
+  withdrawnAtFromOsv,
 } from "../scripts/lib/dependency-advisory-disposition.mjs";
 
 /**
@@ -599,6 +600,30 @@ describe("A10 dependency advisory disposition — registry lookups fail closed",
     }));
     expect(resolved.failures).toEqual([]);
     expect(resolved.patches.get("GHSA-abcd-efgh-ijkl")).toBeNull();
+  });
+
+  it("reads the withdrawal timestamp out of an OSV document", () => {
+    expect(withdrawnAtFromOsv({ withdrawn: "2026-10-22T19:21:04Z" })).toBe("2026-10-22T19:21:04Z");
+    // A live advisory's document has no `withdrawn` field at all, and OSV still
+    // answers 200 for a withdrawn one — so the body, not the status, decides.
+    expect(withdrawnAtFromOsv({ affected: [] })).toBeNull();
+  });
+
+  it("names a withdrawal on a live entry instead of reading it as 'no patch'", async () => {
+    const resolved = await resolveRegistryPatches(["GHSA-vfj7-8cjw-p6xm"], () => ({
+      patchedVersion: null,
+      withdrawnAt: "2026-10-22T19:21:04Z",
+    }));
+    expect(resolved.failures).toEqual([
+      {
+        code: DISPOSITION_FAILURE.REGISTRY_WITHDRAWN,
+        detail: expect.stringContaining("withdrawn-upstream"),
+      },
+    ]);
+    expect(resolved.failures[0].detail).toContain("2026-10-22T19:21:04Z");
+    // A withdrawn advisory has no repair answer, so it must not enter the patch
+    // map — otherwise the gate would also report a patch that does not exist.
+    expect(resolved.patches.has("GHSA-vfj7-8cjw-p6xm")).toBe(false);
   });
 });
 

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "policy": "Every advisory npm reports for this repository's dependency tree must be classified here: what it affects, whether it ships, whether a patched release exists, how hostile input would have to reach it, and what is reviewed on a schedule. `npm run audit:disposition` fails on an unclassified advisory (new debt), on a record that no longer matches the tree (drift, a resolved advisory, a moved version), on a patched release that exists but has not been taken (the upgrade must land instead of being tracked), and on a review window that has expired. An advisory the advisory database withdraws may stay recorded as `withdrawn-upstream` with the date and evidence of the withdrawal; the gate then requires that advisory to be absent from the audit and fails if it is reported again, because a withdrawal that stopped holding is live debt. Severity enforcement for production dependencies stays with `npm run audit:high`; this register governs inventory completeness, classification and freshness.",
+  "policy": "Every advisory npm reports for this repository's dependency tree must be classified here: what it affects, whether it ships, whether a patched release exists, how hostile input would have to reach it, and what is reviewed on a schedule. `npm run audit:disposition` fails on an unclassified advisory (new debt), on a record that no longer matches the tree (drift, a resolved advisory, a moved version), on a patched release that exists but has not been taken (the upgrade must land instead of being tracked), and on a review window that has expired. An advisory the advisory database withdraws may stay recorded as `withdrawn-upstream` with the date and evidence of the withdrawal; the gate then requires that advisory to be absent from the audit and fails if it is reported again, because a withdrawal that stopped holding is live debt. Severity enforcement for production dependencies stays with `npm run audit:high`; this register governs inventory completeness, classification and freshness. The scheduled registry re-check (`npm run audit:disposition:registry`) also reads each live entry's withdrawal state, because a withdrawal makes the audit stop reporting an advisory and would otherwise surface as unnamed drift on a later gated run.",
   "reviewWindowDays": 180,
   "owner": "Richard Parslow (`richardparslow-commits`)",
   "authority": "SECURITY.md, `## Supported Code` (the dependency-audit and advisory paragraph) — the published owner policy that a dev-only advisory with no patched release stays tracked and visible rather than waived, and that `npm audit fix --force` into an older major line is never the resolution. This register records that policy per advisory, with the reachability evidence each entry rests on; it does not create a new risk acceptance.",
@@ -45,7 +45,8 @@
       "reproduction": [
         "npm run audit:high:all   # reports the five-entry chain; braces carries the advisory",
         "npm view braces version  # 3.0.3 — the installed version is the newest published release",
-        "curl -s https://api.github.com/advisories/GHSA-vfj7-8cjw-p6xm | grep -i patched   # first_patched_version is absent"
+        "curl -s https://api.github.com/advisories/GHSA-vfj7-8cjw-p6xm | grep -i patched   # first_patched_version is absent",
+        "curl -s https://api.github.com/advisories/GHSA-vfj7-8cjw-p6xm | grep withdrawn_at   # no output when re-checked on 2026-10-22 — still a live advisory"
       ],
       "reviewedAt": "2026-10-14"
     },
