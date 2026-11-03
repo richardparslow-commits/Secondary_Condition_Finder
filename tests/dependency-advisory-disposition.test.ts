@@ -638,9 +638,10 @@ describe("A10 dependency advisory disposition — the real register matches the 
     const reportedIds = advisoriesFromAuditReport(report)
       .map((advisory) => advisory.id)
       .sort();
-    // One live chain is reported; the second entry is the withdrawn record,
-    // and it is exactly the advisory the refreshed capture no longer contains.
-    expect(reportedIds).toEqual(["GHSA-vfj7-8cjw-p6xm"]);
+    // The triaged upgrades landed (undici, zod, minimatch, glob, body-parser),
+    // so the capture is clean and the register holds no live entry: both of its
+    // records are dated withdrawals whose claim is that `npm audit` omits them.
+    expect(reportedIds).toEqual([]);
     const activeIds = register.entries
       .filter((entry) => entry.disposition !== "withdrawn-upstream")
       .map((entry) => entry.advisory)
@@ -649,8 +650,9 @@ describe("A10 dependency advisory disposition — the real register matches the 
     expect(
       register.entries
         .filter((entry) => entry.disposition === "withdrawn-upstream")
-        .map((entry) => entry.advisory),
-    ).toEqual(["GHSA-hp3w-g68c-fv3c"]);
+        .map((entry) => entry.advisory)
+        .sort(),
+    ).toEqual(["GHSA-hp3w-g68c-fv3c", "GHSA-vfj7-8cjw-p6xm"]);
   });
 
   it("keeps the captured report's own counts consistent with its entries", () => {
@@ -660,16 +662,12 @@ describe("A10 dependency advisory disposition — the real register matches the 
       return totals;
     }, {});
     expect(report.auditReportVersion).toBe(2);
-    expect(report.metadata.vulnerabilities.high).toBe(counted.high);
+    expect(report.metadata.vulnerabilities.high).toBe(counted.high ?? 0);
     expect(report.metadata.vulnerabilities.moderate ?? 0).toBe(counted.moderate ?? 0);
-    // Five high entries are one advisory chain (braces → … → eslint-config-next).
-    // The three moderate entries that formed the sprintf-js chain are absent:
-    // that advisory was withdrawn upstream on 2026-10-22, and a captured report
-    // taken after the withdrawal must not keep asserting it.
-    expect(counted.high).toBe(5);
-    expect(counted.moderate ?? 0).toBe(0);
-    expect(Object.values(counted).reduce((total, value) => total + value, 0)).toBe(5);
-    expect(report.metadata.vulnerabilities.total).toBe(5);
+    // A non-empty capture here means the register's clean claim has gone stale:
+    // the remediation floors are in the lockfile, so the tree reports nothing.
+    expect(entries).toEqual([]);
+    expect(report.metadata.vulnerabilities.total).toBe(0);
   });
 
   it("records a dated state and no patched version on every entry", () => {
@@ -832,7 +830,9 @@ describe("A10 dependency advisory disposition — the CLI behaves as the gate", 
       reported: Array<{ id: string }>;
     };
     expect(parsed.failures).toEqual([]);
-    expect(parsed.reported.map((advisory) => advisory.id)).toContain("GHSA-vfj7-8cjw-p6xm");
+    // A clean capture reports no advisory, and both register entries are dated
+    // withdrawals, so nothing live is left to classify.
+    expect(parsed.reported).toEqual([]);
     expect(parsed.registryChecked).toBe(false);
   });
 
@@ -880,11 +880,37 @@ describe("A10 dependency advisory disposition — the CLI behaves as the gate", 
   it("explains itself in the human-readable failure path", () => {
     const directory = fs.mkdtempSync(path.join(os.tmpdir(), "a10-disposition-human-"));
     try {
-      const mutated = path.join(directory, "npm-audit-empty.json");
-      fs.writeFileSync(mutated, JSON.stringify({ auditReportVersion: 2, vulnerabilities: {} }));
+      // The tree is clean and every register record is a dated withdrawal, so
+      // the triggerable human-path failure is new inventory: an advisory the
+      // register has never classified. NOT_REPORTED (a live entry the audit no
+      // longer lists) is pinned by the synthetic-register cases above, where a
+      // live entry can be constructed without weakening the real register.
+      const mutated = path.join(directory, "npm-audit-unregistered.json");
+      const report = readJson<AuditReport>(REPORT_FIXTURE);
+      report.vulnerabilities["brand-new-package"] = {
+        name: "brand-new-package",
+        severity: "high",
+        isDirect: false,
+        via: [
+          {
+            source: 1,
+            name: "brand-new-package",
+            dependency: "brand-new-package",
+            title: "Newly published advisory",
+            url: "https://github.com/advisories/GHSA-nnnn-nnnn-nnnn",
+            severity: "high",
+            range: "<2.0.0",
+          },
+        ],
+        effects: [],
+        range: "<2.0.0",
+        nodes: [],
+        fixAvailable: false,
+      };
+      fs.writeFileSync(mutated, JSON.stringify(report));
       const result = runCli(`--report=${mutated}`);
       expect(result.status).toBe(1);
-      expect(result.stderr).toContain(DISPOSITION_FAILURE.NOT_REPORTED);
+      expect(result.stderr).toContain(DISPOSITION_FAILURE.UNREGISTERED);
       expect(result.stderr).toContain("npm audit fix --force");
     } finally {
       fs.rmSync(directory, { recursive: true, force: true });
