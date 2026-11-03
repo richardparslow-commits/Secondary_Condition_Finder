@@ -12,7 +12,9 @@
       "severity": "high",
       "advisoryRange": "<=3.0.3",
       "patchedVersion": null,
-      "disposition": "tracked-no-fix",
+      "disposition": "withdrawn-upstream",
+      "withdrawnAt": "2026-10-23",
+      "withdrawnEvidence": "node scripts/audit-dependency-disposition.mjs --check-registry and curl -s https://api.github.com/advisories/GHSA-vfj7-8cjw-p6xm | grep withdrawn_at both report 2026-10-23T12:53:02Z. braces@3.0.3 remains installed beneath eslint-config-next@16.4.2 -> @next/eslint-plugin-next -> fast-glob -> micromatch, so this is a registry withdrawal, not a resolved package; the gate fails again if the advisory is reported again.",
       "ships": "dev-tooling",
       "affectedPackages": [
         "@next/eslint-plugin-next",
@@ -48,7 +50,7 @@
         "curl -s https://api.github.com/advisories/GHSA-vfj7-8cjw-p6xm | grep -i patched   # first_patched_version is absent",
         "curl -s https://api.github.com/advisories/GHSA-vfj7-8cjw-p6xm | grep withdrawn_at   # no output when re-checked on 2026-10-22 — still a live advisory"
       ],
-      "reviewedAt": "2026-10-14"
+      "reviewedAt": "2026-11-03"
     },
     {
       "advisory": "GHSA-hp3w-g68c-fv3c",

@@ -252,10 +252,12 @@ describe("Dependabot alert reconciliation", () => {
     });
 
     expect(result.failures).toEqual([]);
-    expect(result.dismissible.map((row) => row.number).sort()).toEqual([2, 3, 4, 5]);
+    // braces was withdrawn upstream on 2026-10-23 and the register now records
+    // it as withdrawn-upstream, so its open alert joins the dismissible set.
+    expect(result.dismissible.map((row) => row.number).sort()).toEqual([1, 2, 3, 4, 5]);
     expect(
       result.rows.find((row) => row.advisory === "GHSA-vfj7-8cjw-p6xm")?.classification,
-    ).toBe(DEPENDABOT_CLASSIFICATION.REGISTERED_LIVE);
+    ).toBe(DEPENDABOT_CLASSIFICATION.REGISTERED_WITHDRAWN);
     for (const advisory of [
       "GHSA-698v-4r3x-3vcv",
       "GHSA-587h-7wmj-h5pm",
