@@ -43,6 +43,11 @@ import {
   saveStoredEvidence,
   serializeStoredEvidenceWithInfo,
 } from "@/lib/evidence/storage";
+import {
+  evidenceAnalysisIdentity,
+  mergeEvidenceAnalysis,
+  removeEvidenceAnalysis,
+} from "@/lib/evidence/retention";
 
 interface Props {
   conditionTerms: string[];
@@ -62,6 +67,8 @@ const CREDENTIAL_OPTIONS: Array<{ value: ClinicianCredential; label: string }> =
 
 interface PendingEvidenceFile {
   id: number;
+  /** Retention identity: the staged document, not its file name. */
+  sourceId: string;
   file: File;
   sourceName: string;
   credential: ClinicianCredential;
@@ -75,6 +82,17 @@ function isPdfFile(file: File): boolean {
 }
 
 let stagedSequence = 0;
+
+/**
+ * Distinguishes this page load's staged documents from ids already restored
+ * from session storage. Without it the sequence restarts at 1 on every reload,
+ * so a newly staged file would reuse a restored document's identity and
+ * replace it — the same silent loss in a new form.
+ */
+const stagedSessionId =
+  typeof crypto !== "undefined" && typeof crypto.randomUUID === "function"
+    ? crypto.randomUUID().slice(0, 8)
+    : Date.now().toString(36);
 
 function isSupportedFile(file: File): boolean {
   const lower = file.name.toLocaleLowerCase();
@@ -305,10 +323,11 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
   function commitAnalysis(analysis: EvidenceAnalysis) {
     // A07: derived and persisted outside the state updater — the updater stays
     // a pure state transition, so a replayed invocation cannot write twice.
-    const next = [
-      ...analysesRef.current.filter((existing) => existing.sourceName !== analysis.sourceName),
+    const next = mergeEvidenceAnalysis(
+      analysesRef.current,
       analysis,
-    ].slice(-limits.storedSources);
+      limits.storedSources,
+    );
     const info = serializeStoredEvidenceWithInfo(next, limits);
     if (info.dropped > 0) {
       // Defer the warning out of this call so a drop notice never blocks the
@@ -324,8 +343,8 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
     applyAnalyses(next);
   }
 
-  function dropAnalysis(sourceName: string) {
-    const next = analysesRef.current.filter((existing) => existing.sourceName !== sourceName);
+  function dropAnalysis(sourceId: string) {
+    const next = removeEvidenceAnalysis(analysesRef.current, sourceId);
     saveStored(next, limits);
     applyAnalyses(next);
   }
@@ -350,13 +369,19 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
       );
       return;
     }
-    const accepted = selected.slice(0, room).map((file) => ({
-      id: (stagedSequence += 1),
-      file,
-      sourceName: file.name.trim() || "Local evidence document",
-      credential,
-      analyzed: false,
-    }));
+    const accepted = selected.slice(0, room).map((file) => {
+      // Two documents can share a file name (letter.txt from two folders), so
+      // the staged row — not the name — is the document's identity.
+      const id = (stagedSequence += 1);
+      return {
+        id,
+        sourceId: `staged-${stagedSessionId}-${id}`,
+        file,
+        sourceName: file.name.trim() || "Local evidence document",
+        credential,
+        analyzed: false,
+      };
+    });
     setPending((current) => [...current, ...accepted]);
     setWarnings([]);
     setMessage(null);
@@ -380,7 +405,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
     clearOcrCheckpoint(getSessionStorage());
     const row = pending.find((item) => item.id === id);
     setPending((current) => current.filter((item) => item.id !== id));
-    if (row?.analyzed) dropAnalysis(row.sourceName);
+    if (row?.analyzed) dropAnalysis(row.sourceId);
   }
 
   /**
@@ -427,7 +452,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
       }
       const analysis = analyzeEvidenceSegments(
         withUserLocatorPrefix(extracted.segments, locatorPrefix),
-        { sourceName: extracted.sourceName, credential: row.credential },
+        { sourceId: row.sourceId, sourceName: extracted.sourceName, credential: row.credential },
         conditionTerms,
       );
       commitAnalysis(analysis);
@@ -785,7 +810,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
           } else {
             const analysis = analyzeEvidenceSegments(
               withUserLocatorPrefix(segments, locatorPrefix),
-              { sourceName: row.sourceName, credential: row.credential },
+              { sourceId: row.sourceId, sourceName: row.sourceName, credential: row.credential },
               conditionTerms,
             );
             commitAnalysis(analysis);
@@ -1083,7 +1108,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
         ) : (
           <div className="mt-4 space-y-4">
             {analyses.map((analysis) => (
-              <article key={analysis.sourceName} className="rounded-lg bg-slate-50 p-3">
+              <article key={evidenceAnalysisIdentity(analysis)} className="rounded-lg bg-slate-50 p-3">
                 <h4 className="font-semibold">{analysis.sourceName}</h4>
                 <p className="text-xs text-slate-600">{analysis.nexusRelevantCount} nexus-relevant; {analysis.supportingCount} supporting</p>
                 <ul className="mt-2 space-y-2">

@@ -34,6 +34,11 @@ export interface EvidenceSourceMetadata {
   sourceName: string;
   credential: ClinicianCredential;
   locatorPrefix?: string;
+  /**
+   * Stable id of the analyzed document. Two documents can share a file name,
+   * so retention keys on this rather than on `sourceName` (defect 1).
+   */
+  sourceId?: string;
 }
 
 export interface EvidenceTextSegment {
@@ -54,6 +59,8 @@ export interface EvidenceExcerpt {
 export interface EvidenceAnalysis {
   version: 1;
   sourceName: string;
+  /** Present on records written from a staged document; see retention.ts. */
+  sourceId?: string;
   excerpts: EvidenceExcerpt[];
   nexusRelevantCount: number;
   supportingCount: number;
@@ -329,6 +336,7 @@ export function analyzeEvidenceText(
   return {
     version: 1,
     sourceName: metadata.sourceName,
+    ...(metadata.sourceId ? { sourceId: metadata.sourceId } : {}),
     excerpts,
     nexusRelevantCount: excerpts.filter((excerpt) => excerpt.strength === "nexus-relevant").length,
     supportingCount: excerpts.filter((excerpt) => excerpt.strength === "supporting").length,
@@ -361,6 +369,7 @@ export function analyzeEvidenceSegments(
   return {
     version: 1,
     sourceName: metadata.sourceName,
+    ...(metadata.sourceId ? { sourceId: metadata.sourceId } : {}),
     excerpts,
     nexusRelevantCount: excerpts.filter((excerpt) => excerpt.strength === "nexus-relevant").length,
     supportingCount: excerpts.filter((excerpt) => excerpt.strength === "supporting").length,

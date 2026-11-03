@@ -46,6 +46,11 @@ export const MAX_STORED_EVIDENCE_BYTES = STANDARD_LIMITS.storedBytes;
  * this app could have produced, and are never silently trimmed.
  */
 export const MAX_STORED_SOURCE_NAME_CHARS = 512;
+/**
+ * Ceiling for the optional per-document id. Optional because a store written
+ * before it existed is still a store this app wrote.
+ */
+export const MAX_STORED_SOURCE_ID_CHARS = 128;
 export const MAX_STORED_LOCATOR_CHARS = 256;
 export const MAX_STORED_EXCERPTS_PER_ANALYSIS = 64;
 export const MAX_STORED_MATCHED_TERMS = 512;
@@ -124,6 +129,8 @@ function isEvidenceAnalysis(item: unknown): item is EvidenceAnalysis {
   return (
     analysis.version === 1 &&
     isBoundedString(analysis.sourceName, MAX_STORED_SOURCE_NAME_CHARS) &&
+    (analysis.sourceId === undefined ||
+      isBoundedString(analysis.sourceId, MAX_STORED_SOURCE_ID_CHARS)) &&
     Array.isArray(analysis.excerpts) &&
     analysis.excerpts.length <= MAX_STORED_EXCERPTS_PER_ANALYSIS &&
     analysis.excerpts.every(isEvidenceExcerpt) &&
