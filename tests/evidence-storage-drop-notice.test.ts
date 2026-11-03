@@ -127,7 +127,10 @@ describe("commitAnalysis user notification contract (structural)", () => {
     const commitIndex = analyzer.indexOf("function commitAnalysis(");
     expect(commitIndex).toBeGreaterThan(-1);
     const body = analyzer.slice(commitIndex, analyzer.indexOf("function dropAnalysis(", commitIndex));
-    expect(body).toContain("serializeStoredEvidenceWithInfo(next, limits)");
+    // The commit must use the depth active when it lands, not the depth of the
+    // render a long-running scan started in (Heal defect 2).
+    expect(body).toContain("const activeLimits = limitsRef.current;");
+    expect(body).toContain("serializeStoredEvidenceWithInfo(next, activeLimits)");
     expect(body).toContain("info.dropped > 0");
     expect(body.indexOf("saveStored(")).toBeGreaterThan(body.indexOf("info.dropped > 0"));
   });
