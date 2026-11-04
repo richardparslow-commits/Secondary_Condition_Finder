@@ -51,9 +51,17 @@ export async function POST(request: NextRequest, args: Context) {
   try {
     if (operation === "start") {
       if (!await consented(request)) return NextResponse.json({ error: "Explicit sandbox read-only consent required." }, { status: 400, headers: PRIVATE });
-      const oldHandle = request.cookies.get(accountCookieName(config.service))?.value;
-      if (oldHandle && !(await disconnectAccount(config, store, oldHandle)).cleared) return notice(config.appOrigin, "unavailable");
+      // Start the new login before touching the existing connection. The old
+      // order deleted and revoked a live session first, so a start that then
+      // failed silently ended a working connection (Heal
+      // s1-refused-reconnect-drops-connection-1). If the start throws, the old
+      // session is untouched; if its cleanup cannot be confirmed, the freshly
+      // minted transaction is unused and expires on its own.
       const login = await startAccountLogin(config, store);
+      const oldHandle = request.cookies.get(accountCookieName(config.service))?.value;
+      if (oldHandle && !(await disconnectAccount(config, store, oldHandle)).cleared) {
+        return notice(config.appOrigin, "unavailable");
+      }
       // Return the authorization navigation URL, not a cross-origin fetch/form
       // redirect: connect-src/form-action remain 'self' under the global CSP.
       const response = NextResponse.json({ authorizationUrl: login.url }, { headers: PRIVATE });

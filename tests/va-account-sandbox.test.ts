@@ -319,4 +319,49 @@ describe("account route consent, cookies, and CSRF", () => {
     expect(response.headers.get("cache-control")).toContain("no-store");
     expect(response.headers.get("set-cookie")).not.toMatch(/SYNTHETIC_ACCESS|SYNTHETIC_REFRESH|eyJ/);
   });
+  it("keeps an existing connection live when a reconnect cannot start", async () => {
+    configure();
+    const store = loadAccountStore(config)!;
+    // The preceding route test's successful login leaves its own two-second
+    // budget entry in this shared store; clear it before connecting.
+    await store.remove(`login-budget:${config.fingerprint}`);
+    const { handle, fetcher } = await connected(store);
+    const upstreamCalls = fetcher.mock.calls.length;
+
+    // A durable login-budget entry makes startAccountLogin fail before it
+    // creates a transaction, which is the shape of a refused reconnect.
+    await store.remove(`login-budget:${config.fingerprint}`);
+    expect(await store.put(`login-budget:${config.fingerprint}`, { kind: "budget" }, 60)).toBe(true);
+
+    const response = await POST(
+      new NextRequest(`${env.APP_URL}/va-account/oauth/ratings/start`, {
+        method: "POST",
+        headers: {
+          origin: env.APP_URL,
+          "content-type": "application/x-www-form-urlencoded",
+          cookie: `${accountCookieName("ratings")}=${handle}`,
+        },
+        body: "consent=sandbox-read-only",
+      }),
+      args("start"),
+    );
+
+    expect(response.status).toBe(303);
+    expect(response.headers.get("location")).toBe(`${env.APP_URL}/va-account?notice=unavailable`);
+    // The refused reconnect neither deleted nor revoked the live session, and
+    // it made no upstream call of its own.
+    expect(await readAccountSession(config, store, handle)).not.toBeNull();
+    expect(fetcher.mock.calls.length).toBe(upstreamCalls);
+
+    // ...so disconnecting afterwards still clears and revokes it.
+    const disconnect = await POST(
+      new NextRequest(`${env.APP_URL}/va-account/oauth/ratings/disconnect`, {
+        method: "POST",
+        headers: { origin: env.APP_URL, cookie: `${accountCookieName("ratings")}=${handle}` },
+      }),
+      args("disconnect"),
+    );
+    expect(disconnect.headers.get("location")).toBe(`${env.APP_URL}/va-account?notice=disconnected`);
+    expect(await readAccountSession(config, store, handle)).toBeNull();
+  });
 });
