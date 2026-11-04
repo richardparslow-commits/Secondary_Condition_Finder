@@ -37,7 +37,9 @@ Clinical/medical relationship research may continue in `medical-only` mode, but 
 
 The preflight writes a bounded server-side snapshot cache. Once a review starts, Steps 5 and 6 use the same snapshot identifier. The app must not silently swap a newer legal snapshot into an in-progress review.
 
-If the locked snapshot has been pruned or otherwise disappears, that review is downgraded to `medical-only` with a visible warning. A new review can then establish a new regulatory snapshot.
+Snapshot files are review locks, so they are pruned by age (default **72 hours**), never by a newest-file count. Ordinary page loads by other visitors therefore cannot evict an in-progress review's legal basis.
+
+If the locked snapshot has expired or otherwise disappears, that review is downgraded to `medical-only` with a visible warning. A new review can then establish a new regulatory snapshot.
 
 ## Review scope
 
@@ -46,6 +48,7 @@ Where the workflow has selected condition IDs, the snapshot records the subset o
 ## Runtime configuration
 
 - `REGULATORY_PREFLIGHT_MAX_AGE_HOURS` — cache freshness ceiling; default `24`.
+- `REGULATORY_PREFLIGHT_SNAPSHOT_RETENTION_HOURS` — how long locked snapshots survive; default `72`, capped at one year.
 - `REGULATORY_PREFLIGHT_SOURCE_TIMEOUT_MS` — per-source HTTP timeout; default `8000`.
 - `REGULATORY_PREFLIGHT_CACHE_DIR` — optional server-local cache location; defaults to a bounded OS temporary directory.
 - `REGULATIONS_GOV_API_KEY` — optional Regulations.gov docket enrichment.

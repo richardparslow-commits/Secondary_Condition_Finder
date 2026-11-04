@@ -118,7 +118,7 @@ The application processes user-uploaded documents entirely within the browser (v
 - **Snapshot locking:** `prepareRegulatoryReview()` establishes a `RegulatorySnapshot` (with `snapshotId`) before recommendation output. Step 5 locks that id in the `regSnapshot` query param and Step 6 reuses the locked snapshot via `loadLockedRegulatorySnapshot()`; a missing lock `fail-closed`s to `missingLockedRegulatorySnapshot()` rather than substituting a newer legal basis mid-review. Displayed via `RegulatoryPreflightStatus`
 - **Scheduled Refresh Endpoint:** Bearer-protected `/api/regulatory/preflight` (`REGULATORY_SYNC_SECRET` or `CRON_SECRET`) for scheduled regulatory data refresh
 - **Provenanced Seed Records:** `data/regulatory-actions/` holds seed regulatory action records with traceable lineage (validated by `audit:regulatory-intelligence`)
-- **Cache Management:** Optional server-local cache (configurable `REGULATORY_PREFLIGHT_CACHE_DIR`, `REGULATORY_PREFLIGHT_MAX_AGE_HOURS` default 24) for regulatory source checks
+- **Cache Management:** Optional server-local cache (configurable `REGULATORY_PREFLIGHT_CACHE_DIR`, `REGULATORY_PREFLIGHT_MAX_AGE_HOURS` default 24, `REGULATORY_PREFLIGHT_SNAPSHOT_RETENTION_HOURS` default 72) for regulatory source checks and age-bounded review locks
 
 ### 8. Audit & Compliance Features
 

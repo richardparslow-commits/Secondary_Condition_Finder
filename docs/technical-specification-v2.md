@@ -189,7 +189,8 @@ clear, and CSP reporting; they do not receive veteran workflow context.
 - Adapters: Federal Register, OIRA, Regulations.gov (8s per-source HTTP timeouts, env-overridable).
 - Preflight: bearer-protected `GET /api/regulatory/preflight`
   (`REGULATORY_SYNC_SECRET ?? CRON_SECRET`, `timingSafeEqual`), 24h freshness ceiling, optional
-  on-disk cache (`REGULATORY_PREFLIGHT_CACHE_DIR`, atomic writes, 20-snapshot cap).
+  on-disk cache (`REGULATORY_PREFLIGHT_CACHE_DIR`, atomic writes, 72h age-based
+  snapshot retention so active review locks survive unrelated loads).
 - Seed data: `data/regulatory-actions/` (provenanced records, e.g., Spicer v. McDonough, 2026).
 
 ## Data Architecture
