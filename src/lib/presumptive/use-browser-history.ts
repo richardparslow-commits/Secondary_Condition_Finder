@@ -3,8 +3,10 @@
 import { useSyncExternalStore } from "react";
 
 import {
+  presumptiveHistoryRevision,
   presumptiveHistoryStorageKey,
   readPresumptiveHistory,
+  subscribeToPresumptiveHistoryChanges,
 } from "./browser-history";
 import type { ServiceHistory } from "./match";
 
@@ -39,14 +41,21 @@ function readSessionHistory(): ServiceHistory | null {
 
 // Module-level snapshot cache: `useSyncExternalStore` requires a pure
 // `getSnapshot` that returns a cached value, so the record is parsed once and
-// refreshed only by the first client read after hydration or by another tab
-// clearing the key.
+// refreshed only by the first client read after hydration, a same-tab
+// write/clear (revision change), or another tab clearing the key.
 let snapshot: ServiceHistory | null = null;
 let snapshotRead = false;
+let snapshotRevision = -1;
 const listeners = new Set<() => void>();
 
 function notifyHistoryListeners(): void {
   for (const listener of listeners) listener();
+}
+
+function invalidateHistorySnapshot(): void {
+  snapshot = null;
+  snapshotRead = false;
+  notifyHistoryListeners();
 }
 
 function subscribeToHistory(listener: () => void): () => void {
@@ -54,21 +63,24 @@ function subscribeToHistory(listener: () => void): () => void {
   const onStorage = (event: StorageEvent) => {
     // A `null` key is a `clear()` in another tab; both discard the cache.
     if (event.key !== null && event.key !== presumptiveHistoryStorageKey) return;
-    snapshot = null;
-    snapshotRead = false;
-    notifyHistoryListeners();
+    invalidateHistorySnapshot();
   };
+  // Same-tab writes and clears do not fire `storage`; the store announces them.
+  const unsubscribeChanges = subscribeToPresumptiveHistoryChanges(invalidateHistorySnapshot);
   window.addEventListener("storage", onStorage);
   return () => {
     listeners.delete(listener);
+    unsubscribeChanges();
     window.removeEventListener("storage", onStorage);
   };
 }
 
 function readHistorySnapshot(): ServiceHistory | null {
-  if (!snapshotRead) {
+  const revision = presumptiveHistoryRevision();
+  if (!snapshotRead || snapshotRevision !== revision) {
     snapshot = readSessionHistory();
     snapshotRead = true;
+    snapshotRevision = revision;
   }
   return snapshot;
 }
