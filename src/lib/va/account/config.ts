@@ -134,7 +134,14 @@ export function accountCookieSecure(config: VaAccountConfig): boolean {
 
 /** Route Handlers need their own CSRF check; action IDs are not authorization. */
 export function isSameOriginAccountPost(request: Request, config: VaAccountConfig): boolean {
+  const origin = request.headers.get("origin");
   return request.method === "POST" &&
-    request.headers.get("origin") === config.appOrigin &&
-    new URL(request.url).origin === config.appOrigin;
+    new URL(request.url).origin === config.appOrigin &&
+    // Browsers that isolate the page (a sandboxed frame or hardened privacy
+    // settings) send the opaque origin `null` rather than the site origin.
+    // Refusing it made the Disconnect button unusable there (Heal
+    // s3-disconnect-button-refused-1). The request still targets our origin,
+    // every other origin is rejected, and the connection handle is HttpOnly
+    // and SameSite=strict, so a cross-site page cannot supply it.
+    (origin === config.appOrigin || origin === "null");
 }

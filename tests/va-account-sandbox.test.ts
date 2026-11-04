@@ -391,4 +391,25 @@ describe("account route consent, cookies, and CSRF", () => {
     expect(disconnect.headers.get("location")).toBe(`${env.APP_URL}/va-account?notice=disconnected`);
     expect(await readAccountSession(config, store, handle)).toBeNull();
   });
+  it("accepts an opaque origin for disconnect without accepting a foreign origin", async () => {
+    configure();
+    const store = loadAccountStore(config)!;
+    await store.remove(`login-budget:${config.fingerprint}`);
+    const { handle } = await connected(store);
+    const disconnect = (origin: string) => POST(
+      new NextRequest(`${env.APP_URL}/va-account/oauth/ratings/disconnect`, {
+        method: "POST",
+        headers: { origin, cookie: `${accountCookieName("ratings")}=${handle}` },
+      }),
+      args("disconnect"),
+    );
+
+    // A page in an isolated context reports the opaque origin `null`, but the
+    // request still targets this origin and carries the strict handle cookie.
+    expect((await disconnect("https://evil.test")).status).toBe(403);
+    const response = await disconnect("null");
+    expect(response.status).toBe(303);
+    expect(response.headers.get("location")).toBe(`${env.APP_URL}/va-account?notice=disconnected`);
+    expect(await readAccountSession(config, store, handle)).toBeNull();
+  });
 });
