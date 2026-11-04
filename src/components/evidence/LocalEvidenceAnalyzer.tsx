@@ -518,7 +518,10 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
         nextWarnings.push(...result.warnings);
         processed += result.processed;
         remainingBatchBytes -= result.skipped ? 0 : Math.min(row.file.size, limits.batchBytes);
-        if (!result.skipped) setRowOutcome(row.id, result.hint);
+        // A failed or textless extraction commits nothing; leave the row
+        // unanalyzed so the user can retry or run OCR instead of seeing a
+        // document that never landed as "analyzed".
+        if (!result.skipped && result.processed > 0) setRowOutcome(row.id, result.hint);
       }
 
       if (!isCurrentGeneration()) return;
@@ -556,7 +559,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
       const result = await analyzeOneFile(updated, Number.MAX_SAFE_INTEGER, isCurrentGeneration);
       if (!isCurrentGeneration()) return;
       setWarnings(result.warnings);
-      setRowOutcome(id, result.hint);
+      if (result.processed > 0) setRowOutcome(id, result.hint);
       setMessage(
         result.processed > 0
           ? `Re-analyzed ${updated.sourceName} locally with the selected author.`
