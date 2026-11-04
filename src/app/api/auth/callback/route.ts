@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 import {
   ACCOUNT_SESSION_SECONDS,
+  ACCOUNT_TRANSACTION_COOKIE_PATH,
   accountCookieName,
   accountCookieSecure,
   accountTransactionCookieName,
@@ -85,7 +86,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     });
   }
   response.cookies.set(accountTransactionCookieName(config.service), "", {
-    path: "/api/auth",
+    path: ACCOUNT_TRANSACTION_COOKIE_PATH,
     maxAge: 0,
   });
   return response;

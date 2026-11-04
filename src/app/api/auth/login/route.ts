@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import {
+  ACCOUNT_TRANSACTION_COOKIE_PATH,
   ACCOUNT_TRANSACTION_SECONDS,
   accountCookieSecure,
   accountTransactionCookieName,
@@ -65,9 +66,12 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     const login = await startAccountLogin(config, store);
     const response = NextResponse.redirect(login.url, { status: 303, headers: PRIVATE });
     // Binding only (a random handle into the server-side transaction, not the
-    // verifier). Lax so the top-level navigation to VA and back carries it;
-    // path-scoped to /api/auth so both adapter routes receive it and nothing
-    // else does; 5-minute TTL bounds the round trip.
+    // verifier). Lax so the top-level navigation to VA and back carries it.
+    // The path must cover the callback VA actually redirects to
+    // (`/va-account/oauth/claims/callback`), not just this adapter's routes;
+    // scoping it to /api/auth silently dropped the binding and every login
+    // landed on connection-failed (Heal s1-api-login-never-connects-claims-1).
+    // 5-minute TTL bounds the round trip.
     response.cookies.set(
       accountTransactionCookieName(config.service),
       login.binding,
@@ -75,7 +79,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
         httpOnly: true,
         secure: accountCookieSecure(config),
         sameSite: "lax",
-        path: "/api/auth",
+        path: ACCOUNT_TRANSACTION_COOKIE_PATH,
         maxAge: ACCOUNT_TRANSACTION_SECONDS,
       },
     );

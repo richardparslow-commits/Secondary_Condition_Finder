@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import {
-  ACCOUNT_SESSION_SECONDS, ACCOUNT_TRANSACTION_SECONDS, accountCookieName,
+  ACCOUNT_SESSION_SECONDS, ACCOUNT_TRANSACTION_COOKIE_PATH, ACCOUNT_TRANSACTION_SECONDS, accountCookieName,
   accountCookieSecure, accountTransactionCookieName, isSameOriginAccountPost,
   loadVaAccountConfig, parseAccountService,
 } from "@/lib/va/account/config";
@@ -59,7 +59,7 @@ export async function POST(request: NextRequest, args: Context) {
       const response = NextResponse.json({ authorizationUrl: login.url }, { headers: PRIVATE });
       response.cookies.set(accountTransactionCookieName(config.service), login.binding, {
         httpOnly: true, secure: accountCookieSecure(config), sameSite: "lax",
-        path: `/va-account/oauth/${config.service}`, maxAge: ACCOUNT_TRANSACTION_SECONDS,
+        path: ACCOUNT_TRANSACTION_COOKIE_PATH, maxAge: ACCOUNT_TRANSACTION_SECONDS,
       });
       response.cookies.set(accountCookieName(config.service), "", { path: "/va-account", maxAge: 0 });
       return response;
@@ -68,7 +68,7 @@ export async function POST(request: NextRequest, args: Context) {
     const result = handle ? await disconnectAccount(config, store, handle) : { cleared: true, revoked: true };
     const response = notice(config.appOrigin, !result.cleared ? "cleanup-unconfirmed" : result.revoked ? "disconnected" : "revocation-unconfirmed");
     response.cookies.set(accountCookieName(config.service), "", { path: "/va-account", maxAge: 0 });
-    response.cookies.set(accountTransactionCookieName(config.service), "", { path: `/va-account/oauth/${config.service}`, maxAge: 0 });
+    response.cookies.set(accountTransactionCookieName(config.service), "", { path: ACCOUNT_TRANSACTION_COOKIE_PATH, maxAge: 0 });
     return response;
   } catch { return notice(config.appOrigin, "unavailable"); }
 }
@@ -88,6 +88,6 @@ export async function GET(request: NextRequest, args: Context) {
       path: "/va-account", maxAge: ACCOUNT_SESSION_SECONDS,
     });
   } catch { response = notice(config.appOrigin, "connection-failed"); }
-  response.cookies.set(accountTransactionCookieName(config.service), "", { path: `/va-account/oauth/${config.service}`, maxAge: 0 });
+  response.cookies.set(accountTransactionCookieName(config.service), "", { path: ACCOUNT_TRANSACTION_COOKIE_PATH, maxAge: 0 });
   return response;
 }

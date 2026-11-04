@@ -29,6 +29,18 @@ const SERVICES = {
 
 export const ACCOUNT_SESSION_SECONDS = 30 * 60;
 export const ACCOUNT_TRANSACTION_SECONDS = 5 * 60;
+/**
+ * Where the single-use login binding cookie lives.
+ *
+ * The authorization request sends VA `config.callbackUrl` — the canonical
+ * `/va-account/oauth/<service>/callback` — while the restricted-API adapter
+ * keeps its own `/api/auth/callback`. Those subtrees share no narrower prefix,
+ * so a path scoped to one of them is never sent to the other and the callback
+ * fails with a missing binding (Heal s1-api-login-never-connects-claims-1).
+ * The cookie is HttpOnly, single-use, and expires in five minutes; `/` is the
+ * only path that lets either reviewed callback complete the flow.
+ */
+export const ACCOUNT_TRANSACTION_COOKIE_PATH = "/";
 export const ACCOUNT_HTTP_TIMEOUT_MS = 4_000;
 export const ACCOUNT_ORIGIN = "https://sandbox-api.va.gov";
 
