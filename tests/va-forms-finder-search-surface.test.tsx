@@ -136,6 +136,22 @@ describe("Forms Finder search submission (A01)", () => {
     expect(window.location.search).toBe("");
   });
 
+  it("discloses the item bound when a broad search fills it", () => {
+    const items = Array.from({ length: 200 }, (_, index) => ({
+      formName: `21-${String(index).padStart(4, "0")}`,
+      title: `Matching form ${index}`,
+      url: `https://www.va.gov/find-forms/about-form-${index}/`,
+      lastRevisionOn: null,
+      pages: null,
+      validPdf: null,
+    }));
+
+    render(<VaFormsFinder initialView={view({ items })} />);
+
+    expect(screen.getByText(/200 results shown for 21-526EZ/)).toBeTruthy();
+    expect(screen.getByText(/Showing the first 200 matches/)).toBeTruthy();
+  });
+
   it("keeps the URL clean on an oversized-input refusal and echoes nothing", async () => {
     actionMock.mockResolvedValue(state({ refusal: "oversized-value" }));
     render(<VaFormsFinder initialView={view()} />);
