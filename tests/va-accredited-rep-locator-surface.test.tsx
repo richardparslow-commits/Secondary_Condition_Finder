@@ -17,7 +17,10 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { AccreditedRepresentativeFinder } from "@/components/va/AccreditedRepresentativeFinder";
 import type { AccreditedRepresentativeView } from "@/lib/va/accredited-representatives";
-import { ACCREDITED_REP_REFUSAL_MESSAGE } from "@/lib/va/accredited-rep-search";
+import {
+  ACCREDITED_REP_REFUSAL_MESSAGE,
+  ACCREDITED_REP_UNAVAILABLE_MESSAGE,
+} from "@/lib/va/accredited-rep-search";
 
 const ZIP = "22101";
 
@@ -140,6 +143,25 @@ describe("locator submission (A01)", () => {
     // A refusal must not leave a previous result on screen as if it answered
     // the refused request.
     expect(screen.queryByText(/^Source:/)).toBeNull();
+  });
+
+  it("keeps the page mounted and shows fixed copy when the server cannot be reached", async () => {
+    // Heal s4-offline-rep-search-blanks-suggestions-1: an offline submit rejected
+    // the server-action call, the rejection escaped useActionState, and the route
+    // error boundary replaced the page — suggestions and finder both gone.
+    actionMock.mockRejectedValue(new TypeError("Failed to fetch"));
+    render(<AccreditedRepresentativeFinder returnTo="/secondary/suggestions" />);
+
+    await submitSearch(ZIP);
+
+    const alert = await screen.findByRole("alert");
+    expect(alert.textContent).toBe(ACCREDITED_REP_UNAVAILABLE_MESSAGE);
+    expect(alert.textContent).not.toContain(ZIP);
+    // The finder is still on screen, so nothing was replaced by an error page.
+    expect(screen.getByText("Find an accredited representative near you")).toBeTruthy();
+    expect(screen.queryByText(/^Source:/)).toBeNull();
+    expect(window.location.href).not.toContain(ZIP);
+    expect(window.location.search).toBe("");
   });
 
   it("shows the generic refusal copy for a PHI-free-contract refusal", async () => {
