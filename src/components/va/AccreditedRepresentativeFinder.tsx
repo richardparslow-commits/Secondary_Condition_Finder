@@ -43,9 +43,22 @@ export function RepresentativeResults({ view }: { view: AccreditedRepresentative
   const [visible, setVisible] = useState(INITIAL_VISIBLE_REPRESENTATIVES);
 
   if (view.items.length === 0) {
-    return (
+    // An empty list means two different things, and the loader distinguishes
+    // them with `live`: a live directory answered with no matches, or the
+    // directory could not be read at all. Rendering the first copy for both
+    // told a visitor during an outage that nobody was nearby, which is a claim
+    // the app cannot make (Heal s2-rep-directory-failure-shown-as-no-results-1).
+    return view.live ? (
       <p className="mt-4 rounded-md border border-slate-200 bg-slate-50 p-4 text-sm text-slate-700">
         No accredited representatives found within {view.params.radiusMiles ?? 50} miles of {view.params.zip}. Try a larger radius or search{" "}
+        <a href="https://www.va.gov/ogc/apps/accreditation/index.asp" target="_blank" rel="noreferrer" className="underline">
+          va.gov/ogc/apps/accreditation
+        </a>
+        .
+      </p>
+    ) : (
+      <p role="status" className="mt-4 rounded-md border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900">
+        VA&apos;s accredited-representative directory could not be loaded just now, so no nearby representatives can be shown. Try again later or search{" "}
         <a href="https://www.va.gov/ogc/apps/accreditation/index.asp" target="_blank" rel="noreferrer" className="underline">
           va.gov/ogc/apps/accreditation
         </a>
