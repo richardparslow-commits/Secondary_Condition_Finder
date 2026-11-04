@@ -29,13 +29,24 @@ export const FORMS_FINDER_QUERY_MAX_LENGTH = 120;
 export const FORMS_FINDER_REFUSAL_MESSAGE =
   "That search was not run. Search by VA form number, keyword, or title — never enter personal identifiers.";
 
+/**
+ * Copy shown when the lookup never reached the server at all (offline, DNS
+ * failure, interrupted tunnel). Fixed text for the same reason as the refusal:
+ * the request carried search text, and a failure response must not echo it.
+ * Without this state the rejected action call reached the route error boundary
+ * and replaced the whole finder, typed query included.
+ */
+export const FORMS_FINDER_UNAVAILABLE_MESSAGE =
+  "The search could not run. Check your connection and try again.";
+
 /** Action state rendered by the finder component. Plain JSON, safe to return. */
 export interface VaFormsFinderSearchState {
   view: VaFormsFinderView;
   /**
-   * Canonical refusal code when the input was rejected, `null` otherwise. A
-   * fixed constant — never the submitted text — so the response is not a
-   * reflection channel.
+   * Canonical failure code: `phi-shaped-field` / `oversized-value` when the
+   * input was rejected, `unavailable` when the request never reached the
+   * server, `null` on success. A fixed constant — never the submitted text —
+   * so the response is not a reflection channel.
    */
-  refusal: "phi-shaped-field" | "oversized-value" | null;
+  refusal: "phi-shaped-field" | "oversized-value" | "unavailable" | null;
 }
