@@ -216,6 +216,45 @@ describe("accredited representative locator (Idea #8)", () => {
     expect(cachedView.items).toHaveLength(3);
   });
 
+  it("keeps the nearest representatives when a busy ZIP returns more than the cache bound", async () => {
+    // Heal s1-many-reps-shown-as-none-found-1: a 250-record answer exceeded the
+    // 200-item cache DTO, the fresh view failed its own trust policy, and the
+    // cache layer served the empty degraded view — the finder claimed none
+    // were nearby. The loader now sorts and bounds before building the view.
+    vi.stubEnv("VA_API_ENABLED", "true");
+    vi.stubEnv("VA_API_ENV", "sandbox");
+    vi.stubEnv("VA_ACCREDITED_REP_ENABLED", "true");
+    vi.stubEnv("VA_ACCREDITED_REP_SANDBOX_API_KEY", "test-key");
+    clearAccreditedRepresentativeCache();
+    const fetchSpy = vi.fn().mockResolvedValue(
+      vaJsonResponse({
+        data: Array.from({ length: 250 }, (_, index) => ({
+          id: `rep-${index}`,
+          name: `Representative ${String(index).padStart(3, "0")}`,
+          accreditationType: "VSO",
+          zip: "12345",
+          distanceMiles: index,
+        })),
+      }),
+    );
+    vi.stubGlobal("fetch", fetchSpy);
+
+    const view = await loadAccreditedRepresentatives({ zip: "12345", radiusMiles: 50 });
+
+    expect(view.live).toBe(true);
+    expect(view.items).toHaveLength(200);
+    // The list is sorted before it is bounded, so the nearest records survive.
+    expect(view.items[0].distanceMiles).toBe(0);
+    expect(view.items[199].distanceMiles).toBe(199);
+    expect(view.items.some((item) => item.id === "rep-249")).toBe(false);
+
+    // The bounded view is inside the cache DTO, so a repeated lookup stays
+    // populated instead of degrading to the empty fallback.
+    const cachedView = await loadAccreditedRepresentatives({ zip: "12345", radiusMiles: 50 });
+    expect(cachedView.cacheStatus).toBe("hit");
+    expect(cachedView.items).toHaveLength(200);
+  });
+
   it("renders the search form with the VSO/agent/attorney filters (source pin)", () => {
     const source = readFileSync("src/components/va/AccreditedRepresentativeFinder.tsx", "utf8");
     expect(source).toContain("Find an accredited representative near you");

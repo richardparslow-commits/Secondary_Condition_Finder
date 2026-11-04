@@ -1,6 +1,9 @@
 import "server-only";
 
-import { accreditedRepresentativeCacheDto } from "./cached-view-guard";
+import {
+  accreditedRepresentativeCacheDto,
+  VA_CACHE_DTO_MAX_ITEMS,
+} from "./cached-view-guard";
 import {
   resolveVaResultEnvironment,
   vaFallbackStatus,
@@ -119,7 +122,13 @@ export async function loadAccreditedRepresentatives(
         const db = b.distanceMiles ?? Number.MAX_SAFE_INTEGER;
         if (da !== db) return da - db;
         return a.name.localeCompare(b.name);
-      });
+      }).slice(0, VA_CACHE_DTO_MAX_ITEMS);
+      // Bound the list before building the view, after sorting, so the nearest
+      // representatives survive. The cache DTO accepts at most
+      // VA_CACHE_DTO_MAX_ITEMS records; an unbounded fresh view failed that DTO
+      // and the cache layer replaced it with the empty degraded view, so a busy
+      // ZIP's 250 nearby representatives rendered as "none found"
+      // (Heal s1-many-reps-shown-as-none-found-1).
 
       const environment = resolveVaResultEnvironment(
         result,
