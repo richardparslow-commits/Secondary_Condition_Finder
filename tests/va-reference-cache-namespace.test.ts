@@ -6,6 +6,7 @@ import {
   writeVaReferenceCache,
 } from "@/lib/va/reference-cache";
 import {
+  clearVaReferenceInFlightForTests,
   clearVaReferenceNamespace,
   VA_REFERENCE_NAMESPACES,
   vaReferenceCacheKey,
@@ -43,10 +44,12 @@ beforeEach(() => {
   vi.stubEnv("VA_REFERENCE_SHARED_CACHE_URL", "");
   vi.stubEnv("VA_REFERENCE_SHARED_CACHE_TOKEN", "");
   clearVaReferenceCache();
+  clearVaReferenceInFlightForTests();
 });
 
 afterEach(() => {
   clearVaReferenceCache();
+  clearVaReferenceInFlightForTests();
   vi.unstubAllEnvs();
   vi.unstubAllGlobals();
   vi.restoreAllMocks();
@@ -181,6 +184,29 @@ describe("withVaReferenceCache", () => {
     expect(first).toEqual(view);
     expect(second).toEqual(view);
     expect(load).toHaveBeenCalledTimes(1);
+  });
+
+  it("dedupes concurrent misses for one key when no shared lease is configured", async () => {
+    let release!: () => void;
+    const gate = new Promise<void>((resolve) => {
+      release = resolve;
+    });
+    const view: TestView = { items: [], cacheStatus: "miss" };
+    const load = vi.fn(async () => {
+      await gate;
+      return { view, cacheable: true };
+    });
+
+    const requests = Array.from({ length: 6 }, () =>
+      withVaReferenceCache(key, load, { singleFlight: true }),
+    );
+
+    await vi.waitFor(() => expect(load).toHaveBeenCalledTimes(1));
+    release();
+    const results = await Promise.all(requests);
+
+    expect(load).toHaveBeenCalledTimes(1);
+    expect(results).toEqual([view, view, view, view, view, view]);
   });
 
   // The invariant that was previously unstated across five hand-rolled copies:
