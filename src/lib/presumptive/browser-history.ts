@@ -36,6 +36,33 @@ export type ReadableStorage = Pick<Storage, "getItem">;
 export type WritableStorage = Pick<Storage, "setItem">;
 export type RemovableStorage = Pick<Storage, "removeItem">;
 
+/**
+ * Same-tab change signal for the read hook's module snapshot. The browser
+ * `storage` event only fires in other tabs, so a write or clear here must
+ * advance a revision the hook can compare against even when no consumer is
+ * mounted (the form writes, then navigates to the results view).
+ */
+let historyRevision = 0;
+const changeListeners = new Set<() => void>();
+
+export function presumptiveHistoryRevision(): number {
+  return historyRevision;
+}
+
+export function subscribeToPresumptiveHistoryChanges(
+  listener: () => void,
+): () => void {
+  changeListeners.add(listener);
+  return () => {
+    changeListeners.delete(listener);
+  };
+}
+
+function markPresumptiveHistoryChanged(): void {
+  historyRevision += 1;
+  for (const listener of changeListeners) listener();
+}
+
 /** Reads and validates the browser-local service history. */
 export function readPresumptiveHistory(
   storage: ReadableStorage,
@@ -77,11 +104,16 @@ export function writePresumptiveHistory(
     presumptiveHistoryStorageKey,
     JSON.stringify({ version: PRESUMPTIVE_HISTORY_VERSION, ...validated }),
   );
+  markPresumptiveHistoryChanged();
 }
 
 /** Removes the browser-local service history. */
 export function clearPresumptiveHistory(storage: RemovableStorage): void {
-  storage.removeItem(presumptiveHistoryStorageKey);
+  try {
+    storage.removeItem(presumptiveHistoryStorageKey);
+  } finally {
+    markPresumptiveHistoryChanged();
+  }
 }
 
 /**
@@ -89,8 +121,12 @@ export function clearPresumptiveHistory(storage: RemovableStorage): void {
  * is never copied or sent anywhere while clearing.
  */
 export function clearPresumptiveLocalState(storage: RemovableStorage): void {
-  for (const key of presumptiveLocalStorageKeys) {
-    storage.removeItem(key);
+  try {
+    for (const key of presumptiveLocalStorageKeys) {
+      storage.removeItem(key);
+    }
+  } finally {
+    markPresumptiveHistoryChanged();
   }
 }
 
