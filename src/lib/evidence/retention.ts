@@ -22,22 +22,45 @@ export function evidenceAnalysisIdentity(
   return sourceId ? `id:${sourceId}` : `name:${analysis.sourceName}`;
 }
 
+export interface EvidenceAnalysisMerge {
+  analyses: EvidenceAnalysis[];
+  /**
+   * Documents evicted by the retention window. Replacing the incoming
+   * document's earlier record is not a drop: its excerpts are still there,
+   * re-read. The serializer cannot see these evictions because the window is
+   * applied before it measures anything, so the count has to come from here.
+   */
+  dropped: number;
+}
+
 /**
  * Append `incoming`, replacing the record with the same identity (re-analysis
  * of the same document) and keeping every other document, including one that
  * happens to share its name. Newest-first eviction past `maxSources` matches
  * the serialized store's `slice(-storedSources)` window.
  */
+export function mergeEvidenceAnalysisWithInfo(
+  existing: readonly EvidenceAnalysis[],
+  incoming: EvidenceAnalysis,
+  maxSources: number,
+): EvidenceAnalysisMerge {
+  const identity = evidenceAnalysisIdentity(incoming);
+  const kept = existing.filter(
+    (analysis) => evidenceAnalysisIdentity(analysis) !== identity,
+  );
+  const combined = [...kept, incoming];
+  const window = Math.max(0, maxSources);
+  const analyses = combined.slice(Math.max(0, combined.length - window));
+  return { analyses, dropped: combined.length - analyses.length };
+}
+
+/** Retention-only variant for callers that do not surface the drop count. */
 export function mergeEvidenceAnalysis(
   existing: readonly EvidenceAnalysis[],
   incoming: EvidenceAnalysis,
   maxSources: number,
 ): EvidenceAnalysis[] {
-  const identity = evidenceAnalysisIdentity(incoming);
-  const kept = existing.filter(
-    (analysis) => evidenceAnalysisIdentity(analysis) !== identity,
-  );
-  return [...kept, incoming].slice(-maxSources);
+  return mergeEvidenceAnalysisWithInfo(existing, incoming, maxSources).analyses;
 }
 
 /**

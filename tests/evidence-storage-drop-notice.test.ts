@@ -131,14 +131,21 @@ describe("commitAnalysis user notification contract (structural)", () => {
     // render a long-running scan started in (Heal defect 2).
     expect(body).toContain("const activeLimits = limitsRef.current;");
     expect(body).toContain("serializeStoredEvidenceWithInfo(next, activeLimits)");
-    expect(body).toContain("info.dropped > 0");
-    expect(body.indexOf("saveStored(")).toBeGreaterThan(body.indexOf("info.dropped > 0"));
+    // Cap eviction happens inside the merge, before the serializer measures
+    // anything, so the notice must count both sources (Heal defect 19).
+    expect(body).toContain("retentionDropped + info.dropped");
+    expect(body).toContain("droppedTotal > 0");
+    expect(body.indexOf("saveStored(")).toBeGreaterThan(body.indexOf("droppedTotal > 0"));
   });
 
-  it("defers the warning outside the state updater and names the remedy", () => {
+  it("returns the notice so a caller reset cannot clear it, and names the remedy", () => {
     const commitIndex = analyzer.indexOf("function commitAnalysis(");
     const body = analyzer.slice(commitIndex, analyzer.indexOf("function dropAnalysis(", commitIndex));
-    expect(body).toContain("queueMicrotask(");
+    // A deferred setState lands before the caller's `setWarnings([])` reset and
+    // is cleared with it, which is how the pasted-text path lost the notice.
+    expect(body).toContain("let notice: string | null = null;");
+    expect(body).toContain("return notice;");
+    expect(body).not.toContain("queueMicrotask(");
     expect(body).toContain("Storage limit reached (");
     expect(body).toContain("older analyzed source(s) were dropped");
     expect(body).toContain("Extended depth");
