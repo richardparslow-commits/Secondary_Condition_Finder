@@ -3,6 +3,7 @@
 import { useActionState, useState } from "react";
 
 import { searchAccreditedRepresentatives } from "@/lib/actions/accredited-representatives";
+import type { AccreditedRepresentativeView } from "@/lib/va/accredited-representatives";
 import {
   ACCREDITED_REP_VALIDATION_MESSAGES,
   APPROVED_RADIUS_MILES,
@@ -26,6 +27,81 @@ interface Props {
 }
 
 const RADIUS_OPTIONS = APPROVED_RADIUS_MILES;
+const INITIAL_VISIBLE_REPRESENTATIVES = 25;
+const VISIBLE_REPRESENTATIVES_STEP = 25;
+
+/**
+ * The lookup results, with a bounded first page.
+ *
+ * The loader keeps the nearest representatives up to the cache DTO's bound;
+ * this renders a short first page and reveals the rest on request. Showing a
+ * dense ZIP's whole list at once buried the page, while rendering none of it
+ * (the old over-limit path) told the visitor no one was nearby
+ * (Heal s1-many-reps-shown-as-none-found-1).
+ */
+export function RepresentativeResults({ view }: { view: AccreditedRepresentativeView }) {
+  const [visible, setVisible] = useState(INITIAL_VISIBLE_REPRESENTATIVES);
+
+  if (view.items.length === 0) {
+    return (
+      <p className="mt-4 rounded-md border border-slate-200 bg-slate-50 p-4 text-sm text-slate-700">
+        No accredited representatives found within {view.params.radiusMiles ?? 50} miles of {view.params.zip}. Try a larger radius or search{" "}
+        <a href="https://www.va.gov/ogc/apps/accreditation/index.asp" target="_blank" rel="noreferrer" className="underline">
+          va.gov/ogc/apps/accreditation
+        </a>
+        .
+      </p>
+    );
+  }
+
+  const shown = view.items.slice(0, visible);
+  return (
+    <>
+      <p className="mt-4 text-xs text-slate-600">
+        Showing {shown.length} of {view.items.length} accredited representatives, nearest first.
+      </p>
+      <ul className="mt-2 space-y-3">
+        {shown.map((item) => (
+          <li key={item.id} className="rounded-lg border border-slate-200 p-4">
+            <p className="text-sm font-semibold text-slate-900">
+              {item.name}
+              <span className="ml-2 rounded bg-blue-50 px-2 py-0.5 text-xs font-medium text-blue-800">{item.accreditationType}</span>
+            </p>
+            {item.organization && <p className="text-sm text-slate-700">{item.organization}</p>}
+            {item.specializations && item.specializations.length > 0 && (
+              <p className="mt-1 text-xs text-slate-600">
+                <span className="font-medium text-slate-700">Specializations: </span>
+                {item.specializations.join(", ")}
+              </p>
+            )}
+            <p className="text-xs text-muted">
+              {item.address ? `${item.address} · ` : ""}
+              {item.zip}
+              {item.distanceMiles != null ? ` · ${item.distanceMiles.toFixed(1)} mi` : ""}
+            </p>
+            <div className="mt-1 flex flex-wrap gap-3 text-xs">
+              {item.phone && <a href={`tel:${item.phone}`} className="underline">{item.phone}</a>}
+              {item.website && (
+                <a href={item.website} target="_blank" rel="noreferrer" className="underline">
+                  Website
+                </a>
+              )}
+            </div>
+          </li>
+        ))}
+      </ul>
+      {shown.length < view.items.length && (
+        <button
+          type="button"
+          onClick={() => setVisible((count) => count + VISIBLE_REPRESENTATIVES_STEP)}
+          className="mt-4 rounded-md border border-slate-300 px-4 py-2 text-sm font-medium text-slate-900 hover:bg-slate-50"
+        >
+          Show more representatives
+        </button>
+      )}
+    </>
+  );
+}
 
 /**
  * Accredited-representative locator (audit A01).
@@ -142,46 +218,10 @@ export function AccreditedRepresentativeFinder({ returnTo }: Props) {
           </p>
           <p className="mt-1 text-xs text-slate-600">{view.notice}</p>
 
-          {view.items.length === 0 ? (
-            <p className="mt-4 rounded-md border border-slate-200 bg-slate-50 p-4 text-sm text-slate-700">
-              No accredited representatives found within {view.params.radiusMiles ?? 50} miles of {view.params.zip}. Try a larger radius or search{" "}
-              <a href="https://www.va.gov/ogc/apps/accreditation/index.asp" target="_blank" rel="noreferrer" className="underline">
-                va.gov/ogc/apps/accreditation
-              </a>
-              .
-            </p>
-          ) : (
-            <ul className="mt-4 space-y-3">
-              {view.items.map((item) => (
-                <li key={item.id} className="rounded-lg border border-slate-200 p-4">
-                  <p className="text-sm font-semibold text-slate-900">
-                    {item.name}
-                    <span className="ml-2 rounded bg-blue-50 px-2 py-0.5 text-xs font-medium text-blue-800">{item.accreditationType}</span>
-                  </p>
-                  {item.organization && <p className="text-sm text-slate-700">{item.organization}</p>}
-                  {item.specializations && item.specializations.length > 0 && (
-                    <p className="mt-1 text-xs text-slate-600">
-                      <span className="font-medium text-slate-700">Specializations: </span>
-                      {item.specializations.join(", ")}
-                    </p>
-                  )}
-                  <p className="text-xs text-muted">
-                    {item.address ? `${item.address} · ` : ""}
-                    {item.zip}
-                    {item.distanceMiles != null ? ` · ${item.distanceMiles.toFixed(1)} mi` : ""}
-                  </p>
-                  <div className="mt-1 flex flex-wrap gap-3 text-xs">
-                    {item.phone && <a href={`tel:${item.phone}`} className="underline">{item.phone}</a>}
-                    {item.website && (
-                      <a href={item.website} target="_blank" rel="noreferrer" className="underline">
-                        Website
-                      </a>
-                    )}
-                  </div>
-                </li>
-              ))}
-            </ul>
-          )}
+          <RepresentativeResults
+            key={`${view.params.zip}:${view.params.radiusMiles ?? 50}:${view.params.type ?? "any"}:${view.retrievedAt ?? "fallback"}`}
+            view={view}
+          />
         </div>
       )}
 
