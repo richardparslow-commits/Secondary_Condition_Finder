@@ -34,8 +34,6 @@ export function ServiceHistoryForm({
   const router = useRouter();
   const [selected, setSelected] = useState<string[]>([]);
   const [selectedBranches, setSelectedBranches] = useState<string[]>([]);
-  const [serviceStart, setServiceStart] = useState("");
-  const [serviceEnd, setServiceEnd] = useState("");
   const [error, setError] = useState<ServiceHistoryFailureCode | null>(null);
 
   function toggle(location: string) {
@@ -61,13 +59,16 @@ export function ServiceHistoryForm({
    */
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    // Dates are intentionally uncontrolled so the quick-start templates can
+    // write them directly; read the submitted values rather than stale state.
+    const formData = new FormData(event.currentTarget);
     const result = persistServiceHistory(
       window.sessionStorage,
       normalizeServiceHistoryDraft({
         serviceBranchCodes: selectedBranches,
         locations: selected,
-        serviceStart,
-        serviceEnd,
+        serviceStart: String(formData.get("serviceStart") ?? ""),
+        serviceEnd: String(formData.get("serviceEnd") ?? ""),
       }),
       locations,
     );
@@ -169,8 +170,7 @@ export function ServiceHistoryForm({
             <input
               type="date"
               name="serviceStart"
-              value={serviceStart}
-              onChange={(event) => setServiceStart(event.target.value)}
+              defaultValue=""
               className={`mt-1 ${fieldClass}`}
             />
           </label>
@@ -179,8 +179,7 @@ export function ServiceHistoryForm({
             <input
               type="date"
               name="serviceEnd"
-              value={serviceEnd}
-              onChange={(event) => setServiceEnd(event.target.value)}
+              defaultValue=""
               className={`mt-1 ${fieldClass}`}
             />
           </label>
