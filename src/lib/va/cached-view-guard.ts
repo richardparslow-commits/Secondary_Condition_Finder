@@ -244,7 +244,11 @@ const accreditedRepresentativeCacheItemDto = z.strictObject({
   phone: boundedText(50).nullable().optional(),
   website: cachedUrl.nullable().optional(),
   address: boundedText(500).nullable().optional(),
-  zip: z.string().regex(/^\d{5}$/),
+  // Must match the upstream item rule, ZIP+4 included. A cache DTO that
+  // refused the plus-four would reject an otherwise valid live view on read
+  // and degrade it to the empty fallback, hiding the same representatives a
+  // second time (Heal s3-one-odd-rep-hides-all-reps-1).
+  zip: z.string().regex(/^\d{5}(?:-\d{4})?$/),
   distanceMiles: z.number().min(0).max(10_000).nullable().optional(),
 });
 

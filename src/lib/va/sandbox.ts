@@ -789,7 +789,12 @@ const accreditedRepItemSchema = z.object({
   phone: z.string().min(1).nullable().optional(),
   website: trustedHttpsUrlSchema.nullable().optional(),
   address: z.string().min(1).nullable().optional(),
-  zip: z.string().regex(/^\d{5}$/),
+  // A directory record may carry a ZIP+4 ("12345-6789"). This is stricter than
+  // nothing but looser than the search input, which still requires exactly five
+  // digits: the array is validated as a whole, so refusing a plus-four here
+  // failed the entire payload and the finder served its empty fallback, hiding
+  // every readable representative (Heal s3-one-odd-rep-hides-all-reps-1).
+  zip: z.string().regex(/^\d{5}(?:-\d{4})?$/),
   distanceMiles: z.number().nonnegative().nullable().optional(),
 }).passthrough();
 
