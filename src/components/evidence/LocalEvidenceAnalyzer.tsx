@@ -368,8 +368,12 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
           ? `Retention limit reached (${activeLimits.storedSources} analyzed sources in ${depthLabel} depth): ${droppedTotal} older analyzed source(s) were dropped. ${remedy}`
           : `Storage limit reached (${formatLimitBytes(activeLimits.storedBytes)}): ${droppedTotal} older analyzed source(s) were dropped to fit. ${remedy}`;
     }
-    saveStored(next, activeLimits);
-    applyAnalyses(next);
+    // Apply the exact bounded set that was serialized. Persisting one set and
+    // rendering another let the summary claim nine retained excerpts while
+    // five were listed (Heal s8-excerpt-count-exceeds-retained-1).
+    const retained = parseStoredEvidence(info.serialized, activeLimits);
+    saveStored(retained, activeLimits);
+    applyAnalyses(retained);
     return notice;
   }
 
