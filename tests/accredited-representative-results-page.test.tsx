@@ -17,6 +17,7 @@ afterEach(cleanup);
 function viewWith(count: number): AccreditedRepresentativeView {
   return {
     lookupKey: "lookup-key",
+    live: true,
     params: { zip: "12345", radiusMiles: 50 },
     items: Array.from({ length: count }, (_, index) => ({
       id: `rep-${index}`,
@@ -44,10 +45,34 @@ describe("the representative result list pages through a large lookup", () => {
     expect(screen.queryByRole("button", { name: "Show more representatives" })).toBeNull();
   });
 
-  it("keeps the empty-directory guidance when there are genuinely no matches", () => {
+  it("keeps the empty-directory guidance when a live lookup has no matches", () => {
     render(<RepresentativeResults view={viewWith(0)} />);
 
     expect(screen.getByText(/No accredited representatives found within 50 miles/)).toBeTruthy();
+    expect(screen.queryByText(/could not be loaded just now/)).toBeNull();
     expect(screen.queryAllByRole("listitem")).toHaveLength(0);
+  });
+
+  it("reports an unavailable directory as an outage, not as no nearby representatives", () => {
+    render(
+      <RepresentativeResults
+        view={{
+          ...viewWith(0),
+          live: false,
+          source: "local-fallback",
+          sourceLabel: "Local directory fallback",
+          notice:
+            "Accredited-representative directory is unavailable or disabled. Search VA's OGC directory on va.gov/ogc/apps/accreditation.",
+          environment: null,
+          retrievedAt: null,
+        }}
+      />,
+    );
+
+    expect(screen.getByText(/could not be loaded just now/)).toBeTruthy();
+    expect(screen.getByRole("status")).toBeTruthy();
+    // The app must not assert that no representative is nearby when it could
+    // not read the directory at all.
+    expect(screen.queryByText(/No accredited representatives found within/)).toBeNull();
   });
 });
