@@ -5,6 +5,7 @@ import { useCallback, useState } from "react";
 
 import { PrivacyDeletionCue } from "@/components/privacy/PrivacyDeletionCue";
 import { clearSecondaryWorkflowLocalState } from "@/lib/secondary-workflow/local-state";
+import { resetBrowserWorkflowContextSnapshot } from "@/lib/secondary-workflow/use-browser-context";
 
 /**
  * Finish Review / Start a new review (PRIV-01 stage 2).
@@ -40,6 +41,10 @@ function useClearAndLeave() {
     (destination: string) => {
       try {
         clearSecondaryWorkflowLocalState(window.sessionStorage);
+        // The clear-all removes the record from storage; the hook caches the
+        // validated snapshot at module scope, so it must be invalidated before
+        // the client-side navigation or the next step restores the old review.
+        resetBrowserWorkflowContextSnapshot();
       } catch {
         setError(
           "Browser-local cleanup could not be confirmed, so this review was not cleared. Close this tab or clear site data, then try again.",
