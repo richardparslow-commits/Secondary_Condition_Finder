@@ -66,9 +66,35 @@ const formIndexItemSchema = z.object({
   }).passthrough(),
 }).passthrough();
 
-export const formsIndexSchema = z.object({
-  data: z.array(formIndexItemSchema),
-}).passthrough();
+/**
+ * VA Forms payloads are validated record by record. One malformed record (a
+ * missing form name, a non-VA link) used to fail the entire array, which the
+ * adapter reported as `invalid-payload` and the finder rendered as "VA Forms
+ * is unavailable" even though every other record was readable. Readable
+ * records are kept and the odd one is skipped. The envelope still fails
+ * closed: `data` must be an array, and a non-empty array in which no record is
+ * readable is rejected rather than presented as a genuine empty result.
+ */
+export const formsIndexSchema = z
+  .object({ data: z.array(z.unknown()) })
+  .passthrough()
+  .transform((payload, ctx) => {
+    /** @type {Array<import("zod").infer<typeof formIndexItemSchema>>} */
+    const data = [];
+    for (const candidate of payload.data) {
+      const parsed = formIndexItemSchema.safeParse(candidate);
+      if (parsed.success) data.push(parsed.data);
+    }
+    if (payload.data.length > 0 && data.length === 0) {
+      ctx.addIssue({
+        code: "custom",
+        message: "No readable VA Forms records in payload",
+        path: ["data"],
+      });
+      return z.NEVER;
+    }
+    return { ...payload, data };
+  });
 
 export const disabilityReferenceSchema = z.object({
   items: z.array(z.object({

@@ -121,7 +121,11 @@ export async function verifyProductionReference({
         row.outcome = "invalid-payload";
         return evidence;
       }
-      const rows = check.service === "va-forms" ? parsed.data.data : parsed.data.items;
+      // The forms schema validates record-by-record, so its output no longer
+      // carries the passthrough index signature this union used to rely on.
+      // Index through one validated payload shape instead.
+      const payload = parsed.data as Record<string, unknown>;
+      const rows = check.service === "va-forms" ? payload.data : payload.items;
       const count = Array.isArray(rows) ? rows.length : 0;
       if (count === 0) {
         row.outcome = "invalid-payload";
