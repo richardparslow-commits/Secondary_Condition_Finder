@@ -79,34 +79,68 @@ function sampleFingerprint(value: unknown): string | null {
   return SAMPLE_FINGERPRINT_PATTERN.test(hex) ? hex : null;
 }
 
+function asRecord(value: unknown): Record<string, unknown> | null {
+  return value && typeof value === "object" && !Array.isArray(value)
+    ? (value as Record<string, unknown>)
+    : null;
+}
+
+/** Reads the first present key, so classic kebab and Reporting API camelCase agree. */
+function field(record: Record<string, unknown>, keys: string[]): unknown {
+  for (const key of keys) {
+    if (record[key] !== undefined) return record[key];
+  }
+  return undefined;
+}
+
+function reportBody(entry: Record<string, unknown>): Record<string, unknown> | null {
+  return asRecord(entry["csp-report"]) ?? asRecord(entry.body) ?? entry;
+}
+
 /**
- * Reduces a parsed violation-report body to a bounded, content-free event.
- * Accepts both the classic `application/csp-report` shape
- * (`{"csp-report": {...}}`) and the modern Report-To JSON shape
- * (`{"body": {...}}`). Returns null when nothing usable is present.
+ * Reduces a parsed violation-report body to bounded, content-free events.
+ * Accepts the classic `application/csp-report` shape
+ * (`{"csp-report": {...}}`), the single-object Reporting API shape, and the
+ * Reporting API's array of `{ type, body }` entries. The classic format uses
+ * kebab-case fields; the Reporting API uses camelCase, so both are read.
+ * Returns an empty list when nothing usable is present.
  */
+export function extractCspViolationEvents(raw: unknown): CspViolationEvent[] {
+  const entries = Array.isArray(raw) ? raw : [raw];
+  const events: CspViolationEvent[] = [];
+  for (const entry of entries) {
+    const record = asRecord(entry);
+    if (!record) continue;
+    // A Reporting API batch can contain other report types; only violations
+    // belong in the CSP window. Classic reports have no `type` field.
+    if (typeof record.type === "string" && record.type !== "csp-violation") continue;
+    const report = reportBody(record);
+    if (!report) continue;
+
+    const documentOrigin = originOf(field(report, ["document-uri", "documentURL"]));
+    const effectiveDirective = boundedDirective(
+      field(report, [
+        "effective-directive",
+        "violated-directive",
+        "effectiveDirective",
+        "violatedDirective",
+      ]),
+    );
+    if (!documentOrigin && effectiveDirective === "unknown") continue;
+
+    events.push({
+      effectiveDirective,
+      disposition: boundedDisposition(report.disposition),
+      documentOrigin: documentOrigin ?? "unknown",
+      blockedOrigin: originOf(field(report, ["blocked-uri", "blockedURL"])),
+      sourceFileOrigin: originOf(field(report, ["source-file", "sourceFile"])),
+      sampleFingerprint: sampleFingerprint(report.sample),
+    });
+  }
+  return events;
+}
+
+/** Single-report compatibility wrapper for callers that only need one event. */
 export function extractCspViolationEvent(raw: unknown): CspViolationEvent | null {
-  if (!raw || typeof raw !== "object" || Array.isArray(raw)) return null;
-  const record = raw as Record<string, unknown>;
-  const report =
-    record["csp-report"] && typeof record["csp-report"] === "object"
-      ? (record["csp-report"] as Record<string, unknown>)
-      : record.body && typeof record.body === "object"
-        ? (record.body as Record<string, unknown>)
-        : record;
-
-  const documentOrigin = originOf(report["document-uri"]);
-  const effectiveDirective = boundedDirective(
-    report["effective-directive"] ?? report["violated-directive"],
-  );
-  if (!documentOrigin && effectiveDirective === "unknown") return null;
-
-  return {
-    effectiveDirective,
-    disposition: boundedDisposition(report["disposition"]),
-    documentOrigin: documentOrigin ?? "unknown",
-    blockedOrigin: originOf(report["blocked-uri"]),
-    sourceFileOrigin: originOf(report["source-file"]),
-    sampleFingerprint: sampleFingerprint(report["sample"]),
-  };
+  return extractCspViolationEvents(raw)[0] ?? null;
 }

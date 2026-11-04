@@ -2,7 +2,11 @@ import fs from "node:fs";
 import { NextRequest } from "next/server";
 import { describe, expect, it } from "vitest";
 
-import { extractCspViolationEvent, CSP_REPORT_MAX_BODY_BYTES } from "../src/lib/observability/csp-report";
+import {
+  CSP_REPORT_MAX_BODY_BYTES,
+  extractCspViolationEvent,
+  extractCspViolationEvents,
+} from "../src/lib/observability/csp-report";
 import { buildTrustedTypesPolicyOptions } from "../src/lib/security/trusted-types-policy";
 import { proxy } from "@/proxy";
 
@@ -139,6 +143,37 @@ describe("CSP violation redaction", () => {
     });
     expect(event?.effectiveDirective).toBe("script-src");
     expect(event?.disposition).toBe("report");
+  });
+
+  it("accepts the Reporting API array with camelCase fields", () => {
+    const events = extractCspViolationEvents([
+      {
+        type: "csp-violation",
+        age: 1,
+        url: "https://app.example/secondary/upload?token=PLANTED-QUERY",
+        body: {
+          documentURL: "https://app.example/secondary/upload?token=PLANTED-QUERY",
+          effectiveDirective: "img-src",
+          blockedURL: "https://evil.test/payload.js",
+          sourceFile: "https://app.example/_next/static/chunk.js",
+          disposition: "enforce",
+          sample: "alert(document.cookie)",
+        },
+      },
+      { type: "deprecation", body: { id: "not-a-csp-report" } },
+    ]);
+
+    expect(events).toHaveLength(1);
+    expect(events[0]).toMatchObject({
+      effectiveDirective: "img-src",
+      disposition: "enforce",
+      documentOrigin: "https://app.example",
+      blockedOrigin: "https://evil.test",
+      sourceFileOrigin: "https://app.example",
+    });
+    expect(events[0]?.sampleFingerprint).toMatch(/^[0-9a-f]{1,40}$/);
+    expect(JSON.stringify(events)).not.toContain("PLANTED-QUERY");
+    expect(JSON.stringify(events)).not.toContain("document.cookie");
   });
 
   it("drops the sample but keeps a hex-only correlation fingerprint", () => {

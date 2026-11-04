@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 import {
   CSP_REPORT_MAX_BODY_BYTES,
-  extractCspViolationEvent,
+  extractCspViolationEvents,
 } from "@/lib/observability/csp-report";
 import { recordCspViolation } from "@/lib/observability/csp-metrics";
 import { recordCspViolationFact } from "@/lib/observability/csp-violation-window";
@@ -186,8 +186,9 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     return new NextResponse(null, { status: 204 });
   }
 
-  const event = extractCspViolationEvent(parsed);
-  if (event) {
+  // The Reporting API batches reports into an array; classic report-uri sends
+  // one object. Record every CSP entry in either shape, still redacted first.
+  for (const event of extractCspViolationEvents(parsed)) {
     recordCspViolation(event);
     // The window gets the two bounded fields only — no origin, no fingerprint —
     // so nothing a report contains can reach the public health payload.

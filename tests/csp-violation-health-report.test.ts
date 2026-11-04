@@ -263,6 +263,40 @@ describe("GET /api/health reports reported violations", () => {
     expect(body.components.cspReports.status).toBe("ok");
   });
 
+  it("counts a Reporting API array entry with camelCase fields", async () => {
+    expect(
+      await postReport(
+        [
+          {
+            type: "csp-violation",
+            age: 1,
+            url: "https://app.example/secondary/upload?token=PLANTED-REPORTING-QUERY",
+            body: {
+              documentURL: "https://app.example/secondary/upload?token=PLANTED-REPORTING-QUERY",
+              effectiveDirective: "img-src",
+              blockedURL: "https://evil.example/x.png",
+              sourceFile: "https://app.example/_next/static/chunk.js",
+              disposition: "enforce",
+              sample: "PLANTED-REPORTING-SAMPLE",
+            },
+          },
+        ],
+        { "content-type": "application/reports+json", "x-forwarded-for": "203.0.113.14" },
+      ),
+    ).toBe(204);
+
+    const { body } = await health();
+    const reported = body.components.cspReports;
+    expect(reported.received).toBe(1);
+    expect(reported.directives).toEqual([
+      expect.objectContaining({ directive: "img-src", count: 1, dispositions: ["enforce"] }),
+    ]);
+    const serialized = JSON.stringify(body);
+    for (const planted of ["PLANTED-REPORTING", "evil.example", "/secondary/upload"]) {
+      expect(serialized, `health leaked ${planted}`).not.toContain(planted);
+    }
+  });
+
   it("counts an oversized payload without attributing or echoing it", async () => {
     const oversizedBody = JSON.stringify({
       "csp-report": {
