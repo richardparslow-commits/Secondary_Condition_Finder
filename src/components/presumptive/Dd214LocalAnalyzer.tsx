@@ -502,8 +502,26 @@ export function Dd214LocalAnalyzer({ locations }: Props) {
     setShowSsn(false);
   }
 
+  /**
+   * Extracted duty stations are raw text; only exact catalog entries can be
+   * matched or persisted. Unmatched entries stay visible for review and can be
+   * removed, but must not make the whole step fail when a catalog location was
+   * also extracted (or selected by hand).
+   */
+  const catalogLocationSet = new Set(locations);
+  const catalogLocations = [
+    ...new Set(editedLocations.filter((location) => catalogLocationSet.has(location))),
+  ];
+  const unmatchedLocations = [
+    ...new Set(editedLocations.filter((location) => !catalogLocationSet.has(location))),
+  ];
+
+  function removeLocation(location: string) {
+    setEditedLocations((prev) => prev.filter((value) => value !== location));
+  }
+
   const adapterPreview = extraction
-    ? dd214ToServiceHistoryFields(extraction, { locationsOverride: editedLocations })
+    ? dd214ToServiceHistoryFields(extraction, { locationsOverride: catalogLocations })
     : null;
 
   return (
@@ -591,13 +609,13 @@ export function Dd214LocalAnalyzer({ locations }: Props) {
 
           <div>
             <p className="text-sm font-medium">Locations / duty stations</p>
-            <p className="text-xs text-muted">Edit as needed. Locations are matched exactly against the presumptive catalog.</p>
+            <p className="text-xs text-muted">Edit as needed. Only exact matches in the presumptive catalog are used; other extracted duty stations stay listed so you can review or remove them.</p>
             <div className="mt-2 flex flex-wrap gap-2">
               {locations.map((loc) => (
                 <label key={loc} className="flex items-center gap-2 rounded-md border bg-white px-3 py-1.5 text-sm">
                   <input
                     type="checkbox"
-                    checked={editedLocations.includes(loc)}
+                    checked={catalogLocations.includes(loc)}
                     onChange={(e) => {
                       setEditedLocations((prev) =>
                         e.target.checked ? [...new Set([...prev, loc])] : prev.filter((x) => x !== loc),
@@ -608,6 +626,29 @@ export function Dd214LocalAnalyzer({ locations }: Props) {
                 </label>
               ))}
             </div>
+            {unmatchedLocations.length > 0 && (
+              <div role="note" className="mt-3 rounded-md border border-amber-300 bg-amber-50 p-3">
+                <p className="text-xs font-medium text-amber-900">
+                  Not in the presumptive catalog — these will not be matched:
+                </p>
+                <ul className="mt-1 space-y-1">
+                  {unmatchedLocations.map((loc) => (
+                    <li key={loc} className="flex flex-wrap items-center gap-2 text-xs text-amber-900">
+                      <span>{loc}</span>
+                      <span>(not in the presumptive catalog)</span>
+                      <button
+                        type="button"
+                        aria-label={`Remove ${loc}`}
+                        onClick={() => removeLocation(loc)}
+                        className="rounded border border-amber-400 bg-white px-2 py-0.5 text-xs"
+                      >
+                        Remove
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
             <label htmlFor="dd214-location-add" className="mt-3 block text-sm font-medium text-slate-700">
               Add a location (free text)
             </label>
@@ -627,8 +668,10 @@ export function Dd214LocalAnalyzer({ locations }: Props) {
                 }
               }}
             />
-            {editedLocations.length > 0 && (
-              <p className="mt-2 text-xs text-slate-600">Selected: {editedLocations.join(", ")}</p>
+            {catalogLocations.length > 0 && (
+              <p className="mt-2 text-xs text-slate-600">
+                Selected catalog locations: {catalogLocations.join(", ")}
+              </p>
             )}
             {adapterPreview?.validationCode && (
               <p className="mt-2 text-xs text-red-700">Check: {adapterPreview.validationCode}</p>
@@ -653,7 +696,7 @@ export function Dd214LocalAnalyzer({ locations }: Props) {
                 window.sessionStorage,
                 normalizeServiceHistoryDraft({
                   serviceBranchCodes: editedBranches,
-                  locations: editedLocations,
+                  locations: catalogLocations,
                   serviceStart: editedStart,
                   serviceEnd: editedEnd,
                 }),
