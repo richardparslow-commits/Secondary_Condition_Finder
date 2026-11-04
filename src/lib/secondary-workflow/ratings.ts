@@ -28,6 +28,18 @@ export function isPermanentAndTotalRatingValue(value: string | undefined): boole
 }
 
 /**
+ * Live label for a select value, before the step is submitted. The step's
+ * selects are uncontrolled, so the Current Summary needs to read the chosen
+ * value as it is picked rather than waiting for saved context (defect 38).
+ */
+export function ratingSelectionLabel(value: string): string {
+  if (value === "") return "—";
+  if (value === "decline") return "Not provided";
+  if (value === PERMANENT_AND_TOTAL_RATING_VALUE) return "100% P&T";
+  return `${value}%`;
+}
+
+/**
  * Display label for a stored rating. The flag is only meaningful at 100; a
  * stale flag on any other tier is ignored rather than relabelled.
  */
