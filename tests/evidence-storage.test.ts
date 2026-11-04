@@ -43,7 +43,7 @@ function makeAnalysis(
 }
 
 describe("local evidence browser storage", () => {
-  it("persists only the recent sources and the excerpts the UI can display while retaining counts", () => {
+  it("persists only the recent sources and the excerpts the UI can display, with counts that match them", () => {
     const analyses = Array.from({ length: 12 }, (_, index) => makeAnalysis(index));
     const parsed = JSON.parse(serializeStoredEvidence(analyses)) as EvidenceAnalysis[];
 
@@ -51,8 +51,21 @@ describe("local evidence browser storage", () => {
     expect(parsed[0].sourceName).toBe("source-2");
     expect(parsed.at(-1)?.sourceName).toBe("source-11");
     expect(parsed.every((analysis) => analysis.excerpts.length === MAX_STORED_EVIDENCE_EXCERPTS_PER_SOURCE)).toBe(true);
-    expect(parsed.every((analysis) => analysis.nexusRelevantCount === 17)).toBe(true);
-    expect(parsed.every((analysis) => analysis.supportingCount === 23)).toBe(true);
+    for (const analysis of parsed) {
+      // The fixture's pre-trim counts (17/23) deliberately do not describe the
+      // retained excerpts. Serialization must recompute both counts from the
+      // five excerpts the UI can actually list.
+      const retained = analysis.excerpts;
+      expect(analysis.nexusRelevantCount).toBe(
+        retained.filter((excerpt) => excerpt.strength === "nexus-relevant").length,
+      );
+      expect(analysis.supportingCount).toBe(
+        retained.filter((excerpt) => excerpt.strength === "supporting").length,
+      );
+      expect(analysis.nexusRelevantCount + analysis.supportingCount).toBe(
+        MAX_STORED_EVIDENCE_EXCERPTS_PER_SOURCE,
+      );
+    }
   });
 
   it("never serializes a session payload above the configured byte budget", () => {

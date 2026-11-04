@@ -143,15 +143,50 @@ function byteLength(value: string): number {
   return new TextEncoder().encode(value).byteLength;
 }
 
+function retainedExcerptCounts(
+  excerpts: readonly EvidenceExcerpt[],
+): Pick<EvidenceAnalysis, "nexusRelevantCount" | "supportingCount"> {
+  return {
+    nexusRelevantCount: excerpts.filter(
+      (excerpt) => excerpt.strength === "nexus-relevant",
+    ).length,
+    supportingCount: excerpts.filter(
+      (excerpt) => excerpt.strength === "supporting",
+    ).length,
+  };
+}
+
 function boundedAnalysis(
+  analysis: EvidenceAnalysis,
+  limits: EvidenceLimits,
+): EvidenceAnalysis {
+  const excerpts = analysis.excerpts.slice(
+    0,
+    limits.storedExcerptsPerSource,
+  );
+  return {
+    ...analysis,
+    excerpts,
+    ...retainedExcerptCounts(excerpts),
+  };
+}
+
+/**
+ * The read guard validates every excerpt before the retention window is
+ * applied and deliberately does not discard a structurally valid record.
+ * Counts, however, must describe the excerpts the active depth keeps, or the
+ * summary claims more than the review lists (Heal
+ * s8-excerpt-count-exceeds-retained-1). Legacy records already written with
+ * untrimmed counts are normalized here as they load.
+ */
+function withRetainedCounts(
   analysis: EvidenceAnalysis,
   limits: EvidenceLimits,
 ): EvidenceAnalysis {
   return {
     ...analysis,
-    excerpts: analysis.excerpts.slice(
-      0,
-      limits.storedExcerptsPerSource,
+    ...retainedExcerptCounts(
+      analysis.excerpts.slice(0, limits.storedExcerptsPerSource),
     ),
   };
 }
@@ -232,7 +267,9 @@ function readStoredEvidence(raw: string, limits: EvidenceLimits): StoredEvidence
   if (!Array.isArray(parsed)) return { status: "ok", analyses: [], discardedEntries: 0 };
 
   const window = parsed.slice(-limits.storedSources);
-  const analyses = window.filter(isEvidenceAnalysis);
+  const analyses = window
+    .filter(isEvidenceAnalysis)
+    .map((analysis) => withRetainedCounts(analysis, limits));
   return { status: "ok", analyses, discardedEntries: window.length - analyses.length };
 }
 
