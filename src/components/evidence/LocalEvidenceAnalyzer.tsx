@@ -176,6 +176,16 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
   const [pending, setPending] = useState<PendingEvidenceFile[]>([]);
   const [ocrProgress, setOcrProgress] = useState<string | null>(null);
   const limits: EvidenceLimits = EVIDENCE_DEPTH_LIMITS[depth];
+  // The depth select stays usable while a run is in flight (a scan can take
+  // minutes), so a commit must use the limits active *now*. `commitAnalysis`
+  // is captured by the closure of the render a run started in; reading
+  // `limits` there sliced an Extended review down to Standard's 10-source
+  // window whenever a scan started in Standard finished after the switch,
+  // dropping the oldest sources without a warning (Heal defect 2).
+  const limitsRef = useRef<EvidenceLimits>(limits);
+  useEffect(() => {
+    limitsRef.current = limits;
+  }, [limits]);
   // A07: the committed snapshot, mirrored in a ref so persistence can happen
   // outside the React state updater. React may invoke an updater more than
   // once (StrictMode double-invoke, replayed renders), and a storage write
@@ -323,23 +333,24 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
   function commitAnalysis(analysis: EvidenceAnalysis) {
     // A07: derived and persisted outside the state updater — the updater stays
     // a pure state transition, so a replayed invocation cannot write twice.
+    const activeLimits = limitsRef.current;
     const next = mergeEvidenceAnalysis(
       analysesRef.current,
       analysis,
-      limits.storedSources,
+      activeLimits.storedSources,
     );
-    const info = serializeStoredEvidenceWithInfo(next, limits);
+    const info = serializeStoredEvidenceWithInfo(next, activeLimits);
     if (info.dropped > 0) {
       // Defer the warning out of this call so a drop notice never blocks the
       // commit that produced it (#3 silent-data-loss).
       queueMicrotask(() => {
         setWarnings((prev) => {
-          const msg = `Storage limit reached (${formatLimitBytes(limits.storedBytes)}): ${info.dropped} older analyzed source(s) were dropped to fit. Clear old analyses or switch to Extended depth to retain more.`;
+          const msg = `Storage limit reached (${formatLimitBytes(activeLimits.storedBytes)}): ${info.dropped} older analyzed source(s) were dropped to fit. Clear old analyses or switch to Extended depth to retain more.`;
           return prev.includes(msg) ? prev : [...prev, msg];
         });
       });
     }
-    saveStored(next, limits);
+    saveStored(next, activeLimits);
     applyAnalyses(next);
   }
 
@@ -950,6 +961,9 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
             value={depth}
             onChange={(event) => {
               const next = event.target.value as EvidenceAnalysisDepth;
+              // Mirror the depth synchronously for an in-flight run's next
+              // commit; the effect above covers every other render.
+              limitsRef.current = EVIDENCE_DEPTH_LIMITS[next];
               setDepth(next);
               persistDepth(next);
             }}
