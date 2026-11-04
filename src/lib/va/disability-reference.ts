@@ -2,7 +2,11 @@ import "server-only";
 
 import { loadConditionCatalog } from "@/lib/catalog/load";
 
-import { disabilityReferenceCacheDto } from "./cached-view-guard";
+import {
+  disabilityReferenceCacheDto,
+  VA_CACHE_DTO_MAX_ITEMS,
+  VA_REPORTED_TOTAL_MAX,
+} from "./cached-view-guard";
 import {
   resolveVaResultEnvironment,
   vaFallbackStatus,
@@ -28,6 +32,11 @@ export interface DisabilityReferenceItem {
 
 export interface DisabilityReferenceView extends VaReferenceSourceStatus {
   items: DisabilityReferenceItem[];
+  /**
+   * How many current terms VA reports publishing in total. Always at least the
+   * number shown; greater when this view carries only a bounded prefix.
+   */
+  totalAvailable: number;
 }
 
 type DisabilityFetcher = () => Promise<
@@ -37,6 +46,8 @@ type DisabilityFetcher = () => Promise<
       name: string;
       endDateTime?: string | null;
     }>;
+    totalItems?: number;
+    totalPages?: number;
   }>
 >;
 
@@ -47,6 +58,7 @@ function localFallback(): DisabilityReferenceView {
 
   return {
     items,
+    totalAvailable: items.length,
     ...vaFallbackStatus("disability-reference"),
   };
 }
@@ -81,6 +93,17 @@ export async function loadDisabilityReference(
         return { view: localFallback(), cacheable: false };
       }
 
+      // Keep the readable part of a long VA list instead of rejecting the whole
+      // live view for exceeding the cache DTO's item bound (which replaced it
+      // with the local catalog and told the reader VA was unavailable). The
+      // DTO ceiling is the display bound; VA's reported total travels with the
+      // view so the explorer can disclose anything it did not load.
+      const items = currentItems.slice(0, VA_CACHE_DTO_MAX_ITEMS);
+      const totalAvailable = Math.max(
+        items.length,
+        Math.min(result.data.totalItems ?? items.length, VA_REPORTED_TOTAL_MAX),
+      );
+
       const environment = resolveVaResultEnvironment(
         result,
         configuredEnvironment,
@@ -88,7 +111,8 @@ export async function loadDisabilityReference(
       return {
         cacheable: true,
         view: {
-          items: currentItems,
+          items,
+          totalAvailable,
           ...vaLiveStatus("disability-reference", environment, result.source),
         },
       };

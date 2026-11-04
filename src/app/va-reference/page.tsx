@@ -60,7 +60,10 @@ export default async function VaReferencePage() {
         </p>
       </div>
 
-      <DisabilityReferenceExplorer items={reference.items} />
+      <DisabilityReferenceExplorer
+        items={reference.items}
+        totalAvailable={reference.totalAvailable}
+      />
 
       <section className="mt-8 rounded-lg border border-slate-200 bg-slate-50 p-5 text-sm leading-relaxed text-slate-700">
         <h2 className="font-semibold text-slate-900">What this does not mean</h2>

@@ -153,6 +153,12 @@ export function isTrustedCachedClaimFormReference(
 
 /** App cache DTO limits, not VA API limits. Keep validation work bounded. */
 export const VA_CACHE_DTO_MAX_ITEMS = 200;
+/**
+ * Upper bound on an upstream-reported total (`VA publishes N terms`) retained
+ * in a cached view. It is display-only, so the loader clamps it instead of
+ * letting an absurd count reject an otherwise readable list as out of bounds.
+ */
+export const VA_REPORTED_TOTAL_MAX = 100_000;
 /** Established import site; the bound itself lives with the finder contract. */
 export const VA_FORMS_CACHE_MAX_ITEMS = VA_FORMS_MAX_ITEMS;
 const boundedText = (max: number) => z.string().min(1).max(max);
@@ -234,6 +240,12 @@ export function disabilityReferenceCacheDto(environment: VaApiEnvironment) {
       id: boundedText(20).regex(/^-?\d+$/),
       name: boundedText(MAX_LABEL_LENGTH),
     })).min(1).max(VA_CACHE_DTO_MAX_ITEMS),
+    // VA's total list size, not just the bounded prefix this view carries. It
+    // must cover every shown item, so a cached view cannot understate itself.
+    totalAvailable: z.number().int().min(1).max(VA_REPORTED_TOTAL_MAX),
+  }).refine((view) => view.totalAvailable >= view.items.length, {
+    message: "totalAvailable must cover every shown item",
+    path: ["totalAvailable"],
   });
 }
 
