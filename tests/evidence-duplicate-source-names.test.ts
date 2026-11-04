@@ -196,7 +196,9 @@ describe("the analyzer wires identity instead of the file name (structural)", ()
   });
 
   it("merges by identity, never by source name", () => {
-    expect(analyzer).toContain("mergeEvidenceAnalysis(");
+    // The info variant applies the same identity rule and also reports cap
+    // evictions; the analyzer must never merge by source name.
+    expect(analyzer).toContain("mergeEvidenceAnalysisWithInfo(");
     expect(analyzer).toContain("removeEvidenceAnalysis(");
     expect(analyzer).not.toContain("existing.sourceName !== analysis.sourceName");
   });

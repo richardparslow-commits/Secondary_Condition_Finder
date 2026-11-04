@@ -45,7 +45,7 @@ import {
 } from "@/lib/evidence/storage";
 import {
   evidenceAnalysisIdentity,
-  mergeEvidenceAnalysis,
+  mergeEvidenceAnalysisWithInfo,
   removeEvidenceAnalysis,
 } from "@/lib/evidence/retention";
 
@@ -330,28 +330,45 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
     [analyses],
   );
 
-  function commitAnalysis(analysis: EvidenceAnalysis) {
+  /**
+   * Commits one analyzed source and returns a drop notice when older sources
+   * were evicted. The notice is returned rather than raised here: callers reset
+   * the warning list before committing, and a queued setState can be applied
+   * before that reset and cleared with it (the pasted-text path did exactly
+   * that), leaving the eviction silent.
+   */
+  function commitAnalysis(analysis: EvidenceAnalysis): string | null {
     // A07: derived and persisted outside the state updater — the updater stays
     // a pure state transition, so a replayed invocation cannot write twice.
     const activeLimits = limitsRef.current;
-    const next = mergeEvidenceAnalysis(
-      analysesRef.current,
-      analysis,
-      activeLimits.storedSources,
-    );
+    const { analyses: next, dropped: retentionDropped } =
+      mergeEvidenceAnalysisWithInfo(
+        analysesRef.current,
+        analysis,
+        activeLimits.storedSources,
+      );
     const info = serializeStoredEvidenceWithInfo(next, activeLimits);
-    if (info.dropped > 0) {
-      // Defer the warning out of this call so a drop notice never blocks the
-      // commit that produced it (#3 silent-data-loss).
-      queueMicrotask(() => {
-        setWarnings((prev) => {
-          const msg = `Storage limit reached (${formatLimitBytes(activeLimits.storedBytes)}): ${info.dropped} older analyzed source(s) were dropped to fit. Clear old analyses or switch to Extended depth to retain more.`;
-          return prev.includes(msg) ? prev : [...prev, msg];
-        });
-      });
+    const droppedTotal = retentionDropped + info.dropped;
+    let notice: string | null = null;
+    if (droppedTotal > 0) {
+      // Both evictions are silent by default: the retention window trims the
+      // list before the serializer measures anything, so its own count covers
+      // only what the window left behind. The notice has to cover both, or an
+      // eleventh source quietly removes the oldest (Heal defect 19).
+      const depthLabel =
+        activeLimits === EVIDENCE_DEPTH_LIMITS.extended ? "Extended" : "Standard";
+      const remedy =
+        depthLabel === "Extended"
+          ? "Clear old analyses to free room."
+          : "Clear old analyses or switch to Extended depth to retain more.";
+      notice =
+        retentionDropped > 0
+          ? `Retention limit reached (${activeLimits.storedSources} analyzed sources in ${depthLabel} depth): ${droppedTotal} older analyzed source(s) were dropped. ${remedy}`
+          : `Storage limit reached (${formatLimitBytes(activeLimits.storedBytes)}): ${droppedTotal} older analyzed source(s) were dropped to fit. ${remedy}`;
     }
     saveStored(next, activeLimits);
     applyAnalyses(next);
+    return notice;
   }
 
   function dropAnalysis(sourceId: string) {
@@ -466,7 +483,8 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
         { sourceId: row.sourceId, sourceName: extracted.sourceName, credential: row.credential },
         conditionTerms,
       );
-      commitAnalysis(analysis);
+      const notice = commitAnalysis(analysis);
+      if (notice) nextWarnings.push(notice);
       return { processed: 1, warnings: nextWarnings, skipped: false, hint };
     } catch (error) {
       const detail = error instanceof Error ? error.message : "Unknown extraction error";
@@ -824,7 +842,8 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
               { sourceId: row.sourceId, sourceName: row.sourceName, credential: row.credential },
               conditionTerms,
             );
-            commitAnalysis(analysis);
+            const notice = commitAnalysis(analysis);
+            if (notice) nextWarnings.push(notice);
             setRowOutcome(row.id);
             setMessage(
               abortedForDeadWorker
@@ -892,8 +911,9 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
       },
       conditionTerms,
     );
-    commitAnalysis(analysis);
+    const notice = commitAnalysis(analysis);
     setPastedText("");
+    setWarnings(notice ? [notice] : []);
     setMessage("Pasted text was analyzed locally in this browser tab.");
   }
 
