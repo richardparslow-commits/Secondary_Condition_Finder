@@ -272,6 +272,56 @@ describe("public-reference VA API adapters", () => {
     expect(result.source).toBe("local-fallback");
   });
 
+  it("skips unreadable form records instead of failing the whole payload", async () => {
+    // One odd record used to fail the array, which the finder rendered as "VA
+    // Forms is down" even though the readable records were in the response.
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        new Response(
+          JSON.stringify({
+            data: [
+              {
+                id: "1",
+                type: "va_form",
+                attributes: {
+                  form_name: "21-526EZ",
+                  title: "Application for Disability Compensation",
+                  url: "https://www.va.gov/vaforms/21-526EZ.pdf",
+                },
+              },
+              {
+                id: "2",
+                type: "va_form",
+                attributes: {
+                  form_name: "21-0966",
+                  title: "Bad link record",
+                  url: "javascript:alert(1)",
+                },
+              },
+              {
+                id: "3",
+                type: "va_form",
+                attributes: {
+                  form_name: "",
+                  title: "Missing form name",
+                  url: "https://www.va.gov/vaforms/21-0966.pdf",
+                },
+              },
+            ],
+          }),
+          { status: 200, headers: { "Content-Type": "application/json" } },
+        ),
+      ),
+    );
+
+    const result = await fetchVaForms("21", { config });
+
+    expect(result.success).toBe(true);
+    expect(result.data?.data).toHaveLength(1);
+    expect(result.data?.data[0].attributes.form_name).toBe("21-526EZ");
+  });
+
   it("fails closed on invalid payloads and invalid non-HTTPS endpoint configuration", async () => {
     vi.stubGlobal(
       "fetch",
