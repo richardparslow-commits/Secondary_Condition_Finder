@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useState } from "react";
+import { useActionState, useEffect, useRef, useState } from "react";
 
 import { searchAccreditedRepresentatives } from "@/lib/actions/accredited-representatives";
 import type { AccreditedRepresentativeView } from "@/lib/va/accredited-representatives";
@@ -138,6 +138,22 @@ export function AccreditedRepresentativeFinder({ returnTo }: Props) {
   const [radiusMiles, setRadiusMiles] = useState<number>(50);
   const [type, setType] = useState<string>("");
 
+  // React 19 resets a function-action form when the action completes. That
+  // reset restores a select's first option, and because the controlled
+  // `radiusMiles` / `type` values did not change, React does not write them
+  // back: a 100-mile/VSO search came back showing 25 miles/Any, and the next
+  // search quietly used those (Heal s6-rep-search-filters-snap-back-1).
+  // Re-keying the selects once per completed action remounts them with their
+  // current controlled values, so the reset cannot leave the boxes disagreeing
+  // with the search that produced the results.
+  const [resultVersion, setResultVersion] = useState(0);
+  const lastResult = useRef(state);
+  useEffect(() => {
+    if (lastResult.current === state) return;
+    lastResult.current = state;
+    setResultVersion((version) => version + 1);
+  }, [state]);
+
   const view = state.view;
   // The alert shows a fixed constant: for a field validation it is the
   // locator's own copy, and for any other refusal it is the PHI-free contract's
@@ -178,6 +194,7 @@ export function AccreditedRepresentativeFinder({ returnTo }: Props) {
           <label className="block text-sm font-medium text-slate-700">
             Radius
             <select
+              key={`radius-${resultVersion}`}
               name="radiusMiles"
               value={radiusMiles}
               onChange={(e) => setRadiusMiles(Number(e.target.value))}
@@ -193,6 +210,7 @@ export function AccreditedRepresentativeFinder({ returnTo }: Props) {
           <label className="block text-sm font-medium text-slate-700">
             Type
             <select
+              key={`type-${resultVersion}`}
               name="type"
               value={type}
               onChange={(e) => setType(e.target.value)}
