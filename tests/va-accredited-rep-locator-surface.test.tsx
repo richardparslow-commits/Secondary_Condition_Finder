@@ -107,6 +107,25 @@ describe("locator submission (A01)", () => {
     expect(screen.getByText("Jane Representative")).toBeTruthy();
   });
 
+  it("keeps the radius and type chosen for the search after results render", async () => {
+    // Heal s6-rep-search-filters-snap-back-1: React 19's implicit reset after a
+    // function action restored the selects' first options while their state
+    // stayed at the searched values, so the boxes read 25 miles/Any beside a
+    // 100-mile/VSO result and the next search used the wrong filters.
+    render(<AccreditedRepresentativeFinder returnTo="/secondary/suggestions" />);
+
+    fireEvent.change(screen.getByLabelText(/Radius/i), { target: { value: "100" } });
+    fireEvent.change(screen.getByLabelText(/^Type/i), { target: { value: "VSO" } });
+    await submitSearch(ZIP);
+
+    expect((screen.getByLabelText(/Radius/i) as HTMLSelectElement).value).toBe("100");
+    expect((screen.getByLabelText(/^Type/i) as HTMLSelectElement).value).toBe("VSO");
+    // The submitted body carried those values, so the rendered list matches them.
+    const submitted = actionMock.mock.calls[0][1] as FormData;
+    expect(submitted.get("radiusMiles")).toBe("100");
+    expect(submitted.get("type")).toBe("VSO");
+  });
+
   it("keeps the URL clean on a refusal and echoes nothing but fixed copy", async () => {
     actionMock.mockResolvedValue({ view: null, error: "invalid-zip" });
     render(<AccreditedRepresentativeFinder returnTo="/secondary/evidence" />);
