@@ -40,6 +40,7 @@ const browserWorkflowContextSchema = z.object({
   ratingsByConditionId: z
     .record(z.string(), z.number().int().min(0).max(100).nullable())
     .optional(),
+  permanentAndTotalConditionIds: z.array(z.string().min(1)).optional(),
   documentsShared: z.boolean().optional(),
   medications: z.array(contextEntrySchema).max(MAX_CONTEXT_ITEMS).optional(),
   treatments: z.array(contextEntrySchema).max(MAX_CONTEXT_ITEMS).optional(),

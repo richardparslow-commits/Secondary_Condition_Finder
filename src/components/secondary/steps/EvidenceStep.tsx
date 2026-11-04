@@ -30,6 +30,7 @@ import { intermediatePathwaysToView } from "@/lib/engine/pathway-view";
 import { useClientCorpus } from "@/lib/client-corpus";
 import { relevantChangesForConditionIds } from "@/lib/regulatory/preflight/client-relevance";
 import type { RegulatoryPreflightSnapshot } from "@/lib/regulatory/preflight/types";
+import { ratingDisplayLabel } from "@/lib/secondary-workflow/ratings";
 import { buildSecondaryRecommendationIntake } from "@/lib/secondary-workflow/recommendation-intake";
 import { buildMedicalRecordChecklist } from "@/lib/secondary-workflow/medical-record-checklist";
 import { buildNonServiceConnectedConditionResults } from "@/lib/secondary-workflow/suggestions";
@@ -188,7 +189,7 @@ export function EvidenceStep({ snapshot }: EvidenceStepProps) {
           <SymptomDiscussionReview prompts={symptomDiscussionPrompts} />
           <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">✓</span><h2 className="text-xl font-bold">Condition Summary</h2></div>
           <p className="ui-kicker">Already service connected</p>
-          <ul className="mt-3 space-y-3">{state.serviceConnectedConditionIds.map((id) => { const condition = byId.get(id); if (!condition) return null; const rating = state.ratingsByConditionId[id]; return <li key={id} className="rounded-lg border border-blue-200 bg-blue-50 p-3 text-sm"><strong className="block text-blue-900">{condition.name}</strong><span>{rating === null ? "Rating not provided" : `${rating}% current rating entered`}</span></li>; })}</ul>
+          <ul className="mt-3 space-y-3">{state.serviceConnectedConditionIds.map((id) => { const condition = byId.get(id); if (!condition) return null; const rating = state.ratingsByConditionId[id]; return <li key={id} className="rounded-lg border border-blue-200 bg-blue-50 p-3 text-sm"><strong className="block text-blue-900">{condition.name}</strong><span>{rating === null || rating === undefined ? "Rating not provided" : `${ratingDisplayLabel(rating, (state.permanentAndTotalConditionIds ?? []).includes(id))} current rating entered`}</span></li>; })}</ul>
           <div className="ui-divider" />
           <p className="ui-kicker">Diagnosed, not service connected</p>
           {nonServiceConnectedResults.length > 0 ? <ul className="mt-3 space-y-2">{nonServiceConnectedResults.map((result) => <li key={result.conditionId} className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm"><strong className="text-amber-950">{result.conditionName}</strong></li>)}</ul> : <p className="mt-2 text-sm text-slate-600">No non-service-connected diagnoses remain in this review.</p>}

@@ -45,10 +45,17 @@ describe("secondary wizard client-step routes", () => {
     expect(tinnitus).not.toContain("toxic exposure related");
   });
 
-  it("renders only known numeric rating options including 100% P&T", () => {
+  it("renders plain 100% and 100% P&T as distinct known options", () => {
     const options = getRatingOptions();
-    expect(options).toContainEqual({ label: "100% P&T", value: "100" });
-    expect(options.every((option) => /^\d+$/.test(option.value))).toBe(true);
+    expect(options).toContainEqual({ label: "100%", value: "100" });
+    expect(options).toContainEqual({ label: "100% P&T", value: "100-pt" });
+    expect(
+      options.every(
+        (option) => /^\d+$/.test(option.value) || option.value === "100-pt",
+      ),
+    ).toBe(true);
+    // A shared value is what dropped the designation and hid plain 100%.
+    expect(new Set(options.map((option) => option.value)).size).toBe(options.length);
   });
 
   it("prefills prior rating selections from browser-local state", () => {
@@ -80,8 +87,21 @@ describe("secondary wizard client-step routes", () => {
     );
   });
 
-  it("renders 100% P&T with a numeric submitted value", () => {
-    const html = renderToStaticMarkup(
+  it("renders 100% P&T and plain 100% as distinct, correctly selected choices", () => {
+    const permanentAndTotal = renderToStaticMarkup(
+      RatingSelect({
+        conditionId: "ptsd",
+        conditionName: "Post-Traumatic Stress Disorder (PTSD)",
+        stored: 100,
+        storedPermanentAndTotal: true,
+        validationId: undefined,
+      }),
+    );
+
+    expect(permanentAndTotal).toMatch(/<option value="100-pt" selected="">100% P&amp;T<\/option>/);
+    expect(permanentAndTotal).toMatch(/<option value="100">100%<\/option>/);
+
+    const plain = renderToStaticMarkup(
       RatingSelect({
         conditionId: "ptsd",
         conditionName: "Post-Traumatic Stress Disorder (PTSD)",
@@ -90,8 +110,8 @@ describe("secondary wizard client-step routes", () => {
       }),
     );
 
-    expect(html).toMatch(/<option value="100" selected="">100% P&amp;T<\/option>/);
-    expect(html).not.toContain(">100%</option>");
+    expect(plain).toMatch(/<option value="100" selected="">100%<\/option>/);
+    expect(plain).not.toContain('value="100-pt" selected');
   });
 
   it("keeps rating inputs free of hidden workflow state", () => {

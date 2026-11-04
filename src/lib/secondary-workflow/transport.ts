@@ -1,3 +1,4 @@
+import { PERMANENT_AND_TOTAL_RATING_VALUE } from "./ratings";
 import {
   ratingFieldName,
   type ConditionTimelineEntry,
@@ -17,6 +18,7 @@ export interface TransportableWorkflowState {
   diagnosedConditionIds?: string[];
   serviceConnectedConditionIds?: string[];
   ratingsByConditionId?: Record<string, number | null>;
+  permanentAndTotalConditionIds?: string[];
   documentsShared?: boolean;
   medications?: string[];
   treatments?: string[];
@@ -39,7 +41,14 @@ export function workflowSessionToQueryParams(
     for (const id of state.serviceConnectedConditionIds) {
       const value = state.ratingsByConditionId[id];
       if (value === undefined) continue;
-      params[ratingFieldName(id)] = value === null ? "decline" : String(value);
+      const permanentAndTotal =
+        value === 100 && (state.permanentAndTotalConditionIds ?? []).includes(id);
+      params[ratingFieldName(id)] =
+        value === null
+          ? "decline"
+          : permanentAndTotal
+            ? PERMANENT_AND_TOTAL_RATING_VALUE
+            : String(value);
     }
   }
 
