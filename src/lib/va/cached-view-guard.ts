@@ -3,6 +3,7 @@ import "server-only";
 import { z } from "zod";
 
 import { ACCREDITED_REP_TYPE_VALUES, APPROVED_RADIUS_MILES } from "./accredited-representative-constants";
+import { VA_FORMS_MAX_ITEMS } from "./forms-finder-search";
 import { vaProvenanceCopy, type VaReferenceSurface } from "./provenance";
 import { liveSource, type VaApiEnvironment } from "./sandbox";
 import { isTrustedHttpsUrl, isTrustedVaOfficialUrl } from "./trusted-link";
@@ -152,7 +153,8 @@ export function isTrustedCachedClaimFormReference(
 
 /** App cache DTO limits, not VA API limits. Keep validation work bounded. */
 export const VA_CACHE_DTO_MAX_ITEMS = 200;
-export const VA_FORMS_CACHE_MAX_ITEMS = 25;
+/** Established import site; the bound itself lives with the finder contract. */
+export const VA_FORMS_CACHE_MAX_ITEMS = VA_FORMS_MAX_ITEMS;
 const boundedText = (max: number) => z.string().min(1).max(max);
 /** Directory records may point at an external site; see the module note above. */
 const cachedUrl = boundedText(2_048).refine(isTrustedHttpsUrl);

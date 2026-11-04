@@ -172,7 +172,7 @@ for (const loader of loaders) {
     if (loader.name !== "claim form") {
       it("accepts its maximum item count with bounded fields", async () => {
         const candidate = loader.view();
-        candidate.items = Array.from({ length: loader.name === "forms finder" ? 25 : 200 }, () => (candidate.items as unknown[])[0]);
+        candidate.items = Array.from({ length: 200 }, () => (candidate.items as unknown[])[0]);
         useKv(loader, candidate);
         expect((await loader.load()).source).toBe("va-sandbox-api");
         expect(loader.fetcher).not.toHaveBeenCalled();
@@ -199,7 +199,7 @@ for (const loader of loaders) {
         ["non-array items", (view) => ({ ...view, items: "NOT_AN_ARRAY" })],
         ["null item", (view) => ({ ...view, items: [null] })],
         ["missing item fields", (view) => ({ ...view, items: [{}] })],
-        ["too many items", (view) => ({ ...view, items: Array.from({ length: loader.name === "forms finder" ? 26 : 201 }, () => (view.items as unknown[])[0]) })],
+        ["too many items", (view) => ({ ...view, items: Array.from({ length: 201 }, () => (view.items as unknown[])[0]) })],
         ["invalid timestamp", (view) => ({ ...view, retrievedAt: "2026-02-31T00:00:00Z" })],
         ["missing timestamp", (view) => ({ ...view, retrievedAt: null })],
         ["invalid cache status", (view) => ({ ...view, cacheStatus: "fresh" })],

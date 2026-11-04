@@ -25,6 +25,14 @@ import type { VaFormsFinderView } from "./forms-finder";
  */
 export const FORMS_FINDER_QUERY_MAX_LENGTH = 120;
 
+/**
+ * App bound on one forms view, matching the shared cache DTO ceiling. The
+ * loader keeps at most this many matches and the page discloses the bound when
+ * it is reached; the previous 25-item cap silently dropped every match past the
+ * twenty-fifth on a broad search.
+ */
+export const VA_FORMS_MAX_ITEMS = 200;
+
 /** Copy shown for any refusal. Names no submitted value. */
 export const FORMS_FINDER_REFUSAL_MESSAGE =
   "That search was not run. Search by VA form number, keyword, or title — never enter personal identifiers.";

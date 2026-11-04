@@ -11,6 +11,7 @@ import {
   FORMS_FINDER_QUERY_MAX_LENGTH,
   FORMS_FINDER_REFUSAL_MESSAGE,
   FORMS_FINDER_UNAVAILABLE_MESSAGE,
+  VA_FORMS_MAX_ITEMS,
   type VaFormsFinderSearchState,
 } from "@/lib/va/forms-finder-search";
 
@@ -138,6 +139,11 @@ export function VaFormsFinder({ initialView }: Props) {
           {reference.items.length} result{reference.items.length === 1 ? "" : "s"} shown for{" "}
           {reference.query}.
         </p>
+        {reference.items.length >= VA_FORMS_MAX_ITEMS && (
+          <p className="mt-1 text-xs text-slate-600">
+            Showing the first {VA_FORMS_MAX_ITEMS} matches. Refine the search to narrow the list.
+          </p>
+        )}
         <div className="mt-4 space-y-4">
           {reference.items.map((form) => (
             <article
