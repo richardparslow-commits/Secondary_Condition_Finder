@@ -138,6 +138,49 @@ describe("browser-side step logic (PRIV-01 stage 2)", () => {
     if (result.ok) expect(result.context.serviceConnectedConditionIds).toEqual([PTSD]);
   });
 
+  it("Step 2 keeps ratings already entered for still-service-connected conditions", () => {
+    const current = context({
+      diagnosedConditionIds: [PTSD, TINNITUS],
+      serviceConnectedConditionIds: [PTSD, TINNITUS],
+      ratingsByConditionId: { [PTSD]: 70, [TINNITUS]: 100 },
+      permanentAndTotalConditionIds: [TINNITUS],
+    });
+
+    const resubmitted = applyServiceConnectedStep(
+      current,
+      form({
+        [`serviceConnected-${PTSD}`]: "yes",
+        [`serviceConnected-${TINNITUS}`]: "yes",
+      }),
+      catalog,
+    );
+    expect(resubmitted.ok).toBe(true);
+    if (resubmitted.ok) {
+      expect(resubmitted.context.ratingsByConditionId).toEqual({
+        [PTSD]: 70,
+        [TINNITUS]: 100,
+      });
+      expect(resubmitted.context.permanentAndTotalConditionIds).toEqual([TINNITUS]);
+    }
+
+    // A condition removed here has no Step 3 field any more, so only its own
+    // rating is pruned; the retained condition keeps the rating and P&T flag.
+    const narrowed = applyServiceConnectedStep(
+      current,
+      form({
+        [`serviceConnected-${PTSD}`]: "yes",
+        [`serviceConnected-${TINNITUS}`]: "no",
+      }),
+      catalog,
+    );
+    expect(narrowed.ok).toBe(true);
+    if (narrowed.ok) {
+      expect(narrowed.context.serviceConnectedConditionIds).toEqual([PTSD]);
+      expect(narrowed.context.ratingsByConditionId).toEqual({ [PTSD]: 70 });
+      expect(narrowed.context.permanentAndTotalConditionIds).toEqual([]);
+    }
+  });
+
   it("Step 3 requires a rating for every service-connected condition and bounds values", () => {
     const current = context({
       diagnosedConditionIds: [PTSD, TINNITUS],

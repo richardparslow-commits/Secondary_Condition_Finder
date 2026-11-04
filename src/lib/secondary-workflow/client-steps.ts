@@ -252,13 +252,26 @@ export function applyServiceConnectedStep(
       ),
       catalog,
     );
+    // Re-submitting Step 2 must not erase Step 3 work. Ratings already entered
+    // for a condition that is still service connected are carried forward;
+    // only conditions the veteran deselected lose theirs (Heal defect 39).
+    const previousRatings = context?.ratingsByConditionId ?? {};
+    const previousPermanentAndTotal = new Set(
+      context?.permanentAndTotalConditionIds ?? [],
+    );
+    const ratingsByConditionId: Record<string, number | null> = {};
+    const permanentAndTotalConditionIds: string[] = [];
+    for (const id of parsed.serviceConnectedConditionIds) {
+      if (id in previousRatings) ratingsByConditionId[id] = previousRatings[id] ?? null;
+      if (previousPermanentAndTotal.has(id)) permanentAndTotalConditionIds.push(id);
+    }
     return {
       ok: true,
       context: {
         diagnosedConditionIds: parsed.diagnosedConditionIds,
         serviceConnectedConditionIds: parsed.serviceConnectedConditionIds,
-        ratingsByConditionId: {},
-        permanentAndTotalConditionIds: [],
+        ratingsByConditionId,
+        permanentAndTotalConditionIds,
       },
       next: "/secondary/ratings",
     };
