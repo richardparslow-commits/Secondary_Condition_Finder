@@ -90,6 +90,25 @@ export interface VaReferenceCacheLoad<T> {
 const accessLogger = createLogger("va-reference-cache");
 
 /**
+ * In-process single-flight for one cache key.
+ *
+ * The shared-cache lease dedupes a cold key across instances, but it fails
+ * open when no shared KV is configured (the default). Without this map, every
+ * concurrent miss in the same instance called `load()` and spent the VA
+ * outbound budget independently. The entry is the exact promise the winner is
+ * running; it is deleted when that promise settles, including on rejection or
+ * an uncacheable fallback, so a later request still retries. This is a
+ * deduplication layer, not a cache: a fallback may be shared by the burst that
+ * produced it but is never retained for the next request.
+ */
+const inFlightLoads = new Map<string, Promise<unknown>>();
+
+/** Test helper: drop in-process single-flight bookkeeping. */
+export function clearVaReferenceInFlightForTests(): void {
+  inFlightLoads.clear();
+}
+
+/**
  * The one trust rule a loader applies to its own views (audit A04).
  *
  * Both halves are required together, deliberately. `accepts` is the loader's
@@ -193,54 +212,84 @@ export async function withVaReferenceCache<T>(
     });
   }
 
-  const sharedCached = await readVaSharedReferenceCache<T>(cacheKey);
-  if (sharedCached && trusted(sharedCached)) {
-    // Promote so the next request is served without another KV round-trip.
-    writeVaReferenceCache(cacheKey, sharedCached);
-    return asHit(sharedCached);
-  }
+  /** Resolves a local/shared miss through the loader. */
+  const resolveMiss = async (): Promise<T> => {
+    const sharedCached = await readVaSharedReferenceCache<T>(cacheKey);
+    if (sharedCached && trusted(sharedCached)) {
+      // Promote so the next request is served without another KV round-trip.
+      writeVaReferenceCache(cacheKey, sharedCached);
+      return asHit(sharedCached);
+    }
 
-  // Single-flight (audit A-03): one instance fetches a cold/expired key while
-  // contenders wait a bounded window for it to publish. A lease that is
-  // unavailable (unconfigured coordinator, non-allowlisted key) fails open
-  // into the normal fetch path below.
-  const lease = singleFlight ? await acquireVaSharedFetchLease(cacheKey) : null;
-  if (lease?.status === "contended") {
-    const published = await awaitVaSharedFetchOutcome<T>(cacheKey);
-    if (published && trusted(published)) {
-      writeVaReferenceCache(cacheKey, published);
-      return asHit(published);
+    // Shared single-flight (audit A-03): one instance fetches a cold/expired
+    // key while contenders wait a bounded window for it to publish. A lease
+    // that is unavailable (unconfigured coordinator, non-allowlisted key)
+    // fails open into the normal fetch path below; the in-process map above
+    // still deduplicates concurrent callers within this instance.
+    const lease = singleFlight ? await acquireVaSharedFetchLease(cacheKey) : null;
+    if (lease?.status === "contended") {
+      const published = await awaitVaSharedFetchOutcome<T>(cacheKey);
+      if (published && trusted(published)) {
+        writeVaReferenceCache(cacheKey, published);
+        return asHit(published);
+      }
     }
-  }
 
-  try {
-    const { view, cacheable } = await load();
-    if (cacheable && !trusted(view)) {
-      // The loader asked to cache a live view that fails its own DTO. That is
-      // reachable when an upstream response is outside this app's bounds (an
-      // off-host form link, an over-long field), and the old code wrote it to
-      // both tiers anyway — so the value was simultaneously served as live and
-      // rejected as a cached candidate by the next request. Serve the labelled
-      // local fallback instead, and cache nothing.
-      accessLogger.warn("va reference cache write skipped — fresh view rejected by loader DTO", {
-        outcome: "fresh-view-rejected",
-      });
-      return cacheTrust ? cacheTrust.degradedView() : view;
+    const loadFresh = async (): Promise<T> => {
+      try {
+        const { view, cacheable } = await load();
+        if (cacheable && !trusted(view)) {
+          // The loader asked to cache a live view that fails its own DTO. That is
+          // reachable when an upstream response is outside this app's bounds (an
+          // off-host form link, an over-long field), and the old code wrote it to
+          // both tiers anyway — so the value was simultaneously served as live and
+          // rejected as a cached candidate by the next request. Serve the labelled
+          // local fallback instead, and cache nothing.
+          accessLogger.warn("va reference cache write skipped — fresh view rejected by loader DTO", {
+            outcome: "fresh-view-rejected",
+          });
+          return cacheTrust ? cacheTrust.degradedView() : view;
+        }
+        if (cacheable) {
+          writeVaReferenceCache(cacheKey, view);
+          // Awaited (not fire-and-forget): a floating promise can be torn down with
+          // the request before the write lands, silently leaving the shared cache
+          // stale — and the single-flight lease must not be released before the
+          // winner's value is observable, or contenders miss within their bounded
+          // wait and duplicate the upstream request. The 750 ms KV deadline bounds
+          // the added latency.
+          await writeVaSharedReferenceCache(cacheKey, view, ttlMs);
+        }
+        return view;
+      } finally {
+        if (lease?.status === "acquired") {
+          await releaseVaSharedFetchLease(cacheKey, lease.token);
+        }
+      }
+    };
+
+    // Only reached when the shared lease did not hand this caller a value. An
+    // unconfigured coordinator makes every concurrent fallback a lease
+    // "unavailable"; share one loader promise instead of spending VA quota once
+    // per caller. A contended caller that received a published value returned
+    // above, before this map, so its cacheStatus remains a hit.
+    if (singleFlight) {
+      const inFlight = inFlightLoads.get(cacheKey);
+      if (inFlight) return inFlight as Promise<T>;
+
+      const pending = loadFresh();
+      inFlightLoads.set(cacheKey, pending);
+      try {
+        return await pending;
+      } finally {
+        if (inFlightLoads.get(cacheKey) === pending) {
+          inFlightLoads.delete(cacheKey);
+        }
+      }
     }
-    if (cacheable) {
-      writeVaReferenceCache(cacheKey, view);
-      // Awaited (not fire-and-forget): a floating promise can be torn down with
-      // the request before the write lands, silently leaving the shared cache
-      // stale — and the single-flight lease must not be released before the
-      // winner's value is observable, or contenders miss within their bounded
-      // wait and duplicate the upstream request. The 750 ms KV deadline bounds
-      // the added latency.
-      await writeVaSharedReferenceCache(cacheKey, view, ttlMs);
-    }
-    return view;
-  } finally {
-    if (lease?.status === "acquired") {
-      await releaseVaSharedFetchLease(cacheKey, lease.token);
-    }
-  }
+
+    return loadFresh();
+  };
+
+  return resolveMiss();
 }
