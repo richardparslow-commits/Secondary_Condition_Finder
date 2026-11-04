@@ -86,11 +86,23 @@ export function ServiceConnectedStep() {
     );
   }
 
+  // A failed corpus load must be visible with saved selections too: without
+  // this branch the step renders an empty form and a disabled Continue button
+  // (Heal s1-condition-list-failure-hidden-1).
+  if (corpusError) {
+    return (
+      <main>
+        <header className="page-hero text-center"><p className="ui-kicker">Step 2 of 6</p><h1>Service-Connected Conditions</h1></header>
+        <div role="alert" className="ui-callout mb-5 text-sm"><strong>Condition list unavailable:</strong> the public knowledge-base artifact could not be loaded ({corpusError}). Reload the page to try again — no selections have left this browser.</div>
+        <Link href="/secondary/diagnosed" className="ui-button">Back to diagnosed conditions</Link>
+      </main>
+    );
+  }
+
   if (diagnosedConditionIds.length === 0) {
     return (
       <main>
         <header className="page-hero"><h1>Select diagnosed conditions first</h1><p>Choose at least one diagnosed condition before setting service-connected status.</p></header>
-        {corpusError && <div role="alert" className="ui-callout mb-5 text-sm"><strong>Condition list unavailable:</strong> {corpusError}</div>}
         <Link href="/secondary/diagnosed" className="ui-button">Back to diagnosed conditions</Link>
       </main>
     );

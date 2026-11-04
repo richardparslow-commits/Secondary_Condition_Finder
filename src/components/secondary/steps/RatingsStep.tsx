@@ -178,8 +178,21 @@ export function RatingsStep() {
     );
   }
 
+  // A failed corpus load must be visible with saved selections too; otherwise
+  // this step falls back to raw condition ids and a disabled Continue button
+  // (Heal s1-condition-list-failure-hidden-1).
+  if (corpusError) {
+    return (
+      <main>
+        <header className="page-hero text-center"><p className="ui-kicker">Step 3 of 6</p><h1>Disability Ratings</h1></header>
+        <div role="alert" className="ui-callout mb-5 text-sm"><strong>Condition list unavailable:</strong> the public knowledge-base artifact could not be loaded ({corpusError}). Reload the page to try again — no selections have left this browser.</div>
+        <Link href="/secondary/service-connected" className="ui-button">Back to service-connected status</Link>
+      </main>
+    );
+  }
+
   if (diagnosedConditionIds.length === 0 || serviceConnectedConditionIds.length === 0) {
-    return <main><header className="page-hero"><h1>Set service-connected status first</h1><p>Complete the prior workflow steps before entering current ratings.</p></header>{corpusError && <div role="alert" className="ui-callout mb-5 text-sm"><strong>Condition list unavailable:</strong> {corpusError}</div>}<Link href="/secondary/service-connected" className="ui-button">Back to service-connected status</Link></main>;
+    return <main><header className="page-hero"><h1>Set service-connected status first</h1><p>Complete the prior workflow steps before entering current ratings.</p></header><Link href="/secondary/service-connected" className="ui-button">Back to service-connected status</Link></main>;
   }
 
   return (
