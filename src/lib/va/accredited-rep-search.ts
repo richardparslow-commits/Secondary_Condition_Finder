@@ -28,7 +28,10 @@ import type { AccreditedRepresentativeView } from "./accredited-representatives"
  * a single code on purpose: the contract reports no detail about what it
  * rejected, because any detail would be a description of the caller's input.
  */
-export type AccreditedRepSearchErrorCode = AccreditedRepValidationCode | "refused";
+export type AccreditedRepSearchErrorCode =
+  | AccreditedRepValidationCode
+  | "refused"
+  | "unavailable";
 
 /**
  * Copy shown for any refusal that is not one of the three field validations.
@@ -36,6 +39,17 @@ export type AccreditedRepSearchErrorCode = AccreditedRepValidationCode | "refuse
  */
 export const ACCREDITED_REP_REFUSAL_MESSAGE =
   "That search was not run. The locator accepts only a ZIP code, a radius, and a representative type — never personal or health information.";
+
+/**
+ * Copy shown when the lookup never reached the server at all (offline, DNS
+ * failure, interrupted tunnel). Fixed text for the same reason as the refusal:
+ * the request carried a ZIP, and a failure response must not echo anything from
+ * it. Without this state the rejection reached the route error boundary and the
+ * whole page — suggestions included — was replaced
+ * (Heal s4-offline-rep-search-blanks-suggestions-1).
+ */
+export const ACCREDITED_REP_UNAVAILABLE_MESSAGE =
+  "The directory search could not run. Check your connection and try again, or search VA's OGC directory on va.gov/ogc/apps/accreditation.";
 
 /**
  * Action state rendered by the locator component. Plain JSON, safe to return:

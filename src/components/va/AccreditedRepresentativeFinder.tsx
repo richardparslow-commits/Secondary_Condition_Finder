@@ -13,6 +13,7 @@ import {
 // the client graph and importing them from there answers 500 in the browser.
 import {
   ACCREDITED_REP_REFUSAL_MESSAGE,
+  ACCREDITED_REP_UNAVAILABLE_MESSAGE,
   type AccreditedRepSearchState,
 } from "@/lib/va/accredited-rep-search";
 
@@ -132,7 +133,19 @@ export function AccreditedRepresentativeFinder({ returnTo }: Props) {
   const [state, formAction, pending] = useActionState<
     AccreditedRepSearchState,
     FormData
-  >(searchAccreditedRepresentatives, { view: null, error: null });
+  >(async (previous, formData) => {
+    try {
+      return await searchAccreditedRepresentatives(previous, formData);
+    } catch {
+      // The request never reached the server (offline, DNS failure, an
+      // interrupted tunnel). Returning a state keeps the page — and the
+      // suggestions around this finder — mounted; letting the rejection escape
+      // replaced the whole route with an error boundary
+      // (Heal s4-offline-rep-search-blanks-suggestions-1). The copy is fixed and
+      // names no submitted value, so it is not a reflection channel either.
+      return { view: null, error: "unavailable" as const };
+    }
+  }, { view: null, error: null });
 
   const [zip, setZip] = useState("");
   const [radiusMiles, setRadiusMiles] = useState<number>(50);
@@ -161,7 +174,9 @@ export function AccreditedRepresentativeFinder({ returnTo }: Props) {
   const errorMessage = state.error
     ? state.error === "refused"
       ? ACCREDITED_REP_REFUSAL_MESSAGE
-      : ACCREDITED_REP_VALIDATION_MESSAGES[state.error]
+      : state.error === "unavailable"
+        ? ACCREDITED_REP_UNAVAILABLE_MESSAGE
+        : ACCREDITED_REP_VALIDATION_MESSAGES[state.error]
     : null;
 
   return (
