@@ -11,6 +11,7 @@ import {
   PERMANENT_AND_TOTAL_RATING_VALUE,
   ratingDisplayLabel,
   ratingOptionValue,
+  ratingSelectionLabel,
   VALID_RATINGS,
 } from "@/lib/secondary-workflow/ratings";
 import { ratingFieldName } from "@/lib/secondary-workflow/state";
@@ -41,6 +42,7 @@ export function RatingSelect({
   conditionName,
   stored,
   storedPermanentAndTotal = false,
+  onValueChange,
   validationId,
 }: {
   conditionId: string;
@@ -48,6 +50,8 @@ export function RatingSelect({
   stored: number | null | undefined;
   /** True when the stored 100% carries the P&T designation. */
   storedPermanentAndTotal?: boolean;
+  /** Reports the chosen value so the Current Summary can update in place. */
+  onValueChange?: (value: string) => void;
   validationId?: string;
 }) {
   const fieldName = ratingFieldName(conditionId);
@@ -63,12 +67,50 @@ export function RatingSelect({
   return (
     <div className="grid items-center gap-3 rounded-xl border border-slate-200 p-4 sm:grid-cols-[1fr_11rem]">
       <label className="font-semibold" htmlFor={fieldName}>Rating for {conditionName}</label>
-      <select id={fieldName} name={fieldName} required aria-describedby={validationId} defaultValue={currentValue} className="w-full px-3">
+      <select id={fieldName} name={fieldName} required aria-describedby={validationId} defaultValue={currentValue} onChange={(event) => onValueChange?.(event.target.value)} className="w-full px-3">
         <option value="">Select current rating...</option>
         {ratingOptions.map((rating) => <option key={rating.label} value={rating.value}>{rating.label}</option>)}
         <option value="decline">I prefer not to answer</option>
       </select>
     </div>
+  );
+}
+
+/**
+ * The Current Summary list. Pure and exported so the live-update contract can
+ * be rendered directly: a draft value (from the select the veteran is holding)
+ * wins over the saved context, which only changes after a successful submit.
+ */
+export function CurrentRatingSummary({
+  conditions,
+  ratingsByConditionId,
+  permanentAndTotalConditionIds,
+  draftRatings,
+}: {
+  conditions: Array<{ id: string; name: string }>;
+  ratingsByConditionId: Record<string, number | null>;
+  permanentAndTotalConditionIds: string[];
+  draftRatings: Record<string, string>;
+}) {
+  return (
+    <ul className="space-y-3">
+      {conditions.map(({ id, name }) => {
+        const saved = ratingsByConditionId[id];
+        const label =
+          id in draftRatings
+            ? ratingSelectionLabel(draftRatings[id] ?? "")
+            : saved === undefined
+              ? "—"
+              : ratingDisplayLabel(saved, permanentAndTotalConditionIds.includes(id)) ??
+                "Not provided";
+        return (
+          <li key={id} className="flex justify-between gap-3 border-b border-slate-100 pb-2 text-sm">
+            <span className="font-medium">{name}</span>
+            <strong className="text-blue-700">{label}</strong>
+          </li>
+        );
+      })}
+    </ul>
   );
 }
 
@@ -84,6 +126,10 @@ export function RatingsStep() {
   const { corpus, loading, error: corpusError } = useClientCorpus();
   const { context, ready, persist } = useBrowserWorkflowContext();
   const [localError, setLocalError] = useState<SecondaryValidationCode | null>(null);
+  // Selections made on this visit, so the Current Summary reflects them before
+  // the step is submitted (Heal defect 38). Cleared on remount by design: the
+  // saved context is the source of truth after a successful continue.
+  const [draftRatings, setDraftRatings] = useState<Record<string, string>>({});
 
   useLayoutEffect(() => {
     const form = document.querySelector<HTMLFormElement>("main form");
@@ -164,6 +210,9 @@ export function RatingsStep() {
                   conditionName={catalogById.get(conditionId)?.name ?? conditionId.replace(/-/g, " ")}
                   stored={ratingsByConditionId[conditionId]}
                   storedPermanentAndTotal={permanentAndTotalConditionIds.includes(conditionId)}
+                  onValueChange={(value) =>
+                    setDraftRatings((prev) => ({ ...prev, [conditionId]: value }))
+                  }
                   validationId={validationId}
                 />
               ))}
@@ -172,7 +221,7 @@ export function RatingsStep() {
           </section>
 
           <aside className="ui-stack" aria-label="Current summary">
-            <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">Σ</span><h2 className="text-xl font-bold">Current Summary</h2></div><ul className="space-y-3">{serviceConnectedConditionIds.map((id) => { const name = catalogById.get(id)?.name ?? id; const rating = ratingsByConditionId[id]; return <li key={id} className="flex justify-between gap-3 border-b border-slate-100 pb-2 text-sm"><span className="font-medium">{name}</span><strong className="text-blue-700">{rating === undefined ? "—" : ratingDisplayLabel(rating, permanentAndTotalConditionIds.includes(id)) ?? "Not provided"}</strong></li>; })}</ul></section>
+            <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">Σ</span><h2 className="text-xl font-bold">Current Summary</h2></div><CurrentRatingSummary conditions={serviceConnectedConditionIds.map((id) => ({ id, name: catalogById.get(id)?.name ?? id }))} ratingsByConditionId={ratingsByConditionId} permanentAndTotalConditionIds={permanentAndTotalConditionIds} draftRatings={draftRatings} /></section>
             <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">i</span><h2 className="text-xl font-bold">Helpful Reminder</h2></div><p className="text-sm">This is a research aid, not a rating calculator or decision. VA evaluates ratings under the applicable schedule and the complete evidentiary record.</p></section>
           </aside>
         </div>
