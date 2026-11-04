@@ -247,6 +247,7 @@ research-workflow state or VA-account store readiness.
 | `VA_API_TIMEOUT_MS` | `4000` | Outbound VA request timeout. |
 | `REGULATIONS_GOV_API_KEY` | unset | Optional Regulations.gov docket/comment enrichment for regulatory preflight. |
 | `REGULATORY_PREFLIGHT_MAX_AGE_HOURS` | `24` | Cache-freshness ceiling for regulatory source checks. |
+| `REGULATORY_PREFLIGHT_SNAPSHOT_RETENTION_HOURS` | `72` | Age bound for locked regulatory snapshots, so unrelated loads cannot evict an active review's lock. |
 | `REGULATORY_PREFLIGHT_SOURCE_TIMEOUT_MS` | `8000` | Per-source HTTP timeout for regulatory preflight. |
 | `REGULATORY_PREFLIGHT_CACHE_DIR` | bounded OS temp dir | Optional server-local cache location for regulatory preflight. |
 | `REGULATORY_SYNC_SECRET` | unset | Bearer secret protecting the scheduled regulatory refresh endpoint. |

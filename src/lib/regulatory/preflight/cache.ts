@@ -53,6 +53,22 @@ const atomicWriteJson = (file: string, value: unknown): void => {
   fs.renameSync(temporary, file);
 };
 
+const DEFAULT_SNAPSHOT_RETENTION_HOURS = 72;
+const MAX_SNAPSHOT_RETENTION_HOURS = 24 * 365;
+
+/**
+ * How long a locked snapshot survives. Review locks are pruned by age, never by
+ * a newest-N ranking: otherwise twenty unrelated page loads would evict an
+ * in-progress review's legal basis (Heal s1-locked-snapshot-evicted-1).
+ */
+const snapshotRetentionMs = (): number => {
+  const configured = Number(process.env.REGULATORY_PREFLIGHT_SNAPSHOT_RETENTION_HOURS);
+  const hours = Number.isFinite(configured) && configured >= 1
+    ? Math.min(configured, MAX_SNAPSHOT_RETENTION_HOURS)
+    : DEFAULT_SNAPSHOT_RETENTION_HOURS;
+  return hours * 3_600_000;
+};
+
 export function writeRegulatoryPreflightCache(
   cache: RegulatoryPreflightCache,
   cacheDir = defaultCacheDir(),
@@ -60,14 +76,17 @@ export function writeRegulatoryPreflightCache(
   atomicWriteJson(path.join(cacheDir, "latest.json"), cache);
   atomicWriteJson(path.join(cacheDir, "snapshots", `${safeSnapshotName(cache.snapshot.snapshotId)}.json`), cache);
 
-  // Keep the cache bounded. Snapshot files are review locks, not a permanent archive.
+  // Keep the cache bounded in time without letting unrelated traffic decide
+  // whose active review lock survives.
   try {
     const snapshotsDir = path.join(cacheDir, "snapshots");
+    const cutoff = Date.now() - snapshotRetentionMs();
     const files = fs.readdirSync(snapshotsDir)
       .filter((name) => name.endsWith(".json"))
-      .map((name) => ({ name, mtime: fs.statSync(path.join(snapshotsDir, name)).mtimeMs }))
-      .sort((a, b) => b.mtime - a.mtime);
-    for (const stale of files.slice(20)) fs.unlinkSync(path.join(snapshotsDir, stale.name));
+      .map((name) => ({ name, mtime: fs.statSync(path.join(snapshotsDir, name)).mtimeMs }));
+    for (const expired of files) {
+      if (expired.mtime < cutoff) fs.unlinkSync(path.join(snapshotsDir, expired.name));
+    }
   } catch {
     // Cache pruning is best-effort and must never invalidate a completed preflight.
   }
