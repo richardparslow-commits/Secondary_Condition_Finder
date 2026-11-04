@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 
 import { EvidenceAnalysesProvider } from "@/components/evidence/EvidenceAnalysesProvider";
 import { EvidenceGapCoverage } from "@/components/evidence/EvidenceGapCoverage";
@@ -52,6 +52,9 @@ export interface EvidenceStepProps {
 export function EvidenceStep({ snapshot }: EvidenceStepProps) {
   const { corpus, loading, error: corpusError } = useClientCorpus();
   const { context, ready } = useBrowserWorkflowContext();
+  // Step 6 owns the rating-guide notes so the consultation packet can include
+  // the prompts the user marked on this page.
+  const [ratingSelections, setRatingSelections] = useState<Record<string, boolean>>({});
 
   const model = useMemo(() => {
     if (!corpus || !ready) return null;
@@ -216,7 +219,12 @@ export function EvidenceStep({ snapshot }: EvidenceStepProps) {
 
       <MedicalRecordChecklist groups={buildMedicalRecordChecklist(nonServiceConnectedResults)} />
       <PathwayRecordChecklist results={nonServiceConnectedResults} summaryRecommendations={consultationRecommendations} />
-      <RatingGuide results={nonServiceConnectedResults} catalog={catalog} />
+      <RatingGuide
+        results={nonServiceConnectedResults}
+        catalog={catalog}
+        selections={ratingSelections}
+        onSelectionsChange={setRatingSelections}
+      />
       <ActionPlan results={nonServiceConnectedResults} />
       <AccreditedRepresentativeFinder returnTo="/secondary/evidence" />
       <EvidenceGapReview recommendations={evidenceGapRecommendations} />
@@ -227,6 +235,7 @@ export function EvidenceStep({ snapshot }: EvidenceStepProps) {
         recommendations={consultationRecommendations}
         results={nonServiceConnectedResults}
         catalogById={byId}
+        ratingSelections={ratingSelections}
       />
 
       <div className="ui-actions">

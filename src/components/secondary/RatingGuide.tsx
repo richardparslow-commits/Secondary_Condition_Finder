@@ -19,19 +19,24 @@ import type { NonServiceConnectedConditionResult } from "@/lib/secondary-workflo
 interface Props {
   results: NonServiceConnectedConditionResult[];
   catalog: ConditionCatalog;
+  /** Controlled symptom-note selections; omitted, the guide owns them. */
+  selections?: Record<string, boolean>;
+  onSelectionsChange?: (next: Record<string, boolean>) => void;
 }
 
 function checkedCount(checked: Record<string, boolean>): number {
   return Object.values(checked).filter(Boolean).length;
 }
 
-export function RatingGuide({ results, catalog }: Props) {
+export function RatingGuide({ results, catalog, selections, onSelectionsChange }: Props) {
   const byId = useMemo(() => indexById(catalog), [catalog]);
   const catalogById = useMemo(() => new Map(byId) as Map<string, import("@/lib/catalog/schema").CatalogCondition>, [byId]);
   const entries: RatingGuideEntry[] = useMemo(() => buildRatingGuide(results, catalogById), [results, catalogById]);
   // Selections are scoped per condition (`conditionId:prompt`) so notes never
   // blur between conditions. In-memory only, like the other research aids.
-  const [checked, setChecked] = useState<Record<string, boolean>>({});
+  // Step 6 controls them so the consultation packet receives the same notes.
+  const [internalChecked, setInternalChecked] = useState<Record<string, boolean>>({});
+  const checked = selections ?? internalChecked;
   const [selectedConditionId, setSelectedConditionId] = useState<string>("");
 
   if (entries.length === 0) return null;
@@ -44,7 +49,10 @@ export function RatingGuide({ results, catalog }: Props) {
   const totalSelected = checkedCount(checked);
 
   function toggle(prompt: string) {
-    setChecked((previous) => ({ ...previous, [symptomNoteId(activeId, prompt)]: !previous[symptomNoteId(activeId, prompt)] }));
+    const id = symptomNoteId(activeId, prompt);
+    const next = { ...checked, [id]: !checked[id] };
+    setInternalChecked(next);
+    onSelectionsChange?.(next);
   }
 
   function downloadGuide() {

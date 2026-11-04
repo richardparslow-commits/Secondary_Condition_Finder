@@ -2,6 +2,14 @@ import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 
+import { buildPacketSections } from "@/components/ConsultationPacketDownload";
+import { loadConditionCatalog } from "@/lib/catalog/load";
+import { indexById } from "@/lib/catalog/lookup";
+import type { CatalogCondition } from "@/lib/catalog/schema";
+import type { Recommendation } from "@/lib/engine/types";
+import { GENERIC_FUNCTIONAL_PROMPTS, symptomNoteId } from "@/lib/secondary-workflow/rating-guide";
+import type { NonServiceConnectedConditionResult } from "@/lib/secondary-workflow/suggestions";
+
 /**
  * Phase 4 item B contract: the unified consultation packet is pure
  * composition of the existing privacy-stripped exports.
@@ -25,6 +33,20 @@ const evidencePage = fs.readFileSync(
   path.join(process.cwd(), "src/components/secondary/steps/EvidenceStep.tsx"),
   "utf8",
 );
+
+function recommendation(): Recommendation {
+  return {
+    conditionId: "ptsd",
+    condition: "Post-Traumatic Stress Disorder (PTSD)",
+    bodySystem: "Mental Disorders",
+    etiologicalConsensus: "PROBABLE",
+    score: 0.5,
+    contributingPrimaries: [{ id: "ptsd", name: "PTSD", rank: 1, rationale: "fixture" }],
+    evidenceGaps: [],
+    sourceReferences: [],
+    matchedIntakeContext: [],
+  } as Recommendation;
+}
 
 describe("consultation packet composition contract", () => {
   it("reuses the shipped format functions instead of re-implementing exports", () => {
@@ -66,6 +88,25 @@ describe("consultation packet composition contract", () => {
     expect(component).toContain("tableOfContents");
   });
 
+  it("includes the rating-guide symptom notes marked in Step 6", () => {
+    const catalogById = new Map(indexById(loadConditionCatalog())) as Map<string, CatalogCondition>;
+    const rec = recommendation();
+    const results: NonServiceConnectedConditionResult[] = [
+      { conditionId: "ptsd", conditionName: "PTSD", bodySystem: "Mental Disorders", recommendation: rec },
+    ];
+    const selections = { [symptomNoteId("ptsd", GENERIC_FUNCTIONAL_PROMPTS[0])]: true };
+
+    const withNotes = buildPacketSections([rec], results, catalogById, selections);
+    const ratingSection = withNotes.find((section) => section.heading.startsWith("4."));
+    expect(ratingSection?.content).toContain("Notes you marked while exploring");
+    expect(ratingSection?.content).toContain(GENERIC_FUNCTIONAL_PROMPTS[0]);
+
+    const withoutNotes = buildPacketSections([rec], results, catalogById, {});
+    expect(withoutNotes.find((section) => section.heading.startsWith("4."))?.content).not.toContain(
+      "Notes you marked while exploring",
+    );
+  });
+
   it("keeps the privacy boundary: no evidence excerpts or intake context enter the packet", () => {
     // The component imports no evidence/ storage or excerpt types.
     expect(component).not.toContain("evidence/storage");
@@ -74,6 +115,13 @@ describe("consultation packet composition contract", () => {
     // The export copy states the exclusions to the user.
     expect(component).toContain("no raw evidence excerpts");
     expect(component).toContain("no medication/treatment context");
+  });
+
+  it("wires Step 6 rating-guide selections into both the guide and the packet", () => {
+    expect(component).toContain("formatRatingGuide(ratingEntries, ratingSelections)");
+    expect(evidencePage).toContain("selections={ratingSelections}");
+    expect(evidencePage).toContain("onSelectionsChange={setRatingSelections}");
+    expect(evidencePage).toContain("ratingSelections={ratingSelections}");
   });
 
   it("is wired into Step 6 with the same stripped recommendations as the other exports", () => {

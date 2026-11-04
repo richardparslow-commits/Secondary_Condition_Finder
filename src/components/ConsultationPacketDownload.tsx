@@ -27,6 +27,8 @@ interface ConsultationPacketDownloadProps {
   results: NonServiceConnectedConditionResult[];
   /** id -> catalog condition, for the rating guide section headers. */
   catalogById: Map<string, CatalogCondition>;
+  /** Rating-guide symptom notes marked in Step 6, keyed `conditionId:prompt`. */
+  ratingSelections?: Record<string, boolean>;
 }
 
 type PacketSection = {
@@ -36,10 +38,11 @@ type PacketSection = {
 
 const PACKET_FILENAME = "secondary-condition-consultation-packet.txt";
 
-function buildPacketSections(
+export function buildPacketSections(
   recommendations: Recommendation[],
   results: NonServiceConnectedConditionResult[],
   catalogById: Map<string, CatalogCondition>,
+  ratingSelections: Record<string, boolean> = {},
 ): PacketSection[] {
   const sections: PacketSection[] = [];
 
@@ -68,7 +71,7 @@ function buildPacketSections(
   if (ratingEntries.length > 0) {
     sections.push({
       heading: "4. Rating schedule guide (informational)",
-      content: formatRatingGuide(ratingEntries),
+      content: formatRatingGuide(ratingEntries, ratingSelections),
     });
   }
 
@@ -96,8 +99,9 @@ export function ConsultationPacketDownload({
   recommendations,
   results,
   catalogById,
+  ratingSelections,
 }: ConsultationPacketDownloadProps) {
-  const sections = buildPacketSections(recommendations, results, catalogById);
+  const sections = buildPacketSections(recommendations, results, catalogById, ratingSelections);
 
   function downloadPacket() {
     const divider = "=".repeat(72);
@@ -138,8 +142,8 @@ export function ConsultationPacketDownload({
       </button>
       <p className="mt-2 text-xs text-slate-600">
         Assembles every research aid on this page — summary, pathway record checklist, record
-        checklist, rating guide, and action plan — into one text file, generated in this browser.
-        It contains no raw evidence excerpts and no medication/treatment context.
+        checklist, rating guide (including marked symptom notes), and action plan — into one text
+        file, generated in this browser. It contains no raw evidence excerpts and no medication/treatment context.
       </p>
     </div>
   );
