@@ -19,6 +19,7 @@ import {
   EVIDENCE_DEPTH_LIMITS,
   formatLimitBytes,
   formatLimitChars,
+  STANDARD_LIMITS,
   type EvidenceAnalysisDepth,
   type EvidenceLimits,
 } from "@/lib/evidence/limits";
@@ -40,6 +41,7 @@ import {
 import {
   clearStoredEvidence,
   loadStoredEvidenceWithWarning,
+  parseStoredEvidence,
   saveStoredEvidence,
   serializeStoredEvidenceWithInfo,
 } from "@/lib/evidence/storage";
@@ -369,6 +371,32 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
     saveStored(next, activeLimits);
     applyAnalyses(next);
     return notice;
+  }
+
+  /**
+   * Applies Standard's retention window when the Analyst downgrades from
+   * Extended. Without this, Step 4 showed the newest 10 while Step 6 readers,
+   * which deliberately parse with the widest read ceiling, still showed all
+   * 12 from the same store (Heal s4-depth-downgrade-steps-disagree-1).
+   */
+  function retainForStandardDepth() {
+    const { serialized } = serializeStoredEvidenceWithInfo(
+      analysesRef.current,
+      STANDARD_LIMITS,
+    );
+    const retained = parseStoredEvidence(serialized, STANDARD_LIMITS);
+    // The serializer's own `dropped` counts only byte-window trims; the
+    // source-window slice happens before it measures. Count against what the
+    // review actually kept so the notice names the sources the Analyst loses.
+    const removed = analysesRef.current.length - retained.length;
+    saveStored(retained, STANDARD_LIMITS);
+    applyAnalyses(retained);
+    if (removed > 0) {
+      setWarnings((prev) => [
+        ...prev,
+        `Standard depth retains the ${STANDARD_LIMITS.storedSources} newest analyzed sources for the Step 6 checklist; ${removed} older analyzed source(s) were removed from this review.`,
+      ]);
+    }
   }
 
   function dropAnalysis(sourceId: string) {
@@ -989,6 +1017,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
               limitsRef.current = EVIDENCE_DEPTH_LIMITS[next];
               setDepth(next);
               persistDepth(next);
+              if (next === "standard") retainForStandardDepth();
             }}
           >
             <option value="standard">Standard</option>
