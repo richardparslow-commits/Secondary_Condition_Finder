@@ -98,6 +98,7 @@ describe("browser-side step logic (PRIV-01 stage 2)", () => {
         diagnosedConditionIds: [PTSD, TINNITUS],
         serviceConnectedConditionIds: [],
         ratingsByConditionId: {},
+        permanentAndTotalConditionIds: [],
         serviceConnectedAnswerDraft: { [PTSD]: "no", [TINNITUS]: "no" },
       });
     }
@@ -116,6 +117,7 @@ describe("browser-side step logic (PRIV-01 stage 2)", () => {
         diagnosedConditionIds: [PTSD, TINNITUS],
         serviceConnectedConditionIds: [PTSD],
         ratingsByConditionId: {},
+        permanentAndTotalConditionIds: [],
       });
       expect(yes.next).toBe("/secondary/ratings");
     }
@@ -162,7 +164,25 @@ describe("browser-side step logic (PRIV-01 stage 2)", () => {
     expect(result.ok).toBe(true);
     if (result.ok) {
       expect(result.context.ratingsByConditionId).toEqual({ [PTSD]: 70, [TINNITUS]: null });
+      expect(result.context.permanentAndTotalConditionIds).toEqual([]);
       expect(result.next).toBe("/secondary/upload");
+    }
+  });
+
+  it("Step 3 preserves a 100% P&T designation instead of collapsing it to 100", () => {
+    const current = context({
+      diagnosedConditionIds: [PTSD],
+      serviceConnectedConditionIds: [PTSD],
+    });
+    const result = applyRatingsStep(
+      current,
+      form({ [`rating-${PTSD}`]: "100-pt" }),
+      catalog,
+    );
+    expect(result.ok).toBe(true);
+    if (result.ok) {
+      expect(result.context.ratingsByConditionId).toEqual({ [PTSD]: 100 });
+      expect(result.context.permanentAndTotalConditionIds).toEqual([PTSD]);
     }
   });
 

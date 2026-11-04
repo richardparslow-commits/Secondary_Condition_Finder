@@ -13,6 +13,7 @@ import { indexById } from "@/lib/catalog/lookup";
 import { buildEvidenceConditionTerms } from "@/lib/evidence/condition-terms";
 import { useClientCorpus } from "@/lib/client-corpus";
 import { applyDocumentsStep, persistStepResult } from "@/lib/secondary-workflow/client-steps";
+import { ratingDisplayLabel } from "@/lib/secondary-workflow/ratings";
 import { listSymptomBridgeEntries } from "@/lib/secondary-workflow/symptom-bridge";
 import {
   MAX_TIMELINE_YEAR,
@@ -66,6 +67,7 @@ export function UploadStep() {
   const diagnosedConditionIds = context?.diagnosedConditionIds ?? [];
   const serviceConnectedConditionIds = context?.serviceConnectedConditionIds ?? [];
   const ratingsByConditionId = context?.ratingsByConditionId;
+  const permanentAndTotalConditionIds = context?.permanentAndTotalConditionIds ?? [];
   const documentsShared = context?.documentsShared ?? false;
   const medications = context?.medications ?? [];
   const treatments = context?.treatments ?? [];
@@ -208,7 +210,7 @@ export function UploadStep() {
 
         <aside className="ui-stack" aria-label="What strong evidence includes">
           <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">★</span><h2 className="text-xl font-bold">What Strong Evidence Often Includes</h2></div><ul className="list-disc space-y-3 pl-5 text-sm"><li>Current diagnosis and treatment records</li><li>A timeline showing onset and progression</li><li>Relevant treatment history and medication records</li><li>A clinician-authored medical opinion addressing causation or aggravation when medical expertise is required</li><li>Evidence discussing alternative causes when clinically relevant</li></ul></section>
-          <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">→</span><h2 className="text-xl font-bold">Current Run</h2></div><ul className="space-y-2 text-sm">{serviceConnectedConditionIds.map((id) => { const condition = byId.get(id); if (!condition) return null; const rating = ratingsByConditionId[id]; return <li key={id} className="flex justify-between gap-3 border-b border-slate-100 pb-2"><span className="font-medium">{condition.name}</span><span className="text-blue-700">{rating === null ? "Not provided" : `${rating}%`}</span></li>; })}</ul>{(medications.length > 0 || treatments.length > 0) && <p className="mt-4 text-xs text-slate-600">Optional context saved: {medications.length} medication item(s), {treatments.length} treatment item(s).</p>}</section>
+          <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">→</span><h2 className="text-xl font-bold">Current Run</h2></div><ul className="space-y-2 text-sm">{serviceConnectedConditionIds.map((id) => { const condition = byId.get(id); if (!condition) return null; const rating = ratingsByConditionId[id]; return <li key={id} className="flex justify-between gap-3 border-b border-slate-100 pb-2"><span className="font-medium">{condition.name}</span><span className="text-blue-700">{rating === null || rating === undefined ? "Not provided" : ratingDisplayLabel(rating, permanentAndTotalConditionIds.includes(id))}</span></li>; })}</ul>{(medications.length > 0 || treatments.length > 0) && <p className="mt-4 text-xs text-slate-600">Optional context saved: {medications.length} medication item(s), {treatments.length} treatment item(s).</p>}</section>
         </aside>
       </div>
       <DisclaimerFooter />

@@ -1004,7 +1004,9 @@ async function run() {
     "location.pathname === '/secondary/ratings' && !!document.querySelector('#rating-ptsd')",
     "ratings step",
   );
-  await pageEval(js(setNativeValue, "#rating-ptsd", "70"));
+  // 100% P&T is a distinct option value; choosing it here gives the
+  // permanentAndTotalConditionIds field a positive control in the real walk.
+  await pageEval(js(setNativeValue, "#rating-ptsd", "100-pt"));
   await pageEval(js(clickSelector, 'button[type="submit"]'));
   await waitForPage(
     "location.pathname === '/secondary/upload' && !!document.querySelector('#medications')",
@@ -1195,8 +1197,16 @@ async function run() {
     {
       field: "ratingsByConditionId",
       sentinel: null,
-      ok: record?.ratingsByConditionId?.ptsd === 70,
+      ok: record?.ratingsByConditionId?.ptsd === 100,
       detail: JSON.stringify(record?.ratingsByConditionId ?? null),
+    },
+    {
+      field: "permanentAndTotalConditionIds",
+      sentinel: null,
+      ok:
+        Array.isArray(record?.permanentAndTotalConditionIds) &&
+        record.permanentAndTotalConditionIds.includes("ptsd"),
+      detail: JSON.stringify(record?.permanentAndTotalConditionIds ?? null),
     },
     {
       field: "documentsShared",
@@ -1337,6 +1347,7 @@ async function run() {
       [SENTINELS.answerDraftKey]: "no",
     },
     ratingsByConditionId: { ptsd: 70, [SENTINELS.serviceConnectedId]: 50 },
+    permanentAndTotalConditionIds: ["ptsd"],
     documentsShared: true,
     medications: [SENTINELS.medication],
     treatments: [SENTINELS.treatment],

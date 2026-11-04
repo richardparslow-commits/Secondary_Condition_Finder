@@ -259,6 +259,7 @@ describe("public client corpus (PRIV-01)", () => {
       "diagnosedConditionIds",
       "serviceConnectedConditionIds",
       "ratingsByConditionId",
+      "permanentAndTotalConditionIds",
       "medications",
       "treatments",
       "history",

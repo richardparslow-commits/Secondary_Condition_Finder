@@ -54,6 +54,7 @@ export const PRIVATE_CONTEXT_PARAMETER_NAMES: readonly string[] = [
   "serviceConnectedConditionIds",
   "serviceConnectedAnswerDraft",
   "ratingsByConditionId",
+  "permanentAndTotalConditionIds",
   "documentsShared",
   "medications",
   "treatments",

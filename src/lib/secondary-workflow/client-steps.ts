@@ -1,4 +1,3 @@
-import { indexById } from "@/lib/catalog/lookup";
 import type { ConditionCatalog } from "@/lib/catalog/schema";
 
 import type { BrowserWorkflowContext, BrowserWorkflowContextInput } from "./browser-context";
@@ -11,6 +10,7 @@ import {
   parseServiceConnectedSelection,
   type QueryParams,
 } from "./state";
+import { isPermanentAndTotalRatingValue } from "./ratings";
 import { workflowSessionToQueryParams } from "./transport";
 import type { SecondaryValidationCode } from "./validation";
 
@@ -224,6 +224,7 @@ export function applyServiceConnectedStep(
         diagnosedConditionIds,
         serviceConnectedConditionIds: [],
         ratingsByConditionId: {},
+        permanentAndTotalConditionIds: [],
         serviceConnectedAnswerDraft: collectServiceConnectedAnswers(
           diagnosedConditionIds,
           answers,
@@ -257,6 +258,7 @@ export function applyServiceConnectedStep(
         diagnosedConditionIds: parsed.diagnosedConditionIds,
         serviceConnectedConditionIds: parsed.serviceConnectedConditionIds,
         ratingsByConditionId: {},
+        permanentAndTotalConditionIds: [],
       },
       next: "/secondary/ratings",
     };
@@ -286,7 +288,7 @@ export function applyRatingsStep(
     if (typeof value !== "string" || value === "") {
       return { ok: false, code: "select-rating", next: "/secondary/ratings" };
     }
-    if (value !== "decline") {
+    if (value !== "decline" && !isPermanentAndTotalRatingValue(value)) {
       const rating = Number(value);
       if (!Number.isInteger(rating) || rating < 0 || rating > 100) {
         return { ok: false, code: "invalid-rating", next: "/secondary/ratings" };
@@ -312,6 +314,7 @@ export function applyRatingsStep(
         diagnosedConditionIds: parsed.diagnosedConditionIds,
         serviceConnectedConditionIds: parsed.serviceConnectedConditionIds,
         ratingsByConditionId: parsed.ratingsByConditionId,
+        permanentAndTotalConditionIds: parsed.permanentAndTotalConditionIds,
       },
       next: "/secondary/upload",
     };

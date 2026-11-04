@@ -57,6 +57,7 @@ const PRIVATE_FIELD_NAMES = [
   "serviceConnectedConditionIds",
   "serviceConnectedAnswerDraft",
   "ratingsByConditionId",
+  "permanentAndTotalConditionIds",
   "conditionTimeline",
   "symptomIds",
   "medications",

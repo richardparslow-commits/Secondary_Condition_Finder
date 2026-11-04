@@ -7,7 +7,12 @@ import { useLayoutEffect, useMemo, useState } from "react";
 import { indexById } from "@/lib/catalog/lookup";
 import { useClientCorpus } from "@/lib/client-corpus";
 import { applyRatingsStep, persistStepResult } from "@/lib/secondary-workflow/client-steps";
-import { VALID_RATINGS } from "@/lib/secondary-workflow/ratings";
+import {
+  PERMANENT_AND_TOTAL_RATING_VALUE,
+  ratingDisplayLabel,
+  ratingOptionValue,
+  VALID_RATINGS,
+} from "@/lib/secondary-workflow/ratings";
 import { ratingFieldName } from "@/lib/secondary-workflow/state";
 import { useBrowserWorkflowContext } from "@/lib/secondary-workflow/use-browser-context";
 import {
@@ -20,7 +25,7 @@ interface RatingOption { label: string; value: string; }
 
 export function getRatingOptions(): RatingOption[] {
   return Array.from(VALID_RATINGS.reduce((options, rating) => {
-    const value = rating === "100% P&T" ? "100" : rating.replace("%", "");
+    const value = ratingOptionValue(rating);
     options.set(value, { label: rating, value });
     return options;
   }, new Map<string, RatingOption>()).values());
@@ -35,15 +40,25 @@ export function RatingSelect({
   conditionId,
   conditionName,
   stored,
+  storedPermanentAndTotal = false,
   validationId,
 }: {
   conditionId: string;
   conditionName: string;
   stored: number | null | undefined;
+  /** True when the stored 100% carries the P&T designation. */
+  storedPermanentAndTotal?: boolean;
   validationId?: string;
 }) {
   const fieldName = ratingFieldName(conditionId);
-  const currentValue = stored === null ? "decline" : typeof stored === "number" ? String(stored) : "";
+  const currentValue =
+    stored === null
+      ? "decline"
+      : typeof stored === "number"
+        ? stored === 100 && storedPermanentAndTotal
+          ? PERMANENT_AND_TOTAL_RATING_VALUE
+          : String(stored)
+        : "";
   const ratingOptions = getRatingOptions();
   return (
     <div className="grid items-center gap-3 rounded-xl border border-slate-200 p-4 sm:grid-cols-[1fr_11rem]">
@@ -85,6 +100,7 @@ export function RatingsStep() {
   const diagnosedConditionIds = context?.diagnosedConditionIds ?? [];
   const serviceConnectedConditionIds = context?.serviceConnectedConditionIds ?? [];
   const ratingsByConditionId = context?.ratingsByConditionId ?? {};
+  const permanentAndTotalConditionIds = context?.permanentAndTotalConditionIds ?? [];
   const ratingOptions = getRatingOptions();
 
   function onSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -147,6 +163,7 @@ export function RatingsStep() {
                   conditionId={conditionId}
                   conditionName={catalogById.get(conditionId)?.name ?? conditionId.replace(/-/g, " ")}
                   stored={ratingsByConditionId[conditionId]}
+                  storedPermanentAndTotal={permanentAndTotalConditionIds.includes(conditionId)}
                   validationId={validationId}
                 />
               ))}
@@ -155,7 +172,7 @@ export function RatingsStep() {
           </section>
 
           <aside className="ui-stack" aria-label="Current summary">
-            <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">Σ</span><h2 className="text-xl font-bold">Current Summary</h2></div><ul className="space-y-3">{serviceConnectedConditionIds.map((id) => { const name = catalogById.get(id)?.name ?? id; const rating = ratingsByConditionId[id]; return <li key={id} className="flex justify-between gap-3 border-b border-slate-100 pb-2 text-sm"><span className="font-medium">{name}</span><strong className="text-blue-700">{rating === null ? "Not provided" : typeof rating === "number" ? `${rating}%` : "—"}</strong></li>; })}</ul></section>
+            <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">Σ</span><h2 className="text-xl font-bold">Current Summary</h2></div><ul className="space-y-3">{serviceConnectedConditionIds.map((id) => { const name = catalogById.get(id)?.name ?? id; const rating = ratingsByConditionId[id]; return <li key={id} className="flex justify-between gap-3 border-b border-slate-100 pb-2 text-sm"><span className="font-medium">{name}</span><strong className="text-blue-700">{rating === undefined ? "—" : ratingDisplayLabel(rating, permanentAndTotalConditionIds.includes(id)) ?? "Not provided"}</strong></li>; })}</ul></section>
             <section className="ui-card"><div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">i</span><h2 className="text-xl font-bold">Helpful Reminder</h2></div><p className="text-sm">This is a research aid, not a rating calculator or decision. VA evaluates ratings under the applicable schedule and the complete evidentiary record.</p></section>
           </aside>
         </div>

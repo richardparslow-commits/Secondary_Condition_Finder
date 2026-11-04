@@ -2,6 +2,7 @@ import { z } from "zod";
 
 import { indexById } from "@/lib/catalog/lookup";
 import type { ConditionCatalog } from "@/lib/catalog/schema";
+import { isPermanentAndTotalRatingValue } from "./ratings";
 import { parseSymptomBridgeSelection } from "./symptom-bridge";
 
 export const MAX_CONTEXT_ITEMS = 20;
@@ -18,6 +19,8 @@ export interface SecondaryWorkflowState {
   diagnosedConditionIds: string[];
   serviceConnectedConditionIds: string[];
   ratingsByConditionId: Record<string, number | null>;
+  /** Conditions whose 100% rating carries the P&T designation. */
+  permanentAndTotalConditionIds?: string[];
   documentsShared: boolean;
   medications?: string[];
   treatments?: string[];
@@ -175,7 +178,8 @@ export function ratingFieldName(conditionId: string): string {
 function parseRatingValue(raw: string | undefined): number | null {
   if (!raw || raw === "decline") return null;
 
-  const parsed = Number(raw);
+  // 100% P&T is stored as the numeric rating plus a flag on the condition.
+  const parsed = Number(isPermanentAndTotalRatingValue(raw) ? "100" : raw);
   if (!Number.isInteger(parsed) || parsed < 0 || parsed > 100) {
     throw new Error("Ratings must be whole numbers from 0 through 100.");
   }
@@ -190,18 +194,23 @@ export function parseRatingsSelection(
   diagnosedConditionIds: string[];
   serviceConnectedConditionIds: string[];
   ratingsByConditionId: Record<string, number | null>;
+  permanentAndTotalConditionIds: string[];
 } {
   const serviceConnected = parseServiceConnectedSelection(params, catalog);
   const ratingsByConditionId: Record<string, number | null> = {};
+  const permanentAndTotalConditionIds: string[] = [];
 
   for (const id of serviceConnected.serviceConnectedConditionIds) {
-    ratingsByConditionId[id] = parseRatingValue(first(params[ratingFieldName(id)]));
+    const raw = first(params[ratingFieldName(id)]);
+    ratingsByConditionId[id] = parseRatingValue(raw);
+    if (isPermanentAndTotalRatingValue(raw)) permanentAndTotalConditionIds.push(id);
   }
 
   return {
     diagnosedConditionIds: serviceConnected.diagnosedConditionIds,
     serviceConnectedConditionIds: serviceConnected.serviceConnectedConditionIds,
     ratingsByConditionId,
+    permanentAndTotalConditionIds,
   };
 }
 
@@ -268,7 +277,10 @@ export function parseDocumentsSelection(
   params: QueryParams,
   catalog: ConditionCatalog,
 ): SecondaryWorkflowState {
-  const ratings = parseRatingsSelection(params, catalog);
+  const { permanentAndTotalConditionIds, ...ratings } = parseRatingsSelection(
+    params,
+    catalog,
+  );
   const medications = parseContextEntries(params.medications, "Medication");
   const treatments = parseContextEntries(params.treatments, "Treatment");
   const history = parseContextEntries(params.history, "History");
@@ -278,6 +290,11 @@ export function parseDocumentsSelection(
   return {
     ...ratings,
     documentsShared: parseDocumentsShared(params.documentsShared),
+    // Omitted when empty, like every other optional context field, so parsed
+    // state stays identical for users who never chose P&T.
+    ...(permanentAndTotalConditionIds.length > 0
+      ? { permanentAndTotalConditionIds }
+      : {}),
     ...(medications.length > 0 ? { medications } : {}),
     ...(treatments.length > 0 ? { treatments } : {}),
     ...(history.length > 0 ? { history } : {}),
