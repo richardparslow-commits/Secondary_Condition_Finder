@@ -9,7 +9,7 @@ function read(relativePath: string): string {
 }
 
 describe("VA Benefits Reference Data explorer", () => {
-  it("uses current, non-ended sandbox disability reference values", async () => {
+  it("keeps terms whose end date has not passed and drops retired ones", async () => {
     const result = await loadDisabilityReference(async () => ({
       success: true,
       source: "va-sandbox-api",
@@ -18,6 +18,7 @@ describe("VA Benefits Reference Data explorer", () => {
           { id: 2, name: "Migraine", endDateTime: null },
           { id: 1, name: "Asthma", endDateTime: null },
           { id: 3, name: "Retired term", endDateTime: "2020-01-01T00:00:00Z" },
+          { id: 4, name: "Future term", endDateTime: "2999-01-01T00:00:00Z" },
         ],
       },
     }));
@@ -26,9 +27,10 @@ describe("VA Benefits Reference Data explorer", () => {
     expect(result.sourceLabel).toBe("VA sandbox reference");
     expect(result.items).toEqual([
       { id: "1", name: "Asthma" },
+      { id: "4", name: "Future term" },
       { id: "2", name: "Migraine" },
     ]);
-    expect(result.totalAvailable).toBe(2);
+    expect(result.totalAvailable).toBe(3);
     expect(result.notice).toContain("not a diagnosis");
   });
 

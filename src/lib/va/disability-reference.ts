@@ -84,8 +84,17 @@ export async function loadDisabilityReference(
         return { view: localFallback(), cacheable: false };
       }
 
+      // A term with an end date is current until that date passes; treating
+      // every end-dated term as retired hid future effective-end records (Heal
+      // s3-future-end-date-term-hidden-1). An unreadable end date is not
+      // evidence the term is current, so it is still dropped.
+      const now = Date.now();
       const currentItems = result.data.items
-        .filter((item) => !item.endDateTime)
+        .filter((item) => {
+          if (!item.endDateTime) return true;
+          const endsAt = Date.parse(item.endDateTime);
+          return Number.isFinite(endsAt) && endsAt > now;
+        })
         .map((item) => ({ id: String(item.id), name: item.name }))
         .sort((a, b) => a.name.localeCompare(b.name));
 
