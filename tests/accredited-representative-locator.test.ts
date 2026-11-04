@@ -176,6 +176,46 @@ describe("accredited representative locator (Idea #8)", () => {
     expect(view.notice).toContain("va.gov/ogc/apps/accreditation");
   });
 
+  it("keeps every readable representative when one record carries a ZIP+4", async () => {
+    // Heal s3-one-odd-rep-hides-all-reps-1: the item schema accepted only five
+    // digits, the array is validated as a whole, and one otherwise-valid record
+    // with a ZIP+4 failed the entire payload — the loader then served its empty
+    // fallback, which the finder rendered as "directory unavailable and none
+    // found". The odd record is now shown rather than dropped.
+    vi.stubEnv("VA_API_ENABLED", "true");
+    vi.stubEnv("VA_API_ENV", "sandbox");
+    vi.stubEnv("VA_ACCREDITED_REP_ENABLED", "true");
+    vi.stubEnv("VA_ACCREDITED_REP_SANDBOX_API_KEY", "test-key");
+    clearAccreditedRepresentativeCache();
+    const fetchSpy = vi.fn().mockResolvedValue(
+      vaJsonResponse({
+        data: [
+          ...directoryPayload.data,
+          {
+            id: "rep-3",
+            name: "Plus Four Representative",
+            accreditationType: "VSO",
+            zip: "12345-6789",
+          },
+        ],
+      }),
+    );
+    vi.stubGlobal("fetch", fetchSpy);
+
+    const view = await loadAccreditedRepresentatives({ zip: "12345", radiusMiles: 25 });
+
+    expect(view.live).toBe(true);
+    expect(view.items).toHaveLength(3);
+    expect(view.items.map((item) => item.name)).toContain("Plus Four Representative");
+    expect(view.items.find((item) => item.id === "rep-3")?.zip).toBe("12345-6789");
+
+    // The cache DTO applies the same rule: a cache read must not degrade this
+    // view to the empty fallback either.
+    const cachedView = await loadAccreditedRepresentatives({ zip: "12345", radiusMiles: 25 });
+    expect(cachedView.cacheStatus).toBe("hit");
+    expect(cachedView.items).toHaveLength(3);
+  });
+
   it("renders the search form with the VSO/agent/attorney filters (source pin)", () => {
     const source = readFileSync("src/components/va/AccreditedRepresentativeFinder.tsx", "utf8");
     expect(source).toContain("Find an accredited representative near you");
