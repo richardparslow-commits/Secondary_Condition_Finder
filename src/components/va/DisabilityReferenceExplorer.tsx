@@ -7,11 +7,12 @@ import { matchExactVaReferenceTerm } from "@/lib/va/terminology-match";
 
 interface Props {
   items: DisabilityReferenceItem[];
+  totalAvailable: number;
 }
 
 const MAX_VISIBLE_RESULTS = 50;
 
-export function DisabilityReferenceExplorer({ items }: Props) {
+export function DisabilityReferenceExplorer({ items, totalAvailable }: Props) {
   const [query, setQuery] = useState("");
   const normalizedQuery = query.trim().toLocaleLowerCase();
 
@@ -68,6 +69,12 @@ export function DisabilityReferenceExplorer({ items }: Props) {
           <span>Refine the filter to narrow results.</span>
         )}
       </div>
+
+      {totalAvailable > items.length && (
+        <p className="mt-3 rounded-md border border-amber-300 bg-amber-50 p-3 text-xs leading-relaxed text-amber-900">
+          VA publishes {totalAvailable} disability reference terms, and this page loads the first {items.length}. A term outside that prefix will not appear below even though VA publishes it.
+        </p>
+      )}
 
       {matches.length === 0 ? (
         <p className="mt-4 rounded-md border border-slate-200 bg-slate-50 p-4 text-sm text-slate-700">

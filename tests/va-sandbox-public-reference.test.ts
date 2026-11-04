@@ -184,6 +184,37 @@ describe("public-reference VA API adapters", () => {
     }
   });
 
+  it("follows disability reference pages instead of treating the first page as the whole list", async () => {
+    const page = (items: Array<{ id: number; name: string }>) =>
+      new Response(
+        JSON.stringify({ totalItems: 3, totalPages: 3, items }),
+        { status: 200, headers: { "Content-Type": "application/json" } },
+      );
+    const fetchSpy = vi
+      .fn()
+      .mockResolvedValueOnce(page([{ id: 1, name: "Asthma" }]))
+      .mockResolvedValueOnce(page([{ id: 2, name: "Migraine" }]))
+      .mockResolvedValueOnce(page([{ id: 3, name: "Tinnitus" }]));
+    vi.stubGlobal("fetch", fetchSpy);
+
+    const result = await fetchVaDisabilityReference({ config });
+
+    expect(result.success).toBe(true);
+    expect(result.data?.items.map((item) => item.name)).toEqual([
+      "Asthma",
+      "Migraine",
+      "Tinnitus",
+    ]);
+    expect(fetchSpy).toHaveBeenCalledTimes(3);
+    const urls = fetchSpy.mock.calls.map(([url]) => new URL(String(url)));
+    expect(urls.map((url) => url.searchParams.get("page[number]"))).toEqual([
+      "1",
+      "2",
+      "3",
+    ]);
+    expect(urls[0]?.searchParams.get("page[size]")).toBe("200");
+  });
+
   it("fails closed per service when only that service key is missing", async () => {
     const fetchSpy = vi.fn();
     vi.stubGlobal("fetch", fetchSpy);

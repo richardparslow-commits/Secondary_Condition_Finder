@@ -65,7 +65,7 @@ const loaders: LoaderCase[] = [
   },
   {
     name: "disabilities", key: "disabilities:sandbox", load: () => loadDisabilityReference(), fetcher: mocks.disabilities,
-    view: () => ({ ...vaLiveStatus("disability-reference", "sandbox", "va-sandbox-api"), items: [{ id: "1", name: "Migraine" }] }),
+    view: () => ({ ...vaLiveStatus("disability-reference", "sandbox", "va-sandbox-api"), items: [{ id: "1", name: "Migraine" }], totalAvailable: 1 }),
   },
   {
     name: "service branches", key: "service-branches:sandbox", load: () => loadServiceBranchReference(), fetcher: mocks.branches,
@@ -173,6 +173,7 @@ for (const loader of loaders) {
       it("accepts its maximum item count with bounded fields", async () => {
         const candidate = loader.view();
         candidate.items = Array.from({ length: 200 }, () => (candidate.items as unknown[])[0]);
+        if (loader.name === "disabilities") candidate.totalAvailable = 200;
         useKv(loader, candidate);
         expect((await loader.load()).source).toBe("va-sandbox-api");
         expect(loader.fetcher).not.toHaveBeenCalled();
@@ -229,6 +230,8 @@ for (const loader of loaders) {
         ["non-numeric id", itemPatch({ id: "migraine" })],
         ["numeric rather than string id", itemPatch({ id: 1 })],
         ["empty items", (view) => ({ ...view, items: [] })],
+        ["missing reported total", (view) => { const result = { ...view }; delete result.totalAvailable; return result; }],
+        ["reported total below shown items", (view) => ({ ...view, totalAvailable: 0 })],
       );
       if (loader.name === "service branches") invalid.push(
         ["object description", itemPatch({ description: {} })],
@@ -279,6 +282,36 @@ for (const loader of loaders) {
     });
   });
 }
+
+it("serves and caches a long live disability list by trimming to the DTO bound", async () => {
+  mocks.disabilities.mockResolvedValue({
+    success: true,
+    source: "va-sandbox-api",
+    environment: "sandbox",
+    data: {
+      items: Array.from({ length: 250 }, (_, index) => ({
+        id: index + 1,
+        name: `Term ${index + 1}`,
+        endDateTime: null,
+      })),
+      totalItems: 250,
+    },
+  });
+  const kv = createFakeSharedKv();
+  vi.stubGlobal("fetch", vi.fn(async (_input: unknown, init?: RequestInit) => kv.respond(init)));
+
+  const view = await loadDisabilityReference();
+  expect(view.source).toBe("va-sandbox-api");
+  expect(view.items).toHaveLength(200);
+  expect(view.totalAvailable).toBe(250);
+  expect(readVaReferenceCache("disabilities:sandbox")).not.toBeNull();
+
+  clearVaReferenceCache();
+  const hit = await loadDisabilityReference();
+  expect(hit.source).toBe("va-sandbox-api");
+  expect(hit.totalAvailable).toBe(250);
+  expect(mocks.disabilities).toHaveBeenCalledTimes(1);
+});
 
 it("binds omitted radius/type to the same effective params without caching the ZIP", async () => {
   mocks.representatives.mockResolvedValue({ success: true, source: "va-sandbox-api", environment: "sandbox", data: { data: [repItem] } });

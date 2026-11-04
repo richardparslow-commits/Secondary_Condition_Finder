@@ -740,11 +740,24 @@ export async function fetchVaForms(
   });
 }
 
-export async function fetchVaDisabilityReference(
-  options: VaApiRequestOptions = {},
-): Promise<VaApiResult<VaDisabilityReference>> {
-  const config = options.config ?? loadVaApiConfig();
+/**
+ * VA's Benefits Reference Data `/disabilities` endpoint is paginated and
+ * reports `totalItems`/`totalPages` beside each page. Requesting the bare path
+ * returned whatever the upstream default page was, and the app labelled that
+ * first page as the live list, so terms after it could never be found. Ask for
+ * a full-size page and follow the remaining pages until the display bound is
+ * reached, with a hard page cap so one refresh stays bounded. Page one decides
+ * success: if a later page fails the readable records already fetched are kept,
+ * and the upstream total stays on the view for the explorer to disclose.
+ */
+const VA_DISABILITY_PAGE_SIZE = 200;
+const VA_DISABILITY_MAX_PAGES = 4;
 
+function fetchVaDisabilityPage(
+  page: number,
+  config: VaApiConfig,
+  options: VaApiRequestOptions,
+): Promise<VaApiResult<VaDisabilityReference>> {
   return requestVaJson({
     service: "benefits-reference-data",
     apiKey: config.benefitsReferenceDataApiKey,
@@ -753,7 +766,30 @@ export async function fetchVaDisabilityReference(
     schema: disabilityReferenceSchema,
     config,
     observe: options.observe,
+    query: new URLSearchParams({
+      "page[number]": String(page),
+      "page[size]": String(VA_DISABILITY_PAGE_SIZE),
+    }),
   });
+}
+
+export async function fetchVaDisabilityReference(
+  options: VaApiRequestOptions = {},
+): Promise<VaApiResult<VaDisabilityReference>> {
+  const config = options.config ?? loadVaApiConfig();
+  const first = await fetchVaDisabilityPage(1, config, options);
+  if (!first.success || !first.data) return first;
+
+  const items = [...first.data.items];
+  const lastPage = Math.min(first.data.totalPages ?? 1, VA_DISABILITY_MAX_PAGES);
+  for (let page = 2; page <= lastPage; page += 1) {
+    if (items.length >= VA_DISABILITY_PAGE_SIZE) break;
+    const next = await fetchVaDisabilityPage(page, config, options);
+    if (!next.success || !next.data) break;
+    items.push(...next.data.items);
+  }
+
+  return { ...first, data: { ...first.data, items } };
 }
 
 export async function fetchVaServiceBranches(
