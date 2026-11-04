@@ -152,7 +152,18 @@ describe("GET /api/auth/login", () => {
     const setCookie = login.headers.get("set-cookie") ?? "";
     expect(setCookie).toContain("HttpOnly");
     expect(setCookie).toContain("SameSite=lax");
-    expect(setCookie).toContain("Path=/api/auth");
+    // The binding cookie must be sent to the callback VA redirects to. VA is
+    // given `config.callbackUrl` (`/va-account/oauth/claims/callback`), which
+    // lies outside the adapter's /api/auth subtree; a narrower path silently
+    // dropped the binding and every login failed (Heal
+    // s1-api-login-never-connects-claims-1).
+    const redirectPath = new URL(target.searchParams.get("redirect_uri")!).pathname;
+    const cookiePath = /Path=([^;]+)/.exec(setCookie)?.[1] ?? "";
+    expect(cookiePath).toBe("/");
+    expect(
+      redirectPath === cookiePath ||
+        redirectPath.startsWith(cookiePath.endsWith("/") ? cookiePath : `${cookiePath}/`),
+    ).toBe(true);
   });
 
   it("fails closed with 503 when the sandbox integration is disabled", async () => {
