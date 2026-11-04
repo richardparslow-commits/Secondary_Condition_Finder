@@ -7,9 +7,18 @@ import { openSessionPayload, sealSessionPayload } from "@/lib/workflow-session-c
 
 import { type AccountEnv, type VaAccountConfig } from "./config";
 
+export type AccountReadOutcome =
+  | { status: "found"; value: unknown }
+  | { status: "missing" }
+  | { status: "unavailable" };
+
 export interface AccountStore {
   put(key: string, value: unknown, ttlSeconds: number): Promise<boolean>;
   read(key: string): Promise<unknown | null>;
+  // `read` folds an absent entry and an unreachable store into `null`. Callers
+  // that show state to a visitor need to tell those apart, so this variant
+  // keeps the reason the value could not be read.
+  readOutcome(key: string): Promise<AccountReadOutcome>;
   consume(key: string): Promise<unknown | null>;
   replace(key: string, expected: unknown, value: unknown, ttlSeconds: number): Promise<boolean>;
   remove(key: string): Promise<boolean>;
@@ -29,9 +38,15 @@ class MemoryAccountStore implements AccountStore {
     this.entries.set(key, { sealed: sealSessionPayload(value, this.secret, { maxAgeSeconds: ttlSeconds }), expiresAt: Date.now() + ttlSeconds * 1000 });
     return true;
   }
-  async read(key: string) {
+  async readOutcome(key: string): Promise<AccountReadOutcome> {
     const entry = this.live(key);
-    return entry ? openSessionPayload(entry.sealed, this.secret) : null;
+    if (!entry) return { status: "missing" };
+    const value = openSessionPayload(entry.sealed, this.secret);
+    return value === null ? { status: "missing" } : { status: "found", value };
+  }
+  async read(key: string) {
+    const outcome = await this.readOutcome(key);
+    return outcome.status === "found" ? outcome.value : null;
   }
   async consume(key: string) {
     const entry = this.live(key);
@@ -104,12 +119,18 @@ class SharedAccountStore implements AccountStore {
     const reply = await this.command(["SET", this.key(key), sealed, "NX", "EX", String(ttlSeconds)]);
     return reply.success && reply.result === "OK";
   }
-  async read(key: string) {
+  async readOutcome(key: string): Promise<AccountReadOutcome> {
     const reply = await this.command(["GET", this.key(key)]);
-    if (!reply.success || typeof reply.result !== "string") return null;
+    if (!reply.success) return { status: "unavailable" };
+    if (typeof reply.result !== "string") return { status: "missing" };
     const opened = openSessionPayload(reply.result, this.secret);
-    if (opened !== null) this.observed.set(key, reply.result);
-    return opened;
+    if (opened === null) return { status: "missing" };
+    this.observed.set(key, reply.result);
+    return { status: "found", value: opened };
+  }
+  async read(key: string) {
+    const outcome = await this.readOutcome(key);
+    return outcome.status === "found" ? outcome.value : null;
   }
   async consume(key: string) {
     // GETDEL is atomic: concurrent/replayed callbacks cannot both redeem.

@@ -155,6 +155,22 @@ describe("read-only veteran data", () => {
     expect(await loadAccountData(config, store, handle)).toEqual({ status: "rate-limited" });
     expect(await loadAccountData(config, store, "invalid")).toEqual({ status: "disconnected" });
   });
+  it("reports an unreachable store as unavailable instead of a dropped connection", async () => {
+    const { handle } = await connected();
+    const store = createMemoryAccountStore(secret);
+    // The session read fails because the coordinator cannot answer, not because
+    // the handle is invalid. The page must not claim the connection ended.
+    const unreachable: AccountStore = {
+      put: (...args) => store.put(...args),
+      read: async () => null,
+      readOutcome: async () => ({ status: "unavailable" }),
+      consume: (...args) => store.consume(...args),
+      replace: (...args) => store.replace(...args),
+      remove: (...args) => store.remove(...args),
+    };
+
+    expect(await loadAccountData(config, unreachable, handle)).toEqual({ status: "unavailable" });
+  });
   it("accepts the documented null-rating record and rejects malformed/incomplete values", () => {
     expect(ratingSummarySchema.parse({ data: { attributes: { combined_disability_rating: null, combined_effective_date: null, legal_effective_date: null, individual_ratings: null } } }).combined_disability_rating).toBeNull();
     expect(ratingSummarySchema.safeParse({ data: { attributes: { combined_disability_rating: 101 } } }).success).toBe(false);
@@ -278,6 +294,17 @@ describe("shared encrypted session store", () => {
     vi.stubGlobal("fetch", vi.fn(async () => json({ error: "ERR unsupported" })));
     expect(await store.put("synthetic", { value: 1 }, 60)).toBe(false);
     expect(await store.remove("synthetic")).toBe(false);
+    expect(await store.read("synthetic")).toBeNull();
+  });
+  it("distinguishes a missing entry from a store that could not answer", async () => {
+    const sharedEnv = { ...env, VA_ACCOUNT_STORE_URL: "https://store.test", VA_ACCOUNT_STORE_TOKEN: "SYNTHETIC_STORE_TOKEN" };
+    const store = loadAccountStore(config, sharedEnv)!;
+
+    vi.stubGlobal("fetch", vi.fn(async () => json({ result: null })));
+    expect(await store.readOutcome("synthetic")).toEqual({ status: "missing" });
+
+    vi.stubGlobal("fetch", vi.fn(async () => new Response(null, { status: 503 })));
+    expect(await store.readOutcome("synthetic")).toEqual({ status: "unavailable" });
     expect(await store.read("synthetic")).toBeNull();
   });
 });

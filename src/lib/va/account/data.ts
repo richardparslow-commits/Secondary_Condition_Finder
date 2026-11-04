@@ -84,7 +84,13 @@ async function failure(
 
 export async function loadAccountData(config: VaAccountConfig, store: AccountStore, handle: string): Promise<AccountDataResult> {
   const session = await readAccountSession(config, store, handle);
-  if (!session) return { status: "disconnected" };
+  if (!session) {
+    // A null session means either that the connection ended or that the store
+    // could not answer. Reporting the second as a disconnected account would
+    // tell a visitor their VA connection is gone because of a brief outage.
+    const observed = await store.readOutcome(accountSessionKey(config, handle));
+    return { status: observed.status === "unavailable" ? "unavailable" : "disconnected" };
+  }
   const cooldownKey = `cooldown:${config.service}:${config.fingerprint}`;
   const cooldown = await store.read(cooldownKey);
   if (cooldown && typeof cooldown === "object" && "until" in cooldown &&
