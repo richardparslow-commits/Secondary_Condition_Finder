@@ -59,6 +59,9 @@ describe("secondary workflow completion privacy lifecycle", () => {
     const controls = readRepoFile("src/components/secondary/SecondaryWorkflowCompletionActions.tsx");
 
     expect(controls).toContain("clearSecondaryWorkflowLocalState(window.sessionStorage)");
+    // The hook's module snapshot must be invalidated too, or a client-side
+    // navigation re-reads the pre-restart context (Heal restart defect).
+    expect(controls).toContain("resetBrowserWorkflowContextSnapshot()");
     expect(controls).toContain('clearAndLeave("/secondary")');
     expect(controls).toContain('clearAndLeave("/secondary/diagnosed")');
     // A failed cleanup must not navigate: the error is surfaced instead.

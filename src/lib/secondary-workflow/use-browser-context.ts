@@ -62,6 +62,20 @@ function notifyContextListeners(): void {
   for (const listener of listeners) listener();
 }
 
+/**
+ * Invalidates the cached snapshot after a clear-all that removed the record
+ * directly from sessionStorage. Restart uses the shared key registry rather
+ * than this hook's `clear()`, then navigates client-side; without this reset
+ * the next step would read the pre-restart context from the module cache.
+ */
+export function resetBrowserWorkflowContextSnapshot(): void {
+  snapshot = null;
+  // Mark the cached value stale rather than caching "no context": the next
+  // read must revalidate against sessionStorage (empty after a restart).
+  snapshotRead = false;
+  notifyContextListeners();
+}
+
 function readContextSnapshot(): BrowserWorkflowContext | null {
   if (!snapshotRead) {
     snapshot = readSessionContext();
