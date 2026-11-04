@@ -19,6 +19,7 @@ import { VaFormsFinder } from "@/components/va/VaFormsFinder";
 import type { VaFormsFinderView } from "@/lib/va/forms-finder";
 import {
   FORMS_FINDER_REFUSAL_MESSAGE,
+  FORMS_FINDER_UNAVAILABLE_MESSAGE,
   type VaFormsFinderSearchState,
 } from "@/lib/va/forms-finder-search";
 
@@ -113,6 +114,26 @@ describe("Forms Finder search submission (A01)", () => {
 
     // 3. The returned view is what renders.
     expect(screen.getByText(new RegExp(`0 results shown for ${CANARY}`))).toBeTruthy();
+  });
+
+  it("keeps the finder, its results and the typed query when the server cannot be reached", async () => {
+    // The offline defect: a rejected server-action call escaped useActionState,
+    // the route error boundary replaced the page, and the typed query was gone.
+    actionMock.mockRejectedValue(new TypeError("Failed to fetch"));
+    render(<VaFormsFinder initialView={view()} />);
+
+    await submitSearch(CANARY);
+
+    const alert = await screen.findByRole("alert");
+    expect(alert.textContent).toBe(FORMS_FINDER_UNAVAILABLE_MESSAGE);
+    expect(alert.textContent).not.toContain(CANARY);
+    // Still mounted, prior results intact, and the query survived the implicit
+    // action reset so the visitor can retry without retyping.
+    expect(screen.getByText("VA Form Finder")).toBeTruthy();
+    expect(screen.getByText(/1 result shown for 21-526EZ/)).toBeTruthy();
+    expect((screen.getByLabelText("Search VA forms") as HTMLInputElement).value).toBe(CANARY);
+    expect(window.location.href).not.toContain(CANARY);
+    expect(window.location.search).toBe("");
   });
 
   it("keeps the URL clean on an oversized-input refusal and echoes nothing", async () => {

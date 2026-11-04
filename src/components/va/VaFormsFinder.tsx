@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 
 import { searchVaFormsFinder } from "@/lib/actions/va-forms-finder";
 import type { VaFormsFinderView } from "@/lib/va/forms-finder";
@@ -10,6 +10,7 @@ import type { VaFormsFinderView } from "@/lib/va/forms-finder";
 import {
   FORMS_FINDER_QUERY_MAX_LENGTH,
   FORMS_FINDER_REFUSAL_MESSAGE,
+  FORMS_FINDER_UNAVAILABLE_MESSAGE,
   type VaFormsFinderSearchState,
 } from "@/lib/va/forms-finder-search";
 
@@ -40,9 +41,23 @@ export function VaFormsFinder({ initialView }: Props) {
   const [state, formAction, pending] = useActionState<
     VaFormsFinderSearchState,
     FormData
-  >(searchVaFormsFinder, { view: initialView, refusal: null });
+  >(async (previous, formData) => {
+    try {
+      return await searchVaFormsFinder(previous, formData);
+    } catch {
+      // The request never reached the server (offline, DNS failure, an
+      // interrupted tunnel). Returning the prior view keeps the finder, its
+      // results and the page around it mounted; letting the rejection escape
+      // replaced the whole route with the error boundary and lost the typed
+      // query. The copy is fixed and names no submitted text.
+      return { ...previous, refusal: "unavailable" as const };
+    }
+  }, { view: initialView, refusal: null });
 
   const reference = state.view;
+  // Controlled so the implicit reset after an action cannot clear what was
+  // typed: a failed search must leave the query in place for a retry.
+  const [query, setQuery] = useState(reference.query);
 
   return (
     <>
@@ -72,7 +87,8 @@ export function VaFormsFinder({ initialView }: Props) {
             maxLength={FORMS_FINDER_QUERY_MAX_LENGTH}
             autoComplete="off"
             spellCheck={false}
-            defaultValue={reference.query}
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
             className="min-w-0 flex-1 rounded-md border border-slate-300 px-3 py-2 text-sm"
           />
           <button
@@ -90,7 +106,9 @@ export function VaFormsFinder({ initialView }: Props) {
           role="alert"
           className="mt-5 rounded-md border border-red-300 bg-red-50 p-4 text-sm text-red-900"
         >
-          {FORMS_FINDER_REFUSAL_MESSAGE}
+          {state.refusal === "unavailable"
+            ? FORMS_FINDER_UNAVAILABLE_MESSAGE
+            : FORMS_FINDER_REFUSAL_MESSAGE}
         </p>
       )}
 
