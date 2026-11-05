@@ -268,8 +268,15 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
 
   useEffect(() => {
     const restoreTimer = window.setTimeout(() => {
+      // The saved depth must select the read ceiling before the payload is
+      // measured. Mounting with Standard's ceiling refused an Extended store
+      // above 256 KB as oversize, and the later Extended restore added every
+      // source but could not take back the false corruption warning (Heal
+      // s11-extended-reload-false-corruption-warning-1).
+      const savedDepth = loadDepth();
       const { analyses, parseError, discardedEntries } = loadStoredEvidenceWithWarning(
         getSessionStorage(),
+        EVIDENCE_DEPTH_LIMITS[savedDepth],
       );
       applyAnalyses(analyses);
       if (parseError) {
