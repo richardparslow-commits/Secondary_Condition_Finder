@@ -37,9 +37,21 @@ describe("local evidence hydration contract", () => {
     // the snapshot and keeps the ref the persistence path reads in step, so
     // the restored state and the next commit cannot disagree. See
     // tests/local-evidence-extraction-fence.test.tsx for the A07 contract.
-    expect(analyzer).toContain(
-      "const restoreTimer = window.setTimeout(() => {\n      const { analyses, parseError, discardedEntries } = loadStoredEvidenceWithWarning(\n        getSessionStorage(),\n      );\n      applyAnalyses(analyses);",
+    const restoreBlock = analyzer.slice(
+      analyzer.indexOf("const restoreTimer"),
+      analyzer.indexOf("const depthTimer"),
     );
+    // The saved depth is read before the payload is measured, so an Extended
+    // store above Standard's ceiling is not refused as oversize on mount
+    // (Heal s11-extended-reload-false-corruption-warning-1).
+    const savedDepthRead = restoreBlock.indexOf("const savedDepth = loadDepth();");
+    const boundedLoad = restoreBlock.indexOf("loadStoredEvidenceWithWarning(");
+    const depthCeiling = restoreBlock.indexOf("EVIDENCE_DEPTH_LIMITS[savedDepth]");
+    const applied = restoreBlock.indexOf("applyAnalyses(analyses);");
+    expect(savedDepthRead).toBeGreaterThan(-1);
+    expect(boundedLoad).toBeGreaterThan(savedDepthRead);
+    expect(depthCeiling).toBeGreaterThan(boundedLoad);
+    expect(applied).toBeGreaterThan(depthCeiling);
     expect(analyzer).toContain(
       "return () => window.clearTimeout(restoreTimer);",
     );
