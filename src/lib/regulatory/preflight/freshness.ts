@@ -62,7 +62,23 @@ export function decideRegulatoryFreshness(options: {
 
   const previous = options.previousSnapshot;
   const maxAge = options.maxCacheAgeHours ?? 24;
-  const cacheAgeHours = previous ? hoursBetween(previous.finishedAt, options.finishedAt) : undefined;
+  // A failed attempt writes a fresh finishedAt, so measuring from that alone
+  // would restart the window on every outage visit. Carry the age already
+  // reported by the previous snapshot forward, then add the time since that
+  // attempt. This keeps the fallback anchored to the last verified check.
+  const elapsedSincePreviousAttempt = previous
+    ? hoursBetween(previous.finishedAt, options.finishedAt)
+    : undefined;
+  const priorCacheAgeHours = previous
+    && typeof previous.cacheAgeHours === "number"
+    && Number.isFinite(previous.cacheAgeHours)
+    ? previous.cacheAgeHours
+    : 0;
+  const cacheAgeHours = previous
+    && elapsedSincePreviousAttempt !== undefined
+    && Number.isFinite(elapsedSincePreviousAttempt)
+    ? priorCacheAgeHours + elapsedSincePreviousAttempt
+    : undefined;
   const recentCache = Boolean(previous && cacheAgeHours !== undefined && cacheAgeHours <= maxAge && previous.freshness !== "stale");
 
   warnings.push(`Regulatory preflight could not refresh required source(s): ${failedRequired.join(", ")}.`);
