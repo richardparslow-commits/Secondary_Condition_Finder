@@ -18,6 +18,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { VaFormsFinder } from "@/components/va/VaFormsFinder";
 import type { VaFormsFinderView } from "@/lib/va/forms-finder";
 import {
+  FORMS_FINDER_RATE_LIMITED_MESSAGE,
   FORMS_FINDER_REFUSAL_MESSAGE,
   FORMS_FINDER_UNAVAILABLE_MESSAGE,
   type VaFormsFinderSearchState,
@@ -134,6 +135,27 @@ describe("Forms Finder search submission (A01)", () => {
     expect((screen.getByLabelText("Search VA forms") as HTMLInputElement).value).toBe(CANARY);
     expect(window.location.href).not.toContain(CANARY);
     expect(window.location.search).toBe("");
+  });
+
+  it("tells an online visitor to wait when the proxy rate-limits the search", async () => {
+    // Heal s7-rate-limited-search-says-check-connection-1: a 429 rejected the
+    // Server Action and landed in the same catch as an offline failure. The
+    // proxy now surfaces a fixed text/plain marker, which maps to this distinct
+    // wait-and-retry message instead of the connection copy.
+    actionMock.mockRejectedValue(new Error(FORMS_FINDER_RATE_LIMITED_MESSAGE));
+    render(<VaFormsFinder initialView={view()} />);
+
+    await submitSearch(CANARY);
+
+    const alert = await screen.findByRole("alert");
+    expect(alert.textContent).toBe(FORMS_FINDER_RATE_LIMITED_MESSAGE);
+    expect(alert.textContent).not.toBe(FORMS_FINDER_UNAVAILABLE_MESSAGE);
+    expect(alert.textContent).not.toContain("Check your connection");
+    // Still mounted, prior results intact, query retained, URL clean.
+    expect(screen.getByText("VA Form Finder")).toBeTruthy();
+    expect(screen.getByText(/1 result shown for 21-526EZ/)).toBeTruthy();
+    expect((screen.getByLabelText("Search VA forms") as HTMLInputElement).value).toBe(CANARY);
+    expect(window.location.href).not.toContain(CANARY);
   });
 
   it("discloses the item bound when a broad search fills it", () => {

@@ -47,14 +47,35 @@ export const FORMS_FINDER_REFUSAL_MESSAGE =
 export const FORMS_FINDER_UNAVAILABLE_MESSAGE =
   "The search could not run. Check your connection and try again.";
 
+/**
+ * Copy shown when the proxy refused the search because its reference-read
+ * budget was exhausted. This is deliberately distinct from the offline copy:
+ * the request reached the server, was answered 429 with Retry-After, and the
+ * visitor should wait rather than diagnose a connection that is working
+ * (Heal s7-rate-limited-search-says-check-connection-1).
+ */
+export const FORMS_FINDER_RATE_LIMITED_MESSAGE =
+  "Too many searches were sent. Please wait a moment and try again later.";
+
+/**
+ * The proxy returns this exact fixed message as a text/plain 429 for Forms
+ * Finder Server Action POSTs. Next's action client surfaces a text/plain error
+ * body as the rejection message, so this is the only reliable client-side
+ * signal that the rejection was a rate limit rather than a dropped connection.
+ */
+export function isFormsFinderRateLimitedError(error: unknown): boolean {
+  return error instanceof Error && error.message === FORMS_FINDER_RATE_LIMITED_MESSAGE;
+}
+
 /** Action state rendered by the finder component. Plain JSON, safe to return. */
 export interface VaFormsFinderSearchState {
   view: VaFormsFinderView;
   /**
    * Canonical failure code: `phi-shaped-field` / `oversized-value` when the
-   * input was rejected, `unavailable` when the request never reached the
-   * server, `null` on success. A fixed constant — never the submitted text —
-   * so the response is not a reflection channel.
+   * input was rejected, `rate-limited` when the proxy refused it, `unavailable`
+   * when the request never reached the server, `null` on success. A fixed
+   * constant — never the submitted text — so the response is not a reflection
+   * channel.
    */
-  refusal: "phi-shaped-field" | "oversized-value" | "unavailable" | null;
+  refusal: "phi-shaped-field" | "oversized-value" | "rate-limited" | "unavailable" | null;
 }

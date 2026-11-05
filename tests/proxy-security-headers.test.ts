@@ -6,9 +6,11 @@ import nextConfig from "../next.config";
 import {
   adminCacheClearLimiter,
   healthLimiter,
+  referenceReadLimiter,
   regulatoryPreflightLimiter,
   workflowSessionLimiter,
 } from "../src/lib/rate-limiter";
+import { FORMS_FINDER_RATE_LIMITED_MESSAGE } from "@/lib/va/forms-finder-search";
 import proxy, { proxy as namedProxy } from "../src/proxy";
 
 /**
@@ -47,6 +49,7 @@ function request(path: string, method = "GET"): NextRequest {
 /** Limiter state is process-global; isolate every test's budget. */
 beforeEach(() => {
   healthLimiter.reset();
+  referenceReadLimiter.reset();
   regulatoryPreflightLimiter.reset();
   adminCacheClearLimiter.reset();
   workflowSessionLimiter.reset();
@@ -197,6 +200,39 @@ describe("security headers on every response", () => {
     }
     expect(body.ok).toBe(false);
     expect(body.error).toContain("Rate limit exceeded");
+  });
+
+  it("marks a rate-limited Forms Finder action as text/plain for the client", async () => {
+    // Next only surfaces a non-RSC action error body when content-type is
+    // exactly text/plain. JSON 429s became "unexpected response" and were
+    // indistinguishable from an offline failure in the finder.
+    const send = () =>
+      proxy(
+        new NextRequest(`${PROXY_URL}/va-forms/finder`, {
+          method: "POST",
+          headers: {
+            "x-forwarded-for": TEST_CLIENT_IP,
+            "next-action": "test-action-id",
+          },
+        }),
+      );
+
+    let blocked: Response | undefined;
+    const attempts = Math.max(
+      workflowSessionLimiter.max,
+      referenceReadLimiter.max,
+    ) + 1;
+    for (let i = 0; i < attempts; i += 1) {
+      blocked = send();
+      if (blocked.status === 429) break;
+    }
+
+    expect(blocked?.status).toBe(429);
+    if (!blocked) throw new Error("expected a rate-limited response");
+    expect(blocked.headers.get("Content-Type")).toBe("text/plain");
+    expect(await blocked.text()).toBe(FORMS_FINDER_RATE_LIMITED_MESSAGE);
+    expect(Number(blocked.headers.get("Retry-After"))).toBeGreaterThan(0);
+    expect(blocked.headers.get("Content-Security-Policy")).toContain("script-src");
   });
 });
 

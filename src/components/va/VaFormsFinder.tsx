@@ -9,9 +9,11 @@ import type { VaFormsFinderView } from "@/lib/va/forms-finder";
 // the client graph, and importing them from there answered 500 in the browser.
 import {
   FORMS_FINDER_QUERY_MAX_LENGTH,
+  FORMS_FINDER_RATE_LIMITED_MESSAGE,
   FORMS_FINDER_REFUSAL_MESSAGE,
   FORMS_FINDER_UNAVAILABLE_MESSAGE,
   VA_FORMS_MAX_ITEMS,
+  isFormsFinderRateLimitedError,
   type VaFormsFinderSearchState,
 } from "@/lib/va/forms-finder-search";
 
@@ -45,13 +47,21 @@ export function VaFormsFinder({ initialView }: Props) {
   >(async (previous, formData) => {
     try {
       return await searchVaFormsFinder(previous, formData);
-    } catch {
-      // The request never reached the server (offline, DNS failure, an
-      // interrupted tunnel). Returning the prior view keeps the finder, its
-      // results and the page around it mounted; letting the rejection escape
-      // replaced the whole route with the error boundary and lost the typed
-      // query. The copy is fixed and names no submitted text.
-      return { ...previous, refusal: "unavailable" as const };
+    } catch (error) {
+      // A proxy 429 is also a rejected action call, but it reached the server
+      // and is not a connection failure. The proxy answers the Forms Finder
+      // action in text/plain so Next surfaces this exact fixed message; map it
+      // to the distinct wait-and-retry copy (Heal
+      // s7-rate-limited-search-says-check-connection-1). Every other
+      // rejection (offline, DNS failure, interrupted tunnel) keeps the
+      // connection copy. Returning the prior view keeps the finder, results and
+      // typed query mounted; the copy names no submitted text.
+      return {
+        ...previous,
+        refusal: isFormsFinderRateLimitedError(error)
+          ? "rate-limited" as const
+          : "unavailable" as const,
+      };
     }
   }, { view: initialView, refusal: null });
 
@@ -109,7 +119,9 @@ export function VaFormsFinder({ initialView }: Props) {
         >
           {state.refusal === "unavailable"
             ? FORMS_FINDER_UNAVAILABLE_MESSAGE
-            : FORMS_FINDER_REFUSAL_MESSAGE}
+            : state.refusal === "rate-limited"
+              ? FORMS_FINDER_RATE_LIMITED_MESSAGE
+              : FORMS_FINDER_REFUSAL_MESSAGE}
         </p>
       )}
 
