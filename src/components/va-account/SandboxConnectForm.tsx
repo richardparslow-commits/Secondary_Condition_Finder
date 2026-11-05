@@ -2,6 +2,36 @@
 
 import { useState } from "react";
 
+const NETWORK_FAILURE_MESSAGE =
+  "The sandbox sign-in connection could not be reached. Check your internet connection and try again.";
+const START_FAILURE_MESSAGE =
+  "Sandbox sign-in could not start because the connection service returned an error. Try again; contact the operator if the problem persists.";
+
+function authorizationUrlFor(
+  value: unknown,
+  service: "ratings" | "claims",
+): string | null {
+  if (typeof value !== "string") return null;
+  try {
+    const url = new URL(value);
+    const path =
+      service === "ratings"
+        ? "/oauth2/veteran-verification/v1/authorization"
+        : "/oauth2/claims/v1/authorization";
+    if (
+      url.origin !== "https://sandbox-api.va.gov" ||
+      url.pathname !== path ||
+      url.username ||
+      url.password
+    ) {
+      return null;
+    }
+    return url.toString();
+  } catch {
+    return null;
+  }
+}
+
 export function SandboxConnectForm({ service }: { service: "ratings" | "claims" }) {
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
@@ -20,13 +50,20 @@ export function SandboxConnectForm({ service }: { service: "ratings" | "claims" 
       });
       if (!response.ok) throw new Error("Connection unavailable");
       const data: unknown = await response.json();
-      if (!data || typeof data !== "object" || !("authorizationUrl" in data) || typeof data.authorizationUrl !== "string") throw new Error("Connection unavailable");
-      const url = new URL(data.authorizationUrl);
-      const path = service === "ratings" ? "/oauth2/veteran-verification/v1/authorization" : "/oauth2/claims/v1/authorization";
-      if (url.origin !== "https://sandbox-api.va.gov" || url.pathname !== path || url.username || url.password) throw new Error("Connection unavailable");
-      window.location.assign(url.toString());
-    } catch {
-      setMessage("Sandbox sign-in could not start. Check consent and try again; contact the operator if the problem persists.");
+      const authorizationUrl =
+        data && typeof data === "object" && "authorizationUrl" in data
+          ? authorizationUrlFor(data.authorizationUrl, service)
+          : null;
+      if (!authorizationUrl) throw new Error("Connection unavailable");
+      window.location.assign(authorizationUrl);
+    } catch (error) {
+      // A rejected fetch (offline, DNS failure, interrupted tunnel) is not a
+      // consent problem. Keep the two failures distinct instead of sending the
+      // visitor back to a checkbox they already ticked.
+      const networkFailure =
+        (typeof navigator !== "undefined" && navigator.onLine === false) ||
+        error instanceof TypeError;
+      setMessage(networkFailure ? NETWORK_FAILURE_MESSAGE : START_FAILURE_MESSAGE);
       setBusy(false);
     }
   }}>
