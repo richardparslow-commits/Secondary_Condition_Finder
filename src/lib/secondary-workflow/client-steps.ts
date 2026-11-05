@@ -137,9 +137,39 @@ function contextWithinBounds(formData: FormData): boolean {
 }
 
 /**
- * Step 1 — save diagnosed condition selections. Success replaces the whole
- * record with the new diagnosed list (re-entering Step 1 intentionally resets
- * downstream steps, exactly like the legacy cookie write did).
+ * Data that belongs to a diagnosis rather than to a later workflow step. It
+ * survives a step save only for diagnoses that remain selected.
+ */
+type RetainedConditionData = Pick<
+  BrowserWorkflowContext,
+  "conditionTimeline" | "ratingsByConditionId" | "permanentAndTotalConditionIds"
+>;
+
+function retainedConditionData(
+  context: BrowserWorkflowContext | null,
+  diagnosedConditionIds: string[],
+): RetainedConditionData {
+  const retainedIds = new Set(diagnosedConditionIds);
+  const conditionTimeline = Object.fromEntries(
+    Object.entries(context?.conditionTimeline ?? {}).filter(([id]) => retainedIds.has(id)),
+  );
+  const ratingsByConditionId = Object.fromEntries(
+    Object.entries(context?.ratingsByConditionId ?? {}).filter(([id]) => retainedIds.has(id)),
+  );
+  const permanentAndTotalConditionIds = (context?.permanentAndTotalConditionIds ?? []).filter(
+    (id) => retainedIds.has(id),
+  );
+  return {
+    ...(Object.keys(conditionTimeline).length > 0 ? { conditionTimeline } : {}),
+    ...(Object.keys(ratingsByConditionId).length > 0 ? { ratingsByConditionId } : {}),
+    ...(permanentAndTotalConditionIds.length > 0 ? { permanentAndTotalConditionIds } : {}),
+  };
+}
+
+/**
+ * Step 1 — save diagnosed condition selections. Re-entering Step 1 resets the
+ * service-connected choices and later review context, but condition-scoped
+ * years and ratings for diagnoses that remain selected are carried forward.
  */
 export function applyDiagnosedStep(
   context: BrowserWorkflowContext | null,
@@ -157,7 +187,10 @@ export function applyDiagnosedStep(
     );
     return {
       ok: true,
-      context: { diagnosedConditionIds: parsed.diagnosedConditionIds },
+      context: {
+        diagnosedConditionIds: parsed.diagnosedConditionIds,
+        ...retainedConditionData(context, parsed.diagnosedConditionIds),
+      },
       next: "/secondary/service-connected",
     };
   } catch {
@@ -200,6 +233,7 @@ export function applyServiceConnectedStep(
     return { ok: false, code: "select-diagnosed", next: "/secondary/diagnosed" };
   }
 
+  const retained = retainedConditionData(context, diagnosedConditionIds);
   const answers = diagnosedConditionIds.map((id) => formData.get(`serviceConnected-${id}`));
   if (answers.some((answer) => answer !== "yes" && answer !== "no")) {
     return {
@@ -208,6 +242,7 @@ export function applyServiceConnectedStep(
       next: "/secondary/service-connected",
       context: {
         diagnosedConditionIds,
+        ...retained,
         serviceConnectedAnswerDraft: collectServiceConnectedAnswers(
           diagnosedConditionIds,
           answers,
@@ -222,6 +257,7 @@ export function applyServiceConnectedStep(
       next: "/secondary/service-connected",
       context: {
         diagnosedConditionIds,
+        ...(retained.conditionTimeline ? { conditionTimeline: retained.conditionTimeline } : {}),
         serviceConnectedConditionIds: [],
         ratingsByConditionId: {},
         permanentAndTotalConditionIds: [],
@@ -269,6 +305,7 @@ export function applyServiceConnectedStep(
       ok: true,
       context: {
         diagnosedConditionIds: parsed.diagnosedConditionIds,
+        ...(retained.conditionTimeline ? { conditionTimeline: retained.conditionTimeline } : {}),
         serviceConnectedConditionIds: parsed.serviceConnectedConditionIds,
         ratingsByConditionId,
         permanentAndTotalConditionIds,
@@ -321,10 +358,15 @@ export function applyRatingsStep(
       ),
       catalog,
     );
+    const retainedTimeline = retainedConditionData(
+      context,
+      parsed.diagnosedConditionIds,
+    ).conditionTimeline;
     return {
       ok: true,
       context: {
         diagnosedConditionIds: parsed.diagnosedConditionIds,
+        ...(retainedTimeline ? { conditionTimeline: retainedTimeline } : {}),
         serviceConnectedConditionIds: parsed.serviceConnectedConditionIds,
         ratingsByConditionId: parsed.ratingsByConditionId,
         permanentAndTotalConditionIds: parsed.permanentAndTotalConditionIds,
