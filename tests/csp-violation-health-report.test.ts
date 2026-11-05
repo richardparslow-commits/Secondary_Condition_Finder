@@ -4,6 +4,7 @@ import path from "node:path";
 import { NextRequest } from "next/server";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { CSP_REPORT_MAX_BODY_BYTES } from "@/lib/observability/csp-report";
 import {
   CSP_VIOLATION_REPORT_MAX_DIRECTIVES,
   CSP_VIOLATION_WINDOW_MAX_EVENTS,
@@ -297,16 +298,56 @@ describe("GET /api/health reports reported violations", () => {
     }
   });
 
+  it("counts a multi-entry Reporting API batch under the raised body bound", async () => {
+    const policy = `default-src 'self'; img-src 'self'; ${"x".repeat(700)}`;
+    const batch = Array.from({ length: 5 }, (_, index) => ({
+      type: "csp-violation",
+      age: index,
+      url: `https://app.example/secondary/upload?token=PLANTED-BATCH-${index}`,
+      body: {
+        documentURL: "https://app.example/secondary/upload?token=PLANTED-BATCH",
+        effectiveDirective: "img-src",
+        blockedURL: "https://evil.example/PLANTED-BATCH.png",
+        sourceFile: "https://app.example/_next/static/chunk.js",
+        disposition: "enforce",
+        originalPolicy: policy,
+      },
+    }));
+    const serialized = JSON.stringify(batch);
+    const byteLength = new TextEncoder().encode(serialized).byteLength;
+    // The old 4 KiB cap rejected this realistic batch before parsing.
+    expect(byteLength).toBeGreaterThan(4_096);
+    expect(byteLength).toBeLessThanOrEqual(CSP_REPORT_MAX_BODY_BYTES);
+
+    expect(
+      await postReport(batch, {
+        "content-type": "application/reports+json",
+        "content-length": String(byteLength),
+        "x-forwarded-for": "203.0.113.98",
+      }),
+    ).toBe(204);
+
+    const { body } = await health();
+    expect(body.components.cspReports.received).toBe(5);
+    expect(body.components.cspReports.oversized).toBe(0);
+    expect(body.components.cspReports.directives).toEqual([
+      expect.objectContaining({ directive: "img-src", count: 5, dispositions: ["enforce"] }),
+    ]);
+    const healthPayload = JSON.stringify(body);
+    expect(healthPayload).not.toContain("PLANTED-BATCH");
+    expect(healthPayload).not.toContain("evil.example");
+  });
+
   it("counts an oversized payload without attributing or echoing it", async () => {
     const oversizedBody = JSON.stringify({
       "csp-report": {
         "document-uri": "https://app.example/",
         "effective-directive": "script-src",
-        padding: "PLANTED-OVERSIZED ".repeat(300),
+        padding: "PLANTED-OVERSIZED ".repeat(600),
       },
     });
     const byteLength = new TextEncoder().encode(oversizedBody).byteLength;
-    expect(byteLength).toBeGreaterThan(4_096);
+    expect(byteLength).toBeGreaterThan(CSP_REPORT_MAX_BODY_BYTES);
 
     expect(
       await postReport(oversizedBody, {
