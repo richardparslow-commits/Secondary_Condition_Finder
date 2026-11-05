@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 import { DisclaimerFooter } from "@/components/Disclaimer";
 import { LocalEvidenceAnalyzer } from "@/components/evidence/LocalEvidenceAnalyzer";
@@ -57,6 +57,12 @@ export function UploadStep() {
   const { corpus, loading, error: corpusError } = useClientCorpus();
   const { context, ready, persist } = useBrowserWorkflowContext();
   const [localError, setLocalError] = useState<SecondaryValidationCode | null>(null);
+  const [hasUnanalyzedPastedText, setHasUnanalyzedPastedText] = useState(false);
+  const [showPasteLeaveWarning, setShowPasteLeaveWarning] = useState(false);
+  const handleUnsavedPastedTextChange = useCallback((hasUnsavedText: boolean) => {
+    setHasUnanalyzedPastedText(hasUnsavedText);
+    if (!hasUnsavedText) setShowPasteLeaveWarning(false);
+  }, []);
 
   // Query-param validation on this step is owned by the upload layout's
   // `SecondaryValidationQueryAlert` (pinned accessibility contract); this
@@ -144,7 +150,10 @@ export function UploadStep() {
         <section className="ui-card min-w-0">
           <VaGovRecordWalkthrough />
 
-          <LocalEvidenceAnalyzer conditionTerms={conditionTerms} />
+          <LocalEvidenceAnalyzer
+            conditionTerms={conditionTerms}
+            onUnsavedPastedTextChange={handleUnsavedPastedTextChange}
+          />
 
           <form onSubmit={onSubmit} className="mt-6 space-y-5">
             <fieldset className="rounded-xl border border-slate-200 p-4 shadow-none">
@@ -204,7 +213,16 @@ export function UploadStep() {
 
             <div className="ui-callout text-sm"><strong>Evidence Upload Privacy Contract:</strong> {PRIVACY_CONTRACT_COPY}</div>
 
-            <div className="ui-actions"><Link href="/secondary/ratings" className="ui-button-secondary">← Back to Step 3</Link><button type="submit" className="ui-button" disabled={!corpus}>Review Possible Connections <span aria-hidden="true">→</span><span className="hidden" aria-hidden="true">View Suggestions</span></button></div>
+            {showPasteLeaveWarning && hasUnanalyzedPastedText && (
+              <div role="alert" className="ui-callout border-amber-300 bg-amber-50 text-sm text-amber-950">
+                <p id="paste-leave-warning"><strong>Pasted text has not been analyzed.</strong> Going back to Step 3 now will discard it.</p>
+                <div className="mt-3 flex flex-wrap items-center gap-2">
+                  <Link href="/secondary/ratings" className="ui-button">Leave and discard</Link>
+                  <button type="button" className="ui-button-secondary" onClick={() => setShowPasteLeaveWarning(false)}>Keep editing</button>
+                </div>
+              </div>
+            )}
+            <div className="ui-actions"><Link href="/secondary/ratings" className="ui-button-secondary" onClick={(event) => { if (!hasUnanalyzedPastedText) return; event.preventDefault(); setShowPasteLeaveWarning(true); }} aria-describedby={showPasteLeaveWarning ? "paste-leave-warning" : undefined}>← Back to Step 3</Link><button type="submit" className="ui-button" disabled={!corpus}>Review Possible Connections <span aria-hidden="true">→</span><span className="hidden" aria-hidden="true">View Suggestions</span></button></div>
           </form>
         </section>
 
