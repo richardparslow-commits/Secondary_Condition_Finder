@@ -67,7 +67,11 @@ export const OCR_JOB_DEADLINE_MS = 5 * 60 * 1000;
 /** Pages recognized per continuous burst before a browser yield + checkpoint. */
 export const OCR_PAGES_PER_CHUNK = 8;
 
-/** sessionStorage key for the single-slot OCR resume checkpoint. */
+/**
+ * sessionStorage key for the tab-scoped OCR resume checkpoints. One key holds
+ * a checkpoint per source document, so pausing one scan is not discarded by
+ * another document's scan, completion, or removal.
+ */
 export const OCR_CHECKPOINT_STORAGE_KEY =
   "secondary-condition-finder:ocr-checkpoint:v1";
 
@@ -671,6 +675,11 @@ export interface OcrCheckpoint {
   updatedAt: number;
 }
 
+interface OcrCheckpointStore {
+  version: 1;
+  checkpoints: Record<string, OcrCheckpoint>;
+}
+
 interface StorageReaderWriter {
   getItem(key: string): string | null;
   setItem(key: string, value: string): void;
@@ -721,19 +730,119 @@ function isOcrCheckpoint(value: unknown): value is OcrCheckpoint {
   );
 }
 
+function emptyOcrCheckpointStore(): OcrCheckpointStore {
+  return { version: 1, checkpoints: Object.create(null) as Record<string, OcrCheckpoint> };
+}
+
 /**
- * Persists the OCR resume checkpoint. Returns false when the serialized
- * checkpoint would exceed the budget (caller should continue in memory with
- * checkpointing disabled) or when storage is unavailable/fails — never throws.
+ * Accepts the current per-source store and the legacy single-checkpoint shape.
+ * Invalid entries are dropped, never thrown: one damaged document's checkpoint
+ * must not prevent another document from resuming.
+ */
+function normalizeOcrCheckpointStore(value: unknown): OcrCheckpointStore | null {
+  if (isOcrCheckpoint(value)) {
+    return {
+      version: 1,
+      checkpoints: { [value.sourceFingerprint]: value },
+    };
+  }
+  if (!value || typeof value !== "object") return null;
+  const candidate = value as Record<string, unknown>;
+  if (
+    candidate.version !== 1 ||
+    !candidate.checkpoints ||
+    typeof candidate.checkpoints !== "object" ||
+    Array.isArray(candidate.checkpoints)
+  ) {
+    return null;
+  }
+
+  const checkpoints = Object.create(null) as Record<string, OcrCheckpoint>;
+  for (const [fingerprint, entry] of Object.entries(
+    candidate.checkpoints as Record<string, unknown>,
+  )) {
+    if (isOcrCheckpoint(entry) && entry.sourceFingerprint === fingerprint) {
+      checkpoints[fingerprint] = entry;
+    }
+  }
+  return { version: 1, checkpoints };
+}
+
+function ownsCheckpoint(
+  store: OcrCheckpointStore,
+  sourceFingerprint: string,
+): boolean {
+  return Object.prototype.hasOwnProperty.call(
+    store.checkpoints,
+    sourceFingerprint,
+  );
+}
+
+function isExpiredCheckpoint(checkpoint: OcrCheckpoint, now: number): boolean {
+  return (
+    checkpoint.updatedAt > now ||
+    now - checkpoint.updatedAt >= OCR_CHECKPOINT_TTL_MS
+  );
+}
+
+function writeOcrCheckpointStore(
+  storage: Pick<StorageReaderWriter, "setItem" | "removeItem">,
+  store: OcrCheckpointStore,
+): boolean {
+  if (Object.keys(store.checkpoints).length === 0) {
+    storage.removeItem(OCR_CHECKPOINT_STORAGE_KEY);
+    return true;
+  }
+  const serialized = JSON.stringify(store);
+  if (serialized.length > OCR_CHECKPOINT_MAX_JSON_CHARS) return false;
+  storage.setItem(OCR_CHECKPOINT_STORAGE_KEY, serialized);
+  return true;
+}
+
+/**
+ * Persists the OCR resume checkpoint for its source fingerprint. Returns
+ * false when the serialized store would exceed the budget (caller should
+ * continue in memory with checkpointing disabled) or when storage is
+ * unavailable/fails — never throws.
+ *
+ * A checkpoint for one document never evicts another document's checkpoint.
+ * If the combined store would exceed the budget, the new checkpoint is not
+ * saved and the existing paused run remains resumable.
  */
 export function saveOcrCheckpoint(
   storage: StorageReaderWriter | null,
   checkpoint: OcrCheckpoint,
 ): boolean {
   if (!storage) return false;
+  if (!isOcrCheckpoint(checkpoint)) return false;
+
+  let serializedCheckpoint: string;
   try {
-    if (!isOcrCheckpoint(checkpoint)) return false;
-    const serialized = JSON.stringify(checkpoint);
+    serializedCheckpoint = JSON.stringify(checkpoint);
+  } catch {
+    return false;
+  }
+  if (serializedCheckpoint.length > OCR_CHECKPOINT_MAX_JSON_CHARS) return false;
+
+  try {
+    let store = emptyOcrCheckpointStore();
+    const raw = storage.getItem(OCR_CHECKPOINT_STORAGE_KEY);
+    if (raw && raw.length <= OCR_CHECKPOINT_MAX_JSON_CHARS) {
+      try {
+        const parsed: unknown = JSON.parse(raw);
+        store = normalizeOcrCheckpointStore(parsed) ?? store;
+      } catch {
+        // An unreadable store has no resumable checkpoint to preserve.
+      }
+    }
+
+    const now = Date.now();
+    for (const [fingerprint, entry] of Object.entries(store.checkpoints)) {
+      if (isExpiredCheckpoint(entry, now)) delete store.checkpoints[fingerprint];
+    }
+    store.checkpoints[checkpoint.sourceFingerprint] = checkpoint;
+
+    const serialized = JSON.stringify(store);
     if (serialized.length > OCR_CHECKPOINT_MAX_JSON_CHARS) return false;
     storage.setItem(OCR_CHECKPOINT_STORAGE_KEY, serialized);
     return true;
@@ -746,9 +855,15 @@ export function saveOcrCheckpoint(
  * Loads the checkpoint for the given source fingerprint. Returns null when
  * absent, malformed (treated like a corrupted store — dropped, never thrown),
  * version-mismatched, or belonging to a different document.
+ *
+ * Expired or invalid entries are removed without disturbing another
+ * document's valid checkpoint.
  */
 export function loadOcrCheckpoint(
-  storage: Pick<StorageReaderWriter, "getItem"> & Partial<Pick<StorageReaderWriter, "removeItem">> | null,
+  storage:
+    | (Pick<StorageReaderWriter, "getItem"> &
+        Partial<Pick<StorageReaderWriter, "setItem" | "removeItem">>)
+    | null,
   sourceFingerprint: string,
   now = Date.now(),
 ): OcrCheckpoint | null {
@@ -756,27 +871,102 @@ export function loadOcrCheckpoint(
   try {
     const raw = storage.getItem(OCR_CHECKPOINT_STORAGE_KEY);
     if (!raw) return null;
-    if (raw.length > OCR_CHECKPOINT_MAX_JSON_CHARS) throw new Error("Checkpoint too large");
-    const parsed: unknown = JSON.parse(raw);
-    if (!isOcrCheckpoint(parsed) || parsed.updatedAt > now || now - parsed.updatedAt >= OCR_CHECKPOINT_TTL_MS) {
-      throw new Error("Invalid or expired checkpoint");
+    if (raw.length > OCR_CHECKPOINT_MAX_JSON_CHARS) {
+      throw new Error("Checkpoint too large");
     }
-    if (parsed.sourceFingerprint !== sourceFingerprint) return null;
-    return parsed;
+    const parsed: unknown = JSON.parse(raw);
+    const store = normalizeOcrCheckpointStore(parsed);
+    if (!store) throw new Error("Invalid checkpoint store");
+
+    let pruned = false;
+    for (const [fingerprint, entry] of Object.entries(store.checkpoints)) {
+      if (isExpiredCheckpoint(entry, now)) {
+        delete store.checkpoints[fingerprint];
+        pruned = true;
+      }
+    }
+    if (pruned && storage.setItem && storage.removeItem) {
+      writeOcrCheckpointStore(
+        storage as Pick<StorageReaderWriter, "setItem" | "removeItem">,
+        store,
+      );
+    }
+
+    if (!ownsCheckpoint(store, sourceFingerprint)) {
+      if (
+        Object.keys(store.checkpoints).length === 0 &&
+        storage.removeItem
+      ) {
+        storage.removeItem(OCR_CHECKPOINT_STORAGE_KEY);
+      }
+      return null;
+    }
+    return store.checkpoints[sourceFingerprint] ?? null;
   } catch {
-    try { storage.removeItem?.(OCR_CHECKPOINT_STORAGE_KEY); } catch { /* best effort */ }
+    try {
+      storage.removeItem?.(OCR_CHECKPOINT_STORAGE_KEY);
+    } catch {
+      /* best effort */
+    }
     return null;
   }
 }
 
+/**
+ * Clears one document's checkpoint when `sourceFingerprint` is supplied, or
+ * the whole checkpoint store when it is omitted. Removing one document never
+ * discards another document's paused run.
+ */
 export function clearOcrCheckpoint(
-  storage: Pick<StorageReaderWriter, "removeItem"> | null,
+  storage:
+    | (Pick<StorageReaderWriter, "removeItem"> &
+        Partial<Pick<StorageReaderWriter, "getItem" | "setItem">>)
+    | null,
+  sourceFingerprint?: string,
 ): boolean {
   if (!storage) return false;
+
+  if (sourceFingerprint === undefined) {
+    try {
+      storage.removeItem(OCR_CHECKPOINT_STORAGE_KEY);
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  if (!storage.getItem) return false;
   try {
-    storage.removeItem(OCR_CHECKPOINT_STORAGE_KEY);
-    return true;
+    const raw = storage.getItem(OCR_CHECKPOINT_STORAGE_KEY);
+    if (!raw) return true;
+    if (raw.length > OCR_CHECKPOINT_MAX_JSON_CHARS) {
+      storage.removeItem(OCR_CHECKPOINT_STORAGE_KEY);
+      return true;
+    }
+    const parsed: unknown = JSON.parse(raw);
+    const store = normalizeOcrCheckpointStore(parsed);
+    if (!store) {
+      storage.removeItem(OCR_CHECKPOINT_STORAGE_KEY);
+      return true;
+    }
+    if (!ownsCheckpoint(store, sourceFingerprint)) return true;
+
+    delete store.checkpoints[sourceFingerprint];
+    if (Object.keys(store.checkpoints).length === 0) {
+      storage.removeItem(OCR_CHECKPOINT_STORAGE_KEY);
+      return true;
+    }
+    if (!storage.setItem) return false;
+    return writeOcrCheckpointStore(
+      storage as Pick<StorageReaderWriter, "setItem" | "removeItem">,
+      store,
+    );
   } catch {
-    return false;
+    try {
+      storage.removeItem(OCR_CHECKPOINT_STORAGE_KEY);
+      return true;
+    } catch {
+      return false;
+    }
   }
 }

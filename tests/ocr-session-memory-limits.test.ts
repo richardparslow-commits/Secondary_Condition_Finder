@@ -150,6 +150,29 @@ describe("OCR checkpoint persistence", () => {
     expect(loadOcrCheckpoint(storage, "other.pdf:1:2")).toBeNull();
   });
 
+  it("keeps paused checkpoints for separate documents independent", () => {
+    const storage = fakeStorage();
+    const first = validCheckpoint();
+    const second = validCheckpoint({
+      sourceFingerprint: "second-opinion.pdf:9:10",
+      lastCompletedPage: 1,
+      segments: [{ page: 1, text: "second source" }],
+      recognizedChars: "second source".length,
+    });
+
+    expect(saveOcrCheckpoint(storage, first)).toBe(true);
+    expect(saveOcrCheckpoint(storage, second)).toBe(true);
+    expect(loadOcrCheckpoint(storage, first.sourceFingerprint)).toEqual(first);
+    expect(loadOcrCheckpoint(storage, second.sourceFingerprint)).toEqual(second);
+
+    expect(clearOcrCheckpoint(storage, first.sourceFingerprint)).toBe(true);
+    expect(loadOcrCheckpoint(storage, first.sourceFingerprint)).toBeNull();
+    expect(loadOcrCheckpoint(storage, second.sourceFingerprint)).toEqual(second);
+
+    expect(clearOcrCheckpoint(storage, second.sourceFingerprint)).toBe(true);
+    expect(storage.data.size).toBe(0);
+  });
+
   it("fails closed on malformed JSON, wrong versions, and invalid shapes", () => {
     const storage = fakeStorage();
     storage.setItem(OCR_CHECKPOINT_STORAGE_KEY, "{not-json");

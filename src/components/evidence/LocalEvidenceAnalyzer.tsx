@@ -469,8 +469,13 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
 
   function removePending(id: number) {
     if (busyRef.current || busy) return;
-    clearOcrCheckpoint(getSessionStorage());
     const row = pending.find((item) => item.id === id);
+    if (row) {
+      // Clear only this document's checkpoint; another paused scan must remain
+      // resumable after this row is removed (Heal
+      // s11-paused-ocr-loses-resume-point-1).
+      clearOcrCheckpoint(getSessionStorage(), sourceFingerprintForFile(row.file));
+    }
     setPending((current) => current.filter((item) => item.id !== id));
     if (row?.analyzed) dropAnalysis(row.sourceId);
   }
@@ -692,7 +697,9 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
           const loadedCheckpoint = loadOcrCheckpoint(storage, sourceFingerprint);
           const savedCheckpoint = loadedCheckpoint && loadedCheckpoint.lastCompletedPage <= readLimit && loadedCheckpoint.recognizedChars <= limits.textChars
             ? loadedCheckpoint : null;
-          if (loadedCheckpoint && !savedCheckpoint) clearOcrCheckpoint(storage);
+          if (loadedCheckpoint && !savedCheckpoint) {
+            clearOcrCheckpoint(storage, sourceFingerprint);
+          }
           if (totalPages > readLimit) {
             nextWarnings.push(`${row.sourceName}: partial OCR only — this PDF has ${totalPages} pages; only the first ${readLimit} pages will be reviewed.`);
           }
@@ -707,7 +714,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
             ocrPages = savedCheckpoint.segments.length;
             setOcrProgress(`Resuming OCR of ${row.sourceName} after page ${savedCheckpoint.lastCompletedPage}…`);
           } else if (savedCheckpoint) {
-            clearOcrCheckpoint(storage);
+            clearOcrCheckpoint(storage, sourceFingerprint);
           }
           const resumeFromPage = savedCheckpoint?.lastCompletedPage ?? 0;
           let checkpointEnabled = true;
@@ -869,7 +876,10 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
             // budget resumes from the last completed page instead of
             // re-recognizing pages the tab already paid for.
           } else {
-            clearOcrCheckpoint(storage);
+            // Completion clears only this document's checkpoint. Other paused
+            // scans in the same tab stay resumable (Heal
+            // s11-paused-ocr-loses-resume-point-1).
+            clearOcrCheckpoint(storage, sourceFingerprint);
           }
           if (segments.length === 0) {
             nextWarnings.push(`${row.sourceName}: OCR produced no readable text.`);
