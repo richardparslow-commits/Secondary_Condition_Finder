@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 
 import { DisclaimerFooter } from "@/components/Disclaimer";
 import { isExposureRelated } from "@/lib/catalog/exposure-tags";
@@ -57,6 +57,8 @@ export function DiagnosedStep() {
   const { corpus, loading, error: corpusError } = useClientCorpus();
   const { context, ready, persist } = useBrowserWorkflowContext();
   const [localError, setLocalError] = useState<SecondaryValidationCode | null>(null);
+  const [showLeaveWarning, setShowLeaveWarning] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
 
   const validationMessage = localError
     ? SECONDARY_VALIDATION_MESSAGES[localError]
@@ -73,6 +75,19 @@ export function DiagnosedStep() {
   );
   const selectedDiagnosed = new Set(context?.diagnosedConditionIds ?? []);
   const selectedConditions = conditions.filter((condition) => selectedDiagnosed.has(condition.id));
+
+  function hasUnsavedDiagnosedChanges(): boolean {
+    const form = formRef.current;
+    if (!form) return false;
+    const current = new Set(
+      new FormData(form).getAll("diagnosed").map((value) => String(value)),
+    );
+    if (current.size !== selectedDiagnosed.size) return true;
+    for (const id of current) {
+      if (!selectedDiagnosed.has(id)) return true;
+    }
+    return false;
+  }
 
   function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -125,7 +140,7 @@ export function DiagnosedStep() {
           Loading the condition list and your browser-local session…
         </div>
       ) : (
-        <form onSubmit={onSubmit} aria-describedby={validationId}>
+        <form ref={formRef} onSubmit={onSubmit} aria-describedby={validationId} onChange={() => setShowLeaveWarning(false)}>
           <div className="ui-grid">
             <aside className="ui-card" aria-label="How to use this step">
               <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">i</span><h2 className="text-xl font-bold">How to Use This Step</h2></div>
@@ -170,8 +185,17 @@ export function DiagnosedStep() {
             </aside>
           </div>
 
+          {showLeaveWarning && (
+            <div role="alert" className="ui-callout border-amber-300 bg-amber-50 text-sm text-amber-950">
+              <p id="diagnosed-leave-warning"><strong>Your selections have not been saved.</strong> Going back now will discard the conditions you ticked or unticked.</p>
+              <div className="mt-3 flex flex-wrap items-center gap-2">
+                <Link href="/secondary" className="ui-button">Leave and discard</Link>
+                <button type="button" className="ui-button-secondary" onClick={() => setShowLeaveWarning(false)}>Keep editing</button>
+              </div>
+            </div>
+          )}
           <div className="ui-actions">
-            <Link href="/secondary" className="ui-button-secondary">← Back</Link>
+            <Link href="/secondary" className="ui-button-secondary" onClick={(event) => { if (!hasUnsavedDiagnosedChanges()) return; event.preventDefault(); setShowLeaveWarning(true); }} aria-describedby={showLeaveWarning ? "diagnosed-leave-warning" : undefined}>← Back</Link>
             <button type="submit" className="ui-button" disabled={!corpus}>Continue to Step 2 <span aria-hidden="true">→</span></button>
           </div>
         </form>
