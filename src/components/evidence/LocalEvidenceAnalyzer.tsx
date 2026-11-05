@@ -41,6 +41,8 @@ import {
 import {
   clearStoredEvidence,
   loadStoredEvidenceWithWarning,
+  MAX_STORED_LOCATOR_CHARS,
+  MAX_STORED_SOURCE_NAME_CHARS,
   parseStoredEvidence,
   saveStoredEvidence,
   serializeStoredEvidenceWithInfo,
@@ -137,6 +139,12 @@ const STORAGE_PARTIAL_WARNING =
 // notice closes (Heal s10-refused-save-shown-retained-1).
 const STORAGE_SAVE_REFUSED_WARNING =
   "Analyzed evidence could not be kept in this browser tab: browser storage rejected the save. It remains visible in this review but may be missing from the Step 6 checklist. Free browser storage or reduce retained evidence, then analyze the source again.";
+const STORAGE_RECORD_REFUSED_WARNING =
+  "The analyzed source could not be kept because its source name or locator is too long for browser storage. Shorten it and analyze again.";
+// The storage reader caps a locator at 256 characters. This leaves 56 chars
+// for the app-added source/page and line suffixes while still keeping the
+// user's context, rather than dropping the whole record at the read guard.
+const MAX_LOCATOR_CONTEXT_CHARS = MAX_STORED_LOCATOR_CHARS - 56;
 
 function saveStored(
   analyses: EvidenceAnalysis[],
@@ -165,7 +173,7 @@ function persistDepth(depth: EvidenceAnalysisDepth): void {
 }
 
 function withUserLocatorPrefix(segments: EvidenceTextSegment[], prefix: string): EvidenceTextSegment[] {
-  const trimmed = prefix.trim();
+  const trimmed = prefix.trim().slice(0, MAX_LOCATOR_CONTEXT_CHARS);
   if (!trimmed) return segments;
   return segments.map((segment) => ({
     ...segment,
@@ -391,8 +399,16 @@ export function LocalEvidenceAnalyzer({ conditionTerms, onUnsavedPastedTextChang
     // rendering another let the summary claim nine retained excerpts while
     // five were listed (Heal s8-excerpt-count-exceeds-retained-1).
     const retained = parseStoredEvidence(info.serialized, activeLimits);
+    const incomingIdentity = evidenceAnalysisIdentity(analysis);
+    const retainedIncoming = retained.some(
+      (item) => evidenceAnalysisIdentity(item) === incomingIdentity,
+    );
     const saved = saveStored(retained, activeLimits);
     applyAnalyses(retained);
+    if (!retainedIncoming) {
+      const refusedWarning = `${analysis.sourceName}: ${STORAGE_RECORD_REFUSED_WARNING}`;
+      notice = notice ? `${notice} ${refusedWarning}` : refusedWarning;
+    }
     if (!saved) {
       const saveWarning = `${analysis.sourceName}: ${STORAGE_SAVE_REFUSED_WARNING}`;
       notice = notice ? `${notice} ${saveWarning}` : saveWarning;
@@ -982,7 +998,10 @@ export function LocalEvidenceAnalyzer({ conditionTerms, onUnsavedPastedTextChang
     const analysis = analyzeEvidenceSegments(
       segments,
       {
-        sourceName: pastedSourceName.trim() || "Pasted medical record text",
+        sourceName: (pastedSourceName.trim() || "Pasted medical record text").slice(
+          0,
+          MAX_STORED_SOURCE_NAME_CHARS,
+        ),
         credential,
       },
       conditionTerms,
@@ -1041,7 +1060,8 @@ export function LocalEvidenceAnalyzer({ conditionTerms, onUnsavedPastedTextChang
         </label>
         <label className="block text-sm font-medium">
           Additional locator context (optional)
-          <input className="mt-1 w-full px-3" value={locatorPrefix} onChange={(event) => setLocatorPrefix(event.target.value)} placeholder="Example: C-file export or Assessment section" />
+          <input className="mt-1 w-full px-3" value={locatorPrefix} maxLength={MAX_LOCATOR_CONTEXT_CHARS} onChange={(event) => setLocatorPrefix(event.target.value.slice(0, MAX_LOCATOR_CONTEXT_CHARS))} placeholder="Example: C-file export or Assessment section" />
+          <span className="mt-1 block text-xs text-slate-600">Up to {MAX_LOCATOR_CONTEXT_CHARS} characters; page or line context is added automatically.</span>
         </label>
       </div>
 
@@ -1176,7 +1196,8 @@ export function LocalEvidenceAnalyzer({ conditionTerms, onUnsavedPastedTextChang
         <p className="mt-1 text-sm text-slate-600">Image-only/scanned PDF pages may contain no selectable text — the extraction pass reports those pages instead of guessing. Use the <strong>Local OCR</strong> action on that document above (recognized entirely in this browser tab), or paste exact text here with any available page/section context.</p>
         <label className="mt-4 block text-sm font-medium">
           Source name
-          <input className="mt-1 w-full px-3" value={pastedSourceName} onChange={(event) => setPastedSourceName(event.target.value)} />
+          <input className="mt-1 w-full px-3" value={pastedSourceName} maxLength={MAX_STORED_SOURCE_NAME_CHARS} onChange={(event) => setPastedSourceName(event.target.value.slice(0, MAX_STORED_SOURCE_NAME_CHARS))} />
+          <span className="mt-1 block text-xs text-slate-600">Up to {MAX_STORED_SOURCE_NAME_CHARS} characters.</span>
         </label>
         <label className="mt-3 block text-sm font-medium">
           Paste exact extracted text (up to {formatLimitChars(limits.textChars)} characters)
