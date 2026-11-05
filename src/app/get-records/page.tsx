@@ -24,7 +24,7 @@ export default function GetRecordsPage() {
         </p>
       </header>
 
-      <VaGovRecordWalkthrough />
+      <VaGovRecordWalkthrough evidenceAnalyzerOnPage={false} />
 
       <section className="ui-card mt-6">
         <div className="ui-heading-row">

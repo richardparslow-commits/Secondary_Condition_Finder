@@ -7,12 +7,18 @@ import {
   VA_GOV_WALKTHROUGH_DISCLAIMER,
   VA_GOV_WALKTHROUGH_STEPS,
   formatVaGovRecordWalkthrough,
+  vaGovRecordWalkthroughSteps,
   type VaGovWalkthroughStep,
 } from "@/lib/secondary-workflow/va-gov-record-walkthrough";
 
 interface Props {
   /** Default anchor filename for the text export. */
   exportFilename?: string;
+  /**
+   * True when LocalEvidenceAnalyzer renders on the same page. The standalone
+   * records guide passes false so its copy points into the workflow instead.
+   */
+  evidenceAnalyzerOnPage?: boolean;
 }
 
 const CHANGE_EVENT = "secondary-condition-finder:va-gov-record-walkthrough-change";
@@ -98,7 +104,10 @@ function StepLink({ step }: { step: VaGovWalkthroughStep }) {
   );
 }
 
-export function VaGovRecordWalkthrough({ exportFilename = "va-gov-records-download-walkthrough.txt" }: Props) {
+export function VaGovRecordWalkthrough({
+  exportFilename = "va-gov-records-download-walkthrough.txt",
+  evidenceAnalyzerOnPage = true,
+}: Props) {
   // Progress checkmarks persist in this browser tab's session storage (same
   // boundary as the evidence-gap review and pathway-record-checklist stores)
   // so they survive navigating away and back within the workflow, and are
@@ -112,6 +121,13 @@ export function VaGovRecordWalkthrough({ exportFilename = "va-gov-records-downlo
   const [memoryLocated, setMemoryLocated] = useState<Record<string, true> | null>(null);
   const [storageUnavailable, setStorageUnavailable] = useState(false);
   const located = memoryLocated ?? storedLocated;
+  const steps = useMemo(
+    () => vaGovRecordWalkthroughSteps({ analyzerOnPage: evidenceAnalyzerOnPage }),
+    [evidenceAnalyzerOnPage],
+  );
+  const afterDownloadCopy = evidenceAnalyzerOnPage
+    ? "you can add it to the local evidence analyzer on this page, where it is analyzed only in your browser."
+    : "when you are ready, open the secondary workflow's document step to add it to the local evidence analyzer, where it is analyzed only in your browser.";
 
   const toggle = useCallback(
     (stepId: string) => {
@@ -140,15 +156,18 @@ export function VaGovRecordWalkthrough({ exportFilename = "va-gov-records-downlo
   }, []);
 
   const checkedCount = useMemo(
-    () => VA_GOV_WALKTHROUGH_STEPS.reduce((sum, step) => (located[step.id] ? sum + 1 : sum), 0),
-    [located],
+    () => steps.reduce((sum, step) => (located[step.id] ? sum + 1 : sum), 0),
+    [located, steps],
   );
 
   function downloadWalkthrough() {
-    downloadText(formatVaGovRecordWalkthrough(), exportFilename);
+    downloadText(
+      formatVaGovRecordWalkthrough({ analyzerOnPage: evidenceAnalyzerOnPage }),
+      exportFilename,
+    );
   }
 
-  const allChecked = checkedCount === VA_GOV_WALKTHROUGH_STEPS.length;
+  const allChecked = checkedCount === steps.length;
 
   return (
     <section
@@ -177,12 +196,11 @@ export function VaGovRecordWalkthrough({ exportFilename = "va-gov-records-downlo
         <strong>Sign-in happens on VA.gov — not here.</strong> Enter your email, password, and MFA code
         only on VA.gov/ID.me pages in the tab each link opens. This application does not ask for, receive,
         or store any of it, and it cannot click through VA.gov for you. After the final step, the PDF lands
-        in your browser&apos;s normal download location — you can add it to the local evidence analyzer on
-        this page, where it is analyzed only in your browser.
+        in your browser&apos;s normal download location — {afterDownloadCopy}
       </div>
 
       <p className="mt-4 text-sm" aria-live="polite">
-        <strong>{checkedCount}</strong> of <strong>{VA_GOV_WALKTHROUGH_STEPS.length}</strong> steps marked
+        <strong>{checkedCount}</strong> of <strong>{steps.length}</strong> steps marked
         complete{allChecked ? " — you should now have your record PDF." : "."}
       </p>
 
@@ -197,7 +215,7 @@ export function VaGovRecordWalkthrough({ exportFilename = "va-gov-records-downlo
       )}
 
       <ol className="mt-4 space-y-4">
-        {VA_GOV_WALKTHROUGH_STEPS.map((step, index) => {
+        {steps.map((step, index) => {
           const isChecked = Boolean(located[step.id]);
           return (
             <li
