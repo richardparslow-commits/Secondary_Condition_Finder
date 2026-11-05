@@ -73,7 +73,7 @@ const loaders: LoaderCase[] = [
   },
   {
     name: "representatives", key: repKey, load: () => loadAccreditedRepresentatives(params), fetcher: mocks.representatives,
-    view: () => ({ ...vaLiveStatus("accredited-representatives", "sandbox", "va-sandbox-api"), lookupKey: repKey, params: { ...params, zip: "" }, items: [repItem] }),
+    view: () => ({ ...vaLiveStatus("accredited-representatives", "sandbox", "va-sandbox-api"), lookupKey: repKey, params: { ...params, zip: "" }, items: [repItem], totalAvailable: 1 }),
   },
 ];
 
@@ -173,7 +173,9 @@ for (const loader of loaders) {
       it("accepts its maximum item count with bounded fields", async () => {
         const candidate = loader.view();
         candidate.items = Array.from({ length: 200 }, () => (candidate.items as unknown[])[0]);
-        if (loader.name === "disabilities") candidate.totalAvailable = 200;
+        if (loader.name === "disabilities" || loader.name === "representatives") {
+          candidate.totalAvailable = 200;
+        }
         useKv(loader, candidate);
         expect((await loader.load()).source).toBe("va-sandbox-api");
         expect(loader.fetcher).not.toHaveBeenCalled();
@@ -255,6 +257,8 @@ for (const loader of loaders) {
         ["overlong specialization", itemPatch({ specializations: ["x".repeat(201)] })],
         ["unknown provider field", itemPatch({ extra: { href: "https://example.org" } })],
         ["insecure website", itemPatch({ website: "http://vso.example.org" })],
+        ["missing reported total", (view) => { const result = { ...view }; delete result.totalAvailable; return result; }],
+        ["reported total below shown items", (view) => ({ ...view, totalAvailable: 0 })],
       );
     }
     for (const contender of [false, true]) {

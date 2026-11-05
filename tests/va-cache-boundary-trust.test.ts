@@ -173,6 +173,7 @@ const cases: BoundaryCase[] = [
       lookupKey: repKey,
       params,
       items: [{ ...repItem }],
+      totalAvailable: 1,
     }),
   },
 ];
@@ -348,6 +349,7 @@ describe("A04 loader-specific link rules", () => {
       lookupKey: repKey,
       params: { zip: "", radiusMiles: 50, type: "VSO" },
       items: [{ ...repItem, website }],
+      totalAvailable: 1,
     });
     expect(dto.safeParse(view("https://vso.example.org/help")).success).toBe(true);
     // Still credential-free HTTPS only: scheme, credentials, and shape hold.

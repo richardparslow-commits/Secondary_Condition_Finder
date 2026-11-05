@@ -34,6 +34,7 @@ vi.mock("@/lib/actions/accredited-representatives", async (importOriginal) => ({
 function view(overrides: Partial<AccreditedRepresentativeView> = {}): AccreditedRepresentativeView {
   return {
     params: { zip: ZIP, radiusMiles: 50 },
+    totalAvailable: 1,
     items: [
       {
         id: "rep-1",

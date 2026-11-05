@@ -14,7 +14,7 @@ import type { AccreditedRepresentativeView } from "@/lib/va/accredited-represent
 
 afterEach(cleanup);
 
-function viewWith(count: number): AccreditedRepresentativeView {
+function viewWith(count: number, totalAvailable = count): AccreditedRepresentativeView {
   return {
     lookupKey: "lookup-key",
     live: true,
@@ -26,6 +26,7 @@ function viewWith(count: number): AccreditedRepresentativeView {
       zip: "12345",
       distanceMiles: index,
     })),
+    totalAvailable,
   } as unknown as AccreditedRepresentativeView;
 }
 
@@ -42,6 +43,29 @@ describe("the representative result list pages through a large lookup", () => {
     expect(screen.getAllByRole("listitem")).toHaveLength(30);
     expect(screen.getByText("Representative 029")).toBeTruthy();
     expect(screen.getByText(/Showing 30 of 30/)).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Show more representatives" })).toBeNull();
+  });
+
+  it("discloses when the loader only carries the nearest 200 of a larger match set", () => {
+    // Heal s7-rep-list-cut-at-200-silently-1: the loader keeps the nearest 200
+    // for its cache bound, but the finder used items.length as the total, so a
+    // 250-match search said "Showing 200 of 200" and hid the last 50.
+    render(<RepresentativeResults view={viewWith(200, 250)} />);
+
+    expect(screen.getByText(/Showing 25 of 250 accredited representatives/)).toBeTruthy();
+    expect(
+      screen.getByText(/Only the nearest 200 of 250 matching representatives are shown/),
+    ).toBeTruthy();
+
+    for (let click = 0; click < 7; click += 1) {
+      fireEvent.click(screen.getByRole("button", { name: "Show more representatives" }));
+    }
+
+    expect(screen.getAllByRole("listitem")).toHaveLength(200);
+    expect(screen.getByText(/Showing 200 of 250/)).toBeTruthy();
+    expect(
+      screen.getByText(/Only the nearest 200 of 250 matching representatives are shown/),
+    ).toBeTruthy();
     expect(screen.queryByRole("button", { name: "Show more representatives" })).toBeNull();
   });
 

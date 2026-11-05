@@ -72,8 +72,14 @@ export function RepresentativeResults({ view }: { view: AccreditedRepresentative
   return (
     <>
       <p className="mt-4 text-xs text-slate-600">
-        Showing {shown.length} of {view.items.length} accredited representatives, nearest first.
+        Showing {shown.length} of {view.totalAvailable} accredited representatives, nearest first.
       </p>
+      {view.items.length < view.totalAvailable && (
+        <p className="mt-2 rounded-md border border-amber-300 bg-amber-50 p-3 text-sm leading-relaxed text-amber-900">
+          Only the nearest {view.items.length} of {view.totalAvailable} matching representatives are
+          shown. Narrow the radius or representative type to see more.
+        </p>
+      )}
       <ul className="mt-2 space-y-3">
         {shown.map((item) => (
           <li key={item.id} className="rounded-lg border border-slate-200 p-4">
