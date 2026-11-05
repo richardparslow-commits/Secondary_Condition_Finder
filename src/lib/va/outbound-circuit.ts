@@ -180,8 +180,17 @@ export async function recordVaOutboundCircuitOutcome(args: {
     return;
   }
 
-  const opened = recordCircuitFailure(args.service, args.now);
-  if (args.distributed && (opened || args.probeAdmitted)) {
+  const admittedVersion = args.admission?.localVersion ?? undefined;
+  const stale =
+    admittedVersion !== undefined &&
+    admittedVersion !== readCircuitState(args.service).version;
+  const opened = recordCircuitFailure(args.service, args.now, {
+    admittedVersion,
+  });
+  // A failure from an older generation must not republish a fleet cooldown
+  // over a newer half-open probe. `recordCircuitFailure` keeps the local state
+  // intact; suppress the shared publication for the same stale outcome.
+  if (args.distributed && !stale && (opened || args.probeAdmitted)) {
     await publishSharedCircuitOpen(args.service, {
       cooldownMs: HALF_OPEN_PROBE_AFTER_MS,
       env: args.env,
