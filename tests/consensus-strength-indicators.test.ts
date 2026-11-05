@@ -82,7 +82,7 @@ describe("consensus evidence-strength indicators", () => {
           bodySystem: "Respiratory",
           recommendation: mappedSleepApnea,
         },
-        vaReference: { live: false, sourceLabel: "test fixture", environment: null, match: null },
+        vaReference: { live: false, sourceLabel: "test fixture", environment: null, loadedCount: 0, totalAvailable: 0, match: null },
       }),
     );
     expect(html).toContain("Well established");
@@ -101,7 +101,7 @@ describe("consensus evidence-strength indicators", () => {
           bodySystem: "Auditory",
           recommendation: null,
         },
-        vaReference: { live: false, sourceLabel: "test fixture", environment: null, match: null },
+        vaReference: { live: false, sourceLabel: "test fixture", environment: null, loadedCount: 0, totalAvailable: 0, match: null },
       }),
     );
     expect(html).not.toContain("bg-emerald-50");
