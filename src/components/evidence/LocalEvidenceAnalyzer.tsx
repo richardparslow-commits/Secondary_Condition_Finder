@@ -130,6 +130,12 @@ const STORAGE_CORRUPTED_WARNING =
 const STORAGE_PARTIAL_WARNING =
   "Some saved evidence in this browser tab could not be read and was ignored. Re-analyze any document missing from the list below.";
 
+// A write can fail while the browser still has room in memory. Showing the new
+// analysis as retained without saying the save failed is the silent loss this
+// notice closes (Heal s10-refused-save-shown-retained-1).
+const STORAGE_SAVE_REFUSED_WARNING =
+  "Analyzed evidence could not be kept in this browser tab: browser storage rejected the save. It remains visible in this review but may be missing from the Step 6 checklist. Free browser storage or reduce retained evidence, then analyze the source again.";
+
 function saveStored(
   analyses: EvidenceAnalysis[],
   limits: EvidenceLimits,
@@ -379,8 +385,12 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
     // rendering another let the summary claim nine retained excerpts while
     // five were listed (Heal s8-excerpt-count-exceeds-retained-1).
     const retained = parseStoredEvidence(info.serialized, activeLimits);
-    saveStored(retained, activeLimits);
+    const saved = saveStored(retained, activeLimits);
     applyAnalyses(retained);
+    if (!saved) {
+      const saveWarning = `${analysis.sourceName}: ${STORAGE_SAVE_REFUSED_WARNING}`;
+      notice = notice ? `${notice} ${saveWarning}` : saveWarning;
+    }
     return notice;
   }
 
@@ -400,13 +410,21 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
     // source-window slice happens before it measures. Count against what the
     // review actually kept so the notice names the sources the Analyst loses.
     const removed = analysesRef.current.length - retained.length;
-    saveStored(retained, STANDARD_LIMITS);
+    const saved = saveStored(retained, STANDARD_LIMITS);
     applyAnalyses(retained);
-    if (removed > 0) {
-      setWarnings((prev) => [
-        ...prev,
-        `Standard depth retains the ${STANDARD_LIMITS.storedSources} newest analyzed sources for the Step 6 checklist; ${removed} older analyzed source(s) were removed from this review.`,
-      ]);
+    if (removed > 0 || !saved) {
+      setWarnings((prev) => {
+        const next = [...prev];
+        if (removed > 0) {
+          next.push(
+            `Standard depth retains the ${STANDARD_LIMITS.storedSources} newest analyzed sources for the Step 6 checklist; ${removed} older analyzed source(s) were removed from this review.`,
+          );
+        }
+        if (!saved && !next.includes(STORAGE_SAVE_REFUSED_WARNING)) {
+          next.push(STORAGE_SAVE_REFUSED_WARNING);
+        }
+        return next;
+      });
     }
   }
 
