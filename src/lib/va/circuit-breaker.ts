@@ -199,9 +199,31 @@ export function recordCircuitSuccess(
 /**
  * Record a failed request. Returns true when this opened (or re-opened) the
  * circuit, so distributed deployments can publish a shared cooldown.
+ *
+ * A failure may only mutate the state generation it was admitted under. A
+ * request admitted while the circuit was closed can time out after a newer
+ * failure opened the circuit and a half-open probe was admitted; if that late
+ * failure re-opened the circuit it would clear the live probe's claim, and the
+ * probe's success would then be discarded as stale. Callers that cannot supply
+ * a version keep the legacy behavior.
  */
-export function recordCircuitFailure(service: VaCircuitService, now = Date.now()): boolean {
+export function recordCircuitFailure(
+  service: VaCircuitService,
+  now = Date.now(),
+  options: { admittedVersion?: number } = {},
+): boolean {
   const entry = getState(service);
+  if (
+    options.admittedVersion !== undefined &&
+    options.admittedVersion !== entry.version
+  ) {
+    logger.info("ignored stale circuit failure; state changed after admission", {
+      service,
+      admittedVersion: options.admittedVersion,
+      currentVersion: entry.version,
+    });
+    return false;
+  }
   entry.probeInFlight = false;
   if (entry.state === "half-open") {
     entry.state = "open";

@@ -177,6 +177,34 @@ describe("VA circuit breaker — single half-open probe", () => {
     expect(claimCircuitProbe("va-forms")).toBe(true);
   });
 
+  it("ignores a late failure from before the half-open probe was admitted", () => {
+    const t0 = 1_000_000;
+    const earlierVersion = readCircuitState("va-forms").version;
+    for (let i = 0; i < 5; i += 1) recordCircuitFailure("va-forms", t0);
+    expect(claimCircuitProbe("va-forms", t0 + HALF_OPEN_PROBE_AFTER_MS)).toBe(true);
+    const probeVersion = readCircuitState("va-forms").version;
+
+    // A request admitted before the circuit opened fails late. It must not
+    // re-open the half-open circuit or clear the admitted probe's claim.
+    expect(
+      recordCircuitFailure("va-forms", t0 + HALF_OPEN_PROBE_AFTER_MS + 1, {
+        admittedVersion: earlierVersion,
+      }),
+    ).toBe(false);
+    expect(readCircuitState("va-forms")).toEqual(
+      expect.objectContaining({
+        state: "half-open",
+        probeInFlight: true,
+      }),
+    );
+
+    // The real probe's success still closes the circuit.
+    expect(
+      recordCircuitSuccess("va-forms", { admittedVersion: probeVersion }),
+    ).toBe(true);
+    expect(readCircuitState("va-forms").state).toBe("closed");
+  });
+
   it("a 429 opens the circuit for the clamped Retry-After window and blocks follow-ups without network calls", async () => {
     const upstreamSpy = vi
       .fn()
@@ -503,6 +531,51 @@ describe("VA shared circuit — deadline fencing and false-success guards (B06/B
     ).resolves.toBe(false);
     expect(kv.get(FORM_MARKER_KEY)).toBeNull();
     expect(kv.get(FORM_DEADLINE_KEY)).toBeNull();
+  });
+
+  it("does not republish a cooldown for a stale failure", async () => {
+    stubDistributedEnv();
+    const kv = createFakeSharedKv();
+    stubSandboxFetch({ kv, upstream: vi.fn() });
+    const t0 = 1_000_000;
+    const earlierVersion = readCircuitState("va-forms").version;
+    for (let i = 0; i < 5; i += 1) recordCircuitFailure("va-forms", t0);
+    expect(claimCircuitProbe("va-forms", t0 + HALF_OPEN_PROBE_AFTER_MS)).toBe(true);
+    const probeVersion = readCircuitState("va-forms").version;
+
+    await recordVaOutboundCircuitOutcome({
+      service: "va-forms",
+      distributed: true,
+      success: false,
+      probeAdmitted: true,
+      admission: {
+        decision: "probe",
+        localVersion: earlierVersion,
+        sharedMarker: null,
+      },
+      now: t0 + HALF_OPEN_PROBE_AFTER_MS + 1,
+    });
+
+    expect(readCircuitState("va-forms")).toEqual(
+      expect.objectContaining({
+        state: "half-open",
+        probeInFlight: true,
+      }),
+    );
+    expect(kv.get(FORM_MARKER_KEY)).toBeNull();
+
+    await recordVaOutboundCircuitOutcome({
+      service: "va-forms",
+      distributed: true,
+      success: true,
+      probeAdmitted: true,
+      admission: {
+        decision: "probe",
+        localVersion: probeVersion,
+        sharedMarker: null,
+      },
+    });
+    expect(readCircuitState("va-forms").state).toBe("closed");
   });
 
   it("never clears a newer cooldown from a stale probe or an ordinary success", async () => {
