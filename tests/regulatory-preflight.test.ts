@@ -204,6 +204,53 @@ describe("freshness fail-safe", () => {
     expect(decision.reviewMode).toBe("full-with-warning");
   });
 
+  it("keeps the freshness clock running across repeated failed attempts", () => {
+    const failedSources = [
+      source("federal-register", "failed"),
+      source("oira-pending"),
+      source("oira-completed"),
+      source("unified-agenda"),
+    ];
+    const at20Hours = decideRegulatoryFreshness({
+      sourceResults: failedSources,
+      changes: [],
+      finishedAt: "2026-08-19T06:00:00.000Z",
+      previousSnapshot: previousSnapshot(),
+      maxCacheAgeHours: 24,
+    });
+    expect(at20Hours).toMatchObject({
+      freshness: "degraded",
+      reviewMode: "full-with-warning",
+      legalRegulatoryConclusionsAllowed: true,
+      cacheAgeHours: 20,
+    });
+
+    // The T+20h failure is now the latest snapshot, but its cacheAgeHours
+    // describes the last verified snapshot at T0. It must not become a new
+    // starting point for the 24-hour window.
+    const degradedAt20Hours: RegulatoryPreflightSnapshot = {
+      ...previousSnapshot(),
+      snapshotId: "reg-degraded-12345678",
+      finishedAt: "2026-08-19T06:00:00.000Z",
+      freshness: "degraded",
+      reviewMode: "full-with-warning",
+      cacheAgeHours: at20Hours.cacheAgeHours,
+    };
+    const at40Hours = decideRegulatoryFreshness({
+      sourceResults: failedSources,
+      changes: [],
+      finishedAt: "2026-08-20T02:00:00.000Z",
+      previousSnapshot: degradedAt20Hours,
+      maxCacheAgeHours: 24,
+    });
+    expect(at40Hours).toMatchObject({
+      freshness: "stale",
+      reviewMode: "medical-only",
+      legalRegulatoryConclusionsAllowed: false,
+      cacheAgeHours: 40,
+    });
+  });
+
   it("fails to medical-only when the regulatory snapshot is stale", () => {
     const decision = decideRegulatoryFreshness({
       sourceResults: [source("federal-register", "failed"), source("oira-pending"), source("oira-completed"), source("unified-agenda")],
