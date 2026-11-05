@@ -46,6 +46,7 @@ function seededLiveView(): AccreditedRepresentativeView {
   return {
     params: PARAMS,
     items: [REP],
+    totalAvailable: 1,
     source: "va-sandbox-api",
     sourceLabel: "seeded live directory",
     notice: "seeded",
@@ -136,6 +137,7 @@ describe("accredited-representative disable semantics", () => {
     expect(fetch).toHaveBeenCalledTimes(1);
     expect(view.live).toBe(true);
     expect(view.items).toHaveLength(1);
+    expect(view.totalAvailable).toBe(1);
   });
 
   it("still falls back when the fetch fails while enabled", async () => {

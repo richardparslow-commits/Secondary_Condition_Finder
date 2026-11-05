@@ -3,6 +3,7 @@ import "server-only";
 import {
   accreditedRepresentativeCacheDto,
   VA_CACHE_DTO_MAX_ITEMS,
+  VA_REPORTED_TOTAL_MAX,
 } from "./cached-view-guard";
 import {
   resolveVaResultEnvironment,
@@ -35,6 +36,14 @@ export type AccreditedRepresentativeItem = VaAccreditedRepresentative;
 export interface AccreditedRepresentativeView extends VaReferenceSourceStatus {
   params: AccreditedRepresentativeSearchParams;
   items: AccreditedRepresentativeItem[];
+  /**
+   * How many representatives VA reported matching the search. Always at least
+   * the number shown; greater when this view carries only the nearest bounded
+   * prefix. The finder must disclose the difference rather than presenting the
+   * truncation as the complete result (Heal
+   * s7-rep-list-cut-at-200-silently-1).
+   */
+  totalAvailable: number;
 }
 
 type AccreditedRepFetcher = (
@@ -61,6 +70,7 @@ function localFallback(
   return {
     params,
     items: [],
+    totalAvailable: 0,
     ...vaFallbackStatus("accredited-representatives"),
   };
 }
@@ -129,6 +139,15 @@ export async function loadAccreditedRepresentatives(
       // and the cache layer replaced it with the empty degraded view, so a busy
       // ZIP's 250 nearby representatives rendered as "none found"
       // (Heal s1-many-reps-shown-as-none-found-1).
+      //
+      // Keep VA's reported total alongside the bounded prefix. Without it the
+      // finder read `items.length` as the complete result and told the veteran
+      // that 250 matches were really 200 (Heal
+      // s7-rep-list-cut-at-200-silently-1).
+      const totalAvailable = Math.max(
+        items.length,
+        Math.min(result.data.data.length, VA_REPORTED_TOTAL_MAX),
+      );
 
       const environment = resolveVaResultEnvironment(
         result,
@@ -140,6 +159,7 @@ export async function loadAccreditedRepresentatives(
           lookupKey: cacheKey,
           params: redactedParams,
           items,
+          totalAvailable,
           ...vaLiveStatus(
             "accredited-representatives",
             environment,

@@ -287,5 +287,12 @@ export function accreditedRepresentativeCacheDto(
       type: params.type === undefined ? z.undefined().optional() : z.literal(params.type),
     }),
     items: z.array(accreditedRepresentativeCacheItemDto).max(VA_CACHE_DTO_MAX_ITEMS),
+    // VA's reported match count, not just the bounded prefix this view carries.
+    // It must cover every shown item, so a cached view cannot understate the
+    // result by claiming the truncated items are all that matched.
+    totalAvailable: z.number().int().min(0).max(VA_REPORTED_TOTAL_MAX),
+  }).refine((view) => view.totalAvailable >= view.items.length, {
+    message: "totalAvailable must cover every shown item",
+    path: ["totalAvailable"],
   });
 }

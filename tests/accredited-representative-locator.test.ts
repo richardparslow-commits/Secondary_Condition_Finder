@@ -264,6 +264,7 @@ describe("accredited representative locator (Idea #8)", () => {
 
     expect(view.live).toBe(true);
     expect(view.items).toHaveLength(4);
+    expect(view.totalAvailable).toBe(4);
     expect(view.items.map((item) => item.name)).toEqual(
       expect.arrayContaining([
         "Jane Representative",
@@ -279,6 +280,7 @@ describe("accredited representative locator (Idea #8)", () => {
     const cachedView = await loadAccreditedRepresentatives({ zip: "12345", radiusMiles: 25 });
     expect(cachedView.cacheStatus).toBe("hit");
     expect(cachedView.items).toHaveLength(4);
+    expect(cachedView.totalAvailable).toBe(4);
     expect(cachedView.items.find((item) => item.id === "rep-4")?.phone).toBe(longPhone);
     expect(fetchSpy).toHaveBeenCalledTimes(1);
   });
@@ -310,16 +312,19 @@ describe("accredited representative locator (Idea #8)", () => {
 
     expect(view.live).toBe(true);
     expect(view.items).toHaveLength(200);
+    expect(view.totalAvailable).toBe(250);
     // The list is sorted before it is bounded, so the nearest records survive.
     expect(view.items[0].distanceMiles).toBe(0);
     expect(view.items[199].distanceMiles).toBe(199);
     expect(view.items.some((item) => item.id === "rep-249")).toBe(false);
 
     // The bounded view is inside the cache DTO, so a repeated lookup stays
-    // populated instead of degrading to the empty fallback.
+    // populated instead of degrading to the empty fallback, and the reported
+    // total still discloses the 50 records outside the cache bound.
     const cachedView = await loadAccreditedRepresentatives({ zip: "12345", radiusMiles: 50 });
     expect(cachedView.cacheStatus).toBe("hit");
     expect(cachedView.items).toHaveLength(200);
+    expect(cachedView.totalAvailable).toBe(250);
   });
 
   it("renders the search form with the VSO/agent/attorney filters (source pin)", () => {
