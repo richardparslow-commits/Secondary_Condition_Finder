@@ -25,24 +25,27 @@ export function hashedCacheKeySegment(raw: string): string {
 export type VaReferenceCacheStatus = "hit" | "miss";
 
 /**
- * Module-level hit/miss counters for the process-local VA reference cache.
+ * Process-global hit/miss counters for the process-local VA reference cache.
  * Reset on cold start (process restart) — acceptable for serverless. Exposed
  * via GET /api/health so operators can monitor cache effectiveness.
+ *
+ * These counters live on the same global state as the entries below, not in a
+ * module-level `let`. Next can evaluate this module once per route/page module
+ * graph, so plain module state left the admin clear and health route reading a
+ * different copy from the reference pages. GET /api/health then reported zero
+ * forever and POST /api/admin/cache-clear reported `cleared: 0` while pages
+ * kept serving hits (Heal s3-admin-cache-clear-misses-page-cache-1).
  */
-let cacheHits = 0;
-let cacheMisses = 0;
-
-/** Return a snapshot of the current cache counters and reset them. */
 export function consumeCacheCounters(): { hits: number; misses: number } {
-  const snapshot = { hits: cacheHits, misses: cacheMisses };
-  cacheHits = 0;
-  cacheMisses = 0;
+  const snapshot = { hits: cacheState.hits, misses: cacheState.misses };
+  cacheState.hits = 0;
+  cacheState.misses = 0;
   return snapshot;
 }
 
 /** Return the current cache counters without resetting. */
 export function peekCacheCounters(): { hits: number; misses: number } {
-  return { hits: cacheHits, misses: cacheMisses };
+  return { hits: cacheState.hits, misses: cacheState.misses };
 }
 
 /**
@@ -104,11 +107,37 @@ interface CacheEntry<T> {
   expiresAt: number;
 }
 
+interface VaReferenceCacheState {
+  entries: Map<string, CacheEntry<unknown>>;
+  hits: number;
+  misses: number;
+}
+
+/**
+ * One process-global state object for every module graph in this server.
+ * A plain module-level Map is per compiled route, not per process: the admin
+ * route would clear its own empty map while the reference page kept a warm one.
+ * `globalThis` is the process-wide anchor inside this Node isolate, so the
+ * clear, the counters, and every reference page now agree on one cache.
+ */
+function loadCacheState(): VaReferenceCacheState {
+  const shared = globalThis as typeof globalThis & {
+    __scfVaReferenceCacheStateV1?: VaReferenceCacheState;
+  };
+  shared.__scfVaReferenceCacheStateV1 ??= {
+    entries: new Map<string, CacheEntry<unknown>>(),
+    hits: 0,
+    misses: 0,
+  };
+  return shared.__scfVaReferenceCacheStateV1;
+}
+
+const cacheState = loadCacheState();
+const referenceCache = cacheState.entries;
+
 export const VA_REFERENCE_CACHE_TTL_MS = 5 * 60 * 1_000;
 export const VA_REFERENCE_CACHE_MAX_ENTRIES = 32;
 export const VA_REFERENCE_CACHE_MAX_KEY_LENGTH = 256;
-
-const referenceCache = new Map<string, CacheEntry<unknown>>();
 
 function pruneExpiredEntries(now: number): void {
   for (const [key, entry] of referenceCache.entries()) {
@@ -129,18 +158,18 @@ export function readVaReferenceCache<T>(
 
   const cached = referenceCache.get(key) as CacheEntry<T> | undefined;
   if (!cached) {
-    cacheMisses++;
+    cacheState.misses++;
     return null;
   }
   if (cached.expiresAt <= now) {
     referenceCache.delete(key);
-    cacheMisses++;
+    cacheState.misses++;
     return null;
   }
 
   // Refresh insertion order on a hit so the bounded single-process cache behaves
   // as a small LRU rather than evicting a frequently used Forms query.
-  cacheHits++;
+  cacheState.hits++;
   referenceCache.delete(key);
   referenceCache.set(key, cached as CacheEntry<unknown>);
   return cached.value;
