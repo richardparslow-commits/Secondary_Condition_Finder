@@ -51,17 +51,12 @@ export async function POST(request: NextRequest, args: Context) {
   try {
     if (operation === "start") {
       if (!await consented(request)) return NextResponse.json({ error: "Explicit sandbox read-only consent required." }, { status: 400, headers: PRIVATE });
-      // Start the new login before touching the existing connection. The old
-      // order deleted and revoked a live session first, so a start that then
-      // failed silently ended a working connection (Heal
-      // s1-refused-reconnect-drops-connection-1). If the start throws, the old
-      // session is untouched; if its cleanup cannot be confirmed, the freshly
-      // minted transaction is unused and expires on its own.
+      // Starting a replacement must not disturb the live connection. The old
+      // session stays readable while the visitor is at VA, and only a completed
+      // callback replaces it. Clearing the handle here ended a working
+      // connection whenever the visitor abandoned the VA page (Heal
+      // s6-abandoned-reconnect-drops-connection-1).
       const login = await startAccountLogin(config, store);
-      const oldHandle = request.cookies.get(accountCookieName(config.service))?.value;
-      if (oldHandle && !(await disconnectAccount(config, store, oldHandle)).cleared) {
-        return notice(config.appOrigin, "unavailable");
-      }
       // Return the authorization navigation URL, not a cross-origin fetch/form
       // redirect: connect-src/form-action remain 'self' under the global CSP.
       const response = NextResponse.json({ authorizationUrl: login.url }, { headers: PRIVATE });
@@ -69,7 +64,6 @@ export async function POST(request: NextRequest, args: Context) {
         httpOnly: true, secure: accountCookieSecure(config), sameSite: "lax",
         path: ACCOUNT_TRANSACTION_COOKIE_PATH, maxAge: ACCOUNT_TRANSACTION_SECONDS,
       });
-      response.cookies.set(accountCookieName(config.service), "", { path: "/va-account", maxAge: 0 });
       return response;
     }
     const handle = request.cookies.get(accountCookieName(config.service))?.value;
@@ -89,12 +83,21 @@ export async function GET(request: NextRequest, args: Context) {
   let response: NextResponse;
   try {
     const binding = request.cookies.get(accountTransactionCookieName(config.service))?.value ?? "";
+    const oldHandle = request.cookies.get(accountCookieName(config.service))?.value;
     const handle = await completeAccountLogin(config, store, request.nextUrl.searchParams, binding);
-    response = notice(config.appOrigin, "connected");
-    response.cookies.set(accountCookieName(config.service), handle, {
-      httpOnly: true, secure: accountCookieSecure(config), sameSite: "strict",
-      path: "/va-account", maxAge: ACCOUNT_SESSION_SECONDS,
-    });
+    if (oldHandle && oldHandle !== handle && !(await disconnectAccount(config, store, oldHandle)).cleared) {
+      // The new login succeeded, but the previous server-side session could not
+      // be removed. Keep the existing handle rather than leaving an unreachable
+      // old session behind, and revoke the unused replacement below.
+      await disconnectAccount(config, store, handle);
+      response = notice(config.appOrigin, "unavailable");
+    } else {
+      response = notice(config.appOrigin, "connected");
+      response.cookies.set(accountCookieName(config.service), handle, {
+        httpOnly: true, secure: accountCookieSecure(config), sameSite: "strict",
+        path: "/va-account", maxAge: ACCOUNT_SESSION_SECONDS,
+      });
+    }
   } catch { response = notice(config.appOrigin, "connection-failed"); }
   response.cookies.set(accountTransactionCookieName(config.service), "", { path: ACCOUNT_TRANSACTION_COOKIE_PATH, maxAge: 0 });
   return response;
