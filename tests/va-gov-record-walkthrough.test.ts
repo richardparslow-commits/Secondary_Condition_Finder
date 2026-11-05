@@ -141,6 +141,15 @@ describe("VA.gov medical records download walkthrough", () => {
     expect(page.indexOf("<VaGovRecordWalkthrough />")).toBeLessThan(page.indexOf("<LocalEvidenceAnalyzer"));
   });
 
+  it("points the standalone guide into the workflow document step", () => {
+    const standalone = formatVaGovRecordWalkthrough({ analyzerOnPage: false });
+    expect(standalone).not.toMatch(/evidence analyzer on this page/i);
+    expect(standalone).toContain("secondary workflow's document step");
+    expect(formatVaGovRecordWalkthrough()).toContain(
+      "local evidence analyzer on this page",
+    );
+  });
+
   it("formats a text export with numbered steps, links, and the disclaimer", () => {
     const exported = formatVaGovRecordWalkthrough();
     expect(exported).toContain("VA.GOV MEDICAL RECORDS DOWNLOAD WALKTHROUGH");

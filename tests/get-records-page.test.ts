@@ -10,7 +10,7 @@ describe("standalone /get-records walkthrough page", () => {
     const page = readRepoFile("src/app/get-records/page.tsx");
 
     expect(page).toContain('import { VaGovRecordWalkthrough } from "@/components/secondary/VaGovRecordWalkthrough";');
-    expect(page).toContain("<VaGovRecordWalkthrough />");
+    expect(page).toContain("<VaGovRecordWalkthrough evidenceAnalyzerOnPage={false} />");
     // The page carries its own explicit no-credential boundary.
     expect(page).toContain("never asks");
     expect(page).toContain("for, receives, or stores your VA.gov or ID.me credentials, multi-factor codes, or");

@@ -53,6 +53,18 @@ export const VA_GOV_WALKTHROUGH_DISCLAIMER =
   "VA requires, and never sees or stores your VA.gov or ID.me credentials, MFA codes, or " +
   "session. Confirm the current process directly on VA.gov.";
 
+const DOWNLOAD_REPORT_DETAIL_ON_PAGE =
+  "Press Download report. VA.gov generates the PDF and saves it to your computer (by " +
+  "default, your Downloads folder or Desktop, depending on your browser). You can then " +
+  "add it to the local evidence analyzer on this page — the file is analyzed only in your " +
+  "browser and is not uploaded.";
+
+const DOWNLOAD_REPORT_DETAIL_OFF_PAGE =
+  "Press Download report. VA.gov generates the PDF and saves it to your computer (by " +
+  "default, your Downloads folder or Desktop, depending on your browser). When you are " +
+  "ready, open the secondary workflow's document step to add it to the local evidence " +
+  "analyzer — the file is analyzed only in your browser and is not uploaded.";
+
 export const VA_GOV_WALKTHROUGH_STEPS: readonly VaGovWalkthroughStep[] = [
   {
     id: "sign-in-start",
@@ -172,11 +184,7 @@ export const VA_GOV_WALKTHROUGH_STEPS: readonly VaGovWalkthroughStep[] = [
     id: "download-report",
     label: "Download report",
     location: "www.va.gov — Download: file type",
-    detail:
-      "Press Download report. VA.gov generates the PDF and saves it to your computer (by " +
-      "default, your Downloads folder or Desktop, depending on your browser). You can then " +
-      "add it to the local evidence analyzer on this page — the file is analyzed only in your " +
-      "browser and is not uploaded.",
+    detail: DOWNLOAD_REPORT_DETAIL_ON_PAGE,
     note:
       "Can't find the file? Check your browser's Downloads (Ctrl+J / ⌘+Shift+J) or your " +
       "Desktop. The report is your property — keep an unedited copy for your own records and " +
@@ -185,8 +193,26 @@ export const VA_GOV_WALKTHROUGH_STEPS: readonly VaGovWalkthroughStep[] = [
   },
 ] as const;
 
+/**
+ * Returns the authored steps for this page. The standalone records guide has no
+ * evidence analyzer, so its final step points into the secondary workflow's
+ * document step instead of claiming one is on the page.
+ */
+export function vaGovRecordWalkthroughSteps(
+  options: { analyzerOnPage?: boolean } = {},
+): readonly VaGovWalkthroughStep[] {
+  if (options.analyzerOnPage !== false) return VA_GOV_WALKTHROUGH_STEPS;
+  return VA_GOV_WALKTHROUGH_STEPS.map((step) =>
+    step.id === "download-report"
+      ? { ...step, detail: DOWNLOAD_REPORT_DETAIL_OFF_PAGE }
+      : step,
+  );
+}
+
 /** Formats the walkthrough as a plain-text keepsake for printing or offline use. */
-export function formatVaGovRecordWalkthrough(): string {
+export function formatVaGovRecordWalkthrough(
+  options: { analyzerOnPage?: boolean } = {},
+): string {
   const lines: string[] = [];
   lines.push("VA.GOV MEDICAL RECORDS DOWNLOAD WALKTHROUGH");
   lines.push("Guided sign-in and download steps — research aid, not VA guidance");
@@ -198,7 +224,7 @@ export function formatVaGovRecordWalkthrough(): string {
   lines.push("");
 
   let stepNumber = 0;
-  for (const step of VA_GOV_WALKTHROUGH_STEPS) {
+  for (const step of vaGovRecordWalkthroughSteps(options)) {
     stepNumber += 1;
     lines.push(`${stepNumber}. ${step.label}`);
     lines.push(`   Where: ${step.location}`);
