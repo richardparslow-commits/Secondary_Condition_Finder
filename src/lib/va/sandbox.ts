@@ -171,6 +171,8 @@ export interface VaApiResult<T> {
   environment?: VaApiEnvironment;
   requestId?: string;
   error?: string;
+  /** A usable partial result whose later pagination failed; do not cache it. */
+  incomplete?: boolean;
 }
 
 /** Backward-compatible name retained for existing callers. */
@@ -748,7 +750,8 @@ export async function fetchVaForms(
  * a full-size page and follow the remaining pages until the display bound is
  * reached, with a hard page cap so one refresh stays bounded. Page one decides
  * success: if a later page fails the readable records already fetched are kept,
- * and the upstream total stays on the view for the explorer to disclose.
+ * marked incomplete, and left out of the cache so the next visit retries. The
+ * upstream total stays on the view for the explorer to disclose what is missing.
  */
 const VA_DISABILITY_PAGE_SIZE = 200;
 const VA_DISABILITY_MAX_PAGES = 4;
@@ -767,8 +770,8 @@ function fetchVaDisabilityPage(
     config,
     observe: options.observe,
     query: new URLSearchParams({
-      "page[number]": String(page),
-      "page[size]": String(VA_DISABILITY_PAGE_SIZE),
+      page: String(page),
+      pageSize: String(VA_DISABILITY_PAGE_SIZE),
     }),
   });
 }
@@ -781,15 +784,23 @@ export async function fetchVaDisabilityReference(
   if (!first.success || !first.data) return first;
 
   const items = [...first.data.items];
+  let incomplete = false;
   const lastPage = Math.min(first.data.totalPages ?? 1, VA_DISABILITY_MAX_PAGES);
   for (let page = 2; page <= lastPage; page += 1) {
     if (items.length >= VA_DISABILITY_PAGE_SIZE) break;
     const next = await fetchVaDisabilityPage(page, config, options);
-    if (!next.success || !next.data) break;
+    if (!next.success || !next.data) {
+      incomplete = true;
+      break;
+    }
     items.push(...next.data.items);
   }
 
-  return { ...first, data: { ...first.data, items } };
+  return {
+    ...first,
+    ...(incomplete ? { incomplete: true } : {}),
+    data: { ...first.data, items },
+  };
 }
 
 export async function fetchVaServiceBranches(

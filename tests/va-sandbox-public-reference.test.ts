@@ -184,17 +184,28 @@ describe("public-reference VA API adapters", () => {
     }
   });
 
-  it("follows disability reference pages instead of treating the first page as the whole list", async () => {
-    const page = (items: Array<{ id: number; name: string }>) =>
-      new Response(
-        JSON.stringify({ totalItems: 3, totalPages: 3, items }),
-        { status: 200, headers: { "Content-Type": "application/json" } },
+  it("uses the paging parameters VA honors and follows every page once", async () => {
+    const pages = new Map<number, Array<{ id: number; name: string }>>([
+      [1, [{ id: 1, name: "Asthma" }]],
+      [2, [{ id: 2, name: "Migraine" }]],
+      [3, [{ id: 3, name: "Tinnitus" }]],
+    ]);
+    // VA defaults to page 1 when it does not recognize the page parameter. The
+    // old page[number]/page[size] names therefore loaded page 1 three times.
+    const fetchSpy = vi.fn().mockImplementation((input: URL | RequestInfo) => {
+      const url = new URL(String(input));
+      const requestedPage = Number(url.searchParams.get("page") ?? "1");
+      return Promise.resolve(
+        new Response(
+          JSON.stringify({
+            totalItems: 3,
+            totalPages: 3,
+            items: pages.get(requestedPage) ?? [],
+          }),
+          { status: 200, headers: { "Content-Type": "application/json" } },
+        ),
       );
-    const fetchSpy = vi
-      .fn()
-      .mockResolvedValueOnce(page([{ id: 1, name: "Asthma" }]))
-      .mockResolvedValueOnce(page([{ id: 2, name: "Migraine" }]))
-      .mockResolvedValueOnce(page([{ id: 3, name: "Tinnitus" }]));
+    });
     vi.stubGlobal("fetch", fetchSpy);
 
     const result = await fetchVaDisabilityReference({ config });
@@ -207,12 +218,40 @@ describe("public-reference VA API adapters", () => {
     ]);
     expect(fetchSpy).toHaveBeenCalledTimes(3);
     const urls = fetchSpy.mock.calls.map(([url]) => new URL(String(url)));
-    expect(urls.map((url) => url.searchParams.get("page[number]"))).toEqual([
+    expect(urls.map((url) => url.searchParams.get("page"))).toEqual([
       "1",
       "2",
       "3",
     ]);
-    expect(urls[0]?.searchParams.get("page[size]")).toBe("200");
+    expect(urls[0]?.searchParams.get("pageSize")).toBe("200");
+    expect(urls.some((url) => url.searchParams.has("page[number]"))).toBe(false);
+    expect(urls.some((url) => url.searchParams.has("page[size]"))).toBe(false);
+  });
+
+  it("marks a partial disability list when a later page fails", async () => {
+    const fetchSpy = vi
+      .fn()
+      .mockResolvedValueOnce(
+        new Response(
+          JSON.stringify({
+            totalItems: 2,
+            totalPages: 2,
+            items: [{ id: 1, name: "Asthma" }],
+          }),
+          { status: 200, headers: { "Content-Type": "application/json" } },
+        ),
+      )
+      .mockResolvedValueOnce(new Response("not found", { status: 404 }));
+    vi.stubGlobal("fetch", fetchSpy);
+
+    const result = await fetchVaDisabilityReference({ config });
+
+    expect(result.success).toBe(true);
+    expect(result.incomplete).toBe(true);
+    expect(result.data?.items.map((item) => item.name)).toEqual(["Asthma"]);
+    expect(fetchSpy).toHaveBeenCalledTimes(2);
+    const urls = fetchSpy.mock.calls.map(([url]) => new URL(String(url)));
+    expect(urls.map((url) => url.searchParams.get("page"))).toEqual(["1", "2"]);
   });
 
   it("fails closed per service when only that service key is missing", async () => {
