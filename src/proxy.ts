@@ -14,6 +14,7 @@ import {
   privateContextRefusalBody,
   type PrivateContextRefusal,
 } from "@/lib/security/private-context-request-guard";
+import { FORMS_FINDER_RATE_LIMITED_MESSAGE } from "@/lib/va/forms-finder-search";
 
 /**
  * CSP / Trusted-Types violation reporting target.
@@ -330,6 +331,8 @@ export function proxy(request: NextRequest) {
   // `resolveClientKey` and `chargeAdmission` in `rate-limiter.ts`.
   const client = resolveClientKey(requestHeaders, resolveIngressClaim());
   const method = request.method;
+  const isFormsFinderActionRequest =
+    pathname === "/va-forms/finder" && request.headers.has("next-action");
 
   /**
     * Deletes any still-present retired workflow cookie on the way out. Each
@@ -339,7 +342,7 @@ export function proxy(request: NextRequest) {
     * historical path remove the app-written cookies and the older
     * maintainer-tool one (path `/`) alike.
    */
-  const clearRetiredWorkflowCookie = (response: NextResponse): NextResponse => {
+  const clearRetiredWorkflowCookie = (response: Response): Response => {
     for (const [cookie, paths] of RETIRED_WORKFLOW_COOKIES) {
       if (!request.cookies.has(cookie)) continue;
       for (const path of paths) {
@@ -370,22 +373,34 @@ export function proxy(request: NextRequest) {
     if (reason !== null) recordAdmissionRefusal({ surface, budget: reason });
   };
 
-  /** 429 response carrying the full security-header set, not just CSP. */
+  /**
+   * 429 response carrying the full security-header set, not just CSP.
+   *
+   * Forms Finder action POSTs get the fixed rate-limit message as an exact
+   * `text/plain` body. Next only surfaces a non-RSC action error body when the
+   * content type is exactly `text/plain`; JSON becomes the generic "unexpected
+   * response" message, which the client cannot distinguish from a dropped
+   * connection. Every other client keeps the existing JSON refusal body.
+   */
   const tooManyRequests = (
-    body: Record<string, unknown>,
+    body: Record<string, unknown> | string,
     retryAfterSeconds: number,
-  ) =>
-    clearRetiredWorkflowCookie(
-      NextResponse.json(body, {
-        status: 429,
-        headers: {
-          "Retry-After": String(retryAfterSeconds),
-          ...buildSecurityHeaders(nonce, contentSecurityPolicy, {
-            includeCsp: !isCspReportRequest,
-          }),
-        },
+  ) => {
+    const headers = {
+      "Retry-After": String(retryAfterSeconds),
+      ...buildSecurityHeaders(nonce, contentSecurityPolicy, {
+        includeCsp: !isCspReportRequest,
       }),
+    };
+    return clearRetiredWorkflowCookie(
+      typeof body === "string"
+        ? new Response(body, {
+            status: 429,
+            headers: { "Content-Type": "text/plain", ...headers },
+          })
+        : NextResponse.json(body, { status: 429, headers }),
     );
+  };
 
   /**
    * 400 for a request carrying veteran health context (PRIV-01). Carries the
@@ -416,7 +431,9 @@ export function proxy(request: NextRequest) {
     if (result.limited) {
       recordRefusal("method-post", result.refusedBy);
       return tooManyRequests(
-        { error: "Too many requests. Please try again later." },
+        isFormsFinderActionRequest
+          ? FORMS_FINDER_RATE_LIMITED_MESSAGE
+          : { error: "Too many requests. Please try again later." },
         result.retryAfterSeconds,
       );
     }
@@ -453,7 +470,9 @@ export function proxy(request: NextRequest) {
     if (result.limited) {
       recordRefusal("reference-read", result.refusedBy);
       return tooManyRequests(
-        { error: "Too many requests. Please try again later." },
+        isFormsFinderActionRequest
+          ? FORMS_FINDER_RATE_LIMITED_MESSAGE
+          : { error: "Too many requests. Please try again later." },
         result.retryAfterSeconds,
       );
     }
@@ -472,7 +491,12 @@ export function proxy(request: NextRequest) {
     const result = chargeAdmission(routePolicy.limiter, client.key);
     if (result.limited) {
       recordRefusal(routePolicy.path, result.refusedBy);
-      return tooManyRequests(routePolicy.limitedBody, result.retryAfterSeconds);
+      return tooManyRequests(
+        isFormsFinderActionRequest
+          ? FORMS_FINDER_RATE_LIMITED_MESSAGE
+          : routePolicy.limitedBody,
+        result.retryAfterSeconds,
+      );
     }
   }
 
