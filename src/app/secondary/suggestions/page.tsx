@@ -50,6 +50,7 @@ export default async function SuggestionsStepPage({ searchParams }: SuggestionsP
         sourceLabel: vaReference.sourceLabel,
         environment: vaReference.environment,
         items: vaReference.items,
+        totalAvailable: vaReference.totalAvailable,
       }}
     />
   );

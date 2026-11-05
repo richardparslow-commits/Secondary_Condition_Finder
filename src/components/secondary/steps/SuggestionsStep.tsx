@@ -42,6 +42,8 @@ export interface SuggestionsVaReferenceView {
   sourceLabel: string;
   environment: VaApiEnvironment | null;
   items: Array<{ id: string; name: string }>;
+  /** VA's reported current total; greater than items.length for a bounded prefix. */
+  totalAvailable: number;
 }
 
 export interface SuggestionsStepProps {
@@ -293,6 +295,8 @@ export function SuggestionsStep({ snapshot, vaReference }: SuggestionsStepProps)
                       live: vaReference.live,
                       sourceLabel: vaReference.sourceLabel,
                       environment: vaReference.environment,
+                      loadedCount: vaReference.items.length,
+                      totalAvailable: vaReference.totalAvailable,
                       match: vaReferenceMap.get(result.conditionId) ?? null,
                     }}
                   />

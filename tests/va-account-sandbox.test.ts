@@ -346,6 +346,72 @@ describe("account route consent, cookies, and CSRF", () => {
     expect(response.headers.get("cache-control")).toContain("no-store");
     expect(response.headers.get("set-cookie")).not.toMatch(/SYNTHETIC_ACCESS|SYNTHETIC_REFRESH|eyJ/);
   });
+  it("keeps a live connection through an abandoned or denied reconnect, then replaces it on success", async () => {
+    configure();
+    const store = loadAccountStore(config)!;
+    const handleCookie = accountCookieName("ratings");
+    const transactionCookie = accountTransactionCookieName("ratings");
+    await store.remove(`login-budget:${config.fingerprint}`);
+    const { handle } = await connected(store);
+
+    const startReconnect = async () => {
+      await store.remove(`login-budget:${config.fingerprint}`);
+      const response = await POST(
+        new NextRequest(`${env.APP_URL}/va-account/oauth/ratings/start`, {
+          method: "POST",
+          headers: {
+            origin: env.APP_URL,
+            "content-type": "application/x-www-form-urlencoded",
+            cookie: `${handleCookie}=${handle}`,
+          },
+          body: "consent=sandbox-read-only",
+        }),
+        args("start"),
+      );
+      expect(response.status).toBe(200);
+      // Starting the replacement leaves the live handle cookie alone.
+      expect(response.cookies.get(handleCookie)).toBeUndefined();
+      expect(await readAccountSession(config, store, handle)).not.toBeNull();
+      const authorizationUrl = new URL((await response.json()).authorizationUrl);
+      return { authorizationUrl, binding: response.cookies.get(transactionCookie)!.value };
+    };
+
+    // Abandoned at the VA page: no callback, and the old session is still live.
+    const abandoned = await startReconnect();
+    expect(await readAccountSession(config, store, handle)).not.toBeNull();
+
+    // Denied at VA: the callback fails, but the old session and handle remain.
+    const denied = await GET(
+      new NextRequest(
+        `${config.callbackUrl}?state=${abandoned.authorizationUrl.searchParams.get("state")}&error=access_denied`,
+        { headers: { cookie: `${transactionCookie}=${abandoned.binding}; ${handleCookie}=${handle}` } },
+      ),
+      args("callback"),
+    );
+    expect(denied.headers.get("location")).toBe(`${env.APP_URL}/va-account?notice=connection-failed`);
+    expect(denied.cookies.get(handleCookie)).toBeUndefined();
+    expect(await readAccountSession(config, store, handle)).not.toBeNull();
+
+    // A completed sign-in replaces the old session and revokes its tokens.
+    const successful = await startReconnect();
+    const token = await idToken(config, successful.authorizationUrl.searchParams.get("nonce")!);
+    const replacementProvider = provider(token);
+    const callback = await GET(
+      new NextRequest(
+        `${config.callbackUrl}?state=${successful.authorizationUrl.searchParams.get("state")}&code=synthetic-code`,
+        { headers: { cookie: `${transactionCookie}=${successful.binding}; ${handleCookie}=${handle}` } },
+      ),
+      args("callback"),
+    );
+    const replacement = callback.cookies.get(handleCookie)!.value;
+    expect(callback.headers.get("location")).toBe(`${env.APP_URL}/va-account?notice=connected`);
+    expect(replacement).toHaveLength(43);
+    expect(replacement).not.toBe(handle);
+    expect(await readAccountSession(config, store, handle)).toBeNull();
+    expect(await readAccountSession(config, store, replacement)).not.toBeNull();
+    expect(replacementProvider.mock.calls.some(([url]) => String(url) === config.revocationUrl)).toBe(true);
+  });
+
   it("keeps an existing connection live when a reconnect cannot start", async () => {
     configure();
     const store = loadAccountStore(config)!;

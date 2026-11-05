@@ -19,6 +19,10 @@ interface VaReferenceSummary {
   live: boolean;
   sourceLabel: string;
   environment: VaApiEnvironment | null;
+  /** Number of current terms actually loaded into the matching set. */
+  loadedCount: number;
+  /** VA's reported current total, which can exceed loadedCount. */
+  totalAvailable: number;
   match: VaConditionReferenceMatch | null;
 }
 
@@ -267,6 +271,10 @@ export function NonServiceConnectedConditionResult({ result, vaReference }: Prop
             <span className="font-medium text-slate-900">VBA terminology: </span>
             {vaReference.match.term.name}
             <span className="ml-2 font-mono text-xs text-muted">ID {vaReference.match.term.id}</span>
+          </p>
+        ) : vaReference.loadedCount < vaReference.totalAvailable ? (
+          <p className="mt-2 text-sm text-slate-700">
+            Only {vaReference.loadedCount} of {vaReference.totalAvailable} current VA reference terms were loaded, so an exact or curated VA terminology match could not be confirmed for this local diagnosis label.
           </p>
         ) : (
           <p className="mt-2 text-sm text-slate-700">

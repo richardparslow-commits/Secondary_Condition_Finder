@@ -2,7 +2,9 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 import { describe, expect, it } from "vitest";
+import { renderToStaticMarkup } from "react-dom/server";
 
+import { NonServiceConnectedConditionResult } from "@/components/NonServiceConnectedConditionResult";
 import {
   buildConditionVaReferenceMap,
   mapConditionToVaReference,
@@ -33,6 +35,36 @@ describe("VA reference product surfaces", () => {
       ),
     ).toEqual(expect.objectContaining({ term: items[0], matchKind: "alias" }));
     expect(buildConditionVaReferenceMap([{ id: "osa", name: "Sleep Apnea" }], items).get("osa")?.term).toEqual(items[1]);
+  });
+
+  it("does not claim there is no VA term when only a bounded prefix was loaded", () => {
+    const result = {
+      conditionId: "tinnitus",
+      conditionName: "Tinnitus",
+      bodySystem: "Auditory",
+      recommendation: null,
+    };
+    const render = (loadedCount: number, totalAvailable: number) => renderToStaticMarkup(
+      NonServiceConnectedConditionResult({
+        result,
+        vaReference: {
+          live: true,
+          sourceLabel: "VA sandbox reference",
+          environment: "sandbox",
+          loadedCount,
+          totalAvailable,
+          match: null,
+        },
+      }),
+    );
+
+    const partial = render(200, 201);
+    expect(partial).toContain("Only 200 of 201 current VA reference terms were loaded");
+    expect(partial).not.toContain("No exact or curated VA reference terminology match was found");
+
+    // Control: a complete live list still reports a genuine no-match.
+    const complete = render(201, 201);
+    expect(complete).toContain("No exact or curated VA reference terminology match was found");
   });
 
   it("routes every public-reference loader through one shared bounded cache", () => {
@@ -98,7 +130,9 @@ describe("VA reference product surfaces", () => {
     // travels to the client step as a prop; the reference join runs locally
     // over the browser-local selections.
     expect(shell).toContain("loadDisabilityReference");
+    expect(shell).toContain("totalAvailable: vaReference.totalAvailable");
     expect(suggestions).toContain("buildConditionVaReferenceMap");
+    expect(suggestions).toContain("loadedCount: vaReference.items.length");
     expect(suggestions).toContain("vaReferenceMap.get(result.conditionId)");
     const recommendCall = suggestions.slice(
       suggestions.indexOf("const recommendationsResult = recommend("),
