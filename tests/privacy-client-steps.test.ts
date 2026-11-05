@@ -52,11 +52,75 @@ describe("browser-side step logic (PRIV-01 stage 2)", () => {
     const result = applyDiagnosedStep(previous, form({ diagnosed: TINNITUS }), catalog);
     expect(result.ok).toBe(true);
     if (result.ok) {
-      // The whole record is replaced, matching the legacy cookie write: going
-      // back to Step 1 invalidates downstream selections.
+      // With no retained diagnosis, the earlier record's downstream selections
+      // are cleared, matching the legacy cookie write.
       expect(result.context).toEqual({ diagnosedConditionIds: [TINNITUS] });
       expect(result.next).toBe("/secondary/service-connected");
     }
+  });
+
+  it("keeps years, ratings, and P&T for diagnoses retained across an edit", () => {
+    const current = context({
+      diagnosedConditionIds: [PTSD, TINNITUS],
+      serviceConnectedConditionIds: [PTSD, TINNITUS],
+      ratingsByConditionId: { [PTSD]: 100, [TINNITUS]: 70 },
+      permanentAndTotalConditionIds: [PTSD],
+      conditionTimeline: {
+        [PTSD]: { onsetYear: 2005, diagnosisYear: 2007 },
+        [TINNITUS]: { onsetYear: 2012, diagnosisYear: 2014 },
+      },
+      documentsShared: true,
+      medications: ["SSRI"],
+    });
+
+    const step1 = applyDiagnosedStep(current, form({ diagnosed: PTSD }), catalog);
+    expect(step1.ok).toBe(true);
+    if (!step1.ok) return;
+    expect(step1.context).toEqual({
+      diagnosedConditionIds: [PTSD],
+      ratingsByConditionId: { [PTSD]: 100 },
+      permanentAndTotalConditionIds: [PTSD],
+      conditionTimeline: { [PTSD]: { onsetYear: 2005, diagnosisYear: 2007 } },
+    });
+    expect(step1.context).not.toHaveProperty("medications");
+    expect(step1.context).not.toHaveProperty("documentsShared");
+
+    const step2 = applyServiceConnectedStep(
+      { version: 1, ...step1.context },
+      form({ [`serviceConnected-${PTSD}`]: "yes" }),
+      catalog,
+    );
+    expect(step2.ok).toBe(true);
+    if (!step2.ok) return;
+    expect(step2.context).toMatchObject({
+      diagnosedConditionIds: [PTSD],
+      serviceConnectedConditionIds: [PTSD],
+      ratingsByConditionId: { [PTSD]: 100 },
+      permanentAndTotalConditionIds: [PTSD],
+      conditionTimeline: { [PTSD]: { onsetYear: 2005, diagnosisYear: 2007 } },
+    });
+
+    const step3 = applyRatingsStep(
+      { version: 1, ...step2.context },
+      form({ [`rating-${PTSD}`]: "100-pt" }),
+      catalog,
+    );
+    expect(step3.ok).toBe(true);
+    if (!step3.ok) return;
+    expect(step3.context.conditionTimeline).toEqual({
+      [PTSD]: { onsetYear: 2005, diagnosisYear: 2007 },
+    });
+
+    const step4 = applyDocumentsStep(
+      { version: 1, ...step3.context },
+      form({ documentsShared: "yes" }),
+      catalog,
+    );
+    expect(step4.ok).toBe(true);
+    if (!step4.ok) return;
+    expect(step4.context.conditionTimeline).toEqual({
+      [PTSD]: { onsetYear: 2005, diagnosisYear: 2007 },
+    });
   });
 
   it("Step 2 preserves partial answers as a draft and holds the user on the step", () => {
