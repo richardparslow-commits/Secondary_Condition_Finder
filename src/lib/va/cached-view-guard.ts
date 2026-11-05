@@ -255,7 +255,13 @@ const accreditedRepresentativeCacheItemDto = z.strictObject({
   organization: boundedText(MAX_LABEL_LENGTH).nullable().optional(),
   accreditationType: z.enum(ACCREDITED_REP_TYPE_VALUES),
   specializations: z.array(boundedText(MAX_LABEL_LENGTH)).max(20).nullable().optional(),
-  phone: boundedText(50).nullable().optional(),
+  // Upstream treats phone as free-form display text and may include multiple
+  // numbers, extensions, or evening hours. A 50-character cap rejected a real
+  // live record (66 characters) as a fresh view, so the cache layer replaced
+  // every representative with the empty fallback (Heal
+  // s7-long-phone-rep-hides-all-reps-1). Keep it bounded, but at the same
+  // display-text budget as the other representative fields.
+  phone: boundedText(MAX_LABEL_LENGTH).nullable().optional(),
   website: cachedUrl.nullable().optional(),
   address: boundedText(500).nullable().optional(),
   // Must match the upstream item rule, ZIP+4 included. A cache DTO that
