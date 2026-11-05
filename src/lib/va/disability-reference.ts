@@ -118,7 +118,9 @@ export async function loadDisabilityReference(
         configuredEnvironment,
       );
       return {
-        cacheable: true,
+        // A partial page set is still useful to show, but caching it would keep
+        // the missing terms hidden for the full TTL after VA recovers.
+        cacheable: result.incomplete !== true,
         view: {
           items,
           totalAvailable,

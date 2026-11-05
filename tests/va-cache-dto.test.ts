@@ -313,6 +313,33 @@ it("serves and caches a long live disability list by trimming to the DTO bound",
   expect(mocks.disabilities).toHaveBeenCalledTimes(1);
 });
 
+it("does not cache a disability list whose later page failed", async () => {
+  mocks.disabilities.mockResolvedValue({
+    success: true,
+    incomplete: true,
+    source: "va-sandbox-api",
+    environment: "sandbox",
+    data: {
+      items: [{ id: 1, name: "Asthma", endDateTime: null }],
+      totalItems: 120,
+      totalPages: 2,
+    },
+  });
+  const kv = createFakeSharedKv();
+  vi.stubGlobal("fetch", vi.fn(async (_input: unknown, init?: RequestInit) => kv.respond(init)));
+
+  const view = await loadDisabilityReference();
+  expect(view.source).toBe("va-sandbox-api");
+  expect(view.items).toEqual([{ id: "1", name: "Asthma" }]);
+  expect(view.totalAvailable).toBe(120);
+  expect(readVaReferenceCache("disabilities:sandbox")).toBeNull();
+  expect(kv.get("va:ref:disabilities:sandbox")).toBeNull();
+
+  clearVaReferenceCache();
+  await loadDisabilityReference();
+  expect(mocks.disabilities).toHaveBeenCalledTimes(2);
+});
+
 it("binds omitted radius/type to the same effective params without caching the ZIP", async () => {
   mocks.representatives.mockResolvedValue({ success: true, source: "va-sandbox-api", environment: "sandbox", data: { data: [repItem] } });
   const kv = createFakeSharedKv();
