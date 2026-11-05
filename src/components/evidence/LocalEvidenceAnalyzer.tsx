@@ -53,6 +53,8 @@ import {
 
 interface Props {
   conditionTerms: string[];
+  /** Lets the containing step guard navigation while pasted text is unanalyzed. */
+  onUnsavedPastedTextChange?: (hasUnsavedText: boolean) => void;
 }
 
 import { evidenceDepthStorageKey } from "@/lib/secondary-workflow/local-state";
@@ -171,7 +173,7 @@ function withUserLocatorPrefix(segments: EvidenceTextSegment[], prefix: string):
   }));
 }
 
-export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
+export function LocalEvidenceAnalyzer({ conditionTerms, onUnsavedPastedTextChange }: Props) {
   const [credential, setCredential] = useState<ClinicianCredential>("unknown");
   const [locatorPrefix, setLocatorPrefix] = useState("");
   const [pastedSourceName, setPastedSourceName] = useState("Pasted medical record text");
@@ -183,6 +185,10 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
   const [depth, setDepth] = useState<EvidenceAnalysisDepth>("standard");
   const [pending, setPending] = useState<PendingEvidenceFile[]>([]);
   const [ocrProgress, setOcrProgress] = useState<string | null>(null);
+  const hasUnanalyzedPastedText = pastedText.trim().length > 0;
+  useEffect(() => {
+    onUnsavedPastedTextChange?.(hasUnanalyzedPastedText);
+  }, [hasUnanalyzedPastedText, onUnsavedPastedTextChange]);
   const limits: EvidenceLimits = EVIDENCE_DEPTH_LIMITS[depth];
   // The depth select stays usable while a run is in flight (a scan can take
   // minutes), so a commit must use the limits active *now*. `commitAnalysis`
@@ -1176,6 +1182,9 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
           Paste exact extracted text (up to {formatLimitChars(limits.textChars)} characters)
           <textarea className="mt-1 min-h-40 w-full px-3 py-2" maxLength={limits.textChars} value={pastedText} onChange={(event) => setPastedText(event.target.value)} placeholder="Paste text exactly as it appears in the source record." />
         </label>
+        {hasUnanalyzedPastedText && (
+          <p className="mt-2 text-sm text-amber-800">This pasted text has not been analyzed yet. It will be discarded if you leave this step before analyzing it.</p>
+        )}
         <button type="button" className="ui-button mt-3" onClick={analyzePastedText}>Analyze pasted text locally</button>
       </div>
 
