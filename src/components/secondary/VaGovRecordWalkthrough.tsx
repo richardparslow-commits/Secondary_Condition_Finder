@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useSyncExternalStore } from "react";
+import { useCallback, useMemo, useState, useSyncExternalStore } from "react";
 
 import { vaGovRecordWalkthroughStorageKey } from "@/lib/secondary-workflow/local-state";
 import {
@@ -65,23 +65,26 @@ function parseLocatedState(raw: string): Record<string, true> {
   }
 }
 
-function writeLocatedState(state: Record<string, true>): void {
+function writeLocatedState(state: Record<string, true>): boolean {
   try {
     window.sessionStorage.setItem(vaGovRecordWalkthroughStorageKey, JSON.stringify(state));
-    window.dispatchEvent(new Event(CHANGE_EVENT));
   } catch {
-    // Browser storage may be unavailable. Progress remains display-only
-    // without moving any state to the server.
+    // Browser storage may be unavailable. The caller keeps progress in memory
+    // for this view and says it cannot be saved beyond the current tab state.
+    return false;
   }
+  window.dispatchEvent(new Event(CHANGE_EVENT));
+  return true;
 }
 
-function clearLocatedState(): void {
+function clearLocatedState(): boolean {
   try {
     window.sessionStorage.removeItem(vaGovRecordWalkthroughStorageKey);
-    window.dispatchEvent(new Event(CHANGE_EVENT));
   } catch {
-    // Browser storage may be unavailable; nothing to clear in that case.
+    return false;
   }
+  window.dispatchEvent(new Event(CHANGE_EVENT));
+  return true;
 }
 
 function StepLink({ step }: { step: VaGovWalkthroughStep }) {
@@ -101,19 +104,40 @@ export function VaGovRecordWalkthrough({ exportFilename = "va-gov-records-downlo
   // so they survive navigating away and back within the workflow, and are
   // cleared by Finish Review / Start a new review. Never in cookies or on the server.
   const snapshot = useSyncExternalStore(subscribe, getSnapshot, () => EMPTY_SNAPSHOT);
-  const located = useMemo(() => parseLocatedState(snapshot), [snapshot]);
+  const storedLocated = useMemo(() => parseLocatedState(snapshot), [snapshot]);
+  // If the browser refuses the sessionStorage write (quota, privacy settings),
+  // keep checks in this component's memory so the step still visibly checks and
+  // the counter stays truthful for this view. The notice below explains that
+  // this fallback progress will not survive leaving or reloading the page.
+  const [memoryLocated, setMemoryLocated] = useState<Record<string, true> | null>(null);
+  const [storageUnavailable, setStorageUnavailable] = useState(false);
+  const located = memoryLocated ?? storedLocated;
 
   const toggle = useCallback(
     (stepId: string) => {
       const next = { ...located };
       if (next[stepId]) delete next[stepId];
       else next[stepId] = true;
-      writeLocatedState(next);
+      if (writeLocatedState(next)) {
+        setMemoryLocated(null);
+        setStorageUnavailable(false);
+      } else {
+        setMemoryLocated(next);
+        setStorageUnavailable(true);
+      }
     },
     [located],
   );
 
-  const clearAll = useCallback(() => clearLocatedState(), []);
+  const clearAll = useCallback(() => {
+    if (clearLocatedState()) {
+      setMemoryLocated(null);
+      setStorageUnavailable(false);
+    } else {
+      setMemoryLocated({});
+      setStorageUnavailable(true);
+    }
+  }, []);
 
   const checkedCount = useMemo(
     () => VA_GOV_WALKTHROUGH_STEPS.reduce((sum, step) => (located[step.id] ? sum + 1 : sum), 0),
@@ -161,6 +185,16 @@ export function VaGovRecordWalkthrough({ exportFilename = "va-gov-records-downlo
         <strong>{checkedCount}</strong> of <strong>{VA_GOV_WALKTHROUGH_STEPS.length}</strong> steps marked
         complete{allChecked ? " — you should now have your record PDF." : "."}
       </p>
+
+      {storageUnavailable && (
+        <p
+          role="alert"
+          className="mt-2 rounded-lg border border-amber-300 bg-amber-50 p-3 text-sm text-amber-950"
+        >
+          Browser storage is unavailable or full. Your checked steps stay visible for this view, but
+          progress cannot be saved after you leave or reload this page.
+        </p>
+      )}
 
       <ol className="mt-4 space-y-4">
         {VA_GOV_WALKTHROUGH_STEPS.map((step, index) => {

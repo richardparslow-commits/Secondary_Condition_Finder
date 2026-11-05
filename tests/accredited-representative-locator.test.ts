@@ -216,6 +216,73 @@ describe("accredited representative locator (Idea #8)", () => {
     expect(cachedView.items).toHaveLength(3);
   });
 
+  it("keeps every representative when one live record has a long free-form phone line", async () => {
+    // Heal s7-long-phone-rep-hides-all-reps-1: the upstream schema accepts a
+    // phone as free-form display text, but the cache DTO capped it at 50
+    // characters. One record with two numbers and evening hours made the fresh
+    // live view fail its own trust check, so the cache layer served the empty
+    // degraded view and the finder reported an outage for a directory that had
+    // answered. The long phone is now inside the DTO bound and the whole list
+    // survives the write/read cycle.
+    vi.stubEnv("VA_API_ENABLED", "true");
+    vi.stubEnv("VA_API_ENV", "sandbox");
+    vi.stubEnv("VA_ACCREDITED_REP_ENABLED", "true");
+    vi.stubEnv("VA_ACCREDITED_REP_SANDBOX_API_KEY", "test-key");
+    clearAccreditedRepresentativeCache();
+    const longPhone =
+      "(202) 555-0100 ext. 4411, evenings (202) 555-0199 ext. 12";
+    // Guards the regression: this value must be over the old 50-character cap
+    // but within the display-text bound, or the test would not exercise the bug.
+    expect(longPhone.length).toBeGreaterThan(50);
+    expect(longPhone.length).toBeLessThanOrEqual(200);
+    const fetchSpy = vi.fn().mockResolvedValue(
+      vaJsonResponse({
+        data: [
+          ...directoryPayload.data,
+          {
+            id: "rep-3",
+            name: "Ordinary Representative Three",
+            accreditationType: "VSO",
+            phone: "555-0103",
+            zip: "12345",
+            distanceMiles: 3.1,
+          },
+          {
+            id: "rep-4",
+            name: "Long Phone Representative",
+            accreditationType: "VSO",
+            phone: longPhone,
+            zip: "12345",
+            distanceMiles: 4.2,
+          },
+        ],
+      }),
+    );
+    vi.stubGlobal("fetch", fetchSpy);
+
+    const view = await loadAccreditedRepresentatives({ zip: "12345", radiusMiles: 25 });
+
+    expect(view.live).toBe(true);
+    expect(view.items).toHaveLength(4);
+    expect(view.items.map((item) => item.name)).toEqual(
+      expect.arrayContaining([
+        "Jane Representative",
+        "Sam Attorney",
+        "Ordinary Representative Three",
+        "Long Phone Representative",
+      ]),
+    );
+    expect(view.items.find((item) => item.id === "rep-4")?.phone).toBe(longPhone);
+
+    // The accepted view is cacheable, so a repeated lookup is a hit rather than
+    // another upstream call or a degraded empty result.
+    const cachedView = await loadAccreditedRepresentatives({ zip: "12345", radiusMiles: 25 });
+    expect(cachedView.cacheStatus).toBe("hit");
+    expect(cachedView.items).toHaveLength(4);
+    expect(cachedView.items.find((item) => item.id === "rep-4")?.phone).toBe(longPhone);
+    expect(fetchSpy).toHaveBeenCalledTimes(1);
+  });
+
   it("keeps the nearest representatives when a busy ZIP returns more than the cache bound", async () => {
     // Heal s1-many-reps-shown-as-none-found-1: a 250-record answer exceeded the
     // 200-item cache DTO, the fresh view failed its own trust policy, and the

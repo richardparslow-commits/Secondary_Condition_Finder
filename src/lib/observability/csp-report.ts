@@ -37,8 +37,16 @@ export interface CspViolationEvent {
   sampleFingerprint: string | null;
 }
 
-/** Maximum accepted raw report body size. Larger bodies are counted, not parsed. */
-export const CSP_REPORT_MAX_BODY_BYTES = 4_096;
+/**
+ * Maximum accepted raw report body size. Larger bodies are counted, not parsed.
+ *
+ * A Reporting API entry repeats the full `originalPolicy`, document URL and
+ * user agent, so five benign `img-src` entries can exceed 4 KiB even though a
+ * single classic report fits comfortably. The 8 KiB bound keeps that batch
+ * parseable while still refusing an unbounded hostile payload (Heal
+ * s2-reporting-api-csp-batch-dropped-as-oversized-1).
+ */
+export const CSP_REPORT_MAX_BODY_BYTES = 8_192;
 
 const DIRECTIVE_PATTERN = /^[a-z][a-z0-9-]{0,99}$/;
 const SAMPLE_FINGERPRINT_PATTERN = /^[0-9a-f]{1,40}$/;
