@@ -147,10 +147,20 @@ export function VaFormsFinder({ initialView }: Props) {
         <h2 id="forms-results-heading" className="text-xl font-semibold">
           Search results
         </h2>
-        <p className="mt-1 text-sm text-slate-600">
-          {reference.items.length} result{reference.items.length === 1 ? "" : "s"} shown for{" "}
-          {reference.query}.
-        </p>
+        {/* The loader blanks the query only when it refuses identifier-like
+            input before searching. Rendering that blank as "0 results shown
+            for ." made the refusal look like a completed empty search (Heal
+            s6-identifier-search-reads-as-empty-result-1). */}
+        {reference.query ? (
+          <p className="mt-1 text-sm text-slate-600">
+            {reference.items.length} result{reference.items.length === 1 ? "" : "s"} shown for{" "}
+            {reference.query}.
+          </p>
+        ) : (
+          <p className="mt-1 text-sm text-slate-600">
+            No search was run. Revise the query above and search again.
+          </p>
+        )}
         {reference.items.length >= VA_FORMS_MAX_ITEMS && (
           <p className="mt-1 text-xs text-slate-600">
             Showing the first {VA_FORMS_MAX_ITEMS} matches. Refine the search to narrow the list.
