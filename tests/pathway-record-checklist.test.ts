@@ -8,6 +8,7 @@ import {
   buildPathwayRecordChecklist,
   combineChecklistWithSummary,
   formatPathwayRecordChecklist,
+  pathwayChecklistItemKey,
 } from "@/lib/secondary-workflow/pathway-record-checklist";
 import type { Recommendation } from "@/lib/engine/types";
 
@@ -214,6 +215,21 @@ describe("Pathway-specific medical record checklist", () => {
     expect(exported.toLowerCase()).not.toContain("guarantee");
     expect(exported.toLowerCase()).not.toContain("eligible");
     expect(exported.toLowerCase()).not.toContain("approved");
+  });
+
+  it("preserves records marked as located in the text export", () => {
+    const groups = buildPathwayRecordChecklist([result("sleep-apnea", "Sleep Apnea", "Respiratory System", rec())]);
+    const group = groups[0];
+    const pathway = group.pathways[0];
+    const first = pathway.items[0];
+    const second = pathway.items[1];
+    const located: Record<string, true> = {
+      [pathwayChecklistItemKey(group, pathway, first)]: true,
+    };
+
+    const exported = formatPathwayRecordChecklist(groups, located);
+    expect(exported).toContain(`[x] ${first.record}`);
+    expect(exported).toContain(`[ ] ${second.record}`);
   });
 
   it("combines the checklist with the consultation summary for one export", () => {

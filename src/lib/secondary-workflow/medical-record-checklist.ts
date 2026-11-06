@@ -25,6 +25,13 @@ export interface ChecklistGroup {
   items: ChecklistItem[];
 }
 
+export function medicalChecklistItemKey(
+  group: Pick<ChecklistGroup, "conditionId">,
+  item: Pick<ChecklistItem, "gap">,
+): string {
+  return `${group.conditionId}:${item.gap}`;
+}
+
 /**
  * Heuristic category from gap text. Keyword-based, conservative, never
  * asserts a clinical finding — only groups existing authored gaps for
@@ -81,7 +88,10 @@ export function buildMedicalRecordChecklist(
     .sort((a, b) => a.conditionName.localeCompare(b.conditionName));
 }
 
-export function formatMedicalRecordChecklist(groups: ChecklistGroup[]): string {
+export function formatMedicalRecordChecklist(
+  groups: ChecklistGroup[],
+  checked: ReadonlySet<string> = new Set(),
+): string {
   const lines: string[] = [
     "MEDICAL RECORD CHECKLIST — SECONDARY CONDITION FINDER",
     "Generated in this browser for research preparation (not a VA determination).",
@@ -98,7 +108,8 @@ export function formatMedicalRecordChecklist(groups: ChecklistGroup[]): string {
     lines.push(`Consensus: ${group.etiologicalConsensus}; Primaries: ${group.contributingPrimaryNames.join(", ")}`);
     lines.push("-".repeat(48));
     for (const item of group.items) {
-      lines.push(`[ ] ${item.gap}  [${item.category}]`);
+      const marker = checked.has(medicalChecklistItemKey(group, item)) ? "x" : " ";
+      lines.push(`[${marker}] ${item.gap}  [${item.category}]`);
       lines.push(`    Why: ${item.why}`);
     }
     lines.push("");

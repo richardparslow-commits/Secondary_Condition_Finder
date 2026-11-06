@@ -13,6 +13,7 @@ import {
   buildPathwayRecordChecklist,
   combineChecklistWithSummary,
   formatPathwayRecordChecklist,
+  pathwayChecklistItemKey,
 } from "@/lib/secondary-workflow/pathway-record-checklist";
 import type { NonServiceConnectedConditionResult } from "@/lib/secondary-workflow/suggestions";
 
@@ -74,6 +75,11 @@ function parseLocatedState(raw: string): Record<string, true> {
   }
 }
 
+/** Read the current tab-local pathway selections for another in-browser export. */
+export function readPathwayRecordChecklistState(): Record<string, true> {
+  return parseLocatedState(getSnapshot());
+}
+
 function writeLocatedState(state: Record<string, true>): void {
   try {
     window.sessionStorage.setItem(pathwayRecordChecklistStorageKey, JSON.stringify(state));
@@ -107,7 +113,7 @@ export function PathwayRecordChecklist({ results, summaryRecommendations }: Prop
     for (const group of groups) {
       for (const pathway of group.pathways) {
         for (const item of pathway.items) {
-          if (located[`${group.conditionId}:${pathway.primaryId}:${item.record}`]) count += 1;
+          if (located[pathwayChecklistItemKey(group, pathway, item)]) count += 1;
         }
       }
     }
@@ -135,12 +141,12 @@ export function PathwayRecordChecklist({ results, summaryRecommendations }: Prop
   const checkedCount = validKeyCount;
 
   function downloadChecklist() {
-    downloadText(formatPathwayRecordChecklist(groups), "pathway-medical-record-checklist.txt");
+    downloadText(formatPathwayRecordChecklist(groups, located), "pathway-medical-record-checklist.txt");
   }
 
   function downloadChecklistWithSummary() {
     if (!summaryRecommendations) return;
-    const checklist = formatPathwayRecordChecklist(groups);
+    const checklist = formatPathwayRecordChecklist(groups, located);
     const summary = formatClaimSummary(summaryRecommendations, []);
     downloadText(combineChecklistWithSummary(checklist, summary), "pathway-checklist-with-consultation-summary.txt");
   }
@@ -217,7 +223,7 @@ export function PathwayRecordChecklist({ results, summaryRecommendations }: Prop
                   </div>
                   <div className="mt-3 space-y-2">
                     {pathway.items.map((item) => {
-                      const key = `${group.conditionId}:${pathway.primaryId}:${item.record}`;
+                      const key = pathwayChecklistItemKey(group, pathway, item);
                       const isChecked = Boolean(located[key]);
                       return (
                         <label key={key} className="flex gap-3 rounded-lg border border-slate-200 bg-white p-3 text-sm hover:bg-slate-50">

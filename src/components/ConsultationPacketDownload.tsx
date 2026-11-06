@@ -8,6 +8,7 @@ import {
   buildActionPlan,
   formatActionPlan,
 } from "@/lib/secondary-workflow/action-plan";
+import { readPathwayRecordChecklistState } from "@/components/secondary/PathwayRecordChecklist";
 import {
   buildPathwayRecordChecklist,
   formatPathwayRecordChecklist,
@@ -29,12 +30,19 @@ interface ConsultationPacketDownloadProps {
   catalogById: Map<string, CatalogCondition>;
   /** Rating-guide symptom notes marked in Step 6, keyed `conditionId:prompt`. */
   ratingSelections?: Record<string, boolean>;
+  /** Medical-checklist items marked as located in Step 6, shared with the panel. */
+  medicalChecklistChecked?: ReadonlySet<string>;
 }
 
 type PacketSection = {
   heading: string;
   content: string;
 };
+
+interface ChecklistSelections {
+  medical?: ReadonlySet<string>;
+  pathway?: Readonly<Record<string, true>>;
+}
 
 const PACKET_FILENAME = "secondary-condition-consultation-packet.txt";
 
@@ -43,6 +51,7 @@ export function buildPacketSections(
   results: NonServiceConnectedConditionResult[],
   catalogById: Map<string, CatalogCondition>,
   ratingSelections: Record<string, boolean> = {},
+  checklistSelections: ChecklistSelections = {},
 ): PacketSection[] {
   const sections: PacketSection[] = [];
 
@@ -55,7 +64,7 @@ export function buildPacketSections(
   if (pathwayGroups.length > 0) {
     sections.push({
       heading: "2. Pathway-specific record checklist (Prepare Evidence)",
-      content: formatPathwayRecordChecklist(pathwayGroups),
+      content: formatPathwayRecordChecklist(pathwayGroups, checklistSelections.pathway),
     });
   }
 
@@ -63,7 +72,7 @@ export function buildPacketSections(
   if (recordGroups.length > 0) {
     sections.push({
       heading: "3. Medical record checklist by category",
-      content: formatMedicalRecordChecklist(recordGroups),
+      content: formatMedicalRecordChecklist(recordGroups, checklistSelections.medical),
     });
   }
 
@@ -100,10 +109,19 @@ export function ConsultationPacketDownload({
   results,
   catalogById,
   ratingSelections,
+  medicalChecklistChecked,
 }: ConsultationPacketDownloadProps) {
-  const sections = buildPacketSections(recommendations, results, catalogById, ratingSelections);
-
   function downloadPacket() {
+    const sections = buildPacketSections(
+      recommendations,
+      results,
+      catalogById,
+      ratingSelections,
+      {
+        medical: medicalChecklistChecked,
+        pathway: readPathwayRecordChecklistState(),
+      },
+    );
     const divider = "=".repeat(72);
     const tableOfContents = sections
       .map((section) => `  ${section.heading}`)
