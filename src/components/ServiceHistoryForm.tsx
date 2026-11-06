@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import {
   normalizeServiceHistoryDraft,
@@ -9,6 +9,7 @@ import {
   SERVICE_HISTORY_MESSAGES,
   type ServiceHistoryFailureCode,
 } from "@/lib/presumptive/browser-history";
+import { useBrowserServiceHistory } from "@/lib/presumptive/use-browser-history";
 
 interface ServiceBranchOption {
   code: string;
@@ -32,24 +33,64 @@ export function ServiceHistoryForm({
   serviceBranchNotice,
 }: ServiceHistoryFormProps) {
   const router = useRouter();
-  const [selected, setSelected] = useState<string[]>([]);
-  const [selectedBranches, setSelectedBranches] = useState<string[]>([]);
+  const { history: savedHistory, ready } = useBrowserServiceHistory();
+  const [locationEdits, setLocationEdits] = useState<string[] | null>(null);
+  const [branchEdits, setBranchEdits] = useState<string[] | null>(null);
   const [error, setError] = useState<ServiceHistoryFailureCode | null>(null);
+  const serviceStartRef = useRef<HTMLInputElement>(null);
+  const serviceEndRef = useRef<HTMLInputElement>(null);
+  const restoredDatesRef = useRef(false);
+
+  const availableLocations = new Set(locations);
+  const availableBranches = new Set(
+    serviceBranches.map((branch) => branch.code),
+  );
+  // Returning from the results view mounts a fresh form. Derive the initial
+  // controls from the record this tab saved on the previous check so Back does
+  // not silently erase what the visitor already confirmed (Heal
+  // s6-service-history-lost-on-back-1). An edit takes over once the visitor
+  // changes a control, so a late storage read cannot overwrite it.
+  const selected =
+    locationEdits ??
+    (savedHistory?.locations ?? []).filter((location) =>
+      availableLocations.has(location),
+    );
+  const selectedBranches =
+    branchEdits ??
+    (savedHistory?.serviceBranchCodes ?? []).filter((code) =>
+      availableBranches.has(code),
+    );
+
+  // Dates stay uncontrolled so the quick-start templates can write them. This
+  // effect only writes the restored values into those inputs; it does not set
+  // React state.
+  useEffect(() => {
+    if (!ready || restoredDatesRef.current || !savedHistory) return;
+    restoredDatesRef.current = true;
+    if (serviceStartRef.current) {
+      serviceStartRef.current.value = savedHistory.serviceStart ?? "";
+    }
+    if (serviceEndRef.current) {
+      serviceEndRef.current.value = savedHistory.serviceEnd ?? "";
+    }
+  }, [ready, savedHistory]);
 
   function toggle(location: string) {
-    setSelected((current) =>
-      current.includes(location)
-        ? current.filter((item) => item !== location)
-        : [...current, location],
-    );
+    setLocationEdits((current) => {
+      const base = current ?? selected;
+      return base.includes(location)
+        ? base.filter((item) => item !== location)
+        : [...base, location];
+    });
   }
 
   function toggleBranch(code: string) {
-    setSelectedBranches((current) =>
-      current.includes(code)
-        ? current.filter((item) => item !== code)
-        : [...current, code],
-    );
+    setBranchEdits((current) => {
+      const base = current ?? selectedBranches;
+      return base.includes(code)
+        ? base.filter((item) => item !== code)
+        : [...base, code];
+    });
   }
 
   /**
@@ -168,6 +209,7 @@ export function ServiceHistoryForm({
           <label className="block">
             <span className="text-sm text-slate-700">Start date</span>
             <input
+              ref={serviceStartRef}
               type="date"
               name="serviceStart"
               defaultValue=""
@@ -177,6 +219,7 @@ export function ServiceHistoryForm({
           <label className="block">
             <span className="text-sm text-slate-700">End date</span>
             <input
+              ref={serviceEndRef}
               type="date"
               name="serviceEnd"
               defaultValue=""
