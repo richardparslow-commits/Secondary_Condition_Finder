@@ -61,6 +61,16 @@ describe("DD-214 → presumptive hand-off (Phase 4 item D)", () => {
     expect(adapted.history?.locations).toEqual(["Korean Demilitarized Zone"]);
   });
 
+  it("validates edited dates instead of the extraction's original dates", () => {
+    const ex = parseDd214Text(DD214_TEXT, limits);
+    const adapted = dd214ToServiceHistoryFields(ex, {
+      serviceStart: "1971-05-24",
+      serviceEnd: "1968-09-12",
+    });
+    expect(adapted.validationCode).toBe("date-order");
+    expect(adapted.history).toBeNull();
+  });
+
   it("the adapted history matches the Agent Orange presumptive category", () => {
     const ex = parseDd214Text(DD214_TEXT, limits);
     const { history } = dd214ToServiceHistoryFields(ex);
