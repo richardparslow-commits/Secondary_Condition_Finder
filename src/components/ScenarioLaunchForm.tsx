@@ -6,7 +6,7 @@ import { useState } from "react";
 import scenarios from "../../data/demo-scenarios.json";
 import { useClientCorpus } from "@/lib/client-corpus";
 import type { BrowserWorkflowContextInput } from "@/lib/secondary-workflow/browser-context";
-import { clearSecondaryWorkflowLocalState } from "@/lib/secondary-workflow/local-state";
+import { clearSecondaryWorkflowAuxiliaryState } from "@/lib/secondary-workflow/local-state";
 import { parseWorkflowState } from "@/lib/secondary-workflow/state";
 import { workflowSessionToQueryParams } from "@/lib/secondary-workflow/transport";
 import { useBrowserWorkflowContext } from "@/lib/secondary-workflow/use-browser-context";
@@ -34,18 +34,34 @@ export function ScenarioLaunchForm({ scenarioId }: { scenarioId: string }) {
       return;
     }
 
+    const workflow = scenario.workflow as unknown as TransportableWorkflowState;
     try {
-      const workflow = scenario.workflow as unknown as TransportableWorkflowState;
       // Parse through the same current-workflow contract used by the wizard
       // before persisting any synthetic demo state.
       parseWorkflowState(workflowSessionToQueryParams(workflow), corpus.conditions);
-      // Replace any prior review completely, including local evidence excerpts.
-      clearSecondaryWorkflowLocalState(window.sessionStorage);
-      persist(workflow as BrowserWorkflowContextInput);
     } catch {
       setError("This scenario's state failed validation and was not loaded.");
       return;
     }
+
+    try {
+      // Save first. If storage refuses the write, the review already open and
+      // its supporting state are untouched.
+      persist(workflow as BrowserWorkflowContextInput);
+    } catch {
+      setError("This scenario could not be saved. Your existing review is unchanged.");
+      return;
+    }
+
+    try {
+      // The new context is safely stored. Clear only the old supporting state,
+      // not the context that was just written.
+      clearSecondaryWorkflowAuxiliaryState(window.sessionStorage);
+    } catch {
+      setError("The scenario was saved, but the previous local evidence could not be cleared. Reload before continuing.");
+      return;
+    }
+
     setError(null);
     router.push("/secondary/suggestions");
   }

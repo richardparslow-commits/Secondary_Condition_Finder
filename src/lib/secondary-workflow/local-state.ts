@@ -34,10 +34,30 @@ export type RemovableStorage = Pick<Storage, "removeItem">;
  * Raw evidence/checklist
  * content is never copied or sent anywhere while clearing.
  */
-export function clearSecondaryWorkflowLocalState(storage: RemovableStorage): void {
+const auxiliaryLocalStorageKeys = secondaryWorkflowLocalStorageKeys.filter(
+  (key) => key !== browserWorkflowContextStorageKey,
+);
+
+function clearLocalStorageKeys(
+  storage: RemovableStorage,
+  keys: readonly string[],
+): void {
   let failed = false;
-  for (const key of secondaryWorkflowLocalStorageKeys) {
+  for (const key of keys) {
     try { storage.removeItem(key); } catch { failed = true; }
   }
   if (failed) throw new Error("Browser-local cleanup could not be confirmed.");
+}
+
+export function clearSecondaryWorkflowLocalState(storage: RemovableStorage): void {
+  clearLocalStorageKeys(storage, secondaryWorkflowLocalStorageKeys);
+}
+
+/**
+ * Clears the workflow's supporting browser-local keys without deleting the
+ * workflow context. Scenario launch persists the new context first, then uses
+ * this so a failed save cannot erase the review already open.
+ */
+export function clearSecondaryWorkflowAuxiliaryState(storage: RemovableStorage): void {
+  clearLocalStorageKeys(storage, auxiliaryLocalStorageKeys);
 }
