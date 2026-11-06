@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import scenarios from "../../../data/demo-scenarios.json";
 import { DisclaimerFooter } from "@/components/Disclaimer";
+import { ScenarioCorpusNotice } from "@/components/ScenarioCorpusNotice";
 import { ScenarioLaunchForm } from "@/components/ScenarioLaunchForm";
 
 // The manual-review route matrix requires a route title or an explicit
@@ -31,6 +32,8 @@ export default function ScenariosPage() {
         the browser and writes it to the tab-scoped workflow record; no workflow
         state is submitted to the server or placed in the URL.
       </p>
+
+      <ScenarioCorpusNotice />
 
       <div className="mt-6 space-y-4">
         {scenarios.map((scenario) => (
