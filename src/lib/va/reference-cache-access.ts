@@ -6,6 +6,7 @@ import {
   clearVaReferenceCache,
   readVaReferenceCache,
   VA_REFERENCE_CACHE_TTL_MS,
+  vaReferenceCacheGeneration,
   writeVaReferenceCache,
 } from "./reference-cache";
 import {
@@ -68,7 +69,10 @@ export function vaReferenceNamespacePrefix(
 export function clearVaReferenceNamespace(
   namespace: VaReferenceNamespace,
 ): number {
-  return clearVaReferenceCache(vaReferenceNamespacePrefix(namespace)).cleared;
+  const prefix = vaReferenceNamespacePrefix(namespace);
+  const cleared = clearVaReferenceCache(prefix).cleared;
+  clearVaReferenceInFlight(prefix);
+  return cleared;
 }
 
 /**
@@ -106,6 +110,23 @@ const inFlightLoads = new Map<string, Promise<unknown>>();
 /** Test helper: drop in-process single-flight bookkeeping. */
 export function clearVaReferenceInFlightForTests(): void {
   inFlightLoads.clear();
+}
+
+/**
+ * Drops in-process single-flight entries that a clear covers. Deleting the
+ * promise does not cancel it; the generation check in `withVaReferenceCache`
+ * keeps its eventual result from repopulating either cache tier, and a new
+ * caller after the clear starts a fresh load instead of joining it.
+ */
+export function clearVaReferenceInFlight(prefix?: string): number {
+  let cleared = 0;
+  for (const key of [...inFlightLoads.keys()]) {
+    if (!prefix || key.startsWith(prefix)) {
+      inFlightLoads.delete(key);
+      cleared += 1;
+    }
+  }
+  return cleared;
 }
 
 /**
@@ -193,6 +214,9 @@ export async function withVaReferenceCache<T>(
   const asHit = (view: T): T => (decorateHit ? decorateHit(view) : view);
   const trusted = (view: unknown): boolean =>
     cacheTrust ? cacheTrust.accepts(view) : true;
+  const generation = vaReferenceCacheGeneration();
+  const generationIsCurrent = (): boolean =>
+    vaReferenceCacheGeneration() === generation;
 
   if (!enabled) {
     const { view } = await load();
@@ -215,7 +239,7 @@ export async function withVaReferenceCache<T>(
   /** Resolves a local/shared miss through the loader. */
   const resolveMiss = async (): Promise<T> => {
     const sharedCached = await readVaSharedReferenceCache<T>(cacheKey);
-    if (sharedCached && trusted(sharedCached)) {
+    if (sharedCached && trusted(sharedCached) && generationIsCurrent()) {
       // Promote so the next request is served without another KV round-trip.
       writeVaReferenceCache(cacheKey, sharedCached);
       return asHit(sharedCached);
@@ -229,7 +253,7 @@ export async function withVaReferenceCache<T>(
     const lease = singleFlight ? await acquireVaSharedFetchLease(cacheKey) : null;
     if (lease?.status === "contended") {
       const published = await awaitVaSharedFetchOutcome<T>(cacheKey);
-      if (published && trusted(published)) {
+      if (published && trusted(published) && generationIsCurrent()) {
         writeVaReferenceCache(cacheKey, published);
         return asHit(published);
       }
@@ -250,7 +274,7 @@ export async function withVaReferenceCache<T>(
           });
           return cacheTrust ? cacheTrust.degradedView() : view;
         }
-        if (cacheable) {
+        if (cacheable && generationIsCurrent()) {
           writeVaReferenceCache(cacheKey, view);
           // Awaited (not fire-and-forget): a floating promise can be torn down with
           // the request before the write lands, silently leaving the shared cache
@@ -258,7 +282,9 @@ export async function withVaReferenceCache<T>(
           // winner's value is observable, or contenders miss within their bounded
           // wait and duplicate the upstream request. The 750 ms KV deadline bounds
           // the added latency.
-          await writeVaSharedReferenceCache(cacheKey, view, ttlMs);
+          if (generationIsCurrent()) {
+            await writeVaSharedReferenceCache(cacheKey, view, ttlMs);
+          }
         }
         return view;
       } finally {

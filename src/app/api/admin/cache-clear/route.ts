@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 
 import { auditLog } from "@/lib/observability/audit";
 import { authorizeBearerRequest } from "@/lib/security/bearer-auth";
+import { clearVaReferenceInFlight } from "@/lib/va/reference-cache-access";
 import {
   clearVaReferenceCache,
   vaReferenceCacheScope,
@@ -65,6 +66,7 @@ export async function POST(request: Request) {
   const prefix = url.searchParams.get("prefix") || undefined;
 
   const { cleared } = clearVaReferenceCache(prefix);
+  clearVaReferenceInFlight(prefix);
   const cacheScope = vaReferenceCacheScope();
 
   const sharedConfigured = isVaSharedCacheConfigured();
