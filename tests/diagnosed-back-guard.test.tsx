@@ -15,14 +15,16 @@ import {
   render,
   screen,
 } from "@testing-library/react";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { DiagnosedStep } from "@/components/secondary/steps/DiagnosedStep";
 
 const mocks = vi.hoisted(() => ({
   push: vi.fn(),
+  replace: vi.fn(),
   persist: vi.fn(),
   clear: vi.fn(),
+  search: new URLSearchParams(),
 }));
 
 const CONDITIONS = [
@@ -52,8 +54,8 @@ vi.mock("next/link", () => ({
 }));
 
 vi.mock("next/navigation", () => ({
-  useRouter: () => ({ push: mocks.push }),
-  useSearchParams: () => new URLSearchParams(),
+  useRouter: () => ({ push: mocks.push, replace: mocks.replace }),
+  useSearchParams: () => mocks.search,
 }));
 
 vi.mock("@/lib/client-corpus", () => ({
@@ -73,12 +75,15 @@ vi.mock("@/lib/secondary-workflow/use-browser-context", () => ({
   }),
 }));
 
-afterEach(() => {
-  cleanup();
+beforeEach(() => {
+  mocks.search = new URLSearchParams();
   mocks.push.mockClear();
+  mocks.replace.mockClear();
   mocks.persist.mockClear();
   mocks.clear.mockClear();
 });
+
+afterEach(cleanup);
 
 describe("leaving Step 1 with changed checkbox selections", () => {
   it("blocks Back and keeps the tick until an explicit discard", () => {
@@ -116,5 +121,17 @@ describe("leaving Step 1 with changed checkbox selections", () => {
 
     expect(click.defaultPrevented).toBe(false);
     expect(screen.queryByRole("alert")).toBeNull();
+  });
+
+  it("replaces the validation entry when the fixed selection succeeds", () => {
+    mocks.search = new URLSearchParams("error=select-diagnosed");
+    render(<DiagnosedStep />);
+
+    fireEvent.click(screen.getAllByRole("checkbox")[0]);
+    fireEvent.click(screen.getByRole("button", { name: /Continue to Step 2/ }));
+
+    expect(mocks.persist).toHaveBeenCalled();
+    expect(mocks.replace).toHaveBeenCalledWith("/secondary/service-connected");
+    expect(mocks.push).not.toHaveBeenCalled();
   });
 });
