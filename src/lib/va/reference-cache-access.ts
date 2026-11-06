@@ -10,7 +10,7 @@ import {
   writeVaReferenceCache,
 } from "./reference-cache";
 import {
-  readVaSharedReferenceCache,
+  readVaSharedReferenceCacheSnapshot,
   writeVaSharedReferenceCache,
 } from "./reference-shared-cache";
 import {
@@ -238,7 +238,9 @@ export async function withVaReferenceCache<T>(
 
   /** Resolves a local/shared miss through the loader. */
   const resolveMiss = async (): Promise<T> => {
-    const sharedCached = await readVaSharedReferenceCache<T>(cacheKey);
+    const sharedSnapshot = await readVaSharedReferenceCacheSnapshot<T>(cacheKey);
+    const sharedCached = sharedSnapshot.value;
+    const sharedEpoch = sharedSnapshot.epoch;
     if (sharedCached && trusted(sharedCached) && generationIsCurrent()) {
       // Promote so the next request is served without another KV round-trip.
       writeVaReferenceCache(cacheKey, sharedCached);
@@ -283,7 +285,11 @@ export async function withVaReferenceCache<T>(
           // wait and duplicate the upstream request. The 750 ms KV deadline bounds
           // the added latency.
           if (generationIsCurrent()) {
-            await writeVaSharedReferenceCache(cacheKey, view, ttlMs);
+            // The shared write is conditional on the epoch observed before the
+            // fetch, so a clear handled by another instance cannot be undone by
+            // this in-flight load. Passing `undefined` keeps the default env;
+            // the observed epoch is the fifth argument.
+            await writeVaSharedReferenceCache(cacheKey, view, ttlMs, undefined, sharedEpoch);
           }
         }
         return view;

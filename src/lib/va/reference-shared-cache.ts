@@ -108,6 +108,25 @@ export const VA_SHARED_CACHE_EPOCH_DEFAULT = "0";
 export const VA_SHARED_CACHE_ENVELOPE_VERSION = 2;
 
 /**
+ * Publish a value only while the store-wide epoch is still the one the loader
+ * observed before it started fetching.
+ *
+ * Checking in application code and then issuing an unconditional `SET` leaves a
+ * clear race: the epoch can advance after the check but before the write, and a
+ * pre-clear value would then be stamped with the new epoch and become readable
+ * again. The comparison and write therefore happen in one Redis operation. A
+ * straggler from before the clear returns 0 instead of overwriting a newer
+ * post-clear entry.
+ */
+export const VA_SHARED_CACHE_CONDITIONAL_WRITE_SCRIPT = [
+  "local current = redis.call('GET', KEYS[1])",
+  "if current == false then current = '0' end",
+  "if current ~= ARGV[1] then return 0 end",
+  "redis.call('SET', KEYS[2], ARGV[2], 'EX', ARGV[3])",
+  "return 1",
+].join("\n");
+
+/**
  * Finite write/cardinality budget: at most `VA_SHARED_KEY_WRITE_MAX_PER_WINDOW`
  * admitted writes per namespace per window. Every resident entry was created by
  * an admitted write, so resident keys per namespace are bounded by
@@ -417,13 +436,30 @@ export function vaSharedCacheReplyBytes(
   return replyBytesFor(epoch, serialized);
 }
 
-export async function readVaSharedReferenceCache<T>(
+export interface VaSharedReferenceCacheRead<T> {
+  value: T | null;
+  /**
+   * The epoch observed in the same atomic `MGET` as `value`. A miss still
+   * carries the current epoch, so a loader can make its later write conditional
+   * on the invalidation state it actually observed before fetching.
+   */
+  epoch: string | null;
+}
+
+/**
+ * Read a shared-cache value together with the epoch it was validated against.
+ *
+ * Keeping the epoch beside the value is what lets a later write distinguish
+ * "the store changed while I was fetching" from "the store is unchanged". The
+ * plain reader remains the value-only view for callers that do not write.
+ */
+export async function readVaSharedReferenceCacheSnapshot<T>(
   key: string,
   env: Env = process.env as Env,
-): Promise<T | null> {
-  if (!isAllowedVaSharedCacheKey(key)) return null;
+): Promise<VaSharedReferenceCacheRead<T>> {
+  if (!isAllowedVaSharedCacheKey(key)) return { value: null, epoch: null };
   const config = loadVaSharedCacheConfig(env);
-  if (!config) return null;
+  if (!config) return { value: null, epoch: null };
 
   const redisKey = prefixedKey(key, config.prefix);
   const epochKey = prefixedKey(VA_SHARED_CACHE_EPOCH_KEY, config.prefix);
@@ -432,40 +468,55 @@ export async function readVaSharedReferenceCache<T>(
     // round-trip: a read can never see a pre-bump epoch together with a
     // post-bump value (or vice versa).
     const { ok, payload } = await postRedisCommand(config, ["MGET", epochKey, redisKey]);
-    if (!ok || !payload) return null;
+    if (!ok || !payload) return { value: null, epoch: null };
     if (payload.error) {
       sharedLogger.warn("va shared cache read error");
-      return null;
+      return { value: null, epoch: null };
     }
     const pair = payload.result;
-    if (!Array.isArray(pair) || pair.length !== 2) return null;
+    if (!Array.isArray(pair) || pair.length !== 2) return { value: null, epoch: null };
     const currentEpoch = parseEpoch(pair[0]);
-    if (currentEpoch === null) return null; // unreadable marker: fail closed
+    if (currentEpoch === null) return { value: null, epoch: null }; // unreadable marker: fail closed
     const raw = pair[1];
-    if (raw == null) return null;
+    if (raw == null) return { value: null, epoch: currentEpoch };
     // Only a JSON object envelope with the expected version marker *and* the
     // currently observed epoch is a typed cache hit. A bare string or a
     // pre-invalidation envelope is discarded rather than cast into the
     // caller's view type.
-    if (typeof raw !== "string") return null;
+    if (typeof raw !== "string") return { value: null, epoch: currentEpoch };
     try {
       const parsed: unknown = JSON.parse(raw);
-      if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return null;
+      if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+        return { value: null, epoch: currentEpoch };
+      }
       const envelope = parsed as { envelopeVersion?: unknown; epoch?: unknown; value?: unknown };
-      if (envelope.envelopeVersion !== VA_SHARED_CACHE_ENVELOPE_VERSION) return null;
-      if (typeof envelope.epoch !== "string" || envelope.epoch !== currentEpoch) return null;
-      if (!envelope.value || typeof envelope.value !== "object" || Array.isArray(envelope.value)) return null;
-      return envelope.value as T;
+      if (envelope.envelopeVersion !== VA_SHARED_CACHE_ENVELOPE_VERSION) {
+        return { value: null, epoch: currentEpoch };
+      }
+      if (typeof envelope.epoch !== "string" || envelope.epoch !== currentEpoch) {
+        return { value: null, epoch: currentEpoch };
+      }
+      if (!envelope.value || typeof envelope.value !== "object" || Array.isArray(envelope.value)) {
+        return { value: null, epoch: currentEpoch };
+      }
+      return { value: envelope.value as T, epoch: currentEpoch };
     } catch {
-      return null;
+      return { value: null, epoch: currentEpoch };
     }
   } catch (error) {
     const isTimeout = error instanceof Error && error.name === "AbortError";
     sharedLogger.warn("va shared cache read failed", {
       outcome: isTimeout ? "timeout" : "network-error",
     });
-    return null;
+    return { value: null, epoch: null };
   }
+}
+
+export async function readVaSharedReferenceCache<T>(
+  key: string,
+  env: Env = process.env as Env,
+): Promise<T | null> {
+  return (await readVaSharedReferenceCacheSnapshot<T>(key, env)).value;
 }
 
 export async function writeVaSharedReferenceCache<T>(
@@ -473,6 +524,13 @@ export async function writeVaSharedReferenceCache<T>(
   value: T,
   ttlMs: number = VA_REFERENCE_CACHE_TTL_MS,
   env: Env = process.env as Env,
+  /**
+   * Epoch observed before the fetch. When supplied, the write is conditional on
+   * the store still being at that epoch; `null` means the writer could not
+   * observe the store and must fail closed. Omit for callers that intentionally
+   * write against the current epoch.
+   */
+  expectedEpoch?: string | null,
 ): Promise<void> {
   const namespace = vaSharedCacheKeyNamespace(key);
   if (namespace === null) {
@@ -483,10 +541,18 @@ export async function writeVaSharedReferenceCache<T>(
   if (!config) return;
   if (!value || typeof value !== "object" || Array.isArray(value)) return;
 
-  // The envelope must carry the epoch that is current at write time, so an
-  // unreadable marker skips the write (fail closed) instead of persisting a
-  // value no reader could accept.
-  const epoch = await readSharedCacheEpoch(config, env);
+  // The envelope must carry a readable epoch, so an unreadable marker skips the
+  // write (fail closed) instead of persisting a value no reader could accept.
+  // When the loader observed an epoch before fetching, use that value both as
+  // the envelope stamp and as the conditional-write expectation.
+  if (
+    expectedEpoch !== undefined &&
+    (expectedEpoch === null || !/^\d{1,20}$/.test(expectedEpoch))
+  ) {
+    sharedLogger.warn("va shared cache write skipped — epoch unavailable");
+    return;
+  }
+  const epoch = expectedEpoch === undefined ? await readSharedCacheEpoch(config, env) : expectedEpoch;
   if (epoch === null) {
     sharedLogger.warn("va shared cache write skipped — epoch unavailable");
     return;
@@ -520,7 +586,33 @@ export async function writeVaSharedReferenceCache<T>(
 
   const ttlSec = Math.max(1, Math.floor(ttlMs / 1000));
   const redisKey = prefixedKey(key, config.prefix);
+  const epochKey = prefixedKey(VA_SHARED_CACHE_EPOCH_KEY, config.prefix);
   try {
+    if (expectedEpoch !== undefined) {
+      const { ok, payload } = await postRedisCommand(config, [
+        "EVAL",
+        VA_SHARED_CACHE_CONDITIONAL_WRITE_SCRIPT,
+        "2",
+        epochKey,
+        redisKey,
+        epoch,
+        serialized,
+        String(ttlSec),
+      ]);
+      if (!ok) {
+        sharedLogger.warn("va shared cache write http error");
+        return;
+      }
+      if (payload?.error) {
+        sharedLogger.warn("va shared cache write error");
+        return;
+      }
+      if (payload?.result !== 1 && payload?.result !== "1") {
+        sharedLogger.warn("va shared cache write skipped — epoch changed");
+      }
+      return;
+    }
+
     const { ok, payload } = await postRedisCommand(config, [
       "SET",
       redisKey,
