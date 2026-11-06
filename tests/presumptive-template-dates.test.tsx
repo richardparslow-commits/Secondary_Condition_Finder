@@ -13,7 +13,10 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { ServiceHistoryForm } from "@/components/ServiceHistoryForm";
 import { ServiceHistoryTemplateLibrary } from "@/components/presumptive/ServiceHistoryTemplateLibrary";
-import { readPresumptiveHistory } from "@/lib/presumptive/browser-history";
+import {
+  clearPresumptiveLocalState,
+  readPresumptiveHistory,
+} from "@/lib/presumptive/browser-history";
 import { PRESUMPTIVE_TEMPLATES } from "@/lib/presumptive/templates";
 
 const h = vi.hoisted(() => ({ push: vi.fn() }));
@@ -25,9 +28,12 @@ vi.mock("next/navigation", () => ({
 const TEMPLATE = PRESUMPTIVE_TEMPLATES.find(
   (template) => template.id === "agent-orange-vietnam",
 );
+const BURN_PIT_TEMPLATE = PRESUMPTIVE_TEMPLATES.find(
+  (template) => template.id === "pact-burn-pit-southwest-asia",
+);
 
 beforeEach(() => {
-  window.sessionStorage.clear();
+  clearPresumptiveLocalState(window.sessionStorage);
   h.push.mockClear();
   vi.useFakeTimers();
 });
@@ -36,7 +42,7 @@ afterEach(() => {
   cleanup();
   vi.clearAllTimers();
   vi.useRealTimers();
-  window.sessionStorage.clear();
+  clearPresumptiveLocalState(window.sessionStorage);
 });
 
 describe("quick-start templates apply their service dates", () => {
@@ -79,6 +85,53 @@ describe("quick-start templates apply their service dates", () => {
       locations: ["Republic of Vietnam"],
       serviceStart: TEMPLATE.serviceStart,
       serviceEnd: TEMPLATE.serviceEnd,
+    });
+  });
+
+  it("clears a previous end date when the next template runs to present", () => {
+    if (!TEMPLATE || !BURN_PIT_TEMPLATE) {
+      throw new Error("Template fixtures are missing");
+    }
+
+    render(
+      <>
+        <ServiceHistoryTemplateLibrary templates={PRESUMPTIVE_TEMPLATES} />
+        <ServiceHistoryForm
+          locations={["Republic of Vietnam", "Iraq"]}
+          serviceBranches={[]}
+          serviceBranchSourceLabel="test reference"
+          serviceBranchNotice="test notice"
+        />
+      </>
+    );
+
+    fireEvent.click(
+      screen.getByRole("button", {
+        name: `Apply template ${TEMPLATE.label}`,
+      }),
+    );
+    const start = screen.getByLabelText(/Start date/) as HTMLInputElement;
+    const end = screen.getByLabelText(/End date/) as HTMLInputElement;
+    expect(end.value).toBe(TEMPLATE.serviceEnd);
+
+    fireEvent.click(
+      screen.getByRole("button", {
+        name: `Apply template ${BURN_PIT_TEMPLATE.label}`,
+      }),
+    );
+
+    expect(start.value).toBe(BURN_PIT_TEMPLATE.serviceStart);
+    expect(end.value).toBe("");
+
+    fireEvent.click(
+      screen.getByRole("button", { name: /Show presumptive conditions/i }),
+    );
+
+    expect(h.push).toHaveBeenCalledWith("/presumptive/results");
+    expect(readPresumptiveHistory(window.sessionStorage)).toMatchObject({
+      locations: ["Iraq"],
+      serviceStart: BURN_PIT_TEMPLATE.serviceStart,
+      serviceEnd: null,
     });
   });
 });
