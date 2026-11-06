@@ -1,5 +1,6 @@
 import type { CatalogCondition, ConditionCatalog } from "./schema";
 
+const byNameCache = new WeakMap<ConditionCatalog, Map<string, CatalogCondition>>();
 const byIdEntriesCache = new WeakMap<ConditionCatalog, [string, CatalogCondition][]>();
 
 /** Collapses case, trims, and squeezes internal whitespace. */
@@ -30,19 +31,25 @@ export function findCondition(
   const normalized = normalizeConditionName(input);
   if (!normalized) return null;
 
-  return (
-    catalog.find((condition) => {
-      const candidates = [
+  let index = byNameCache.get(catalog);
+  if (!index) {
+    index = new Map();
+    for (const condition of catalog) {
+      const names = [
         condition.id,
         condition.id.replace(/-/g, " "),
         condition.name,
         ...condition.aliases,
       ];
-      return candidates.some(
-        (candidate) => normalizeConditionName(candidate) === normalized,
-      );
-    }) ?? null
-  );
+      for (const name of names) {
+        const key = normalizeConditionName(name);
+        // Keep the first catalog match, including aliases shared by custom catalogs.
+        if (!index.has(key)) index.set(key, condition);
+      }
+    }
+    byNameCache.set(catalog, index);
+  }
+  return index.get(normalized) ?? null;
 }
 
 /** Conditions grouped by body system, both sorted for stable display. */
