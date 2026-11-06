@@ -24,6 +24,9 @@ export const secondaryWorkflowLocalStorageKeys = [
   evidenceDepthStorageKey,
 ] as const;
 
+type SecondaryWorkflowLocalStorageKey =
+  (typeof secondaryWorkflowLocalStorageKeys)[number];
+
 export type RemovableStorage = Pick<Storage, "removeItem">;
 
 /**
@@ -34,16 +37,19 @@ export type RemovableStorage = Pick<Storage, "removeItem">;
  * Raw evidence/checklist
  * content is never copied or sent anywhere while clearing.
  */
-const auxiliaryLocalStorageKeys = secondaryWorkflowLocalStorageKeys.filter(
-  (key) => key !== browserWorkflowContextStorageKey,
-);
+const auxiliaryLocalStorageKeys: readonly SecondaryWorkflowLocalStorageKey[] =
+  secondaryWorkflowLocalStorageKeys.filter(
+    (key) => key !== browserWorkflowContextStorageKey,
+  );
 
 function clearLocalStorageKeys(
   storage: RemovableStorage,
-  keys: readonly string[],
+  keys: readonly SecondaryWorkflowLocalStorageKey[],
 ): void {
   let failed = false;
-  for (const key of keys) {
+  const selectedKeys = new Set(keys);
+  for (const key of secondaryWorkflowLocalStorageKeys) {
+    if (!selectedKeys.has(key)) continue;
     try { storage.removeItem(key); } catch { failed = true; }
   }
   if (failed) throw new Error("Browser-local cleanup could not be confirmed.");
