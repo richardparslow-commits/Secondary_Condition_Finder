@@ -7,6 +7,13 @@ export interface Dd214AdapterResult {
   warnings: string[];
 }
 
+export interface Dd214AdapterOptions {
+  locationsOverride?: string[];
+  /** Edited review values. Omitted means the extracted date is used. */
+  serviceStart?: string | null;
+  serviceEnd?: string | null;
+}
+
 /**
  * Converts a browser-local DD-214 extraction into a ServiceHistory draft.
  * The draft is never persisted until the Veteran confirms it on the
@@ -16,15 +23,21 @@ export interface Dd214AdapterResult {
  */
 export function dd214ToServiceHistoryFields(
   extraction: Dd214Extraction,
-  options?: { locationsOverride?: string[] },
+  options?: Dd214AdapterOptions,
 ): Dd214AdapterResult {
   const fields = extraction.fields;
   const locations = (options?.locationsOverride ?? fields.locations ?? []).map((s) => s.trim()).filter(Boolean);
   const draft: ServiceHistory = {
     serviceBranchCodes: fields.serviceBranchCodes,
     locations: locations.length > 0 ? locations : [""],
-    serviceStart: fields.serviceStart ?? null,
-    serviceEnd: fields.serviceEnd ?? null,
+    serviceStart:
+      options?.serviceStart !== undefined
+        ? options.serviceStart
+        : (fields.serviceStart ?? null),
+    serviceEnd:
+      options?.serviceEnd !== undefined
+        ? options.serviceEnd
+        : (fields.serviceEnd ?? null),
   };
 
   // Use schema validation to map to the existing presumptive error codes.

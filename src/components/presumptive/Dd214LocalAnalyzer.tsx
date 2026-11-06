@@ -520,8 +520,16 @@ export function Dd214LocalAnalyzer({ locations }: Props) {
     setEditedLocations((prev) => prev.filter((value) => value !== location));
   }
 
+  // The preview must validate the same values Confirm will save. Passing the
+  // edited dates here makes the check line react as soon as they are out of
+  // order instead of checking only the extraction's original dates (Heal
+  // s7-dd214-edited-dates-unchecked-1).
   const adapterPreview = extraction
-    ? dd214ToServiceHistoryFields(extraction, { locationsOverride: catalogLocations })
+    ? dd214ToServiceHistoryFields(extraction, {
+        locationsOverride: catalogLocations,
+        serviceStart: editedStart || null,
+        serviceEnd: editedEnd || null,
+      })
     : null;
 
   return (
