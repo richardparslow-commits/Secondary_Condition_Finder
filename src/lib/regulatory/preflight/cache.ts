@@ -107,6 +107,26 @@ export function writeRegulatoryPreflightCache(
   writeRegulatorySnapshot(cache, cacheDir);
 }
 
+/**
+ * Advances latest only when it is still the snapshot the caller started from,
+ * while always retaining the run's own snapshot for its review lock. A slow
+ * verified run must not replace a newer verified run that finished while it was
+ * waiting on its sources (Heal s6-overlapping-preflight-rewinds-anchor).
+ */
+export function writeRegulatoryPreflightCacheIfLatest(
+  cache: RegulatoryPreflightCache,
+  expectedLatestSnapshotId: string | null,
+  cacheDir = defaultCacheDir(),
+): boolean {
+  const current = readLatestRegulatoryPreflightCache(cacheDir);
+  if ((current?.snapshot.snapshotId ?? null) !== expectedLatestSnapshotId) {
+    writeRegulatorySnapshot(cache, cacheDir);
+    return false;
+  }
+  writeRegulatoryPreflightCache(cache, cacheDir);
+  return true;
+}
+
 export function regulatoryPreflightCacheDirectory(): string {
   return defaultCacheDir();
 }

@@ -149,6 +149,33 @@ describe("regulatory preflight overlap", () => {
     expect(readRegulatorySnapshotById(failedA.snapshotId, cacheDir)).toEqual(failedA);
   });
 
+  it("does not let a slow verified run replace a newer verified latest", async () => {
+    const t0 = verifiedT0();
+    writeRegulatoryPreflightCache(cacheFor(t0), cacheDir);
+
+    const pending = deferred<RegulatoryPreflightResult>();
+    mocks.runRegulatoryPreflight.mockReturnValueOnce(pending.promise);
+    const slowReview = prepareRegulatoryReview({ now: "2026-08-19T06:00:00.000Z" });
+
+    const verifiedB = snapshotFor();
+    writeRegulatoryPreflightCache(cacheFor(verifiedB), cacheDir);
+
+    const verifiedA = snapshotFor({
+      snapshotId: "reg-verified-a-00000001",
+      previousSnapshotId: t0.snapshotId,
+      startedAt: "2026-08-19T06:00:00.000Z",
+      finishedAt: "2026-08-19T06:00:05.000Z",
+    });
+    pending.resolve(resultFor(verifiedA));
+
+    const prepared = await slowReview;
+    expect(prepared.snapshot.snapshotId).toBe(verifiedA.snapshotId);
+    expect(readLatestRegulatoryPreflightCache(cacheDir)?.snapshot.snapshotId).toBe(
+      verifiedB.snapshotId,
+    );
+    expect(readRegulatorySnapshotById(verifiedA.snapshotId, cacheDir)).toEqual(verifiedA);
+  });
+
   it("leaves latest verified when a slow run hits an internal error", async () => {
     const t0 = verifiedT0();
     writeRegulatoryPreflightCache(cacheFor(t0), cacheDir);
