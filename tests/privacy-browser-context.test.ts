@@ -15,6 +15,7 @@ import {
 import { loadKbGraph } from "@/lib/kb/graph";
 import { loadKnowledgeBase } from "@/lib/kb/load";
 import {
+  BrowserWorkflowContextTooLargeError,
   browserWorkflowContextIsEmpty,
   browserWorkflowContextStorageKey,
   clearBrowserWorkflowContext,
@@ -127,13 +128,13 @@ describe("browser-local workflow context (PRIV-01)", () => {
     const tooMany = Array.from({ length: MAX_CONTEXT_ITEMS + 1 }, (_, i) => `med-${i}`);
     expect(() =>
       writeBrowserWorkflowContext(storage, { medications: tooMany }),
-    ).toThrow();
+    ).toThrow(BrowserWorkflowContextTooLargeError);
     expect(storage.size).toBe(0);
     expect(() =>
       writeBrowserWorkflowContext(storage, {
         history: ["x".repeat(MAX_CONTEXT_ITEM_LENGTH + 1)],
       }),
-    ).toThrow();
+    ).toThrow(BrowserWorkflowContextTooLargeError);
     expect(storage.size).toBe(0);
   });
 

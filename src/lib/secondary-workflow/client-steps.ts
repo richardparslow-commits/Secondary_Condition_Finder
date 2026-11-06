@@ -1,6 +1,10 @@
 import type { ConditionCatalog } from "@/lib/catalog/schema";
 
-import type { BrowserWorkflowContext, BrowserWorkflowContextInput } from "./browser-context";
+import {
+  BrowserWorkflowContextTooLargeError,
+  type BrowserWorkflowContext,
+  type BrowserWorkflowContextInput,
+} from "./browser-context";
 import {
   MAX_CONTEXT_ITEM_LENGTH,
   MAX_CONTEXT_ITEMS,
@@ -30,7 +34,8 @@ import type { SecondaryValidationCode } from "./validation";
 /**
  * Outcome of persisting a successful step result. A failed write must never
  * navigate: the caller holds the user on the step with `context-too-large`
- * instead (the browser-local successor of the cookie-budget guidance).
+ * for a bounded-schema overflow or `storage-unavailable` when the browser
+ * blocks or refuses the write.
  */
 export type StepPersistenceOutcome =
   | { ok: true; next: string }
@@ -47,8 +52,14 @@ export function persistStepContext(
   try {
     persist(context);
     return { ok: true };
-  } catch {
-    return { ok: false, code: "context-too-large" };
+  } catch (error) {
+    return {
+      ok: false,
+      code:
+        error instanceof BrowserWorkflowContextTooLargeError
+          ? "context-too-large"
+          : "storage-unavailable",
+    };
   }
 }
 

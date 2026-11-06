@@ -7,6 +7,7 @@ export const SECONDARY_VALIDATION_MESSAGES = {
   "select-documents": "Choose whether document availability should be reflected in the checklist.",
   "invalid-context": "Optional medication and treatment context is limited to 20 entries per field and 160 characters per entry.",
   "context-too-large": "There is not enough room in the secure session to save this many selections and context entries. Remove some medications, treatments, or history entries (or narrow your selections) and continue.",
+  "storage-unavailable": "This browser could not save your progress locally. Check that storage is enabled for this site and that the browser is not out of space, then try again. Your previous saved review is unchanged.",
 } as const;
 
 export type SecondaryValidationCode = keyof typeof SECONDARY_VALIDATION_MESSAGES;

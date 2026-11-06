@@ -345,7 +345,8 @@ Client-side validation for the secondary workflow uses these codes (defined in `
 | `invalid-rating` | Use a whole-number rating from 0 through 100, or choose I prefer not to answer. | `applyRatingsStep` |
 | `select-documents` | Choose whether document availability should be reflected in the checklist. | `applyDocumentsStep` |
 | `invalid-context` | Optional medication and treatment context is limited to 20 entries per field and 160 characters per entry. | `applyDocumentsStep` |
-| `context-too-large` | There is not enough room to save this many selections and context entries. | Browser-local persistence failure (`persistStepResult`) |
+| `context-too-large` | There is not enough room to save this many selections and context entries. | Schema-bound overflow (`persistStepResult`) |
+| `storage-unavailable` | This browser could not save your progress locally. Check that storage is enabled for this site and that the browser is not out of space, then try again. | Blocked or refused browser storage (`persistStepResult`) |
 
 Codes render inline on the current step (`role="alert"`). Only cross-step guidance (`no-service-connected`, `select-diagnosed`) still travels as a `?error=<code>` URL parameter, with no context in the URL.
 
@@ -364,7 +365,7 @@ Codes render inline on the current step (`role="alert"`). Only cross-step guidan
 | `applyRatingsStep` | `rating-{id}` (`0`–`100` integer or `"decline"`) | Writes diagnosed + service-connected + ratings; next `/secondary/upload` | `no-service-connected`, `select-rating`, `invalid-rating` |
 | `applyDocumentsStep` | `documentsShared` (`"yes"`/`"no"`), `medications`, `treatments`, `history` (newline-separated, max 20 entries × 160 chars), `symptomIds`, `onsetYear-{id}`, `diagnosisYear-{id}` | Writes the full bounded context; next `/secondary/suggestions` | `select-documents`, `invalid-context`, `select-diagnosed` |
 
-**Persistence** — `src/lib/secondary-workflow/browser-context.ts` (Zod-bounded, versioned record) in `sessionStorage` under `secondary-condition-finder:secondary-workflow:v1`. A failed write never navigates: `persistStepResult` maps it to `context-too-large` and the step holds the user in place.
+**Persistence** — `src/lib/secondary-workflow/browser-context.ts` (Zod-bounded, versioned record) in `sessionStorage` under `secondary-condition-finder:secondary-workflow:v1`. A failed write never navigates: `persistStepResult` maps a schema-bound overflow to `context-too-large` and a blocked or refused storage write to `storage-unavailable`; the step holds the user in place.
 
 **Completion** — the Finish Review / Start a new review controls in `src/components/secondary/SecondaryWorkflowCompletionActions.tsx` clear every registered browser-local key (`clearSecondaryWorkflowLocalState`) and only then navigate to `/secondary` or `/secondary/diagnosed`. A failed cleanup surfaces an error instead of navigating. The controls also carry the shared privacy-request pointer (`src/components/privacy/PrivacyDeletionCue.tsx`, destination `PRIVACY_INTAKE_PATH`), because the data a deletion request reaches is not the browser-local state these controls clear; the presumptive track's saved-service-history control renders the same pointer, so the destination and the distinction are stated once.
 

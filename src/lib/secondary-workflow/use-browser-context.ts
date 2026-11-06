@@ -102,8 +102,9 @@ export function useBrowserWorkflowContext(): BrowserWorkflowContextHandle {
   const ready = useSyncExternalStore(subscribeToContext, readReadySnapshot, serverNotReady);
 
   // Out-of-bounds writes throw by design (see browser-context.ts) before
-  // touching storage; the caller maps the failure to the `context-too-large`
-  // guidance exactly like the retired cookie-budget path did.
+  // touching storage; blocked storage writes also throw before the record
+  // changes. Callers map them to `context-too-large` or `storage-unavailable`
+  // and hold the user on the step.
   const persist = useCallback((input: BrowserWorkflowContextInput) => {
     writeBrowserWorkflowContext(window.sessionStorage, input);
     snapshot = readBrowserWorkflowContext(window.sessionStorage);
