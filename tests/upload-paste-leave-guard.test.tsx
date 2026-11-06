@@ -135,4 +135,20 @@ describe("leaving Step 4 with unanalyzed pasted text", () => {
     expect(click.defaultPrevented).toBe(false);
     expect(screen.queryByText(/Pasted text has not been analyzed/)).toBeNull();
   });
+
+  it("persists the documents answer as soon as it changes", () => {
+    render(<UploadStep />);
+
+    fireEvent.click(
+      screen.getByLabelText(/Yes, I reviewed or have documents available/i),
+    );
+
+    expect(mocks.persist).toHaveBeenCalledWith(
+      expect.objectContaining({
+        documentsShared: true,
+        diagnosedConditionIds: [CONDITION.id],
+      }),
+    );
+    expect(mocks.persist.mock.calls[0]?.[0]).not.toHaveProperty("version");
+  });
 });

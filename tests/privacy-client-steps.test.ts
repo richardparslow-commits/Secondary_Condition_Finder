@@ -293,6 +293,36 @@ describe("browser-side step logic (PRIV-01 stage 2)", () => {
     }
   });
 
+  it("Step 3 keeps Step 4 context when the veteran returns to upload", () => {
+    const current = context({
+      diagnosedConditionIds: [PTSD],
+      serviceConnectedConditionIds: [PTSD],
+      ratingsByConditionId: { [PTSD]: 70 },
+      documentsShared: true,
+      medications: ["SSRI"],
+      treatments: ["CPAP"],
+      history: ["smoking"],
+      symptomIds: ["recurrent-headache"],
+      conditionTimeline: { [PTSD]: { onsetYear: 2005 } },
+    });
+
+    const result = applyRatingsStep(
+      current,
+      form({ [`rating-${PTSD}`]: "70" }),
+      catalog,
+    );
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.context).toMatchObject({
+      documentsShared: true,
+      medications: ["SSRI"],
+      treatments: ["CPAP"],
+      history: ["smoking"],
+      symptomIds: ["recurrent-headache"],
+      conditionTimeline: { [PTSD]: { onsetYear: 2005 } },
+    });
+  });
+
   it("Step 3 sends a user with no service-connected selection back to Step 2", () => {
     const current = context({
       diagnosedConditionIds: [PTSD],
