@@ -398,6 +398,44 @@ export function applyRatingsStep(
   }
 }
 
+/**
+ * Persist one Step 3 choice as soon as it is made. The full step validator still
+ * runs on Continue; this draft write keeps the select honest across Back
+ * navigation, when component-local state is gone (Heal
+ * s6-ratings-back-wipes-choice-1).
+ */
+export function applyRatingDraft(
+  context: BrowserWorkflowContext | null,
+  conditionId: string,
+  value: string,
+): BrowserWorkflowContextInput | null {
+  if (!context?.serviceConnectedConditionIds?.includes(conditionId)) return null;
+
+  const ratingsByConditionId = { ...(context.ratingsByConditionId ?? {}) };
+  const permanentAndTotalConditionIds = (
+    context.permanentAndTotalConditionIds ?? []
+  ).filter((id) => id !== conditionId);
+
+  if (value === "") {
+    delete ratingsByConditionId[conditionId];
+  } else if (value === "decline") {
+    ratingsByConditionId[conditionId] = null;
+  } else {
+    const rating = isPermanentAndTotalRatingValue(value) ? 100 : Number(value);
+    if (!Number.isInteger(rating) || rating < 0 || rating > 100) return null;
+    ratingsByConditionId[conditionId] = rating;
+    if (isPermanentAndTotalRatingValue(value)) {
+      permanentAndTotalConditionIds.push(conditionId);
+    }
+  }
+
+  return {
+    ...toBrowserWorkflowContextInput(context),
+    ratingsByConditionId,
+    permanentAndTotalConditionIds,
+  };
+}
+
 const DOCUMENTS_CONTEXT_KEYS = new Set([
   "documentsShared",
   "medications",

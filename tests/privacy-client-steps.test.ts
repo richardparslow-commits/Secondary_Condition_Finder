@@ -4,6 +4,7 @@ import { loadConditionCatalog } from "@/lib/catalog/load";
 import {
   applyDiagnosedStep,
   applyDocumentsStep,
+  applyRatingDraft,
   applyRatingsStep,
   applyServiceConnectedStep,
 } from "@/lib/secondary-workflow/client-steps";
@@ -291,6 +292,41 @@ describe("browser-side step logic (PRIV-01 stage 2)", () => {
       expect(result.context.ratingsByConditionId).toEqual({ [PTSD]: 100 });
       expect(result.context.permanentAndTotalConditionIds).toEqual([PTSD]);
     }
+  });
+
+  it("stores a rating draft immediately while preserving later context", () => {
+    const current = context({
+      diagnosedConditionIds: [PTSD, TINNITUS],
+      serviceConnectedConditionIds: [PTSD, TINNITUS],
+      ratingsByConditionId: { [PTSD]: 70 },
+      documentsShared: true,
+      medications: ["SSRI"],
+    });
+
+    expect(applyRatingDraft(current, TINNITUS, "20")).toMatchObject({
+      ratingsByConditionId: { [PTSD]: 70, [TINNITUS]: 20 },
+      documentsShared: true,
+      medications: ["SSRI"],
+    });
+
+    const permanent = applyRatingDraft(current, PTSD, "100-pt");
+    expect(permanent).toMatchObject({
+      ratingsByConditionId: { [PTSD]: 100 },
+      permanentAndTotalConditionIds: [PTSD],
+    });
+    if (!permanent) return;
+
+    const plain = applyRatingDraft({ version: 1, ...permanent }, PTSD, "100");
+    expect(plain?.permanentAndTotalConditionIds).toEqual([]);
+
+    const declined = applyRatingDraft(current, PTSD, "decline");
+    expect(declined?.ratingsByConditionId).toEqual({ [PTSD]: null });
+
+    const cleared = applyRatingDraft(current, PTSD, "");
+    expect(cleared?.ratingsByConditionId).toEqual({});
+
+    expect(applyRatingDraft(current, "not-service-connected", "20")).toBeNull();
+    expect(applyRatingDraft(current, PTSD, "101")).toBeNull();
   });
 
   it("Step 3 keeps Step 4 context when the veteran returns to upload", () => {

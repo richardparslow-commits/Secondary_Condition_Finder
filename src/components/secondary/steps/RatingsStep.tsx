@@ -6,7 +6,12 @@ import { useLayoutEffect, useMemo, useState } from "react";
 
 import { indexById } from "@/lib/catalog/lookup";
 import { useClientCorpus } from "@/lib/client-corpus";
-import { applyRatingsStep, persistStepResult } from "@/lib/secondary-workflow/client-steps";
+import {
+  applyRatingDraft,
+  applyRatingsStep,
+  persistStepContext,
+  persistStepResult,
+} from "@/lib/secondary-workflow/client-steps";
 import {
   PERMANENT_AND_TOTAL_RATING_VALUE,
   ratingDisplayLabel,
@@ -127,8 +132,8 @@ export function RatingsStep() {
   const { context, ready, persist } = useBrowserWorkflowContext();
   const [localError, setLocalError] = useState<SecondaryValidationCode | null>(null);
   // Selections made on this visit, so the Current Summary reflects them before
-  // the step is submitted (Heal defect 38). Cleared on remount by design: the
-  // saved context is the source of truth after a successful continue.
+  // the step is submitted (Heal defect 38). The draft clears on remount, but
+  // each choice is persisted immediately, so the saved context restores it.
   const [draftRatings, setDraftRatings] = useState<Record<string, string>>({});
 
   useLayoutEffect(() => {
@@ -148,6 +153,18 @@ export function RatingsStep() {
   const ratingsByConditionId = context?.ratingsByConditionId ?? {};
   const permanentAndTotalConditionIds = context?.permanentAndTotalConditionIds ?? [];
   const ratingOptions = getRatingOptions();
+
+  function persistRatingDraft(conditionId: string, value: string) {
+    if (!context) return;
+    const nextContext = applyRatingDraft(context, conditionId, value);
+    if (!nextContext) return;
+    const outcome = persistStepContext(persist, nextContext);
+    if (!outcome.ok) {
+      setLocalError(outcome.code);
+      return;
+    }
+    setLocalError(null);
+  }
 
   function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -223,9 +240,10 @@ export function RatingsStep() {
                   conditionName={catalogById.get(conditionId)?.name ?? conditionId.replace(/-/g, " ")}
                   stored={ratingsByConditionId[conditionId]}
                   storedPermanentAndTotal={permanentAndTotalConditionIds.includes(conditionId)}
-                  onValueChange={(value) =>
-                    setDraftRatings((prev) => ({ ...prev, [conditionId]: value }))
-                  }
+                  onValueChange={(value) => {
+                    setDraftRatings((prev) => ({ ...prev, [conditionId]: value }));
+                    persistRatingDraft(conditionId, value);
+                  }}
                   validationId={validationId}
                 />
               ))}
