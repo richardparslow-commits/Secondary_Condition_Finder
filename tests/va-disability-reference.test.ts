@@ -34,6 +34,24 @@ describe("VA Benefits Reference Data explorer", () => {
     expect(result.notice).toContain("not a diagnosis");
   });
 
+  it("does not count retired terms in the current total", async () => {
+    const result = await loadDisabilityReference(async () => ({
+      success: true,
+      source: "va-sandbox-api",
+      data: {
+        items: [
+          { id: 1, name: "Asthma", endDateTime: null },
+          { id: 2, name: "Retired term", endDateTime: "2020-01-01T00:00:00Z" },
+        ],
+        totalItems: 2,
+        totalPages: 1,
+      },
+    }));
+
+    expect(result.items).toEqual([{ id: "1", name: "Asthma" }]);
+    expect(result.totalAvailable).toBe(1);
+  });
+
   it("falls back to the local catalog when sandbox data is unavailable", async () => {
     const result = await loadDisabilityReference(async () => ({
       success: false,
