@@ -55,6 +55,9 @@ export function EvidenceStep({ snapshot }: EvidenceStepProps) {
   // Step 6 owns the rating-guide notes so the consultation packet can include
   // the prompts the user marked on this page.
   const [ratingSelections, setRatingSelections] = useState<Record<string, boolean>>({});
+  // Share the medical-checklist ticks with the consultation packet without
+  // moving them into storage; the checklist panel remains in-memory only.
+  const [medicalChecklistChecked, setMedicalChecklistChecked] = useState<Set<string>>(() => new Set());
 
   const model = useMemo(() => {
     if (!corpus || !ready) return null;
@@ -217,7 +220,11 @@ export function EvidenceStep({ snapshot }: EvidenceStepProps) {
         </aside>
       </div>
 
-      <MedicalRecordChecklist groups={buildMedicalRecordChecklist(nonServiceConnectedResults)} />
+      <MedicalRecordChecklist
+        groups={buildMedicalRecordChecklist(nonServiceConnectedResults)}
+        checked={medicalChecklistChecked}
+        onCheckedChange={setMedicalChecklistChecked}
+      />
       <PathwayRecordChecklist results={nonServiceConnectedResults} summaryRecommendations={consultationRecommendations} />
       <RatingGuide
         results={nonServiceConnectedResults}
@@ -236,6 +243,7 @@ export function EvidenceStep({ snapshot }: EvidenceStepProps) {
         results={nonServiceConnectedResults}
         catalogById={byId}
         ratingSelections={ratingSelections}
+        medicalChecklistChecked={medicalChecklistChecked}
       />
 
       <div className="ui-actions">

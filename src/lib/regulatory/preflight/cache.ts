@@ -69,13 +69,7 @@ const snapshotRetentionMs = (): number => {
   return hours * 3_600_000;
 };
 
-export function writeRegulatoryPreflightCache(
-  cache: RegulatoryPreflightCache,
-  cacheDir = defaultCacheDir(),
-): void {
-  atomicWriteJson(path.join(cacheDir, "latest.json"), cache);
-  atomicWriteJson(path.join(cacheDir, "snapshots", `${safeSnapshotName(cache.snapshot.snapshotId)}.json`), cache);
-
+const pruneExpiredSnapshots = (cacheDir: string): void => {
   // Keep the cache bounded in time without letting unrelated traffic decide
   // whose active review lock survives.
   try {
@@ -90,6 +84,27 @@ export function writeRegulatoryPreflightCache(
   } catch {
     // Cache pruning is best-effort and must never invalidate a completed preflight.
   }
+};
+
+/**
+ * Persist a snapshot file for a review lock without advancing latest.json.
+ * Failed checks use this so their own review can still load the snapshot by
+ * ID, but they never replace the last verified anchor.
+ */
+export function writeRegulatorySnapshot(
+  cache: RegulatoryPreflightCache,
+  cacheDir = defaultCacheDir(),
+): void {
+  atomicWriteJson(path.join(cacheDir, "snapshots", `${safeSnapshotName(cache.snapshot.snapshotId)}.json`), cache);
+  pruneExpiredSnapshots(cacheDir);
+}
+
+export function writeRegulatoryPreflightCache(
+  cache: RegulatoryPreflightCache,
+  cacheDir = defaultCacheDir(),
+): void {
+  atomicWriteJson(path.join(cacheDir, "latest.json"), cache);
+  writeRegulatorySnapshot(cache, cacheDir);
 }
 
 export function regulatoryPreflightCacheDirectory(): string {

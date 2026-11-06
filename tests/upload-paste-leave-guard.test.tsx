@@ -20,8 +20,10 @@ import { UploadStep } from "@/components/secondary/steps/UploadStep";
 
 const mocks = vi.hoisted(() => ({
   push: vi.fn(),
+  replace: vi.fn(),
   persist: vi.fn(),
   clear: vi.fn(),
+  search: new URLSearchParams(),
 }));
 
 const CONDITION = {
@@ -43,8 +45,8 @@ vi.mock("next/link", () => ({
 }));
 
 vi.mock("next/navigation", () => ({
-  useRouter: () => ({ push: mocks.push }),
-  useSearchParams: () => new URLSearchParams(),
+  useRouter: () => ({ push: mocks.push, replace: mocks.replace }),
+  useSearchParams: () => mocks.search,
 }));
 
 vi.mock("@/lib/client-corpus", () => ({
@@ -79,8 +81,10 @@ vi.mock("@/lib/secondary-workflow/use-browser-context", () => ({
 beforeEach(() => {
   window.sessionStorage.clear();
   mocks.push.mockClear();
+  mocks.replace.mockClear();
   mocks.persist.mockClear();
   mocks.clear.mockClear();
+  mocks.search = new URLSearchParams();
 });
 
 afterEach(() => {
@@ -150,5 +154,15 @@ describe("leaving Step 4 with unanalyzed pasted text", () => {
       }),
     );
     expect(mocks.persist.mock.calls[0]?.[0]).not.toHaveProperty("version");
+  });
+
+  it("replaces the documents validation entry after a successful submit", () => {
+    mocks.search = new URLSearchParams("error=select-documents");
+    render(<UploadStep />);
+
+    fireEvent.click(screen.getByRole("button", { name: /Review Possible Connections/ }));
+
+    expect(mocks.replace).toHaveBeenCalledWith("/secondary/suggestions");
+    expect(mocks.push).not.toHaveBeenCalled();
   });
 });

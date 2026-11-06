@@ -77,12 +77,16 @@ describe("demo scenarios", () => {
     expect(page).not.toContain("@/lib/actions");
 
     // The launcher validates the synthetic state through the same workflow
-    // contract, clears every prior browser-local key, persists the context
-    // locally, and only then navigates. No cookie, no request.
+    // contract, persists the context first, clears the old supporting state
+    // without deleting that context, and only then navigates. No cookie, no
+    // request.
     expect(form).toContain('"use client"');
     expect(form).toContain("parseWorkflowState(workflowSessionToQueryParams(workflow), corpus.conditions)");
-    expect(form).toContain("clearSecondaryWorkflowLocalState(window.sessionStorage)");
     expect(form).toContain("persist(workflow");
+    expect(form).toContain("clearSecondaryWorkflowAuxiliaryState(window.sessionStorage)");
+    expect(form.indexOf("persist(workflow")).toBeLessThan(
+      form.indexOf("clearSecondaryWorkflowAuxiliaryState(window.sessionStorage)"),
+    );
     expect(form).toContain('router.push("/secondary/suggestions")');
     expect(form).not.toContain("fetch(");
     expect(form).not.toContain("sendBeacon");

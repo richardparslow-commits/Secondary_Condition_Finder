@@ -109,6 +109,13 @@ export function DiagnosedStep() {
       setLocalError(outcome.code);
       return;
     }
+    // The validation failure was pushed as its own history entry. Replacing it
+    // on success keeps browser Back on the clean Step 1 address instead of
+    // restoring the stale ?error= alert beside the fixed selection.
+    if (searchParams.has("error")) {
+      router.replace(outcome.next);
+      return;
+    }
     router.push(outcome.next);
   }
 

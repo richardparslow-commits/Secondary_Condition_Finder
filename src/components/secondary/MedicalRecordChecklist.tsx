@@ -5,11 +5,15 @@ import { useCallback, useState } from "react";
 import {
   CHECKLIST_CATEGORY_LABEL,
   formatMedicalRecordChecklist,
+  medicalChecklistItemKey,
   type ChecklistGroup,
 } from "@/lib/secondary-workflow/medical-record-checklist";
 
 interface Props {
   groups: ChecklistGroup[];
+  /** Optional controlled selection shared with the Step 6 packet. */
+  checked?: ReadonlySet<string>;
+  onCheckedChange?: (checked: Set<string>) => void;
 }
 
 function storageKeyForGroup(groups: ChecklistGroup[]): string {
@@ -19,19 +23,25 @@ function storageKeyForGroup(groups: ChecklistGroup[]): string {
   return groups.map((group) => group.conditionId).join(",");
 }
 
-export function MedicalRecordChecklist({ groups }: Props) {
-  const [checked, setChecked] = useState<Set<string>>(() => new Set());
+export function MedicalRecordChecklist({
+  groups,
+  checked: controlledChecked,
+  onCheckedChange,
+}: Props) {
+  const [internalChecked, setInternalChecked] = useState<Set<string>>(() => new Set());
+  // Step 6 controls this set so the consultation packet can include the same
+  // in-memory selections; standalone use keeps the component-local state.
+  const checked = controlledChecked ?? internalChecked;
   // Keep derived key so React doesn't warn if groups identity changes across renders
   void storageKeyForGroup(groups);
 
   const toggle = useCallback((key: string) => {
-    setChecked((previous) => {
-      const next = new Set(previous);
-      if (next.has(key)) next.delete(key);
-      else next.add(key);
-      return next;
-    });
-  }, []);
+    const next = new Set(checked);
+    if (next.has(key)) next.delete(key);
+    else next.add(key);
+    if (onCheckedChange) onCheckedChange(next);
+    else setInternalChecked(next);
+  }, [checked, onCheckedChange]);
 
   if (groups.length === 0) return null;
 
@@ -39,7 +49,7 @@ export function MedicalRecordChecklist({ groups }: Props) {
   const checkedCount = checked.size;
 
   function downloadChecklist() {
-    const content = formatMedicalRecordChecklist(groups);
+    const content = formatMedicalRecordChecklist(groups, checked);
     const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
     const objectUrl = URL.createObjectURL(blob);
     const anchor = document.createElement("a");
@@ -93,7 +103,7 @@ export function MedicalRecordChecklist({ groups }: Props) {
             </p>
             <div className="mt-3 space-y-3">
               {group.items.map((item) => {
-                const key = `${group.conditionId}:${item.gap}`;
+                const key = medicalChecklistItemKey(group, item);
                 const isChecked = checked.has(key);
                 return (
                   <label key={key} className="flex gap-3 rounded-lg border border-slate-200 p-3 text-sm hover:bg-slate-50">

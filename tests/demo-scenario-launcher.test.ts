@@ -49,8 +49,11 @@ describe("demo scenario launcher (browser-local)", () => {
     expect(form).toContain('"use client"');
     expect(form).toContain('from "../../data/demo-scenarios.json"');
     expect(form).toContain("parseWorkflowState(workflowSessionToQueryParams(workflow), corpus.conditions)");
-    expect(form).toContain("clearSecondaryWorkflowLocalState(window.sessionStorage)");
     expect(form).toContain("persist(workflow");
+    expect(form).toContain("clearSecondaryWorkflowAuxiliaryState(window.sessionStorage)");
+    expect(form.indexOf("persist(workflow")).toBeLessThan(
+      form.indexOf("clearSecondaryWorkflowAuxiliaryState(window.sessionStorage)"),
+    );
     expect(form).toContain('router.push("/secondary/suggestions")');
     expect(form).toContain("setError(");
     // No network channel of any kind, and no legacy cookie/session module.

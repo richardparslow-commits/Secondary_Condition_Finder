@@ -59,6 +59,14 @@ export interface PathwayRecordGroup {
   pathways: PathwayRecordPathway[];
 }
 
+export function pathwayChecklistItemKey(
+  group: Pick<PathwayRecordGroup, "conditionId">,
+  pathway: Pick<PathwayRecordPathway, "primaryId">,
+  item: Pick<PathwayRecordItem, "record">,
+): string {
+  return `${group.conditionId}:${pathway.primaryId}:${item.record}`;
+}
+
 export const PATHWAY_RECORD_CATEGORY_LABEL: Record<PathwayRecordCategory, string> = {
   diagnosis: "Diagnosis confirmation",
   specialist: "Specialist evaluation",
@@ -439,7 +447,10 @@ export function buildPathwayRecordChecklist(
     .sort((a, b) => a.conditionName.localeCompare(b.conditionName));
 }
 
-export function formatPathwayRecordChecklist(groups: PathwayRecordGroup[]): string {
+export function formatPathwayRecordChecklist(
+  groups: PathwayRecordGroup[],
+  located: Readonly<Record<string, true>> = {},
+): string {
   const lines: string[] = [
     "PATHWAY-SPECIFIC MEDICAL RECORD CHECKLIST — SECONDARY CONDITION FINDER",
     "Generated in this browser for research preparation (not a VA determination).",
@@ -471,7 +482,8 @@ export function formatPathwayRecordChecklist(groups: PathwayRecordGroup[]): stri
         lines.push(`  Pathway consensus: ${pathway.etiologicalConsensus}`);
       }
       for (const item of pathway.items) {
-        lines.push(`  [ ] ${item.record}  [${PATHWAY_RECORD_CATEGORY_LABEL[item.category]}]`);
+        const marker = located[pathwayChecklistItemKey(group, pathway, item)] ? "x" : " ";
+        lines.push(`  [${marker}] ${item.record}  [${PATHWAY_RECORD_CATEGORY_LABEL[item.category]}]`);
         lines.push(`      Why: ${item.why}`);
       }
       lines.push("");

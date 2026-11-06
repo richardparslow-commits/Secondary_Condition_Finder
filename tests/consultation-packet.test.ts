@@ -7,6 +7,8 @@ import { loadConditionCatalog } from "@/lib/catalog/load";
 import { indexById } from "@/lib/catalog/lookup";
 import type { CatalogCondition } from "@/lib/catalog/schema";
 import type { Recommendation } from "@/lib/engine/types";
+import { buildMedicalRecordChecklist, medicalChecklistItemKey } from "@/lib/secondary-workflow/medical-record-checklist";
+import { buildPathwayRecordChecklist, pathwayChecklistItemKey } from "@/lib/secondary-workflow/pathway-record-checklist";
 import { GENERIC_FUNCTIONAL_PROMPTS, symptomNoteId } from "@/lib/secondary-workflow/rating-guide";
 import type { NonServiceConnectedConditionResult } from "@/lib/secondary-workflow/suggestions";
 
@@ -107,6 +109,35 @@ describe("consultation packet composition contract", () => {
     );
   });
 
+  it("includes located medical and pathway checklist items in the packet", () => {
+    const catalogById = new Map(indexById(loadConditionCatalog())) as Map<string, CatalogCondition>;
+    const rec = { ...recommendation(), evidenceGaps: ["First medical gap", "Second medical gap"] };
+    const results: NonServiceConnectedConditionResult[] = [
+      { conditionId: "ptsd", conditionName: "PTSD", bodySystem: "Mental Disorders", recommendation: rec },
+    ];
+    const medicalGroup = buildMedicalRecordChecklist(results)[0];
+    const medicalLocated: ReadonlySet<string> = new Set([
+      medicalChecklistItemKey(medicalGroup, medicalGroup.items[0]),
+    ]);
+    const pathwayGroup = buildPathwayRecordChecklist(results)[0];
+    const pathway = pathwayGroup.pathways[0];
+    const pathwayLocated: Record<string, true> = {
+      [pathwayChecklistItemKey(pathwayGroup, pathway, pathway.items[0])]: true,
+    };
+
+    const sections = buildPacketSections([rec], results, catalogById, {}, {
+      medical: medicalLocated,
+      pathway: pathwayLocated,
+    });
+    const medicalSection = sections.find((section) => section.heading.startsWith("3."));
+    const pathwaySection = sections.find((section) => section.heading.startsWith("2."));
+
+    expect(medicalSection?.content).toContain(`[x] ${medicalGroup.items[0].gap}`);
+    expect(medicalSection?.content).toContain(`[ ] ${medicalGroup.items[1].gap}`);
+    expect(pathwaySection?.content).toContain(`[x] ${pathway.items[0].record}`);
+    expect(pathwaySection?.content).toContain(`[ ] ${pathway.items[1].record}`);
+  });
+
   it("keeps the privacy boundary: no evidence excerpts or intake context enter the packet", () => {
     // The component imports no evidence/ storage or excerpt types.
     expect(component).not.toContain("evidence/storage");
@@ -122,6 +153,10 @@ describe("consultation packet composition contract", () => {
     expect(evidencePage).toContain("selections={ratingSelections}");
     expect(evidencePage).toContain("onSelectionsChange={setRatingSelections}");
     expect(evidencePage).toContain("ratingSelections={ratingSelections}");
+    expect(evidencePage).toContain("checked={medicalChecklistChecked}");
+    expect(evidencePage).toContain("onCheckedChange={setMedicalChecklistChecked}");
+    expect(evidencePage).toContain("medicalChecklistChecked={medicalChecklistChecked}");
+    expect(component).toContain("readPathwayRecordChecklistState()");
   });
 
   it("is wired into Step 6 with the same stripped recommendations as the other exports", () => {

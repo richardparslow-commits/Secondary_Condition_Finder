@@ -37,6 +37,8 @@ export interface DisabilityReferenceView extends VaReferenceSourceStatus {
    * number shown; greater when this view carries only a bounded prefix.
    */
   totalAvailable: number;
+  /** True when a later VA page failed; the list below is a usable partial result. */
+  incomplete?: boolean;
 }
 
 type DisabilityFetcher = () => Promise<
@@ -108,9 +110,17 @@ export async function loadDisabilityReference(
       // DTO ceiling is the display bound; VA's reported total travels with the
       // view so the explorer can disclose anything it did not load.
       const items = currentItems.slice(0, VA_CACHE_DTO_MAX_ITEMS);
+      // VA's totalItems counts end-dated terms, but the matching set only carries
+      // current terms. Subtract the retired terms actually read so a complete
+      // current list is not reported as a partial load (Heal
+      // s9-retired-term-shown-as-partial-load-1).
+      const retiredCount = result.data.items.length - currentItems.length;
       const totalAvailable = Math.max(
         items.length,
-        Math.min(result.data.totalItems ?? items.length, VA_REPORTED_TOTAL_MAX),
+        Math.min(
+          (result.data.totalItems ?? result.data.items.length) - retiredCount,
+          VA_REPORTED_TOTAL_MAX,
+        ),
       );
 
       const environment = resolveVaResultEnvironment(
@@ -124,6 +134,7 @@ export async function loadDisabilityReference(
         view: {
           items,
           totalAvailable,
+          ...(result.incomplete === true ? { incomplete: true } : {}),
           ...vaLiveStatus("disability-reference", environment, result.source),
         },
       };

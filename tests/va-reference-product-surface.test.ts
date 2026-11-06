@@ -1,10 +1,12 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
-import { describe, expect, it } from "vitest";
+import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
+import { describe, expect, it } from "vitest";
 
 import { NonServiceConnectedConditionResult } from "@/components/NonServiceConnectedConditionResult";
+import { DisabilityReferenceExplorer } from "@/components/va/DisabilityReferenceExplorer";
 import {
   buildConditionVaReferenceMap,
   mapConditionToVaReference,
@@ -65,6 +67,20 @@ describe("VA reference product surfaces", () => {
     // Control: a complete live list still reports a genuine no-match.
     const complete = render(201, 201);
     expect(complete).toContain("No exact or curated VA reference terminology match was found");
+  });
+
+  it("shows a retry notice when the VA list is incomplete", () => {
+    const html = renderToStaticMarkup(
+      createElement(DisabilityReferenceExplorer, {
+        items: [{ id: "1", name: "Asthma" }],
+        totalAvailable: 450,
+        incomplete: true,
+      }),
+    );
+
+    expect(html).toContain("could not fully load");
+    expect(html).toContain("try again later");
+    expect(html).not.toContain("VA publishes 450 disability reference terms");
   });
 
   it("routes every public-reference loader through one shared bounded cache", () => {

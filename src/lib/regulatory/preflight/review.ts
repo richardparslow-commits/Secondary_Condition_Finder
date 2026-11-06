@@ -8,7 +8,9 @@ import {
   readLatestRegulatoryPreflightCache,
   readRegulatorySnapshotById,
   writeRegulatoryPreflightCache,
+  writeRegulatorySnapshot,
 } from "./cache";
+import { requiredSourcesFailed } from "./freshness";
 import { runRegulatoryPreflight } from "./run-preflight";
 import type {
   RegulatoryPreflightCache,
@@ -85,7 +87,15 @@ export async function prepareRegulatoryReview(options: {
       registry: result.registry,
       sourceValidators: result.sourceValidators,
     };
-    try { writeRegulatoryPreflightCache(cache); } catch { /* best-effort cache; snapshot remains valid in this request */ }
+    try {
+      // A failed check still needs its snapshot for this review's lock, but it
+      // must never replace the last verified anchor as latest.
+      if (requiredSourcesFailed(result.snapshot.sourceResults)) {
+        writeRegulatorySnapshot(cache);
+      } else {
+        writeRegulatoryPreflightCache(cache);
+      }
+    } catch { /* best-effort cache; snapshot remains valid in this request */ }
     return {
       snapshot: result.snapshot,
       registry: result.registry,
@@ -94,7 +104,9 @@ export async function prepareRegulatoryReview(options: {
   } catch (error) {
     const fallback = emergencySnapshot(previous, error, now);
     try {
-      writeRegulatoryPreflightCache({
+      // Keep the fallback loadable by this review, but do not let an internal
+      // failure advance latest over a verified run that finished meanwhile.
+      writeRegulatorySnapshot({
         schemaVersion: 1,
         writtenAt: now,
         snapshot: fallback.snapshot,

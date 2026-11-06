@@ -87,6 +87,8 @@ describe("browser-local persistence failure contract (no silent data loss)", () 
       // outcome is surfaced as context-too-large instead of navigating.
       expect(source).toContain("persistStepResult(persist, result)");
       expect(source).toContain("setLocalError(outcome.code)");
+      expect(source).toContain('searchParams.has("error")');
+      expect(source).toContain("router.replace(outcome.next)");
       expect(source).toContain("router.push(outcome.next)");
     }
 
