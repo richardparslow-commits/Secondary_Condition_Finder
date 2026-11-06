@@ -214,9 +214,6 @@ export async function withVaReferenceCache<T>(
   const asHit = (view: T): T => (decorateHit ? decorateHit(view) : view);
   const trusted = (view: unknown): boolean =>
     cacheTrust ? cacheTrust.accepts(view) : true;
-  const generation = vaReferenceCacheGeneration();
-  const generationIsCurrent = (): boolean =>
-    vaReferenceCacheGeneration() === generation;
 
   if (!enabled) {
     const { view } = await load();
@@ -235,6 +232,10 @@ export async function withVaReferenceCache<T>(
       outcome: "process-local-hit-rejected",
     });
   }
+
+  const generation = vaReferenceCacheGeneration();
+  const generationIsCurrent = (): boolean =>
+    vaReferenceCacheGeneration() === generation;
 
   /** Resolves a local/shared miss through the loader. */
   const resolveMiss = async (): Promise<T> => {
