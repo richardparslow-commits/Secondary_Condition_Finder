@@ -72,7 +72,9 @@ export type ClientStepResult =
       next?: string;
     };
 
-function toInput(context: BrowserWorkflowContext | null): BrowserWorkflowContextInput {
+export function toBrowserWorkflowContextInput(
+  context: BrowserWorkflowContext | null,
+): BrowserWorkflowContextInput {
   if (!context) return {};
   const input: Record<string, unknown> = { ...context };
   delete input.version;
@@ -163,6 +165,23 @@ function retainedConditionData(
     ...(Object.keys(conditionTimeline).length > 0 ? { conditionTimeline } : {}),
     ...(Object.keys(ratingsByConditionId).length > 0 ? { ratingsByConditionId } : {}),
     ...(permanentAndTotalConditionIds.length > 0 ? { permanentAndTotalConditionIds } : {}),
+  };
+}
+
+/**
+ * Data owned by Step 4. Re-submitting Step 3 must not erase the veteran's
+ * document-availability answer or optional context; only a diagnosis reset on
+ * Step 1 invalidates those values.
+ */
+function retainedDocumentsData(context: BrowserWorkflowContext | null) {
+  return {
+    ...(context?.documentsShared !== undefined
+      ? { documentsShared: context.documentsShared }
+      : {}),
+    ...(context?.medications?.length ? { medications: context.medications } : {}),
+    ...(context?.treatments?.length ? { treatments: context.treatments } : {}),
+    ...(context?.history?.length ? { history: context.history } : {}),
+    ...(context?.symptomIds?.length ? { symptomIds: context.symptomIds } : {}),
   };
 }
 
@@ -270,7 +289,7 @@ export function applyServiceConnectedStep(
   }
 
   const currentParams = workflowSessionToQueryParams({
-    ...toInput(context),
+    ...toBrowserWorkflowContextInput(context),
     diagnosedConditionIds,
   });
   delete currentParams.serviceConnected;
@@ -350,7 +369,7 @@ export function applyRatingsStep(
   try {
     const parsed = parseRatingsSelection(
       appendFormData(
-        workflowSessionToQueryParams(toInput(context)),
+        workflowSessionToQueryParams(toBrowserWorkflowContextInput(context)),
         formData,
         (key) =>
           key.startsWith("rating-") &&
@@ -365,6 +384,7 @@ export function applyRatingsStep(
     return {
       ok: true,
       context: {
+        ...retainedDocumentsData(context),
         diagnosedConditionIds: parsed.diagnosedConditionIds,
         ...(retainedTimeline ? { conditionTimeline: retainedTimeline } : {}),
         serviceConnectedConditionIds: parsed.serviceConnectedConditionIds,
@@ -412,7 +432,7 @@ export function applyDocumentsStep(
 
   try {
     const parsed = parseDocumentsSelection(
-      appendFormData(workflowSessionToQueryParams(toInput(context)), formData, (key) => {
+      appendFormData(workflowSessionToQueryParams(toBrowserWorkflowContextInput(context)), formData, (key) => {
         if (DOCUMENTS_CONTEXT_KEYS.has(key)) return true;
         const timelineMatch = /^(?:onsetYear|diagnosisYear)-(.+)$/.exec(key);
         return timelineMatch !== null && diagnosedIdSet.has(timelineMatch[1]);

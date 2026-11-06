@@ -12,7 +12,12 @@ import { VoiceInputHotkeyBridge, VoiceInputTextarea } from "@/components/seconda
 import { indexById } from "@/lib/catalog/lookup";
 import { buildEvidenceConditionTerms } from "@/lib/evidence/condition-terms";
 import { useClientCorpus } from "@/lib/client-corpus";
-import { applyDocumentsStep, persistStepResult } from "@/lib/secondary-workflow/client-steps";
+import {
+  applyDocumentsStep,
+  persistStepContext,
+  persistStepResult,
+  toBrowserWorkflowContextInput,
+} from "@/lib/secondary-workflow/client-steps";
 import { ratingDisplayLabel } from "@/lib/secondary-workflow/ratings";
 import { listSymptomBridgeEntries } from "@/lib/secondary-workflow/symptom-bridge";
 import {
@@ -30,14 +35,25 @@ import {
  * Document-availability choice. Exported as a pure presentation unit so the
  * prefill contract can be rendered directly in tests.
  */
-export function DocumentsSharedChoice({ documentsShared }: { documentsShared: boolean }) {
+export function DocumentsSharedChoice({
+  documentsShared,
+  onDocumentsSharedChange,
+}: {
+  documentsShared: boolean;
+  onDocumentsSharedChange?: (documentsShared: boolean) => void;
+}) {
+  // The static prefill contract renders this unit without a callback, so keep
+  // the uncontrolled form there. The live step controls it, allowing a failed
+  // draft write to fall back to the stored answer instead of showing an
+  // unpersisted selection.
+  const controlled = onDocumentsSharedChange !== undefined;
   return (
     <fieldset className="rounded-xl border border-slate-200 p-4 shadow-none">
       <legend className="font-semibold">Do you want document availability reflected in your checklist?</legend>
       <p className="mt-1 text-sm text-slate-600">This choice stores a yes/no workflow flag. Raw evidence text and locally extracted excerpts are not added to the browser-local workflow context.</p>
       <div className="mt-4 grid gap-3">
-        <label className="flex items-center gap-3 rounded-lg border border-slate-200 px-3 py-3"><input type="radio" name="documentsShared" value="yes" defaultChecked={documentsShared} className="h-5 w-5" />Yes, I reviewed or have documents available</label>
-        <label className="flex items-center gap-3 rounded-lg border border-slate-200 px-3 py-3"><input type="radio" name="documentsShared" value="no" defaultChecked={!documentsShared} className="h-5 w-5" />No, continue without documents</label>
+        <label className="flex items-center gap-3 rounded-lg border border-slate-200 px-3 py-3"><input type="radio" name="documentsShared" value="yes" checked={controlled ? documentsShared : undefined} defaultChecked={controlled ? undefined : documentsShared} onChange={() => onDocumentsSharedChange?.(true)} className="h-5 w-5" />Yes, I reviewed or have documents available</label>
+        <label className="flex items-center gap-3 rounded-lg border border-slate-200 px-3 py-3"><input type="radio" name="documentsShared" value="no" checked={controlled ? !documentsShared : undefined} defaultChecked={controlled ? undefined : !documentsShared} onChange={() => onDocumentsSharedChange?.(false)} className="h-5 w-5" />No, continue without documents</label>
       </div>
     </fieldset>
   );
@@ -87,6 +103,19 @@ export function UploadStep() {
     return condition ? [condition] : [];
   });
   const conditionTerms = buildEvidenceConditionTerms(selectedConditions);
+
+  function onDocumentsSharedChange(next: boolean) {
+    if (!context) return;
+    const outcome = persistStepContext(persist, {
+      ...toBrowserWorkflowContextInput(context),
+      documentsShared: next,
+    });
+    if (!outcome.ok) {
+      setLocalError(outcome.code);
+      return;
+    }
+    setLocalError(null);
+  }
 
   function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -209,7 +238,10 @@ export function UploadStep() {
               </div>
             </fieldset>
 
-            <DocumentsSharedChoice documentsShared={documentsShared} />
+            <DocumentsSharedChoice
+              documentsShared={documentsShared}
+              onDocumentsSharedChange={onDocumentsSharedChange}
+            />
 
             <div className="ui-callout text-sm"><strong>Evidence Upload Privacy Contract:</strong> {PRIVACY_CONTRACT_COPY}</div>
 
