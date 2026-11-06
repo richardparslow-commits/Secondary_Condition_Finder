@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useMemo, useState } from "react";
 
 import { DisclaimerFooter } from "@/components/Disclaimer";
@@ -70,6 +70,7 @@ const PRIVACY_CONTRACT_COPY =
  */
 export function UploadStep() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { corpus, loading, error: corpusError } = useClientCorpus();
   const { context, ready, persist } = useBrowserWorkflowContext();
   const [localError, setLocalError] = useState<SecondaryValidationCode | null>(null);
@@ -132,6 +133,12 @@ export function UploadStep() {
     const outcome = persistStepResult(persist, result);
     if (!outcome.ok) {
       setLocalError(outcome.code);
+      return;
+    }
+    // The upload layout renders the ?error= alert. Replacing that entry on a
+    // successful resubmit keeps Back from Step 5 on the clean Step 4 address.
+    if (searchParams.has("error")) {
+      router.replace(outcome.next);
       return;
     }
     router.push(outcome.next);

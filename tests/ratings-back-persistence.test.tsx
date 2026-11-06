@@ -24,6 +24,8 @@ const mocks = vi.hoisted(() => ({
   persist: vi.fn(),
   clear: vi.fn(),
   push: vi.fn(),
+  replace: vi.fn(),
+  search: new URLSearchParams(),
 }));
 
 vi.mock("next/link", () => ({
@@ -38,8 +40,8 @@ vi.mock("next/link", () => ({
 }));
 
 vi.mock("next/navigation", () => ({
-  useRouter: () => ({ push: mocks.push }),
-  useSearchParams: () => new URLSearchParams(),
+  useRouter: () => ({ push: mocks.push, replace: mocks.replace }),
+  useSearchParams: () => mocks.search,
 }));
 
 vi.mock("@/lib/client-corpus", () => ({
@@ -78,6 +80,8 @@ beforeEach(() => {
   mocks.persist.mockClear();
   mocks.clear.mockClear();
   mocks.push.mockClear();
+  mocks.replace.mockClear();
+  mocks.search = new URLSearchParams();
 });
 
 afterEach(cleanup);
@@ -108,5 +112,16 @@ describe("a Step 3 rating survives leaving and returning", () => {
     render(<RatingsStep />);
 
     expect(ratingSelect().value).toBe("20");
+  });
+
+  it("replaces the validation entry when the missing rating is fixed", () => {
+    mocks.search = new URLSearchParams("error=select-rating");
+    render(<RatingsStep />);
+
+    fireEvent.change(ratingSelect(), { target: { value: "20" } });
+    fireEvent.click(screen.getByRole("button", { name: /Continue to Step 4/ }));
+
+    expect(mocks.replace).toHaveBeenCalledWith("/secondary/upload");
+    expect(mocks.push).not.toHaveBeenCalled();
   });
 });

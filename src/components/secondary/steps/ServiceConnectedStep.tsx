@@ -74,6 +74,13 @@ export function ServiceConnectedStep() {
       setLocalError(outcome.code);
       return;
     }
+    // The validation failure was pushed as its own history entry. Replacing it
+    // on success keeps browser Back on the clean Step 2 address instead of
+    // restoring the stale ?error= alert beside the corrected answers.
+    if (searchParams.has("error")) {
+      router.replace(outcome.next);
+      return;
+    }
     router.push(outcome.next);
   }
 
