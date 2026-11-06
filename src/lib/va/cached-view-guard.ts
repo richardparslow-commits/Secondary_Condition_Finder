@@ -226,6 +226,7 @@ export function claimFormReferenceCacheDto(environment: VaApiEnvironment) {
 export function serviceBranchCacheDto(environment: VaApiEnvironment) {
   return z.strictObject({
     ...liveStatusDto("service-branches", environment),
+    incomplete: z.boolean().optional(),
     items: z.array(z.strictObject({
       code: boundedText(50),
       description: boundedText(MAX_LABEL_LENGTH),

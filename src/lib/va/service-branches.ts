@@ -17,6 +17,7 @@ import {
   fetchVaServiceBranches,
   loadVaApiConfig,
   type VaApiResult,
+  type VaServiceBranchReference,
 } from "./sandbox";
 
 export interface ServiceBranchReferenceItem {
@@ -26,11 +27,11 @@ export interface ServiceBranchReferenceItem {
 
 export interface ServiceBranchReferenceView extends VaReferenceSourceStatus {
   items: ServiceBranchReferenceItem[];
+  /** True when a later VA page failed or the page cap was reached. */
+  incomplete?: boolean;
 }
 
-type ServiceBranchFetcher = () => Promise<
-  VaApiResult<{ items: ServiceBranchReferenceItem[] }>
->;
+type ServiceBranchFetcher = () => Promise<VaApiResult<VaServiceBranchReference>>;
 
 const LOCAL_BRANCHES: ServiceBranchReferenceItem[] = [
   { code: "ARMY", description: "Army" },
@@ -74,11 +75,14 @@ export async function loadServiceBranchReference(
         configuredEnvironment,
       );
       return {
-        cacheable: true,
+        // A partial page set is useful to show, but caching it would keep the
+        // missing branches hidden for the full TTL after VA recovers.
+        cacheable: result.incomplete !== true,
         view: {
           items: result.data.items
             .map(({ code, description }) => ({ code, description }))
             .sort((a, b) => a.description.localeCompare(b.description)),
+          ...(result.incomplete === true ? { incomplete: true } : {}),
           ...vaLiveStatus("service-branches", environment, result.source),
         },
       };
