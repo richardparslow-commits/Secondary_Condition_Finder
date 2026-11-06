@@ -469,6 +469,32 @@ export function LocalEvidenceAnalyzer({ conditionTerms, onUnsavedPastedTextChang
   function stageFiles(fileList: FileList | null) {
     if (busyRef.current || busy || !fileList?.length) return;
     const selected = Array.from(fileList);
+    // Reuse the tab-scoped checkpoint fingerprint: name, size, and
+    // last-modified distinguish same-named documents from different folders,
+    // while still catching a document the visitor selects again. A new file
+    // object can represent the same on-disk document, so object identity alone
+    // would let the duplicate through.
+    const known = new Set(pending.map((row) => sourceFingerprintForFile(row.file)));
+    const unique: File[] = [];
+    let duplicates = 0;
+    for (const file of selected) {
+      const fingerprint = sourceFingerprintForFile(file);
+      if (known.has(fingerprint)) {
+        duplicates += 1;
+        continue;
+      }
+      known.add(fingerprint);
+      unique.push(file);
+    }
+    if (unique.length === 0) {
+      setWarnings([]);
+      setMessage(
+        duplicates === 1
+          ? "That document is already selected. Remove it first to stage it again."
+          : "Those documents are already selected. Remove one first to stage it again.",
+      );
+      return;
+    }
     const room = limits.batchSources - pending.length;
     if (room <= 0) {
       setMessage(
@@ -476,7 +502,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms, onUnsavedPastedTextChang
       );
       return;
     }
-    const accepted = selected.slice(0, room).map((file) => {
+    const accepted = unique.slice(0, room).map((file) => {
       // Two documents can share a file name (letter.txt from two folders), so
       // the staged row — not the name — is the document's identity.
       const id = (stagedSequence += 1);
@@ -492,11 +518,20 @@ export function LocalEvidenceAnalyzer({ conditionTerms, onUnsavedPastedTextChang
     setPending((current) => [...current, ...accepted]);
     setWarnings([]);
     setMessage(null);
-    if (selected.length > room) {
-      setWarnings([
-        `Only ${room} of ${selected.length} selected documents fit in the current selection (${limits.batchSources} limit).`,
-      ]);
+    const notices: string[] = [];
+    if (unique.length > room) {
+      notices.push(
+        `Only ${room} of ${unique.length} new documents fit in the current selection (${limits.batchSources} limit).`,
+      );
     }
+    if (duplicates > 0) {
+      notices.push(
+        duplicates === 1
+          ? "1 selected document was already in the list and was not added again."
+          : `${duplicates} selected documents were already in the list and were not added again.`,
+      );
+    }
+    if (notices.length > 0) setWarnings(notices);
   }
 
   function clearPending() {
