@@ -28,18 +28,20 @@ export function ServiceHistoryTemplateLibrary({ templates }: ServiceHistoryTempl
       if (input.checked !== shouldBeChecked) input.click();
     });
 
-    if (startInput && template.serviceStart !== undefined) {
-      startInput.value = template.serviceStart;
-      startInput.dispatchEvent(new Event("input", { bubbles: true }));
-      startInput.dispatchEvent(new Event("change", { bubbles: true }));
-    }
-    if (endInput) {
-      endInput.value = template.serviceEnd ?? endInput.value;
-      if (template.serviceEnd !== undefined) {
-        endInput.dispatchEvent(new Event("input", { bubbles: true }));
-        endInput.dispatchEvent(new Event("change", { bubbles: true }));
-      }
-    }
+    // A template replaces the date preset. An omitted date means that bound is
+    // open (the burn-pit templates run to present), so clear any value left by
+    // a previously applied template rather than keeping it (Heal
+    // s6-template-keeps-stale-end-date-1).
+    const setDateInput = (input: HTMLInputElement | null, value?: string) => {
+      if (!input) return;
+      const next = value ?? "";
+      if (input.value === next) return;
+      input.value = next;
+      input.dispatchEvent(new Event("input", { bubbles: true }));
+      input.dispatchEvent(new Event("change", { bubbles: true }));
+    };
+    setDateInput(startInput, template.serviceStart);
+    setDateInput(endInput, template.serviceEnd);
 
     // Scroll form into view so user sees what changed.
     form?.scrollIntoView({ behavior: "smooth", block: "center" });
