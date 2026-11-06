@@ -186,4 +186,27 @@ describe("Forms Finder search submission (A01)", () => {
     expect(window.location.href).not.toContain(CANARY);
     expect(window.location.search).toBe("");
   });
+
+  it("does not report a refused identifier search as zero results", async () => {
+    // Heal s6-identifier-search-reads-as-empty-result-1: the loader blanks the
+    // query on identifier refusal, and the results header rendered that blank
+    // as "0 results shown for ." instead of saying the search did not run.
+    actionMock.mockResolvedValue(
+      state({
+        view: view({
+          query: "",
+          items: [],
+          notice:
+            "This search was not run because the query looks like a personal identifier (for example, a Social Security number). Search by form number, keyword, or title — never enter personal identifiers.",
+        }),
+      }),
+    );
+    render(<VaFormsFinder initialView={view()} />);
+
+    await submitSearch("123-45-6789");
+
+    expect(screen.getByText(/No search was run/)).toBeTruthy();
+    expect(screen.queryByText(/0 results shown/)).toBeNull();
+    expect(screen.getByRole("note").textContent).toMatch(/personal identifier/);
+  });
 });
