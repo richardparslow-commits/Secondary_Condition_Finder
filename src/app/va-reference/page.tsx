@@ -63,6 +63,7 @@ export default async function VaReferencePage() {
       <DisabilityReferenceExplorer
         items={reference.items}
         totalAvailable={reference.totalAvailable}
+        incomplete={reference.incomplete === true}
       />
 
       <section className="mt-8 rounded-lg border border-slate-200 bg-slate-50 p-5 text-sm leading-relaxed text-slate-700">

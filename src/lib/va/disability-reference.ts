@@ -37,6 +37,8 @@ export interface DisabilityReferenceView extends VaReferenceSourceStatus {
    * number shown; greater when this view carries only a bounded prefix.
    */
   totalAvailable: number;
+  /** True when a later VA page failed; the list below is a usable partial result. */
+  incomplete?: boolean;
 }
 
 type DisabilityFetcher = () => Promise<
@@ -132,6 +134,7 @@ export async function loadDisabilityReference(
         view: {
           items,
           totalAvailable,
+          ...(result.incomplete === true ? { incomplete: true } : {}),
           ...vaLiveStatus("disability-reference", environment, result.source),
         },
       };

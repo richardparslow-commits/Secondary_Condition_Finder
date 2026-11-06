@@ -112,12 +112,30 @@ describe("VA Benefits Reference Data explorer", () => {
     expect(result.totalAvailable).toBe(450);
   });
 
+  it("carries the incomplete flag when a later VA page fails", async () => {
+    const result = await loadDisabilityReference(async () => ({
+      success: true,
+      source: "va-sandbox-api",
+      incomplete: true,
+      data: {
+        items: [{ id: 1, name: "Asthma", endDateTime: null }],
+        totalItems: 450,
+        totalPages: 45,
+      },
+    }));
+
+    expect(result.incomplete).toBe(true);
+    expect(result.items).toEqual([{ id: "1", name: "Asthma" }]);
+    expect(result.totalAvailable).toBe(450);
+  });
+
   it("keeps user filtering out of URLs and VA requests by contract", () => {
     const page = read("src/app/va-reference/page.tsx");
     const client = read("src/components/va/DisabilityReferenceExplorer.tsx");
     const adapter = read("src/lib/va/sandbox.ts");
 
     expect(page).not.toContain("searchParams");
+    expect(page).toContain("incomplete={reference.incomplete === true}");
     expect(page).not.toContain("URLSearchParams");
     expect(client).toContain('useState("")');
     expect(client).not.toContain("fetch(");
