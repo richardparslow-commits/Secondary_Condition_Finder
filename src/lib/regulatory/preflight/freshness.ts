@@ -11,6 +11,22 @@ const REQUIRED_SOURCES = ["federal-register", "oira-pending", "oira-completed", 
 const hoursBetween = (earlier: string, later: string): number =>
   Math.max(0, (Date.parse(later) - Date.parse(earlier)) / 3_600_000);
 
+const failedRequiredSources = (
+  sourceResults: RegulatoryPreflightSourceResult[],
+) => {
+  const bySource = new Map(sourceResults.map((result) => [result.source, result] as const));
+  return REQUIRED_SOURCES.filter((source) => {
+    const status = bySource.get(source)?.status;
+    return status !== "success" && status !== "not-modified";
+  });
+};
+
+export function requiredSourcesFailed(
+  sourceResults: RegulatoryPreflightSourceResult[],
+): boolean {
+  return failedRequiredSources(sourceResults).length > 0;
+}
+
 export interface FreshnessDecision {
   freshness: RegulatoryFreshness;
   reviewMode: RegulatoryReviewMode;
@@ -27,11 +43,7 @@ export function decideRegulatoryFreshness(options: {
   previousSnapshot?: RegulatoryPreflightSnapshot;
   maxCacheAgeHours?: number;
 }): FreshnessDecision {
-  const bySource = new Map(options.sourceResults.map((result) => [result.source, result] as const));
-  const failedRequired = REQUIRED_SOURCES.filter((source) => {
-    const status = bySource.get(source)?.status;
-    return status !== "success" && status !== "not-modified";
-  });
+  const failedRequired = failedRequiredSources(options.sourceResults);
   const unverifiedCurrent = options.changes.filter((change) =>
     change.classification === "current-law-change"
     && change.requiresOfficialEditionVerification
