@@ -27,8 +27,13 @@ import { describe, expect, it } from "vitest";
 
 const ROOT = process.cwd();
 
-/** Generated or vendored: these legitimately contain names a fork detector would match. */
-const PRUNED = new Set(["node_modules", ".next"]);
+/**
+ * Generated or vendored: these legitimately contain names a fork detector
+ * would match. `.open-next` is the ignored OpenNext build tree; it vendors a
+ * copy of dependencies and app data, so it is not source and must not make the
+ * checkout-hygiene guard fail.
+ */
+const PRUNED = new Set(["node_modules", ".next", ".open-next"]);
 
 /**
  * A forking suffix: `<name> 2.ts`, `<name> 3.json`, `<name> 2`.
@@ -89,6 +94,7 @@ describe("checkout fork hygiene", () => {
     expect(paths).toContain("docs/operations.md");
     expect(paths.some((candidate) => candidate.startsWith("node_modules/"))).toBe(false);
     expect(paths.some((candidate) => candidate.startsWith(".next/"))).toBe(false);
+    expect(paths.some((candidate) => candidate.startsWith(".open-next/"))).toBe(false);
     // The one tree that must be scanned even though it is not source.
     expect(paths).toContain(".git/HEAD");
   });
