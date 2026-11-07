@@ -231,7 +231,7 @@ function buildContentSecurityPolicy(nonce: string): string {
     : [
         "require-trusted-types-for 'script'",
         // Policy names are unquoted allowlist tokens. `default` lets the
-        // TrustedTypesGate component open a strictly gated, same-origin
+        // client bootstrap open a strictly gated, same-origin
         // fallback for libraries that are not TT-aware (tesseract.js v6 has
         // no createPolicy calls and builds its worker from a plain string —
         // verified in the pinned bundle).

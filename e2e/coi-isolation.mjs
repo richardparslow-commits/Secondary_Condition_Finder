@@ -229,7 +229,7 @@ async function assertDocumentIsolation(label) {
  * the same construction type, origin, and path prefix as the tesseract.js
  * OCR worker (/tesseract/worker.min.js). A same-origin path is required by
  * the app's Trusted Types default policy, which refuses blob:/data: script
- * URLs by design (see src/components/security/TrustedTypesGate.tsx) — the
+ * URLs by design (see src/instrumentation-client.ts) — the
  * same constraint tesseract.js itself satisfies. A dedicated worker
  * inherits its creator's agent-cluster isolation, so
  * `self.crossOriginIsolated === true` in the probe is exactly the property

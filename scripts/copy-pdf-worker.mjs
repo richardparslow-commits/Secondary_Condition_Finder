@@ -71,7 +71,7 @@ copyIfExists(
 // needs for SharedArrayBuffer-based transfers. It must be a static
 // same-origin file because the app's Trusted Types default policy refuses
 // blob:/data: script URLs by design (see
-// src/components/security/TrustedTypesGate.tsx) — the same constraint
+// src/instrumentation-client.ts) — the same constraint
 // tesseract.js satisfies with worker.min.js.
 //
 // Loaded only by e2e/coi-isolation.mjs: no OCR model bytes are loaded and

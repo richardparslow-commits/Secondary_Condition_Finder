@@ -7,7 +7,11 @@ import {
   extractCspViolationEvent,
   extractCspViolationEvents,
 } from "../src/lib/observability/csp-report";
-import { buildTrustedTypesPolicyOptions } from "../src/lib/security/trusted-types-policy";
+import {
+  buildTrustedTypesPolicyOptions,
+  installTrustedTypesDefaultPolicy,
+  type TrustedTypePolicyOptions,
+} from "../src/lib/security/trusted-types-policy";
 import { proxy } from "@/proxy";
 
 /**
@@ -291,19 +295,14 @@ describe("report endpoint behavior", () => {
   });
 });
 
-describe("TrustedTypesGate component (structural)", () => {
-  const component = read("src/components/security/TrustedTypesGate.tsx");
+describe("Trusted Types bootstrap (pre-hydration)", () => {
+  const instrumentation = read("src/instrumentation-client.ts");
 
-  it("installs only the default policy, at mount (after hydration), from a client component", () => {
-    expect(component).toContain('"use client"');
-    expect(component).toMatch(/createPolicy\(\s*"default"/);
-    expect(component).toContain("useEffect");
-    expect(component).toContain("buildTrustedTypesPolicyOptions");
-    expect(component).not.toMatch(/createPolicy\(\s*"tesseract/);
-    // The bootstrap contract is after hydration — deliberate, documented, and
-    // no longer mis-described as happening before hydration.
-    expect(component).toContain("AFTER hydration");
-    expect(component).toContain("claimed to exist before hydration");
+  it("installs the default policy from the client instrumentation hook, not an effect", () => {
+    expect(instrumentation).toContain("installTrustedTypesDefaultPolicy");
+    expect(instrumentation).toContain("process.env.NODE_ENV");
+    expect(instrumentation).not.toContain("useEffect");
+    expect(read("src/app/layout.tsx")).not.toContain("TrustedTypesGate");
   });
 
   it("executes the policy: OCR worker and framework chunk URLs pass, everything else is refused", () => {
@@ -346,13 +345,50 @@ describe("TrustedTypesGate component (structural)", () => {
     );
   });
 
-  it("mirrors the CSP dev exemption and marks completion for ops verification", () => {
-    expect(component).toContain('process.env.NODE_ENV === "development"');
-    expect(component).toContain("data-tt-ready");
+  it("installs the policy and marks the document ready", () => {
+    const attributes = new Map<string, string>();
+    const created: Array<{ name: string; options: TrustedTypePolicyOptions }> = [];
+    const installed = installTrustedTypesDefaultPolicy({
+      trustedTypes: {
+        defaultPolicy: null,
+        createPolicy(name, options) {
+          created.push({ name, options });
+          return {};
+        },
+      },
+      location: { origin: "https://app.example", href: "https://app.example/secondary/upload" },
+      document: {
+        documentElement: {
+          setAttribute(name, value) {
+            attributes.set(name, value);
+          },
+        },
+      },
+    });
+
+    expect(installed).toBe(true);
+    expect(created).toHaveLength(1);
+    expect(created[0]?.name).toBe("default");
+    expect(attributes.get("data-tt-ready")).toBe("true");
+    expect(created[0]!.options.createScriptURL!("/tesseract/worker.min.js")).toBe(
+      "/tesseract/worker.min.js",
+    );
   });
 
-  it("is mounted in the root layout", () => {
-    const layout = read("src/app/layout.tsx");
-    expect(layout).toContain("<TrustedTypesGate />");
+  it("leaves readiness unset when Trusted Types is unavailable", () => {
+    const attributes = new Map<string, string>();
+    const installed = installTrustedTypesDefaultPolicy({
+      location: { origin: "https://app.example", href: "https://app.example/" },
+      document: {
+        documentElement: {
+          setAttribute(name, value) {
+            attributes.set(name, value);
+          },
+        },
+      },
+    });
+
+    expect(installed).toBe(false);
+    expect(attributes.size).toBe(0);
   });
 });

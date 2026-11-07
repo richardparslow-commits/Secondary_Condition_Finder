@@ -3,11 +3,10 @@
  *
  * Production enforces `require-trusted-types-for 'script'` and allowlists
  * `default` as the one first-party fallback policy. The policy is installed by
- * `src/components/security/TrustedTypesGate.tsx` at mount — after hydration,
- * deliberately: the only first-party sink assignment (the tesseract worker)
- * happens on an explicit user action long after mount, and the policy is
- * intentionally not claimed to exist before hydration. Keeping the decision
- * here lets tests execute the real policy rather than pattern-match source.
+ * `src/instrumentation-client.ts` synchronously before React hydration. The
+ * framework assigns script URLs while its route loader runs, so the fallback
+ * must already exist before any application code executes. Keeping the
+ * decision here lets tests execute the real policy rather than pattern-match.
  *
  * - Script **URLs**: same-origin http(s) only. Same-origin is *required*, not
  *   merely tolerated — framework chunk loading assigns script URLs under
@@ -41,6 +40,17 @@ export interface TrustedTypePolicyFactoryLike {
 export interface TrustedTypesTarget {
   origin: string;
   href: string;
+}
+
+/** Minimal page surface needed to install and verify the default policy. */
+export interface TrustedTypesRuntime {
+  trustedTypes?: TrustedTypePolicyFactoryLike;
+  location: TrustedTypesTarget;
+  document?: {
+    documentElement?: {
+      setAttribute(name: string, value: string): void;
+    };
+  };
 }
 
 /**
@@ -77,4 +87,30 @@ export function buildTrustedTypesPolicyOptions(target: TrustedTypesTarget): Trus
       throw new Error("Trusted Types: createHTML is not permitted by the default policy");
     },
   };
+}
+
+/**
+ * Install the `default` policy and mark the document for ops verification.
+ *
+ * Must be called synchronously from the client instrumentation hook, before
+ * React hydration. Failure is non-fatal: without a factory the page simply
+ * runs without a fallback policy, and the readiness marker stays absent.
+ */
+export function installTrustedTypesDefaultPolicy(target: TrustedTypesRuntime): boolean {
+  const factory = target.trustedTypes;
+  if (!factory) return false;
+
+  try {
+    factory.createPolicy(
+      "default",
+      buildTrustedTypesPolicyOptions({
+        origin: target.location.origin,
+        href: target.location.href,
+      }),
+    );
+    target.document?.documentElement?.setAttribute("data-tt-ready", "true");
+    return true;
+  } catch {
+    return false;
+  }
 }
