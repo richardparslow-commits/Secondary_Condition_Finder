@@ -3,11 +3,9 @@
  *
  * Production enforces `require-trusted-types-for 'script'` and allowlists
  * `default` as the one first-party fallback policy. The policy is installed by
- * `src/components/security/TrustedTypesGate.tsx` at mount — after hydration,
- * deliberately: the only first-party sink assignment (the tesseract worker)
- * happens on an explicit user action long after mount, and the policy is
- * intentionally not claimed to exist before hydration. Keeping the decision
- * here lets tests execute the real policy rather than pattern-match source.
+ * the root head's parser-blocking /trusted-types-bootstrap.js before modules
+ * evaluate, with TrustedTypesGate as a hydration-time fallback. Tests execute
+ * both implementations against the same allow/refuse contract.
  *
  * - Script **URLs**: same-origin http(s) only. Same-origin is *required*, not
  *   merely tolerated — framework chunk loading assigns script URLs under

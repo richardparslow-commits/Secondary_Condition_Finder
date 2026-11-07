@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { connection } from "next/server";
+import { headers } from "next/headers";
 
 import { TrustedTypesGate } from "@/components/security/TrustedTypesGate";
 
@@ -17,13 +18,20 @@ export default async function RootLayout({
   // Nonce-based CSP requires request-time rendering so Next.js can apply the
   // per-request nonce to framework and page scripts.
   await connection();
+  const nonce = (await headers()).get("x-nonce") ?? undefined;
 
   return (
     <html lang="en">
+      <head>
+        {process.env.NODE_ENV !== "development" && (
+          // No async/defer: install the narrow policy before module evaluation.
+          // The proxy's per-request nonce authorizes this parser-loaded script.
+          // eslint-disable-next-line @next/next/no-sync-scripts
+          <script nonce={nonce} src="/trusted-types-bootstrap.js" />
+        )}
+      </head>
       <body>
-        {/* Creates the gated `default` Trusted Types policy before any
-            library sink assignment (tesseract.js OCR worker). Production
-            enforcement only — mirrors the CSP's dev exemption. */}
+        {/* Hydration-time fallback; the head bootstrap handles early sinks. */}
         <TrustedTypesGate />
         <a className="skip-link" href="#main-content">
           Skip to main content

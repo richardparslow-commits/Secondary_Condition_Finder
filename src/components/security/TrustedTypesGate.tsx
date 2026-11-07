@@ -17,12 +17,11 @@ import {
  * installs ONLY the `default` policy — the fallback the browser invokes for
  * any sink assignment from code that has not created its own policy.
  *
- * Installation happens in a mount effect, i.e. AFTER hydration. That is
- * deliberate, not an oversight: the only first-party script-URL sink (the
- * tesseract worker spawn, via `createLocalOcrWorker()` with
- * `workerBlobURL: false`) occurs on an explicit user action long after mount,
- * so a mount-time bootstrap is sufficient, and the policy is intentionally
- * not claimed to exist before hydration. The decision itself lives in
+ * This fallback runs AFTER hydration and is not claimed to exist before hydration.
+ * The parser-blocking /trusted-types-bootstrap.js in the root head installs
+ * the same narrow policy before framework and library module evaluation.
+ * A mount-only policy cannot protect script-URL sinks during module imports.
+ * The fallback's decision itself lives in
  * `src/lib/security/trusted-types-policy.ts` so tests execute the real policy
  * (same-origin script URLs only — framework chunks and the `/tesseract/`
  * worker ride the same gate; blob/data/cross-origin refused; createScript and
@@ -38,6 +37,10 @@ export function TrustedTypesGate() {
     if (typeof window === "undefined") return;
     const factory = (window as unknown as { trustedTypes?: TrustedTypePolicyFactoryLike }).trustedTypes;
     if (!factory) return;
+    if (factory.defaultPolicy) {
+      document.documentElement.setAttribute("data-tt-ready", "true");
+      return;
+    }
 
     try {
       factory.createPolicy(
