@@ -25,9 +25,10 @@ import {
  * The sealed 3.8 KB cookie and its `WorkflowCookieBudgetError` are gone; the
  * browser-local record schema now carries the same bounds. The contract is the
  * same shape: an over-bounds write must fail BEFORE touching the last good
- * record, the user must be held on their step with the same actionable
- * `context-too-large` / `invalid-context` guidance, and the flow must never
- * advance after a failed persistence.
+ * record, the user must be held on their step with the actionable
+ * `context-too-large` guidance for a bounded overflow or `storage-unavailable`
+ * for a blocked write, and the flow must never advance after a failed
+ * persistence.
  */
 
 const catalog = loadConditionCatalog();
@@ -54,7 +55,7 @@ function formWith(entries: Record<string, string | string[]>): FormData {
   return form;
 }
 
-describe("browser-local budget contract (context-too-large)", () => {
+describe("browser-local budget and storage contract", () => {
   it("fails an out-of-bounds write before touching the previous record", () => {
     const storage = fakeStorage();
     writeBrowserWorkflowContext(storage, { medications: ["lisinopril"] });
@@ -92,11 +93,34 @@ describe("browser-local budget contract (context-too-large)", () => {
     }
   });
 
-  it("never advances after a failed persistence — it reports context-too-large", () => {
+  it("never advances after a schema-bound overflow — it reports context-too-large", () => {
+    const storage = fakeStorage();
+    const tooMany = Array.from(
+      { length: MAX_CONTEXT_ITEMS + 1 },
+      (_, index) => `med-${index}`,
+    );
+    const persist = (input: Parameters<typeof writeBrowserWorkflowContext>[1]) =>
+      writeBrowserWorkflowContext(storage, input);
+
+    const outcome = persistStepResult(persist, {
+      context: { medications: tooMany },
+      next: "/secondary/service-connected",
+    });
+    expect(outcome.ok).toBe(false);
+    if (!outcome.ok) expect(outcome.code).toBe("context-too-large");
+    expect("next" in outcome).toBe(false);
+
+    const draft = persistStepContext(persist, { medications: tooMany });
+    expect(draft.ok).toBe(false);
+    if (!draft.ok) expect(draft.code).toBe("context-too-large");
+    expect(storage.getItem(browserWorkflowContextStorageKey)).toBeNull();
+  });
+
+  it("never advances when browser storage is blocked — it reports storage-unavailable", () => {
     const storage = fakeStorage();
     const persist = (input: Parameters<typeof writeBrowserWorkflowContext>[1]) =>
       writeBrowserWorkflowContext(
-        { ...storage, setItem: () => { throw new Error("quota"); } },
+        { ...storage, setItem: () => { throw new Error("blocked"); } },
         input,
       );
 
@@ -105,11 +129,12 @@ describe("browser-local budget contract (context-too-large)", () => {
       next: "/secondary/service-connected",
     });
     expect(outcome.ok).toBe(false);
-    if (!outcome.ok) expect(outcome.code).toBe("context-too-large");
+    if (!outcome.ok) expect(outcome.code).toBe("storage-unavailable");
     expect("next" in outcome).toBe(false);
 
     const draft = persistStepContext(persist, { diagnosedConditionIds: ["ptsd"] });
     expect(draft.ok).toBe(false);
+    if (!draft.ok) expect(draft.code).toBe("storage-unavailable");
   });
 
   it("removes every PHI-bearing Server Action and keeps step submissions client-local", () => {

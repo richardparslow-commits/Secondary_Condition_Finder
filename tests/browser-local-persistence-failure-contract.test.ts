@@ -8,6 +8,7 @@ import {
   persistStepContext,
   persistStepResult,
 } from "@/lib/secondary-workflow/client-steps";
+import { MAX_CONTEXT_ITEMS } from "@/lib/secondary-workflow/state";
 
 /**
  * Second audit-report follow-up, re-homed to PRIV-01 stage 2.
@@ -28,7 +29,7 @@ function throwingStorage() {
   return {
     getItem: () => null,
     setItem: () => {
-      throw new Error("QuotaExceededError: browser storage is full");
+      throw new Error("SecurityError: browser storage is blocked");
     },
     removeItem: () => {},
   };
@@ -43,7 +44,7 @@ describe("browser-local persistence failure contract (no silent data loss)", () 
     ).toThrow();
   });
 
-  it("reports failure instead of a navigation target for both persist helpers", () => {
+  it("reports blocked storage instead of a navigation target for both persist helpers", () => {
     const storage = throwingStorage();
     const persist = (input: Parameters<typeof writeBrowserWorkflowContext>[1]) =>
       writeBrowserWorkflowContext(storage, input);
@@ -52,10 +53,26 @@ describe("browser-local persistence failure contract (no silent data loss)", () 
       context: { diagnosedConditionIds: ["ptsd"] },
       next: "/secondary/service-connected",
     });
-    expect(advance).toEqual({ ok: false, code: "context-too-large" });
+    expect(advance).toEqual({ ok: false, code: "storage-unavailable" });
 
     const draft = persistStepContext(persist, { diagnosedConditionIds: ["ptsd"] });
-    expect(draft).toEqual({ ok: false, code: "context-too-large" });
+    expect(draft).toEqual({ ok: false, code: "storage-unavailable" });
+  });
+
+  it("still reports a schema-bound overflow as context-too-large", () => {
+    const tooMany = Array.from(
+      { length: MAX_CONTEXT_ITEMS + 1 },
+      (_, index) => `med-${index}`,
+    );
+    const outcome = persistStepResult(
+      (input) => writeBrowserWorkflowContext({ setItem: () => {} }, input),
+      {
+        context: { medications: tooMany },
+        next: "/secondary/service-connected",
+      },
+    );
+
+    expect(outcome).toEqual({ ok: false, code: "context-too-large" });
   });
 
   it("advances only after the write succeeds", () => {
@@ -84,7 +101,7 @@ describe("browser-local persistence failure contract (no silent data loss)", () 
     for (const name of steps) {
       const source = readRepoFile(`src/components/secondary/steps/${name}.tsx`);
       // Every forward advance goes through persistStepResult, and a failed
-      // outcome is surfaced as context-too-large instead of navigating.
+      // outcome is surfaced on the step instead of navigating.
       expect(source).toContain("persistStepResult(persist, result)");
       expect(source).toContain("setLocalError(outcome.code)");
       expect(source).toContain('searchParams.has("error")');

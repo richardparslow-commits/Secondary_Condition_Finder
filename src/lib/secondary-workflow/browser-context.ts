@@ -54,6 +54,14 @@ export type BrowserWorkflowContext = z.infer<typeof browserWorkflowContextSchema
 /** Input shape for writes; the version is stamped by this module. */
 export type BrowserWorkflowContextInput = Omit<BrowserWorkflowContext, "version">;
 
+/** The bounded context schema rejected the record before storage was touched. */
+export class BrowserWorkflowContextTooLargeError extends Error {
+  constructor() {
+    super("Browser-local workflow context exceeds the allowed bounds.");
+    this.name = "BrowserWorkflowContextTooLargeError";
+  }
+}
+
 export type ReadableStorage = Pick<Storage, "getItem">;
 export type WritableStorage = Pick<Storage, "setItem">;
 export type RemovableStorage = Pick<Storage, "removeItem">;
@@ -94,11 +102,12 @@ export function writeBrowserWorkflowContext(
   storage: WritableStorage,
   context: BrowserWorkflowContextInput,
 ): void {
-  const parsed = browserWorkflowContextSchema.parse({
+  const parsed = browserWorkflowContextSchema.safeParse({
     ...context,
     version: BROWSER_WORKFLOW_CONTEXT_VERSION,
   });
-  storage.setItem(browserWorkflowContextStorageKey, JSON.stringify(parsed));
+  if (!parsed.success) throw new BrowserWorkflowContextTooLargeError();
+  storage.setItem(browserWorkflowContextStorageKey, JSON.stringify(parsed.data));
 }
 
 /** Removes the browser-local context. Throws if removal cannot be confirmed. */
