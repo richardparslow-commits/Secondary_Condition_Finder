@@ -156,22 +156,28 @@ export async function runRegulatoryPreflight(options: {
     detectedAt: finishedAt,
     asOfDate,
   });
-  // A 304 or an overlap window with no new discovery does not verify a prior
-  // unresolved operative document. Preserve its blocker until explicit evidence
-  // replaces it, including across repeated no-change checks.
-  const resolvedNumbers = new Set(nextRegistry.flatMap((action) =>
-    action.federalRegisterDocuments.filter((document) => document.authenticity.officialEditionVerified)
-      .map((document) => document.documentNumber),
-  ));
-  const currentIds = new Set(discoveredChanges.map((change) => change.id));
+  // Neither a no-change refresh nor an unverified reclassification resolves a
+  // prior operative-document blocker.
+  const resolvedNumbers = new Set([
+    ...nextRegistry.flatMap((action) =>
+      action.federalRegisterDocuments.filter((document) => document.authenticity.officialEditionVerified)
+        .map((document) => document.documentNumber),
+    ),
+    ...discoveredChanges.filter((change) => change.officialEditionVerified)
+      .flatMap((change) => change.documentNumbers),
+  ]);
   const unresolved = (previousSnapshot?.changes ?? []).filter((change) =>
     change.classification === "current-law-change"
     && change.requiresOfficialEditionVerification && !change.officialEditionVerified
-    && !currentIds.has(change.id)
     && (change.documentNumbers.length === 0
       || !change.documentNumbers.every((number) => resolvedNumbers.has(number))),
   );
-  const changes = [...discoveredChanges, ...unresolved];
+  const unresolvedById = new Map(unresolved.map((change) => [change.id, change]));
+  const changes = discoveredChanges.map((change) =>
+    unresolvedById.get(change.id) ?? change,
+  );
+  const currentIds = new Set(discoveredChanges.map((change) => change.id));
+  changes.push(...unresolved.filter((change) => !currentIds.has(change.id)));
   const sourceResults = [
     federalRegister.sourceResult,
     oiraPending.sourceResult,

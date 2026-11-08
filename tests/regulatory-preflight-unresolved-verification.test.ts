@@ -6,14 +6,14 @@ import type { RegulatoryPreflightCache } from "@/lib/regulatory/preflight/types"
 const DOCUMENT_NUMBER = "2026-99999";
 const RIN = "2900-TEST";
 
-type FederalRegisterMode = "unverified" | "not-modified" | "verified";
+type FederalRegisterMode = "unverified" | "not-modified" | "verified" | "reclassified";
 
 const federalRegisterPayload = (mode: FederalRegisterMode) => ({
   results: [{
     document_number: DOCUMENT_NUMBER,
     title: "Synthetic compensation final rule",
-    type: "Rule",
-    action: "Final rule.",
+    type: mode === "reclassified" ? "Proposed Rule" : "Rule",
+    action: mode === "reclassified" ? "Proposed rule." : "Final rule.",
     publication_date: "2026-11-07",
     effective_on: "2026-11-08",
     html_url: `https://www.federalregister.gov/d/${DOCUMENT_NUMBER}`,
@@ -80,6 +80,29 @@ const cacheFor = (
 });
 
 describe("regulatory preflight unresolved official-edition blockers", () => {
+  it("does not clear an unresolved blocker when an unverified record is reclassified", async () => {
+    const first = await runPreflight({ cache: null, now: "2026-11-08T06:00:00Z", mode: "unverified" });
+    const next = await runPreflight({ cache: cacheFor(first), now: "2026-11-08T06:01:00Z", mode: "reclassified" });
+
+    expect(next.snapshot).toMatchObject({
+      reviewMode: "medical-only",
+      legalRegulatoryConclusionsAllowed: false,
+      officialEditionVerificationComplete: false,
+    });
+    expect(next.snapshot.changes).toContainEqual(expect.objectContaining({
+      id: `fr:${DOCUMENT_NUMBER}`,
+      classification: "current-law-change",
+      officialEditionVerified: false,
+    }));
+
+    const unchanged = await runPreflight({ cache: cacheFor(next), now: "2026-11-08T06:02:00Z", mode: "not-modified" });
+    expect(unchanged.snapshot.legalRegulatoryConclusionsAllowed).toBe(false);
+
+    const verified = await runPreflight({ cache: cacheFor(unchanged), now: "2026-11-08T06:03:00Z", mode: "verified" });
+    expect(verified.snapshot.legalRegulatoryConclusionsAllowed).toBe(true);
+    expect(verified.snapshot.officialEditionVerificationComplete).toBe(true);
+  });
+
   it("keeps legal conclusions disabled across no-change refreshes until the official edition is verified", async () => {
     const first = await runPreflight({ cache: null, now: "2026-11-08T06:00:00Z", mode: "unverified" });
     expect(first.snapshot.changes.map((change) => change.id)).toContain(`fr:${DOCUMENT_NUMBER}`);
