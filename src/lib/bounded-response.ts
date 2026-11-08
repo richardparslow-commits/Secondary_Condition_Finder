@@ -49,6 +49,20 @@ export class ResponseTooLargeError extends Error {
 }
 
 /**
+ * Parses a declared `content-length` only when it is a positive decimal
+ * integer. HTTP does not permit scientific notation, fractions, signed
+ * values, or prefixes such as `0x`, so those headers must not be interpreted
+ * as byte counts and cause a false refusal.
+ */
+function parseDeclaredContentLength(value: string | null): number | undefined {
+  if (value === null) return undefined;
+  const trimmed = value.trim();
+  if (!/^\d+$/.test(trimmed)) return undefined;
+  const parsed = Number(trimmed);
+  return Number.isSafeInteger(parsed) && parsed > 0 ? parsed : undefined;
+}
+
+/**
  * Reads a response body as text, refusing to buffer past `maxBytes`.
  *
  * Two checks, because either alone is insufficient:
@@ -64,13 +78,20 @@ export async function readBoundedResponseText(
   const maxBytes = options.maxBytes ?? DEFAULT_MAX_RESPONSE_BYTES;
   const { url } = options;
 
-  const declaredLength = Number(response.headers.get("content-length") ?? "0");
-  const hasDeclaredLength = Number.isFinite(declaredLength) && declaredLength > 0;
-  if (hasDeclaredLength && declaredLength > maxBytes) {
+  const declaredBytes = parseDeclaredContentLength(
+    response.headers.get("content-length"),
+  );
+  if (declaredBytes !== undefined && declaredBytes > maxBytes) {
+    try {
+      await response.body?.cancel("response-size-limit").catch(() => undefined);
+    } catch {
+      // The body is already locked or closed; the size refusal is still the
+      // actionable failure.
+    }
     throw new ResponseTooLargeError({
       url,
       maxBytes,
-      declaredBytes: declaredLength,
+      declaredBytes,
     });
   }
 
@@ -80,7 +101,7 @@ export async function readBoundedResponseText(
       throw new ResponseTooLargeError({
         url,
         maxBytes,
-        ...(hasDeclaredLength ? { declaredBytes: declaredLength } : {}),
+        ...(declaredBytes !== undefined ? { declaredBytes } : {}),
       });
     }
     return text;
@@ -96,7 +117,7 @@ export async function readBoundedResponseText(
       if (!value) continue;
       total += value.byteLength;
       if (total > maxBytes) {
-        await reader.cancel("response-size-limit");
+        await reader.cancel("response-size-limit").catch(() => undefined);
         throw new ResponseTooLargeError({ url, maxBytes });
       }
       chunks.push(value);
