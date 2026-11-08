@@ -169,6 +169,23 @@ describe("evidence shorthand golden corpus", () => {
       expect(analysis.excerpts).toHaveLength(0);
     });
 
+    it("does not promote section-context negations to diagnosis excerpts", () => {
+      for (const line of ["No PTSD", "Denies PTSD", "Without PTSD"]) {
+        const analysis = analyze(`Diagnosis:\n${line}`, ["PTSD"]);
+        expect(
+          analysis.excerpts.some((excerpt) => excerpt.matchedTerms.includes("PTSD")),
+          line,
+        ).toBe(false);
+      }
+
+      const positive = analyze("Diagnosis:\nPTSD-chronic", ["PTSD"]);
+      const diagnosis = positive.excerpts.find(
+        (excerpt) => excerpt.quote === "PTSD-chronic",
+      );
+      expect(diagnosis?.category).toBe("diagnosis");
+      expect(diagnosis?.matchedTerms).toContain("PTSD");
+    });
+
     it("keeps explicit unfavorable opinions visible as alternative-cause context", () => {
       const analysis = analyze(
         "The veteran's obstructive sleep apnea is not caused by his PTSD; it is more likely related to his documented obesity.",
