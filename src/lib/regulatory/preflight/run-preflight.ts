@@ -149,13 +149,29 @@ export async function runRegulatoryPreflight(options: {
   });
 
   const finishedAt = new Date().toISOString();
-  const changes = diffRegulatoryPreflight({
+  const discoveredChanges = diffRegulatoryPreflight({
     previousRegistry: baseRegistry,
     nextRegistry,
     federalRegisterDiscoveries: federalRegister.discoveries,
     detectedAt: finishedAt,
     asOfDate,
   });
+  // A 304 or an overlap window with no new discovery does not verify a prior
+  // unresolved operative document. Preserve its blocker until explicit evidence
+  // replaces it, including across repeated no-change checks.
+  const resolvedNumbers = new Set(nextRegistry.flatMap((action) =>
+    action.federalRegisterDocuments.filter((document) => document.authenticity.officialEditionVerified)
+      .map((document) => document.documentNumber),
+  ));
+  const currentIds = new Set(discoveredChanges.map((change) => change.id));
+  const unresolved = (previousSnapshot?.changes ?? []).filter((change) =>
+    change.classification === "current-law-change"
+    && change.requiresOfficialEditionVerification && !change.officialEditionVerified
+    && !currentIds.has(change.id)
+    && (change.documentNumbers.length === 0
+      || !change.documentNumbers.every((number) => resolvedNumbers.has(number))),
+  );
+  const changes = [...discoveredChanges, ...unresolved];
   const sourceResults = [
     federalRegister.sourceResult,
     oiraPending.sourceResult,
