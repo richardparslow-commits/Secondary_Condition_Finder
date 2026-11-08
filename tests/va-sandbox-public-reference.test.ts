@@ -385,6 +385,37 @@ describe("public-reference VA API adapters", () => {
     expect(JSON.stringify(observations)).not.toContain("reference-sandbox-test-key");
   });
 
+  it("cancels an unused HTTP error body before returning the fallback", async () => {
+    let cancelled = false;
+    const body = new ReadableStream<Uint8Array>({
+      start(controller) {
+        controller.enqueue(new TextEncoder().encode("upstream error"));
+      },
+      cancel() {
+        cancelled = true;
+      },
+    });
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        new Response(body, {
+          status: 500,
+          headers: { "Content-Type": "application/json" },
+        }),
+      ),
+    );
+
+    const result = await fetchVaForms(undefined, { config });
+    try {
+      expect(result.success).toBe(false);
+      expect(result.error).toContain("status 500");
+      await new Promise((resolve) => setTimeout(resolve, 0));
+      expect(cancelled).toBe(true);
+    } finally {
+      if (!cancelled) await body.cancel().catch(() => undefined);
+    }
+  });
+
   it("clamps a misconfigured per-attempt timeout to the hard maximum", () => {
     const loaded = loadVaApiConfig({
       VA_API_ENABLED: "true",
