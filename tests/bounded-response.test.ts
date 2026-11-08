@@ -51,6 +51,106 @@ describe("readBoundedResponseText", () => {
     expect((error as ResponseTooLargeError).declaredBytes).toBe(9999);
   });
 
+  it("awaits body cancellation before refusing a declared content-length over the cap", async () => {
+    let cancelReason: unknown;
+    let pulls = 0;
+    const stream = new ReadableStream<Uint8Array>({
+      start(controller) {
+        controller.enqueue(new TextEncoder().encode("small"));
+      },
+      pull() {
+        pulls += 1;
+      },
+      cancel(reason) {
+        cancelReason = reason;
+      },
+    });
+    const response = new Response(stream, {
+      status: 200,
+      headers: { "content-length": "9999" },
+    });
+    const body = response.body;
+
+    await expect(
+      readBoundedResponseText(response, {
+        url: "https://example.test/data",
+        maxBytes: 100,
+      }),
+    ).rejects.toBeInstanceOf(ResponseTooLargeError);
+
+    expect(cancelReason).toBe("response-size-limit");
+    expect(pulls).toBe(0);
+    expect(response.bodyUsed).toBe(true);
+    expect(body?.locked).toBe(false);
+  });
+
+  it("keeps the size refusal when cancelling the body rejects", async () => {
+    let attempted = false;
+    const stream = new ReadableStream<Uint8Array>({
+      start(controller) {
+        controller.enqueue(new TextEncoder().encode("small"));
+      },
+      cancel() {
+        attempted = true;
+        throw new Error("cancel failed");
+      },
+    });
+    const response = new Response(stream, {
+      status: 200,
+      headers: { "content-length": "9999" },
+    });
+
+    const error = await readBoundedResponseText(response, {
+      url: "https://example.test/data",
+      maxBytes: 100,
+    }).catch((caught: unknown) => caught);
+
+    expect(attempted).toBe(true);
+    expect(error).toBeInstanceOf(ResponseTooLargeError);
+    expect((error as Error).message).toContain("declared 9999 bytes");
+    expect((error as ResponseTooLargeError).declaredBytes).toBe(9999);
+  });
+
+  it.each(["1e3", "99.9", "-1", "0x10"])(
+    "does not treat %s content-length as declared bytes",
+    async (header) => {
+      const response = streamingResponse(["small"], { "content-length": header });
+
+      await expect(
+        readBoundedResponseText(response, {
+          url: "https://example.test/data",
+          maxBytes: 100,
+        }),
+      ).resolves.toBe("small");
+    },
+  );
+
+  it("keeps the actual-byte refusal when streaming cancellation rejects", async () => {
+    let attempted = false;
+    const stream = new ReadableStream<Uint8Array>({
+      start(controller) {
+        controller.enqueue(new TextEncoder().encode("a".repeat(150)));
+      },
+      cancel() {
+        attempted = true;
+        throw new Error("stream cancel failed");
+      },
+    });
+    const response = new Response(stream, {
+      status: 200,
+      headers: { "content-length": "10" },
+    });
+
+    const error = await readBoundedResponseText(response, {
+      url: "https://example.test/data",
+      maxBytes: 100,
+    }).catch((caught: unknown) => caught);
+
+    expect(attempted).toBe(true);
+    expect(error).toBeInstanceOf(ResponseTooLargeError);
+    expect((error as Error).message).toContain("safety limit");
+  });
+
   it("stops a stream that exceeds the cap when content-length under-declares", async () => {
     // The header claims 10 bytes; the stream actually carries 300.
     const response = streamingResponse(["a".repeat(150), "b".repeat(150)], {
