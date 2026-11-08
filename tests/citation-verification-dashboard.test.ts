@@ -1,5 +1,5 @@
 import { execFileSync } from "node:child_process";
-import { mkdtempSync, readFileSync, readdirSync } from "node:fs";
+import { mkdirSync, mkdtempSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
@@ -186,6 +186,61 @@ describe("citation-verification dashboard", () => {
       expect(batch.rows.length).toBeGreaterThan(0);
       expect(batch.rows.length).toBeLessThanOrEqual(data.summary.batchSizeCap + maxEdge - 1);
     }
+  });
+
+  it("keeps authored script-closing text inert in the JSON data block", () => {
+    const injection = "</script><script>window.__injected = true</script>";
+    const citation = `Synthetic citation ${injection}`;
+    const note = `Reviewer note ${injection} stays text.`;
+    const root = mkdtempSync(join(tmpdir(), "dashboard-injection-"));
+    mkdirSync(join(root, "data", "knowledge-base"), { recursive: true });
+    writeFileSync(
+      join(root, "data", "knowledge-base", "synthetic.json"),
+      JSON.stringify({
+        id: "synthetic-injection",
+        draft: true,
+        suggestions: [
+          {
+            conditionId: "synthetic-condition",
+            nexusClaim: {
+              associationBasis: "Synthetic claim",
+              causationStatus: "NOT_ESTABLISHED",
+              nexusClassification: "ASSOCIATION_ONLY",
+            },
+            sourceReferences: [
+              {
+                citation,
+                note,
+                sourceUrl: "https://example.invalid/source",
+                sourceCheckedOn: "2026-01-01",
+                sourceLocator: "p. 1",
+              },
+            ],
+          },
+        ],
+      }),
+    );
+
+    const out = join(root, "dashboard.html");
+    execFileSync(
+      process.execPath,
+      [join(process.cwd(), "scripts/generate-citation-verification-dashboard.js"), "--out", out],
+      { cwd: root, encoding: "utf8" },
+    );
+
+    const html = readFileSync(out, "utf8");
+    // The only script elements are the data block and the dashboard code; a
+    // script-closing sequence in authored text must not create another one.
+    expect(html.match(/<script\b/gi) ?? []).toHaveLength(2);
+
+    const match = html.match(
+      /<script id="dashboard-data" type="application\/json">\s*([\s\S]*?)\s*<\/script>/,
+    );
+    expect(match).not.toBeNull();
+    const data = JSON.parse(match![1]) as {
+      batches: Array<{ rows: Array<{ citation: string; note: string }> }>;
+    };
+    expect(data.batches[0].rows[0]).toMatchObject({ citation, note });
   });
 
   it("keeps the guardrail framing honest", () => {
