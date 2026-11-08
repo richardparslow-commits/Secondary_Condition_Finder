@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 
 import { auditLog } from "@/lib/observability/audit";
 import { refreshRegulatoryPreflightCache } from "@/lib/regulatory/preflight";
+import { requiredSourcesFailed } from "@/lib/regulatory/preflight/freshness";
 import { authorizeBearerRequest } from "@/lib/security/bearer-auth";
 
 export const dynamic = "force-dynamic";
@@ -26,13 +27,15 @@ export async function GET(request: Request) {
   }
 
   const snapshot = await refreshRegulatoryPreflightCache();
+  const refreshed = !requiredSourcesFailed(snapshot.sourceResults);
   auditLog("regulatory-preflight-triggered", {
-    status: "success",
+    status: refreshed ? "success" : "failure",
     route: "/api/regulatory/preflight",
     count: snapshot.changes.length,
   });
   return NextResponse.json({
-    ok: true,
+    ok: refreshed,
+    ...(refreshed ? {} : { error: "Regulatory refresh did not complete; required sources did not all update." }),
     snapshotId: snapshot.snapshotId,
     finishedAt: snapshot.finishedAt,
     freshness: snapshot.freshness,
@@ -40,5 +43,5 @@ export async function GET(request: Request) {
     legalRegulatoryConclusionsAllowed: snapshot.legalRegulatoryConclusionsAllowed,
     changeCount: snapshot.changes.length,
     relevantChangeCount: snapshot.relevantChangeIds.length,
-  });
+  }, { status: refreshed ? 200 : 503 });
 }
