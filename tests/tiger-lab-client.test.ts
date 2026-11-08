@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { readTiger, getLabConnection, executeLabSql } from "../scripts/lib/tiger-lab-client.mjs";
+import { readTiger, getLabConnection, executeLabSql, executeLabTransaction } from "../scripts/lib/tiger-lab-client.mjs";
 
 const ok = (stdout: string) => ({ status: 0, stdout, stderr: "" });
 const fail = (stderr: string) => ({ status: 1, stdout: "", stderr });
@@ -69,6 +69,59 @@ describe("SQL delivery", () => {
   it("never retries an ambiguous write failure or leaks its output", () => {
     const run = vi.fn().mockReturnValue({ ...fail("p@ss secret"), error: { code: "ETIMEDOUT" } });
     expect(() => executeLabSql(connect().call(), "COMMIT", [], { run })).toThrow(/not retried/);
+    expect(run).toHaveBeenCalledTimes(1);
+  });
+});
+
+
+describe("transaction pooler compatibility", () => {
+  const pooledMetadata = { ...metadata, connection_pooler: { endpoint: { host: "fixture.example", port: 6432 } } };
+  function pooledConnection(raw = uri.replace(":5432", ":6432")) {
+    const run = vi.fn().mockReturnValueOnce(ok(JSON.stringify(pooledMetadata))).mockReturnValueOnce(ok(raw));
+    return { run, call: () => getLabConnection(service, "verify", { pooled: true, run }) };
+  }
+  it("resolves and validates the pooler port rather than silently using the direct endpoint", () => {
+    const c = pooledConnection();
+    expect(c.call()).toMatchObject({ PGPORT: "6432", TIGER_LAB_ENDPOINT: "pooled" });
+    expect(c.run.mock.calls[1][1]).toContain("--pooled");
+    expect(pooledConnection(uri).call).toThrow(/port differs/);
+  });
+  it("fails before retrieving credentials when the pooler is unavailable", () => {
+    const run = vi.fn().mockReturnValue(ok(JSON.stringify(metadata)));
+    expect(() => getLabConnection(service, "verify", { pooled: true, run })).toThrow(/unavailable/);
+    expect(run).toHaveBeenCalledTimes(1);
+  });
+  it("removes inherited startup options and applies limits inside a single transaction", () => {
+    const run = vi.fn().mockReturnValue(ok("bounded"));
+    const previous = process.env.PGOPTIONS;
+    process.env.PGOPTIONS = "-c statement_timeout=999";
+    try {
+      expect(executeLabTransaction(pooledConnection().call(), "SELECT 1;", { run })).toBe("bounded");
+      expect(run.mock.calls[0][2].env.PGOPTIONS).toBe("");
+      expect(run.mock.calls[0][2].input).toMatch(/^BEGIN; SET LOCAL statement_timeout='15000ms'; SET LOCAL lock_timeout='5000ms';/);
+      expect(run.mock.calls[0][2].input).toMatch(/SELECT 1;\nCOMMIT;$/);
+    } finally {
+      if (previous === undefined) delete process.env.PGOPTIONS; else process.env.PGOPTIONS = previous;
+    }
+  });
+  it("refuses unbounded raw pooled SQL before sending anything", () => {
+    const run = vi.fn();
+    expect(() => executeLabSql(pooledConnection().call(), "SELECT 1", [], { run })).toThrow(/executeLabTransaction/);
+    expect(run).not.toHaveBeenCalled();
+  });
+  it.each([0, -1, 60_001, 1.5, NaN])("rejects invalid statement/lock timeout %s", (value) => {
+    const run = vi.fn();
+    expect(() => executeLabTransaction({}, "SELECT 1", { statementTimeoutMs: value, run })).toThrow();
+    expect(() => executeLabTransaction({}, "SELECT 1", { lockTimeoutMs: value, run })).toThrow();
+    expect(run).not.toHaveBeenCalled();
+  });
+  it("preserves only the SQLSTATE for a timeout and never retries the failed transaction", () => {
+    const run = vi.fn().mockReturnValue(fail("ERROR:  57014: canceling statement due to statement timeout secret"));
+    let failure;
+    try { executeLabTransaction({}, "SELECT pg_sleep(1);", { run, statementTimeoutMs: 25 }); }
+    catch (error) { failure = error; }
+    expect(failure).toMatchObject({ sqlstate: "57014" });
+    expect(String(failure)).not.toContain("secret");
     expect(run).toHaveBeenCalledTimes(1);
   });
 });

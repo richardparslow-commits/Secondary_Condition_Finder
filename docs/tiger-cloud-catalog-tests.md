@@ -38,3 +38,14 @@ This fixed synthetic drill runs only on the designated DEV Timescale test servic
 CSV export explicitly uses `COPY (SELECT ... FROM hypertable)`, which includes chunk data. A schema-only or parent-table-only dump is not a successful data backup. See [Tiger's individual-hypertable backup procedure](https://www.tigerdata.com/docs/deploy/self-hosted/backup-and-restore/logical-backup#back-up-and-restore-individual-hypertables).
 
 This procedure covers this drill's known audit schema and data. It is not a generic backup tool for arbitrary schemas, roles, policies, continuous aggregates, compressed tables or a substitute for service-level backups/PITR. No production data, service settings or replicated catalog tables are changed. SQL is not automatically retried after ambiguous failures.
+
+## Transaction-pooler verification (SCF-018)
+
+```sh
+node scripts/test-tiger-catalog.mjs verify m8vrpmo6ec --pooled
+node scripts/test-tiger-pooler.mjs m8vrpmo6ec /absolute/path/to/new-pooler-result.json
+```
+
+The shared client validates the pooler host/port from the designated DEV service metadata. It clears startup `PGOPTIONS`, including inherited values, and uses `SET LOCAL statement_timeout` and `SET LOCAL lock_timeout` inside the same transaction as the work. Raw pooled scripts are refused: callers use `executeLabTransaction` with a body that has no transaction-control commands. Catalog verification creates its temporary probe table with `ON COMMIT DROP` so it does not leave pooled-backend temporary state.
+
+The pooler drill compares three direct and three pooled batches, verifies 600 unique checksummed synthetic rows, intentionally times out one write transaction per batch, and checks that each failed write rolled back. Only the random scratch schema is removed. No role, service, pooler or production configuration changes are needed; this fixes test-client compatibility, not a demonstrated app runtime defect. Direct-only recovery/seed scripts retain their session limit. SQL is never automatically retried.

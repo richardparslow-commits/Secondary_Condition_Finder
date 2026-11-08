@@ -1,17 +1,18 @@
 import assert from "node:assert/strict";
-import { getLabConnection, executeLabSql } from "./lib/tiger-lab-client.mjs";
+import { getLabConnection, executeLabSql, executeLabTransaction } from "./lib/tiger-lab-client.mjs";
 import { createHash } from "node:crypto";
 import { readdirSync, readFileSync } from "node:fs";
 import { performance } from "node:perf_hooks";
 import { findCondition, normalizeConditionName } from "../src/lib/catalog/lookup.ts";
 
-const [mode, service] = process.argv.slice(2);
-if (process.argv.length !== 4 || !["seed", "verify"].includes(mode) || !/^[a-z0-9]{10}$/.test(service)) {
-  throw new Error("Usage: node scripts/test-tiger-catalog.mjs seed|verify <lab-service-id>");
+const [mode, service, ...flags] = process.argv.slice(2);
+const pooled = flags.length === 1 && flags[0] === "--pooled";
+if ((flags.length > 0 && (!pooled || mode !== "verify")) || !["seed", "verify"].includes(mode) || !/^[a-z0-9]{10}$/.test(service)) {
+  throw new Error("Usage: node scripts/test-tiger-catalog.mjs seed|verify <lab-service-id> [--pooled for verify]");
 }
 
 // Resolve and validate once; keep the password only in this process memory.
-const connection = getLabConnection(service, mode);
+const connection = getLabConnection(service, mode, { pooled });
 
 function jsonFiles(dir) {
   return readdirSync(dir)
@@ -47,8 +48,8 @@ const edges = [...mappings.values()].flatMap((mapping) =>
 const snapshot = createHash("sha256").update(JSON.stringify([conditions, terms, edges])).digest("hex");
 const withSnapshot = (rows) => rows.map((row) => [snapshot, ...row]);
 
-function sql(source, ...flags) {
-  return executeLabSql(connection, source, flags);
+function sql(source) {
+  return pooled ? executeLabTransaction(connection, source) : executeLabSql(connection, source);
 }
 
 if (mode === "seed") {
@@ -103,7 +104,7 @@ if (mode === "seed") {
   const appMs = Math.round(performance.now() - started);
   assert.deepEqual(app, inputs.map((input) => expected.get(normalizeConditionName(input)) ?? null), "Application lookup disagrees with the checked-in term identities.");
   const result = JSON.parse(sql(`
-    CREATE TEMP TABLE probes (probe_id integer PRIMARY KEY, term text NOT NULL);
+    CREATE TEMP TABLE probes (probe_id integer PRIMARY KEY, term text NOT NULL) ${pooled ? "ON COMMIT DROP" : ""};
     ${copy("probes", "probe_id, term", inputs.map((input, index) => [index, normalizeConditionName(input)]))}
     SELECT json_build_object(
       'conditions', (SELECT count(*) FROM scf_tiger_lab.conditions WHERE snapshot = '${snapshot}'),

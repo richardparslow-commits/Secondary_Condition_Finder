@@ -36,30 +36,52 @@ export function getLabConnection(service, mode, options = {}) {
   assert.ok(lab.name === names.source || (mode === "verify" && lab.name === names.target), "Only designated lab services are allowed");
   assert.equal(lab.metadata?.environment ?? lab.environment, "DEV");
   assert.equal(lab.status, "READY");
-  const raw = readTiger(["db", "uri", service, "--with-password"], options);
+  const pooled = options.pooled === true;
+  const endpoint = pooled ? lab.connection_pooler?.endpoint : (lab.endpoint ?? { host: lab.host, port: lab.port });
+  assert.ok(endpoint?.host && endpoint?.port, "Requested lab endpoint is unavailable");
+  const raw = readTiger(["db", "uri", service, "--with-password", ...(pooled ? ["--pooled"] : [])], options);
   let url;
   try { url = new URL(raw); } catch { throw new Error("Tiger returned invalid connection details"); }
   assert.ok(["postgres:", "postgresql:"].includes(url.protocol), "Invalid database protocol");
-  assert.equal(url.hostname, lab.endpoint?.host ?? lab.host, "Connection host differs from verified lab");
-  assert.equal(url.port, String(lab.endpoint?.port ?? lab.port), "Connection port differs from verified lab");
+  assert.equal(url.hostname, endpoint.host, "Connection host differs from verified lab");
+  assert.equal(url.port, String(endpoint.port), "Connection port differs from verified lab");
   assert.ok(url.password && url.username && url.pathname.length > 1, "Missing database credentials");
   assert.equal(url.searchParams.get("sslmode"), "require", "Lab connection must require TLS");
   return {
     PGHOST: url.hostname, PGPORT: url.port,
     PGUSER: decodeURIComponent(url.username), PGPASSWORD: decodeURIComponent(url.password),
     PGDATABASE: decodeURIComponent(url.pathname.slice(1)), PGSSLMODE: "require",
+    TIGER_LAB_ENDPOINT: pooled ? "pooled" : "direct",
   };
 }
 
-export function executeLabSql(connection, input, flags = [], { run = spawnSync } = {}) {
+function runPsql(connection, input, flags, { run = spawnSync } = {}, startupOptions = "") {
   const psql = existsSync("/opt/homebrew/opt/libpq/bin/psql") ? "/opt/homebrew/opt/libpq/bin/psql" : "psql";
-  const result = run(psql, ["-X", "-qAt", "-w", "-v", "ON_ERROR_STOP=1", ...flags], {
+  const result = run(psql, ["-X", "-qAt", "-w", "-v", "ON_ERROR_STOP=1", "-v", "VERBOSITY=verbose", ...flags], {
     input, encoding: "utf8", timeout: 120_000, maxBuffer: 8 * 1024 * 1024,
-    env: { ...process.env, ...connection, PGCONNECT_TIMEOUT: "8", PGOPTIONS: "-c statement_timeout=15000" },
+    env: { ...process.env, ...connection, PGCONNECT_TIMEOUT: "8", PGOPTIONS: startupOptions },
   });
   if (result.error || result.status !== 0) {
     // Do not retry, including timeouts: the transaction outcome may be unknown.
-    throw new Error("Lab SQL failed; it was not retried. Verify the committed state before rerunning.");
+    const error = new Error("Lab SQL failed; it was not retried. Verify the committed state before rerunning.");
+    error.sqlstate = /ERROR:\s+([0-9A-Z]{5}):/.exec(result.stderr ?? "")?.[1] ?? null;
+    throw error;
   }
   return result.stdout.trim();
+}
+
+// Raw scripts retain the direct-session limit. Pooled SQL must use the
+// transaction helper so local settings remain attached to the same transaction.
+export function executeLabSql(connection, input, flags = [], options = {}) {
+  assert.notEqual(connection.TIGER_LAB_ENDPOINT, "pooled", "Use executeLabTransaction for pooled SQL");
+  return runPsql(connection, input, flags, options, "-c statement_timeout=15000");
+}
+
+export function executeLabTransaction(connection, body, { statementTimeoutMs = 15_000, lockTimeoutMs = 5_000, run = spawnSync } = {}) {
+  for (const value of [statementTimeoutMs, lockTimeoutMs]) {
+    assert.ok(Number.isInteger(value) && value >= 1 && value <= 60_000, "Transaction timeouts must be 1–60000 ms");
+  }
+  // The caller supplies one transaction body, without BEGIN/COMMIT/ROLLBACK.
+  // No startup PGOPTIONS reaches the pooler, including inherited PGOPTIONS.
+  return runPsql(connection, `BEGIN; SET LOCAL statement_timeout='${statementTimeoutMs}ms'; SET LOCAL lock_timeout='${lockTimeoutMs}ms';\n${body}\nCOMMIT;`, [], { run });
 }
