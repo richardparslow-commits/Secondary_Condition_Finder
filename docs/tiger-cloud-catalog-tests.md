@@ -26,3 +26,15 @@ Use the current official Tiger CLI (`brew upgrade --cask tiger-cli` for this ins
 Only temporary management read failures receive at most three attempts, with 45 seconds per attempt (longer than the CLI's documented 30-second HTTP timeout). Authentication failures, malformed responses and unknown errors fail closed. SQL is never automatically retried: a disconnect can leave the commit outcome uncertain. Inspect state before rerunning. Each SQL statement retains a 15-second limit; the local process is bounded at 120 seconds. No production setting is changed.
 
 Historical campaign evidence is immutable. Its 18-second credential-resolution deadline and per-write `tiger db psql` calls are superseded by this runner; use this connection bootstrap for future campaign clients rather than copying those historical helpers. These safeguards address client fragility, not an assurance that Tiger's remote API cannot have an outage.
+
+## Repeatable hypertable recovery drill (SCF-017)
+
+```sh
+node scripts/test-tiger-recovery.mjs m8vrpmo6ec /absolute/path/to/new-recovery-run
+```
+
+This fixed synthetic drill runs only on the designated DEV Timescale test service. It creates 10,000 synthetic audit rows across multiple daily chunks, saves the table definition, ordered CSV and checksum manifest, and removes only its own generated source schema. It recreates the hypertable in a fresh scratch schema, reloads the saved CSV in a transaction, and verifies the exact count, distinct IDs, content digest, primary key and hypertable status. The run rejects an empty schema-only restore and a truncated backup before it can claim success. Both scratch schemas are removed; local artifacts remain private. A pre-existing output directory is refused.
+
+CSV export explicitly uses `COPY (SELECT ... FROM hypertable)`, which includes chunk data. A schema-only or parent-table-only dump is not a successful data backup. See [Tiger's individual-hypertable backup procedure](https://www.tigerdata.com/docs/deploy/self-hosted/backup-and-restore/logical-backup#back-up-and-restore-individual-hypertables).
+
+This procedure covers this drill's known audit schema and data. It is not a generic backup tool for arbitrary schemas, roles, policies, continuous aggregates, compressed tables or a substitute for service-level backups/PITR. No production data, service settings or replicated catalog tables are changed. SQL is not automatically retried after ambiguous failures.
