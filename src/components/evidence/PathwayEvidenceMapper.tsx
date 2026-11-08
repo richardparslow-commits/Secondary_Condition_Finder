@@ -70,8 +70,8 @@ function ExcerptList({ row }: { row: PathwayEvidenceRow }) {
           </blockquote>
           <p className="mt-1 text-xs text-slate-600">
             {excerpt.sourceName} &middot; {excerpt.locator} &middot; {excerpt.category}
-            {excerpt.strength === "nexus-relevant" ? " &middot; nexus-relevant" : ""}
-            {excerpt.clinicianAuthored ? " &middot; clinician-authored" : ""}
+            {excerpt.strength === "nexus-relevant" ? " · nexus-relevant" : ""}
+            {excerpt.clinicianAuthored ? " · clinician-authored" : ""}
           </p>
         </li>
       ))}

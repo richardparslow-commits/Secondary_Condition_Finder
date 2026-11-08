@@ -29,7 +29,7 @@ export default function SecondaryLandingPage() {
           <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">1</span><h2 className="text-xl font-bold">{SECONDARY_CAUSED_BY_TITLE}</h2></div>
           <p>A secondary condition that is the result of, or would not have occurred but for, an already service-connected primary condition.</p>
           <p className="mt-4 text-sm"><strong>Legal framework:</strong> 38 CFR § 3.310(a), M21-1 Spicer update (May 2026).</p>
-          <Link href="/secondary/condition-caused-by" className="ui-button mt-6 w-full">Learn More <span aria-hidden="true">→</span></Link>
+          <Link href="/secondary/condition-caused-by" className="ui-button mt-6 w-full">Learn about causation <span aria-hidden="true">→</span></Link>
         </article>
 
         <article className="ui-card">
@@ -45,7 +45,7 @@ export default function SecondaryLandingPage() {
           <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">2</span><h2 className="text-xl font-bold">{SECONDARY_AGGRAVATED_BY_TITLE}</h2></div>
           <p>A non-service-connected condition may be considered under an aggravation theory when it is made worse beyond its natural progression by an established service-connected disability.</p>
           <p className="mt-4 text-sm"><strong>Legal framework:</strong> 38 CFR § 3.310(b).</p>
-          <Link href="/secondary/condition-aggravation" className="ui-button mt-6 w-full">Learn More <span aria-hidden="true">→</span></Link>
+          <Link href="/secondary/condition-aggravation" className="ui-button mt-6 w-full">Learn about aggravation <span aria-hidden="true">→</span></Link>
         </article>
       </div>
 
