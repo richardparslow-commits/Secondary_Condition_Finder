@@ -35,7 +35,7 @@ function listTests(directory) {
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
     const absolute = path.join(directory, entry.name);
     if (entry.isDirectory()) return listTests(absolute);
-    return entry.name.endsWith(".test.ts") ? [absolute] : [];
+    return /\.test\.tsx?$/.test(entry.name) ? [absolute] : [];
   });
 }
 
@@ -55,6 +55,32 @@ function canonicalModuleId(testFile, specifier) {
 
   const relative = path.relative(sourceRoot, absolute).split(path.sep).join("/");
   return `@/${relative}`;
+}
+
+function importIsTypeOnly(importClause) {
+  if (!importClause) return false;
+  if (importClause.isTypeOnly) return true;
+
+  const bindings = importClause.namedBindings;
+  return (
+    !importClause.name &&
+    bindings &&
+    ts.isNamedImports(bindings) &&
+    bindings.elements.length > 0 &&
+    bindings.elements.every((element) => element.isTypeOnly)
+  );
+}
+
+function exportIsTypeOnly(exportDeclaration) {
+  if (exportDeclaration.isTypeOnly) return true;
+
+  const clause = exportDeclaration.exportClause;
+  return (
+    clause &&
+    ts.isNamedExports(clause) &&
+    clause.elements.length > 0 &&
+    clause.elements.every((element) => element.isTypeOnly)
+  );
 }
 
 function hasDirective(file, source, directive) {
@@ -78,17 +104,36 @@ function hasDirective(file, source, directive) {
 
 function importedSpecifiers(file, source) {
   const specifiers = new Set();
-  const patterns = [
-    /\bfrom\s+["']([^"']+)["']/g,
-    /\bimport\s+["']([^"']+)["']/g,
-    /\bimport\s*\(\s*["']([^"']+)["']\s*\)/g,
-  ];
-
-  for (const pattern of patterns) {
-    for (const match of source.matchAll(pattern)) {
-      specifiers.add(canonicalModuleId(file, match[1]));
+  const add = (node) => {
+    if (
+      node &&
+      (ts.isStringLiteral(node) || ts.isNoSubstitutionTemplateLiteral(node))
+    ) {
+      specifiers.add(canonicalModuleId(file, node.text));
     }
+  };
+
+  function visit(node) {
+    if (ts.isImportDeclaration(node)) {
+      if (!importIsTypeOnly(node.importClause)) add(node.moduleSpecifier);
+    } else if (ts.isExportDeclaration(node)) {
+      if (!exportIsTypeOnly(node)) add(node.moduleSpecifier);
+    } else if (
+      ts.isCallExpression(node) &&
+      node.expression.kind === ts.SyntaxKind.ImportKeyword
+    ) {
+      add(node.arguments[0]);
+    } else if (
+      ts.isImportEqualsDeclaration(node) &&
+      !node.isTypeOnly &&
+      ts.isExternalModuleReference(node.moduleReference)
+    ) {
+      add(node.moduleReference.expression);
+    }
+    ts.forEachChild(node, visit);
   }
+
+  visit(ts.createSourceFile(file, source, ts.ScriptTarget.Latest, true));
   return specifiers;
 }
 
