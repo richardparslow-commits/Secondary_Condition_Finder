@@ -132,6 +132,79 @@ describe("Federal Register preflight query", () => {
     expect(url.searchParams.getAll("conditions[agencies][]")).toEqual(["veterans-affairs-department"]);
     expect(url.searchParams.get("conditions[publication_date][gte]")).toBe("2026-08-16");
   });
+
+  it("fails the source when the page safety cap leaves additional pages unread", async () => {
+    const payload = {
+      count: 1,
+      total_pages: 2,
+      next_page_url: "https://www.federalregister.gov/api/v1/documents.json?page=2",
+      results: [],
+    };
+    const mockFetch = async (input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.includes("/api/v1/documents.json")) {
+        return new Response(JSON.stringify(payload), { status: 200 });
+      }
+      throw new Error(`Unexpected URL ${url}`);
+    };
+
+    const result = await fetchFederalRegisterVaChanges({
+      fetchImpl: mockFetch as typeof fetch,
+      since: "2026-08-16",
+      asOfDate: "2026-08-18",
+      checkedAt: "2026-08-18T21:00:00.000Z",
+      maxPages: 1,
+    });
+
+    expect(result.sourceResult.status).toBe("failed");
+    expect(result.sourceResult.message).toContain("safety limit of 1 pages");
+  });
+
+  it("rejects an unsafe next-page URL instead of treating it as exhaustion", async () => {
+    const payload = {
+      next_page_url: "https://evil.example/api/v1/documents.json?page=2",
+      results: [],
+    };
+    const mockFetch = async (input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.includes("/api/v1/documents.json")) {
+        return new Response(JSON.stringify(payload), { status: 200 });
+      }
+      throw new Error(`Unexpected URL ${url}`);
+    };
+
+    const result = await fetchFederalRegisterVaChanges({
+      fetchImpl: mockFetch as typeof fetch,
+      since: "2026-08-16",
+      asOfDate: "2026-08-18",
+      checkedAt: "2026-08-18T21:00:00.000Z",
+    });
+
+    expect(result.sourceResult.status).toBe("failed");
+    expect(result.sourceResult.message).toMatch(/unsafe or invalid next-page URL/i);
+    expect(result.discoveries).toEqual([]);
+  });
+
+  it("keeps a fully exhausted feed successful", async () => {
+    const payload = { next_page_url: null, results: [] };
+    const mockFetch = async (input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.includes("/api/v1/documents.json")) {
+        return new Response(JSON.stringify(payload), { status: 200 });
+      }
+      throw new Error(`Unexpected URL ${url}`);
+    };
+
+    const result = await fetchFederalRegisterVaChanges({
+      fetchImpl: mockFetch as typeof fetch,
+      since: "2026-08-16",
+      asOfDate: "2026-08-18",
+      checkedAt: "2026-08-18T21:00:00.000Z",
+    });
+
+    expect(result.sourceResult.status).toBe("success");
+    expect(result.sourceResult.message).toBeUndefined();
+  });
 });
 
 
