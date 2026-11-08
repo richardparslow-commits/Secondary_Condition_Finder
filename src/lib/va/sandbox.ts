@@ -803,11 +803,14 @@ export async function fetchVaDisabilityReference(
   };
 }
 
-export async function fetchVaServiceBranches(
-  options: VaApiRequestOptions = {},
-): Promise<VaApiResult<VaServiceBranchReference>> {
-  const config = options.config ?? loadVaApiConfig();
+const VA_SERVICE_BRANCH_PAGE_SIZE = 200;
+const VA_SERVICE_BRANCH_MAX_PAGES = 4;
 
+function fetchVaServiceBranchPage(
+  page: number,
+  config: VaApiConfig,
+  options: VaApiRequestOptions,
+): Promise<VaApiResult<VaServiceBranchReference>> {
   return requestVaJson({
     service: "benefits-reference-data",
     apiKey: config.benefitsReferenceDataApiKey,
@@ -816,7 +819,42 @@ export async function fetchVaServiceBranches(
     schema: serviceBranchReferenceSchema,
     config,
     observe: options.observe,
+    query: new URLSearchParams({
+      page: String(page),
+      pageSize: String(VA_SERVICE_BRANCH_PAGE_SIZE),
+    }),
   });
+}
+
+export async function fetchVaServiceBranches(
+  options: VaApiRequestOptions = {},
+): Promise<VaApiResult<VaServiceBranchReference>> {
+  const config = options.config ?? loadVaApiConfig();
+  const first = await fetchVaServiceBranchPage(1, config, options);
+  if (!first.success || !first.data) return first;
+
+  const items = [...first.data.items];
+  let incomplete = false;
+  const totalPages = Math.max(1, first.data.totalPages ?? 1);
+  const lastPage = Math.min(totalPages, VA_SERVICE_BRANCH_MAX_PAGES);
+  for (let page = 2; page <= lastPage; page += 1) {
+    const next = await fetchVaServiceBranchPage(page, config, options);
+    if (!next.success || !next.data) {
+      incomplete = true;
+      break;
+    }
+    items.push(...next.data.items);
+  }
+  if (
+    totalPages > VA_SERVICE_BRANCH_MAX_PAGES ||
+    (first.data.totalItems !== undefined && items.length < first.data.totalItems)
+  ) incomplete = true;
+
+  return {
+    ...first,
+    ...(incomplete ? { incomplete: true } : {}),
+    data: { ...first.data, items },
+  };
 }
 
 export interface AccreditedRepresentativeSearchParams {

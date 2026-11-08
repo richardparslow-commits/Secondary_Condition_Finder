@@ -254,6 +254,81 @@ describe("public-reference VA API adapters", () => {
     expect(urls.map((url) => url.searchParams.get("page"))).toEqual(["1", "2"]);
   });
 
+  it("follows every service-branch page instead of treating the first page as the whole list", async () => {
+    const pages = new Map<number, Array<{ code: string; description: string }>>([
+      [1, [{ code: "ARMY", description: "Army" }]],
+      [2, [{ code: "NAVY", description: "Navy" }]],
+    ]);
+    const fetchSpy = vi.fn().mockImplementation((input: URL | RequestInfo) => {
+      const url = new URL(String(input));
+      const requestedPage = Number(url.searchParams.get("page") ?? "1");
+      return Promise.resolve(
+        new Response(
+          JSON.stringify({
+            totalItems: 2,
+            totalPages: 2,
+            items: pages.get(requestedPage) ?? [],
+          }),
+          { status: 200, headers: { "Content-Type": "application/json" } },
+        ),
+      );
+    });
+    vi.stubGlobal("fetch", fetchSpy);
+
+    const result = await fetchVaServiceBranches({ config });
+
+    expect(result.success).toBe(true);
+    expect(result.data?.items.map((item) => item.code)).toEqual(["ARMY", "NAVY"]);
+    expect(fetchSpy).toHaveBeenCalledTimes(2);
+    const urls = fetchSpy.mock.calls.map(([url]) => new URL(String(url)));
+    expect(urls.map((url) => url.searchParams.get("page"))).toEqual(["1", "2"]);
+    expect(urls[0]?.searchParams.get("pageSize")).toBe("200");
+  });
+
+  it("marks a partial service-branch list when a later page fails", async () => {
+    const fetchSpy = vi
+      .fn()
+      .mockResolvedValueOnce(
+        new Response(
+          JSON.stringify({
+            totalItems: 2,
+            totalPages: 2,
+            items: [{ code: "ARMY", description: "Army" }],
+          }),
+          { status: 200, headers: { "Content-Type": "application/json" } },
+        ),
+      )
+      .mockResolvedValueOnce(new Response("not found", { status: 404 }));
+    vi.stubGlobal("fetch", fetchSpy);
+
+    const result = await fetchVaServiceBranches({ config });
+
+    expect(result.success).toBe(true);
+    expect(result.incomplete).toBe(true);
+    expect(result.data?.items.map((item) => item.code)).toEqual(["ARMY"]);
+    expect(fetchSpy).toHaveBeenCalledTimes(2);
+  });
+
+  it("marks service branches incomplete when totalItems exceeds the received items", async () => {
+    const fetchSpy = vi.fn().mockResolvedValue(
+      new Response(
+        JSON.stringify({
+          totalItems: 2,
+          items: [{ code: "ARMY", description: "Army" }],
+        }),
+        { status: 200, headers: { "Content-Type": "application/json" } },
+      ),
+    );
+    vi.stubGlobal("fetch", fetchSpy);
+
+    const result = await fetchVaServiceBranches({ config });
+
+    expect(result.success).toBe(true);
+    expect(result.incomplete).toBe(true);
+    expect(result.data?.items.map((item) => item.code)).toEqual(["ARMY"]);
+    expect(fetchSpy).toHaveBeenCalledTimes(1);
+  });
+
   it("fails closed per service when only that service key is missing", async () => {
     const fetchSpy = vi.fn();
     vi.stubGlobal("fetch", fetchSpy);

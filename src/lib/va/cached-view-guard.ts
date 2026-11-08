@@ -153,6 +153,8 @@ export function isTrustedCachedClaimFormReference(
 
 /** App cache DTO limits, not VA API limits. Keep validation work bounded. */
 export const VA_CACHE_DTO_MAX_ITEMS = 200;
+/** Four service-branch pages of 200 records each are the bounded live result. */
+export const VA_SERVICE_BRANCH_CACHE_MAX_ITEMS = 800;
 /**
  * Upper bound on an upstream-reported total (`VA publishes N terms`) retained
  * in a cached view. It is display-only, so the loader clamps it instead of
@@ -226,10 +228,11 @@ export function claimFormReferenceCacheDto(environment: VaApiEnvironment) {
 export function serviceBranchCacheDto(environment: VaApiEnvironment) {
   return z.strictObject({
     ...liveStatusDto("service-branches", environment),
+    incomplete: z.boolean().optional(),
     items: z.array(z.strictObject({
       code: boundedText(50),
       description: boundedText(MAX_LABEL_LENGTH),
-    })).min(1).max(VA_CACHE_DTO_MAX_ITEMS),
+    })).min(1).max(VA_SERVICE_BRANCH_CACHE_MAX_ITEMS),
   });
 }
 

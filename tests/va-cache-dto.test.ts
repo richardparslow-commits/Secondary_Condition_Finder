@@ -1,6 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { loadAccreditedRepresentatives } from "@/lib/va/accredited-representatives";
+import { VA_SERVICE_BRANCH_CACHE_MAX_ITEMS } from "@/lib/va/cached-view-guard";
 import { loadDisabilityReference } from "@/lib/va/disability-reference";
 import { loadClaimFormReference } from "@/lib/va/form-reference";
 import { loadVaFormsFinder } from "@/lib/va/forms-finder";
@@ -172,7 +173,8 @@ for (const loader of loaders) {
     if (loader.name !== "claim form") {
       it("accepts its maximum item count with bounded fields", async () => {
         const candidate = loader.view();
-        candidate.items = Array.from({ length: 200 }, () => (candidate.items as unknown[])[0]);
+        const maxItems = loader.name === "service branches" ? VA_SERVICE_BRANCH_CACHE_MAX_ITEMS : 200;
+        candidate.items = Array.from({ length: maxItems }, () => (candidate.items as unknown[])[0]);
         if (loader.name === "disabilities" || loader.name === "representatives") {
           candidate.totalAvailable = 200;
         }
@@ -202,7 +204,12 @@ for (const loader of loaders) {
         ["non-array items", (view) => ({ ...view, items: "NOT_AN_ARRAY" })],
         ["null item", (view) => ({ ...view, items: [null] })],
         ["missing item fields", (view) => ({ ...view, items: [{}] })],
-        ["too many items", (view) => ({ ...view, items: Array.from({ length: 201 }, () => (view.items as unknown[])[0]) })],
+        ["too many items", (view) => ({
+          ...view,
+          items: Array.from({
+            length: loader.name === "service branches" ? VA_SERVICE_BRANCH_CACHE_MAX_ITEMS + 1 : 201,
+          }, () => (view.items as unknown[])[0]),
+        })],
         ["invalid timestamp", (view) => ({ ...view, retrievedAt: "2026-02-31T00:00:00Z" })],
         ["missing timestamp", (view) => ({ ...view, retrievedAt: null })],
         ["invalid cache status", (view) => ({ ...view, cacheStatus: "fresh" })],
@@ -358,4 +365,29 @@ it("binds omitted radius/type to the same effective params without caching the Z
   const stored = String(kv.get(key));
   expect(stored).not.toContain("90210");
   expect(JSON.parse(stored).value.params).toEqual({ zip: "", radiusMiles: 50 });
+});
+
+it("serves and caches a fully paginated service-branch list", async () => {
+  mocks.branches.mockResolvedValue({
+    success: true,
+    source: "va-sandbox-api",
+    environment: "sandbox",
+    data: {
+      items: Array.from({ length: VA_SERVICE_BRANCH_CACHE_MAX_ITEMS }, (_, index) => ({
+        code: `BRANCH_${index}`,
+        description: `Branch ${index}`,
+      })),
+      totalItems: VA_SERVICE_BRANCH_CACHE_MAX_ITEMS,
+      totalPages: 4,
+    },
+  });
+  const kv = createFakeSharedKv();
+  vi.stubGlobal("fetch", vi.fn(async (_input: unknown, init?: RequestInit) => kv.respond(init)));
+
+  const view = await loadServiceBranchReference();
+
+  expect(view.source).toBe("va-sandbox-api");
+  expect(view.items).toHaveLength(VA_SERVICE_BRANCH_CACHE_MAX_ITEMS);
+  expect(readVaReferenceCache("service-branches:sandbox")).not.toBeNull();
+  expect(kv.get("va:ref:service-branches:sandbox")).not.toBeNull();
 });

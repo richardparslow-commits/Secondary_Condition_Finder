@@ -111,4 +111,6 @@ export const serviceBranchReferenceSchema = z.object({
     code: z.string().min(1),
     description: z.string().min(1),
   }).passthrough()),
+  totalItems: z.number().int().nonnegative().optional(),
+  totalPages: z.number().int().nonnegative().optional(),
 }).passthrough();

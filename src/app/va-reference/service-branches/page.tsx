@@ -30,6 +30,11 @@ export default async function ServiceBranchesPage() {
         Standardized service-branch labels used as optional administrative context in the service-history workflow.
       </p>
       <div role="note" className="mt-5 rounded-md border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900">{reference.notice}</div>
+      {reference.incomplete === true && (
+        <div role="alert" className="mt-3 rounded-md border border-amber-400 bg-amber-50 p-4 text-sm text-amber-950">
+          The VA service branch list could not be fully loaded. The branches shown are a partial list; try again later.
+        </div>
+      )}
       <dl className="mt-4 grid gap-3 rounded-md border border-slate-200 bg-white p-4 text-xs text-slate-600 sm:grid-cols-3">
         <div><dt className="font-semibold text-slate-800">Environment</dt><dd>{reference.environment ?? "local fallback"}</dd></div>
         <div><dt className="font-semibold text-slate-800">Last successful retrieval</dt><dd>{formatRetrievedAt(reference.retrievedAt)}</dd></div>
