@@ -181,6 +181,7 @@ describe("computeOcrRenderMetrics hard bounds", () => {
   it("rejects an invalid canvas area cap instead of returning NaN dimensions", () => {
     for (const cap of [Number.NaN, Number.POSITIVE_INFINITY, 0, -1]) {
       expect(() => computeOcrRenderMetrics(612, 792, cap)).toThrow(RangeError);
+      expect(() => computeOcrRenderMetrics(0, 0, cap)).toThrow(RangeError);
     }
   });
 });

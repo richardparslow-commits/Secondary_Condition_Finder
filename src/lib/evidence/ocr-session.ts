@@ -118,6 +118,11 @@ export function computeOcrRenderMetrics(
   pageHeight: number,
   maxAreaPx: number = OCR_MAX_CANVAS_AREA_PX,
 ): OcrRenderMetrics {
+  if (!Number.isFinite(maxAreaPx) || maxAreaPx < 1) {
+    throw new RangeError("Invalid canvas area limit");
+  }
+  const areaCap = Math.floor(maxAreaPx);
+
   const width = Number.isFinite(pageWidth) ? Math.max(0, pageWidth) : 0;
   const height = Number.isFinite(pageHeight) ? Math.max(0, pageHeight) : 0;
   const unitArea = width * height;
@@ -129,11 +134,6 @@ export function computeOcrRenderMetrics(
       downscaled: false,
     };
   }
-
-  if (!Number.isFinite(maxAreaPx) || maxAreaPx < 1) {
-    throw new RangeError("Invalid canvas area limit");
-  }
-  const areaCap = Math.floor(maxAreaPx);
 
   // Bound the continuous area and both axes before flooring. The per-axis cap
   // is what makes the 1-pixel floor safe: a very thin page can no longer trade
