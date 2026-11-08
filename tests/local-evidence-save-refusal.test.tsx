@@ -121,4 +121,32 @@ describe("evidence that storage refuses to save", () => {
     ).toBeTruthy();
     expect(container.querySelectorAll("article")).toHaveLength(10);
   });
+
+  it("warns when removing an analyzed source cannot be persisted", async () => {
+    render(<LocalEvidenceAnalyzer conditionTerms={[]} />);
+
+    fireEvent.change(screen.getByLabelText("Select evidence files"), {
+      target: {
+        files: [
+          new File(["Record for remove-refused describing the condition."], "remove-refused.txt", {
+            type: "text/plain",
+          }),
+        ],
+      },
+    });
+    await screen.findByText("remove-refused.txt");
+    fireEvent.click(screen.getByRole("button", { name: "Analyze 1 document" }));
+    await screen.findByText(/Analyzed 1 document locally/i);
+    await waitFor(() => expect(storedSourceNames()).toEqual(["remove-refused.txt"]));
+
+    failEvidenceWrites = true;
+    fireEvent.click(screen.getByRole("button", { name: "Remove" }));
+
+    expect(
+      await screen.findByText(/browser storage rejected the removal/i),
+    ).toBeTruthy();
+    // The visible review dropped the source, but the store Step 6 reads still
+    // has it until a successful cleanup write.
+    expect(storedSourceNames()).toEqual(["remove-refused.txt"]);
+  });
 });

@@ -452,8 +452,13 @@ export function LocalEvidenceAnalyzer({ conditionTerms, onUnsavedPastedTextChang
 
   function dropAnalysis(sourceId: string) {
     const next = removeEvidenceAnalysis(analysesRef.current, sourceId);
-    saveStored(next, limits);
+    const saved = saveStored(next, limits);
     applyAnalyses(next);
+    if (!saved) {
+      setWarnings((previous) => [...previous,
+        "The document was removed from this view, but browser storage rejected the removal. Its excerpts may still appear on Step 6 or after reloading. Clear local evidence and confirm storage cleanup before continuing.",
+      ]);
+    }
   }
 
   function setRowOutcome(id: number, hint?: EvidenceDocumentKindHint) {
