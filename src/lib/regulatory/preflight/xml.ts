@@ -69,17 +69,18 @@ export function parseXml(xml: string): XmlNode {
     if (token.startsWith("<")) {
       if (/^<!/.test(token)) continue;
       const match = token.match(/^<\s*([^\s/>]+)/);
-      if (!match) continue;        const node: XmlNode = { name: normalizeName(match[1]), text: "", children: [] };
-        stack.at(-1)!.children.push(node);
-        if (!/\/\s*>$/.test(token)) {
-          if (stack.length > MAX_XML_DEPTH) {
-            throw new XmlResourceLimitError(
-              `XML nesting limit exceeded (maximum ${MAX_XML_DEPTH} levels).`,
-            );
-          }
-          stack.push(node);
+      if (!match) continue;
+      const node: XmlNode = { name: normalizeName(match[1]), text: "", children: [] };
+      stack.at(-1)!.children.push(node);
+      if (!/\/\s*>$/.test(token)) {
+        if (stack.length > MAX_XML_DEPTH) {
+          throw new XmlResourceLimitError(
+            `XML nesting limit exceeded (maximum ${MAX_XML_DEPTH} levels).`,
+          );
         }
-        continue;
+        stack.push(node);
+      }
+      continue;
     }
     const value = decodeEntities(token).replace(/\s+/g, " ").trim();
     if (value) stack.at(-1)!.text += `${stack.at(-1)!.text ? " " : ""}${value}`;
