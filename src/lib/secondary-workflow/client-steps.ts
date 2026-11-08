@@ -253,6 +253,7 @@ export function applyServiceConnectedStep(
   }
 
   const retained = retainedConditionData(context, diagnosedConditionIds);
+  const retainedDocuments = retainedDocumentsData(context);
   const answers = diagnosedConditionIds.map((id) => formData.get(`serviceConnected-${id}`));
   if (answers.some((answer) => answer !== "yes" && answer !== "no")) {
     return {
@@ -262,6 +263,7 @@ export function applyServiceConnectedStep(
       context: {
         diagnosedConditionIds,
         ...retained,
+        ...retainedDocuments,
         serviceConnectedAnswerDraft: collectServiceConnectedAnswers(
           diagnosedConditionIds,
           answers,
@@ -276,6 +278,7 @@ export function applyServiceConnectedStep(
       next: "/secondary/service-connected",
       context: {
         diagnosedConditionIds,
+        ...retainedDocuments,
         ...(retained.conditionTimeline ? { conditionTimeline: retained.conditionTimeline } : {}),
         serviceConnectedConditionIds: [],
         ratingsByConditionId: {},
@@ -323,6 +326,7 @@ export function applyServiceConnectedStep(
     return {
       ok: true,
       context: {
+        ...retainedDocuments,
         diagnosedConditionIds: parsed.diagnosedConditionIds,
         ...(retained.conditionTimeline ? { conditionTimeline: retained.conditionTimeline } : {}),
         serviceConnectedConditionIds: parsed.serviceConnectedConditionIds,

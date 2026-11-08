@@ -246,6 +246,56 @@ describe("browser-side step logic (PRIV-01 stage 2)", () => {
     }
   });
 
+  it("Step 2 preserves Step 4 answers across successful and failed saves", () => {
+    const current = context({
+      diagnosedConditionIds: [PTSD, TINNITUS],
+      serviceConnectedConditionIds: [PTSD],
+      ratingsByConditionId: { [PTSD]: 70 },
+      documentsShared: true,
+      medications: ["SSRI"],
+      treatments: ["Physical therapy"],
+      history: ["2019"],
+      symptomIds: ["ptsd-nightmares"],
+    });
+    const retainedDocuments = {
+      documentsShared: true,
+      medications: ["SSRI"],
+      treatments: ["Physical therapy"],
+      history: ["2019"],
+      symptomIds: ["ptsd-nightmares"],
+    };
+
+    const saved = applyServiceConnectedStep(
+      current,
+      form({
+        [`serviceConnected-${PTSD}`]: "yes",
+        [`serviceConnected-${TINNITUS}`]: "no",
+      }),
+      catalog,
+    );
+    expect(saved.ok).toBe(true);
+    if (saved.ok) expect(saved.context).toMatchObject(retainedDocuments);
+
+    const partial = applyServiceConnectedStep(
+      current,
+      form({ [`serviceConnected-${PTSD}`]: "yes" }),
+      catalog,
+    );
+    expect(partial.ok).toBe(false);
+    if (!partial.ok) expect(partial.context).toMatchObject(retainedDocuments);
+
+    const allNo = applyServiceConnectedStep(
+      current,
+      form({
+        [`serviceConnected-${PTSD}`]: "no",
+        [`serviceConnected-${TINNITUS}`]: "no",
+      }),
+      catalog,
+    );
+    expect(allNo.ok).toBe(false);
+    if (!allNo.ok) expect(allNo.context).toMatchObject(retainedDocuments);
+  });
+
   it("Step 3 requires a rating for every service-connected condition and bounds values", () => {
     const current = context({
       diagnosedConditionIds: [PTSD, TINNITUS],
