@@ -111,6 +111,8 @@ interface VaReferenceCacheState {
   entries: Map<string, CacheEntry<unknown>>;
   hits: number;
   misses: number;
+  /** Monotonic token that invalidates loads started before a clear. */
+  generation?: number;
 }
 
 /**
@@ -128,6 +130,7 @@ function loadCacheState(): VaReferenceCacheState {
     entries: new Map<string, CacheEntry<unknown>>(),
     hits: 0,
     misses: 0,
+    generation: 0,
   };
   return shared.__scfVaReferenceCacheStateV1;
 }
@@ -200,7 +203,17 @@ export function writeVaReferenceCache<T>(
   });
 }
 
+/**
+ * The current clear generation. A loader captures this before fetching and
+ * refuses to write if it changed, so a clear cannot be undone by a request
+ * that was already in flight when the operator ran it.
+ */
+export function vaReferenceCacheGeneration(): number {
+  return cacheState.generation ?? 0;
+}
+
 export function clearVaReferenceCache(prefix?: string): { cleared: number } {
+  cacheState.generation = (cacheState.generation ?? 0) + 1;
   let cleared = 0;
   if (!prefix) {
     cleared = referenceCache.size;

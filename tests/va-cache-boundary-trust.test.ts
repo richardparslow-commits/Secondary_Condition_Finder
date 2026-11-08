@@ -231,6 +231,28 @@ for (const testCase of cases) {
       expect(upstream).not.toHaveBeenCalled();
     });
 
+    it("uses a trusted shared entry after rejecting a process-local entry", async () => {
+      const kv = createFakeSharedKv();
+      stubSharedKvEnv();
+      vi.stubGlobal("fetch", vi.fn(async (_input: unknown, init?: RequestInit) => kv.respond(init)));
+      testCase.fetcher.mockResolvedValue({
+        success: true,
+        source: "va-sandbox-api",
+        environment: "sandbox",
+        data: testCase.withinBounds(),
+      });
+      await testCase.load();
+
+      clearVaReferenceCache();
+      writeVaReferenceCache(testCase.key, testCase.forgedLocal());
+      testCase.fetcher.mockReset();
+
+      const view = await testCase.load();
+
+      expect(view.source).toBe("va-sandbox-api");
+      expect(testCase.fetcher).not.toHaveBeenCalled();
+    });
+
     it("serves a process-local entry its own fresh write produced, without upstream work", async () => {
       testCase.fetcher.mockResolvedValue({
         success: true,

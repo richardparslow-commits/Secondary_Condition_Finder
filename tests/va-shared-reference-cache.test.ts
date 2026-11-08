@@ -14,6 +14,7 @@ import {
   writeVaSharedReferenceCache,
 } from "@/lib/va/reference-shared-cache";
 import { clearVaReferenceCache, hashedCacheKeySegment } from "@/lib/va/reference-cache";
+import { withVaReferenceCache } from "@/lib/va/reference-cache-access";
 import {
   clearVaApiOutboundRateLimitState,
   fetchVaForms,
@@ -520,6 +521,58 @@ describe("VA shared reference cache — finding #3 (multi-instance miss rate)", 
 // Audit A-03 item 3: the admin route only clears the process-local map, so a
 // shared deployment needs a store-wide invalidation signal.
 describe("VA shared reference cache — global invalidation epoch", () => {
+  it("does not let an in-flight load repopulate a shared entry after another instance clears", async () => {
+    // Production makes the process-local tier inert, so this exercises the
+    // shared tier the way a second instance sees it.
+    vi.stubEnv("NODE_ENV", "production");
+    stubSharedKvEnv();
+    const kv = createFakeSharedKv();
+    stubKvFetch(kv);
+
+    let releaseLoad!: () => void;
+    let markLoadStarted!: () => void;
+    const loadStarted = new Promise<void>((resolve) => {
+      markLoadStarted = resolve;
+    });
+    const hold = new Promise<void>((resolve) => {
+      releaseLoad = resolve;
+    });
+    const load = vi.fn(async () => {
+      markLoadStarted();
+      await hold;
+      return { view: { items: [], cacheStatus: "miss" as const }, cacheable: true };
+    });
+
+    const first = withVaReferenceCache("forms:sandbox:q", load);
+    await loadStarted;
+
+    // Another instance runs the admin clear while this load is in flight.
+    await expect(bumpVaSharedCacheEpoch()).resolves.toBe("1");
+    releaseLoad();
+    await first;
+
+    // The load's pre-clear epoch makes its shared write conditional; it must not
+    // recreate the entry after the bump.
+    await expect(readVaSharedReferenceCache("forms:sandbox:q")).resolves.toBeNull();
+    expect(kv.get("va:ref:forms:sandbox:q")).toBeNull();
+
+    await withVaReferenceCache("forms:sandbox:q", load);
+    expect(load).toHaveBeenCalledTimes(2);
+  });
+
+  it("does not overwrite a newer post-clear entry with a straggler's pre-clear write", async () => {
+    stubSharedKvEnv();
+    const kv = createFakeSharedKv();
+    stubKvFetch(kv);
+    const key = "forms:sandbox:q";
+
+    await bumpVaSharedCacheEpoch();
+    await writeVaSharedReferenceCache(key, { live: "fresh" }, 300_000, undefined, "1");
+    await writeVaSharedReferenceCache(key, { live: "stale" }, 300_000, undefined, "0");
+
+    await expect(readVaSharedReferenceCache(key)).resolves.toEqual({ live: "fresh" });
+  });
+
   it("advances the epoch on bump and immediately invalidates entries written under the old one", async () => {
     const kv = createFakeSharedKv();
     stubKvFetch(kv);

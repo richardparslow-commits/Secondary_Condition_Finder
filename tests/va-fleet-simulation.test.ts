@@ -5,6 +5,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { HALF_OPEN_PROBE_AFTER_MS } from "@/lib/va/circuit-breaker";
 import { clearVaReferenceCache, hashedCacheKeySegment } from "@/lib/va/reference-cache";
 import {
+  VA_SHARED_CACHE_CONDITIONAL_WRITE_SCRIPT,
   VA_SHARED_CACHE_ENVELOPE_VERSION,
   VA_SHARED_CACHE_EPOCH_DEFAULT,
   VA_SHARED_CONSUMER_COUNTER_TTL_SECONDS,
@@ -382,10 +383,16 @@ describe("VA fleet simulation — unique-query storm", () => {
       // Finite cardinality: one admitted write per live view, no more than the
       // namespace cap, and no raw query ever becomes key material.
       const valueWrites = fleet
-        .kvCommandsNamed("SET")
-        .filter((command) => /^va:ref:forms-finder:/.test(String(command[1])));
+        .kvCommandsNamed("EVAL")
+        .filter((command) =>
+          command[1] === VA_SHARED_CACHE_CONDITIONAL_WRITE_SCRIPT &&
+          /^va:ref:forms-finder:/.test(String(command[4])),
+        );
       expect(valueWrites).toHaveLength(live.length);
       expect(valueWrites.length).toBeLessThanOrEqual(VA_SHARED_KEY_WRITE_MAX_PER_WINDOW);
+      for (const command of valueWrites) {
+        expect(fleet.kv.get(command[4])).not.toBeNull();
+      }
       for (const command of fleet.events) {
         if (command.kind !== "kv") continue;
         for (const part of command.command.slice(0, 2)) {

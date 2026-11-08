@@ -4,6 +4,7 @@ import { clearVaReferenceCache } from "@/lib/va/reference-cache";
 import { loadVaFormsFinder } from "@/lib/va/forms-finder";
 import { loadAccreditedRepresentatives } from "@/lib/va/accredited-representatives";
 import { createFakeSharedKv } from "./helpers/fake-shared-kv";
+import { referenceCacheWrites } from "./helpers/reference-cache-commands";
 
 const { fetchVaFormsMock, fetchVaAccreditedRepresentativesMock } = vi.hoisted(
   () => ({
@@ -80,21 +81,15 @@ describe("reference cache values omit raw user text (A01)", () => {
     expect(view.live).toBe(true);
     expect(view.query).toBe("21-526EZ");
 
-    // SET payloads are [SET, key, serialized, EX, ttl]; lease/budget keys
-    // carry tokens and counters rather than view envelopes, so only the
-    // forms-finder value key is in scope here.
-    const sets = kv.executed.filter(
-      ([name, key]) =>
-        name === "SET" &&
-        String(key ?? "").includes("forms-finder") &&
-        !String(key ?? "").includes("inflight:") &&
-        !String(key ?? "").includes("cardinality:"),
+    const writes = referenceCacheWrites(kv.executed).filter(({ key }) =>
+      key.startsWith("va:ref:forms-finder:"),
     );
-    expect(sets.length).toBeGreaterThan(0);
+    expect(writes.length).toBeGreaterThan(0);
+    for (const { key, value } of writes) expect(kv.get(key)).toBe(value);
     // The envelope's `query` field must be empty — matching directory
     // records (formName) legitimately repeat the query text as VA data, so
     // a blanket string absence check would reject correct directory results.
-    const envelopes = sets.map((command) => JSON.parse(String(command[2] ?? "")) as {
+    const envelopes = writes.map(({ value }) => JSON.parse(value) as {
       value?: { query?: unknown };
     });
     expect(envelopes.length).toBeGreaterThan(0);
@@ -121,17 +116,14 @@ describe("reference cache values omit raw user text (A01)", () => {
     const view = await loadAccreditedRepresentatives({ zip: "90210" });
     expect(view.params.zip).toBe("90210");
 
-    const sets = kv.executed.filter(
-      ([name, key]) =>
-        name === "SET" &&
-        String(key ?? "").includes("accredited-rep") &&
-        !String(key ?? "").includes("inflight:") &&
-        !String(key ?? "").includes("cardinality:"),
+    const writes = referenceCacheWrites(kv.executed).filter(({ key }) =>
+      key.startsWith("va:ref:accredited-rep:"),
     );
-    expect(sets.length).toBeGreaterThan(0);
+    expect(writes.length).toBeGreaterThan(0);
+    for (const { key, value } of writes) expect(kv.get(key)).toBe(value);
     // Directory items carry their own ZIPs as VA data; the request params
     // shape specifically must not replay the lookup ZIP.
-    const envelopes = sets.map((command) => JSON.parse(String(command[2] ?? "")) as {
+    const envelopes = writes.map(({ value }) => JSON.parse(value) as {
       value?: { params?: { zip?: unknown } };
     });
     expect(envelopes.length).toBeGreaterThan(0);
@@ -140,7 +132,7 @@ describe("reference cache values omit raw user text (A01)", () => {
     for (const envelope of views) {
       expect(envelope.value?.params?.zip).toBe("");
     }
-    const serialized = sets.map((command) => String(command[2] ?? "")).join("\n");
+    const serialized = writes.map(({ value }) => value).join("\n");
     expect(serialized).not.toContain('"zip":"90210"');
   });
 });

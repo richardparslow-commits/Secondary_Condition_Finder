@@ -30,6 +30,7 @@
 
 import {
   SHARED_CONSUMER_WINDOW_SCRIPT,
+  VA_SHARED_CACHE_CONDITIONAL_WRITE_SCRIPT,
   VA_SHARED_CONSUMER_DECISION,
 } from "@/lib/va/reference-shared-cache";
 import {
@@ -177,6 +178,22 @@ export function createFakeSharedKv(): FakeSharedKv {
           const ttlMs = Number(argv[2]) * 1000;
           store.set(keys[0]!, { value: argv[1]!, expiresAt: now + ttlMs });
           store.set(keys[1]!, { value: argv[0]!, expiresAt: now + ttlMs });
+          result = 1;
+          break;
+        }
+
+        if (script === VA_SHARED_CACHE_CONDITIONAL_WRITE_SCRIPT) {
+          const [epochKey, valueKey] = keys;
+          const expectedEpoch = argv[0]!;
+          const currentEpoch = live(epochKey!, now)?.value ?? "0";
+          if (currentEpoch !== expectedEpoch) {
+            result = 0;
+            break;
+          }
+          store.set(valueKey!, {
+            value: argv[1]!,
+            expiresAt: now + Number(argv[2]) * 1000,
+          });
           result = 1;
           break;
         }

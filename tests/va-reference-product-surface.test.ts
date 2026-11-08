@@ -101,8 +101,10 @@ describe("VA reference product surfaces", () => {
     // The bounded two-tier read/promote/write sequence lives in exactly one
     // place: the shared helper.
     expect(access).toContain("readVaReferenceCache<T>(cacheKey)");
-    expect(access).toContain("readVaSharedReferenceCache<T>(cacheKey)");
-    expect(access).toContain("writeVaSharedReferenceCache(cacheKey, view, ttlMs)");
+    expect(access).toContain("readVaSharedReferenceCacheSnapshot<T>(cacheKey)");
+    expect(access).toContain(
+      "writeVaSharedReferenceCache(cacheKey, view, ttlMs, undefined, sharedEpoch)",
+    );
 
     for (const loader of loaders) {
       // Every loader goes through the helper with its own registry namespace...
