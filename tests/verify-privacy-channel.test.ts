@@ -1,11 +1,13 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import {
   publishedAddressFromSource,
   readPublishedAddress,
+  registryForDomain,
+  registryStatus,
   summarizeDns,
   verdictFor,
 } from "../scripts/verify-privacy-channel.mjs";
@@ -176,5 +178,44 @@ describe("the verifier cannot send mail, and says so", () => {
     expect(prose(SCRIPT)).toContain("Acceptance is not delivery");
     expect(prose(SCRIPT)).toContain("**from a mailbox outside the domain**");
     expect(prose(SCRIPT)).toContain("only a person with the mailbox can run and report");
+  });
+});
+
+
+describe("authoritative registry selection", () => {
+  it.each([
+    ["gmail.com", "https://rdap.verisign.com/com/v1/domain/", "example.com"],
+    ["example.net", "https://rdap.verisign.com/net/v1/domain/", "example.net"],
+    ["secondaryconditionfinder.org", "https://rdap.publicinterestregistry.org/rdap/domain/", "example.org"],
+  ])("queries %s and a control at the correct registry", async (domain, endpoint, controlName) => {
+    const fetcher = vi.fn().mockResolvedValue({ status: 200 });
+    const registry = await registryStatus(domain, 1000, fetcher);
+    expect(fetcher.mock.calls.map(([url]) => url)).toEqual([endpoint + domain, endpoint + controlName]);
+    expect(registry).toMatchObject({ subject: 200, control: 200, controlName });
+    const verdict = verdictFor({ registry, dns: { nameExists: true, mailRoute: true }, smtp: null });
+    expect(verdict.code).toBe(0);
+    expect(verdict.status).toContain("actual delivery unverified");
+  });
+
+  it("normalizes case without sending a .com name to the .org registry", () => {
+    expect(registryForDomain("GMAIL.COM")).toEqual(registryForDomain("gmail.com"));
+  });
+
+  it.each(["example.edu", "mail.example.com", "example.co.uk", "example.constructor", "example.__proto__"])("does not invent an unregistered verdict for %s", async domain => {
+    const fetcher = vi.fn();
+    const registry = await registryStatus(domain, 1000, fetcher);
+    expect(fetcher).not.toHaveBeenCalled();
+    expect(verdictFor({ registry, dns: { nameExists: true, mailRoute: true }, smtp: null }).code).toBe(2);
+  });
+
+  it.each([403, 429, 500, 503])("treats subject HTTP %s as unreadable rather than unregistered", status => {
+    const verdict = verdictFor({ registry: { subject: status, control: 200 }, dns: { nameExists: true, mailRoute: true }, smtp: null });
+    expect(verdict.code).toBe(2);
+    expect(verdict.reasons.join(" ")).not.toContain("not registered");
+  });
+
+  it("keeps transport errors indeterminate", async () => {
+    const registry = await registryStatus("gmail.com", 1000, vi.fn().mockRejectedValue(new Error("timeout")));
+    expect(verdictFor({ registry, dns: { nameExists: true, mailRoute: true }, smtp: null }).code).toBe(2);
   });
 });

@@ -21,16 +21,16 @@ import { configuredPrivacyContact } from "../src/lib/privacy/contact-config.mjs"
  *     — is a human act this script cannot perform and never claims to be;
  *   - it needs no credential and reads no mailbox, so its result cannot be mistaken for
  *     evidence that a human read anything;
- *   - it reads the address from `src/lib/privacy/intake.ts` rather than retyping it, so a
+ *   - it reads the same approved PRIVACY_CONTACT_EMAIL setting as the pages, so a
  *     renamed address cannot leave this verifier checking a channel nobody publishes.
  *
  * Exit codes follow this repository's convention for probes that gate on external state:
  *   0  the name resolves and a mail route exists (and, with `--smtp`, the host accepted the
- *      published address) — §8 steps 1–3 are done;
+ *      published address) — routing prerequisites are observed, not actual delivery;
  *   1  not there yet, with the reason named — the gate is still open, and no state changed;
  *   2  the verifier could not run (network, resolver or registry unreachable) — never a
  *      deliverability verdict. A control that cannot be read fails closed here: the registry
- *      answer is only trusted alongside a control that answers correctly in the same run,
+ *      answer is only trusted alongside a same-registry control that answers correctly in the same run,
  *      because `rdap.org` answers 403 for every name (registered or not) and a 404 on a
  *      non-`.org` name means nothing.
  */
@@ -46,10 +46,21 @@ const DOH = {
 };
 const RCODE = { 0: "NOERROR", 2: "SERVFAIL", 3: "NXDOMAIN", 5: "REFUSED" };
 const TYPES = { 1: "A", 2: "NS", 5: "CNAME", 6: "SOA", 15: "MX", 16: "TXT", 28: "AAAA", 257: "CAA" };
-/** The registry that issues `.org`: its own RDAP is the registration answer (404 = unregistered). */
-const ORG_RDAP = "https://rdap.publicinterestregistry.org/rdap/domain/";
-/** A `.org` name that is registered, used as the control the registry reading is validated against. */
-const REGISTRY_CONTROL = "example.org";
+/** Authoritative endpoints from https://data.iana.org/rdap/dns.json.
+ * Only direct registrations with known same-registry controls are supported.
+ * Unknown suffixes/subdomains are indeterminate, never inferred unregistered.
+ */
+const REGISTRIES = {
+  org: { endpoint: "https://rdap.publicinterestregistry.org/rdap/domain/", controlName: "example.org" },
+  com: { endpoint: "https://rdap.verisign.com/com/v1/domain/", controlName: "example.com" },
+  net: { endpoint: "https://rdap.verisign.com/net/v1/domain/", controlName: "example.net" },
+};
+
+export function registryForDomain(domain) {
+  const labels = domain.toLowerCase().split(".");
+  if (labels.length !== 2) return null;
+  return Object.hasOwn(REGISTRIES, labels[1]) ? REGISTRIES[labels[1]] : null;
+}
 
 /** The published address, read from the module that owns it — never retyped here. */
 export function publishedAddressFromSource(source) {
@@ -106,8 +117,11 @@ export function verdictFor({ registry, dns, smtp }) {
     return {
       code: 2,
       status: "could not run",
-      reasons: [`registry control ${REGISTRY_CONTROL} answered HTTP ${registry.control}, not 200 — the registry answer cannot be trusted this run`],
+      reasons: [`registry control ${registry.controlName || "registered control"} answered HTTP ${registry.control}, not 200 — the registry answer cannot be trusted this run`],
     };
+  }
+  if (![200, 404].includes(registry.subject)) {
+    return { code: 2, status: "could not run", reasons: [`registry subject answered HTTP ${registry.subject}, not 200 or 404`] };
   }
   const registered = registry.subject === 200;
   if (!registered) reasons.push("the name is not registered (registry RDAP 404, against a 200 control)");
@@ -119,7 +133,7 @@ export function verdictFor({ registry, dns, smtp }) {
   const deliverable = registered && dns.nameExists && dns.mailRoute && (!smtp || smtp.accepted === true);
   if (deliverable) {
     reasons.push("a mail route exists" + (smtp?.accepted ? " and the host accepted the published address" : " (run with --smtp to ask the host about the address)"));
-    return { code: 0, status: "deliverable (steps 1–3)", reasons };
+    return { code: 0, status: "mail route ready (steps 1–3; actual delivery unverified)", reasons };
   }
   return { code: 1, status: "not deliverable — gate C's first item stays unmet", reasons };
 }
@@ -139,19 +153,21 @@ async function doh(provider, name, type, timeoutMs) {
   };
 }
 
-async function registryStatus(domain, timeoutMs) {
+export async function registryStatus(domain, timeoutMs, fetcher = fetch) {
+  const registry = registryForDomain(domain);
+  if (!registry) return { subject: null, control: null, error: "unsupported registry or subdomain; no registration verdict available" };
   const ask = async (name) => {
-    const res = await fetch(ORG_RDAP + name, {
+    const res = await fetcher(registry.endpoint + encodeURIComponent(name), {
       headers: { accept: "application/rdap+json" },
       signal: AbortSignal.timeout(timeoutMs),
     });
     return res.status;
   };
   try {
-    const [subject, control] = [await ask(domain), await ask(REGISTRY_CONTROL)];
-    return { subject, control, error: null };
+    const [subject, control] = [await ask(domain.toLowerCase()), await ask(registry.controlName)];
+    return { ...registry, subject, control, error: null };
   } catch (e) {
-    return { subject: null, control: null, error: String(e).slice(0, 120) };
+    return { ...registry, subject: null, control: null, error: String(e).slice(0, 120) };
   }
 }
 
@@ -248,7 +264,7 @@ async function main() {
   } else {
     console.log(`published channel : ${address}`);
     console.log(`read at           : ${new Date().toISOString()}`);
-    console.log(`registry (.org)   : subject HTTP ${registry.subject ?? "error"} / control ${REGISTRY_CONTROL} HTTP ${registry.control ?? "error"}`);
+    console.log(`registry          : subject HTTP ${registry.subject ?? "error"} / control ${registry.controlName ?? "unsupported"} HTTP ${registry.control ?? "error"}`);
     console.log(`NS                : ${dns.ns.length ? JSON.stringify(dns.ns) : `none (${dns.rcodes.join(", ") || "no reading"})`}`);
     console.log(`MX                : ${dns.mailRoute ? JSON.stringify(dns.mx) : `none (${dns.rcodes.join(", ") || "no reading"})`}`);
     console.log(`SPF               : ${dns.spf.length ? dns.spf.join(" | ").slice(0, 120) : "none published"}`);
