@@ -12,7 +12,7 @@ export default function VaFormsLayout({ children }: { children: ReactNode }) {
           Open VA Form Finder
         </Link>
         <p className="mt-2 text-xs leading-relaxed text-slate-600">
-          Use form numbers or general form keywords only. The Finder query is sent to the public VA Forms endpoint, so do not enter names, account identifiers, claim numbers, or other personal information.
+          Use form numbers or general form keywords only. Searches are submitted to this application server and forwarded to the VA Forms service only when live VA access is enabled. Do not enter names, account identifiers, claim numbers, or other personal information.
         </p>
       </nav>
       {children}

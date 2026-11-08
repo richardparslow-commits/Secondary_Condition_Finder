@@ -310,7 +310,12 @@ export function analyzeEvidenceText(
       // condition is diagnosis context even without an inline keyword. "Timeline"
       // hits here are usually list modifiers ("chronic sinusitis") rather than
       // onset statements, so they defer to the diagnosis context.
-      if (diagnosisList && matched.length > 0 && (category === null || category === "timeline")) {
+      if (
+        diagnosisList &&
+        matched.length > 0 &&
+        !NEGATION_PREFIX_PATTERN.test(sentence) &&
+        (category === null || category === "timeline")
+      ) {
         category = "diagnosis";
       }
       if (!category) continue;
