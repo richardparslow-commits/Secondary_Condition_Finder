@@ -312,6 +312,10 @@ async function runJourney() {
   await assertNoHorizontalOverflow("Step 4 documents");
 
   await clickXpath("//button[contains(normalize-space(.), 'View Suggestions')]");
+  await waitForAlertContaining("Choose whether document availability should be reflected in the checklist.");
+  await expectNoQueryParams("/secondary/upload", "Document availability validation");
+  await clickXpath("//input[@name='documentsShared' and @value='no']");
+  await clickXpath("//button[contains(normalize-space(.), 'View Suggestions')]");
   await waitForPath("/secondary/suggestions");
   await assertNoHorizontalOverflow("Step 5 suggestions");
 

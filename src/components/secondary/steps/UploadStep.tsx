@@ -39,7 +39,7 @@ export function DocumentsSharedChoice({
   documentsShared,
   onDocumentsSharedChange,
 }: {
-  documentsShared: boolean;
+  documentsShared?: boolean;
   onDocumentsSharedChange?: (documentsShared: boolean) => void;
 }) {
   // The static prefill contract renders this unit without a callback, so keep
@@ -52,8 +52,8 @@ export function DocumentsSharedChoice({
       <legend className="font-semibold">Do you want document availability reflected in your checklist?</legend>
       <p className="mt-1 text-sm text-slate-600">This choice stores a yes/no workflow flag. Raw evidence text and locally extracted excerpts are not added to the browser-local workflow context.</p>
       <div className="mt-4 grid gap-3">
-        <label className="flex items-center gap-3 rounded-lg border border-slate-200 px-3 py-3"><input type="radio" name="documentsShared" value="yes" checked={controlled ? documentsShared : undefined} defaultChecked={controlled ? undefined : documentsShared} onChange={() => onDocumentsSharedChange?.(true)} className="h-5 w-5" />Yes, I reviewed or have documents available</label>
-        <label className="flex items-center gap-3 rounded-lg border border-slate-200 px-3 py-3"><input type="radio" name="documentsShared" value="no" checked={controlled ? !documentsShared : undefined} defaultChecked={controlled ? undefined : !documentsShared} onChange={() => onDocumentsSharedChange?.(false)} className="h-5 w-5" />No, continue without documents</label>
+        <label className="flex items-center gap-3 rounded-lg border border-slate-200 px-3 py-3"><input type="radio" name="documentsShared" value="yes" checked={controlled ? documentsShared === true : undefined} defaultChecked={controlled ? undefined : documentsShared === true} onChange={() => onDocumentsSharedChange?.(true)} className="h-5 w-5" />Yes, I reviewed or have documents available</label>
+        <label className="flex items-center gap-3 rounded-lg border border-slate-200 px-3 py-3"><input type="radio" name="documentsShared" value="no" checked={controlled ? documentsShared === false : undefined} defaultChecked={controlled ? undefined : documentsShared === false} onChange={() => onDocumentsSharedChange?.(false)} className="h-5 w-5" />No, continue without documents</label>
       </div>
     </fieldset>
   );
@@ -91,7 +91,7 @@ export function UploadStep() {
   const serviceConnectedConditionIds = context?.serviceConnectedConditionIds ?? [];
   const ratingsByConditionId = context?.ratingsByConditionId;
   const permanentAndTotalConditionIds = context?.permanentAndTotalConditionIds ?? [];
-  const documentsShared = context?.documentsShared ?? false;
+  const documentsShared = context?.documentsShared;
   const medications = context?.medications ?? [];
   const treatments = context?.treatments ?? [];
   const history = context?.history ?? [];

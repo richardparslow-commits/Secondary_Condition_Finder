@@ -138,6 +138,19 @@ describe("secondary wizard client-step routes", () => {
 
     const notShared = renderToStaticMarkup(DocumentsSharedChoice({ documentsShared: false }));
     expect(notShared).toContain('name="documentsShared" checked="" value="no"');
+
+    // No stored answer must remain unanswered so the submit handler's
+    // `select-documents` validation is reachable from the live step (Heal
+    // defect: the old `?? false` default silently answered "No").
+    const unset = renderToStaticMarkup(DocumentsSharedChoice({}));
+    expect(unset).not.toContain('name="documentsShared" checked="" value="yes"');
+    expect(unset).not.toContain('name="documentsShared" checked="" value="no"');
+
+    const upload = fs.readFileSync(
+      path.join(process.cwd(), "src/components/secondary/steps/UploadStep.tsx"),
+      "utf8",
+    );
+    expect(upload).toContain("const documentsShared = context?.documentsShared;");
   });
 
   it("keeps back navigation free of workflow query state", () => {
