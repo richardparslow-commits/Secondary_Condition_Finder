@@ -22,6 +22,12 @@ export const runtime = "nodejs";
 /** Postinstall copy of the pinned package file (Node hosts only). */
 const BUNDLED_MODEL = path.join(process.cwd(), ".data-bundle", "ocr", "eng.traineddata.gz");
 
+/** Whole-exchange deadline for the fallback download (headers and body). */
+const MODEL_FETCH_TIMEOUT_MS = 15_000;
+
+/** The pinned gzip is ~10.4 MiB; anything larger cannot be the model. */
+const MAX_MODEL_BYTES = 16 * 1024 * 1024;
+
 function modelResponse(bytes: Uint8Array): Response {
   // Copy into a plain ArrayBuffer-backed view: the incoming bytes may be
   // Buffer-backed, which BodyInit does not accept on every runtime.
@@ -60,21 +66,66 @@ async function readBundledModel(): Promise<Uint8Array | null> {
 async function fetchPinnedModel(): Promise<Uint8Array | null> {
   const url = resolveOcrModelUrl();
 
-  let response: Response;
+  // The deadline covers the whole exchange, not just the response headers:
+  // a stalled body would otherwise keep the isolate-wide memo pending forever
+  // and every OCR caller in this isolate waiting on it.
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), MODEL_FETCH_TIMEOUT_MS);
   try {
-    response = await fetch(url, {
+    const response = await fetch(url, {
       // The pinned artifact is a gzip FILE. Accepting a transfer encoding
       // would hand us bytes that no longer match the digest.
       headers: { "accept-encoding": "identity" },
       redirect: "follow",
+      signal: controller.signal,
     });
+    if (!response.ok || !response.body) {
+      // An error body is never read; release it so the connection is not held.
+      if (response.body) await response.body.cancel().catch(() => undefined);
+      return null;
+    }
+
+    // Reject an oversized artifact before buffering it. The digest check can
+    // only authenticate bytes after they have been consumed, so the cap has to
+    // come first for both the declared and the actual streamed size.
+    const declared = Number(response.headers.get("content-length"));
+    if (Number.isFinite(declared) && declared > MAX_MODEL_BYTES) {
+      await response.body.cancel().catch(() => undefined);
+      return null;
+    }
+
+    const reader = response.body.getReader();
+    const chunks: Uint8Array[] = [];
+    let total = 0;
+    let complete = false;
+    try {
+      for (;;) {
+        const { done, value } = await reader.read();
+        if (done) {
+          complete = true;
+          break;
+        }
+        total += value.byteLength;
+        if (total > MAX_MODEL_BYTES) return null;
+        chunks.push(value);
+      }
+    } finally {
+      if (!complete) await reader.cancel().catch(() => undefined);
+      reader.releaseLock();
+    }
+
+    const bytes = new Uint8Array(total);
+    let offset = 0;
+    for (const chunk of chunks) {
+      bytes.set(chunk, offset);
+      offset += chunk.byteLength;
+    }
+    return (await isPinnedOcrModel(bytes)) ? bytes : null;
   } catch {
     return null;
+  } finally {
+    clearTimeout(timer);
   }
-  if (!response.ok) return null;
-
-  const bytes = new Uint8Array(await response.arrayBuffer());
-  return (await isPinnedOcrModel(bytes)) ? bytes : null;
 }
 
 async function loadModel(): Promise<Uint8Array | null> {
