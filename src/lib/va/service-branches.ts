@@ -27,7 +27,7 @@ export interface ServiceBranchReferenceItem {
 
 export interface ServiceBranchReferenceView extends VaReferenceSourceStatus {
   items: ServiceBranchReferenceItem[];
-  /** True when a later VA page failed or the page cap was reached. */
+  /** True when the page set failed, was capped, or contains fewer items than reported. */
   incomplete?: boolean;
 }
 

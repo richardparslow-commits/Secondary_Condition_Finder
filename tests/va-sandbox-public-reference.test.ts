@@ -309,6 +309,26 @@ describe("public-reference VA API adapters", () => {
     expect(fetchSpy).toHaveBeenCalledTimes(2);
   });
 
+  it("marks service branches incomplete when totalItems exceeds the received items", async () => {
+    const fetchSpy = vi.fn().mockResolvedValue(
+      new Response(
+        JSON.stringify({
+          totalItems: 2,
+          items: [{ code: "ARMY", description: "Army" }],
+        }),
+        { status: 200, headers: { "Content-Type": "application/json" } },
+      ),
+    );
+    vi.stubGlobal("fetch", fetchSpy);
+
+    const result = await fetchVaServiceBranches({ config });
+
+    expect(result.success).toBe(true);
+    expect(result.incomplete).toBe(true);
+    expect(result.data?.items.map((item) => item.code)).toEqual(["ARMY"]);
+    expect(fetchSpy).toHaveBeenCalledTimes(1);
+  });
+
   it("fails closed per service when only that service key is missing", async () => {
     const fetchSpy = vi.fn();
     vi.stubGlobal("fetch", fetchSpy);

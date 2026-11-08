@@ -845,7 +845,10 @@ export async function fetchVaServiceBranches(
     }
     items.push(...next.data.items);
   }
-  if (totalPages > VA_SERVICE_BRANCH_MAX_PAGES) incomplete = true;
+  if (
+    totalPages > VA_SERVICE_BRANCH_MAX_PAGES ||
+    (first.data.totalItems !== undefined && items.length < first.data.totalItems)
+  ) incomplete = true;
 
   return {
     ...first,
