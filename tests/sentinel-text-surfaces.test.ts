@@ -105,4 +105,34 @@ describe("sentinel bounded text scans", () => {
     expect(notes).not.toContain('"trace-file"');
     expect(notes).not.toContain('"server-log"');
   });
+
+  it("leaves a sentinel before the bounded tail unscanned", () => {
+    const sentinel = "SENTINEL_BEFORE_BOUNDED_TAIL";
+    const root = fixture({ "trace": `${sentinel}${"x".repeat(64)}` });
+    const result = readSentinelTextSurface(path.join(root, "trace"), 32);
+
+    expect(result.text).not.toContain(sentinel);
+    expect(result.observation).toMatchObject({
+      status: "scanned",
+      bytes: 32,
+      sizeBytes: sentinel.length + 64,
+    });
+  });
+
+  it("requires the whole file to fit inside the scan cap before claiming full coverage", () => {
+    const source = fs.readFileSync(
+      path.join(process.cwd(), "scripts/acceptance-browser-sentinel.mjs"),
+      "utf8",
+    );
+    const assertion = source.slice(
+      source.indexOf('"server log and trace file were scanned in full'),
+      source.indexOf("// Final assertions and report."),
+    );
+
+    expect(assertion).toContain("observation.sizeBytes <= TEXT_SURFACE_SCAN_LIMIT");
+    expect(assertion).toContain("text.length === observation.sizeBytes");
+    expect(assertion).not.toContain(
+      "Math.min(observation.sizeBytes, TEXT_SURFACE_SCAN_LIMIT)",
+    );
+  });
 });
