@@ -7,7 +7,7 @@ import type { RegulatoryAction } from "../schema";
 import {
   readLatestRegulatoryPreflightCache,
   readRegulatorySnapshotById,
-  writeRegulatoryPreflightCache,
+  writeRegulatoryPreflightCacheIfLatest,
   writeRegulatorySnapshot,
 } from "./cache";
 import { requiredSourcesFailed } from "./freshness";
@@ -93,7 +93,7 @@ export async function prepareRegulatoryReview(options: {
       if (requiredSourcesFailed(result.snapshot.sourceResults)) {
         writeRegulatorySnapshot(cache);
       } else {
-        writeRegulatoryPreflightCache(cache);
+        writeRegulatoryPreflightCacheIfLatest(cache, previous?.snapshot.snapshotId ?? null);
       }
     } catch { /* best-effort cache; snapshot remains valid in this request */ }
     return {

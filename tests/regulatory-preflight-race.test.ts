@@ -1,6 +1,8 @@
+import { spawn } from "node:child_process";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
@@ -148,6 +150,138 @@ describe("regulatory preflight overlap", () => {
     );
     expect(readRegulatorySnapshotById(failedA.snapshotId, cacheDir)).toEqual(failedA);
   });
+
+  it("does not let a slow verified run replace a newer verified latest", async () => {
+    const t0 = verifiedT0();
+    writeRegulatoryPreflightCache(cacheFor(t0), cacheDir);
+
+    const pending = deferred<RegulatoryPreflightResult>();
+    mocks.runRegulatoryPreflight.mockReturnValueOnce(pending.promise);
+    const slowReview = prepareRegulatoryReview({ now: "2026-08-19T06:00:00.000Z" });
+
+    const verifiedB = snapshotFor();
+    writeRegulatoryPreflightCache(cacheFor(verifiedB), cacheDir);
+
+    const verifiedA = snapshotFor({
+      snapshotId: "reg-verified-a-00000001",
+      previousSnapshotId: t0.snapshotId,
+      startedAt: "2026-08-19T06:00:00.000Z",
+      finishedAt: "2026-08-19T06:00:05.000Z",
+    });
+    pending.resolve(resultFor(verifiedA));
+
+    const prepared = await slowReview;
+    expect(prepared.snapshot.snapshotId).toBe(verifiedA.snapshotId);
+    expect(readLatestRegulatoryPreflightCache(cacheDir)?.snapshot.snapshotId).toBe(
+      verifiedB.snapshotId,
+    );
+    expect(readRegulatorySnapshotById(verifiedA.snapshotId, cacheDir)).toEqual(verifiedA);
+  });
+
+  it("serializes the latest compare-and-write across Node processes", async () => {
+    const t0 = verifiedT0();
+    writeRegulatoryPreflightCache(cacheFor(t0), cacheDir);
+    const rendezvousFile = path.join(cacheDir, "writers-ready");
+    const startFile = path.join(cacheDir, "writers-started");
+    fs.writeFileSync(rendezvousFile, "");
+    fs.writeFileSync(startFile, "");
+    const cacheModuleUrl = pathToFileURL(
+      path.join(process.cwd(), "src/lib/regulatory/preflight/cache.ts"),
+    ).href;
+    const childSource = `
+      import fs from "node:fs";
+      const { writeRegulatoryPreflightCacheIfLatest } = await import(process.env.CACHE_MODULE_URL);
+      const id = process.env.SNAPSHOT_ID;
+      const count = (file) => fs.readFileSync(file, "utf8").trim().split("\\n").filter(Boolean).length;
+      const wait = () => Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 5);
+      fs.appendFileSync(process.env.START_FILE, id + "\\n");
+      const startDeadline = Date.now() + 5000;
+      while (count(process.env.START_FILE) < 2) {
+        if (Date.now() >= startDeadline) throw new Error("Both writers did not start");
+        wait();
+      }
+      let serializations = 0;
+      const cache = {
+        schemaVersion: 1,
+        writtenAt: "2026-08-19T06:00:05.000Z",
+        snapshot: { schemaVersion: 1, snapshotId: id },
+        sourceValidators: {},
+        get registry() {
+          serializations += 1;
+          if (serializations === 1) {
+            fs.appendFileSync(process.env.RENDEZVOUS_FILE, id + "\\n");
+            const deadline = Date.now() + 2000;
+            while (count(process.env.RENDEZVOUS_FILE) < 2 && Date.now() < deadline) {
+              wait();
+            }
+          }
+          return [];
+        },
+      };
+      const wroteLatest = writeRegulatoryPreflightCacheIfLatest(
+        cache,
+        "reg-verified-t0-00000001",
+        process.env.CACHE_DIR,
+      );
+      process.stdout.write(JSON.stringify({ id, wroteLatest }));
+    `;
+    const runWriter = (snapshotId: string): Promise<{ id: string; wroteLatest: boolean }> =>
+      new Promise((resolve, reject) => {
+        const child = spawn(process.execPath, [
+          "--conditions=react-server",
+          "--experimental-strip-types",
+          "--input-type=module",
+          "-e",
+          childSource,
+        ], {
+          env: {
+            ...process.env,
+            CACHE_DIR: cacheDir,
+            CACHE_MODULE_URL: cacheModuleUrl,
+            RENDEZVOUS_FILE: rendezvousFile,
+            START_FILE: startFile,
+            SNAPSHOT_ID: snapshotId,
+          },
+          stdio: ["ignore", "pipe", "pipe"],
+        });
+        let stdout = "";
+        let stderr = "";
+        child.stdout.setEncoding("utf8").on("data", (chunk: string) => { stdout += chunk; });
+        child.stderr.setEncoding("utf8").on("data", (chunk: string) => { stderr += chunk; });
+        child.on("error", reject);
+        child.on("close", (code) => {
+          if (code !== 0) {
+            reject(new Error(`Cache writer exited ${code}: ${stderr}`));
+            return;
+          }
+          try {
+            resolve(JSON.parse(stdout) as { id: string; wroteLatest: boolean });
+          } catch (error) {
+            reject(new Error(`Cache writer returned invalid output: ${String(error)} ${stderr}`));
+          }
+        });
+      });
+
+    const results = await Promise.all([
+      runWriter("reg-process-a-00000001"),
+      runWriter("reg-process-b-00000001"),
+    ]);
+    const winner = results.find((result) => result.wroteLatest);
+
+    const writersReachedBarrier = fs.readFileSync(rendezvousFile, "utf8").trim().split("\n");
+    expect(writersReachedBarrier.sort()).toEqual([
+      "reg-process-a-00000001",
+      "reg-process-b-00000001",
+    ]);
+    expect(results.filter((result) => result.wroteLatest), JSON.stringify(results)).toHaveLength(1);
+    expect(readLatestRegulatoryPreflightCache(cacheDir)?.snapshot.snapshotId).toBe(winner?.id);
+    expect(readRegulatorySnapshotById("reg-process-a-00000001", cacheDir)?.snapshotId).toBe(
+      "reg-process-a-00000001",
+    );
+    expect(readRegulatorySnapshotById("reg-process-b-00000001", cacheDir)?.snapshotId).toBe(
+      "reg-process-b-00000001",
+    );
+  }, 20_000);
 
   it("leaves latest verified when a slow run hits an internal error", async () => {
     const t0 = verifiedT0();
