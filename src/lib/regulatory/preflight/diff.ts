@@ -79,12 +79,12 @@ export function diffRegulatoryPreflight(options: {
   };
 
   for (const discovery of options.federalRegisterDiscoveries) {
-    if (!federalRegisterDiscoveryIsReviewRelevant(discovery)) continue;
     const rin = discovery.rin;
     const previousAction = rin ? previous.get(rin) : undefined;
+    const action = rin ? next.get(rin) ?? previousAction : undefined;
+    if (!federalRegisterDiscoveryIsReviewRelevant(discovery, action)) continue;
     const previousDocument = previousAction?.federalRegisterDocuments.find((document) => document.documentNumber === discovery.documentNumber);
     if (previousDocument && discovery.normalizedDocument && stable(previousDocument) === stable(discovery.normalizedDocument)) continue;
-    const action = rin ? next.get(rin) ?? previousAction : undefined;
     const classified = classifyDocument(discovery, action, options.asOfDate);
     add({
       id: `fr:${discovery.documentNumber}`,

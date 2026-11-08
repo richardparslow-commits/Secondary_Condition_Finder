@@ -209,10 +209,15 @@ describe("axe gate — the multi-hop DAG visualizer", () => {
     // gate has gone blind and every green run above is meaningless.
     const { container } = render(
       <div>
-        <img src="/logo.png" />
         <button type="button" />
       </div>,
     );
+
+    // Deliberately inject invalid markup for the negative test; shipped JSX
+    // must still satisfy the image/alternative-text lint rules.
+    const brokenImage = document.createElement("img");
+    brokenImage.src = "/logo.png";
+    container.append(brokenImage);
 
     await expect(expectNoBlockingA11yViolations(container)).rejects.toThrow(
       /critical\/serious WCAG 2.1 AA violation/,
