@@ -6,9 +6,7 @@ import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const URL_RE = /^https:\/\/pubmed\.ncbi\.nlm\.nih\.gov\/(\d+)\/$/;
-const ESEARCH_RE = /^https:\/\/eutils\.ncbi\.nlm\.nih\.gov\/entrez\/eutils\/(esearch\.fcgi|esummary\.fcgi)/;
 const NCBI_BASE = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils';
-const EBOOK_BASE = 'https://www.ncbi.nlm.nih.gov/books/';
 
 const PAUSE_MS = 1800;
 const PAGE_TIMEOUT_MS = 25000;
@@ -20,24 +18,6 @@ function sleep(ms) {
 function parsePmid(url) {
   const m = url.match(URL_RE);
   return m ? m[1] : null;
-}
-
-function isNcbiEbookUrl(url) {
-  return url.startsWith(EBOOK_BASE) && !url.includes('/pmc/') && !url.includes('/books/');
-}
-
-function isNcbiStableBookUrl(url) {
-  // Honest NCBI book URL check: only pass if it looks like a real bookshelf path
-  if (!url.startsWith(EBOOK_BASE)) return false;
-  const path = url.slice(EBOOK_BASE.length);
-  if (!path.startsWith('/')) return false;
-  if (url.includes('ncbi.nlm.nih.gov/books/') && /\/\d+\//.test(url)) return true;
-  return false;
-}
-
-function extractHtmlTitle(body) {
-  const m = body.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
-  return m ? m[1].trim() : null;
 }
 
 function normalizeTitle(title) {
@@ -72,12 +52,6 @@ async function fetchJson(url, label) {
   }
 }
 
-async function esearchPmid(query, retmax = 3) {
-  const url = `${NCBI_BASE}/esearch.fcgi?db=pubmed&term=${encodeURIComponent(query)}&retmax=${retmax}&retmode=json`;
-  const json = await fetchJson(url, 'esearch');
-  return Array.isArray(json.esearchresult?.idlist) ? json.esearchresult.idlist : [];
-}
-
 async function esummaryTitles(pmids) {
   const url = `${NCBI_BASE}/esummary.fcgi?db=pubmed&id=${pmids.join(',')}&retmode=json`;
   const json = await fetchJson(url, 'esummary');
@@ -101,7 +75,7 @@ function stripPunct(s) {
   return s.replace(/[.,;:!?()\[\]{}'"`´]+/g, ' ').replace(/\s+/g, ' ').trim().toLowerCase();
 }
 
-function titleMatch(asserted, observed, context) {
+function titleMatch(asserted, observed) {
   if (!observed) return { ok: false, reason: 'no observed title' };
   const a = normalizeTitle(asserted);
   const o = normalizeTitle(observed);
@@ -239,13 +213,13 @@ function walkEvidence(root, dir, prefix = '') {
       continue;
     }
     if (!observed) { results.push({ pmid, asserted, file: canon.rows[0].file, path: canon.rows[0].path, problem: { kind: 'no-title', observed } }); continue; }
-    const match = titleMatch(asserted, observed, `esummary for PMID ${pmid}`);
+    const match = titleMatch(asserted, observed);
     if (!match.ok) {
       results.push({ pmid, asserted, observed, observedSource, observedAuthors, method, file: canon.rows[0].file, path: canon.rows[0].path, problem: { kind: 'title-mismatch', match } });
     }
     for (const row of canon.rows) {
       const rowAsserted = row.assertedTitle || asserted;
-      const m2 = titleMatch(rowAsserted, observed, `esummary for PMID ${pmid} row in ${row.file}${row.path?`#${row.path}`:''}`);
+      const m2 = titleMatch(rowAsserted, observed);
       if (!m2.ok && (!results.some(r => r.pmid === pmid && r.problem?.kind === 'title-mismatch'))) {
         results.push({ pmid, asserted: rowAsserted, observed, observedSource, observedAuthors, method, file: row.file, path: row.path, problem: { kind: 'title-mismatch-per-row', match: m2 } });
       }

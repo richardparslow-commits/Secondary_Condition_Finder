@@ -1,4 +1,5 @@
 import React from "react";
+import { configuredPrivacyContact } from "@/lib/privacy/intake";
 import Link from "next/link";
 
 import {
@@ -9,10 +10,11 @@ import {
 } from "@/lib/evidence/limits";
 
 export default function PrivacyPage() {
+  const contactEmail = configuredPrivacyContact();
   return (
     <main className="max-w-4xl mx-auto px-4 py-8 text-gray-900">
       <h1 className="text-3xl font-bold mb-4">Privacy Policy</h1>
-      <p className="text-sm text-gray-600 mb-6">Last updated: October 13, 2026</p>
+      <p className="text-sm text-gray-600 mb-6">Last updated: November 7, 2026</p>
 
       <section className="space-y-4 text-sm leading-relaxed">
         <div className="bg-blue-50 border-l-4 border-blue-600 p-4 rounded">
@@ -123,7 +125,7 @@ export default function PrivacyPage() {
 
         <h2 className="text-xl font-semibold mt-6">8. Your privacy rights and how to contact us</h2>
         <p>
-          <strong>Access and correction.</strong> You may request the categories of data associated with your use of this application and ask that a factual error in data you supplied be corrected. Vision, hearing, and motor impairments do not limit these rights: requests are accepted by email at the monitored address below, and an assistive-technology user may state a preferred contact method in the first message.
+          <strong>Access and correction.</strong> You may request the categories of data associated with your use of this application and ask that a factual error in data you supplied be corrected. Vision, hearing, and motor impairments do not limit these rights: requests can be sent by email once the operator publishes a monitored address below, and an assistive-technology user may state a preferred contact method in the first message.
         </p>
         <p>
           <strong>Deletion of account-associated data.</strong> Data the application holds in association with a connected account (the server-side session record described in section 6) can be removed by disconnecting the session, and a Veteran may additionally request permanent deletion of any remaining account-associated operational or session data held by this application. Requests are completed, including completion of constituent partial requests, within <strong>45 days</strong>. The narrow exceptions are records this application, its operator, or VA must retain by law — records kept under 36 CFR Chapter XII (National Archives and Records Administration recordkeeping) and VA recordkeeping obligations under Title 38, United States Code — and, when a deletion is completed only in part or refused, a reason for that partial handling is provided in the same confirmation.
@@ -137,12 +139,11 @@ export default function PrivacyPage() {
             privacy request intake page
           </Link>{" "}
           prepares a deletion, access, correction, or question message and opens your own email application, so
-          the request is never sent to this application: it travels from your email account to the monitored
-          address below. Sending that message is what starts a request — there is no server record and no
-          account involved, and no identifying detail is entered on this site.
+          the request is never sent to this application. When a monitored contact is configured, it travels from your email account to that address.
+          Sending that message starts a request — there is no server record or account involved, and no identifying detail is entered on this site.
         </p>
         <p>
-          <strong>How to reach a human.</strong> Send requests, or any privacy question, to <a href="mailto:privacy@secondaryconditionfinder.org" className="font-medium text-blue-700 hover:underline">privacy@secondaryconditionfinder.org</a> — a monitored mail route with a human handling each request; you will receive acknowledgment and a completion confirmation by the same channel. VA resources remain independent of this application and are provided for completeness: VA&apos;s privacy program at <a href="https://www.va.gov/privacy/" className="font-medium text-blue-700 hover:underline" target="_blank" rel="noopener noreferrer">https://www.va.gov/privacy/</a> and VA&apos;s main phone line, 1-800-827-1000 (VA benefits main line; not a privacy-request intake channel).
+          <strong>How to reach a human.</strong> {contactEmail ? <>Send requests, or any privacy question, to <a href={`mailto:${contactEmail}`} className="font-medium text-blue-700 hover:underline">{contactEmail}</a>. The operator handles requests through this mailbox and provides acknowledgment and completion confirmation by the same channel.</> : <>Privacy contact unavailable: the operator has not configured a monitored mailbox. No email request can be started here yet. Browser-local clearing controls remain available.</>} VA resources remain independent of this application and are provided for completeness: VA&apos;s privacy program at <a href="https://www.va.gov/privacy/" className="font-medium text-blue-700 hover:underline" target="_blank" rel="noopener noreferrer">https://www.va.gov/privacy/</a> and VA&apos;s main phone line, 1-800-827-1000 (VA benefits main line; not a privacy-request intake channel).
         </p>
 
         <h2 className="text-xl font-semibold mt-6">9. Policy changes</h2>
