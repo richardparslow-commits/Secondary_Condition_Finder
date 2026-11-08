@@ -160,9 +160,12 @@ describe("Federal Register preflight query", () => {
     expect(result.sourceResult.message).toContain("safety limit of 1 pages");
   });
 
-  it("rejects an unsafe next-page URL instead of treating it as exhaustion", async () => {
+  it.each([
+    ["unsafe host", "https://evil.example/api/v1/documents.json?page=2"],
+    ["empty string", ""],
+  ])("rejects a supplied %s next-page URL instead of treating it as exhaustion", async (_label, nextPageUrl) => {
     const payload = {
-      next_page_url: "https://evil.example/api/v1/documents.json?page=2",
+      next_page_url: nextPageUrl,
       results: [],
     };
     const mockFetch = async (input: RequestInfo | URL) => {
