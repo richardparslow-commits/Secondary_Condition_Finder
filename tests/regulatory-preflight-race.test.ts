@@ -182,6 +182,9 @@ describe("regulatory preflight overlap", () => {
     const t0 = verifiedT0();
     writeRegulatoryPreflightCache(cacheFor(t0), cacheDir);
     const rendezvousFile = path.join(cacheDir, "writers-ready");
+    const startFile = path.join(cacheDir, "writers-started");
+    fs.writeFileSync(rendezvousFile, "");
+    fs.writeFileSync(startFile, "");
     const cacheModuleUrl = pathToFileURL(
       path.join(process.cwd(), "src/lib/regulatory/preflight/cache.ts"),
     ).href;
@@ -189,6 +192,14 @@ describe("regulatory preflight overlap", () => {
       import fs from "node:fs";
       const { writeRegulatoryPreflightCacheIfLatest } = await import(process.env.CACHE_MODULE_URL);
       const id = process.env.SNAPSHOT_ID;
+      const count = (file) => fs.readFileSync(file, "utf8").trim().split("\\n").filter(Boolean).length;
+      const wait = () => Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 5);
+      fs.appendFileSync(process.env.START_FILE, id + "\\n");
+      const startDeadline = Date.now() + 5000;
+      while (count(process.env.START_FILE) < 2) {
+        if (Date.now() >= startDeadline) throw new Error("Both writers did not start");
+        wait();
+      }
       let serializations = 0;
       const cache = {
         schemaVersion: 1,
@@ -198,10 +209,10 @@ describe("regulatory preflight overlap", () => {
         get registry() {
           serializations += 1;
           if (serializations === 1) {
-            fs.appendFileSync(process.env.RENDEZVOUS_FILE, id + "\\\\n");
-            const deadline = Date.now() + 1500;
-            while (fs.readFileSync(process.env.RENDEZVOUS_FILE, "utf8").trim().split("\\\\n").length < 2 && Date.now() < deadline) {
-              Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 5);
+            fs.appendFileSync(process.env.RENDEZVOUS_FILE, id + "\\n");
+            const deadline = Date.now() + 2000;
+            while (count(process.env.RENDEZVOUS_FILE) < 2 && Date.now() < deadline) {
+              wait();
             }
           }
           return [];
@@ -228,6 +239,7 @@ describe("regulatory preflight overlap", () => {
             CACHE_DIR: cacheDir,
             CACHE_MODULE_URL: cacheModuleUrl,
             RENDEZVOUS_FILE: rendezvousFile,
+            START_FILE: startFile,
             SNAPSHOT_ID: snapshotId,
           },
           stdio: ["ignore", "pipe", "pipe"],
@@ -256,9 +268,11 @@ describe("regulatory preflight overlap", () => {
     ]);
     const winner = results.find((result) => result.wroteLatest);
 
-    const writersReachedBarrier = fs.readFileSync(rendezvousFile, "utf8");
-    expect(writersReachedBarrier).toContain("reg-process-a-00000001");
-    expect(writersReachedBarrier).toContain("reg-process-b-00000001");
+    const writersReachedBarrier = fs.readFileSync(rendezvousFile, "utf8").trim().split("\n");
+    expect(writersReachedBarrier.sort()).toEqual([
+      "reg-process-a-00000001",
+      "reg-process-b-00000001",
+    ]);
     expect(results.filter((result) => result.wroteLatest), JSON.stringify(results)).toHaveLength(1);
     expect(readLatestRegulatoryPreflightCache(cacheDir)?.snapshot.snapshotId).toBe(winner?.id);
     expect(readRegulatorySnapshotById("reg-process-a-00000001", cacheDir)?.snapshotId).toBe(
