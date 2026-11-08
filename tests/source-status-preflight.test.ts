@@ -59,6 +59,18 @@ const fixture = {
 <PubmedArticle><MedlineCitation Status="MEDLINE"><PMID Version="1">10000001</PMID>
 <Article><PublicationTypeList><PublicationType>Journal Article</PublicationType></PublicationTypeList></Article>
 </MedlineCitation></PubmedArticle>
+<PubmedArticle><MedlineCitation Status="MEDLINE"><PMID Version="1">10000002</PMID>
+<Article><PublicationTypeList><PublicationType>Journal Article</PublicationType><PublicationType>Retracted Publication</PublicationType></PublicationTypeList></Article>
+</MedlineCitation></PubmedArticle>
+<PubmedArticle><MedlineCitation Status="MEDLINE"><PMID Version="1">10000004</PMID>
+<Article><PublicationTypeList><PublicationType>Journal Article</PublicationType><PublicationType>Expression of Concern</PublicationType></PublicationTypeList></Article>
+</MedlineCitation></PubmedArticle>
+<PubmedArticle><MedlineCitation Status="MEDLINE"><PMID Version="1">10000005</PMID>
+<Article><PublicationTypeList><PublicationType>Journal Article</PublicationType></PublicationTypeList></Article>
+</MedlineCitation></PubmedArticle>
+<PubmedArticle><MedlineCitation Status="MEDLINE"><PMID Version="1">10000006</PMID>
+<Article><PublicationTypeList><PublicationType>Journal Article</PublicationType><PublicationType>Published Erratum</PublicationType></PublicationTypeList></Article>
+</MedlineCitation></PubmedArticle>
 <PubmedArticle><MedlineCitation Status="MEDLINE"><PMID Version="1">10000003</PMID>
 <Article><PublicationTypeList><PublicationType>Journal Article</PublicationType></PublicationTypeList></Article>
 <CommentsCorrectionsList><CommentsCorrections RefType="RetractionIn"><RefSource>J Irreproducible Results. 2024 Jan;1:1-2</RefSource><PMID Version="1">20000001</PMID></CommentsCorrections></CommentsCorrectionsList>
@@ -70,15 +82,17 @@ const fixture = {
 </PubmedArticleSet>`,
 };
 
-const runCli = (...args: string[]) => {
+const runCliWithFixture = (fixtureBody: unknown, ...args: string[]) => {
   const fixturePath = path.join(os.tmpdir(), `source-status-preflight-${process.pid}.json`);
-  fs.writeFileSync(fixturePath, JSON.stringify(fixture));
+  fs.writeFileSync(fixturePath, JSON.stringify(fixtureBody) ?? "null");
   return spawnSync(
     process.execPath,
     [script, "--fixture", fixturePath, "--json", ...args],
     { encoding: "utf8" },
   );
 };
+
+const runCli = (...args: string[]) => runCliWithFixture(fixture, ...args);
 
 describe("source-status preflight", () => {
   it("extracts PMIDs from sourceUrl and citation, and skips non-PubMed refs", () => {
@@ -212,6 +226,36 @@ describe("source-status preflight", () => {
     expect(report.ok).toBe(true);
     expect(report.flags).toHaveLength(0);
     expect(report.notes.length).toBeGreaterThan(0);
+  });
+
+  it("refuses a clean summary when the full status record is unavailable", () => {
+    const result = runCliWithFixture(
+      {
+        esummary: {
+          uids: ["10000001"],
+          "10000001": {
+            uid: "10000001",
+            title: "A clean cohort study",
+            pubtype: ["Journal Article"],
+          },
+        },
+        efetchXml: "<html><body>Service Unavailable</body></html>",
+      },
+      "--pmids",
+      "10000001",
+    );
+
+    expect(result.status).toBe(1);
+    const report = JSON.parse(result.stdout);
+    expect(report.ok).toBe(false);
+    expect(report.pmidsChecked).toBe(0);
+    expect(report.flags).toHaveLength(1);
+    expect(report.flags[0]).toMatchObject({
+      pmid: "10000001",
+      flag: "UNRESOLVED",
+      evidence: "PubMed summary or full status record missing; complete status cannot be verified",
+      where: "--pmids 10000001",
+    });
   });
 
   it("flags PMIDs that do not resolve as UNRESOLVED", () => {
