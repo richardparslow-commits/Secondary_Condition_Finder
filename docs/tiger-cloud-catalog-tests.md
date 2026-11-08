@@ -18,3 +18,11 @@ The connector maps `scf_tiger_lab.conditions`, `scf_tiger_lab.terms`, and `scf_t
 Seed also installs child-side indexes on `edges(snapshot, target_id)` and `terms(snapshot, condition_id)`. The primary keys do not cover these foreign-key lookup prefixes. These indexes prevent full child-table scans when replacing or removing synthetic parent conditions under concurrent load. They stay installed after fixture cleanup; the replicated destination does not need these source-side foreign-key indexes.
 
 The lookup probe set covers identifiers, names, aliases, case and whitespace variants, and deliberate misses. The reported application time measures in-memory lookup in one local Node process. Measure remote PostgreSQL throughput and latency separately through the direct and transaction-pooled connections.
+
+## Management connection reliability
+
+Use the current official Tiger CLI (`brew upgrade --cask tiger-cli` for this installation). Automated runs disable startup update checks. The runner validates the designated service ID, name, DEV tag and readiness, resolves credentials once, then uses direct `psql` for SQL. Passwords stay in process memory and the child environment, not command arguments or reports.
+
+Only temporary management read failures receive at most three attempts, with 45 seconds per attempt (longer than the CLI's documented 30-second HTTP timeout). Authentication failures, malformed responses and unknown errors fail closed. SQL is never automatically retried: a disconnect can leave the commit outcome uncertain. Inspect state before rerunning. Each SQL statement retains a 15-second limit; the local process is bounded at 120 seconds. No production setting is changed.
+
+Historical campaign evidence is immutable. Its 18-second credential-resolution deadline and per-write `tiger db psql` calls are superseded by this runner; use this connection bootstrap for future campaign clients rather than copying those historical helpers. These safeguards address client fragility, not an assurance that Tiger's remote API cannot have an outage.

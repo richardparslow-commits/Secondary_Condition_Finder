@@ -1,33 +1,17 @@
 import assert from "node:assert/strict";
-import { spawnSync } from "node:child_process";
+import { getLabConnection, executeLabSql } from "./lib/tiger-lab-client.mjs";
 import { createHash } from "node:crypto";
 import { readdirSync, readFileSync } from "node:fs";
 import { performance } from "node:perf_hooks";
 import { findCondition, normalizeConditionName } from "../src/lib/catalog/lookup.ts";
 
 const [mode, service] = process.argv.slice(2);
-const sourceName = "secondary-condition-finder-fixture-source";
-const targetName = "secondary-condition-finder-test";
 if (process.argv.length !== 4 || !["seed", "verify"].includes(mode) || !/^[a-z0-9]{10}$/.test(service)) {
   throw new Error("Usage: node scripts/test-tiger-catalog.mjs seed|verify <lab-service-id>");
 }
 
-function tiger(args, input) {
-  const result = spawnSync("tiger", args, { input, encoding: "utf8", maxBuffer: 8 * 1024 * 1024 });
-  if (result.status !== 0 && result.stderr?.trim()) throw new Error(result.stderr.trim());
-  if (result.error) throw result.error;
-  if (result.status !== 0) throw new Error("Tiger command failed.");
-  return result.stdout.trim();
-}
-
-const metadata = JSON.parse(tiger(["service", "get", service, "-o", "json"]));
-const lab = metadata.service ?? metadata;
-assert.ok(
-  lab.name === sourceName || (mode === "verify" && lab.name === targetName),
-  "Only the designated fixture source and test service are allowed.",
-);
-assert.equal(lab.metadata?.environment, "DEV");
-assert.equal(lab.status, "READY");
+// Resolve and validate once; keep the password only in this process memory.
+const connection = getLabConnection(service, mode);
 
 function jsonFiles(dir) {
   return readdirSync(dir)
@@ -64,7 +48,7 @@ const snapshot = createHash("sha256").update(JSON.stringify([conditions, terms, 
 const withSnapshot = (rows) => rows.map((row) => [snapshot, ...row]);
 
 function sql(source, ...flags) {
-  return tiger(["db", "psql", service, "--", "-X", "-qAt", "-v", "ON_ERROR_STOP=1", ...flags], source);
+  return executeLabSql(connection, source, flags);
 }
 
 if (mode === "seed") {
