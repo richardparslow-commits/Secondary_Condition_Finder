@@ -26,6 +26,30 @@ const NODE_PATH = process.env.NODE_PATH
   ? `${path.join(ROOT, "node_modules")}${path.delimiter}${process.env.NODE_PATH}`
   : path.join(ROOT, "node_modules");
 
+// Seed every required executable import so a fixture's exit status reflects
+// the architecture rule under test, not the independent coverage percentage.
+const COVERAGE_IMPORTS = [
+  "@/lib/engine/recommend",
+  "@/lib/engine/export",
+  "@/lib/kb/schema",
+  "@/lib/presumptive/match",
+  "@/lib/presumptive/browser-history",
+  "@/lib/workflow-session-crypto",
+  "@/lib/secondary-workflow/browser-context",
+  "@/lib/evidence/extract",
+  "@/lib/evidence/document-extract",
+  "@/lib/evidence/ocr-session",
+  "@/lib/va/sandbox",
+  "@/lib/va/reference-cache",
+  "@/lib/va/forms-finder",
+  "@/lib/va/api",
+  "@/lib/va/account/demo-fixtures",
+  "@/lib/va/account/transport",
+  "@/lib/observability/logger",
+]
+  .map((moduleId) => `import "${moduleId}";`)
+  .join("\n");
+
 type ArchitectureEntry = {
   rule: string;
   status: string;
@@ -63,6 +87,10 @@ function runComposition(files: Record<string, string>): {
       mkdirSync(path.dirname(absolute), { recursive: true });
       writeFileSync(absolute, content);
     }
+    writeFileSync(
+      path.join(fixture, "tests", "coverage.test.ts"),
+      COVERAGE_IMPORTS,
+    );
 
     const result = spawnSync(
       process.execPath,
@@ -99,10 +127,11 @@ describe("composition directive prologue", () => {
       "}",
     ].join("\n");
 
-    const { report } = runComposition({
+    const { status, report } = runComposition({
       "src/probe.ts": source,
     });
 
+    expect(status).toBe(1);
     expect(report.architectureClean).toBe(false);
     expect(
       report.architecture.some(
@@ -117,10 +146,11 @@ describe("composition directive prologue", () => {
       'export { schema } from "@/lib/kb/schema";',
     ].join("\n");
 
-    const { report } = runComposition({
+    const { status, report } = runComposition({
       "src/app/client.ts": source,
     });
 
+    expect(status).toBe(1);
     expect(report.architectureClean).toBe(false);
     const violation = report.architecture.find(
       (entry) => entry.rule === "CLIENT-BOUNDARY",
@@ -129,7 +159,7 @@ describe("composition directive prologue", () => {
   });
 
   it("still enforces double-quoted directives", () => {
-    const { report } = runComposition({
+    const { status, report } = runComposition({
       "src/probe.ts": [
         '"use server";',
         "export async function probe() {",
@@ -142,6 +172,7 @@ describe("composition directive prologue", () => {
       ].join("\n"),
     });
 
+    expect(status).toBe(1);
     expect(report.architectureClean).toBe(false);
     expect(
       report.architecture.some(
@@ -154,7 +185,7 @@ describe("composition directive prologue", () => {
   });
 
   it("ignores directive-shaped text in comments and ordinary strings", () => {
-    const { report } = runComposition({
+    const { status, report } = runComposition({
       "src/probe.ts": [
         '// "use server" appears only in this comment.',
         `export const note = '"use server"';`,
@@ -166,11 +197,12 @@ describe("composition directive prologue", () => {
       ].join("\n"),
     });
 
+    expect(status).toBe(0);
     expect(report.architectureClean).toBe(true);
   });
 
   it("does not treat a directive after another statement as a prologue", () => {
-    const { report } = runComposition({
+    const { status, report } = runComposition({
       "src/probe.ts": [
         'import { value } from "./value";',
         '"use server";',
@@ -185,11 +217,12 @@ describe("composition directive prologue", () => {
       ].join("\n"),
     });
 
+    expect(status).toBe(0);
     expect(report.architectureClean).toBe(true);
   });
 
   it("allows a single-quoted use server directive under src/lib/actions", () => {
-    const { report } = runComposition({
+    const { status, report } = runComposition({
       "src/lib/actions/allowed.ts": [
         "'use server';",
         "export async function allowed() {",
@@ -198,6 +231,7 @@ describe("composition directive prologue", () => {
       ].join("\n"),
     });
 
+    expect(status).toBe(0);
     expect(report.architectureClean).toBe(true);
   });
 });
