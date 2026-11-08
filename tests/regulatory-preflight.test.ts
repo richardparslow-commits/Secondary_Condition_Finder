@@ -8,8 +8,16 @@ import { buildFederalRegisterVaSearchUrl, fetchFederalRegisterVaChanges } from "
 import { decideRegulatoryFreshness } from "@/lib/regulatory/preflight/freshness";
 import { fetchTextWithTimeout } from "@/lib/regulatory/preflight/http";
 import { mergeRegulatoryDiscoveries } from "@/lib/regulatory/preflight/merge";
-import { htmlText, parseXml } from "@/lib/regulatory/preflight/xml";
-import { __oiraParserTestSeams } from "@/lib/regulatory/preflight/oira";
+import {
+  MAX_XML_DEPTH,
+  XmlResourceLimitError,
+  htmlText,
+  nodeText,
+  parseXml,
+  walkXml,
+} from "@/lib/regulatory/preflight/xml";
+import type { XmlNode } from "@/lib/regulatory/preflight/xml";
+import { __oiraParserTestSeams, fetchOiraReviews } from "@/lib/regulatory/preflight/oira";
 import type {
   FederalRegisterDiscovery,
   RegulatoryPreflightSnapshot,
@@ -405,5 +413,43 @@ describe("regulatory preflight XML entity decoding", () => {
 
   it("keeps htmlText safe for malformed numeric entities", () => {
     expect(() => htmlText("title &#x110000; excerpt")).not.toThrow();
+  });
+});
+
+describe("regulatory preflight XML depth bounds", () => {
+  const nested = (depth: number): string =>
+    `${"<a>".repeat(depth)}deep${"</a>".repeat(depth)}`;
+
+  it("rejects upstream XML nested past the parser depth limit", () => {
+    expect(() => parseXml(nested(MAX_XML_DEPTH + 1))).toThrow(XmlResourceLimitError);
+    expect(() => parseXml(nested(MAX_XML_DEPTH + 1))).toThrow(/nesting limit/i);
+  });
+
+  it("parses XML at the depth limit and keeps its text", () => {
+    const root = parseXml(nested(MAX_XML_DEPTH));
+    expect(nodeText(root)).toBe("deep");
+  });
+
+  it("rejects a deeply nested externally built tree without overflowing the stack", () => {
+    const root: XmlNode = { name: "ROOT", text: "", children: [] };
+    let current = root;
+    for (let index = 0; index < 10_000; index += 1) {
+      const child: XmlNode = { name: "A", text: "", children: [] };
+      current.children.push(child);
+      current = child;
+    }
+    expect(() => walkXml(root, () => {})).toThrow(/traversal limit/i);
+    expect(() => nodeText(root)).toThrow(/traversal limit/i);
+  });
+
+  it("reports a deeply nested OIRA feed as a controlled source failure", async () => {
+    const result = await fetchOiraReviews({
+      kind: "pending",
+      checkedAt: "2026-11-08T00:00:00.000Z",
+      fetchImpl: async () => new Response(nested(MAX_XML_DEPTH + 1), { status: 200 }),
+    });
+    expect(result.sourceResult.status).toBe("failed");
+    expect(result.sourceResult.message).toMatch(/nesting limit/i);
+    expect(result.discoveries).toEqual([]);
   });
 });
