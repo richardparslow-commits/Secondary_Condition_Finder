@@ -1,4 +1,4 @@
-import fs from "node:fs";
+import { listCheckoutPaths } from "../scripts/lib/checkout-paths.mjs";
 import path from "node:path";
 
 import { describe, expect, it } from "vitest";
@@ -28,14 +28,6 @@ import { describe, expect, it } from "vitest";
 const ROOT = process.cwd();
 
 /**
- * Generated or vendored: these legitimately contain names a fork detector
- * would match. `.open-next` is the ignored OpenNext build tree; it vendors a
- * copy of dependencies and app data, so it is not source and must not make the
- * checkout-hygiene guard fail.
- */
-const PRUNED = new Set(["node_modules", ".next", ".open-next"]);
-
-/**
  * A forking suffix: `<name> 2.ts`, `<name> 3.json`, `<name> 2`.
  *
  * No path in this repository contains a space, so this cannot match legitimate
@@ -44,16 +36,7 @@ const PRUNED = new Set(["node_modules", ".next", ".open-next"]);
  */
 const FORKED_NAME = / \d+(\.[A-Za-z0-9._-]+)?$/;
 
-/** Every path in the checkout, repo-relative, POSIX-separated, with generated trees pruned. */
-function listPaths(directory: string): string[] {
-  return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
-    if (PRUNED.has(entry.name)) return [];
-    const absolute = path.join(directory, entry.name);
-    const nested = entry.isDirectory() ? listPaths(absolute) : [];
-    const relative = path.relative(ROOT, absolute).split(path.sep).join("/");
-    return [relative, ...nested];
-  });
-}
+const listPaths = listCheckoutPaths;
 
 function forkedPaths(paths: string[]): string[] {
   return paths.filter((candidate) => FORKED_NAME.test(path.basename(candidate))).sort();
