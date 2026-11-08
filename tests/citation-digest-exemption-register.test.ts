@@ -116,6 +116,17 @@ describe("exemption matching fails closed", () => {
     expect(classifyDigestPosition({ sourceUrl: spoofed }, loaded.compiled).state).toBe("actionable");
   });
 
+  it("does not apply an HTTPS measurement to an HTTP source URL", () => {
+    const mixedScheme = volatileEntry({
+      urlPattern: "^https?://pubmed\\.ncbi\\.nlm\\.nih\\.gov/\\d+/?$",
+    });
+    const loaded = register([mixedScheme]);
+    const httpUrl = "http://pubmed.ncbi.nlm.nih.gov/30407234/";
+
+    expect(findDigestExemption(httpUrl, loaded.compiled)).toBeNull();
+    expect(classifyDigestPosition({ sourceUrl: httpUrl }, loaded.compiled).state).toBe("actionable");
+  });
+
   it("classifies a well-formed digest as digested regardless of any exemption", () => {
     const loaded = register([volatileEntry()]);
     const position = classifyDigestPosition(

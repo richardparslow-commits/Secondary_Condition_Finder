@@ -222,6 +222,7 @@ function findDigestExemption(url, compiled) {
   if (typeof url !== "string" || !url || !Array.isArray(compiled)) return null;
   let parsed;
   try { parsed = new URL(url); } catch { return null; }
+  if (parsed.protocol !== "https:") return null;
 
   for (const { entry, regex } of compiled) {
     if (!regex.test(url)) continue;

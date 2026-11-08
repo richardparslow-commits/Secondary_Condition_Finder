@@ -121,13 +121,21 @@ independently of the proposed approval-gated exemptions. The unsigned input
 bindings now include the measured-class register; no approval, live measurement,
 source-check date, digest or reference-use inventory was changed.
 
-The publishing token cannot modify GitHub Actions workflows. The scheduled
-workflow failure-reporting additions and their execution regression are therefore
-excluded from the published commit and supplied as a separate patch for a
-maintainer to apply. Until that patch lands, the CLI JSON exposes the added debt
-and structural-reason fields, but the scheduled workflow does not yet display
-those new fields or preserve its step summary after an exit-1 probe. Required
-PR checks retain current main's workflow definitions and names.
+The scheduled workflow now displays approved and pending exemption counts,
+actionable digest debt, and structural reasons in the run summary and tracking
+issue. Its probe step disables shell errexit long enough to write the report
+summary, then returns the original nonzero audit status so artifact upload and
+tracking continue. The close-path wording now distinguishes a green probe from
+remaining within-ratchet digest work. Regression coverage in
+`tests/decay-watch-artifact-handoff.test.ts` pins the displayed fields and
+fail-fast exit behavior; an execution fixture ran the actual step under
+`bash -e -o pipefail` and confirmed the summary was written while exit 1 was
+preserved. PR check names and branch protections remain unchanged.
+
+The exemption matcher also refuses HTTP URLs: transport evidence in the
+register is measured over HTTPS, and a mixed-scheme regex must not extend that
+exemption to an unmeasured HTTP source. The review-input snapshot hash was
+refreshed for this matcher change; its worksheets remain unsigned.
 
 Qualified-human review remains mandatory; this integration is not approval and
 must not be used to bypass the failing citation audit.

@@ -32,7 +32,7 @@
     },
     {
       "path": "scripts/lib/citation-digest-exemptions.js",
-      "sha256": "ef1099322c4a1f0ff72380010022588f471d3d96763849459372dd891c3c1ec8"
+      "sha256": "eecccfe9562584a43081bad6d25d0cc96b4589c3c7bc405ebf7ed3245f83e9e8"
     },
     {
       "path": "src/lib/kb/schema.ts",
