@@ -308,7 +308,7 @@ describe("land required checks — the landing script itself", () => {
 #   $LAND_STUB_CALLS so a test can assert it never happened. The default keeps
 #   the redirect valid for tests that only care about the outcome.
 LAND_STUB_CALLS="\${LAND_STUB_CALLS:-/dev/null}"
-if [ -z "\${LAND_STUB_PR:-}" ]; then LAND_STUB_PR='{"number":7,"url":"https://example.invalid/pr/7","state":"OPEN"}'; fi
+if [ -z "\${LAND_STUB_PR:-}" ]; then LAND_STUB_PR='{"number":7,"url":"https://example.invalid/pr/7","state":"OPEN","baseRefName":"main"}'; fi
 case "$1" in
   auth) exit 0 ;;
   repo) printf '{"nameWithOwner":"owner/repo"}\\n'; exit 0 ;;
@@ -500,6 +500,73 @@ exit 1
       expect(result.stderr).toContain("not merging");
       // The gate that matters: no merge was ever attempted.
       expect(fs.readFileSync(calls, "utf8")).not.toContain("merge");
+    } finally {
+      fs.rmSync(directory, { recursive: true, force: true });
+    }
+  });
+
+  it("refuses to reuse a PR that targets a different base", () => {
+    const directory = fs.mkdtempSync(path.join(os.tmpdir(), "land-base-"));
+    try {
+      const bin = path.join(directory, "bin");
+      fs.mkdirSync(bin);
+      const gh = path.join(bin, "gh");
+      fs.writeFileSync(gh, STUB);
+      fs.chmodSync(gh, 0o755);
+
+      const calls = path.join(directory, "calls.log");
+      fs.writeFileSync(calls, "");
+      const rulesBody = path.join(directory, "rules.json");
+      fs.writeFileSync(rulesBody, RULES_WITH_CHECKS);
+
+      const origin = path.join(directory, "origin.git");
+      spawnSync("git", ["init", "-q", "--bare", origin], { encoding: "utf8" });
+      const repository = path.join(directory, "repo");
+      fs.mkdirSync(repository);
+      const git = (...args: string[]) => spawnSync("git", args, { cwd: repository, encoding: "utf8" });
+      git("init", "-q");
+      git("config", "user.email", "land@test.invalid");
+      git("config", "user.name", "Land Test");
+      git("checkout", "-q", "-b", "feature");
+      fs.writeFileSync(path.join(repository, "tracked.txt"), "one\n");
+      git("add", "tracked.txt");
+      git("commit", "-q", "-m", "fixture");
+      git("remote", "add", "origin", origin);
+      fs.writeFileSync(path.join(repository, "tracked.txt"), "one\ntwo\n");
+
+      const result = spawnSync(
+        process.execPath,
+        [LAND, "-m", "land: fixture", "--no-footer", "--interval", "0.1", "--timeout", "0.02"],
+        {
+          cwd: repository,
+          encoding: "utf8",
+          env: {
+            ...process.env,
+            PATH: `${bin}${path.delimiter}${process.env.PATH ?? ""}`,
+            LAND_STUB_CALLS: calls,
+            LAND_STUB_RULES_BODY: rulesBody,
+            LAND_STUB_PR: JSON.stringify({
+              number: 7,
+              url: "https://example.invalid/pr/7",
+              state: "OPEN",
+              baseRefName: "release",
+            }),
+            LAND_STUB_PR_CHECKS: JSON.stringify([
+              { name: "verify", state: "SUCCESS", bucket: "pass" },
+              { name: "verify-doc-lint", state: "SUCCESS", bucket: "pass" },
+            ]),
+          },
+          timeout: 60_000,
+        },
+      );
+
+      expect(result.status, result.stderr).toBe(1);
+      expect(result.stderr).toContain("existing PR targets release, not requested main");
+      expect(result.stderr).toContain("refusing to merge");
+      expect(result.stdout).not.toContain("Watching 2 required check(s)");
+      const log = fs.readFileSync(calls, "utf8");
+      expect(log).toContain("view feature --json number,url,state,baseRefName");
+      expect(log).not.toContain("merge");
     } finally {
       fs.rmSync(directory, { recursive: true, force: true });
     }
