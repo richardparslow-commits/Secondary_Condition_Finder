@@ -102,7 +102,16 @@ const crypto = require("crypto");
 const http = require("http");
 const https = require("https");
 
+const {
+  loadDigestExemptions,
+  classifyDigestPosition,
+  exemptionAssessmentStale,
+  EXEMPTION_REASSESS_AFTER_DAYS,
+} = require("./lib/citation-digest-exemptions");
+
 const CITATION_CEILING = 10;
+// Proposed approval-gated ratchet; independent of main's measured-class policy.
+const MAX_UNDIGESTED_VERIFIED_REFS = 4;
 /**
  * Non-regression ratchet for content-drift observability. A `contentDigest`
  * may only be recorded by the qualified human who verified the source
@@ -150,6 +159,49 @@ const DIGEST_INELIGIBILITY_REGISTER_REMEDY =
   `length and sha256) and re-date ${DIGEST_INELIGIBILITY_REGISTER_FILE}, or record digests at the ` +
   `qualified-human verification step and lower MAX_UNDIGESTED_ELIGIBLE_VERIFIED_REFS — never widen ` +
   `the ratchet or relax the register to make this gate green (docs/citation-verification-sop.md).`;
+const NON_AUTHORITATIVE_STATUSES = new Set([203]);
+
+/**
+ * Bot-challenge interstitial markers. Some hosts serve these with a 2xx status,
+ * so status alone cannot identify them; matched against the leading slice of a
+ * fetched body. Deliberately specific strings rather than a generic "looks like
+ * a captcha" heuristic, so a genuine source is never mistaken for a wall.
+ */
+const CHALLENGE_BODY_MARKERS = Object.freeze([
+  "challengeId",
+  "cf-browser-verification",
+  "cf_chl_opt",
+  "Just a moment...",
+  "Checking your browser before accessing",
+  "Attention Required! | Cloudflare",
+  "Please enable JS and disable any ad blocker",
+]);
+
+/** True when a fetched body is a bot-challenge interstitial, not the source. */
+function bodyIsBotChallenge(body) {
+  if (typeof body !== "string" || body.length === 0) return false;
+  const head = body.slice(0, 20_000);
+  return CHALLENGE_BODY_MARKERS.some((marker) => head.includes(marker));
+}
+
+/** Reason a response establishes nothing about the origin, or null. */
+function botBlockReason(status, body) {
+  if (Number.isInteger(status) && NON_AUTHORITATIVE_STATUSES.has(status)) return "non-authoritative-status";
+  if (status === 403 || status === 405 || status === 406) return "bot-wall-status";
+  if (bodyIsBotChallenge(body)) return "bot-challenge-interstitial";
+  return null;
+}
+
+/**
+ * True when a probe result establishes nothing about the origin source, either
+ * because the host refused the client or because an intermediary answered
+ * instead. Such a reference is unverifiable-by-probe, never decayed.
+ */
+function isBotBlockedProbe(result) {
+  if (!result) return false;
+  if (result.blocked === true) return true;
+  return botBlockReason(result.status, result.body) !== null;
+}
 const PROBE_TIMEOUT_MS = 15_000;
 const MAX_REDIRECTS = 5;
 const PROBE_USER_AGENT = "citation-decay-audit";
@@ -295,7 +347,7 @@ function isTransientNetworkError(result) {
  */
 function classifyProbeOutcome(result) {
   if (!result) return "unprobed";
-  if (result.blocked === true) return "blocked";
+  if (isBotBlockedProbe(result)) return "blocked";
   if (result.ok === true) return result.drift === true ? "drift" : "ok";
   if (result.throttled === true) return "throttled";
   if (result.status === 0) return isTransientNetworkError(result) ? "unresponsive" : "decay";
@@ -530,8 +582,10 @@ function requestOnce(target, method) {
             received += chunk.length;
             if (received <= MAX_DOWNLOAD_BYTES) chunks.push(chunk);
           });
-          res.on("end", () => resolve({ status, body: Buffer.concat(chunks).toString("utf8") }));
-          res.on("error", () => resolve({ status }));
+          res.on("end", () => resolve(received > MAX_DOWNLOAD_BYTES
+            ? { status, bodyUnavailable: true, blocked: true, blockedReason: "body-too-large" }
+            : { status, body: Buffer.concat(chunks).toString("utf8") }));
+          res.on("error", () => resolve({ status, bodyUnavailable: true, blocked: true, blockedReason: "body-read-error" }));
           return;
         }
         const blocked = [403, 405, 406].includes(status);
@@ -569,6 +623,20 @@ function isTransientProbeResult(result) {
   return result.status === 0 || TRANSIENT_RETRY_STATUSES.has(result.status);
 }
 
+/** Evaluate only complete, source-bearing GET bodies for digest comparison. */
+function evaluateGet(get, expectedDigestHex) {
+  if (get.bodyUnavailable || typeof get.body !== "string" || get.body.length === 0) {
+    return { ok: false, status: get.status, blocked: true, blockedReason: get.blockedReason ?? "body-unavailable" };
+  }
+  const reason = botBlockReason(get.status, get.body);
+  if (reason) return { ok: false, status: get.status, blocked: true, blockedReason: reason };
+  if (!expectedDigestHex) return { ok: true, status: get.status, body: get.body, digestCompared: false };
+  const actual = hashContent(get.body ?? "");
+  return actual === expectedDigestHex
+    ? { ok: true, status: get.status, body: get.body, drift: false, digestCompared: true }
+    : { ok: true, status: get.status, body: get.body, drift: true, digestMatched: false, digestCompared: true };
+}
+
 /**
  * Probe plus content-drift evaluation for one URL: HEAD first (following up
  * to MAX_REDIRECTS), then GET on bot-wall statuses. A 200 GET also carries
@@ -589,36 +657,26 @@ async function probeUrlWithContent(url, expectedDigestHex) {
       normalized = next;
       continue;
     }
-    if (head.status >= 200 && head.status < 300 && !head.blocked) {
+    // A 2xx HEAD and a bot-walled HEAD both fall through to a GET: the HEAD
+    // carries no body, so neither a challenge interstitial nor a digest can be
+    // evaluated from it.
+    if ((head.status >= 200 && head.status < 300) || head.blocked) {
       const get = await requestOnce(normalized, "GET");
-      if (get.status >= 200 && get.status < 300) {
-        if (!expectedDigestHex) return { ok: true, status: get.status, body: get.body };
-        const actual = hashContent(get.body ?? "");
-        return actual === expectedDigestHex
-          ? { ok: true, status: get.status, body: get.body, drift: false }
-          : { ok: true, status: get.status, body: get.body, drift: true, digestMatched: false };
+      // HEAD and GET can route differently. Follow the GET redirect too,
+      // within the same budget, rather than treating a live source as dead.
+      if (get.status >= 300 && get.status < 400 && get.location) {
+        if (redirects >= MAX_REDIRECTS) return probeFailure(get.status, get);
+        normalized = new URL(get.location, normalized).toString();
+        redirects += 1;
+        continue;
       }
+      if (get.status >= 200 && get.status < 300) return evaluateGet(get, expectedDigestHex);
+      const reason = botBlockReason(get.status, get.body);
+      if (reason) return { ok: false, status: get.status, blocked: true, blockedReason: reason };
       return probeFailure(get.status, get);
     }
-    if (head.blocked) {
-      const get = await requestOnce(normalized, "GET");
-      if (get.status >= 200 && get.status < 300) {
-        if (!expectedDigestHex) return { ok: true, status: get.status, body: get.body };
-        const actual = hashContent(get.body ?? "");
-        return actual === expectedDigestHex
-          ? { ok: true, status: get.status, body: get.body, drift: false }
-          : { ok: true, status: get.status, body: get.body, drift: true, digestMatched: false };
-      }
-      if (get.blocked) {
-        return {
-          ok: true,
-          status: get.status,
-          blocked: true,
-          retryAfterMs: typeof get.retryAfterMs === "number" ? get.retryAfterMs : null,
-        };
-      }
-      return probeFailure(get.status, get);
-    }
+    const headReason = botBlockReason(head.status, undefined);
+    if (headReason) return { ok: false, status: head.status, blocked: true, blockedReason: headReason };
     return probeFailure(head.status, head);
   }
 }
@@ -654,7 +712,17 @@ function buildReport(
   probeResults,
   todayIso,
   register = loadDigestIneligibilityRegister().register,
+  digestExemptions,
 ) {
+  // Retain the proposal-test API while keeping main's measured-class register independent.
+  if (register && "compiled" in register) {
+    digestExemptions = register;
+    register = loadDigestIneligibilityRegister().register;
+  }
+  // The CLI always supplies the approval policy. Callers can exercise the
+  // measured-class policy alone by omitting it (the pre-#527 report API).
+  const enforceApprovalPolicy = digestExemptions !== undefined;
+  digestExemptions ??= { compiled: [], entries: [], problems: [] };
   const flags = [];
   const decayed = [];
   const stale = [];
@@ -664,6 +732,7 @@ function buildReport(
   const unverified = [];
   const byCategory = {};
   let liveRefs = 0;
+  let linkRotObserved = 0;
 
   for (const { file, data } of files) {
     eachReference([{ file, data }], (reference, provenance) => {
@@ -694,6 +763,7 @@ function buildReport(
         const result = probeResults.get(reference.sourceUrl);
         if (!result) return;
         const outcome = classifyProbeOutcome(result);
+        if (outcome === "ok" || outcome === "drift") linkRotObserved += 1;
         if (outcome === "drift") {
           drifted.push({
             ...provenance,
@@ -724,7 +794,8 @@ function buildReport(
           return;
         }
         if (outcome === "blocked") {
-          blocked.push({ ...provenance, citation: reference.citation, sourceUrl: reference.sourceUrl, status: result.status });
+          blocked.push({ ...provenance, citation: reference.citation, sourceUrl: reference.sourceUrl, status: result.status,
+            blockedReason: result.blockedReason ?? botBlockReason(result.status, result.body) ?? "unverifiable-by-probe" });
         }
       }
     });
@@ -821,6 +892,93 @@ function buildReport(
     });
   }
 
+  let verifiedDigestExempt = 0;
+  let verifiedUndigestedActionable = 0;
+  let verifiedDigestExemptionPending = 0;
+  const exemptCoverageById = new Map();
+  const pendingCoverageById = new Map();
+  const actionableUndigested = [];
+  eachReference(files, (reference, provenance) => {
+    if (reference.verified !== true || !reference.sourceUrl) return;
+
+    const position = classifyDigestPosition(reference, digestExemptions.compiled, todayIso);
+    if (position.state === "digested") {
+      return;
+    }
+    if (position.state === "exempt") {
+      verifiedDigestExempt += 1;
+      const id = position.exemption.id;
+      exemptCoverageById.set(id, (exemptCoverageById.get(id) ?? 0) + 1);
+      return;
+    }
+    // Pending human policy approval never waives debt.
+    if (position.pendingExemption) {
+      verifiedDigestExemptionPending += 1;
+      const id = position.pendingExemption.id;
+      pendingCoverageById.set(id, (pendingCoverageById.get(id) ?? 0) + 1);
+    }
+    // A malformed digest lands here too: it is not coverage, so it stays debt.
+    verifiedUndigestedActionable += 1;
+    actionableUndigested.push({
+      ...provenance,
+      citation: reference.citation,
+      sourceUrl: reference.sourceUrl,
+      sourceCheckedOn: reference.sourceCheckedOn ?? null,
+      pendingExemptionId: position.pendingExemption?.id ?? null,
+    });
+  });
+
+  if (enforceApprovalPolicy && verifiedUndigestedActionable > MAX_UNDIGESTED_VERIFIED_REFS) {
+    flags.push({
+      file: "(corpus-wide)",
+      primary: null,
+      target: null,
+      citation: null,
+      reason:
+        `content-drift observability regressed: ${verifiedUndigestedActionable} verified references could carry a ` +
+        `contentDigest and do not (ratchet baseline ${MAX_UNDIGESTED_VERIFIED_REFS}). A digest must be recorded by ` +
+        `the qualified human who verifies the source and cannot be backfilled by a script; see ` +
+        `docs/citation-verification-sop.md ("Content digests and tiered staleness"). A further ` +
+        `${verifiedDigestExempt} verified references are exempt because their source class was measured to be ` +
+        `undigestible (data/citation-digest-exemptions.json); those are reported separately and are not this debt.`,
+    });
+  }
+
+  if (verifiedDigestExemptionPending > 0) {
+    flags.push({
+      file: "data/citation-digest-exemptions.json", primary: null, target: null, citation: null,
+      reason: `${verifiedDigestExemptionPending} verified references match proposed digest exemptions awaiting qualified-human approval; no debt has been waived.`,
+    });
+  }
+
+  // The register is what makes the ratchet meaningful, so an unsound register is
+  // a structural failure in its own right rather than a warning: a malformed,
+  // unevidenced or expired entry must not quietly exempt sources from drift
+  // detection.
+  for (const problem of digestExemptions.problems ?? []) {
+    flags.push({
+      file: "data/citation-digest-exemptions.json",
+      primary: null,
+      target: null,
+      citation: null,
+      reason: `digest-exemption register is invalid: ${problem}`,
+    });
+  }
+  for (const entry of digestExemptions.entries ?? []) {
+    if (exemptionAssessmentStale(entry, todayIso)) {
+      flags.push({
+        file: "data/citation-digest-exemptions.json",
+        primary: null,
+        target: null,
+        citation: null,
+        reason:
+          `digest exemption "${entry?.id ?? "(no id)"}" was measured on ${entry?.assessment?.assessedOn ?? "(no date)"} and is ` +
+          `invalid, future-dated, or older than ${EXEMPTION_REASSESS_AFTER_DAYS} days: re-measure the source class before relying on it, ` +
+          `or the exemption outlives the evidence for it.`,
+      });
+    }
+  }
+
   const trueLinkRot = decayed.filter((entry) => !blocked.some((b) => b.sourceUrl === entry.sourceUrl));
   // Link rot is a hard failure at a single occurrence (docblock item 1): a dead
   // URL can never support a nexus, so it joins staleness and structural flags
@@ -856,11 +1014,31 @@ function buildReport(
       ? 100
       : Math.round((definitiveVerdictUrlCount / probeResults.size) * 1000) / 10;
 
+  const linkRotProbedReferences = linkRotObserved + blocked.length + trueLinkRot.length + throttledUnverifiable.length;
+  const linkRotObservabilityPercent =
+    linkRotProbedReferences === 0
+      ? 0
+      : Math.round((linkRotObserved / linkRotProbedReferences) * 1000) / 10;
+
+  const digestExemptionCoverage = (digestExemptions.entries ?? []).map((entry) => ({
+    id: entry?.id ?? null,
+    host: entry?.host ?? null,
+    reason: entry?.reason ?? null,
+    verifiedReferences: exemptCoverageById.get(entry?.id) ?? 0,
+    pendingReferences: pendingCoverageById.get(entry?.id) ?? 0,
+    reviewStatus: entry?.review?.status ?? null,
+    assessedOn: entry?.assessment?.assessedOn ?? null,
+    stale: exemptionAssessmentStale(entry, todayIso),
+  }));
+
   const report = {
     status: decays.length > 0 || ceiling > CITATION_CEILING ? "FAIL" : "PASS",
     liveReferences: liveRefs,
     uniqueUrlsProbed: probeResults.size,
     linkRotCount: trueLinkRot.length,
+    linkRotObservedCount: linkRotObserved,
+    linkRotProbedReferenceCount: linkRotProbedReferences,
+    linkRotObservabilityPercent,
     contentDriftCount: drifted.length,
     contentDriftDetectable: verifiedWithDigest > 0,
     verifiedReferenceCount: verifiedRefs,
@@ -878,6 +1056,14 @@ function buildReport(
       digestEligibleRefs === 0
         ? 100
         : Math.round((verifiedWithDigest / digestEligibleRefs) * 1000) / 10,
+    verifiedDigestExemptCount: verifiedDigestExempt,
+    verifiedDigestExemptionPendingCount: verifiedDigestExemptionPending,
+    verifiedUndigestedActionableCount: verifiedUndigestedActionable,
+    maxUndigestedVerifiedRefs: MAX_UNDIGESTED_VERIFIED_REFS,
+    digestExemptionEntryCount: (digestExemptions.entries ?? []).length,
+    digestExemptionProblemCount: (digestExemptions.problems ?? []).length,
+    exemptionReassessAfterDays: EXEMPTION_REASSESS_AFTER_DAYS,
+    digestExemptions: digestExemptionCoverage,
     botBlockedUnverifiableCount: blocked.length,
     throttledUnverifiableCount: throttledUnverifiable.length,
     unverifiableByProbeUrlCount,
@@ -897,6 +1083,7 @@ function buildReport(
     structuralFlags: flags,
     botBlockedUnverifiable: blocked,
     throttledUnverifiable,
+    actionableUndigested,
   };
   return report;
 }
@@ -980,7 +1167,7 @@ async function main() {
   );
 
   const { register } = loadDigestIneligibilityRegister();
-  const report = buildReport(files, probeResults, new Date().toISOString().slice(0, 10), register);
+  const report = buildReport(files, probeResults, new Date().toISOString().slice(0, 10), register, loadDigestExemptions(process.cwd()));
 
   console.log(JSON.stringify(report, null, 2));
   if (report.status === "FAIL") process.exitCode = 1;
@@ -994,6 +1181,9 @@ if (require.main === module) {
 }
 
 module.exports = {
+  MAX_UNDIGESTED_VERIFIED_REFS,
+  NON_AUTHORITATIVE_STATUSES, CHALLENGE_BODY_MARKERS, bodyIsBotChallenge,
+  botBlockReason, isBotBlockedProbe, evaluateGet,
   buildReport,
   loadDigestIneligibilityRegister,
   validateDigestIneligibilityRegister,

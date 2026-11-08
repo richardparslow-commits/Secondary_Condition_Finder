@@ -1,0 +1,152 @@
+{
+  "version": 1,
+  "_comment": [
+    "Measured digest-exemption register for verified sourceReferences whose body cannot",
+    "carry a contentDigest without false-positiving on every probe.",
+    "",
+    "Why this file exists: docs/citation-verification-sop.md requires a dynamic body to",
+    "OMIT a contentDigest rather than record a value that will false-positive, while the",
+    "same SOP's undigested-verified ratchet fails the decay audit for any verified:true",
+    "reference without one. For a corpus that is 98.5% PubMed record pages those two rules",
+    "are mutually unsatisfiable: SOP-compliant verification guarantees a ratchet breach.",
+    "This register separates the two populations so the ratchet pins only debt a qualified",
+    "human can actually retire, while the exempt population stays reported and never silent.",
+    "",
+    "Discipline:",
+    "  - An entry records a MEASUREMENT about a source's transport behaviour, not a",
+    "    verification decision. Pending measurements do not activate an exemption.",
+    "    Qualified-human approval with reviewer and date is required before debt is waived.",
+    "    It never sets verified, never authorises promotion, and",
+    "    never substitutes for the qualified-human step in the SOP.",
+    "  - Every entry must carry reproducible evidence (sample fetches, statuses, byte",
+    "    lengths, distinct SHA-256 count) and an assessedOn date.",
+    "  - Entries expire: scripts/audit-citation-decay.js flags an assessment older than",
+    "    EXEMPTION_REASSESS_AFTER_DAYS so a host whose behaviour changed is re-measured.",
+    "  - urlPattern must be as narrow as the evidence supports. The loader rejects a",
+    "    pattern that matches a URL whose host differs from `host`, and the audit reports",
+    "    how many references each entry covers so an over-broad entry is visible rather",
+    "    than trusted.",
+    "  - Where a deterministic alternative anchor exists it is recorded in",
+    "    digestibleAlternative so the exempt source can still gain real drift coverage at",
+    "    the next qualified-human verification instead of staying blind forever."
+  ],
+  "exemptions": [
+    {
+      "id": "pubmed-article-html-bot-challenge",
+      "host": "pubmed.ncbi.nlm.nih.gov",
+      "urlPattern": "^https://pubmed\\.ncbi\\.nlm\\.nih\\.gov/\\d+/?$",
+      "reason": "volatile-body-per-fetch",
+      "summary": "PubMed record pages are served to automated clients as an HTTP 203 JavaScript challenge interstitial whose challengeId is regenerated per request, so the body is never byte-stable and carries no article content to hash.",
+      "sopBasis": "docs/citation-verification-sop.md, 'Content digests and tiered staleness': dynamic pages whose body changes per fetch must not receive a digest; omit it rather than record a value that will false-positive.",
+      "assessment": {
+        "assessedOn": "2026-10-10",
+        "method": "Three sequential GETs per sample URL, 2s apart, redirect-followed, response bodies hashed with SHA-256 and compared. Repeated under the audit probe User-Agent, a desktop browser User-Agent and no User-Agent header; all three client shapes received the identical 5590-byte 203 interstitial.",
+        "sampleUrls": [
+          "https://pubmed.ncbi.nlm.nih.gov/30407234/",
+          "https://pubmed.ncbi.nlm.nih.gov/32552169/"
+        ],
+        "sampleCount": 6,
+        "distinctBodyDigests": 6,
+        "deterministic": false,
+        "httpStatuses": [203, 203, 203, 203, 203, 203],
+        "bodyBytes": [5590, 5590, 5590, 5590, 5590, 5590],
+        "bodySha256": [
+          "6643015dfdb1fe43ba6ae7418ef429e0ce6760d2633fa05e07b24bf54f49d93a",
+          "c8dcc4a03505713bb2491c1cba0a30f4464c5e223a2ee705eb36832aa4517d2e",
+          "9fa104e75db8d3858f1fb41b24e3916e8383c7cb3cdee8fa51716cc5bf0bb0cb",
+          "cbba69e94f945ec5b551a766ecb88384c01d0ca904a33e828ca8db5e891efba2",
+          "ffd73354af373aa1ac136d8c5ec0257ddf51249c5d94dff198cd11d0114cc61f",
+          "2e462827867abee45db37330bd4a201baab998e338e2a33a8b98f46c5206a734"
+        ],
+        "observedVaryingToken": "const challengeId = \"<22-character per-request random>\";",
+        "articleContentPresent": false,
+        "notes": "The interstitial's <title> is the bare hostname 'pubmed.ncbi.nlm.nih.gov', not the article title, and no abstract markup is present. HTTP 203 is by definition non-authoritative (RFC 9110: the payload was modified from the origin server's 200 response by a transforming proxy), so this body is not the source a verifier read. Corroborated independently by docs/liver-cancer-sarcopenia-citation-verification-2026-disposition.md, which records that PubMed HTML was bot-walled on 2026-10-03 and that metadata and abstracts were read through NCBI E-utilities instead."
+      },
+      "digestibleAlternative": {
+        "urlTemplate": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id={pmid}&retmode=xml",
+        "httpStatus": 200,
+        "sampleCount": 3,
+        "distinctBodyDigests": 1,
+        "deterministic": true,
+        "bodyBytes": 7471,
+        "bodySha256": "5e0e506b983e69f90f5d12f571e103b224717b88411b137cbd36ee9748814f3c",
+        "assessedOn": "2026-10-10",
+        "notes": "NCBI E-utilities efetch returns the authoritative PubMed record for the same PMID as byte-stable XML containing ArticleTitle, Abstract, PMID, DOI and publication status, so a retraction or correction changes it. This is the anchor a qualified human should digest at the next verification of a PubMed source. It is recorded here as an available path only: no digest has been backfilled onto any existing reference, because a digest computed after the fact is not anchored to its recorded sourceCheckedOn date and the SOP forbids it."
+      },
+      "review": {
+        "status": "pending-qualified-human",
+        "recordedBy": "automated measurement, 2026-10-10",
+        "reviewer": null,
+        "reviewedOn": null,
+        "note": "The volatility measurement is reproducible and objective. The qualified-human sign-off recorded here is for accepting the exemption as standing digest policy for this source class, and for deciding whether future PubMed verifications digest the E-utilities anchor instead."
+      }
+    },
+    {
+      "id": "ecfr-current-section-html-csp-nonce",
+      "host": "www.ecfr.gov",
+      "urlPattern": "^https://www\\.ecfr\\.gov/current/",
+      "reason": "volatile-body-per-fetch",
+      "summary": "eCFR /current/ HTML embeds a per-response Content-Security-Policy nonce on its analytics script tag, so the body differs on most fetches even though the regulatory text is unchanged.",
+      "sopBasis": "docs/citation-verification-sop.md, 'Content digests and tiered staleness': dynamic pages whose body changes per fetch must not receive a digest; omit it rather than record a value that will false-positive.",
+      "assessment": {
+        "assessedOn": "2026-10-10",
+        "method": "Five sequential GETs, 6s apart, redirect-followed, bodies hashed with SHA-256 and compared; the first differing character region was then located to identify the varying token.",
+        "sampleUrls": [
+          "https://www.ecfr.gov/current/title-38/chapter-I/part-3/subpart-A/subject-group-ECFR39056aee4e9ff13/section-3.310"
+        ],
+        "sampleCount": 5,
+        "distinctBodyDigests": 4,
+        "deterministic": false,
+        "httpStatuses": [200, 200, 200, 200, 200],
+        "bodyBytes": [85108, 85108, 85108, 85108, 85108],
+        "observedVaryingToken": "<script src=\"https://assets.ecfr.gov/assets/google_analytics-<hash>.js\" async=\"async\" nonce=\"<per-response base64 CSP nonce>\">",
+        "articleContentPresent": true,
+        "notes": "Byte length is constant and only the CSP nonce varies, which makes this easy to mistake for a stable body: an earlier three-fetch sample returned one repeated digest while the five-fetch sample returned four distinct digests. A digest recorded here would false-positive on nonce rotation rather than on any change to the regulation, which is exactly the failure the SOP's omission rule exists to prevent. Where drift detection is wanted for a CFR section, digest a pinned annual-edition or XML rendering rather than /current/ HTML. Covers one verified reference (38 CFR 3.310, ocd.json)."
+      },
+      "digestibleAlternative": null,
+      "review": {
+        "status": "pending-qualified-human",
+        "recordedBy": "automated measurement, 2026-10-10",
+        "reviewer": null,
+        "reviewedOn": null,
+        "note": "Narrow: /current/ HTML only. Annual-edition and XML renderings are not covered and remain digestible."
+      }
+    },
+    {
+      "id": "oup-article-html-bot-wall",
+      "host": "academic.oup.com",
+      "urlPattern": "^https://academic\\.oup\\.com/[^/]+/article/",
+      "reason": "bot-walled-body-unavailable",
+      "summary": "Oxford Academic serves automated clients an HTTP 403 bot-wall interstitial with a per-request varying body, so neither the article content nor a stable digest is obtainable by probe.",
+      "sopBasis": "docs/citation-verification-sop.md, 'Content digests and tiered staleness': dynamic pages whose body changes per fetch must not receive a digest; omit it rather than record a value that will false-positive.",
+      "assessment": {
+        "assessedOn": "2026-10-10",
+        "method": "Three sequential GETs, 2s apart, redirect-followed, bodies hashed with SHA-256 and compared.",
+        "sampleUrls": [
+          "https://academic.oup.com/jcem/article/110/9/2453/8196671"
+        ],
+        "sampleCount": 3,
+        "distinctBodyDigests": 3,
+        "deterministic": false,
+        "httpStatuses": [403, 403, 403],
+        "bodyBytes": [5670, 5670, 5670],
+        "bodySha256": [
+          "dc6b24b71e73f72bc69a05b84b449cb37ac78e3ea783708d468c76dd9ca44fd4",
+          "3178e29a0bded9d21d1d1a2b278b0a6e48f580fc9d361e6dd6ecb88afc697208",
+          "94c2b2fd9d3cbb2c9d524b59e666695a2cd34abe3f83952f15995450eaf66931"
+        ],
+        "observedVaryingToken": "403 bot-wall interstitial body carrying a per-request varying token",
+        "articleContentPresent": false,
+        "notes": "HTTP 403 is already classified bot-blocked by the decay probe's BODY_FETCH_FALLBACK_STATUSES path, so this entry does not change link-rot accounting; it records that no digest can be captured for this source class by automated means. Covers one verified reference (hyperaldosteronism.json)."
+      },
+      "digestibleAlternative": null,
+      "review": {
+        "status": "pending-qualified-human",
+        "recordedBy": "automated measurement, 2026-10-10",
+        "reviewer": null,
+        "reviewedOn": null,
+        "note": "A qualified human reading this article in a browser may be able to capture a digest of the rendered article HTML; that decision is theirs and is not recorded here."
+      }
+    }
+  ]
+}
