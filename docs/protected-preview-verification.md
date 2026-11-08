@@ -35,3 +35,11 @@ or legal accuracy, production configuration readiness, or launch approval.
 
 Reuse ready previews where practical and record builds against the authorized
 budget. Team-wide, delayed billing totals do not establish an exact per-test cost.
+
+## Privacy contact configuration
+
+`PRIVACY_CONTACT_EMAIL` is a public contact setting, not an authentication secret. Set it only to a mailbox the operator owns, monitors and explicitly approves for publication. For this testing branch, scope it to Preview and `codex/protected-preview-bootstrap`; do not change Production. No account sign-in address is inferred or published automatically. Redeploy after changing the setting.
+
+With the setting absent or invalid, `/privacy` and `/privacy/request` disclose that privacy contact is unavailable and publish no mailto actions. With an approved setting, both pages use the same validated bare mailbox; request text stays in the visitor's own email client. The old domain is retained only in the dated delivery finding and is not a publication fallback.
+
+Run the privacy-channel verifier with the same setting as the deployment. Domain/mail-route checks do not prove that a human reads a mailbox: the operator must separately confirm monitoring and complete the documented send/receive check before closing the operational contact gate. This code change alone does not clear that gate.

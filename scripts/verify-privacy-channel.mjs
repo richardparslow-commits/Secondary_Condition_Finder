@@ -1,3 +1,4 @@
+import { configuredPrivacyContact } from "../src/lib/privacy/contact-config.mjs";
 /**
  * Gate C verifier (issue #539 / R-01 §9) — is the published privacy-request channel
  * deliverable yet?
@@ -59,8 +60,14 @@ export function publishedAddressFromSource(source) {
   return match[1];
 }
 
-export function readPublishedAddress(root = process.cwd()) {
-  return publishedAddressFromSource(readFileSync(resolve(root, "src/lib/privacy/intake.ts"), "utf8"));
+/** @param {string} root @param {{ PRIVACY_CONTACT_EMAIL?: string }} env */
+export function readPublishedAddress(root = process.cwd(), env = process.env) {
+  // Read the same approved setting as the pages, not the historical failed address.
+  const source = readFileSync(resolve(root, "src/lib/privacy/intake.ts"), "utf8");
+  if (!source.includes("configuredPrivacyContact")) throw new Error("Privacy intake configuration is missing");
+  const address = configuredPrivacyContact(env);
+  if (!address) throw new Error("A valid PRIVACY_CONTACT_EMAIL must be configured; no mailbox is published");
+  return address;
 }
 
 /** Collapse raw DoH answers into the facts the gate cares about. */

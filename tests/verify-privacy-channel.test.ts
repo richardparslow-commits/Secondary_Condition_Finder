@@ -52,7 +52,12 @@ describe("the gate C verifier reads the published address instead of retyping it
     expect(address).toBe("privacy@secondaryconditionfinder.org");
     // The same answer through the file-reading path, so a rename cannot leave the verifier
     // checking a channel the policy no longer publishes.
-    expect(readPublishedAddress(process.cwd())).toBe(address);
+    expect(readPublishedAddress(process.cwd(), { PRIVACY_CONTACT_EMAIL: address })).toBe(address);
+  });
+
+  it("refuses to verify an unconfigured or invalid published channel", () => {
+    expect(() => readPublishedAddress(process.cwd(), {})).toThrow(/must be configured/);
+    expect(() => readPublishedAddress(process.cwd(), { PRIVACY_CONTACT_EMAIL: "bad?bcc=other@example.org" })).toThrow(/must be configured/);
   });
 
   it("refuses to guess when the constant is absent", () => {
