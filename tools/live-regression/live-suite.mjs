@@ -349,13 +349,11 @@ async function runJourney(browser, runIndex, attempt) {
     const radCheckedBefore = await page.evaluate(() => document.querySelectorAll('input[type="radio"]:checked').length);
     const wantTicks = Math.max(MIN_CONDITIONS, Math.floor(r() * 4));
     const wanted = shuffle(r, conditionNames).slice(0, wantTicks);
-    let labelChecked = 0;
     for (const name of wanted) {
       const res = await tickByName(name);
       if (res.ticked) {
         run.coverage.conditionBoxes.push(name);
-        if (res.label === name) labelChecked += 1;
-        else run.notes.push(`ticked element label mismatch: requested "${name}" got "${String(res.label).slice(0, 50)}"`);
+        if (res.label !== name) run.notes.push(`ticked element label mismatch: requested "${name}" got "${String(res.label).slice(0, 50)}"`);
       } else {
         run.notes.push(`condition not ticked: ${name} (${res.reason})`);
       }

@@ -1,3 +1,5 @@
+import { configuredPrivacyContact } from "./contact-config.mjs";
+
 /**
  * Privacy-request intake vocabulary (R-01 / VA Lighthouse blocker B-02).
  *
@@ -21,9 +23,9 @@
  *      required weakening a boundary that exists to keep health context out of
  *      the server. It also means the promise on this page is honest: the
  *      application cannot receive the request because it has nowhere to put it.
- *   2. The intake works with no provisioned infrastructure. There is no queue,
- *      no store and no mail provider to configure, so the path cannot silently
- *      degrade into "promised but not wired".
+ *   2. There is no application-side mail queue or request store. An operator
+ *      must configure a monitored mailbox; unconfigured pages do not publish
+ *      dead mailto links or claim that requests can be received.
  *
  * The monitored mailbox is the channel of record. This module never invents a
  * second one, and `tests/privacy-request-intake.test.ts` pins the address, the
@@ -32,10 +34,11 @@
  */
 
 /**
- * The monitored privacy mailbox published in the policy (section 8) and listed
- * in the operator register. A human reads it; it is not a placeholder.
+ * Historical address retained for the dated delivery finding. It is not a
+ * fallback for publication: the operator must configure an approved mailbox.
  */
 export const PRIVACY_CONTACT_EMAIL = "privacy@secondaryconditionfinder.org";
+export { configuredPrivacyContact };
 
 /** Where the policy sends a visitor who wants to start a request. */
 export const PRIVACY_INTAKE_PATH = "/privacy/request";
@@ -150,12 +153,15 @@ export function privacyRequestPlainText(type: PrivacyRequestType): string {
  * shape (subject and body percent-encoded, monitored address as the only
  * recipient) is pinned by a test instead of by reading JSX.
  */
-export function privacyRequestMailto(type: PrivacyRequestType): string {
+export function privacyRequestMailto(type: PrivacyRequestType, address: string | null = configuredPrivacyContact()): string {
+  if (!address || configuredPrivacyContact({ PRIVACY_CONTACT_EMAIL: address }) !== address) {
+    throw new Error("A valid privacy contact must be configured before composing a request");
+  }
   const definition = definitionFor(type);
   const query = new URLSearchParams({
     subject: definition.subject,
     body: privacyRequestMessage(type),
   });
   // URLSearchParams encodes spaces as "+", which mail clients render literally.
-  return `mailto:${PRIVACY_CONTACT_EMAIL}?${query.toString().replace(/\+/g, "%20")}`;
+  return `mailto:${address}?${query.toString().replace(/\+/g, "%20")}`;
 }

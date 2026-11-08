@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-/* eslint-disable @typescript-eslint/no-require-imports */
 /**
  * 38 CFR 3.310(d)(1)(ii) presumption-eligibility flag scanner.
  *
@@ -66,7 +65,6 @@ function scanFile(file) {
   if (!m || typeof m !== 'object') return null;
 
   const text = JSON.stringify(m).toLowerCase();
-  const idText = (m.id ?? '').toLowerCase();
 
   const hasTbiIndicator = TBI_SEVERITY_INDICATORS.some(k => text.includes(k));
   const hasSeizureTerm = SEIZURE_TERMS.some(k => text.includes(k));

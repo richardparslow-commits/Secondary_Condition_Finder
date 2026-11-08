@@ -62,8 +62,8 @@ const closureChecklist = (() => {
 })();
 
 describe("the published privacy channel is a dated finding, not a verified channel (#539)", () => {
-  it("names the address the application actually publishes", () => {
-    // The finding is about one specific address. If PRIVACY_CONTACT_EMAIL ever
+  it("retains the formerly published address in the dated finding", () => {
+    // The finding is about one specific address. If the historical PRIVACY_CONTACT_EMAIL ever
     // changes, this suite must be updated with the same deliberation as the
     // policy itself — a finding about a different address is no finding.
     expect(PRIVACY_CONTACT_EMAIL).toBe("privacy@secondaryconditionfinder.org");
@@ -257,9 +257,9 @@ describe("every surface that tells a Veteran where to write carries the finding 
     expect(retention).toContain(`external-manual-gates-status.md#${slug}`);
   });
 
-  it("tells a reader in the retention policy that the published address is not deliverable", () => {
+  it("retains the historical delivery finding and configured-channel requirement in the retention policy", () => {
     const policy = flat(retention);
-    expect(policy).toContain("**That address is not deliverable today**");
+    expect(policy).toContain("**Historical delivery finding**");
     expect(policy).toContain("so a message sent to it arrives nowhere");
     expect(policy).toContain("no request has been received under it");
     // The retention policy is the document a requester reads for the deletion
