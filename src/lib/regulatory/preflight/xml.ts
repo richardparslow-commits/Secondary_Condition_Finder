@@ -4,6 +4,27 @@ export interface XmlNode {
   children: XmlNode[];
 }
 
+/** Maximum element nesting depth accepted from upstream XML. */
+export const MAX_XML_DEPTH = 256;
+
+/**
+ * Maximum number of nodes one traversal may visit. This bounds CPU and memory
+ * for trees built outside `parseXml` as well as hostile upstream documents.
+ */
+const MAX_XML_TRAVERSAL_NODES = 1_000_000;
+
+/**
+ * Controlled failure for XML that exceeds the parser or traversal bounds.
+ * Source adapters already downgrade a parse failure to a failed source result,
+ * so a hostile feed cannot abort the whole preflight.
+ */
+export class XmlResourceLimitError extends RangeError {
+  constructor(message: string) {
+    super(message);
+    this.name = "XmlResourceLimitError";
+  }
+}
+
 /**
  * Returns the character for a valid XML numeric character reference, or null
  * for values outside the Unicode scalar range (negative, surrogates, or above
@@ -48,11 +69,17 @@ export function parseXml(xml: string): XmlNode {
     if (token.startsWith("<")) {
       if (/^<!/.test(token)) continue;
       const match = token.match(/^<\s*([^\s/>]+)/);
-      if (!match) continue;
-      const node: XmlNode = { name: normalizeName(match[1]), text: "", children: [] };
-      stack.at(-1)!.children.push(node);
-      if (!/\/\s*>$/.test(token)) stack.push(node);
-      continue;
+      if (!match) continue;        const node: XmlNode = { name: normalizeName(match[1]), text: "", children: [] };
+        stack.at(-1)!.children.push(node);
+        if (!/\/\s*>$/.test(token)) {
+          if (stack.length > MAX_XML_DEPTH) {
+            throw new XmlResourceLimitError(
+              `XML nesting limit exceeded (maximum ${MAX_XML_DEPTH} levels).`,
+            );
+          }
+          stack.push(node);
+        }
+        continue;
     }
     const value = decodeEntities(token).replace(/\s+/g, " ").trim();
     if (value) stack.at(-1)!.text += `${stack.at(-1)!.text ? " " : ""}${value}`;
@@ -61,13 +88,37 @@ export function parseXml(xml: string): XmlNode {
 }
 
 export function nodeText(node: XmlNode): string {
-  const childText = node.children.map(nodeText).filter(Boolean).join(" ");
-  return [node.text, childText].filter(Boolean).join(" ").replace(/\s+/g, " ").trim();
+  const text: string[] = [];
+  walkXml(node, (current) => {
+    if (current.text) text.push(current.text);
+  });
+  return text.join(" ").replace(/\s+/g, " ").trim();
 }
 
 export function walkXml(node: XmlNode, visitor: (node: XmlNode) => void): void {
-  visitor(node);
-  for (const child of node.children) walkXml(child, visitor);
+  const pending: Array<{ node: XmlNode; depth: number }> = [{ node, depth: 0 }];
+  let visited = 0;
+  while (pending.length > 0) {
+    const current = pending.pop()!;
+    visited += 1;
+    if (current.depth > MAX_XML_DEPTH) {
+      throw new XmlResourceLimitError(
+        `XML traversal limit exceeded (maximum depth ${MAX_XML_DEPTH}).`,
+      );
+    }
+    if (
+      visited > MAX_XML_TRAVERSAL_NODES
+      || pending.length + current.node.children.length > MAX_XML_TRAVERSAL_NODES
+    ) {
+      throw new XmlResourceLimitError(
+        `XML traversal limit exceeded (maximum ${MAX_XML_TRAVERSAL_NODES} nodes).`,
+      );
+    }
+    visitor(current.node);
+    for (let index = current.node.children.length - 1; index >= 0; index -= 1) {
+      pending.push({ node: current.node.children[index], depth: current.depth + 1 });
+    }
+  }
 }
 
 export function findDescendants(node: XmlNode, names: readonly string[]): XmlNode[] {
