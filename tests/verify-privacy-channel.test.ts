@@ -30,8 +30,6 @@ import {
  */
 
 const SCRIPT = readFileSync(resolve(process.cwd(), "scripts/verify-privacy-channel.mjs"), "utf8");
-/** Source text with line wrapping collapsed, so a reflow of a comment is not a diff. */
-const flat = (source: string): string => source.replace(/\s+/g, " ");
 /**
  * Comment prose with the comment leaders removed and wrapping collapsed, so a pinned
  * sentence can be asserted as the sentence it is rather than as it happens to be wrapped.
