@@ -408,7 +408,7 @@ function isIpv6Literal(value: string): boolean {
     groups.push(...parts);
   }
   if (groups.some((group) => !IPV6_GROUP.test(group))) return false;
-  return compressed.length === 2 ? groups.length <= 6 : groups.length === 8;
+  return compressed.length === 2 ? groups.length <= 7 : groups.length === 8;
 }
 
 /**

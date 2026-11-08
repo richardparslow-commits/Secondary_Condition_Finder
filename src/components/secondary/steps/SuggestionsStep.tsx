@@ -226,9 +226,7 @@ export function SuggestionsStep({ snapshot, vaReference }: SuggestionsStepProps)
   }
 
   const {
-    state,
     catalog,
-    byId,
     relevantChanges,
     medications,
     treatments,

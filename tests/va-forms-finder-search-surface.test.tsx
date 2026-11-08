@@ -100,6 +100,8 @@ describe("Forms Finder search submission (A01)", () => {
     render(<VaFormsFinder initialView={view()} />);
 
     const urlBefore = window.location.href;
+    const resultStatus = screen.getByRole("status");
+    expect(resultStatus.textContent).toContain("1 result shown for 21-526EZ");
     await submitSearch(CANARY);
 
     // 1. The text reached the action — in the FormData, i.e. the POST body.
@@ -115,6 +117,10 @@ describe("Forms Finder search submission (A01)", () => {
 
     // 3. The returned view is what renders.
     expect(screen.getByText(new RegExp(`0 results shown for ${CANARY}`))).toBeTruthy();
+    // Keep the announcement node mounted so a completed search updates an
+    // existing polite live region without moving keyboard focus to results.
+    expect(screen.getByRole("status")).toBe(resultStatus);
+    expect(resultStatus.textContent).toContain(`0 results shown for ${CANARY}`);
   });
 
   it("keeps the finder, its results and the typed query when the server cannot be reached", async () => {
