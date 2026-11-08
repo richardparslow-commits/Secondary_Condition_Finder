@@ -9,6 +9,7 @@ import {
   OCR_CHECKPOINT_STORAGE_KEY,
   OCR_CHECKPOINT_TTL_MS,
   OCR_MAX_CANVAS_AREA_PX,
+  OCR_MAX_CANVAS_DIMENSION,
   OCR_MIN_RENDER_SCALE,
   saveOcrCheckpoint,
   sourceFingerprintForFile,
@@ -125,6 +126,63 @@ describe("computeOcrRenderMetrics canvas area cap", () => {
       OCR_MAX_CANVAS_AREA_PX,
     );
     expect(metrics.scale).toBeLessThanOrEqual(OCR_MIN_RENDER_SCALE);
+  });
+});
+
+describe("computeOcrRenderMetrics hard bounds", () => {
+  // Both orientations, extreme aspect ratios, huge finite pages, tiny pages,
+  // and normal pages. Before the fix the thin-page cases returned hundreds of
+  // millions of pixels because the area-only scale was paired with a 1-pixel
+  // axis floor and no axis ceiling.
+  const cases: Array<[number, number]> = [
+    [1_000_000_000, 1],
+    [1, 1_000_000_000],
+    [1_000_000_000, 1_000],
+    [1_000, 1_000_000_000],
+    [45_000, 45_000],
+    [1_000_000, 1],
+    [1, 1_000_000],
+    [612, 792],
+    [792, 612],
+    [3_000, 5_000],
+    [5_000, 3_000],
+    [16_777_216, 1],
+    [1, 16_777_216],
+    [16_384, 16_384],
+    [4_096, 4_096],
+    [123.456, 789.012],
+    [1, 1],
+    [0.001, 0.001],
+  ];
+
+  it("never exceeds the pixel-area or per-axis cap for any aspect ratio", () => {
+    for (const [width, height] of cases) {
+      const metrics = computeOcrRenderMetrics(width, height);
+      expect(metrics.canvasWidth, `${width}x${height} width`).toBeGreaterThanOrEqual(1);
+      expect(metrics.canvasHeight, `${width}x${height} height`).toBeGreaterThanOrEqual(1);
+      expect(metrics.canvasWidth, `${width}x${height} width`).toBeLessThanOrEqual(OCR_MAX_CANVAS_DIMENSION);
+      expect(metrics.canvasHeight, `${width}x${height} height`).toBeLessThanOrEqual(OCR_MAX_CANVAS_DIMENSION);
+      expect(
+        metrics.canvasWidth * metrics.canvasHeight,
+        `${width}x${height} area`,
+      ).toBeLessThanOrEqual(OCR_MAX_CANVAS_AREA_PX);
+    }
+  });
+
+  it("caps a 1e9 by 1 page instead of returning a 129-million-pixel-wide canvas", () => {
+    for (const [width, height] of [[1_000_000_000, 1], [1, 1_000_000_000]] as const) {
+      const metrics = computeOcrRenderMetrics(width, height);
+      expect(
+        metrics.canvasWidth * metrics.canvasHeight,
+      ).toBeLessThanOrEqual(OCR_MAX_CANVAS_AREA_PX);
+    }
+  });
+
+  it("rejects an invalid canvas area cap instead of returning NaN dimensions", () => {
+    for (const cap of [Number.NaN, Number.POSITIVE_INFINITY, 0, -1]) {
+      expect(() => computeOcrRenderMetrics(612, 792, cap)).toThrow(RangeError);
+      expect(() => computeOcrRenderMetrics(0, 0, cap)).toThrow(RangeError);
+    }
   });
 });
 
