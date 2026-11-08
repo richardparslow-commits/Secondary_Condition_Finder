@@ -350,16 +350,27 @@ describe("public-reference VA API adapters", () => {
     expect(fetchSpy).not.toHaveBeenCalled();
   });
 
-  it("retries one transient sandbox failure and emits payload-free observations", async () => {
+  it("cancels the first error body before retrying and emits payload-free observations", async () => {
+    let cancelled = false;
+    let cancelledBeforeRetry = false;
+    const errorBody = new ReadableStream<Uint8Array>({
+      start(controller) {
+        controller.enqueue(new TextEncoder().encode("unavailable"));
+      },
+      cancel() {
+        cancelled = true;
+      },
+    });
     const fetchSpy = vi
       .fn()
-      .mockResolvedValueOnce(new Response("unavailable", { status: 503 }))
-      .mockResolvedValueOnce(
-        new Response(JSON.stringify({ data: [] }), {
+      .mockResolvedValueOnce(new Response(errorBody, { status: 503 }))
+      .mockImplementationOnce(async () => {
+        cancelledBeforeRetry = cancelled;
+        return new Response(JSON.stringify({ data: [] }), {
           status: 200,
           headers: { "Content-Type": "application/json" },
-        }),
-      );
+        });
+      });
     vi.stubGlobal("fetch", fetchSpy);
     const observations: unknown[] = [];
 
@@ -370,6 +381,8 @@ describe("public-reference VA API adapters", () => {
 
     expect(result.success).toBe(true);
     expect(fetchSpy).toHaveBeenCalledTimes(2);
+    expect(cancelledBeforeRetry).toBe(true);
+    expect(cancelled).toBe(true);
     expect(observations).toHaveLength(2);
     expect(observations[0]).toEqual(
       expect.objectContaining({
@@ -414,6 +427,36 @@ describe("public-reference VA API adapters", () => {
     } finally {
       if (!cancelled) await body.cancel().catch(() => undefined);
     }
+  });
+
+  it("keeps the original HTTP failure when cancelling the error body rejects", async () => {
+    let cancelAttempted = false;
+    const body = new ReadableStream<Uint8Array>({
+      start(controller) {
+        controller.enqueue(new TextEncoder().encode("upstream error"));
+      },
+      cancel() {
+        cancelAttempted = true;
+        throw new Error("cancel failed");
+      },
+    });
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        new Response(body, {
+          status: 500,
+          headers: { "Content-Type": "application/json" },
+        }),
+      ),
+    );
+
+    const result = await fetchVaForms(undefined, { config });
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
+    expect(cancelAttempted).toBe(true);
+    expect(result.success).toBe(false);
+    expect(result.error).toContain("status 500");
+    expect(result.error).not.toContain("cancel failed");
   });
 
   it("clamps a misconfigured per-attempt timeout to the hard maximum", () => {
