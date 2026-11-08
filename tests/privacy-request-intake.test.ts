@@ -75,7 +75,8 @@ describe("privacy request intake (R-01 / B-02)", () => {
     expect(PRIVACY_COMPLETION_DAYS).toBe(45);
     // The policy must keep its own copy of both, including the mailto route the
     // operator register cites as the contact channel.
-    expect(policy).toContain(`mailto:${PRIVACY_CONTACT_EMAIL}`);
+    expect(policy).toContain("href={`mailto:${contactEmail}`}");
+    expect(policy).toContain("configuredPrivacyContact()");
     expect(policy).toContain("within <strong>45 days</strong>");
   });
 
@@ -86,7 +87,7 @@ describe("privacy request intake (R-01 / B-02)", () => {
     // the component cannot drift to a different mailbox than the policy names.
     expect(component).not.toMatch(/[\w.+-]+@[\w-]+\.[\w.]+/);
     for (const request of PRIVACY_REQUESTS) {
-      const url = privacyRequestMailto(request.type);
+      const url = privacyRequestMailto(request.type, PRIVACY_CONTACT_EMAIL);
       expect(url.split("?")[0]).toBe(`mailto:${PRIVACY_CONTACT_EMAIL}`);
       expect(url).not.toMatch(/&(?:cc|bcc)=/);
     }
@@ -107,7 +108,7 @@ describe("privacy request intake (R-01 / B-02)", () => {
       expect(message).toContain("If you need to verify my identity, tell me what is required");
       // Encoding is real, not incidental: the subject is percent-encoded, spaces
       // are not "+", and the body survives a round trip through the URL.
-      const url = privacyRequestMailto(request.type);
+      const url = privacyRequestMailto(request.type, PRIVACY_CONTACT_EMAIL);
       expect(url).toContain("subject=");
       const decoded = decodeURIComponent(url);
       expect(decoded).toContain(request.subject);

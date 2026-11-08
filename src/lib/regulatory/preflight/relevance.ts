@@ -3,9 +3,22 @@ import type { RegulatoryAction } from "../schema";
 
 const VA_REVIEW_TERMS = /\b(?:disability|compensation|service[- ]connection|presumpt|rating schedule|diagnostic code|toxic exposure|burn pit|particulate matter|PACT Act|TERA|effective date|veterans benefits|claimant|claims|appeal|38\s*CFR|secondary service connection)\b/i;
 
-export const federalRegisterDiscoveryIsReviewRelevant = (discovery: FederalRegisterDiscovery): boolean => {
-  if (["rule", "interim-final-rule", "proposed-rule", "correction"].includes(discovery.type)) return true;
+export const federalRegisterDiscoveryIsReviewRelevant = (
+  discovery: FederalRegisterDiscovery,
+  action?: RegulatoryAction,
+): boolean => {
   const text = `${discovery.title} ${discovery.rawAction ?? ""} ${discovery.abstract ?? ""} ${discovery.signals.join(" ")}`;
+  // A correction to a personnel notice is not a correction to benefits law.
+  // Exclude only this identifiable administrative subject, without suppressing
+  // unknown corrections or records linked to a potentially relevant regulation.
+  const personnelNotice = ["notice", "correction"].includes(discovery.type)
+    && /^notice\.?$/i.test(discovery.rawAction?.trim() ?? "")
+    && /\bperformance review board\b/i.test(discovery.title);
+  const hasRegulatoryLink = Boolean(discovery.rin || discovery.relatedRins.length
+    || discovery.normalizedDocument?.cfrReferences.length
+    || (action && actionIsReviewRelevant(action)));
+  if (personnelNotice && !hasRegulatoryLink && !VA_REVIEW_TERMS.test(text)) return false;
+  if (["rule", "interim-final-rule", "proposed-rule", "correction"].includes(discovery.type)) return true;
   return VA_REVIEW_TERMS.test(text);
 };
 

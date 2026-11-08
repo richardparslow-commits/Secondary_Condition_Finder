@@ -489,6 +489,37 @@ describe("browser-side step logic (PRIV-01 stage 2)", () => {
     }
   });
 
+  it("Step 4 clears saved symptom prompts when every checkbox is unchecked", () => {
+    const current = context({
+      diagnosedConditionIds: [PTSD],
+      serviceConnectedConditionIds: [PTSD],
+      ratingsByConditionId: { [PTSD]: 70 },
+      documentsShared: true,
+      symptomIds: ["recurrent-headache"],
+    });
+
+    const cleared = applyDocumentsStep(
+      current,
+      form({ documentsShared: "yes" }),
+      catalog,
+    );
+    expect(cleared.ok).toBe(true);
+    if (!cleared.ok) return;
+    expect(cleared.context).not.toHaveProperty("symptomIds");
+
+    const replaced = applyDocumentsStep(
+      current,
+      form({
+        documentsShared: "yes",
+        symptomIds: ["distal-numbness-tingling"],
+      }),
+      catalog,
+    );
+    expect(replaced.ok).toBe(true);
+    if (!replaced.ok) return;
+    expect(replaced.context.symptomIds).toEqual(["distal-numbness-tingling"]);
+  });
+
   it("Step 4 timeline writes are limited to diagnosed conditions in this review", () => {
     const current = context({
       diagnosedConditionIds: [PTSD],

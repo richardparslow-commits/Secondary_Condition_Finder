@@ -3,7 +3,7 @@ import { resolve } from "node:path";
 
 import { describe, expect, it } from "vitest";
 
-import { PRIVACY_COMPLETION_DAYS, PRIVACY_CONTACT_EMAIL } from "@/lib/privacy/intake";
+import { PRIVACY_COMPLETION_DAYS } from "@/lib/privacy/intake";
 
 // R-01 (VA Lighthouse readiness report §5.1, blocker B-02): the privacy policy
 // must state a data-deletion right, a 45-day completion commitment, the narrow
@@ -75,8 +75,10 @@ describe("privacy policy deletion right and contact channel (R-01 / B-02)", () =
 
   it("provides a working contact channel beyond VA's own resources", () => {
     // A mailbox the operator monitors — the actual intake path for requests.
-    expect(privacy).toMatch(/mailto:privacy@secondaryconditionfinder\.org/);
-    expect(privacy).toMatch(/human handling each request/);
+    expect(privacy).toContain("configuredPrivacyContact()");
+    expect(privacy).toContain("href={`mailto:${contactEmail}`}");
+    expect(privacy).toContain("Privacy contact unavailable");
+    expect(privacy).toContain("The operator handles requests through this mailbox");
     // VA resources are provided for completeness, not as this app's intake.
     expect(privacy).toContain("https://www.va.gov/privacy/");
     expect(privacy).not.toMatch(/mailto:(privacy|info)@va\.gov/);
@@ -91,7 +93,7 @@ describe("privacy policy deletion right and contact channel (R-01 / B-02)", () =
     // claim with nothing behind it, which is the failure mode B-02 exists to
     // prevent, so the honest form is pinned and the old claim is banned.
     expect(flat(privacy)).toContain(
-      "requests are accepted by email at the monitored address below",
+      "requests can be sent by email once the operator publishes a monitored address below",
     );
     expect(flat(privacy)).not.toMatch(/by email and by phone/);
     expect(flat(privacy)).not.toMatch(/requests? by (?:tele)?phone/);
@@ -106,7 +108,7 @@ describe("privacy policy deletion right and contact channel (R-01 / B-02)", () =
   });
 
   it("keeps the intake promise honest about being email-based", () => {
-    expect(privacy).toMatch(/requests are accepted by email/);
+    expect(privacy).toMatch(/requests can be sent by email once/);
   });
 
   it("numbers the rights section before Policy changes", () => {
@@ -161,10 +163,10 @@ describe("privacy policy deletion right and contact channel (R-01 / B-02)", () =
       "Hosting-platform request and operational logs are covered by the operator log-retention review, not host-independent deletion.",
     );
     expect(signed).toContain(
-      `mailto:${PRIVACY_CONTACT_EMAIL}`,
+      "href={`mailto:${contactEmail}`}",
     );
     expect(signed).toContain(
-      "a monitored mail route with a human handling each request; you will receive acknowledgment and a completion confirmation by the same channel.",
+      "The operator handles requests through this mailbox and provides acknowledgment and completion confirmation by the same channel.",
     );
     expect(signed).toContain(
       "(VA benefits main line; not a privacy-request intake channel).",
@@ -187,7 +189,7 @@ describe("privacy policy deletion right and contact channel (R-01 / B-02)", () =
     // channel and carries an incident-reporting process. The deletion right is
     // one promise across three documents; they have to agree.
     const policy = flat(retention);
-    expect(policy).toContain(PRIVACY_CONTACT_EMAIL);
+    expect(policy).toContain("privacy@secondaryconditionfinder.org");
     expect(policy).toContain("/privacy/request");
     expect(policy).toContain("within 45 days");
     expect(policy).toContain("36 CFR Chapter XII");
