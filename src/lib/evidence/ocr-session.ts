@@ -38,7 +38,18 @@ export const OCR_BASE_RENDER_SCALE = 2;
  */
 export const OCR_MAX_CANVAS_AREA_PX = 16_777_216;
 
-/** Never render below this scale even for absurdly large pages. */
+/**
+ * Hard ceiling on either canvas axis. Browsers reject canvases beyond their
+ * per-axis limit, and a very thin page could otherwise satisfy the area cap
+ * with one enormous axis.
+ */
+export const OCR_MAX_CANVAS_DIMENSION = 16_384;
+
+/**
+ * Historical minimum render scale. The hard area and per-axis caps take
+ * precedence: a page large enough to require a smaller scale is fitted under
+ * the caps rather than rendered above them.
+ */
 export const OCR_MIN_RENDER_SCALE = 0.1;
 
 /**
@@ -98,9 +109,9 @@ export interface OcrRenderMetrics {
 }
 
 /**
- * Computes safe render dimensions for one PDF page under the canvas area
- * cap. `pageWidth`/`pageHeight` are the page's 1× (unit-scale) viewport
- * dimensions as reported by pdf.js.
+ * Computes safe render dimensions for one PDF page under the canvas area and
+ * per-axis caps. `pageWidth`/`pageHeight` are the page's 1× (unit-scale)
+ * viewport dimensions as reported by pdf.js.
  */
 export function computeOcrRenderMetrics(
   pageWidth: number,
@@ -119,22 +130,26 @@ export function computeOcrRenderMetrics(
     };
   }
 
-  let scale = OCR_BASE_RENDER_SCALE;
-  const maxSafeScale = Math.sqrt(maxAreaPx / unitArea);
-  if (maxSafeScale < scale) {
-    scale = Math.max(OCR_MIN_RENDER_SCALE, maxSafeScale);
+  if (!Number.isFinite(maxAreaPx) || maxAreaPx < 1) {
+    throw new RangeError("Invalid canvas area limit");
   }
-  let canvasWidth = Math.max(1, Math.floor(width * scale));
-  let canvasHeight = Math.max(1, Math.floor(height * scale));
+  const areaCap = Math.floor(maxAreaPx);
 
-  // Safety net: if the minimum-scale floor still exceeds the cap (absurdly
-  // large page), fit exactly under the cap instead of crashing.
-  if (canvasWidth * canvasHeight > maxAreaPx) {
-    const fitScale = Math.sqrt(maxAreaPx / unitArea);
-    canvasWidth = Math.max(1, Math.floor(width * fitScale));
-    canvasHeight = Math.max(1, Math.floor(height * fitScale));
-    scale = fitScale;
-  }
+  // Bound the continuous area and both axes before flooring. The per-axis cap
+  // is what makes the 1-pixel floor safe: a very thin page can no longer trade
+  // an enormous long edge for a 1-pixel short edge (1 × 16,384 is under the
+  // area cap). No minimum-scale floor is applied here — honoring one for an
+  // absurd page is exactly what let the rendered area exceed the hard cap.
+  const scale = Math.min(
+    OCR_BASE_RENDER_SCALE,
+    Math.sqrt(areaCap) / Math.sqrt(width) / Math.sqrt(height),
+    areaCap / width,
+    areaCap / height,
+    OCR_MAX_CANVAS_DIMENSION / width,
+    OCR_MAX_CANVAS_DIMENSION / height,
+  );
+  const canvasWidth = Math.max(1, Math.floor(width * scale));
+  const canvasHeight = Math.max(1, Math.floor(height * scale));
 
   return { scale, canvasWidth, canvasHeight, downscaled: scale < OCR_BASE_RENDER_SCALE };
 }
