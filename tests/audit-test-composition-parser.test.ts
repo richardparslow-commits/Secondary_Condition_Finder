@@ -151,6 +151,35 @@ describe("composition import scanner", () => {
     expect(report.missing).not.toContain("@/lib/va/sandbox");
   });
 
+  it("discovers .test.tsx files and scans their executable imports", () => {
+    const source = [
+      'import { recommend } from "@/lib/engine/recommend";',
+      "export const view = () => <div />;",
+    ].join("\n");
+
+    const { report } = runComposition({
+      "tests/view.test.tsx": source,
+    });
+
+    expect(report.testFiles).toBe(1);
+    expect(report.missing).not.toContain("@/lib/engine/recommend");
+  });
+
+  it("counts runtime import-equals and excludes type-only import-equals", () => {
+    const source = [
+      'import runtime = require("@/lib/va/api");',
+      'import type types = require("@/lib/va/sandbox");',
+      "void runtime;",
+    ].join("\n");
+
+    const { report } = runComposition({
+      "tests/import-equals.test.ts": source,
+    });
+
+    expect(report.missing).not.toContain("@/lib/va/api");
+    expect(report.missing).toContain("@/lib/va/sandbox");
+  });
+
   it("flags a no-substitution template-literal import across the client boundary", () => {
     const source = [
       '"use client";',

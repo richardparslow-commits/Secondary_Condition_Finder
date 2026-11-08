@@ -49,9 +49,7 @@ const page = await ctx.newPage();
 page.on("dialog", (d) => d.dismiss().catch(() => {}));
 await page.goto(TARGET, { waitUntil: "domcontentloaded", timeout: 60000 });
 await page.waitForSelector("h1", { timeout: 45000 });
-await page.waitForTimeout 
-  ? await page.waitForTimeout(1500)
-  : null;
+if (page.waitForTimeout) await page.waitForTimeout(1500);
 
 // What does the form require, and what does it offer?
 const survey = await page.evaluate(() => {

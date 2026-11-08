@@ -21,8 +21,6 @@ const EVIDENCE_KEYS = ['title', 'authors', 'summary', 'url'] as const;
 
 const NEXUS_THEORIES = ['Causation', 'Aggravation', 'Medication Side Effect'] as const;
 
-type PacketKey = (typeof PACKET_KEYS)[number];
-type EvidenceKey = (typeof EVIDENCE_KEYS)[number];
 type NexusTheory = (typeof NEXUS_THEORIES)[number];
 
 function extractPmid(url: string): string | null {

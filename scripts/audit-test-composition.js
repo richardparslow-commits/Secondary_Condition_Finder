@@ -83,6 +83,25 @@ function exportIsTypeOnly(exportDeclaration) {
   );
 }
 
+function hasDirective(file, source, directive) {
+  const sourceFile = ts.createSourceFile(
+    file,
+    source,
+    ts.ScriptTarget.Latest,
+    true,
+  );
+  for (const statement of sourceFile.statements) {
+    if (
+      !ts.isExpressionStatement(statement) ||
+      !ts.isStringLiteral(statement.expression)
+    ) {
+      break;
+    }
+    if (statement.expression.text === directive) return true;
+  }
+  return false;
+}
+
 function importedSpecifiers(file, source) {
   const specifiers = new Set();
   const add = (node) => {
@@ -172,14 +191,14 @@ for (const file of sourceFiles(sourceRoot)) {
   const relative = path.relative(repositoryRoot, file).split(path.sep).join("/");
   const insideActionsDir = file.startsWith(`${SERVER_ACTION_DIR}${path.sep}`);
 
-  if (source.includes('"use server"') && !insideActionsDir) {
+  if (hasDirective(file, source, "use server") && !insideActionsDir) {
     violation(
       "SERVER-ACTION-PLACEMENT",
       `${relative}: files with "use server" must live under src/lib/actions/`,
     );
   }
 
-  if (source.includes('"use client"')) {
+  if (hasDirective(file, source, "use client")) {
     for (const specifier of importedSpecifiers(file, source)) {
       const forbidden = CLIENT_BOUNDARY_FORBIDDEN.find((moduleId) =>
         specifier.startsWith(moduleId),
