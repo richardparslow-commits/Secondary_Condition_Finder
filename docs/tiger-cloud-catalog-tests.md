@@ -15,4 +15,6 @@ Seed writes an immutable snapshot keyed by its content hash. Running seed again 
 
 The connector maps `scf_tiger_lab.conditions`, `scf_tiger_lab.terms`, and `scf_tiger_lab.edges` from the dedicated fixture database. Use a dedicated replication login scoped to that database. The source tables use primary keys and foreign keys, and the verifier independently checks destination counts, row values, missing endpoints and exact lookup results.
 
+Seed also installs child-side indexes on `edges(snapshot, target_id)` and `terms(snapshot, condition_id)`. The primary keys do not cover these foreign-key lookup prefixes. These indexes prevent full child-table scans when replacing or removing synthetic parent conditions under concurrent load. They stay installed after fixture cleanup; the replicated destination does not need these source-side foreign-key indexes.
+
 The lookup probe set covers identifiers, names, aliases, case and whitespace variants, and deliberate misses. The reported application time measures in-memory lookup in one local Node process. Measure remote PostgreSQL throughput and latency separately through the direct and transaction-pooled connections.

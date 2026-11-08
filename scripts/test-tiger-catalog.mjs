@@ -87,6 +87,11 @@ if (mode === "seed") {
       FOREIGN KEY (snapshot, source_id) REFERENCES scf_tiger_lab.conditions (snapshot, id),
       FOREIGN KEY (snapshot, target_id) REFERENCES scf_tiger_lab.conditions (snapshot, id)
     );
+    -- Cover child-side foreign-key checks during parent updates/deletes.
+    CREATE INDEX IF NOT EXISTS edges_snapshot_target_id_idx
+      ON scf_tiger_lab.edges (snapshot, target_id);
+    CREATE INDEX IF NOT EXISTS terms_snapshot_condition_id_idx
+      ON scf_tiger_lab.terms (snapshot, condition_id);
     CREATE TEMP TABLE seed_conditions (LIKE scf_tiger_lab.conditions) ON COMMIT DROP;
     CREATE TEMP TABLE seed_terms (LIKE scf_tiger_lab.terms) ON COMMIT DROP;
     CREATE TEMP TABLE seed_edges (LIKE scf_tiger_lab.edges) ON COMMIT DROP;
