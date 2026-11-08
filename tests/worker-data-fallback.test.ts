@@ -87,7 +87,7 @@ afterEach(() => {
 async function startWorkersRuntime(): Promise<void> {
   vi.stubGlobal("navigator", { userAgent: "Cloudflare-Workers" });
   const { register } = await import("@/instrumentation");
-  register();
+  await register();
 }
 
 describe("Workers data fallback", () => {

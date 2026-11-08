@@ -366,6 +366,53 @@ describe("freshness fail-safe", () => {
 });
 
 describe("regulatory change classification", () => {
+  const personnelCorrection = (): FederalRegisterDiscovery => {
+    const document = normalizeFederalRegisterApiDocument({
+      document_number: "2026-22041",
+      title: "Corporate Senior Executive Management Office Notice of Performance Review Board Members; Correction",
+      type: "NOTICE",
+      action: "Notice.",
+      publication_date: "2026-10-29",
+      html_url: "https://www.federalregister.gov/d/2026-22041",
+      pdf_url: "https://www.govinfo.gov/content/pkg/FR-2026-10-29/pdf/2026-22041.pdf",
+    }, { asOf: "2026-11-07", officialEditionVerified: true, verifiedOn: "2026-11-07" });
+    return {
+      documentNumber: document.documentNumber, title: document.title, type: document.type,
+      publicationDate: document.publicationDate, relatedRins: [], rawAction: "Notice.",
+      abstract: "This document corrects that notice by adding one additional PRB member.",
+      signals: ["correction"], normalizedDocument: document,
+      officialEditionVerificationRequired: true, officialEditionVerified: true,
+    };
+  };
+
+  const diffDiscovery = (discovery: FederalRegisterDiscovery) => diffRegulatoryPreflight({
+    previousRegistry: [], nextRegistry: [], federalRegisterDiscoveries: [discovery],
+    detectedAt: "2026-11-07T18:00:00.000Z", asOfDate: "2026-11-07",
+  });
+
+  it("excludes the personnel-board notice correction even when its official edition is verified", () => {
+    expect(diffDiscovery(personnelCorrection())).toEqual([]);
+  });
+
+  it("does not turn an unverified personnel-board correction into a benefits-law verification failure", () => {
+    expect(diffDiscovery({ ...personnelCorrection(), normalizedDocument: undefined, officialEditionVerified: false })).toEqual([]);
+  });
+
+  it.each([
+    { rin: "2900-AQ73" },
+    { relatedRins: ["2900-AQ73"] },
+    { abstract: "Correction affecting veterans benefits and disability compensation." },
+    { rawAction: "Final rule; correction." },
+  ])("retains a correction with potentially relevant regulatory context: %j", (context) => {
+    expect(diffDiscovery({ ...personnelCorrection(), ...context })).toHaveLength(1);
+  });
+
+  it("retains corrections linked to CFR provisions and corrections of unknown impact", () => {
+    const discovery = personnelCorrection();
+    expect(diffDiscovery({ ...discovery, normalizedDocument: { ...discovery.normalizedDocument!, cfrReferences: [{ title: 38, part: 4 }] } })).toHaveLength(1);
+    expect(diffDiscovery({ ...discovery, title: "Correction", rawAction: undefined, abstract: undefined, normalizedDocument: undefined, officialEditionVerified: false })[0]).toMatchObject({ classification: "current-law-change", officialEditionVerified: false });
+  });
+
   it("classifies a new proposed Federal Register rule as pending, not current law", () => {
     const action = baseAction();
     const proposed = normalizeFederalRegisterApiDocument({

@@ -114,6 +114,13 @@ describe("findCondition", () => {
     );
   });
 
+  it("keeps first-match ordering for shared aliases and isolates different catalogs", () => {
+    const first = { ...catalog[0], aliases: ["synthetic shared alias"] };
+    const second = { ...catalog[1], aliases: ["synthetic shared alias"] };
+    expect(findCondition([first, second], "  SYNTHETIC   shared alias  ")).toBe(first);
+    expect(findCondition([second, first], "synthetic shared alias")).toBe(second);
+  });
+
   it("returns null rather than guessing on partial input", () => {
     expect(findCondition(catalog, "knee")).toBeNull();
     expect(findCondition(catalog, "")).toBeNull();

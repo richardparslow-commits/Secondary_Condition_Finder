@@ -121,8 +121,8 @@ export function MedicationContextExplainer({
       )}
 
       <p className="mt-3 text-xs text-muted">
-        Your medication/treatment entries are optional, bounded, and stored only in the encrypted short-lived workflow
-        cookie for this review. They are not written to recommendation logs, telemetry, or VA APIs.
+        Your medication/treatment entries are optional, bounded, and stored only in this browser tab for this review.
+        They are not sent to the application server or VA APIs, or written to recommendation logs or telemetry.
       </p>
     </section>
   );

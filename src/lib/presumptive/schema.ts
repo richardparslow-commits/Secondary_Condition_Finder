@@ -1,8 +1,6 @@
 import { z } from "zod";
 
-const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, {
-  message: "Dates must be ISO yyyy-mm-dd.",
-});
+const isoDate = z.iso.date();
 
 export const presumptiveSourceSchema = z.object({
   citation: z.string().min(1),
@@ -30,7 +28,13 @@ export const qualifyingServiceSchema = z.object({
   /** Null means the window is still open. */
   endDate: isoDate.nullable(),
   note: z.string().nullable(),
-});
+}).refine(
+  (value) => value.endDate === null || value.startDate <= value.endDate,
+  {
+    path: ["endDate"],
+    message: "Qualifying period ends before it starts.",
+  },
+);
 
 export const presumptiveConditionSchema = z.object({
   conditionId: z.string().regex(/^[a-z0-9-]+$/),
