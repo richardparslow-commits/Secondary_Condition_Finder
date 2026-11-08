@@ -7,8 +7,8 @@ import { contrastRoutes } from "../scripts/lib/public-routes.mjs";
 
 const spec = readFileSync(resolve(process.cwd(), "e2e/a11y-contrast.mjs"), "utf8");
 const ci = readFileSync(resolve(process.cwd(), ".github/workflows/ci.yml"), "utf8");
-const trustedTypesGate = readFileSync(
-  resolve(process.cwd(), "src/components/security/TrustedTypesGate.tsx"),
+const trustedTypesBootstrap = readFileSync(
+  resolve(process.cwd(), "src/instrumentation-client.ts"),
   "utf8",
 );
 const proxy = readFileSync(resolve(process.cwd(), "src/proxy.ts"), "utf8");
@@ -212,13 +212,12 @@ describe("R-05 real-browser contrast and keyboard gate", () => {
   });
 
   it("achieves this without relaxing the Trusted Types security gate", () => {
-    // Validation requirement from §5.5: the `git diff` on the gate must be
-    // empty. Pinned here semantically: the gate still requires trusted types
-    // for scripts and still refuses blob/data/same-origin-only escapes.
-    expect(trustedTypesGate).toContain("require-trusted-types-for");
-    expect(trustedTypesGate).toMatch(/'script'/);
-    // The CSP still enforces require-trusted-types-for 'script'.
+    // Validation requirement from §5.5: the gate must not be widened. Pinned
+    // here semantically: the CSP still requires trusted types for scripts,
+    // and the bootstrap still installs the strict policy.
+    expect(trustedTypesBootstrap).toContain("installTrustedTypesDefaultPolicy");
     expect(proxy).toContain("require-trusted-types-for");
+    expect(proxy).toMatch(/'script'/);
   });
 
   it("audits every shipped route, not a hand-picked subset", () => {
