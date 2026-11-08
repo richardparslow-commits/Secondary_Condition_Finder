@@ -51,6 +51,58 @@ describe("readBoundedResponseText", () => {
     expect((error as ResponseTooLargeError).declaredBytes).toBe(9999);
   });
 
+  it("cancels the body when refusing a declared content-length over the cap", async () => {
+    let cancelReason: unknown;
+    const stream = new ReadableStream<Uint8Array>({
+      start(controller) {
+        controller.enqueue(new TextEncoder().encode("small"));
+      },
+      cancel(reason) {
+        cancelReason = reason;
+      },
+    });
+    const response = new Response(stream, {
+      status: 200,
+      headers: { "content-length": "9999" },
+    });
+
+    await expect(
+      readBoundedResponseText(response, {
+        url: "https://example.test/data",
+        maxBytes: 100,
+      }),
+    ).rejects.toBeInstanceOf(ResponseTooLargeError);
+
+    // Cancellation is deliberately not awaited by the reader, so give the
+    // stream algorithm a turn to invoke the source's cancel hook.
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    expect(cancelReason).toBe("response-size-limit");
+  });
+
+  it("keeps the size refusal when cancelling the body rejects", async () => {
+    const stream = new ReadableStream<Uint8Array>({
+      start(controller) {
+        controller.enqueue(new TextEncoder().encode("small"));
+      },
+      cancel() {
+        throw new Error("cancel failed");
+      },
+    });
+    const response = new Response(stream, {
+      status: 200,
+      headers: { "content-length": "9999" },
+    });
+
+    const error = await readBoundedResponseText(response, {
+      url: "https://example.test/data",
+      maxBytes: 100,
+    }).catch((caught: unknown) => caught);
+
+    expect(error).toBeInstanceOf(ResponseTooLargeError);
+    expect((error as Error).message).toContain("declared 9999 bytes");
+    expect((error as ResponseTooLargeError).declaredBytes).toBe(9999);
+  });
+
   it("stops a stream that exceeds the cap when content-length under-declares", async () => {
     // The header claims 10 bytes; the stream actually carries 300.
     const response = streamingResponse(["a".repeat(150), "b".repeat(150)], {

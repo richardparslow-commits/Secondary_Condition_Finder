@@ -49,6 +49,22 @@ export class ResponseTooLargeError extends Error {
 }
 
 /**
+ * Starts cancellation of a body we have refused without awaiting it. A stream
+ * whose cancellation never settles must not hold the refusal open, and a
+ * rejected cancellation must not replace the size error that caused it.
+ */
+const cancelRefusedResponseBody = (response: Response): void => {
+  const body = response.body;
+  if (!body) return;
+  try {
+    void body.cancel("response-size-limit").catch(() => undefined);
+  } catch {
+    // The body is already locked or closed; the size refusal is still the
+    // actionable failure.
+  }
+};
+
+/**
  * Reads a response body as text, refusing to buffer past `maxBytes`.
  *
  * Two checks, because either alone is insufficient:
@@ -67,6 +83,7 @@ export async function readBoundedResponseText(
   const declaredLength = Number(response.headers.get("content-length") ?? "0");
   const hasDeclaredLength = Number.isFinite(declaredLength) && declaredLength > 0;
   if (hasDeclaredLength && declaredLength > maxBytes) {
+    cancelRefusedResponseBody(response);
     throw new ResponseTooLargeError({
       url,
       maxBytes,
