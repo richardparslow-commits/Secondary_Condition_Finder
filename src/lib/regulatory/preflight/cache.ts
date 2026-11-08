@@ -3,6 +3,7 @@ import "server-only";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import { lockSync } from "proper-lockfile";
 
 import type { RegulatoryPreflightCache, RegulatoryPreflightSnapshot } from "./types";
 
@@ -51,6 +52,37 @@ const atomicWriteJson = (file: string, value: unknown): void => {
   const temporary = `${file}.${process.pid}.${Date.now()}.tmp`;
   fs.writeFileSync(temporary, `${JSON.stringify(value, null, 2)}\n`, { encoding: "utf8", mode: 0o600 });
   fs.renameSync(temporary, file);
+};
+
+const LATEST_LOCK_STALE_MS = 60_000;
+const LATEST_LOCK_WAIT_MS = 5_000;
+
+const withLatestCacheLock = <T>(cacheDir: string, operation: () => T): T => {
+  fs.mkdirSync(cacheDir, { recursive: true });
+  const latestPath = path.join(cacheDir, "latest.json");
+  const deadline = Date.now() + LATEST_LOCK_WAIT_MS;
+  let release: (() => void) | undefined;
+
+  while (!release) {
+    try {
+      release = lockSync(latestPath, {
+        realpath: false,
+        stale: LATEST_LOCK_STALE_MS,
+      });
+    } catch (error) {
+      const code = error && typeof error === "object" && "code" in error
+        ? error.code
+        : undefined;
+      if (code !== "ELOCKED" || Date.now() >= deadline) throw error;
+      Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 10);
+    }
+  }
+
+  try {
+    return operation();
+  } finally {
+    release();
+  }
 };
 
 const DEFAULT_SNAPSHOT_RETENTION_HOURS = 72;
@@ -103,8 +135,10 @@ export function writeRegulatoryPreflightCache(
   cache: RegulatoryPreflightCache,
   cacheDir = defaultCacheDir(),
 ): void {
-  atomicWriteJson(path.join(cacheDir, "latest.json"), cache);
-  writeRegulatorySnapshot(cache, cacheDir);
+  withLatestCacheLock(cacheDir, () => {
+    atomicWriteJson(path.join(cacheDir, "latest.json"), cache);
+    writeRegulatorySnapshot(cache, cacheDir);
+  });
 }
 
 /**
@@ -118,13 +152,16 @@ export function writeRegulatoryPreflightCacheIfLatest(
   expectedLatestSnapshotId: string | null,
   cacheDir = defaultCacheDir(),
 ): boolean {
-  const current = readLatestRegulatoryPreflightCache(cacheDir);
-  if ((current?.snapshot.snapshotId ?? null) !== expectedLatestSnapshotId) {
+  return withLatestCacheLock(cacheDir, () => {
+    const current = readLatestRegulatoryPreflightCache(cacheDir);
+    if ((current?.snapshot.snapshotId ?? null) !== expectedLatestSnapshotId) {
+      writeRegulatorySnapshot(cache, cacheDir);
+      return false;
+    }
+    atomicWriteJson(path.join(cacheDir, "latest.json"), cache);
     writeRegulatorySnapshot(cache, cacheDir);
-    return false;
-  }
-  writeRegulatoryPreflightCache(cache, cacheDir);
-  return true;
+    return true;
+  });
 }
 
 export function regulatoryPreflightCacheDirectory(): string {
