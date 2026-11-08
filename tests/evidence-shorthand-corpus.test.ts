@@ -170,20 +170,22 @@ describe("evidence shorthand golden corpus", () => {
     });
 
     it("does not promote section-context negations to diagnosis excerpts", () => {
-      for (const line of ["No PTSD", "Denies PTSD", "Without PTSD"]) {
-        const analysis = analyze(`Diagnosis:\n${line}`, ["PTSD"]);
-        expect(
-          analysis.excerpts.some((excerpt) => excerpt.matchedTerms.includes("PTSD")),
-          line,
-        ).toBe(false);
-      }
+      for (const header of ["Diagnosis:", "Assessment:"]) {
+        for (const line of ["No PTSD", "Denies PTSD", "Without PTSD"]) {
+          const analysis = analyze(`${header}\n${line}`, ["PTSD"]);
+          expect(
+            analysis.excerpts.some((excerpt) => excerpt.matchedTerms.includes("PTSD")),
+            `${header} ${line}`,
+          ).toBe(false);
+        }
 
-      const positive = analyze("Diagnosis:\nPTSD-chronic", ["PTSD"]);
-      const diagnosis = positive.excerpts.find(
-        (excerpt) => excerpt.quote === "PTSD-chronic",
-      );
-      expect(diagnosis?.category).toBe("diagnosis");
-      expect(diagnosis?.matchedTerms).toContain("PTSD");
+        const positive = analyze(`${header}\nPTSD-chronic`, ["PTSD"]);
+        const diagnosis = positive.excerpts.find(
+          (excerpt) => excerpt.quote === "PTSD-chronic",
+        );
+        expect(diagnosis?.category, header).toBe("diagnosis");
+        expect(diagnosis?.matchedTerms, header).toContain("PTSD");
+      }
     });
 
     it("keeps explicit unfavorable opinions visible as alternative-cause context", () => {

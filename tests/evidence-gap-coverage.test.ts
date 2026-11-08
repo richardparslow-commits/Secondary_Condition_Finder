@@ -177,31 +177,33 @@ describe("assessGapCoverage", () => {
   });
 
   it("does not mark a diagnosis gap covered by a section-context negation", () => {
-    for (const line of ["No PTSD", "Denies PTSD", "Without PTSD"]) {
-      const negated = analyzeEvidenceText(
-        `Diagnosis:\n${line}`,
+    for (const header of ["Diagnosis:", "Assessment:"]) {
+      for (const line of ["No PTSD", "Denies PTSD", "Without PTSD"]) {
+        const negated = analyzeEvidenceText(
+          `${header}\n${line}`,
+          { sourceName: "note.txt", credential: "physician" },
+          ptsdTerms,
+        );
+        const result = assessGapCoverage(
+          "Is there a confirmed diagnosis of PTSD?",
+          [negated],
+          ptsdTerms,
+        );
+        expect(result.status, `${header} ${line}`).toBe("uncovered");
+      }
+
+      const positive = analyzeEvidenceText(
+        `${header}\nPTSD-chronic`,
         { sourceName: "note.txt", credential: "physician" },
         ptsdTerms,
       );
       const result = assessGapCoverage(
         "Is there a confirmed diagnosis of PTSD?",
-        [negated],
+        [positive],
         ptsdTerms,
       );
-      expect(result.status, line).toBe("uncovered");
+      expect(result.status, header).toBe("covered");
     }
-
-    const positive = analyzeEvidenceText(
-      "Diagnosis:\nPTSD-chronic",
-      { sourceName: "note.txt", credential: "physician" },
-      ptsdTerms,
-    );
-    const result = assessGapCoverage(
-      "Is there a confirmed diagnosis of PTSD?",
-      [positive],
-      ptsdTerms,
-    );
-    expect(result.status).toBe("covered");
   });
 
   it("ignores excerpts that do not mention any selected condition", () => {
