@@ -51,6 +51,14 @@ jobs:
           python3 -m unittest discover -s tests -p 'test_expanded_evidence_campaign.py'
           node --test tests/clinical-review-batch1.test.mjs tests/tiger-autonomous-evidence.test.mjs tests/expanded-evidence-campaign.test.mjs
 
+      - name: Export review-only source-to-claim evidence packets
+        run: |
+          python3 scripts/automation/build_claim_review_packets.py \
+            --out /tmp/scf-autonomous-expanded-evidence/claim-review
+          python3 scripts/automation/build_claim_review_packets.py \
+            --out /tmp/scf-autonomous-expanded-evidence/claim-review --verify
+          python3 -m unittest discover -s tests -p 'test_claim_review_packets.py'
+
       - name: Collect one bounded PubMed research batch
         env:
           NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
