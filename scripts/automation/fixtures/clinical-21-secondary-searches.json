@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "reviewPurpose": "RETRIEVAL_CANDIDATES_ONLY_NOT_A_CLINICAL_CONTRADICTION_FINDING",
+  "sourceLedgerId": "dcd6681315b0b36c4a0a8270405f5446f0bd75d01465fefae1114f2206bcd7aa",
+  "cases": [
+    {
+      "sourceId": "anal-fistula",
+      "targetId": "fecal-incontinence",
+      "query": "(anal fistula[Title/Abstract] OR fistulotomy[Title/Abstract]) AND fecal incontinence[Title/Abstract]",
+      "reviewFocus": "Separate fistula disease from sphincter-involving surgery and baseline continence."
+    },
+    {
+      "sourceId": "cauda-equina-syndrome",
+      "targetId": "erectile-dysfunction",
+      "query": "cauda equina[Title/Abstract] AND (erectile dysfunction[Title/Abstract] OR sexual function[Title/Abstract])",
+      "reviewFocus": "Compare surgery, neurologic compression, recovery and pre-existing function."
+    },
+    {
+      "sourceId": "chronic-liver-disease",
+      "targetId": "cirrhosis-of-the-liver",
+      "query": "chronic liver disease[Title/Abstract] AND (cirrhosis[Title/Abstract] OR fibrosis progression[Title/Abstract])",
+      "reviewFocus": "Identify etiologies, fibrosis staging and cohort progression estimates."
+    },
+    {
+      "sourceId": "chronic-pyelonephritis",
+      "targetId": "chronic-kidney-disease",
+      "query": "chronic pyelonephritis[Title/Abstract] AND (kidney disease[Title/Abstract] OR renal function[Title/Abstract])",
+      "reviewFocus": "Distinguish irreversible scarring and other CKD causes from infection history."
+    },
+    {
+      "sourceId": "chronic-sinusitis",
+      "targetId": "sleep-apnea",
+      "query": "(chronic rhinosinusitis[Title/Abstract] OR chronic sinusitis[Title/Abstract]) AND (obstructive sleep apnea[Title/Abstract] OR sleep disordered breathing[Title/Abstract])",
+      "reviewFocus": "Contrast clinical association, causal inference and confounding factors."
+    },
+    {
+      "sourceId": "cushings-syndrome",
+      "targetId": "hypertension",
+      "query": "Cushing syndrome[Title/Abstract] AND (hypertension[Title/Abstract] OR blood pressure[Title/Abstract])",
+      "reviewFocus": "Separate confirmed hypercortisolism and corticosteroid effects."
+    },
+    {
+      "sourceId": "depressive-disorder",
+      "targetId": "erectile-dysfunction",
+      "query": "depression[Title/Abstract] AND erectile dysfunction[Title/Abstract] AND (antidepressant[Title/Abstract] OR untreated[Title/Abstract] OR risk[Title/Abstract])",
+      "reviewFocus": "Distinguish depression effect from medication-mediated sexual dysfunction."
+    },
+    {
+      "sourceId": "hyperparathyroidism",
+      "targetId": "kidney-stones",
+      "query": "hyperparathyroidism[Title/Abstract] AND (nephrolithiasis[Title/Abstract] OR kidney stones[Title/Abstract])",
+      "reviewFocus": "Identify primary versus secondary hyperparathyroidism and baseline stone risk."
+    },
+    {
+      "sourceId": "hypertension",
+      "targetId": "chronic-kidney-disease",
+      "query": "hypertension[Title/Abstract] AND chronic kidney disease[Title/Abstract] AND (longitudinal[Title/Abstract] OR causality[Title/Abstract] OR risk[Title/Abstract])",
+      "reviewFocus": "Distinguish hypertension-to-CKD from CKD-to-hypertension and shared risks."
+    },
+    {
+      "sourceId": "hypertension",
+      "targetId": "congestive-heart-failure",
+      "query": "hypertension[Title/Abstract] AND heart failure[Title/Abstract] AND (cohort[Title/Abstract] OR risk[Title/Abstract] OR prevention[Title/Abstract])",
+      "reviewFocus": "Examine time course, heart-failure subtype and additional etiologies."
+    },
+    {
+      "sourceId": "hypertensive-heart-disease",
+      "targetId": "congestive-heart-failure",
+      "query": "hypertensive heart disease[Title/Abstract] AND (heart failure[Title/Abstract] OR ventricular dysfunction[Title/Abstract])",
+      "reviewFocus": "Distinguish mechanisms from documented individual disease progression."
+    },
+    {
+      "sourceId": "hypogonadism",
+      "targetId": "osteoporosis",
+      "query": "hypogonadism[Title/Abstract] AND (osteoporosis[Title/Abstract] OR bone mineral density[Title/Abstract])",
+      "reviewFocus": "Check testosterone confirmation, age, sex and bone outcome specificity."
+    },
+    {
+      "sourceId": "implantable-cardiac-pacemaker",
+      "targetId": "heart-valve-disorders",
+      "query": "(pacemaker lead[Title/Abstract] OR transvenous lead[Title/Abstract]) AND (tricuspid regurgitation[Title/Abstract] OR valve dysfunction[Title/Abstract])",
+      "reviewFocus": "Constrain to device-lead-associated tricuspid disease when supported."
+    },
+    {
+      "sourceId": "ovarian-cancer",
+      "targetId": "peripheral-neuropathy",
+      "query": "ovarian cancer[Title/Abstract] AND peripheral neuropathy[Title/Abstract] AND (chemotherapy[Title/Abstract] OR paclitaxel[Title/Abstract])",
+      "reviewFocus": "Distinguish treatment-induced neuropathy from tumor direct effects."
+    },
+    {
+      "sourceId": "pituitary-neoplasm",
+      "targetId": "visual-impairment",
+      "query": "pituitary adenoma[Title/Abstract] AND (visual impairment[Title/Abstract] OR visual field[Title/Abstract] OR optic chiasm[Title/Abstract])",
+      "reviewFocus": "Restrict to tumor size, compression, surgery and functional change."
+    },
+    {
+      "sourceId": "ptsd",
+      "targetId": "erectile-dysfunction",
+      "query": "(posttraumatic stress disorder[Title/Abstract] OR PTSD[Title/Abstract]) AND erectile dysfunction[Title/Abstract]",
+      "reviewFocus": "Differentiate psychiatric association from SSRI and other medication exposure."
+    },
+    {
+      "sourceId": "pulmonary-hypertension",
+      "targetId": "congestive-heart-failure",
+      "query": "pulmonary hypertension[Title/Abstract] AND (right heart failure[Title/Abstract] OR right ventricular failure[Title/Abstract])",
+      "reviewFocus": "Specify pulmonary hypertension subtype and right-heart rather than all failure."
+    },
+    {
+      "sourceId": "sleep-apnea",
+      "targetId": "anxiety-disorder",
+      "query": "obstructive sleep apnea[Title/Abstract] AND anxiety[Title/Abstract] AND (bidirectional[Title/Abstract] OR association[Title/Abstract] OR cohort[Title/Abstract])",
+      "reviewFocus": "Check temporal directionality and confounding; association alone is not cause."
+    },
+    {
+      "sourceId": "sleep-apnea",
+      "targetId": "depressive-disorder",
+      "query": "obstructive sleep apnea[Title/Abstract] AND depression[Title/Abstract] AND (longitudinal[Title/Abstract] OR treatment[Title/Abstract] OR severity[Title/Abstract])",
+      "reviewFocus": "Distinguish new-onset depression from aggravation of a pre-existing disorder."
+    },
+    {
+      "sourceId": "testicular-cancer",
+      "targetId": "hypogonadism",
+      "query": "testicular cancer[Title/Abstract] AND (hypogonadism[Title/Abstract] OR testosterone deficiency[Title/Abstract])",
+      "reviewFocus": "Disaggregate surgery, chemotherapy, radiotherapy and baseline function."
+    },
+    {
+      "sourceId": "urethral-stricture",
+      "targetId": "hydronephrosis",
+      "query": "urethral stricture[Title/Abstract] AND (hydronephrosis[Title/Abstract] OR upper urinary tract[Title/Abstract])",
+      "reviewFocus": "Consider persistent obstruction, severity, infection and alternate causes."
+    }
+  ]
+}
