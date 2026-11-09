@@ -78,7 +78,21 @@
     "regulatory:audit": "node scripts/audit-regulatory-intelligence.js",
     "regulatory:audit:markdown": "node scripts/audit-regulatory-intelligence.js --markdown",
     "regulatory:preflight:test": "vitest run tests/regulatory-preflight.test.ts",
-    "stress:hostile": "node e2e/hostile-file-stress.mjs"
+    "stress:hostile": "node e2e/hostile-file-stress.mjs",
+    "ontology:fetch:dev": "python3 scripts/lib/fetch-mondo-dev.py",
+    "ontology:prepare:dev": "python3 scripts/lib/prepare-mondo-dev.py",
+    "ontology:load:dev": "node scripts/ontology-tiger-dev.mjs import --dev-write",
+    "ontology:verify:dev": "node scripts/ontology-tiger-dev.mjs verify",
+    "ontology:collect:dev": "python3 scripts/lib/collect-ontology-enrichment.py",
+    "ontology:supplement:dev": "python3 scripts/lib/collect-ontology-supplemental.py",
+    "ontology:enrich:load:dev": "node scripts/load-ontology-enrichment-dev.mjs load --dev-write --supplemental",
+    "ontology:enrich:verify:dev": "node scripts/load-ontology-enrichment-dev.mjs verify --supplemental",
+    "ontology:citations:prepare:dev": "python3 scripts/lib/build-pathway-citation-audit.py",
+    "ontology:citations:load:dev": "node scripts/load-ontology-citations-dev.mjs load --dev-write",
+    "ontology:citations:verify:dev": "node scripts/load-ontology-citations-dev.mjs verify",
+    "ontology:benchmark:dev": "node scripts/benchmark-ontology-dev.mjs",
+    "ontology:export-review:dev": "node scripts/export-ontology-review-dev.mjs",
+    "test:ontology-dev": "node --test tests/ontology-dev.test.mjs"
   },
   "dependencies": {
     "@opentelemetry/api": "1.10.0",
