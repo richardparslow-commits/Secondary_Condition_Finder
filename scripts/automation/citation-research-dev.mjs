@@ -23,10 +23,10 @@ async function main() {
     await db.query("BEGIN READ ONLY");
     await db.query("SET LOCAL statement_timeout='12000ms'");
     const res=await db.query(
-      "SELECT a.pmid,a.status,a.clinical_support AS \"clinicalSupport\" "+
+      "SELECT DISTINCT ON (a.pmid) a.pmid,a.status,a.clinical_support AS \"clinicalSupport\" "+
       "FROM scf_autonomous_evidence_dev.pubmed_articles a "+
       "JOIN scf_autonomous_evidence_dev.runs r ON r.run_id=a.run_id "+
-      "WHERE r.source_ledger_id=$1 ORDER BY a.pmid,a.run_id",[SOURCE]);
+      "WHERE r.source_ledger_id=$1 ORDER BY a.pmid,r.inserted_at DESC,a.run_id DESC",[SOURCE]);
     assertRows(res.rows);
     fs.mkdirSync("/tmp/scf-clinical-accuracy-triage",{recursive:true});
     fs.writeFileSync(OUTPUT,JSON.stringify({
