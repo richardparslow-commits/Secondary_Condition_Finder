@@ -326,17 +326,38 @@ def verify(source=SOURCE, output=OUT, original=discovery.SOURCE,
             raise ValueError("Research publication artifact changed")
     with (output / "candidate-metadata-review.csv").open(newline="", encoding="utf8") as f:
         rows = list(csv.DictReader(f))
-    if (len(rows) != len(doc["caseCandidateLinks"])
-        or any((r["humanStudyScreening"], r["clinicalFinding"], r["publicationAuthorization"])
-               != ("REQUIRED", "NOT_ASSESSED", "NOT_GRANTED") for r in rows)):
-        raise ValueError("Review CSV changed or promoted medical evidence")
+    index = {p["pmid"]: p for p in doc["publications"]}
+    expected_csv = []
+    expected_human = []
+    for link in doc["caseCandidateLinks"]:
+        pub = index[link["candidatePmid"]]
+        expected_csv.append({
+            "sourceId": link["sourceId"], "targetId": link["targetId"],
+            "originalPMID": link["originalPmid"], "candidatePMID": pub["pmid"],
+            "searchRank": str(link["searchRank"]), "title": pub["title"],
+            "publicationTypes": "; ".join(pub["publicationTypes"]),
+            "publicationYearText": pub["publicationYearText"],
+            "abstractAvailable": str(pub["abstractAvailable"]),
+            "linkedCorrectionsOrRetractions": str(pub["publicationStatusReviewRequired"]),
+            "humanStudyScreening": "REQUIRED", "clinicalFinding": "NOT_ASSESSED",
+            "publicationAuthorization": "NOT_GRANTED",
+        })
+        empty = dict.fromkeys([
+            "reviewer", "qualifications", "fullTextReviewedOn",
+            "studyDesignAndPopulation", "phenotypeDirectionalityConfounders",
+            "supportVsContradiction", "clinicalRationale", "disposition"], "")
+        expected_human.append({
+            "sourceId": link["sourceId"], "targetId": link["targetId"],
+            "originalPMID": link["originalPmid"], "candidatePMID": link["candidatePmid"],
+            **empty,
+        })
+    if rows != expected_csv:
+        raise ValueError("PubMed reviewer CSV differs from pinned candidate metadata")
     with (output / "qualified-clinical-screening-EMPTY.csv").open(
             newline="", encoding="utf8") as f:
         human = list(csv.DictReader(f))
-    if (len(human) != len(rows)
-        or any(any(v for k, v in row.items() if k not in (
-            "sourceId", "targetId", "originalPMID", "candidatePMID")) for row in human)):
-        raise ValueError("Qualified-human template cannot contain automatic decisions")
+    if human != expected_human:
+        raise ValueError("Human screening template changed or contains decisions")
     return {"result": "EXACT_CANDIDATE_PUBMED_METADATA_PARITY",
             "officialPubMedRecords": len(doc["publications"]),
             "candidateReviewLinks": len(doc["caseCandidateLinks"]),
