@@ -262,7 +262,8 @@ jobs:
         id: test
         continue-on-error: true
         run: |
-          set -o pipefail
+          set -euo pipefail
+          python3 -m unittest discover -s tests -p 'test_secondary_evidence_discovery.py' 2>&1 | tee ci-secondary-evidence.log
           npm test 2>&1 | tee ci-test.log
       # Focused coordination gate: the fleet simulation holds 30–40 simulated
       # instances to the shared-cache, single-flight, circuit, invalidation,
