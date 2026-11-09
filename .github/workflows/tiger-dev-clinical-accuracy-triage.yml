@@ -146,6 +146,10 @@ jobs:
             echo '## Cited-source abstract-only scope preflight' >> "$GITHUB_STEP_SUMMARY"
             cat /tmp/scf-source-specific-review/summary.json >> "$GITHUB_STEP_SUMMARY"
           fi
+          if [[ -f /tmp/scf-source-specific-review/secondary-evidence-discovery/candidate-metadata-preflight/candidate-metadata-manifest.json ]]; then
+            echo '## Independent PubMed candidate bibliography (research only)' >> "$GITHUB_STEP_SUMMARY"
+            cat /tmp/scf-source-specific-review/secondary-evidence-discovery/candidate-metadata-preflight/candidate-metadata-manifest.json >> "$GITHUB_STEP_SUMMARY"
+          fi
           echo 'Zero automated clinical verification, VA nexus approvals or Production changes.' >> "$GITHUB_STEP_SUMMARY"
 
   triage-issue-tracker:
