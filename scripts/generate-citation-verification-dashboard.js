@@ -152,7 +152,7 @@ const esc = (value) => String(value)
   .replaceAll(">", "&gt;")
   .replaceAll('"', "&quot;");
 
-const data = JSON.stringify({ summary, batches }, null, 1);
+const data = JSON.stringify({ summary, batches }, null, 1).replaceAll("<", "\\u003c");
 
 const html = `<!doctype html>
 <html lang="en">
