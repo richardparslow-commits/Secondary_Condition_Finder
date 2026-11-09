@@ -1,0 +1,136 @@
+name: Tiger DEV Autonomous Directional Evidence Review
+
+# Unattended public evidence research, immutable Tiger DEV storage and reports.
+# No direct clinical publication, nexus approval, production secrets or PR merge.
+on:
+  schedule:
+    # Four runs per day, away from the top of the hour. UTC.
+    - cron: "23 2,8,14,20 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tiger-dev-directional-evidence-review
+  cancel-in-progress: false
+
+jobs:
+  public-evidence-review:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: tiger-dev-research
+    timeout-minutes: 35
+
+    steps:
+      - name: Check out reviewed main
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+
+      - name: Use Node 22
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install locked JS dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+
+      - name: Prepare verified MONDO and entire authored mapping ledger
+        run: |
+          python3 scripts/lib/fetch-mondo-dev.py
+          python3 scripts/lib/prepare-mondo-dev.py
+          python3 scripts/lib/build-clinical-review-ledger.py
+          python3 -m unittest discover -s tests -p 'test_clinical_review_rules.py'
+          node --test tests/clinical-review-batch1.test.mjs
+
+      - name: Collect public PubMed citations and candidate studies
+        env:
+          NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
+        run: |
+          python3 scripts/automation/directional_evidence_campaign.py             --out /tmp/scf-autonomous-directional-evidence
+          # Include all 875 authored-pathway contradiction checks in each run.
+          cp /tmp/scf-clinical-review-batch1/summary.json /tmp/scf-autonomous-directional-evidence/contradiction-summary.json
+          cp /tmp/scf-clinical-review-batch1/pathway-contradiction-queue.csv /tmp/scf-autonomous-directional-evidence/
+          python3 -m unittest discover -s tests -p 'test_directional_evidence_campaign.py'
+          node --test tests/tiger-autonomous-evidence.test.mjs
+
+      - name: Insert immutable research data into Tiger Cloud DEV
+        env:
+          TIGER_AUTOMATION_DEV_URL: ${{ secrets.TIGER_AUTOMATION_DEV_URL }}
+        run: node scripts/automation/tiger-evidence-dev.mjs apply --dev-write
+
+      - name: Verify all stored article and pathway review rows
+        env:
+          TIGER_AUTOMATION_DEV_URL: ${{ secrets.TIGER_AUTOMATION_DEV_URL }}
+        run: |
+          node scripts/automation/tiger-evidence-dev.mjs verify > /tmp/scf-autonomous-directional-evidence/tiger-parity.json
+          cat /tmp/scf-autonomous-directional-evidence/tiger-parity.json
+
+      - name: Flag missing or risky public-source status
+        # The DEV ingestion has already committed an immutable record.
+        # This gate makes API outages/retractions visible as failing checks.
+        run: python3 scripts/automation/check_evidence_health.py
+
+      - name: Publish GitHub Actions summary
+        if: always()
+        shell: bash
+        run: |
+          if [[ -f /tmp/scf-autonomous-directional-evidence/report.md ]]; then
+            cat /tmp/scf-autonomous-directional-evidence/report.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo 'Automated public evidence collection did not produce a report. Review failed steps.' >> "$GITHUB_STEP_SUMMARY"
+          fi
+          echo '' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Clinical mapping approvals: **none**; Production changes: **none**.' >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload public-only immutable review artifacts
+        if: always()
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
+        with:
+          name: tiger-dev-directional-evidence-${{ github.run_id }}
+          path: /tmp/scf-autonomous-directional-evidence/
+          if-no-files-found: warn
+          retention-days: 30
+
+  track-evidence:
+    # A separate minimal-permission job hands failures to a human. The
+    # research/DB job itself never receives issues:write or repo mutation rights.
+    needs: public-evidence-review
+    if: always() && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    timeout-minutes: 5
+    steps:
+      - name: Open, update or close the autonomous evidence tracking issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESEARCH_RESULT: ${{ needs.public-evidence-review.result }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          title="Tiger DEV autonomous evidence workflow failed — source review required"
+          issue="$(gh issue list --repo "$GITHUB_REPOSITORY" --state open \
+            --search "${title} in:title" --limit 100 --json number,title \
+            --jq '.[] | select(.title=="Tiger DEV autonomous evidence workflow failed — source review required") | .number' | head -n 1)"
+          link="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          if [[ "$RESEARCH_RESULT" == "success" ]]; then
+            if [[ -n "$issue" ]]; then
+              gh issue close "$issue" --repo "$GITHUB_REPOSITORY" \
+                --reason completed --comment "Autonomous Tiger DEV evidence checks are green again: $link. Clinical review remains separately required."
+              echo "Closed resolved Tiger DEV workflow failure issue #$issue" >> "$GITHUB_STEP_SUMMARY"
+            else
+              echo 'Autonomous Tiger DEV workflow is green; no failure issue.' >> "$GITHUB_STEP_SUMMARY"
+            fi
+          else
+            body="The scheduled DEV research workflow was not successful (job result: ${RESEARCH_RESULT}). Review the failed API, contradiction, database integrity or security checks at: ${link}. This issue tracks an **engineering/source-availability problem**, not a verified medical relationship or patient nexus. No medical content should be published automatically."
+            if [[ -n "$issue" ]]; then
+              gh issue edit "$issue" --repo "$GITHUB_REPOSITORY" --body "$body"
+              echo "Updated outstanding DEV workflow failure issue #$issue" >> "$GITHUB_STEP_SUMMARY"
+            else
+              gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --body "$body"
+              echo 'Created DEV workflow failure tracking issue.' >> "$GITHUB_STEP_SUMMARY"
+            fi
+          fi
