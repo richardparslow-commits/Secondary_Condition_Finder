@@ -92,7 +92,12 @@
     "ontology:citations:verify:dev": "node scripts/load-ontology-citations-dev.mjs verify",
     "ontology:benchmark:dev": "node scripts/benchmark-ontology-dev.mjs",
     "ontology:export-review:dev": "node scripts/export-ontology-review-dev.mjs",
-    "test:ontology-dev": "node --test tests/ontology-dev.test.mjs"
+    "test:ontology-dev": "node --test tests/ontology-dev.test.mjs",
+    "clinical-review:build:dev": "python3 scripts/lib/build-clinical-review-ledger.py",
+    "clinical-review:apply:dev": "node scripts/clinical-review-tiger-dev.mjs apply --dev-write",
+    "clinical-review:verify:dev": "node scripts/clinical-review-tiger-dev.mjs verify",
+    "clinical-review:report:dev": "node scripts/report-clinical-review-dev.mjs",
+    "test:clinical-review:dev": "python3 -m unittest discover -s tests -p 'test_clinical_review_rules.py' && node --test tests/clinical-review-batch1.test.mjs"
   },
   "dependencies": {
     "@opentelemetry/api": "1.10.0",
