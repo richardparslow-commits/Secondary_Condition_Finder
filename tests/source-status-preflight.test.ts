@@ -258,6 +258,29 @@ describe("source-status preflight", () => {
     });
   });
 
+  it("refuses a full status record when the PubMed summary is unavailable", () => {
+    const result = runCliWithFixture(
+      {
+        esummary: { uids: ["10000001"] },
+        efetchXml: fixture.efetchXml,
+      },
+      "--pmids",
+      "10000001",
+    );
+
+    expect(result.status).toBe(1);
+    const report = JSON.parse(result.stdout);
+    expect(report.ok).toBe(false);
+    expect(report.pmidsChecked).toBe(0);
+    expect(report.flags).toHaveLength(1);
+    expect(report.flags[0]).toMatchObject({
+      pmid: "10000001",
+      flag: "UNRESOLVED",
+      evidence: "PubMed summary or full status record missing; complete status cannot be verified",
+      where: "--pmids 10000001",
+    });
+  });
+
   it("flags PMIDs that do not resolve as UNRESOLVED", () => {
     const result = runCli("--pmids", "99999999");
     expect(result.status).toBe(1);
