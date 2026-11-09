@@ -97,7 +97,11 @@
     "clinical-review:apply:dev": "node scripts/clinical-review-tiger-dev.mjs apply --dev-write",
     "clinical-review:verify:dev": "node scripts/clinical-review-tiger-dev.mjs verify",
     "clinical-review:report:dev": "node scripts/report-clinical-review-dev.mjs",
-    "test:clinical-review:dev": "python3 -m unittest discover -s tests -p 'test_clinical_review_rules.py' && node --test tests/clinical-review-batch1.test.mjs"
+    "test:clinical-review:dev": "python3 -m unittest discover -s tests -p 'test_clinical_review_rules.py' && node --test tests/clinical-review-batch1.test.mjs",
+    "research:directional:collect:dev": "python3 scripts/automation/directional_evidence_campaign.py",
+    "research:directional:apply:dev": "node scripts/automation/tiger-evidence-dev.mjs apply --dev-write",
+    "research:directional:verify:dev": "node scripts/automation/tiger-evidence-dev.mjs verify",
+    "test:research:directional": "python3 -m unittest discover -s tests -p 'test_directional_evidence_campaign.py' && node --test tests/tiger-autonomous-evidence.test.mjs"
   },
   "dependencies": {
     "@opentelemetry/api": "1.10.0",
