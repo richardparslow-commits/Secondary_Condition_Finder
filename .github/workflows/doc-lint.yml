@@ -11,7 +11,7 @@ permissions:
 
 concurrency:
   group: doc-lint-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 # Documentation-drift gate, run independently of the main test suite.
 #
