@@ -50,6 +50,13 @@ jobs:
           python3 scripts/automation/clinical_accuracy_triage.py
           python3 scripts/automation/clinical_accuracy_triage.py --verify
 
+      - name: Check 21 exact cited abstracts and conservative authored scope limits
+        run: |
+          python3 scripts/automation/source_specific_preflight.py
+          python3 scripts/automation/source_specific_preflight.py --verify
+          python3 -m unittest discover -s tests -p 'test_source_specific_preflight.py'
+          node --test tests/source-specific-preflight.test.mjs
+
       - name: Test medical-governance and provenance guards
         run: |
           python3 -m unittest discover -s tests -p 'test_clinical_accuracy_triage.py'
@@ -69,6 +76,16 @@ jobs:
           TIGER_AUTOMATION_DEV_URL: ${{ secrets.TIGER_AUTOMATION_DEV_URL }}
           SCF_CLINICAL_TRIAGE_DIR: /tmp/scf-clinical-accuracy-triage
         run: node scripts/automation/clinical-accuracy-tiger-dev.mjs verify
+
+      - name: Insert immutable 21-case abstract-scope research snapshot to Tiger DEV
+        env:
+          TIGER_AUTOMATION_DEV_URL: ${{ secrets.TIGER_AUTOMATION_DEV_URL }}
+        run: node scripts/automation/source-specific-tiger-dev.mjs apply --dev-write
+
+      - name: Independently verify every source-to-claim DEV preflight row
+        env:
+          TIGER_AUTOMATION_DEV_URL: ${{ secrets.TIGER_AUTOMATION_DEV_URL }}
+        run: node scripts/automation/source-specific-tiger-dev.mjs verify
 
       - name: Reconcile all 507 citation-flagged pathways against Tiger DEV bibliography
         env:
@@ -99,6 +116,7 @@ jobs:
           name: tiger-dev-clinical-accuracy-${{ github.run_id }}
           path: |
             /tmp/scf-clinical-accuracy-triage/
+            /tmp/scf-source-specific-review/
             /tmp/scf-source-to-claim-review/published-high-priority.md
           if-no-files-found: warn
           retention-days: 30
@@ -111,6 +129,10 @@ jobs:
             cat /tmp/scf-clinical-accuracy-triage/clinical-accuracy-review.md >> "$GITHUB_STEP_SUMMARY"
           else
             echo 'Report missing: inspect failed steps.' >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [[ -f /tmp/scf-source-specific-review/summary.json ]]; then
+            echo '## Cited-source abstract-only scope preflight' >> "$GITHUB_STEP_SUMMARY"
+            cat /tmp/scf-source-specific-review/summary.json >> "$GITHUB_STEP_SUMMARY"
           fi
           echo 'Zero automated clinical verification, VA nexus approvals or Production changes.' >> "$GITHUB_STEP_SUMMARY"
 
