@@ -77,6 +77,25 @@ class DirectionalEvidenceTests(unittest.TestCase):
         self.assertEqual(found[0]["status"],"PROVIDER_UNAVAILABLE")
         self.assertEqual(discovered[0]["status"],"NO_TEXT_MATCH")
 
+    def test_tampered_source_ledger_is_rejected_before_collection(self):
+        source = Path("/tmp/scf-clinical-review-batch1/clinical-review-ledger.json")
+        if not source.exists():
+            self.skipTest("Batch 1 staging not present in CI")
+        data=json.loads(source.read_text())
+        data["runId"]="f"*64
+        with tempfile.TemporaryDirectory() as root:
+            edited=Path(root)/"tampered-ledger.json"
+            edited.write_text(json.dumps(data))
+            with self.assertRaises(ValueError):
+                module.inputs(ledger_file=edited)
+
+    def test_missing_resolved_article_digest_rejected(self):
+        doc=sample()
+        doc["articles"][0]["metadataHash"]=""
+        doc["runId"]=module.digest({k:v for k,v in doc.items() if k!="runId"})
+        with self.assertRaises(ValueError):
+            module.validate_run(doc)
+
     def test_immutable_run_has_reviewer_gate(self):
         doc=sample()
         self.assertIs(module.validate_run(doc),doc)

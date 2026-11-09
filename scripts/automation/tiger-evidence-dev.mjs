@@ -65,6 +65,9 @@ export function validate(doc) {
     assert.match(article.pmid, /^\d{4,9}$/);
     assert.ok(["METADATA_RETRIEVED","PUBLICATION_STATUS_REVIEW",
                "UNRESOLVED","PROVIDER_UNAVAILABLE"].includes(article.status));
+    if (["METADATA_RETRIEVED","PUBLICATION_STATUS_REVIEW"].includes(article.status)) {
+      assert.match(article.metadataHash, /^[a-f0-9]{64}$/, "Resolved metadata requires digest");
+    }
     if (article.metadataHash) {
       assert.equal(article.metadataHash, sha(Object.fromEntries(
         Object.entries(article).filter(([key]) => key !== "metadataHash"))));

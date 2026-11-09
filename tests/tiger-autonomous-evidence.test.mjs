@@ -100,3 +100,10 @@ test("GitHub workflow is scheduled, main-only and read-only to the repo", () => 
   assert.match(yaml,/TIGER_AUTOMATION_DEV_URL: \$\{\{ secrets.TIGER_AUTOMATION_DEV_URL \}\}/);
   assert.doesNotMatch(yaml,/pull_request:\s*|contents: write|gh pr merge|tsdbadmin/i);
 });
+
+test("resolved PubMed sources require signed metadata fields", () => {
+  const doc=fixture();
+  doc.articles[0].metadataHash="";
+  doc.runId=sha(Object.fromEntries(Object.entries(doc).filter(([k])=>k!=="runId")));
+  assert.throws(()=>validate(doc));
+});

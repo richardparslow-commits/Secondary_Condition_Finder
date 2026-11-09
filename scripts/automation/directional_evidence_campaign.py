@@ -43,6 +43,8 @@ def inputs(repo=REPO, ledger_file=LEDGER):
     if doc.get("clinicalApproval") != "NOT_GRANTED" or \
        doc.get("conditionCount") != 819 or doc.get("pathwayCount") != 875:
         raise ValueError("Expected Batch 1 review-only ledger not staged")
+    if doc.get("runId") != digest({k:v for k,v in doc.items() if k!="runId"}):
+        raise ValueError("Signed-off clinical-review ledger digest mismatch")
     names = {}
     for file in sorted((repo / "data/conditions").glob("*.json")):
         for c in json.loads(file.read_text(encoding="utf-8-sig"))["conditions"]:
@@ -231,6 +233,9 @@ def validate_run(doc):
         if a["status"] not in ("UNRESOLVED","PROVIDER_UNAVAILABLE",
                               "PUBLICATION_STATUS_REVIEW","METADATA_RETRIEVED"):
             raise ValueError("Unauthorized publication status")
+        if a["status"] in ("METADATA_RETRIEVED","PUBLICATION_STATUS_REVIEW") and \
+                not a["metadataHash"]:
+            raise ValueError("Resolved publication must have immutable metadata digest")
         if a["metadataHash"] and a["metadataHash"]!=digest(
             {k:v for k,v in a.items() if k!="metadataHash"}):
             raise ValueError("Article metadata integrity error")
