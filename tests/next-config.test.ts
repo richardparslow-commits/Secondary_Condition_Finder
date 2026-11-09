@@ -145,6 +145,12 @@ describe("file-tracing scope decision", () => {
     ]);
   });
 
+  it("includes the PostgreSQL Worker adapter in the preview probe trace", () => {
+    expect(nextConfig.outputFileTracingIncludes?.["/api/internal/tiger-preview"]).toContain(
+      "./node_modules/pg-cloudflare/dist/*.js",
+    );
+  });
+
   it("preserves the KB read boundary for instrumentation tracing", () => {
     // Instrumentation is not covered by App Router include/exclude rules.
     // path.join(KB_DIR, file) widens its trace to the sibling quarantine tree;

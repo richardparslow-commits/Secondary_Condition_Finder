@@ -203,6 +203,9 @@ const nextConfig: NextConfig = {
    */
   outputFileTracingIncludes: {
     "/**": runtimeDataTracingIncludes(),
+    // pg-cloudflare selects a different entry point under the workerd export
+    // condition than Next's Node trace, but OpenNext bundles from that trace.
+    "/api/internal/tiger-preview": ["./node_modules/pg-cloudflare/dist/*.js"],
   },
   /**
    * Retired data is subtracted from every route's trace.
