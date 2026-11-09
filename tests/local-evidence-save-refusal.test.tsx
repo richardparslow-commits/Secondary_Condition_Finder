@@ -121,4 +121,66 @@ describe("evidence that storage refuses to save", () => {
     ).toBeTruthy();
     expect(container.querySelectorAll("article")).toHaveLength(10);
   });
+
+  it("warns when removing an analyzed source cannot be persisted", async () => {
+    const { container } = render(<LocalEvidenceAnalyzer conditionTerms={[]} />);
+
+    fireEvent.change(screen.getByLabelText("Select evidence files"), {
+      target: {
+        files: [
+          new File(["Record for remove-refused describing the condition."], "remove-refused.txt", {
+            type: "text/plain",
+          }),
+        ],
+      },
+    });
+    await screen.findByText("remove-refused.txt");
+    fireEvent.click(screen.getByRole("button", { name: "Analyze 1 document" }));
+    await screen.findByText(/Analyzed 1 document locally/i);
+    await waitFor(() => expect(storedSourceNames()).toEqual(["remove-refused.txt"]));
+    expect(container.querySelectorAll("article")).toHaveLength(1);
+
+    failEvidenceWrites = true;
+    fireEvent.click(screen.getByRole("button", { name: "Remove" }));
+
+    const warning = await screen.findByText(/browser storage rejected the removal/i);
+    expect(warning.textContent).toMatch(/Step 6/i);
+    expect(warning.textContent).toMatch(/Clear local evidence/i);
+    // The visible review dropped the source, but the store Step 6 reads still
+    // has it until a successful cleanup write.
+    expect(container.querySelectorAll("article")).toHaveLength(0);
+    expect(storedSourceNames()).toEqual(["remove-refused.txt"]);
+  });
+
+  it("keeps one removal warning after repeated refused removals", async () => {
+    const { container } = render(<LocalEvidenceAnalyzer conditionTerms={[]} />);
+
+    fireEvent.change(screen.getByLabelText("Select evidence files"), {
+      target: {
+        files: [
+          new File(["Record for remove-refused-a describing the condition."], "remove-refused-a.txt", {
+            type: "text/plain",
+          }),
+          new File(["Record for remove-refused-b describing the condition."], "remove-refused-b.txt", {
+            type: "text/plain",
+          }),
+        ],
+      },
+    });
+    await screen.findByText("remove-refused-a.txt");
+    fireEvent.click(screen.getByRole("button", { name: "Analyze 2 documents" }));
+    await screen.findByText(/Analyzed 2 documents locally/i);
+    await waitFor(() => expect(storedSourceNames()).toEqual(["remove-refused-a.txt", "remove-refused-b.txt"]));
+
+    failEvidenceWrites = true;
+    fireEvent.click(screen.getAllByRole("button", { name: "Remove" })[0]);
+    await screen.findByText(/browser storage rejected the removal/i);
+    fireEvent.click(screen.getByRole("button", { name: "Remove" }));
+
+    await waitFor(() =>
+      expect(screen.getAllByText(/browser storage rejected the removal/i)).toHaveLength(1),
+    );
+    expect(container.querySelectorAll("article")).toHaveLength(0);
+    expect(storedSourceNames()).toEqual(["remove-refused-a.txt", "remove-refused-b.txt"]);
+  });
 });
