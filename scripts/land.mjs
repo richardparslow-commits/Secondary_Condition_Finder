@@ -335,7 +335,7 @@ async function main() {
   git(["push", "-u", "origin", "HEAD"]);
 
   // 4. Reuse or open the PR.
-  let pr = ghJson(["pr", "view", branch, "--json", "number,url,state"]);
+  let pr = ghJson(["pr", "view", branch, "--json", "number,url,state,baseRefName"]);
   if (!pr || !pr.number) {
     console.log("\nland: opening pull request...");
     const created = run(
@@ -344,12 +344,14 @@ async function main() {
       { capture: true },
     );
     const url = created.stdout.trim().split("\n").pop();
-    pr = ghJson(["pr", "view", branch, "--json", "number,url,state"]);
+    pr = ghJson(["pr", "view", branch, "--json", "number,url,state,baseRefName"]);
     if (!pr?.number) { console.error(created.stdout); die("pull request was created but could not be resolved"); }
     console.log(`land: PR #${pr.number} ${url}`);
   } else {
     console.log(`\nland: reusing PR #${pr.number} ${pr.url}`);
   }
+
+  if (pr.baseRefName !== opts.base) die(`existing PR targets ${pr.baseRefName}, not requested ${opts.base}; refusing to merge`);
 
   // 5. Watch required checks.
   const watched = await waitForChecks(pr.number, required, opts);
