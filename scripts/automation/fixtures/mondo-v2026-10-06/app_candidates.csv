@@ -1,0 +1,566 @@
+condition_id,concept_id,rule,matched_term
+abscesses,MONDO:0005227,ALIAS_LABEL,abscess
+acanthosis-nigricans,MONDO:0007035,LABEL,acanthosis nigricans
+achalasia,MONDO:0008698,ALIAS_EXACT_SYNONYM,cardiospasm
+acne,MONDO:0011438,ALIAS_EXACT_SYNONYM,acne vulgaris
+acoustic-neuroma,MONDO:0001569,LABEL,acoustic neuroma
+acquired-syndactyly,MONDO:0021002,ALIAS_LABEL,syndactyly
+acromegaly,MONDO:0019933,LABEL,acromegaly
+actinic-keratosis,MONDO:0005173,LABEL,actinic keratosis
+actinomycosis,MONDO:0005631,LABEL,actinomycosis
+acute-interstitial-pneumonia,MONDO:0019203,LABEL,acute interstitial pneumonia
+acute-stress-reaction,MONDO:0003763,EXACT_SYNONYM,acute stress reaction
+addisons-disease,MONDO:0015128,ALIAS_LABEL,primary adrenal insufficiency
+addisons-disease,MONDO:0015129,ALIAS_EXACT_SYNONYM,primary hypoadrenalism
+addisons-disease,MONDO:0100480,EXACT_SYNONYM,addison's disease
+adenomyosis,MONDO:0010888,LABEL,adenomyosis
+adjustment-disorder,MONDO:0003265,LABEL,adjustment disorder
+agoraphobia,MONDO:0003709,LABEL,agoraphobia
+agranulocytosis,MONDO:0001609,LABEL,agranulocytosis
+al-amyloidosis,MONDO:0019438,LABEL,al amyloidosis
+alcohol-use-disorder,MONDO:0007079,ALIAS_LABEL,alcohol dependence
+alice-in-wonderland-syndrome,MONDO:0024429,LABEL,alice in wonderland syndrome
+allergic-rhinitis,MONDO:0011786,LABEL,allergic rhinitis
+alopecia,MONDO:0004907,LABEL,alopecia
+alopecia,MONDO:0005339,ALIAS_LABEL,androgenetic alopecia
+alopecia,MONDO:0019080,ALIAS_LABEL,alopecia totalis
+alopecia,MONDO:0800198,ALIAS_LABEL,alopecia universalis
+alopecia-areata,MONDO:0005340,LABEL,alopecia areata
+als,MONDO:0004976,EXACT_SYNONYM,als
+alzheimer-s-disease,MONDO:0004975,EXACT_SYNONYM,alzheimer's disease
+amebiasis,MONDO:0005644,LABEL,amebiasis
+amebiasis,MONDO:0024275,ALIAS_LABEL,amebic dysentery
+anemia,MONDO:0002280,ALIAS_LABEL,anemia
+anismus-pelvic-floor-dyssynergia,MONDO:0000480,ALIAS_LABEL,anismus
+ankle-strain,MONDO:0043895,ALIAS_LABEL,ankle injury
+ankyloglossia,MONDO:0007125,LABEL,ankyloglossia
+ankylosing-spondylitis,MONDO:0005306,LABEL,ankylosing spondylitis
+ankylosis,MONDO:0002257,LABEL,ankylosis
+anorectal-stricture,MONDO:0001177,LABEL,anorectal stricture
+anorexia-nervosa,MONDO:0005351,LABEL,anorexia nervosa
+anosmia,MONDO:0010528,ALIAS_LABEL,anosmia
+anxiety-disorder,MONDO:0001942,LABEL,generalized anxiety disorder
+aortic-aneurysm,MONDO:0005160,LABEL,aortic aneurysm
+aphasia-dysphasia,MONDO:0000598,ALIAS_LABEL,aphasia
+aphasia-dysphasia,MONDO:0016226,ALIAS_EXACT_SYNONYM,dysphasia
+appendicitis,MONDO:0005649,LABEL,appendicitis
+apraxia,MONDO:0000665,LABEL,apraxia
+arnold-chiari-malformation,MONDO:0000115,EXACT_SYNONYM,arnold-chiari malformation
+arrhythmogenic-right-ventricular-dysplasia,MONDO:0016587,EXACT_SYNONYM,arrhythmogenic right ventricular dysplasia
+arteriosclerosis,MONDO:0002277,EXACT_SYNONYM,arteriosclerosis
+asthma,MONDO:0004979,LABEL,asthma
+astigmatism,MONDO:0011284,LABEL,astigmatism
+atopic-dermatitis-eczema,MONDO:0004980,ALIAS_LABEL,atopic eczema
+atrial-flutter,MONDO:0005310,LABEL,atrial flutter
+atrial-septal-defect,MONDO:0006664,LABEL,atrial septal defect
+atrophic-glossitis,MONDO:0001989,LABEL,atrophic glossitis
+avascular-necrosis,MONDO:0005380,ALIAS_LABEL,osteonecrosis
+avascular-necrosis,MONDO:0018373,LABEL,avascular necrosis
+bagassosis,MONDO:0001540,LABEL,bagassosis
+baker-s-cyst,MONDO:0008288,ALIAS_LABEL,popliteal cyst
+balanitis-balanoposthitis,MONDO:0001618,ALIAS_LABEL,balanoposthitis
+balanitis-balanoposthitis,MONDO:0006672,ALIAS_LABEL,balanitis
+barretts-esophagus,MONDO:0013662,EXACT_SYNONYM,barrett's esophagus
+basal-cell-carcinoma,MONDO:0020804,LABEL,basal cell carcinoma
+bell-s-palsy,MONDO:0005665,LABEL,bell's palsy
+benign-migratory-glossitis,MONDO:0005771,EXACT_SYNONYM,benign migratory glossitis
+benign-paroxysmal-positional-vertigo,MONDO:8000018,LABEL,benign paroxysmal positional vertigo
+benign-prostatic-hyperplasia,MONDO:0010811,ALIAS_LABEL,benign prostatic hyperplasia
+beriberi,MONDO:0006676,LABEL,beriberi
+biliary-tract-cancer,MONDO:0003059,ALIAS_LABEL,bile duct cancer
+biliary-tract-cancer,MONDO:0003060,LABEL,biliary tract cancer
+biliary-tract-cancer,MONDO:0019087,ALIAS_LABEL,cholangiocarcinoma
+binge-eating-disorder,MONDO:0005582,LABEL,binge eating disorder
+bipolar-disorder,MONDO:0004985,LABEL,bipolar disorder
+bird-fancier-s-lung,MONDO:0005668,LABEL,bird fancier's lung
+bladder-pain-syndrome-interstitial-cystitis,MONDO:0018301,ALIAS_LABEL,interstitial cystitis
+blind-loop-syndrome,MONDO:0005673,LABEL,blind loop syndrome
+body-dysmorphic-disorder,MONDO:0000690,LABEL,body dysmorphic disorder
+bone-tumors,MONDO:0019060,EXACT_SYNONYM,bone tumors
+brain-cancer,MONDO:0001657,ALIAS_LABEL,brain cancer
+brain-cancer,MONDO:0018177,ALIAS_LABEL,glioblastoma
+breast-cancer,MONDO:0007254,LABEL,breast cancer
+bronchiectasis,MONDO:0004822,LABEL,bronchiectasis
+bronchitis,MONDO:0003781,LABEL,bronchitis
+broncho-alveolar-carcinoma,MONDO:0004991,ALIAS_EXACT_SYNONYM,bronchioloalveolar carcinoma
+broncho-alveolar-carcinoma,MONDO:0005061,ALIAS_LABEL,lung adenocarcinoma
+brown-s-quard-syndrome,MONDO:0003754,ALIAS_LABEL,brown-sequard syndrome
+brucellosis,MONDO:0005683,LABEL,brucellosis
+brugada-syndrome,MONDO:0015263,LABEL,brugada syndrome
+bulimia-nervosa,MONDO:0005452,LABEL,bulimia nervosa
+bullous-pemphigoid,MONDO:0019082,LABEL,bullous pemphigoid
+burning-mouth-syndrome,MONDO:0006687,LABEL,burning mouth syndrome
+bursitis,MONDO:0002471,LABEL,bursitis
+byssinosis,MONDO:0006688,LABEL,byssinosis
+cannabinoid-hyperemesis-syndrome,MONDO:0100094,LABEL,cannabinoid hyperemesis syndrome
+capgras-syndrome,MONDO:0003965,LABEL,capgras syndrome
+carcinoid-syndrome,MONDO:0100347,LABEL,carcinoid syndrome
+cardiac-arrhythmia,MONDO:0004981,ALIAS_LABEL,atrial fibrillation
+cardiac-inflammatory-disease,MONDO:0004496,ALIAS_LABEL,myocarditis
+cardiac-inflammatory-disease,MONDO:0005025,ALIAS_LABEL,endocarditis
+cardiac-inflammatory-disease,MONDO:0005904,ALIAS_LABEL,pericarditis
+cardiomyopathy,MONDO:0004994,LABEL,cardiomyopathy
+carpal-tunnel-syndrome,MONDO:0007275,LABEL,carpal tunnel syndrome
+cauda-equina-syndrome,MONDO:0005693,LABEL,cauda equina syndrome
+cauda-equina-syndrome,MONDO:0007276,ALIAS_EXACT_SYNONYM,ces
+celiac-disease,MONDO:0005130,LABEL,celiac disease
+cellulitis,MONDO:0005230,LABEL,cellulitis
+cellulitis,MONDO:0021201,ALIAS_LABEL,skin infection
+cerebral-palsy,MONDO:0006497,LABEL,cerebral palsy
+cerebrovascular-accident-stroke-residuals,MONDO:0005098,ALIAS_EXACT_SYNONYM,cva
+chalazion,MONDO:0005844,LABEL,chalazion
+charles-bonnet-syndrome,MONDO:0022140,LABEL,charles bonnet syndrome
+cholelithiasis,MONDO:0005346,ALIAS_LABEL,gallstones
+cholelithiasis,MONDO:0012672,LABEL,cholelithiasis
+cholesteatoma,MONDO:0006530,LABEL,cholesteatoma
+chondromalacia-patellae,MONDO:0008207,LABEL,chondromalacia patellae
+choroiditis,MONDO:0001280,LABEL,choroiditis
+chronic-b-cell-leukemias,MONDO:0004948,ALIAS_LABEL,b-cell chronic lymphocytic leukemia
+chronic-bronchitis,MONDO:0005607,LABEL,chronic bronchitis
+chronic-fatigue-syndrome,MONDO:0005404,EXACT_SYNONYM,chronic fatigue syndrome
+chronic-intestinal-pseudo-obstruction,MONDO:0017574,EXACT_SYNONYM,chronic intestinal pseudo-obstruction
+chronic-kidney-disease,MONDO:0001106,ALIAS_EXACT_SYNONYM,renal failure
+chronic-kidney-disease,MONDO:0004375,ALIAS_EXACT_SYNONYM,esrd
+chronic-kidney-disease,MONDO:0005300,ALIAS_LABEL,chronic kidney disease
+chronic-laryngitis,MONDO:0001369,LABEL,chronic laryngitis
+chronic-pyelonephritis,MONDO:0001110,LABEL,chronic pyelonephritis
+chronic-rhinitis,MONDO:0004514,LABEL,chronic rhinitis
+chronic-sinusitis,MONDO:0006031,EXACT_SYNONYM,chronic sinusitis
+churg-strauss-syndrome,MONDO:0015943,EXACT_SYNONYM,churg-strauss syndrome
+cicatricial-pemphigoid,MONDO:0018746,EXACT_SYNONYM,cicatricial pemphigoid
+circadian-rhythm-sleep-wake-phase-disorders,MONDO:0019137,ALIAS_EXACT_SYNONYM,non-24-hour sleep-wake disorder
+cleft-lip-palate-residuals,MONDO:0016044,ALIAS_EXACT_SYNONYM,cleft lip and palate
+cluster-headache,MONDO:0043537,EXACT_SYNONYM,cluster headache
+coccydynia,MONDO:0022792,EXACT_SYNONYM,coccydynia
+cognitive-disorder,MONDO:0002039,LABEL,cognitive disorder
+cold-injury-residuals,MONDO:0800177,ALIAS_LABEL,frostbite
+color-blindness,MONDO:0001703,EXACT_SYNONYM,color blindness
+colorectal-cancer,MONDO:0006519,ALIAS_LABEL,rectal cancer
+colorectal-cancer,MONDO:0021063,ALIAS_EXACT_SYNONYM,colon cancer
+complex-regional-pain-syndrome,MONDO:0011441,ALIAS_EXACT_SYNONYM,reflex sympathetic dystrophy
+complex-regional-pain-syndrome,MONDO:0019369,LABEL,complex regional pain syndrome
+complex-regional-pain-syndrome,MONDO:0020572,ALIAS_EXACT_SYNONYM,causalgia
+conductive-hearing-loss,MONDO:0020679,EXACT_SYNONYM,conductive hearing loss
+congestive-heart-failure,MONDO:0005009,LABEL,congestive heart failure
+congestive-heart-failure,MONDO:0005252,ALIAS_LABEL,heart failure
+conjunctivitis,MONDO:0003799,LABEL,conjunctivitis
+contact-dermatitis,MONDO:0005480,LABEL,contact dermatitis
+copd,MONDO:0005002,EXACT_SYNONYM,chronic obstructive pulmonary disease (copd)
+cranial-nerve-palsy,MONDO:0002782,LABEL,cranial nerve palsy
+cryptogenic-organizing-pneumonia,MONDO:0015264,LABEL,cryptogenic organizing pneumonia
+cubital-tunnel-syndrome,MONDO:0043982,LABEL,cubital tunnel syndrome
+cushings-syndrome,MONDO:0018912,EXACT_SYNONYM,cushing's syndrome
+cyclic-vomiting-syndrome,MONDO:0010778,LABEL,cyclic vomiting syndrome
+cyclothymic-disorder,MONDO:0004572,LABEL,cyclothymic disorder
+cystitis,MONDO:0006032,LABEL,cystitis
+cystitis-or-neurogenic-bladder,MONDO:0006030,ALIAS_LABEL,chronic cystitis
+dandy-walker-syndrome,MONDO:0009072,LABEL,dandy-walker syndrome
+deep-vein-thrombosis,MONDO:0004625,ALIAS_LABEL,phlebitis
+delusional-disorder,MONDO:0004359,LABEL,delusional disorder
+dementia,MONDO:0001627,LABEL,dementia
+depressive-disorder,MONDO:0002009,LABEL,major depressive disorder
+depressive-disorder,MONDO:0002050,ALIAS_EXACT_SYNONYM,depression
+depressive-disorder,MONDO:0016217,ALIAS_EXACT_SYNONYM,mdd
+dermatitis,MONDO:0002406,ALIAS_LABEL,dermatitis
+dermatitis-herpetiformis,MONDO:0015614,LABEL,dermatitis herpetiformis
+dermatofibroma,MONDO:0006717,EXACT_SYNONYM,dermatofibroma
+dermatofibrosarcoma-protuberans,MONDO:0011934,LABEL,dermatofibrosarcoma protuberans
+dermatomyositis,MONDO:0016367,LABEL,dermatomyositis
+diabetes-insipidus,MONDO:0004782,LABEL,diabetes insipidus
+diabetes-mellitus,MONDO:0005015,LABEL,diabetes mellitus
+diabetes-mellitus,MONDO:0016367,ALIAS_EXACT_SYNONYM,dm
+diabetes-mellitus-type-1,MONDO:0005147,ALIAS_EXACT_SYNONYM,type 1 diabetes
+diabetes-mellitus-type-1,MONDO:0008056,ALIAS_EXACT_SYNONYM,dm1
+diabetes-mellitus-type-2,MONDO:0005148,ALIAS_EXACT_SYNONYM,type 2 diabetes
+diabetic-nephropathy,MONDO:0005016,EXACT_SYNONYM,diabetic nephropathy
+diabetic-retinopathy,MONDO:0005266,LABEL,diabetic retinopathy
+diabetic-retinopathy,MONDO:0005283,ALIAS_EXACT_SYNONYM,retinopathy
+discoid-lupus,MONDO:0019558,LABEL,discoid lupus erythematosus
+dissociative-disorder,MONDO:0001159,ALIAS_EXACT_SYNONYM,dissociative identity disorder
+dissociative-disorder,MONDO:0001185,ALIAS_LABEL,dissociative amnesia
+diverticulitis,MONDO:0004235,LABEL,diverticulitis
+dry-eye-syndrome,MONDO:0006733,LABEL,dry eye syndrome
+dumping-syndrome,MONDO:0001979,LABEL,dumping syndrome
+dysplastic-nevus-syndrome,MONDO:0007964,EXACT_SYNONYM,dysplastic nevus syndrome
+eczema,MONDO:0004980,EXACT_SYNONYM,eczema
+emphysema,MONDO:0004849,EXACT_SYNONYM,emphysema
+empty-nose-syndrome,MONDO:1060148,LABEL,empty nose syndrome
+encephalitis,MONDO:0019956,LABEL,encephalitis
+endometrial-cancer,MONDO:0002447,ALIAS_LABEL,endometrial carcinoma
+endometrial-cancer,MONDO:0011962,LABEL,endometrial cancer
+endometriosis,MONDO:0005133,LABEL,endometriosis
+enophthalmos,MONDO:0001210,LABEL,enophthalmos
+eosinophilic-esophagitis,MONDO:0005361,LABEL,eosinophilic esophagitis
+eosinophilic-gastroenteritis,MONDO:0016129,LABEL,eosinophilic gastroenteritis
+epicondylitis,MONDO:0001875,ALIAS_LABEL,epicondylitis
+epidermolysis-bullosa-acquired,MONDO:0018747,ALIAS_LABEL,acquired epidermolysis bullosa
+epididymitis-orchitis,MONDO:0004779,ALIAS_LABEL,epididymitis
+epididymitis-orchitis,MONDO:0006882,ALIAS_LABEL,orchitis
+epilepsy,MONDO:0005027,LABEL,epilepsy
+erectile-dysfunction,MONDO:0005362,LABEL,erectile dysfunction
+erythema-multiforme,MONDO:0006545,LABEL,erythema multiforme
+erythema-nodosum,MONDO:0850231,LABEL,erythema nodosum
+erythromelalgia,MONDO:0016028,LABEL,erythromelalgia
+erythroplakia,MONDO:0023089,LABEL,erythroplakia
+erythroplasia-of-queyrat,MONDO:0004671,EXACT_SYNONYM,erythroplasia of queyrat
+erythropoietic-protoporphyria,MONDO:0001676,LABEL,erythropoietic protoporphyria
+esophageal-cancer,MONDO:0007576,LABEL,esophageal cancer
+esophagitis,MONDO:0001409,LABEL,esophagitis
+essential-thrombocythemia,MONDO:0005029,LABEL,essential thrombocythemia
+euthyroid-sick-syndrome,MONDO:0006755,LABEL,euthyroid sick syndrome
+exophthalmos,MONDO:0004770,LABEL,exophthalmos
+factitious-disorder,MONDO:0002103,LABEL,factitious disorder
+farmer-s-lung,MONDO:0001971,EXACT_SYNONYM,farmer's lung
+fasciitis,MONDO:0004830,LABEL,fasciitis
+fasciitis,MONDO:0004835,ALIAS_LABEL,necrotizing fasciitis
+female-infertility,MONDO:0021124,LABEL,female infertility
+femoral-neuropathy,MONDO:0006759,LABEL,femoral neuropathy
+fibromyalgia,MONDO:0005546,LABEL,fibromyalgia
+fissured-tongue,MONDO:0007655,LABEL,fissured tongue
+fitz-hugh-curtis-syndrome,MONDO:0023158,LABEL,fitz-hugh-curtis syndrome
+flatfoot,MONDO:0005293,ALIAS_LABEL,flatfoot
+fournier-s-gangrene,MONDO:0043352,EXACT_SYNONYM,fournier's gangrene
+freiberg-s-infraction,MONDO:0023188,ALIAS_LABEL,freiberg disease
+functional-neurological-symptom-disorder,MONDO:0002104,ALIAS_LABEL,conversion disorder
+fungal-skin-infection,MONDO:0005984,ALIAS_LABEL,tinea pedis
+gallbladder-disease,MONDO:0002155,ALIAS_LABEL,cholecystitis
+gastrinoma,MONDO:0003523,EXACT_SYNONYM,gastrinoma
+gastrinoma,MONDO:0019610,ALIAS_LABEL,zollinger-ellison syndrome
+gastritis,MONDO:0004966,LABEL,gastritis
+gastrointestinal-stromal-tumors,MONDO:0011719,EXACT_SYNONYM,gastrointestinal stromal tumors
+gastroparesis,MONDO:0006769,LABEL,gastroparesis
+geographic-tongue,MONDO:0005771,LABEL,geographic tongue
+gerd,MONDO:0007186,ALIAS_LABEL,gastroesophageal reflux disease
+giant-cell-myocarditis,MONDO:0023232,LABEL,giant cell myocarditis
+gigantism,MONDO:0020479,ALIAS_LABEL,pituitary gigantism
+gingivitis,MONDO:0002508,LABEL,gingivitis
+glaucoma,MONDO:0005041,LABEL,glaucoma
+glomus-tumor,MONDO:0018327,LABEL,glomus tumor
+glossitis,MONDO:0006771,LABEL,glossitis
+glucagonoma,MONDO:0019959,LABEL,glucagonoma
+goiter,MONDO:0005397,LABEL,goiter
+goodpasture-syndrome,MONDO:0009303,EXACT_SYNONYM,goodpasture syndrome
+gout,MONDO:0005393,LABEL,gout
+granuloma-annulare,MONDO:0006554,LABEL,granuloma annulare
+granulomatosis-with-polyangiitis,MONDO:0012105,LABEL,granulomatosis with polyangiitis
+guillain-barre-syndrome,MONDO:0016218,EXACT_SYNONYM,guillain-barré syndrome
+hairy-cell-leukemia,MONDO:0018935,LABEL,hairy cell leukemia
+hairy-tongue,MONDO:0006777,LABEL,hairy tongue
+halo-nevus,MONDO:0006778,LABEL,halo nevus
+head-and-neck-cancers,MONDO:0005627,ALIAS_LABEL,head and neck cancer
+hearing-loss,MONDO:0005365,EXACT_SYNONYM,hearing loss
+hearing-loss,MONDO:0020678,ALIAS_EXACT_SYNONYM,sensorineural hearing loss
+hearing-loss,MONDO:0044001,ALIAS_EXACT_SYNONYM,mixed hearing loss
+heart-block,MONDO:0000465,ALIAS_LABEL,atrioventricular block
+hemangioma,MONDO:0006500,LABEL,hemangioma
+hemorrhoids,MONDO:0004872,EXACT_SYNONYM,hemorrhoids
+hepatic-steatosis,MONDO:0004790,ALIAS_EXACT_SYNONYM,fatty liver
+hepatic-steatosis,MONDO:0013209,ALIAS_EXACT_SYNONYM,nonalcoholic fatty liver disease
+hiatal-hernia,MONDO:0007721,EXACT_SYNONYM,hiatal hernia
+hidradenitis-suppurativa,MONDO:0006559,LABEL,hidradenitis suppurativa
+hiv-aids,MONDO:0012268,ALIAS_LABEL,aids
+hodgkins-lymphoma,MONDO:0004952,EXACT_SYNONYM,hodgkin's lymphoma
+hydrocephalus,MONDO:0001150,LABEL,hydrocephalus
+hydronephrosis,MONDO:0005510,LABEL,hydronephrosis
+hyperaldosteronism,MONDO:0001422,ALIAS_LABEL,primary aldosteronism
+hyperaldosteronism,MONDO:0003009,LABEL,hyperaldosteronism
+hyperinsulinism,MONDO:0002177,LABEL,hyperinsulinism
+hyperopia,MONDO:0004891,LABEL,hyperopia
+hyperparathyroidism,MONDO:0001741,LABEL,hyperparathyroidism
+hypertensive-heart-disease,MONDO:0001302,LABEL,hypertensive heart disease
+hypertensive-retinopathy,MONDO:0006797,LABEL,hypertensive retinopathy
+hyperthyroidism,MONDO:0004425,LABEL,hyperthyroidism
+hypoglycemia,MONDO:0004946,LABEL,hypoglycemia
+hypogonadism,MONDO:0002146,LABEL,hypogonadism
+hypoparathyroidism,MONDO:0001220,LABEL,hypoparathyroidism
+hypopituitarism,MONDO:0005152,LABEL,hypopituitarism
+hypotension,MONDO:0005468,EXACT_SYNONYM,hypotension
+hypothyroidism,MONDO:0005420,LABEL,hypothyroidism
+ichthyosis,MONDO:0019269,LABEL,ichthyosis
+impetigo,MONDO:0004592,LABEL,impetigo
+inflammatory-bowel-disease,MONDO:0005011,ALIAS_EXACT_SYNONYM,crohn's disease
+inflammatory-bowel-disease,MONDO:0005101,ALIAS_LABEL,ulcerative colitis
+inflammatory-bowel-disease,MONDO:0005265,ALIAS_LABEL,inflammatory bowel disease
+insomnia,MONDO:0013600,ALIAS_LABEL,insomnia
+insulinoma,MONDO:0024677,EXACT_SYNONYM,insulinoma
+interstitial-lung-disease,MONDO:0015925,LABEL,interstitial lung disease
+iritis,MONDO:0006814,LABEL,iritis
+irritable-bowel-syndrome,MONDO:0005052,ALIAS_LABEL,irritable bowel syndrome
+ischemic-heart-disease,MONDO:0005010,ALIAS_EXACT_SYNONYM,coronary artery disease
+ischemic-heart-disease,MONDO:0018922,ALIAS_EXACT_SYNONYM,cad
+ischemic-heart-disease,MONDO:0024644,ALIAS_EXACT_SYNONYM,ischemic heart disease
+ischemic-heart-disease,MONDO:0100077,ALIAS_EXACT_SYNONYM,cad
+kaposi-s-sarcoma,MONDO:0005055,LABEL,kaposi's sarcoma
+keratitis,MONDO:0003085,LABEL,keratitis
+kidney-stones,MONDO:0008171,ALIAS_LABEL,nephrolithiasis
+kienbock-s-disease,MONDO:0019967,ALIAS_LABEL,kienbock disease
+labyrinthitis,MONDO:0002008,LABEL,labyrinthitis
+laryngeal-cancer,MONDO:0002352,ALIAS_LABEL,larynx cancer
+laryngitis,MONDO:0002647,LABEL,laryngitis
+laryngitis,MONDO:0004777,ALIAS_LABEL,acute laryngitis
+laryngocele,MONDO:0016530,LABEL,laryngocele
+legg-calve-perthes-disease,MONDO:0007885,LABEL,legg-calve-perthes disease
+leishmaniasis,MONDO:0011989,LABEL,leishmaniasis
+leukemia,MONDO:0005059,ALIAS_LABEL,leukemia
+leukoplakia,MONDO:0043243,LABEL,leukoplakia
+libman-sacks-endocarditis,MONDO:0850223,LABEL,libman-sacks endocarditis
+lichen-planopilaris,MONDO:0018879,LABEL,lichen planopilaris
+lichen-planus,MONDO:0006572,LABEL,lichen planus
+lichen-simplex-chronicus,MONDO:0006585,EXACT_SYNONYM,lichen simplex chronicus
+livedo-reticularis,MONDO:0044037,LABEL,livedo reticularis
+liver-cancer,MONDO:0002691,LABEL,liver cancer
+long-qt-syndrome,MONDO:0002442,LABEL,long qt syndrome
+long-qt-syndrome,MONDO:0019171,EXACT_SYNONYM,long qt syndrome
+lumbar-spinal-stenosis,MONDO:0044753,LABEL,lumbar spinal stenosis
+lung-abscess,MONDO:0000744,LABEL,lung abscess
+lupus-profundus,MONDO:0019561,EXACT_SYNONYM,lupus profundus
+lyme-disease,MONDO:0019632,LABEL,lyme disease
+lymphangioleiomyomatosis,MONDO:0011705,LABEL,lymphangioleiomyomatosis
+lymphangioma,MONDO:0002013,LABEL,lymphangioma
+lymphedema,MONDO:0019297,LABEL,lymphedema
+macroglossia,MONDO:0015496,LABEL,macroglossia
+macular-degeneration,MONDO:0003004,LABEL,macular degeneration
+malabsorption-syndrome,MONDO:0020598,LABEL,malabsorption syndrome
+malaria,MONDO:0005136,LABEL,malaria
+malnutrition-residuals,MONDO:0006873,ALIAS_EXACT_SYNONYM,malnutrition
+marantic-endocarditis,MONDO:0000610,LABEL,marantic endocarditis
+mastoiditis,MONDO:0000748,LABEL,mastoiditis
+median-neuropathy,MONDO:0003598,ALIAS_LABEL,median nerve neuropathy
+median-rhomboid-glossitis,MONDO:0001880,LABEL,median rhomboid glossitis
+menetrier-s-disease,MONDO:0007652,EXACT_SYNONYM,menetrier's disease
+meningitis,MONDO:0021108,LABEL,meningitis
+meralgia-paresthetica,MONDO:0023757,LABEL,meralgia paresthetica
+metabolic-syndrome,MONDO:0000816,EXACT_SYNONYM,metabolic syndrome
+metabolic-syndrome,MONDO:0011565,ALIAS_LABEL,metabolic syndrome x
+microscopic-colitis,MONDO:0000702,LABEL,microscopic colitis
+microscopic-polyangiitis,MONDO:0019124,LABEL,microscopic polyangiitis
+mixed-connective-tissue-disease,MONDO:0005854,LABEL,mixed connective tissue disease
+multiple-endocrine-neoplasia,MONDO:0007540,ALIAS_EXACT_SYNONYM,men1
+multiple-endocrine-neoplasia,MONDO:0017169,LABEL,multiple endocrine neoplasia
+multiple-endocrine-neoplasia,MONDO:0019003,ALIAS_EXACT_SYNONYM,men2
+multiple-myeloma,MONDO:0009693,EXACT_SYNONYM,multiple myeloma
+multiple-myeloma,MONDO:1013329,EXACT_SYNONYM,multiple myeloma
+multiple-sclerosis,MONDO:0005301,LABEL,multiple sclerosis
+muscular-dystrophy,MONDO:0020121,LABEL,muscular dystrophy
+myasthenia-gravis,MONDO:0009688,LABEL,myasthenia gravis
+myelodysplastic-syndrome,MONDO:0018881,EXACT_SYNONYM,myelodysplastic syndromes
+myocardial-infarction,MONDO:0005068,ALIAS_LABEL,myocardial infarction
+myopia,MONDO:0001384,LABEL,myopia
+myxedema-coma,MONDO:1010100,LABEL,myxedema coma
+narcolepsy,MONDO:0021107,LABEL,narcolepsy
+necrobiosis-lipoidica,MONDO:0006583,LABEL,necrobiosis lipoidica
+necrobiotic-xanthogranuloma,MONDO:0015537,LABEL,necrobiotic xanthogranuloma
+nephritis,MONDO:0001166,LABEL,nephritis
+nephritis,MONDO:0002462,ALIAS_LABEL,glomerulonephritis
+nephrosis,MONDO:0002331,LABEL,nephrosis
+neuroblastoma,MONDO:0005072,LABEL,neuroblastoma
+neuroleptic-malignant-syndrome,MONDO:0019790,LABEL,neuroleptic malignant syndrome
+night-blindness,MONDO:0004588,LABEL,night blindness
+nocardiosis,MONDO:0017776,LABEL,nocardiosis
+nocturnal-enuresis,MONDO:0000022,LABEL,nocturnal enuresis
+noise-induced-hearing-loss,MONDO:0013098,EXACT_SYNONYM,noise-induced hearing loss
+non-hodgkins-lymphoma,MONDO:0018908,EXACT_SYNONYM,non-hodgkin's lymphoma
+nonspecific-interstitial-pneumonia,MONDO:0019622,EXACT_SYNONYM,nonspecific interstitial pneumonia
+nontoxic-thyroid-enlargement,MONDO:0001658,ALIAS_LABEL,nontoxic goiter
+normal-pressure-hydrocephalus,MONDO:0009366,LABEL,normal pressure hydrocephalus
+ocd,MONDO:0008114,ALIAS_LABEL,obsessive-compulsive disorder
+optic-atrophy,MONDO:0003608,LABEL,optic atrophy
+optic-neuritis,MONDO:0005885,LABEL,optic neuritis
+oral-cancer,MONDO:0005515,ALIAS_LABEL,oral cavity cancer
+oral-cancer,MONDO:0023644,EXACT_SYNONYM,oral cancer
+oral-candidiasis,MONDO:0005886,LABEL,oral candidiasis
+oral-hairy-leukoplakia,MONDO:0000743,LABEL,oral hairy leukoplakia
+oral-lichen-planus-lichenoid-lesions,MONDO:0043923,ALIAS_EXACT_SYNONYM,oral lichen planus
+orthostatic-hypotension,MONDO:0005469,LABEL,orthostatic hypotension
+osgood-schlatter-disease,MONDO:0004241,LABEL,osgood-schlatter disease
+osteitis-deformans,MONDO:0005382,ALIAS_EXACT_SYNONYM,paget disease of bone
+osteoarthritis,MONDO:0005178,ALIAS_LABEL,osteoarthritis
+osteomalacia,MONDO:0001068,ALIAS_LABEL,osteomalacia
+osteomyelitis,MONDO:0005246,LABEL,osteomyelitis
+osteonecrosis-of-the-jaw,MONDO:0018378,LABEL,osteonecrosis of the jaw
+otitis-externa,MONDO:0004795,LABEL,otitis externa
+otitis-media,MONDO:0005441,LABEL,otitis media
+otosclerosis,MONDO:0005349,LABEL,otosclerosis
+ovarian-cancer,MONDO:0008170,LABEL,ovarian cancer
+overactive-bladder,MONDO:0006624,LABEL,overactive bladder
+pancreatic-cancer,MONDO:0009831,EXACT_SYNONYM,pancreatic cancer
+pancreatitis,MONDO:0004982,LABEL,pancreatitis
+panic-disorder,MONDO:0005383,LABEL,panic disorder
+panner-s-disease,MONDO:0019969,ALIAS_LABEL,panner disease
+papilledema,MONDO:0006879,EXACT_SYNONYM,papilledema
+paraganglioma,MONDO:0000448,LABEL,paraganglioma
+paraphimosis,MONDO:0006889,LABEL,paraphimosis
+parkinsons-disease,MONDO:0005180,EXACT_SYNONYM,parkinson's disease
+patellofemoral-pain-syndrome,MONDO:0006894,LABEL,patellofemoral pain syndrome
+patent-ductus-arteriosus,MONDO:0011827,LABEL,patent ductus arteriosus
+pelvic-inflammatory-disease,MONDO:0000922,LABEL,pelvic inflammatory disease
+peptic-ulcer-disease,MONDO:0004247,ALIAS_LABEL,peptic ulcer disease
+pericardial-effusion,MONDO:0001370,LABEL,pericardial effusion
+periodontal-disease,MONDO:0002635,EXACT_SYNONYM,periodontal disease
+periodontitis,MONDO:0005076,LABEL,periodontitis
+peripheral-neuropathy,MONDO:0005244,LABEL,peripheral neuropathy
+peripheral-vascular-disease,MONDO:0005294,LABEL,peripheral vascular disease
+persistent-depressive-disorder,MONDO:0001442,ALIAS_EXACT_SYNONYM,dysthymia
+pheochromocytoma,MONDO:0008233,LABEL,pheochromocytoma
+phimosis,MONDO:0006904,LABEL,phimosis
+piriformis-syndrome,MONDO:0043320,LABEL,piriformis syndrome
+pituitary-neoplasm,MONDO:0017611,EXACT_SYNONYM,pituitary neoplasm
+plantar-fasciitis,MONDO:0004833,LABEL,plantar fasciitis
+plantar-warts,MONDO:0001795,ALIAS_EXACT_SYNONYM,verruca plantaris
+pleura-cancer,MONDO:0003308,ALIAS_LABEL,pleural mesothelioma
+pleura-cancer,MONDO:0006294,EXACT_SYNONYM,pleura cancer
+pleurisy,MONDO:0000986,LABEL,pleurisy
+pneumoconiosis,MONDO:0005960,ALIAS_LABEL,silicosis
+pneumoconiosis,MONDO:0015926,ALIAS_LABEL,pneumoconiosis
+pneumoconiosis,MONDO:0016466,ALIAS_LABEL,asbestosis
+pneumothorax,MONDO:0002076,LABEL,pneumothorax
+polycystic-ovary-syndrome,MONDO:0008487,ALIAS_LABEL,polycystic ovary syndrome
+polycythemia-vera,MONDO:0009891,EXACT_SYNONYM,polycythemia vera
+polymyalgia-rheumatica,MONDO:0019735,LABEL,polymyalgia rheumatica
+polymyositis,MONDO:0019127,LABEL,polymyositis
+porphyria-cutanea-tarda,MONDO:0015104,LABEL,porphyria cutanea tarda
+post-concussion-syndrome,MONDO:0004762,ALIAS_EXACT_SYNONYM,pcs
+postherpetic-neuralgia,MONDO:0041052,LABEL,postherpetic neuralgia
+postpartum-thyroiditis,MONDO:0044014,LABEL,postpartum thyroiditis
+postural-orthostatic-tachycardia-syndrome,MONDO:0001315,EXACT_SYNONYM,postural orthostatic tachycardia syndrome
+premature-atrial-ventricular-contractions,MONDO:1061002,ALIAS_EXACT_SYNONYM,pac
+premature-ejaculation,MONDO:0001780,LABEL,premature ejaculation
+primary-myelofibrosis,MONDO:0009692,LABEL,primary myelofibrosis
+prostate-cancer,MONDO:0008315,LABEL,prostate cancer
+prostatitis,MONDO:0005280,LABEL,prostatitis
+prurigo-nodularis,MONDO:0026045,LABEL,prurigo nodularis
+psoriasis,MONDO:0005083,LABEL,psoriasis
+psoriatic-arthritis,MONDO:0011849,LABEL,psoriatic arthritis
+ptosis,MONDO:0000728,LABEL,ptosis
+ptsd,MONDO:0005146,ALIAS_LABEL,post-traumatic stress disorder
+pudendal-neuralgia,MONDO:0018957,LABEL,pudendal neuralgia
+pulmonary-alveolar-microlithiasis,MONDO:0009928,LABEL,pulmonary alveolar microlithiasis
+pulmonary-edema,MONDO:0006932,LABEL,pulmonary edema
+pulmonary-embolism,MONDO:0005279,LABEL,pulmonary embolism
+pulmonary-fibrosis,MONDO:0002771,LABEL,pulmonary fibrosis
+pulmonary-hypertension,MONDO:0001999,ALIAS_EXACT_SYNONYM,primary pulmonary hypertension
+pulmonary-hypertension,MONDO:0005149,LABEL,pulmonary hypertension
+pulmonary-langerhans-cell-histiocytosis,MONDO:0975907,LABEL,pulmonary langerhans cell histiocytosis
+pyoderma,MONDO:0002922,LABEL,pyoderma
+pyoderma-gangrenosum,MONDO:0018824,LABEL,pyoderma gangrenosum
+q-fever,MONDO:0019186,ALIAS_LABEL,q fever
+radial-neuropathy,MONDO:0001459,LABEL,radial neuropathy
+radiculopathy,MONDO:0002959,LABEL,radiculopathy
+ranula,MONDO:0001600,EXACT_SYNONYM,ranula
+raynauds-syndrome,MONDO:0008364,EXACT_SYNONYM,raynaud's syndrome
+reactive-arthritis,MONDO:0017376,LABEL,reactive arthritis
+rectal-prolapse,MONDO:0004754,LABEL,rectal prolapse
+rem-sleep-disorder,MONDO:0005937,ALIAS_LABEL,rem sleep behavior disorder
+respiratory-cancer,MONDO:0001407,ALIAS_LABEL,tracheal cancer
+respiratory-cancer,MONDO:0002806,ALIAS_LABEL,bronchogenic carcinoma
+respiratory-cancer,MONDO:0008903,ALIAS_LABEL,lung cancer
+restless-leg-syndrome,MONDO:0005391,EXACT_SYNONYM,restless leg syndrome
+retinal-detachment,MONDO:0008375,LABEL,retinal detachment
+retinal-dystrophy,MONDO:0015993,ALIAS_LABEL,cone-rod dystrophy
+retinal-dystrophy,MONDO:0019118,EXACT_SYNONYM,retinal dystrophy
+retinal-dystrophy,MONDO:0019200,ALIAS_LABEL,retinitis pigmentosa
+retinitis,MONDO:0002708,LABEL,retinitis
+rheumatoid-arthritis,MONDO:0005272,ALIAS_EXACT_SYNONYM,ra
+rheumatoid-arthritis,MONDO:0008383,LABEL,rheumatoid arthritis
+rhinitis-vasomotor,MONDO:0006004,ALIAS_LABEL,vasomotor rhinitis
+rickets,MONDO:0005520,LABEL,rickets
+rickettsial-ehrlichial-anaplasma-infection,MONDO:0005118,ALIAS_EXACT_SYNONYM,anaplasmosis
+rickettsial-ehrlichial-anaplasma-infection,MONDO:0016003,ALIAS_LABEL,ehrlichiosis
+rickettsial-ehrlichial-anaplasma-infection,MONDO:0019359,ALIAS_LABEL,rocky mountain spotted fever
+rickettsial-ehrlichial-anaplasma-infection,MONDO:0019365,ALIAS_LABEL,scrub typhus
+rosacea,MONDO:0006604,LABEL,rosacea
+salivary-gland-cancer,MONDO:0004669,LABEL,salivary gland cancer
+sarcoidosis,MONDO:0019338,LABEL,sarcoidosis
+schizoaffective-disorder,MONDO:0005487,LABEL,schizoaffective disorder
+schizophrenia,MONDO:0005090,LABEL,schizophrenia
+scleredema,MONDO:0006606,EXACT_SYNONYM,scleredema
+scleritis,MONDO:0001718,LABEL,scleritis
+scleroderma,MONDO:0005100,ALIAS_LABEL,systemic sclerosis
+scleroderma,MONDO:0019340,LABEL,scleroderma
+scoliosis,MONDO:0005392,LABEL,scoliosis
+scotoma,MONDO:0004758,LABEL,scotoma
+seborrheic-dermatitis,MONDO:0006608,LABEL,seborrheic dermatitis
+seborrheic-keratosis,MONDO:0008420,LABEL,seborrheic keratosis
+seizure-disorder,MONDO:0005027,ALIAS_EXACT_SYNONYM,seizure disorder
+separation-anxiety-disorder,MONDO:0001098,LABEL,separation anxiety disorder
+serotonin-syndrome,MONDO:0018546,LABEL,serotonin syndrome
+short-bowel-syndrome,MONDO:0015183,LABEL,short bowel syndrome
+short-qt-syndrome,MONDO:0000453,LABEL,short qt syndrome
+sialadenitis,MONDO:0006969,LABEL,sialadenitis
+sialolithiasis,MONDO:0006970,LABEL,sialolithiasis
+sick-sinus-syndrome,MONDO:0001823,LABEL,sick sinus syndrome
+sinusitis,MONDO:0005961,LABEL,sinusitis
+skin-cancer,MONDO:0005105,ALIAS_LABEL,melanoma
+sleep-apnea,MONDO:0005296,ALIAS_EXACT_SYNONYM,sleep apnea
+sleep-apnea,MONDO:0007147,ALIAS_EXACT_SYNONYM,obstructive sleep apnea
+small-intestine-cancer,MONDO:0000956,LABEL,small intestine cancer
+social-anxiety-disorder,MONDO:0001247,EXACT_SYNONYM,social anxiety disorder
+soft-tissue-sarcomas,MONDO:0018078,ALIAS_LABEL,soft tissue sarcoma
+solitary-rectal-ulcer-syndrome,MONDO:0016208,LABEL,solitary rectal ulcer syndrome
+somatostatinoma,MONDO:0006976,LABEL,somatostatinoma
+spasmodic-dysphonia,MONDO:0000485,EXACT_SYNONYM,spasmodic dysphonia
+specific-phobia,MONDO:0012000,LABEL,specific phobia
+spermatocele,MONDO:0006977,LABEL,spermatocele
+spina-bifida,MONDO:0008449,LABEL,spina bifida
+spinal-stenosis,MONDO:0005965,LABEL,spinal stenosis
+squamous-cell-carcinoma,MONDO:0005096,LABEL,squamous cell carcinoma
+stevens-johnson-syndrome,MONDO:0018229,LABEL,stevens-johnson syndrome
+stomach-cancer,MONDO:0001056,EXACT_SYNONYM,stomach cancer
+stomatitis,MONDO:0004842,LABEL,stomatitis
+strabismus,MONDO:0003432,LABEL,strabismus
+strongyloidiasis,MONDO:0005974,LABEL,strongyloidiasis
+subacute-thyroiditis,MONDO:0006982,LABEL,subacute thyroiditis
+substance-use-disorder,MONDO:0002491,ALIAS_LABEL,substance abuse
+superior-mesenteric-artery-syndrome,MONDO:0002687,LABEL,superior mesenteric artery syndrome
+superior-semicircular-canal-dehiscence,MONDO:0018484,EXACT_SYNONYM,superior semicircular canal dehiscence
+syphilis,MONDO:0005976,LABEL,syphilis
+syringomyelia,MONDO:0017987,LABEL,syringomyelia
+systemic-lupus-erythematosus,MONDO:0007915,ALIAS_LABEL,systemic lupus erythematosus
+systemic-vasculitis,MONDO:0018882,ALIAS_LABEL,vasculitis
+systemic-vasculitis,MONDO:0800113,EXACT_SYNONYM,systemic vasculitis
+takotsubo-cardiomyopathy,MONDO:0019018,EXACT_SYNONYM,takotsubo cardiomyopathy
+tardive-dyskinesia,MONDO:0010096,LABEL,tardive dyskinesia
+tarsal-tunnel-syndrome,MONDO:0006994,LABEL,tarsal tunnel syndrome
+tendinopathy,MONDO:0004857,ALIAS_LABEL,tendinitis
+tendinopathy,MONDO:0100010,ALIAS_EXACT_SYNONYM,tendinopathy
+tendinopathy,MONDO:0100011,ALIAS_LABEL,tendinosis
+tenosynovitis,MONDO:0004855,LABEL,tenosynovitis
+testicular-atrophy,MONDO:0001415,EXACT_SYNONYM,testicular atrophy
+testicular-cancer,MONDO:0005447,LABEL,testicular cancer
+testicular-torsion,MONDO:0008541,EXACT_SYNONYM,testicular torsion
+tetralogy-of-fallot,MONDO:0008542,LABEL,tetralogy of fallot
+thoracic-outlet-syndrome,MONDO:0005979,LABEL,thoracic outlet syndrome
+thromboangiitis-obliterans,MONDO:0008889,ALIAS_EXACT_SYNONYM,buerger's disease
+thrombocytopenia,MONDO:0002049,LABEL,thrombocytopenia
+thrombophlebitis,MONDO:0002800,LABEL,thrombophlebitis
+thyroid-cancer,MONDO:0002108,LABEL,thyroid cancer
+thyroid-storm,MONDO:0006996,EXACT_SYNONYM,thyroid storm
+thyroiditis,MONDO:0004126,LABEL,thyroiditis
+tibial-neuropathy,MONDO:0006997,LABEL,tibial neuropathy
+tinnitus,MONDO:0700322,LABEL,tinnitus
+toxic-epidermal-necrolysis,MONDO:0019810,LABEL,toxic epidermal necrolysis
+tracheal-stenosis,MONDO:0002568,LABEL,tracheal stenosis
+tracheitis,MONDO:0005990,LABEL,tracheitis
+transient-ischemic-attack-residuals,MONDO:0005264,ALIAS_LABEL,transient ischemic attack
+trichotillomania,MONDO:0013189,LABEL,trichotillomania
+trigeminal-neuralgia,MONDO:0008599,ALIAS_LABEL,trigeminal neuralgia
+trigger-thumb,MONDO:0008600,LABEL,trigger thumb
+typhoid-fever,MONDO:0005619,LABEL,typhoid fever
+ulnar-neuropathy,MONDO:0007006,LABEL,ulnar neuropathy
+urethral-stricture,MONDO:0002127,LABEL,urethral stricture
+urinary-tract-cancer,MONDO:0040679,ALIAS_LABEL,urothelial carcinoma
+urticaria,MONDO:0005492,ALIAS_LABEL,urticaria
+uveitis,MONDO:0020283,LABEL,uveitis
+vaginismus,MONDO:0021723,LABEL,vaginismus
+varicocele-hydrocele,MONDO:0001498,ALIAS_LABEL,varicocele
+varicocele-hydrocele,MONDO:0004920,ALIAS_LABEL,hydrocele
+ventricular-septal-defect,MONDO:0002070,LABEL,ventricular septal defect
+ventricular-tachycardia-fibrillation,MONDO:0000190,ALIAS_LABEL,ventricular fibrillation
+ventricular-tachycardia-fibrillation,MONDO:0005477,ALIAS_LABEL,ventricular tachycardia
+vipoma,MONDO:0019960,LABEL,vipoma
+vitiligo,MONDO:0008661,LABEL,vitiligo
+volkmann-s-ischemic-contracture,MONDO:0003528,EXACT_SYNONYM,volkmann's ischemic contracture
+vulvodynia-vestibulitis,MONDO:0021722,ALIAS_LABEL,vulvodynia
+wernicke-korsakoff-syndrome,MONDO:0010198,LABEL,wernicke-korsakoff syndrome
+wolff-parkinson-white-syndrome,MONDO:0008685,LABEL,wolff-parkinson-white syndrome
+xanthomas,MONDO:0005236,ALIAS_LABEL,xanthoma

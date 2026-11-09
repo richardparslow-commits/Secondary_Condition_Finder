@@ -1,0 +1,66 @@
+{
+  "source": "https://github.com/monarch-initiative/mondo/releases/download/v2026-10-06/mondo.obo",
+  "source_sha256": "2631e8e165d41def1a46749adb1ce0a336c8aba7f6bc0978729592cee8fed60b",
+  "version": "v2026-10-06",
+  "snapshot": "a165dc2fc61761f5e5413b6395dd4afb14c89d78783af213a9b8f1d0a3f2a8c7",
+  "tables": {
+    "concepts": {
+      "rows": 36055,
+      "sha256": "6f8d2ab7d19328e68ce8158ed3159625c74209fd1610b4a7244145cb3eb5912c",
+      "file": "/tmp/scf-mondo-20261006/staged/concepts.csv",
+      "jsonl": "/tmp/scf-mondo-20261006/staged/concepts.jsonl",
+      "jsonl_sha256": "0590a4bd5709ed1e401f15a188c130c7ce7ebb453cf635ac6ba39233a0383f43"
+    },
+    "synonyms": {
+      "rows": 94313,
+      "sha256": "51dc1dc74e81b783330f4b32f5cc5150839c3c1a77cada5ff5846a93d78717a3",
+      "file": "/tmp/scf-mondo-20261006/staged/synonyms.csv",
+      "jsonl": "/tmp/scf-mondo-20261006/staged/synonyms.jsonl",
+      "jsonl_sha256": "e85396222489e76290a4ed0a9f82fafaf9ae06ca4038886743867d16660af7b4"
+    },
+    "parents": {
+      "rows": 46732,
+      "sha256": "4223c0e732699c41c2393d0ae6db94549cd7fb9324e1ea366389442a58bb8ba2",
+      "file": "/tmp/scf-mondo-20261006/staged/parents.csv",
+      "jsonl": "/tmp/scf-mondo-20261006/staged/parents.jsonl",
+      "jsonl_sha256": "955de8681afb5bd7c75dc69e995e42806703ca308a3da4906d2c00bf275d1fd8"
+    },
+    "xrefs": {
+      "rows": 148013,
+      "sha256": "b53b5df203b710a4b5196226f8de1d2d179662ccacc12671867e185945c7066b",
+      "file": "/tmp/scf-mondo-20261006/staged/xrefs.csv",
+      "jsonl": "/tmp/scf-mondo-20261006/staged/xrefs.jsonl",
+      "jsonl_sha256": "ce14bdb69db1212a6763bfdb459128238c4e46caa11ebd7bb1b6d6eb32b511c0"
+    },
+    "app_candidates": {
+      "rows": 565,
+      "sha256": "60abb80c7db9ddad6f1d220b433f47d9dbfe31c05e106fdfefa67d80baadc27e",
+      "file": "/tmp/scf-mondo-20261006/staged/app_candidates.csv",
+      "jsonl": "/tmp/scf-mondo-20261006/staged/app_candidates.jsonl",
+      "jsonl_sha256": "98788dbddf55e98d155cde296cbe1484706b0d126de2c395c3e54c44867fca39"
+    },
+    "app_audits": {
+      "rows": 819,
+      "sha256": "c19ee92c68b985dec8e3dc91eaf29abecb78745a212d6c1080aaed51547731e6",
+      "file": "/tmp/scf-mondo-20261006/staged/app_audits.csv",
+      "jsonl": "/tmp/scf-mondo-20261006/staged/app_audits.jsonl",
+      "jsonl_sha256": "a5f0f1ede8677981fc5c6a9a8d77b2b3df1a63dbaaf6d1cab24b5eac12721dc9"
+    },
+    "app_pathways": {
+      "rows": 875,
+      "sha256": "2b14c776e50188965e35169ba1372cbf4674441caccab88eb2d0e6ee7c82a067",
+      "file": "/tmp/scf-mondo-20261006/staged/app_pathways.csv",
+      "jsonl": "/tmp/scf-mondo-20261006/staged/app_pathways.jsonl",
+      "jsonl_sha256": "6ccf6e15c5ee4378952f164a17b1fa0c61596c16b763d1905d6ad566fc88dd26"
+    }
+  },
+  "conditionCoverage": {
+    "AMBIGUOUS_LEXICAL_CANDIDATES": 51,
+    "NO_EXACT_ONTOLOGY_MATCH": 324,
+    "UNIQUE_LEXICAL_CANDIDATE_REVIEW": 444
+  },
+  "appConditionCount": 819,
+  "appPathwayCount": 875,
+  "clinicalApproval": "NOT_GRANTED",
+  "attribution": "MONDO Disease Ontology, CC BY 4.0, Monarch Initiative."
+}

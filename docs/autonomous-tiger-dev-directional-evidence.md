@@ -16,7 +16,7 @@ Workflow: `.github/workflows/tiger-dev-directional-evidence.yml`
 - Only `main` can run it: the GitHub `tiger-dev-research` environment has a `main`-only deployment-branch policy.
 - `GITHUB_TOKEN` has `contents: read` only. No issue/PR writes, merges, medical approvals or production publication.
 - One run at a time; scheduled events cannot cancel an ongoing run.
-- Downloads the official pinned **MONDO v2026-10-06** ontology with SHA-256 verification and a fixed official GitHub Release API fallback if the CDN returns a network error (release asset ID `616499018`, same pinned digest), rebuilds Batch 1's 819/875 review ledger and contradiction signals, runs tests, then checks PubMed.
+- Stages the **checksum-validated, precomputed MONDO v2026-10-06 identity-audit subset** (819 app conditions / 565 lexical candidates), originally derived from the SHA-256-verified official 51-MB ontology. Rebuilds Batch 1's 819/875 review ledger and contradiction signals, runs tests, then checks PubMed. This avoids a repeated large download from the GitHub release CDN, which prevented the first GitHub-hosted run from starting evidence checks. The full ontology remains a separate, explicitly versioned refresh, never silently replaced. The official release downloader still has the fixed GitHub Release API fallback and SHA-256 guard from PR #667; it is retained for controlled full-release refreshes rather than each scheduled evidence run.
 - Public NCBI E-utilities metadata and fixed Title/Abstract study discovery only. 550 ms minimum request pacing, timeouts, bounded retries, no raw abstract copying and no unrestricted patient queries.
 - Inserts a content-addressed research snapshot into the dedicated Tiger Cloud DEV schema and performs independent READ ONLY exact-row verification.
 - Saves a GitHub Actions run summary and JSON/CSV/Markdown artifacts (30-day retention). A separate minimally privileged issue job reports failed checks and automatically closes its issue when a later run is green.
@@ -44,8 +44,8 @@ From the reviewed repo branch, with Node 22 and Python 3.12+:
 
 ```sh
 npm ci
-python3 scripts/lib/fetch-mondo-dev.py
-python3 scripts/lib/prepare-mondo-dev.py
+python3 scripts/automation/stage_pinned_ontology.py
+python3 -m unittest discover -s tests -p 'test_pinned_ontology_bootstrap.py'
 python3 scripts/lib/build-clinical-review-ledger.py
 python3 -m unittest discover -s tests -p 'test_clinical_review_rules.py'
 python3 -m unittest discover -s tests -p 'test_directional_evidence_campaign.py'
