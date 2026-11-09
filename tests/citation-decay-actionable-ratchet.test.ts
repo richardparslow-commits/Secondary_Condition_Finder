@@ -150,7 +150,9 @@ describe("the committed register against the real corpus", () => {
     file: f,
     data: JSON.parse(readFileSync(path.join(kbDir, f), "utf8")),
   }));
-  const result = buildReport(files, new Map(), TODAY, loaded);
+  // E2 was re-measured on 2026-11-09; evaluate the register on that date, not
+  // the older synthetic-fixture date, so the fresh assessment is not future-dated.
+  const result = buildReport(files, new Map(), "2026-11-09", loaded);
 
   it("is itself valid", () => {
     expect(loaded.present).toBe(true);

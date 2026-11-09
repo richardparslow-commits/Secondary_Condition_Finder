@@ -2,7 +2,7 @@
 
 **PREPARED — UNREVIEWED. No approvals or new source-verification decisions recorded.**
 
-Prepared: **2026-11-08** · Packet ID: `citation-decay-518-review-2026-10-11`.
+Prepared: **2026-11-08** · E2 corrected: **2026-11-09** · Packet ID: `citation-decay-518-review-2026-10-11`.
 Issue: [Citation decay detected — re-verification required #518](https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/518).
 
 This packet prepares **three source-class exemption decisions (E1–E3)** and
@@ -43,13 +43,17 @@ The unsigned bindings were refreshed after integrating current `main`. Its
 measured-class register and eligible-backlog ratchet remain independently
 enforced; neither supplies approval for the proposals in this packet. The
 reference-use inventory is unchanged. No live reassessment or qualified-human
-decision was performed during this refresh.
+decision was performed during the original preparation or the 2026-11-08
+refresh; the separate 2026-11-09 E2 evidence collection is not a qualified-human
+review and does not change the baseline.
 
 ### What this preparation did not do
 
-- No new live fetches, independent measurement, legal applicability review, or
-  clinical verification; the 2026-10-10 transport observations below are
-  **carried-forward claims from Cline's draft register**.
+- The original preparation made no new live fetches; the separate 2026-11-09
+  E2 evidence bundle records fresh transport observations, but it is not
+  independent legal applicability review or clinical verification. The
+  2026-10-10 observations below remain **carried-forward claims from Cline's
+  draft register** except where E2 cites the corrected bundle.
 - No changes to approvals, source-check dates, digests, live mapping data,
   publication state, retirement provenance, or catalog identities.
 - The original packet preparation made no repository writes. This PR update
@@ -74,8 +78,10 @@ decision was performed during this refresh.
 | Proposed actionable-undigested ratchet in the working tree | 4 |
 
 The audit's zero detected drift is **unobservable**, not a clean bill of health.
-Zero network probes were performed when building this snapshot. The current
-offline audit deliberately fails; do not expect a green result before decisions.
+Zero network probes were performed when building this snapshot; a separate
+2026-11-09 evidence bundle records fresh E2 transport observations without
+changing the baseline. The current offline audit deliberately fails; do not
+expect a green result before decisions.
 
 ## 2. Review order and evidence standard
 
@@ -218,14 +224,14 @@ Reviewer identity/role: — · Decision date: — · Decision: —<br>
 Fresh assessment date and evidence links: — · Approved scope/conditions: —<br>
 Required narrowing/alternative work: — · Residual risk and reassessment owner: —
 
-## 5. E2 — eCFR current-section HTML nonce
+## 5. E2 — eCFR current-section redirect to Federal Register unblock
 
-**Register ID:** `ecfr-current-section-html-csp-nonce`<br>
+**Register ID:** `ecfr-current-section-html-csp-nonce` (retained for worksheet continuity)<br>
 [Proposed entry](../data/citation-digest-exemptions.json#L85) · Host: `www.ecfr.gov` ·
-Reason: `volatile-body-per-fetch`.
+Reason: `redirected-to-interstitial`.
 
 ```text
-^https://www\.ecfr\.gov/current/
+^https://www\.ecfr\.gov/current/title-38/chapter-I/part-3/subpart-A/subject-group-ECFR39056aee4e9ff13/section-3\.310/?$
 ```
 
 **Affected population:** one verified legal-framework reference, in the draft
@@ -237,23 +243,31 @@ This is not one of the four Cornell uses.
 Exact sampled/source URL:
 https://www.ecfr.gov/current/title-38/chapter-I/part-3/subpart-A/subject-group-ECFR39056aee4e9ff13/section-3.310
 
-**Carried assessment, not independently reproduced:** 2026-10-10; five GETs,
-six seconds apart, four distinct digests, HTTP 200, 85,108 bytes each. The
-register attributes variation to an analytics-script CSP nonce. An earlier
-three-fetch sample reportedly appeared stable. The entry does **not** include
-per-response `bodySha256` values or retained raw diff artifacts.
+**Fresh automated observation, 2026-11-09 — not a qualified-human review:**
+three GETs, 2 seconds apart, using the `citation-decay-audit` User-Agent,
+15-second timeout and at most five redirects. Every request returned `302`
+from the eCFR section URL to `https://unblock.federalregister.gov/`, then
+`200` with 10,596 bytes; two distinct body hashes; no `3.310` text. The
+unblock page itself contains a CSP nonce, but it is not the regulation.
+
+**Superseded assessment:** the 2026-10-10 entry claimed an 85,108-byte eCFR
+HTML body whose only variation was a per-response CSP nonce. That was **not
+reproduced**. The corrected proposal therefore records a redirect-to-interstitial
+block, not eCFR body volatility. Full captures:
+[2026-11-09 evidence](citation-decay-518-evidence-2026-11-09.json).
 
 **Review questions / missing evidence:**
 
-- [ ] Retain per-fetch hashes and permitted differences showing that the nonce,
-      rather than the regulation, explains observed variation.
+- [ ] Confirm this is a stable access/egress block and not an alternate eCFR
+      representation that a permitted human/browser can retrieve.
+- [ ] Decide whether to approve this exact-section interstitial exemption or
+      require a stable official eCFR rendering; do not approve the superseded
+      nonce-only claim.
+- [ ] Retain the final URL, status chain, body bytes/hash and absence of
+      regulation text with the disposition.
 - [ ] Distinguish byte stability from legal currency. A frozen annual edition
-      could be stable yet inappropriate for a current-rule claim.
-- [ ] Assess scope: the pattern covers **all `/current/` URLs** although only
-      one section was sampled. Require a justified broader sample or narrow to
-      the measured route; host matching alone does not solve this path breadth.
-- [ ] Evaluate a stable official rendering without silently changing the source
-      URL, representation, legal effective date, or hash algorithm.
+      or XML rendering may be stable but must be reviewed as a different source
+      representation and effective date.
 - [ ] Keep this draft's legal-framework verification separate from clinical
       OCD-to-migraine applicability and any publication decision.
 

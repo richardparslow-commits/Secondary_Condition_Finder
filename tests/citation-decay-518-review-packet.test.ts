@@ -90,7 +90,9 @@ describe("#518 unsigned qualified-human review packet", () => {
   });
 
   it("reports the unchanged blocked baseline without implying any network probe or new verification", () => {
-    const report = buildReport(files, new Map(), snapshot.preparedOn, loaded);
+    // The corrected E2 assessment is dated 2026-11-09; evaluate the baseline on
+    // the correction date so a future-dated assessment is not silently ignored.
+    const report = buildReport(files, new Map(), snapshot.correctedOn ?? snapshot.preparedOn, loaded);
     expect(snapshot.baseline).toEqual({
       liveReferences: report.liveReferences, verifiedReferences: report.verifiedReferenceCount,
       verifiedWithDigest: report.verifiedWithDigestCount, approvedExemptReferences: report.verifiedDigestExemptCount,

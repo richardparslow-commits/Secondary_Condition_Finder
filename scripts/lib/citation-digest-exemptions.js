@@ -43,6 +43,7 @@ const EXEMPTION_REASSESS_AFTER_DAYS = 365;
 const DIGEST_EXEMPTION_REASONS = Object.freeze([
   "volatile-body-per-fetch",
   "bot-walled-body-unavailable",
+  "redirected-to-interstitial",
 ]);
 
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
@@ -126,6 +127,31 @@ function validateEntry(entry, index) {
         Number.isInteger(a.sampleCount) && Number.isInteger(a.distinctBodyDigests) &&
         a.sampleCount >= 2 && a.distinctBodyDigests < 2) {
       at("reason volatile-body-per-fetch requires at least two distinct body digests across the samples");
+    }
+    if (entry.reason === "redirected-to-interstitial") {
+      const finalUrls = a.finalUrls;
+      if (!Array.isArray(finalUrls) || finalUrls.length !== a.sampleCount) {
+        at("reason redirected-to-interstitial requires one assessment.finalUrls entry per sample");
+      } else {
+        let reachesAnotherHost = false;
+        for (const url of finalUrls) {
+          try {
+            const parsed = new URL(url);
+            if (parsed.protocol !== "https:") at("assessment.finalUrls must be HTTPS URLs");
+            if (parsed.host !== entry.host) reachesAnotherHost = true;
+          } catch {
+            at("assessment.finalUrls contains an invalid URL");
+          }
+        }
+        if (!reachesAnotherHost) at("reason redirected-to-interstitial requires at least one final URL on a different host");
+      }
+      if (a.articleContentPresent !== false) {
+        at("reason redirected-to-interstitial requires assessment.articleContentPresent to be false");
+      }
+      if (!Array.isArray(a.httpStatuses) || a.httpStatuses.length === 0 ||
+          !a.httpStatuses.every((status) => Number.isInteger(status) && status >= 300 && status < 400)) {
+        at("reason redirected-to-interstitial requires every observed source status to be 3xx");
+      }
     }
   }
 

@@ -539,5 +539,38 @@
         "https://www.law.cornell.edu/cfr/text/38/3.310"
       ]
     }
-  ]
+  ],
+  "correction": {
+    "worksheetId": "E2",
+    "proposalId": "ecfr-current-section-html-csp-nonce",
+    "reason": "redirected-to-interstitial",
+    "proposalStatus": "PENDING_QUALIFIED_HUMAN",
+    "supersedesAssessedOn": "2026-10-10",
+    "correctedAssessedOn": "2026-11-09",
+    "sourceUrl": "https://www.ecfr.gov/current/title-38/chapter-I/part-3/subpart-A/subject-group-ECFR39056aee4e9ff13/section-3.310",
+    "sourceStatuses": [
+      302,
+      302,
+      302
+    ],
+    "finalUrls": [
+      "https://unblock.federalregister.gov/",
+      "https://unblock.federalregister.gov/",
+      "https://unblock.federalregister.gov/"
+    ],
+    "finalStatuses": [
+      200,
+      200,
+      200
+    ],
+    "bodyBytes": [
+      10596,
+      10596,
+      10596
+    ],
+    "distinctBodyDigests": 2,
+    "articleContentPresent": false,
+    "approvalStatus": "NONE",
+    "note": "Automated observation only; this correction records the redirect and does not approve an exemption or verify the source."
+  }
 }

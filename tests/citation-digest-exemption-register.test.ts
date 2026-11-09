@@ -11,6 +11,8 @@ import {
 } from "../scripts/lib/citation-digest-exemptions";
 import { hashContent } from "../scripts/audit-citation-decay";
 import {
+  REDIRECT_URL,
+  redirectedEntry,
   register,
   TODAY,
   VOLATILE_URL,
@@ -34,6 +36,32 @@ import {
 describe("digest-exemption register validation", () => {
   it("accepts a fully evidenced entry", () => {
     expect(validateEntry(volatileEntry(), 0)).toEqual([]);
+  });
+
+  it("accepts a fully evidenced redirect-to-interstitial entry", () => {
+    expect(validateEntry(redirectedEntry(), 0)).toEqual([]);
+  });
+
+  it("requires redirect evidence to reach another host without source content", () => {
+    const sameHost = redirectedEntry({
+      assessment: {
+        ...(redirectedEntry().assessment as object),
+        finalUrls: [REDIRECT_URL, REDIRECT_URL, REDIRECT_URL],
+      },
+    });
+    expect(validateEntry(sameHost, 0).join("\n")).toMatch(/final URL on a different host/);
+
+    const content = redirectedEntry({
+      assessment: { ...(redirectedEntry().assessment as object), articleContentPresent: true },
+    });
+    expect(validateEntry(content, 0).join("\n")).toMatch(/articleContentPresent to be false/);
+  });
+
+  it("requires redirect evidence to record 3xx source responses", () => {
+    const notRedirect = redirectedEntry({
+      assessment: { ...(redirectedEntry().assessment as object), httpStatuses: [200, 200, 200] },
+    });
+    expect(validateEntry(notRedirect, 0).join("\n")).toMatch(/every observed source status to be 3xx/);
   });
 
   it("rejects an entry with no measurement behind it", () => {
@@ -78,7 +106,11 @@ describe("digest-exemption register validation", () => {
   it("rejects a reason outside the closed vocabulary", () => {
     const problems = validateEntry(volatileEntry({ reason: "too-much-work" }), 0).join("\n");
     expect(problems).toMatch(/reason must be one of/);
-    expect(DIGEST_EXEMPTION_REASONS).toEqual(["volatile-body-per-fetch", "bot-walled-body-unavailable"]);
+    expect(DIGEST_EXEMPTION_REASONS).toEqual([
+      "volatile-body-per-fetch",
+      "bot-walled-body-unavailable",
+      "redirected-to-interstitial",
+    ]);
   });
 
   it("rejects an invalid urlPattern and a missing SOP basis", () => {

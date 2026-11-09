@@ -97,4 +97,6 @@ Knowledge-base and catalog PRs must reference this SOP and must document whether
 
 **Measured exemptions require qualified-human approval.** `data/citation-digest-exemptions.json` records reproducible source-transport measurements, not citation verification. An exemption must have a valid reason, host-bound URL pattern, sample URLs/statuses, dated assessment, and review disposition. It becomes active only with `review.status: "approved"`, a named qualified reviewer, and a real `reviewedOn` date at or after the assessment. Pending, rejected, invalid, future-dated, or expired entries grant no waiver. Assessments must be re-measured after 365 days. A register/schema failure fails the audit; pending matches remain debt and explicitly request approval. Automation must never supply the human approval.
 
+A `redirected-to-interstitial` entry records a source URL that redirects to a block or unblock page rather than the source itself. It must record per-sample final URLs, the 3xx source responses, and `articleContentPresent: false`; it is not evidence that the source body merely varies per fetch.
+
 The measured-class register above remains independently enforced. PR #527 additionally fails closed on pending proposals and its proposed four-reference ratchet; no existing measurement is a qualified-human approval of this proposal.

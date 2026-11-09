@@ -46,6 +46,41 @@ function volatileEntry(overrides: Entry = {}): Entry {
   };
 }
 
+const REDIRECT_URL = "https://www.ecfr.gov/current/title-38/chapter-I/part-3/subpart-A/subject-group-ECFR39056aee4e9ff13/section-3.310";
+const REDIRECT_FINAL_URL = "https://unblock.federalregister.gov/";
+
+/** A fully evidenced redirect-to-interstitial entry, distinct from body volatility. */
+function redirectedEntry(overrides: Entry = {}): Entry {
+  return {
+    id: "test-redirected",
+    host: "www.ecfr.gov",
+    urlPattern: "^https://www\\.ecfr\\.gov/current/title-38/chapter-I/part-3/subpart-A/subject-group-ECFR39056aee4e9ff13/section-3\\.310/?$",
+    reason: "redirected-to-interstitial",
+    summary: "The source URL redirects to an unblock interstitial instead of the regulation.",
+    sopBasis: "docs/citation-verification-sop.md",
+    assessment: {
+      assessedOn: TODAY,
+      method: "three sequential GETs, redirect-followed, SHA-256 compared",
+      sampleUrls: [REDIRECT_URL],
+      sampleCount: 3,
+      distinctBodyDigests: 2,
+      deterministic: false,
+      httpStatuses: [302, 302, 302],
+      finalHttpStatuses: [200, 200, 200],
+      finalUrls: [REDIRECT_FINAL_URL, REDIRECT_FINAL_URL, REDIRECT_FINAL_URL],
+      bodyBytes: [10596, 10596, 10596],
+      bodySha256: [
+        "sha256-3e8f75b59806092ad7a78c353c9582892a4f35da3200335f04dad0d0ceca2d9d",
+        "sha256-66e140c19e6f51cb049e22ce8d5d46cda4065a8aef9af8177fbdf0e21b795f0a",
+        "sha256-66e140c19e6f51cb049e22ce8d5d46cda4065a8aef9af8177fbdf0e21b795f0a",
+      ],
+      articleContentPresent: false,
+    },
+    review: { status: "pending-qualified-human", reviewer: null, reviewedOn: null },
+    ...overrides,
+  };
+}
+
 /**
  * Builds the register shape buildReport consumes, using the same validation and
  * compilation the disk loader uses so an in-memory register cannot be sounder
@@ -94,7 +129,10 @@ export {
   TODAY,
   VOLATILE_URL,
   STABLE_URL,
+  REDIRECT_URL,
+  REDIRECT_FINAL_URL,
   volatileEntry,
+  redirectedEntry,
   register,
   corpus,
   verifiedRef,
