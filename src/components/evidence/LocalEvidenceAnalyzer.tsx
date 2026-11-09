@@ -139,6 +139,8 @@ const STORAGE_PARTIAL_WARNING =
 // notice closes (Heal s10-refused-save-shown-retained-1).
 const STORAGE_SAVE_REFUSED_WARNING =
   "Analyzed evidence could not be kept in this browser tab: browser storage rejected the save. It remains visible in this review but may be missing from the Step 6 checklist. Free browser storage or reduce retained evidence, then analyze the source again.";
+const STORAGE_REMOVAL_REFUSED_WARNING =
+  "The document was removed from this view, but browser storage rejected the removal. Its excerpts may still appear on Step 6 or after reloading. Clear local evidence and confirm storage cleanup before continuing.";
 const STORAGE_RECORD_REFUSED_WARNING =
   "The analyzed source could not be kept because its source name or locator is too long for browser storage. Shorten it and analyze again.";
 // The storage reader caps a locator at 256 characters. This leaves 56 chars
@@ -455,9 +457,11 @@ export function LocalEvidenceAnalyzer({ conditionTerms, onUnsavedPastedTextChang
     const saved = saveStored(next, limits);
     applyAnalyses(next);
     if (!saved) {
-      setWarnings((previous) => [...previous,
-        "The document was removed from this view, but browser storage rejected the removal. Its excerpts may still appear on Step 6 or after reloading. Clear local evidence and confirm storage cleanup before continuing.",
-      ]);
+      setWarnings((previous) =>
+        previous.includes(STORAGE_REMOVAL_REFUSED_WARNING)
+          ? previous
+          : [STORAGE_REMOVAL_REFUSED_WARNING, ...previous],
+      );
     }
   }
 
