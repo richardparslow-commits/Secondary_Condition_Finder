@@ -203,6 +203,9 @@ const nextConfig: NextConfig = {
    */
   outputFileTracingIncludes: {
     "/**": runtimeDataTracingIncludes(),
+    // Node tracing selects pg-cloudflare's empty default export; OpenNext
+    // bundles the workerd export instead and needs its socket implementation.
+    "/api/internal/tiger-catalog-compare": ["./node_modules/pg-cloudflare/dist/index.js"],
   },
   /**
    * Retired data is subtracted from every route's trace.
