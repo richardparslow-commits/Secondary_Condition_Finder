@@ -31,7 +31,7 @@ export async function POST(request: Request) {
   try {
     const result = await probePreviewCatalog(connection);
     return NextResponse.json(result, {
-      status: result.catalog === "identities_match" ? 200 : 409,
+      status: result.catalog === "parity_verified" ? 200 : 409,
       headers,
     });
   } catch {

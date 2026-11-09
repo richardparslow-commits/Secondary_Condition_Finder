@@ -1,59 +1,90 @@
-# Tiger Cloud → Vercel Preview read-only probe
+# Tiger Cloud DEV catalog parity — Vercel Preview
 
-This integration is a **diagnostic only**, not a migration or a new persistence
-layer. The application continues to load its checked-in condition catalog.
-The Mac's Codex MCP server (`tiger_db41579`) is separate from Vercel serverless
-runtime access; the latter uses its own server-only PostgreSQL connection URL.
+The application still uses its versioned catalog and knowledge-base data.
+This connection is an **operator-only validation probe**, not a migration, a
+change in medical evidence semantics, or a new production data source.
 
-## Configuration
+## Isolation and environments
 
-Configure **Preview only** in the Vercel project
-`secondary-condition-finder`:
+- Authoritative reference: checked-in `data/conditions/*.json` and
+  `data/knowledge-base/*.json` (or validated embedded equivalents).
+- DEV fixture source: `llw8r9xm7v`,
+  `secondary-condition-finder-fixture-source`.
+- DEV validation destination: `m8vrpmo6ec`,
+  `secondary-condition-finder-test`. The protected Vercel Preview endpoint
+  **only** accepts this destination's direct PostgreSQL port 30902.
+- PROD-tagged Tiger service `yc5kzxwazj` (`db-41579`) is **not used**.
+  The local Mac Codex `tiger_db41579` MCP configuration is separate from the
+  Vercel runtime and is not a production application connection.
 
-- `TIGER_DATABASE_URL`: Vercel Secret with the dedicated
-  `preview_catalog_reader` login for Tiger service `yc5kzxwazj`
-  (`db-41579`), database `tsdb`, port `37615`, `sslmode=require`.
-  Never use `tsdbadmin` or place the URL in source, client bundles or logs.
-- `TIGER_CATALOG_PROBE_TOKEN`: independent random bearer token, at least
-  32 characters, also scoped **Preview only**. Do not reuse a workflow,
-  VA API, personal account or administrator secret.
+In Vercel `secondary-condition-finder`, both secrets must be Preview-only:
+`TIGER_DATABASE_URL` is the PostgreSQL URL for the DEV destination with
+`preview_catalog_reader` (least-privilege SELECT, TLS required);
+`TIGER_CATALOG_PROBE_TOKEN` is a separate 32+-character operator bearer token.
+Never use `tsdbadmin`; never commit secrets or prefix them `NEXT_PUBLIC_`.
+The route rejects every request when `VERCEL_ENV != preview` and every request
+without a valid independent bearer token. Keep Vercel Deployment Protection.
 
-No production environment variables, database roles or records are required.
-The route itself checks `VERCEL_ENV=preview` and is inaccessible otherwise.
-Restrict Preview deployment access with Vercel Deployment Protection as well.
+## Controlled catalog load and exact verification
 
-## Operator invocation
+Use the repo's guarded lab script; it validates name, ID, READY state and DEV
+environment before connecting, and it does not retry SQL after uncertain
+disconnects:
+
+```sh
+node scripts/test-tiger-catalog.mjs seed llw8r9xm7v
+node scripts/test-tiger-catalog.mjs verify llw8r9xm7v
+node scripts/test-tiger-catalog.mjs verify m8vrpmo6ec
+node scripts/test-tiger-catalog.mjs verify m8vrpmo6ec --pooled
+```
+
+Seeding is idempotent and creates immutable snapshot-keyed rows; a new
+reference edition gets a different SHA-256 snapshot identity. The destination
+is populated through the existing isolated replication mechanism; no writing
+to the PROD service is required.
+
+## Vercel Preview operator probe
 
 `POST /api/internal/tiger-catalog-compare`
 
-Send `Authorization: Bearer <TIGER_CATALOG_PROBE_TOKEN>` from an authorized
-operator session. Use a tool that does not print the header in console or CI
-logs. Do not use GET, put tokens in query strings, or check secrets into Git.
+Pass `Authorization: Bearer <TIGER_CATALOG_PROBE_TOKEN>` using a secure client
+that does not print the token, headers or connection URL. The response contains
+only status and aggregate counts. No GET, browser client access, query-token
+parameters, or credential logging.
 
-Responses:
+The probe calculates the **same ordered SHA-256 snapshot** as the lab seeder
+from checked-in reference values, then runs queries inside `BEGIN READ ONLY`:
 
-- HTTP 200, `identities_match`: the connection succeeded and an existing
-  `scf_tiger_lab.conditions` snapshot matched **every checked-in ID/name**.
-  The term and edge counts are informational, not term/pathway parity proof.
-- HTTP 409, `missing_tables`: the connection succeeded but one or more
-  of `scf_tiger_lab.conditions`, `terms`, `edges` are absent.
-- HTTP 409, `identities_mismatch`: catalog tables exist, but no tested
-  snapshot has exactly the same condition IDs and names as the application.
-- HTTP 503: missing or invalid settings, database/TLS/auth failure, or query
-  failure. Error details and credentials are withheld.
-- HTTP 404: non-Preview environment or missing/invalid bearer token.
+- Conditions: every exact `id`, `name`, and `published` flag.
+- Search terms and aliases: every normalized `term` and exact `condition_id`
+  ownership, not just a count or a few sample queries.
+- Pathways: every `source_id`, `target_id`, and exact `rank`, plus orphan
+  edge detection.
+- No rows are mutated; the transaction is rolled back. Query and connection
+  timeouts are bounded and TLS certificates are verified.
 
-Requests run within `BEGIN READ ONLY` and roll back without changing data.
-Connection and query timeouts are bounded. The URL parser pins the Tiger
-service, database, user, port and required TLS; certificates are verified.
+Responses: HTTP 200 `parity_verified` means **all three datasets** match
+exactly with zero orphaned edges; HTTP 409 `missing_tables`,
+`snapshot_missing` or `parity_mismatch` distinguish structural,
+snapshot-edition and content discrepancies; HTTP 503 masks database and
+configuration errors; HTTP 404 means not Preview or not authorized.
 
-## Scope of the result
+This is catalog/alias/pathway parity, **not** clinical validity, citation
+verification, a production launch approval, or a claim to have fixed unrelated
+Vercel defects. Those require separate targeted tests and review.
 
-This probe **does not** seed tables, create the `scf_tiger_lab` schema,
-promote a deployment, merge a PR, migrate app data, process records, or send
-VA traffic. The dedicated `db-41579` service may be empty. An HTTP 409 for
-missing tables is therefore a valid, useful connection result and should not
-be mistaken for a failed database login.
+## Initial Phase-2 baseline — 2026-11-08 America/Chicago
 
-Existing separate DEV lab integration and its scripts under
-`docs/tiger-cloud-catalog-tests.md` remain unchanged.
+Reference main commit `382c354`, snapshot
+`b24de5cf62e227e20e7da79b0c9acd3855413e30309638a55c474b1093bc2d21`.
+
+Both DEV source and destination: 819 conditions, 2,165 normalized terms,
+875 directed ranked pathway edges, 140 published mappings, zero orphaned
+edges, 2,168 exact lookup probes; all passed. The idempotent source seed and
+a separate pooled-destination parity verification also passed.
+
+Credit usage: both DEV services already exist; avoid provisioning more until
+Tiger Cloud billing/remaining-credit usage is explicitly checked. Do not
+consume trial credits merely to force a zero balance. See
+`docs/tiger-cloud-catalog-tests.md` for performance, recovery and pooler
+campaigns, which run only on designated DEV services.
