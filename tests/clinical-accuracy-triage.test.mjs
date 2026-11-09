@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
+import { spawnSync } from "node:child_process";
 import {
   assertDevAdmin,sha,validate,
 } from "../scripts/automation/clinical-accuracy-tiger-dev.mjs";
@@ -95,4 +96,17 @@ test("weekly protected DEV workflow preserves human review and least privilege",
   assert.match(yaml,/clinical-accuracy-tiger-dev.mjs verify/);
   assert.match(yaml,/issues: write/);
   assert.doesNotMatch(yaml,/gh pr merge|contents: write|TIGER_DATABASE_URL|PRODUCTION_DATABASE_URL/i);
+});
+
+test("clinical triage engineering notification shell is syntactically complete",()=>{
+  const yaml=fs.readFileSync(".github/workflows/tiger-dev-clinical-accuracy-triage.yml","utf8");
+  const section=yaml.match(/      - name: Maintain single failure or source-status issue[\s\S]*?        run: \|\n([\s\S]*)$/);
+  assert.ok(section,"Notification script must be present");
+  const script=section[1].split("\n").map(line=>
+    line.startsWith("          ")?line.slice(10):line).join("\n");
+  const check=spawnSync("bash",["-n"],{input:script,encoding:"utf8"});
+  assert.equal(check.status,0,check.stderr);
+  const broken=script.replace(/\nfi\s*$/,"");
+  const negative=spawnSync("bash",["-n"],{input:broken,encoding:"utf8"});
+  assert.notEqual(negative.status,0,"A missing outer fi must fail the syntax gate");
 });
