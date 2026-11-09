@@ -39,9 +39,13 @@ jobs:
 
       - name: Prepare verified MONDO and entire authored mapping ledger
         run: |
+          # The full 51-MB MONDO release was imported and source-verified in
+          # Tiger DEV. Re-running its CDN download 4x/day is brittle and
+          # unnecessary for this fixed 819/875 authored-ledger edition.
+          # Stage the pinned, hash-validated 819-row/565-candidate subset.
           python3 -m unittest discover -s tests -p 'test_mondo_release_fallback.py'
-          python3 scripts/lib/fetch-mondo-dev.py
-          python3 scripts/lib/prepare-mondo-dev.py
+          python3 scripts/automation/stage_pinned_ontology.py
+          python3 -m unittest discover -s tests -p 'test_pinned_ontology_bootstrap.py'
           python3 scripts/lib/build-clinical-review-ledger.py
           python3 -m unittest discover -s tests -p 'test_clinical_review_rules.py'
           node --test tests/clinical-review-batch1.test.mjs
