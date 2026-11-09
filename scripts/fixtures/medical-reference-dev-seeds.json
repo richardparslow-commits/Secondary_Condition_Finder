@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "seedId": "scf-public-medical-research-2026-11-pilot",
+  "description": "Public-source pilot only. No veteran medical records, user-entered medications, personal information, or medical nexus inference.",
+  "pmids": [
+    "10326187",
+    "20083800",
+    "30453780",
+    "38568491"
+  ],
+  "genericDrugs": [
+    "metformin",
+    "lisinopril",
+    "atorvastatin",
+    "amoxicillin"
+  ]
+}
