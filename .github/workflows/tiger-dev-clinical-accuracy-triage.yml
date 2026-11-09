@@ -63,6 +63,12 @@ jobs:
           python3 scripts/automation/secondary_evidence_discovery.py
           python3 scripts/automation/secondary_evidence_discovery.py --verify
 
+      - name: Validate official PubMed metadata of independent candidate studies
+        run: |
+          python3 -m unittest discover -s tests -p 'test_candidate_publication_preflight.py'
+          python3 scripts/automation/candidate_publication_preflight.py
+          python3 scripts/automation/candidate_publication_preflight.py --verify
+
       - name: Test medical-governance and provenance guards
         run: |
           python3 -m unittest discover -s tests -p 'test_clinical_accuracy_triage.py'
