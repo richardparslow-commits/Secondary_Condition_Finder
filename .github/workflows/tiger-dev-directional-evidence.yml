@@ -39,6 +39,7 @@ jobs:
 
       - name: Prepare verified MONDO and entire authored mapping ledger
         run: |
+          python3 -m unittest discover -s tests -p 'test_mondo_release_fallback.py'
           python3 scripts/lib/fetch-mondo-dev.py
           python3 scripts/lib/prepare-mondo-dev.py
           python3 scripts/lib/build-clinical-review-ledger.py

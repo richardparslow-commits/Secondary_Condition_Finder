@@ -16,7 +16,7 @@ Workflow: `.github/workflows/tiger-dev-directional-evidence.yml`
 - Only `main` can run it: the GitHub `tiger-dev-research` environment has a `main`-only deployment-branch policy.
 - `GITHUB_TOKEN` has `contents: read` only. No issue/PR writes, merges, medical approvals or production publication.
 - One run at a time; scheduled events cannot cancel an ongoing run.
-- Downloads the official pinned **MONDO v2026-10-06** ontology with SHA-256 verification, rebuilds Batch 1's 819/875 review ledger and contradiction signals, runs tests, then checks PubMed.
+- Downloads the official pinned **MONDO v2026-10-06** ontology with SHA-256 verification and a fixed official GitHub Release API fallback if the CDN returns a network error (release asset ID `616499018`, same pinned digest), rebuilds Batch 1's 819/875 review ledger and contradiction signals, runs tests, then checks PubMed.
 - Public NCBI E-utilities metadata and fixed Title/Abstract study discovery only. 550 ms minimum request pacing, timeouts, bounded retries, no raw abstract copying and no unrestricted patient queries.
 - Inserts a content-addressed research snapshot into the dedicated Tiger Cloud DEV schema and performs independent READ ONLY exact-row verification.
 - Saves a GitHub Actions run summary and JSON/CSV/Markdown artifacts (30-day retention). A separate minimally privileged issue job reports failed checks and automatically closes its issue when a later run is green.
