@@ -177,6 +177,20 @@ const CHALLENGE_BODY_MARKERS = Object.freeze([
   "Please enable JS and disable any ad blocker",
 ]);
 
+/** Reason a redirect target is a known interstitial, or null. */
+function blockedRedirectReason(fromUrl, toUrl) {
+  try {
+    const from = new URL(fromUrl);
+    const to = new URL(toUrl, from);
+    if (to.host !== from.host && INTERSTITIAL_REDIRECT_HOSTS.has(to.host)) {
+      return "interstitial-redirect";
+    }
+  } catch {
+    // A malformed Location is handled by the normal probe failure path.
+  }
+  return null;
+}
+
 /** True when a fetched body is a bot-challenge interstitial, not the source. */
 function bodyIsBotChallenge(body) {
   if (typeof body !== "string" || body.length === 0) return false;
@@ -205,6 +219,14 @@ function isBotBlockedProbe(result) {
 const PROBE_TIMEOUT_MS = 15_000;
 const MAX_REDIRECTS = 5;
 const PROBE_USER_AGENT = "citation-decay-audit";
+/**
+ * Hosts that answer a source request with an interstitial instead of the
+ * source. eCFR's `/current/` pages can 302 here with HTTP 200 HTML; following
+ * that redirect would make the interstitial look like a healthy source body
+ * (and would compare a recorded digest against the wrong document). This is a
+ * host-specific observation, not a general prohibition on cross-host redirects.
+ */
+const INTERSTITIAL_REDIRECT_HOSTS = new Set(["unblock.federalregister.gov"]);
 /**
  * Politeness + resilience knobs. The first version of this probe fired every
  * URL concurrently (Promise.all over the whole corpus); hosts like PubMed
@@ -652,8 +674,9 @@ async function probeUrlWithContent(url, expectedDigestHex) {
     const head = await requestOnce(normalized, "HEAD");
     if ([301, 302, 303, 307, 308].includes(head.status) && head.location && redirects < MAX_REDIRECTS) {
       redirects += 1;
-      let next = head.location;
-      if (next.startsWith("/")) next = `${new URL(normalized).origin}${next}`;
+      const next = new URL(head.location, normalized).toString();
+      const blockedReason = blockedRedirectReason(normalized, next);
+      if (blockedReason) return { ok: false, status: head.status, blocked: true, blockedReason };
       normalized = next;
       continue;
     }
@@ -666,7 +689,10 @@ async function probeUrlWithContent(url, expectedDigestHex) {
       // within the same budget, rather than treating a live source as dead.
       if (get.status >= 300 && get.status < 400 && get.location) {
         if (redirects >= MAX_REDIRECTS) return probeFailure(get.status, get);
-        normalized = new URL(get.location, normalized).toString();
+        const next = new URL(get.location, normalized).toString();
+        const blockedReason = blockedRedirectReason(normalized, next);
+        if (blockedReason) return { ok: false, status: get.status, blocked: true, blockedReason };
+        normalized = next;
         redirects += 1;
         continue;
       }

@@ -24,7 +24,7 @@
     },
     {
       "path": "scripts/audit-citation-decay.js",
-      "sha256": "799d0925ae8a2bfa7610bdcc55d0689224666df383bcdacf5eaf3d9ae2be80d4"
+      "sha256": "b08ab84512944fdff3015592e9b35b698cce5fdc7c4233f55339553c94088517"
     },
     {
       "path": "scripts/audit-citation-verification.js",

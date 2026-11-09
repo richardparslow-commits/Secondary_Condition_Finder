@@ -1,0 +1,543 @@
+{
+  "schemaVersion": 1,
+  "packetId": "citation-decay-518-review-2026-10-11",
+  "collectedAt": "2026-11-09T17:44:45.512Z",
+  "status": "UNREVIEWED_EVIDENCE_ONLY",
+  "approvalStatus": "NONE",
+  "note": "Fresh transport observations for qualified-human review. No approval, verification promotion, digest backfill, or policy decision is recorded here.",
+  "probe": {
+    "userAgent": "citation-decay-audit",
+    "method": "GET",
+    "timeoutMs": 15000,
+    "maxRedirects": 5,
+    "samplesPerUrl": 3,
+    "spacingMs": 2000,
+    "bodyHash": "sha256-<hex> over UTF-8 response body"
+  },
+  "targets": [
+    {
+      "id": "E1-a",
+      "exemptionId": "pubmed-article-html-bot-challenge",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30407234/",
+      "samples": [
+        {
+          "requestedAt": "2026-11-09T17:44:45.754Z",
+          "requestedUrl": "https://pubmed.ncbi.nlm.nih.gov/30407234/",
+          "finalUrl": "https://pubmed.ncbi.nlm.nih.gov/30407234/",
+          "redirects": [
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/30407234/",
+              "status": 203,
+              "location": null,
+              "errorCode": null
+            }
+          ],
+          "method": "GET",
+          "userAgent": "citation-decay-audit",
+          "status": 203,
+          "contentType": "text/html; charset=utf-8",
+          "contentLengthHeader": "5590",
+          "bodyBytes": 5590,
+          "bodySha256": "sha256-d5935a136d7e62e8ac4d79d0d428ff9b52c674cb51dcd5a1dc5b54020ce11f3b",
+          "elapsedMs": 216,
+          "challengeMarker": "challengeId",
+          "hasCspNonce": false,
+          "hasSection3310": false,
+          "hasArticleTitle": true,
+          "hasPubmedChallengeId": true,
+          "error": null,
+          "errorCode": null
+        },
+        {
+          "requestedAt": "2026-11-09T17:44:47.836Z",
+          "requestedUrl": "https://pubmed.ncbi.nlm.nih.gov/30407234/",
+          "finalUrl": "https://pubmed.ncbi.nlm.nih.gov/30407234/",
+          "redirects": [
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/30407234/",
+              "status": 203,
+              "location": null,
+              "errorCode": null
+            }
+          ],
+          "method": "GET",
+          "userAgent": "citation-decay-audit",
+          "status": 203,
+          "contentType": "text/html; charset=utf-8",
+          "contentLengthHeader": "5590",
+          "bodyBytes": 5590,
+          "bodySha256": "sha256-758b48643d61eec1cd0a687bab64c6ac930b3fd4c25642fd533eaabc2c5dccf1",
+          "elapsedMs": 81,
+          "challengeMarker": "challengeId",
+          "hasCspNonce": false,
+          "hasSection3310": false,
+          "hasArticleTitle": true,
+          "hasPubmedChallengeId": true,
+          "error": null,
+          "errorCode": null
+        },
+        {
+          "requestedAt": "2026-11-09T17:44:49.925Z",
+          "requestedUrl": "https://pubmed.ncbi.nlm.nih.gov/30407234/",
+          "finalUrl": "https://pubmed.ncbi.nlm.nih.gov/30407234/",
+          "redirects": [
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/30407234/",
+              "status": 203,
+              "location": null,
+              "errorCode": null
+            }
+          ],
+          "method": "GET",
+          "userAgent": "citation-decay-audit",
+          "status": 203,
+          "contentType": "text/html; charset=utf-8",
+          "contentLengthHeader": "5590",
+          "bodyBytes": 5590,
+          "bodySha256": "sha256-aea7105286d8a414f59bf2fce341f865c79c041bfb7455b1850966fcbcb98398",
+          "elapsedMs": 88,
+          "challengeMarker": "challengeId",
+          "hasCspNonce": false,
+          "hasSection3310": false,
+          "hasArticleTitle": true,
+          "hasPubmedChallengeId": true,
+          "error": null,
+          "errorCode": null
+        }
+      ],
+      "distinctBodySha256": 3,
+      "statuses": [
+        203
+      ],
+      "bodyBytes": [
+        5590
+      ],
+      "finalUrls": [
+        "https://pubmed.ncbi.nlm.nih.gov/30407234/"
+      ]
+    },
+    {
+      "id": "E1-b",
+      "exemptionId": "pubmed-article-html-bot-challenge",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32552169/",
+      "samples": [
+        {
+          "requestedAt": "2026-11-09T17:44:50.008Z",
+          "requestedUrl": "https://pubmed.ncbi.nlm.nih.gov/32552169/",
+          "finalUrl": "https://pubmed.ncbi.nlm.nih.gov/32552169/",
+          "redirects": [
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/32552169/",
+              "status": 203,
+              "location": null,
+              "errorCode": null
+            }
+          ],
+          "method": "GET",
+          "userAgent": "citation-decay-audit",
+          "status": 203,
+          "contentType": "text/html; charset=utf-8",
+          "contentLengthHeader": "5590",
+          "bodyBytes": 5590,
+          "bodySha256": "sha256-135537afd449ec29d9807ab7a6be064e774bda636ef56521eaf51f9fc81fc1ff",
+          "elapsedMs": 83,
+          "challengeMarker": "challengeId",
+          "hasCspNonce": false,
+          "hasSection3310": false,
+          "hasArticleTitle": true,
+          "hasPubmedChallengeId": true,
+          "error": null,
+          "errorCode": null
+        },
+        {
+          "requestedAt": "2026-11-09T17:44:52.091Z",
+          "requestedUrl": "https://pubmed.ncbi.nlm.nih.gov/32552169/",
+          "finalUrl": "https://pubmed.ncbi.nlm.nih.gov/32552169/",
+          "redirects": [
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/32552169/",
+              "status": 203,
+              "location": null,
+              "errorCode": null
+            }
+          ],
+          "method": "GET",
+          "userAgent": "citation-decay-audit",
+          "status": 203,
+          "contentType": "text/html; charset=utf-8",
+          "contentLengthHeader": "5590",
+          "bodyBytes": 5590,
+          "bodySha256": "sha256-7654ad87cbe192ed804c0a387f2e6f593cbf33f3032a2853972c3282ce143603",
+          "elapsedMs": 82,
+          "challengeMarker": "challengeId",
+          "hasCspNonce": false,
+          "hasSection3310": false,
+          "hasArticleTitle": true,
+          "hasPubmedChallengeId": true,
+          "error": null,
+          "errorCode": null
+        },
+        {
+          "requestedAt": "2026-11-09T17:44:54.173Z",
+          "requestedUrl": "https://pubmed.ncbi.nlm.nih.gov/32552169/",
+          "finalUrl": "https://pubmed.ncbi.nlm.nih.gov/32552169/",
+          "redirects": [
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/32552169/",
+              "status": 203,
+              "location": null,
+              "errorCode": null
+            }
+          ],
+          "method": "GET",
+          "userAgent": "citation-decay-audit",
+          "status": 203,
+          "contentType": "text/html; charset=utf-8",
+          "contentLengthHeader": "5590",
+          "bodyBytes": 5590,
+          "bodySha256": "sha256-68f1a03a10092e0ec7e064c451d926cf9100cafb05a8309927f7a38d3ab6eb31",
+          "elapsedMs": 82,
+          "challengeMarker": "challengeId",
+          "hasCspNonce": false,
+          "hasSection3310": false,
+          "hasArticleTitle": true,
+          "hasPubmedChallengeId": true,
+          "error": null,
+          "errorCode": null
+        }
+      ],
+      "distinctBodySha256": 3,
+      "statuses": [
+        203
+      ],
+      "bodyBytes": [
+        5590
+      ],
+      "finalUrls": [
+        "https://pubmed.ncbi.nlm.nih.gov/32552169/"
+      ]
+    },
+    {
+      "id": "E2",
+      "exemptionId": "ecfr-current-section-html-csp-nonce",
+      "url": "https://www.ecfr.gov/current/title-38/chapter-I/part-3/subpart-A/subject-group-ECFR39056aee4e9ff13/section-3.310",
+      "samples": [
+        {
+          "requestedAt": "2026-11-09T17:44:54.645Z",
+          "requestedUrl": "https://www.ecfr.gov/current/title-38/chapter-I/part-3/subpart-A/subject-group-ECFR39056aee4e9ff13/section-3.310",
+          "finalUrl": "https://unblock.federalregister.gov/",
+          "redirects": [
+            {
+              "url": "https://www.ecfr.gov/current/title-38/chapter-I/part-3/subpart-A/subject-group-ECFR39056aee4e9ff13/section-3.310",
+              "status": 302,
+              "location": "https://unblock.federalregister.gov",
+              "errorCode": null
+            },
+            {
+              "url": "https://unblock.federalregister.gov/",
+              "status": 200,
+              "location": null,
+              "errorCode": null
+            }
+          ],
+          "method": "GET",
+          "userAgent": "citation-decay-audit",
+          "status": 200,
+          "contentType": "text/html; charset=utf-8",
+          "contentLengthHeader": "10596",
+          "bodyBytes": 10596,
+          "bodySha256": "sha256-3e8f75b59806092ad7a78c353c9582892a4f35da3200335f04dad0d0ceca2d9d",
+          "elapsedMs": 220,
+          "challengeMarker": null,
+          "hasCspNonce": true,
+          "hasSection3310": false,
+          "hasArticleTitle": true,
+          "hasPubmedChallengeId": false,
+          "error": null,
+          "errorCode": null
+        },
+        {
+          "requestedAt": "2026-11-09T17:44:56.767Z",
+          "requestedUrl": "https://www.ecfr.gov/current/title-38/chapter-I/part-3/subpart-A/subject-group-ECFR39056aee4e9ff13/section-3.310",
+          "finalUrl": "https://unblock.federalregister.gov/",
+          "redirects": [
+            {
+              "url": "https://www.ecfr.gov/current/title-38/chapter-I/part-3/subpart-A/subject-group-ECFR39056aee4e9ff13/section-3.310",
+              "status": 302,
+              "location": "https://unblock.federalregister.gov",
+              "errorCode": null
+            },
+            {
+              "url": "https://unblock.federalregister.gov/",
+              "status": 200,
+              "location": null,
+              "errorCode": null
+            }
+          ],
+          "method": "GET",
+          "userAgent": "citation-decay-audit",
+          "status": 200,
+          "contentType": "text/html; charset=utf-8",
+          "contentLengthHeader": "10596",
+          "bodyBytes": 10596,
+          "bodySha256": "sha256-66e140c19e6f51cb049e22ce8d5d46cda4065a8aef9af8177fbdf0e21b795f0a",
+          "elapsedMs": 62,
+          "challengeMarker": null,
+          "hasCspNonce": true,
+          "hasSection3310": false,
+          "hasArticleTitle": true,
+          "hasPubmedChallengeId": false,
+          "error": null,
+          "errorCode": null
+        },
+        {
+          "requestedAt": "2026-11-09T17:44:58.884Z",
+          "requestedUrl": "https://www.ecfr.gov/current/title-38/chapter-I/part-3/subpart-A/subject-group-ECFR39056aee4e9ff13/section-3.310",
+          "finalUrl": "https://unblock.federalregister.gov/",
+          "redirects": [
+            {
+              "url": "https://www.ecfr.gov/current/title-38/chapter-I/part-3/subpart-A/subject-group-ECFR39056aee4e9ff13/section-3.310",
+              "status": 302,
+              "location": "https://unblock.federalregister.gov",
+              "errorCode": null
+            },
+            {
+              "url": "https://unblock.federalregister.gov/",
+              "status": 200,
+              "location": null,
+              "errorCode": null
+            }
+          ],
+          "method": "GET",
+          "userAgent": "citation-decay-audit",
+          "status": 200,
+          "contentType": "text/html; charset=utf-8",
+          "contentLengthHeader": "10596",
+          "bodyBytes": 10596,
+          "bodySha256": "sha256-66e140c19e6f51cb049e22ce8d5d46cda4065a8aef9af8177fbdf0e21b795f0a",
+          "elapsedMs": 59,
+          "challengeMarker": null,
+          "hasCspNonce": true,
+          "hasSection3310": false,
+          "hasArticleTitle": true,
+          "hasPubmedChallengeId": false,
+          "error": null,
+          "errorCode": null
+        }
+      ],
+      "distinctBodySha256": 2,
+      "statuses": [
+        200
+      ],
+      "bodyBytes": [
+        10596
+      ],
+      "finalUrls": [
+        "https://unblock.federalregister.gov/"
+      ]
+    },
+    {
+      "id": "E3",
+      "exemptionId": "oup-article-html-bot-wall",
+      "url": "https://academic.oup.com/jcem/article/110/9/2453/8196671",
+      "samples": [
+        {
+          "requestedAt": "2026-11-09T17:44:59.014Z",
+          "requestedUrl": "https://academic.oup.com/jcem/article/110/9/2453/8196671",
+          "finalUrl": "https://academic.oup.com/jcem/article/110/9/2453/8196671",
+          "redirects": [
+            {
+              "url": "https://academic.oup.com/jcem/article/110/9/2453/8196671",
+              "status": 403,
+              "location": null,
+              "errorCode": null
+            }
+          ],
+          "method": "GET",
+          "userAgent": "citation-decay-audit",
+          "status": 403,
+          "contentType": "text/html; charset=UTF-8",
+          "contentLengthHeader": "5488",
+          "bodyBytes": 5488,
+          "bodySha256": "sha256-e27a30ea9ff9b2aa9d5caadf4bd00cf7cd1f857010d30bf011e02ca8cd9f6ca5",
+          "elapsedMs": 129,
+          "challengeMarker": "cf_chl_opt",
+          "hasCspNonce": true,
+          "hasSection3310": false,
+          "hasArticleTitle": true,
+          "hasPubmedChallengeId": false,
+          "error": null,
+          "errorCode": null
+        },
+        {
+          "requestedAt": "2026-11-09T17:45:01.108Z",
+          "requestedUrl": "https://academic.oup.com/jcem/article/110/9/2453/8196671",
+          "finalUrl": "https://academic.oup.com/jcem/article/110/9/2453/8196671",
+          "redirects": [
+            {
+              "url": "https://academic.oup.com/jcem/article/110/9/2453/8196671",
+              "status": 403,
+              "location": null,
+              "errorCode": null
+            }
+          ],
+          "method": "GET",
+          "userAgent": "citation-decay-audit",
+          "status": 403,
+          "contentType": "text/html; charset=UTF-8",
+          "contentLengthHeader": "5510",
+          "bodyBytes": 5510,
+          "bodySha256": "sha256-ebbe8e3f4eab6d2126abcef8c166fe3a241bee663e6b1eaa41577d511e3c2fb2",
+          "elapsedMs": 88,
+          "challengeMarker": "cf_chl_opt",
+          "hasCspNonce": true,
+          "hasSection3310": false,
+          "hasArticleTitle": true,
+          "hasPubmedChallengeId": false,
+          "error": null,
+          "errorCode": null
+        },
+        {
+          "requestedAt": "2026-11-09T17:45:03.200Z",
+          "requestedUrl": "https://academic.oup.com/jcem/article/110/9/2453/8196671",
+          "finalUrl": "https://academic.oup.com/jcem/article/110/9/2453/8196671",
+          "redirects": [
+            {
+              "url": "https://academic.oup.com/jcem/article/110/9/2453/8196671",
+              "status": 403,
+              "location": null,
+              "errorCode": null
+            }
+          ],
+          "method": "GET",
+          "userAgent": "citation-decay-audit",
+          "status": 403,
+          "contentType": "text/html; charset=UTF-8",
+          "contentLengthHeader": "5510",
+          "bodyBytes": 5510,
+          "bodySha256": "sha256-7efce822ece647a38abf8bf201465e17644a4146f74169e2350a362b1eb2316d",
+          "elapsedMs": 90,
+          "challengeMarker": "cf_chl_opt",
+          "hasCspNonce": true,
+          "hasSection3310": false,
+          "hasArticleTitle": true,
+          "hasPubmedChallengeId": false,
+          "error": null,
+          "errorCode": null
+        }
+      ],
+      "distinctBodySha256": 3,
+      "statuses": [
+        403
+      ],
+      "bodyBytes": [
+        5488,
+        5510
+      ],
+      "finalUrls": [
+        "https://academic.oup.com/jcem/article/110/9/2453/8196671"
+      ]
+    },
+    {
+      "id": "C1-C4",
+      "exemptionId": null,
+      "url": "https://www.law.cornell.edu/cfr/text/38/3.310",
+      "samples": [
+        {
+          "requestedAt": "2026-11-09T17:45:03.511Z",
+          "requestedUrl": "https://www.law.cornell.edu/cfr/text/38/3.310",
+          "finalUrl": "https://www.law.cornell.edu/cfr/text/38/3.310",
+          "redirects": [
+            {
+              "url": "https://www.law.cornell.edu/cfr/text/38/3.310",
+              "status": 200,
+              "location": null,
+              "errorCode": null
+            }
+          ],
+          "method": "GET",
+          "userAgent": "citation-decay-audit",
+          "status": 200,
+          "contentType": "text/html; charset=utf-8",
+          "contentLengthHeader": "39069",
+          "bodyBytes": 39069,
+          "bodySha256": "sha256-9b456ed4233f4f807fc59fc920888e90037e8e1ead4b93d820bdf4257f9fde1d",
+          "elapsedMs": 311,
+          "challengeMarker": null,
+          "hasCspNonce": false,
+          "hasSection3310": true,
+          "hasArticleTitle": true,
+          "hasPubmedChallengeId": false,
+          "error": null,
+          "errorCode": null
+        },
+        {
+          "requestedAt": "2026-11-09T17:45:05.620Z",
+          "requestedUrl": "https://www.law.cornell.edu/cfr/text/38/3.310",
+          "finalUrl": "https://www.law.cornell.edu/cfr/text/38/3.310",
+          "redirects": [
+            {
+              "url": "https://www.law.cornell.edu/cfr/text/38/3.310",
+              "status": 200,
+              "location": null,
+              "errorCode": null
+            }
+          ],
+          "method": "GET",
+          "userAgent": "citation-decay-audit",
+          "status": 200,
+          "contentType": "text/html; charset=utf-8",
+          "contentLengthHeader": "39069",
+          "bodyBytes": 39069,
+          "bodySha256": "sha256-9b456ed4233f4f807fc59fc920888e90037e8e1ead4b93d820bdf4257f9fde1d",
+          "elapsedMs": 108,
+          "challengeMarker": null,
+          "hasCspNonce": false,
+          "hasSection3310": true,
+          "hasArticleTitle": true,
+          "hasPubmedChallengeId": false,
+          "error": null,
+          "errorCode": null
+        },
+        {
+          "requestedAt": "2026-11-09T17:45:07.725Z",
+          "requestedUrl": "https://www.law.cornell.edu/cfr/text/38/3.310",
+          "finalUrl": "https://www.law.cornell.edu/cfr/text/38/3.310",
+          "redirects": [
+            {
+              "url": "https://www.law.cornell.edu/cfr/text/38/3.310",
+              "status": 200,
+              "location": null,
+              "errorCode": null
+            }
+          ],
+          "method": "GET",
+          "userAgent": "citation-decay-audit",
+          "status": 200,
+          "contentType": "text/html; charset=utf-8",
+          "contentLengthHeader": "39069",
+          "bodyBytes": 39069,
+          "bodySha256": "sha256-9b456ed4233f4f807fc59fc920888e90037e8e1ead4b93d820bdf4257f9fde1d",
+          "elapsedMs": 103,
+          "challengeMarker": null,
+          "hasCspNonce": false,
+          "hasSection3310": true,
+          "hasArticleTitle": true,
+          "hasPubmedChallengeId": false,
+          "error": null,
+          "errorCode": null
+        }
+      ],
+      "distinctBodySha256": 1,
+      "statuses": [
+        200
+      ],
+      "bodyBytes": [
+        39069
+      ],
+      "finalUrls": [
+        "https://www.law.cornell.edu/cfr/text/38/3.310"
+      ]
+    }
+  ]
+}

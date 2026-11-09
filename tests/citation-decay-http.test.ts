@@ -6,6 +6,10 @@ import { hashContent, probeUrlWithContent } from "../scripts/audit-citation-deca
 const article = "<html><body>Authoritative source fixture</body></html>";
 let redirectCycleGetRequests = 0;
 const server = createServer((req, res) => {
+  if (req.url === "/unblock-redirect") {
+    res.writeHead(302, { location: "https://unblock.federalregister.gov/" }).end();
+    return;
+  }
   if (req.method === "HEAD") { res.writeHead(200).end(); return; }
   switch (req.url) {
     case "/challenge": res.writeHead(203).end('<script>const challengeId = "fixture";</script>'); break;
@@ -35,6 +39,11 @@ describe("citation-decay HTTP interface", () => {
   });
   it("follows a GET redirect even after HEAD succeeded", async () => {
     expect(await probeUrlWithContent(`${base}/redirect`, null)).toMatchObject({ ok: true, status: 200, body: article });
+  });
+  it("does not treat a Federal Register unblock interstitial as source health", async () => {
+    expect(await probeUrlWithContent(`${base}/unblock-redirect`, null)).toMatchObject({
+      ok: false, status: 302, blocked: true, blockedReason: "interstitial-redirect",
+    });
   });
   it("stops following GET redirects after the redirect budget", async () => {
     redirectCycleGetRequests = 0;
