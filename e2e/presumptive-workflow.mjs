@@ -25,7 +25,6 @@ const WORKFLOW_SESSION_SECRET =
 
 // Agent Orange template (Vietnam window) drives the pre-fill; the Agent Orange
 // category is the expected match on the results page.
-const TEMPLATE_LABEL = "Agent Orange — Republic of Vietnam";
 const TEMPLATE_BUTTON_ARIA = "Apply template Agent Orange — Republic of Vietnam (Jan 1962 – May 1975)";
 const LOCATION_VALUE = "Republic of Vietnam";
 const START_DATE = "1962-01-09";
@@ -225,20 +224,6 @@ async function waitForText(needle, label, timeoutMs = 20_000) {
     await delay(300);
   }
   throw new Error(`Timed out waiting for ${label} to render text: ${needle}`);
-}
-
-async function setInputValue(xpath, value) {
-  const elementId = await findByXpath(xpath);
-  const applied = await webdriver(
-    "POST",
-    `/session/${sessionId}/element/${elementId}/value`,
-    { text: value },
-  );
-  void applied;
-  const reflected = await webdriver("GET", `/session/${sessionId}/element/${elementId}/property/value`);
-  if (reflected !== value) {
-    throw new Error(`Unable to set input value; browser reported ${reflected}`);
-  }
 }
 
 async function readNamedInputValue(name) {

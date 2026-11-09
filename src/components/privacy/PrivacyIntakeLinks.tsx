@@ -1,5 +1,5 @@
 import {
-  PRIVACY_CONTACT_EMAIL,
+  configuredPrivacyContact,
   PRIVACY_REQUESTS,
   privacyRequestMailto,
   privacyRequestPlainText,
@@ -21,7 +21,13 @@ import {
  * what avoids weakening the PHI-free Server Action contract, and the copy says
  * so plainly so a reviewer does not have to infer it.
  */
-export function PrivacyIntakeLinks() {
+export function PrivacyIntakeLinks({ contactEmail = configuredPrivacyContact() }: { contactEmail?: string | null } = {}) {
+  if (!contactEmail || configuredPrivacyContact({ PRIVACY_CONTACT_EMAIL: contactEmail }) !== contactEmail) return (
+    <p role="status">
+      Privacy contact unavailable. A monitored privacy mailbox has not been configured.
+      No privacy request has been submitted. You can still clear browser-local records using the workflow controls.
+    </p>
+  );
   return (
     <div className="space-y-4">
       <p>
@@ -36,7 +42,7 @@ export function PrivacyIntakeLinks() {
         {PRIVACY_REQUESTS.map((request) => (
           <li key={request.type}>
             <a
-              href={privacyRequestMailto(request.type)}
+              href={privacyRequestMailto(request.type, contactEmail)}
               className="font-medium text-blue-700 hover:underline"
             >
               {request.label}
@@ -62,10 +68,10 @@ export function PrivacyIntakeLinks() {
         If your email application does not open, send a message from any email
         account to{" "}
         <a
-          href={`mailto:${PRIVACY_CONTACT_EMAIL}`}
+          href={`mailto:${contactEmail}`}
           className="font-medium text-blue-700 hover:underline"
         >
-          {PRIVACY_CONTACT_EMAIL}
+          {contactEmail}
         </a>{" "}
         and copy the message text above.
       </p>

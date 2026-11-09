@@ -331,6 +331,58 @@ describe("isIpLiteral", () => {
       expect(isIpLiteral(value), value).toBe(false);
     }
   });
+
+  it("accepts every single contiguous range compressed by one ::", () => {
+    const explicit = ["1", "2", "3", "4", "5", "6", "7"];
+    const valid: string[] = [];
+    for (let count = 0; count <= explicit.length; count += 1) {
+      const groups = explicit.slice(0, count);
+      for (let position = 0; position <= count; position += 1) {
+        valid.push(`${groups.slice(0, position).join(":")}::${groups.slice(position).join(":")}`);
+      }
+    }
+    expect(valid).toHaveLength(36);
+    for (const value of valid) {
+      expect(isIpLiteral(value), value).toBe(true);
+    }
+    // Seven explicit groups plus a trailing IPv4-mapped pair is also one
+    // compressed group, not an eighth explicit group.
+    expect(isIpLiteral("1:2:3:4:5::192.168.0.1")).toBe(true);
+  });
+
+  it("still rejects addresses where :: would have to replace zero groups", () => {
+    for (const value of [
+      "1:2:3:4:5:6:7:8::",
+      "::1:2:3:4:5:6:7:8",
+      "1:2:3:4:5:6:7:8:9",
+      "1:2:3:4:5:6:7",
+      "1:2:3:4:5:6::192.168.0.1",
+    ]) {
+      expect(isIpLiteral(value), value).toBe(false);
+    }
+  });
+});
+
+describe("IPv6 single-group compression admission", () => {
+  const env = { RATE_LIMIT_TRUSTED_INGRESS: "append", RATE_LIMIT_UNATTRIBUTED_MAX: "1000" };
+
+  beforeEach(() => {
+    unattributedAdmissionLimiter(env).reset();
+  });
+
+  it("keys distinct one-group-compressed clients separately instead of pooling them", () => {
+    const limiter = createRateLimiter({ windowMs: 60_000, max: 1, name: "ipv6-compression" });
+    const keys = ["2001:db8:1:2:3:4::5", "2001:db8:1:2:3:4::6"].map((ip) =>
+      resolveClientKey(new Headers({ "x-forwarded-for": ip }), resolveIngressClaim(env)),
+    );
+
+    expect(keys.map((entry) => entry.key)).toEqual([
+      "2001:db8:1:2:3:4::5",
+      "2001:db8:1:2:3:4::6",
+    ]);
+    expect(chargeAdmission(limiter, keys[0].key, env).limited).toBe(false);
+    expect(chargeAdmission(limiter, keys[1].key, env).limited).toBe(false);
+  });
 });
 
 describe("rateLimitIdentityPolicy", () => {

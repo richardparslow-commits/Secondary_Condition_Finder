@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { PrivacyIntakeLinks } from "@/components/privacy/PrivacyIntakeLinks";
-import { PRIVACY_COMPLETION_DAYS } from "@/lib/privacy/intake";
+import { PRIVACY_COMPLETION_DAYS, configuredPrivacyContact } from "@/lib/privacy/intake";
 
 export const metadata: Metadata = {
   title: "Privacy Request | Secondary Condition Finder",
@@ -25,6 +25,7 @@ export const metadata: Metadata = {
  * identifier for the application to hold.
  */
 export default function PrivacyRequestPage() {
+  const contactEmail = configuredPrivacyContact();
   return (
     <main className="max-w-4xl mx-auto px-4 py-8 text-gray-900">
       <h1 className="text-3xl font-bold mb-4">Request a privacy action</h1>
@@ -38,13 +39,13 @@ export default function PrivacyRequestPage() {
 
       <section className="space-y-4 text-sm leading-relaxed">
         <h2 className="text-xl font-semibold mt-6">Start your request</h2>
-        <PrivacyIntakeLinks />
+        <PrivacyIntakeLinks contactEmail={contactEmail} />
 
         <h2 className="text-xl font-semibold mt-6">What happens next</h2>
         <ul className="list-disc space-y-2 pl-6">
           <li>
-            <strong>Acknowledgement.</strong> A person reads every message sent
-            to the monitored mailbox and replies to it.
+            <strong>Acknowledgement.</strong> Once a monitored mailbox is configured,
+            the operator reads requests sent there and replies by the same channel.
           </li>
           <li>
             <strong>Verification, when it is needed.</strong> We may need to

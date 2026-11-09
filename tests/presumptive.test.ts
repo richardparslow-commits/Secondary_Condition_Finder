@@ -5,7 +5,11 @@ import { describe, expect, it } from "vitest";
 
 import { loadExposureCatalog } from "@/lib/presumptive/load";
 import { matchPresumptives, serviceHistorySchema } from "@/lib/presumptive/match";
-import { exposureCategorySchema, presumptiveSourceSchema } from "@/lib/presumptive/schema";
+import {
+  exposureCategorySchema,
+  presumptiveSourceSchema,
+  qualifyingServiceSchema,
+} from "@/lib/presumptive/schema";
 
 describe("presumptive source validation", () => {
   it("permits a future human-verified source without a schema migration", () => {
@@ -107,6 +111,70 @@ describe("presumptive service-history validation", () => {
       result.error.issues.some((issue) =>
         issue.message.includes("Service start date must be on or before the end date."),
       ),
+    ).toBe(true);
+  });
+});
+
+describe("presumptive qualifying-service window validation", () => {
+  const base = {
+    id: "test-period",
+    label: "Test period",
+    locations: ["Test"],
+    startDate: "2000-01-01",
+    endDate: null,
+    note: null,
+  };
+
+  it.each([
+    "2020-02-30",
+    "2019-02-29",
+    "2020-04-31",
+    "2020-13-01",
+    "2020-00-10",
+  ])("rejects impossible qualifying-service date %s", (invalidDate) => {
+    expect(
+      qualifyingServiceSchema.safeParse({ ...base, startDate: invalidDate }).success,
+    ).toBe(false);
+    expect(
+      qualifyingServiceSchema.safeParse({ ...base, endDate: invalidDate }).success,
+    ).toBe(false);
+  });
+
+  it("rejects a reversed qualifying-service window with an end-date error", () => {
+    const result = qualifyingServiceSchema.safeParse({
+      ...base,
+      startDate: "2020-03-01",
+      endDate: "2020-02-28",
+    });
+
+    expect(result.success).toBe(false);
+    if (result.success) return;
+    expect(
+      result.error.issues.some(
+        (issue) =>
+          issue.path[0] === "endDate" &&
+          issue.message.includes("Qualifying period ends before it starts."),
+      ),
+    ).toBe(true);
+  });
+
+  it("accepts open-ended, same-day, and leap-day windows", () => {
+    expect(
+      qualifyingServiceSchema.safeParse({ ...base, endDate: null }).success,
+    ).toBe(true);
+    expect(
+      qualifyingServiceSchema.safeParse({
+        ...base,
+        startDate: "2020-02-29",
+        endDate: "2020-02-29",
+      }).success,
+    ).toBe(true);
+    expect(
+      qualifyingServiceSchema.safeParse({
+        ...base,
+        startDate: "2024-02-29",
+        endDate: "2025-02-28",
+      }).success,
     ).toBe(true);
   });
 });

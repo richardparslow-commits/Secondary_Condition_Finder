@@ -456,10 +456,10 @@ describe("fleet-simulation wall-clock budget", () => {
     );
     expect(result.stdout).toContain("ratchet:");
     expect(result.stdout).toContain(`hard ceiling ${state.ceilingMs} ms`);
-    expect(result.stdout).toContain("✓ " + SUITE);
-    expect(result.stdout).toContain("Test Files  1 passed (1)");
-    expect(result.stdout).toContain("measured");
-    expect(result.status).toBe(0);
+    expect(result.status, result.stdout + result.stderr).toBe(0);
+    expect(result.stdout).toMatch(
+      new RegExp(`^\\[fleet-gate\\] PASS: measured \\d+ ms against a ${expectedBudgetMs} ms budget`, "m"),
+    );
   }, 60_000);
 
   it("records a run into the ratchet and reports the tightened cap", () => {
