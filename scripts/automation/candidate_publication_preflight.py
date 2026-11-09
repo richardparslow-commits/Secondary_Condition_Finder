@@ -41,9 +41,9 @@ def file_sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def inputs(source=SOURCE):
+def inputs(source=SOURCE, original=discovery.SOURCE, queries=discovery.QUERIES):
     candidate = json.loads(source.read_text(encoding="utf8"))
-    discovery.validate(candidate)
+    discovery.validate(candidate, discovery.load_inputs(original, queries))
     ids = sorted({pid for row in candidate["reviewCases"] for pid in row["candidatePmids"]})
     if len(ids) > MAX_CANDIDATES or any(not discovery.PMID.fullmatch(pid) for pid in ids):
         raise ValueError("Unbounded or malformed bibliographic candidate cohort")
@@ -176,8 +176,8 @@ def _check_pub(pub):
             and pub.get("publicationAuthorization") == "NOT_GRANTED")
 
 
-def validate(doc, source=SOURCE):
-    candidate, ids = inputs(source)
+def validate(doc, source=SOURCE, original=discovery.SOURCE, queries=discovery.QUERIES):
+    candidate, ids = inputs(source, original, queries)
     if (doc.get("schemaVersion") != 1 or doc.get("scope") != SCOPE
         or doc.get("sourceCandidateRunSha256") != candidate["runSha256"]
         or doc.get("sourceLedgerId") != discovery.LEDGER
@@ -215,8 +215,9 @@ def validate(doc, source=SOURCE):
     return doc
 
 
-def build(source=SOURCE, output=OUT, fetcher=fetch_official, observed=None):
-    candidate, ids = inputs(source)
+def build(source=SOURCE, output=OUT, fetcher=fetch_official, observed=None,
+          original=discovery.SOURCE, queries=discovery.QUERIES):
+    candidate, ids = inputs(source, original, queries)
     found = fetcher(ids) if ids else {}
     if set(found) != set(ids) or any(not _check_pub(p) or p["pmid"] != key
                                      for key, p in found.items()):
@@ -242,7 +243,7 @@ def build(source=SOURCE, output=OUT, fetcher=fetch_official, observed=None):
         "abstractTextsStored": 0, "fullTextsReviewed": 0,
     }
     doc["runSha256"] = sha(doc)
-    validate(doc, source)
+    validate(doc, source, original, queries)
     output.mkdir(parents=True, exist_ok=True)
     names = ["candidate-metadata.json", "candidate-metadata-review.csv",
              "candidate-metadata-dossier.md", "qualified-clinical-screening-EMPTY.csv"]
@@ -301,8 +302,10 @@ def build(source=SOURCE, output=OUT, fetcher=fetch_official, observed=None):
     return manifest
 
 
-def verify(source=SOURCE, output=OUT):
-    doc = validate(json.loads((output / "candidate-metadata.json").read_text()), source)
+def verify(source=SOURCE, output=OUT, original=discovery.SOURCE,
+           queries=discovery.QUERIES):
+    doc = validate(json.loads((output / "candidate-metadata.json").read_text()),
+                   source, original, queries)
     manifest = json.loads((output / "candidate-metadata-manifest.json").read_text())
     names = {"candidate-metadata.json", "candidate-metadata-review.csv",
              "candidate-metadata-dossier.md", "qualified-clinical-screening-EMPTY.csv"}
