@@ -1691,7 +1691,8 @@ async function run() {
     [serverLog, traceFile].every(({ text, observation }) =>
       observation.status === "scanned" &&
       text.length > 0 &&
-      text.length === Math.min(observation.sizeBytes, TEXT_SURFACE_SCAN_LIMIT),
+      observation.sizeBytes <= TEXT_SURFACE_SCAN_LIMIT &&
+      text.length === observation.sizeBytes,
     ),
     JSON.stringify({ serverLog: observations.serverLog, traceFile: observations.traceFile }),
   );

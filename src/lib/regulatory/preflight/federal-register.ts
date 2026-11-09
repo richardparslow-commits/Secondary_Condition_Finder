@@ -260,13 +260,16 @@ export async function fetchFederalRegisterVaChanges(options: {
       }
 
       nextUrl = safeNextFederalRegisterUrl(result.json?.next_page_url);
+      if (result.json?.next_page_url != null && !nextUrl) {
+        throw new Error("Federal Register pagination returned an unsafe or invalid next-page URL; refresh is incomplete.");
+      }
       validator = undefined;
     }
 
     return {
       sourceResult: {
         source: "federal-register",
-        status: "success",
+        status: nextUrl ? "failed" : "success",
         checkedAt: options.checkedAt,
         recordCount: discoveries.length,
         durationMs: Date.now() - started,

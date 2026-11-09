@@ -308,16 +308,18 @@ describe("land required checks — the landing script itself", () => {
 #   $LAND_STUB_CALLS so a test can assert it never happened. The default keeps
 #   the redirect valid for tests that only care about the outcome.
 LAND_STUB_CALLS="\${LAND_STUB_CALLS:-/dev/null}"
-if [ -z "\${LAND_STUB_PR:-}" ]; then LAND_STUB_PR='{"number":7,"url":"https://example.invalid/pr/7","state":"OPEN"}'; fi
+if [ -z "\${LAND_STUB_PR:-}" ]; then LAND_STUB_PR='{"number":7,"url":"https://example.invalid/pr/7","state":"OPEN","baseRefName":"main"}'; fi
+LAND_STUB_PR_CREATED="\${LAND_STUB_PR_CREATED:-/dev/null}"
 case "$1" in
   auth) exit 0 ;;
   repo) printf '{"nameWithOwner":"owner/repo"}\\n'; exit 0 ;;
   pr)
     printf '%s\\n' "$*" >> "$LAND_STUB_CALLS"
+    if [ "$LAND_STUB_PR_ABSENT" = "1" ] && [ "$2" = "view" ] && [ ! -e "$LAND_STUB_PR_CREATED" ]; then exit 0; fi
     case "$2" in
       view) printf '%s\\n' "$LAND_STUB_PR"; exit 0 ;;
       checks) printf '%s\\n' "\${LAND_STUB_PR_CHECKS:-[]}"; exit 0 ;;
-      create) printf 'https://example.invalid/pr/7\\n'; exit 0 ;;
+      create) : > "$LAND_STUB_PR_CREATED"; printf 'https://example.invalid/pr/7\\n'; exit 0 ;;
       merge) exit 0 ;;
     esac
     exit 1 ;;
@@ -386,6 +388,76 @@ exit 1
         },
       });
       return { status: result.status, stdout: result.stdout ?? "", stderr: result.stderr ?? "" };
+    } finally {
+      fs.rmSync(directory, { recursive: true, force: true });
+    }
+  }
+
+  function runLanding({
+    existingPr = true,
+    pr = { number: 7, url: "https://example.invalid/pr/7", state: "OPEN", baseRefName: "main" },
+    checks = [
+      { name: "verify", state: "SUCCESS", bucket: "pass" },
+      { name: "verify-doc-lint", state: "SUCCESS", bucket: "pass" },
+    ],
+  }: {
+    existingPr?: boolean;
+    pr?: Record<string, unknown>;
+    checks?: Array<{ name: string; state: string; bucket: string }>;
+  } = {}) {
+    const directory = fs.mkdtempSync(path.join(os.tmpdir(), "land-full-"));
+    try {
+      const bin = path.join(directory, "bin");
+      fs.mkdirSync(bin);
+      const gh = path.join(bin, "gh");
+      fs.writeFileSync(gh, STUB);
+      fs.chmodSync(gh, 0o755);
+
+      const calls = path.join(directory, "calls.log");
+      fs.writeFileSync(calls, "");
+      const rulesBody = path.join(directory, "rules.json");
+      fs.writeFileSync(rulesBody, RULES_WITH_CHECKS);
+      const created = path.join(directory, "created");
+
+      const origin = path.join(directory, "origin.git");
+      spawnSync("git", ["init", "-q", "--bare", origin], { encoding: "utf8" });
+      const repository = path.join(directory, "repo");
+      fs.mkdirSync(repository);
+      const git = (...args: string[]) => spawnSync("git", args, { cwd: repository, encoding: "utf8" });
+      git("init", "-q");
+      git("config", "user.email", "land@test.invalid");
+      git("config", "user.name", "Land Test");
+      git("checkout", "-q", "-b", "feature");
+      fs.writeFileSync(path.join(repository, "tracked.txt"), "one\n");
+      git("add", "tracked.txt");
+      git("commit", "-q", "-m", "fixture");
+      git("remote", "add", "origin", origin);
+      fs.writeFileSync(path.join(repository, "tracked.txt"), "one\ntwo\n");
+
+      const result = spawnSync(
+        process.execPath,
+        [LAND, "-m", "land: fixture", "--no-footer", "--interval", "0.1", "--timeout", "0.02"],
+        {
+          cwd: repository,
+          encoding: "utf8",
+          env: {
+            ...process.env,
+            PATH: `${bin}${path.delimiter}${process.env.PATH ?? ""}`,
+            LAND_STUB_CALLS: calls,
+            LAND_STUB_RULES_BODY: rulesBody,
+            LAND_STUB_PR: JSON.stringify(pr),
+            LAND_STUB_PR_CHECKS: JSON.stringify(checks),
+            ...(existingPr ? {} : { LAND_STUB_PR_ABSENT: "1", LAND_STUB_PR_CREATED: created }),
+          },
+          timeout: 60_000,
+        },
+      );
+      return {
+        status: result.status,
+        stdout: result.stdout ?? "",
+        stderr: result.stderr ?? "",
+        calls: fs.readFileSync(calls, "utf8"),
+      };
     } finally {
       fs.rmSync(directory, { recursive: true, force: true });
     }
@@ -503,6 +575,97 @@ exit 1
     } finally {
       fs.rmSync(directory, { recursive: true, force: true });
     }
+  });
+
+  it("refuses to reuse a PR that targets a different base", () => {
+    const directory = fs.mkdtempSync(path.join(os.tmpdir(), "land-base-"));
+    try {
+      const bin = path.join(directory, "bin");
+      fs.mkdirSync(bin);
+      const gh = path.join(bin, "gh");
+      fs.writeFileSync(gh, STUB);
+      fs.chmodSync(gh, 0o755);
+
+      const calls = path.join(directory, "calls.log");
+      fs.writeFileSync(calls, "");
+      const rulesBody = path.join(directory, "rules.json");
+      fs.writeFileSync(rulesBody, RULES_WITH_CHECKS);
+
+      const origin = path.join(directory, "origin.git");
+      spawnSync("git", ["init", "-q", "--bare", origin], { encoding: "utf8" });
+      const repository = path.join(directory, "repo");
+      fs.mkdirSync(repository);
+      const git = (...args: string[]) => spawnSync("git", args, { cwd: repository, encoding: "utf8" });
+      git("init", "-q");
+      git("config", "user.email", "land@test.invalid");
+      git("config", "user.name", "Land Test");
+      git("checkout", "-q", "-b", "feature");
+      fs.writeFileSync(path.join(repository, "tracked.txt"), "one\n");
+      git("add", "tracked.txt");
+      git("commit", "-q", "-m", "fixture");
+      git("remote", "add", "origin", origin);
+      fs.writeFileSync(path.join(repository, "tracked.txt"), "one\ntwo\n");
+
+      const result = spawnSync(
+        process.execPath,
+        [LAND, "-m", "land: fixture", "--no-footer", "--interval", "0.1", "--timeout", "0.02"],
+        {
+          cwd: repository,
+          encoding: "utf8",
+          env: {
+            ...process.env,
+            PATH: `${bin}${path.delimiter}${process.env.PATH ?? ""}`,
+            LAND_STUB_CALLS: calls,
+            LAND_STUB_RULES_BODY: rulesBody,
+            LAND_STUB_PR: JSON.stringify({
+              number: 7,
+              url: "https://example.invalid/pr/7",
+              state: "OPEN",
+              baseRefName: "release",
+            }),
+            LAND_STUB_PR_CHECKS: JSON.stringify([
+              { name: "verify", state: "SUCCESS", bucket: "pass" },
+              { name: "verify-doc-lint", state: "SUCCESS", bucket: "pass" },
+            ]),
+          },
+          timeout: 60_000,
+        },
+      );
+
+      expect(result.status, result.stderr).toBe(1);
+      expect(result.stderr).toContain("existing PR targets release, not requested main");
+      expect(result.stderr).toContain("refusing to merge");
+      expect(result.stdout).not.toContain("Watching 2 required check(s)");
+      const log = fs.readFileSync(calls, "utf8");
+      expect(log).toContain("view feature --json number,url,state,baseRefName");
+      expect(log).not.toContain("merge");
+    } finally {
+      fs.rmSync(directory, { recursive: true, force: true });
+    }
+  });
+
+  it("lands a reused PR whose base matches the requested base", () => {
+    const result = runLanding();
+    expect(result.status, result.stderr).toBe(0);
+    expect(result.stdout).toContain("reusing PR #7");
+    expect(result.stdout).toContain("All 2 required check(s) passed.");
+    expect(result.stdout).toContain("merged into 'main'");
+    expect(result.calls).toContain("view feature --json number,url,state,baseRefName");
+    expect(result.calls).toContain("checks 7 --json name,state,bucket");
+    expect(result.calls).toContain("merge 7 --merge --delete-branch");
+    expect(result.calls).not.toContain("create");
+  });
+
+  it("lands a newly created PR after verifying its base", () => {
+    const result = runLanding({ existingPr: false });
+    expect(result.status, result.stderr).toBe(0);
+    expect(result.stdout).toContain("opening pull request");
+    expect(result.stdout).toContain("merged into 'main'");
+    expect(result.calls).toContain("create --base main --head feature");
+    const views = result.calls.split("\n").filter((line) => line.startsWith("pr view "));
+    expect(views).toHaveLength(2);
+    expect(views.every((line) => line.endsWith("--json number,url,state,baseRefName"))).toBe(true);
+    expect(result.calls).toContain("merge 7 --merge --delete-branch");
   });
 
   it("keeps the resolution policy in the module instead of re-parsing in the script", () => {

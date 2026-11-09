@@ -94,11 +94,11 @@ function titleMatch(asserted, observed) {
   return { ok: false, reason: 'low lexical overlap' };
 }
 
-function walkEvidence(root, dir, prefix = '') {
+function walkEvidence(root, dir, prefix = '', projectRoot = dirname(root)) {
   const entries = readdirSync(join(root, dir)).filter((name) => statSync(join(root, dir, name)).isFile()).sort();
   const out = [];
   for (const name of entries) {
-    const rel = relative(root, join(dir, name)).replace(/^\.\//, '');
+    const rel = relative(projectRoot, join(root, dir, name)).replace(/^\.\//, '');
     if (!name.endsWith('.json')) continue;
     const text = readFileSync(join(root, dir, name), 'utf8');
     let value;
@@ -141,7 +141,7 @@ function walkEvidence(root, dir, prefix = '') {
   if (includeColocated) {
     for (const other of ['data/regulatory-actions', 'data/evidence', 'data/conditions', 'data/knowledge-base']) {
       const candidate = resolve(join(root, other));
-      if (statSync(candidate).isDirectory()) files2.push(...walkEvidence(candidate, '.'));
+      if (statSync(candidate).isDirectory()) files2.push(...walkEvidence(candidate, '.', '', resolve(root)));
     }
   }
   const evidence = [];
@@ -159,7 +159,7 @@ function walkEvidence(root, dir, prefix = '') {
     const textNow = readFileSync(base, 'utf8');
     if (p.hash && createHash('sha256').update(textNow, 'utf8').digest('hex') !== p.hash) { problems.push({ kind: 'file-modified', file: p.file, expectedHash: p.hash, actualHash: createHash('sha256').update(textNow, 'utf8').digest('hex') }); }
   }
-  for (const pack of files) {
+  for (const pack of files.concat(files2)) {
     if (pack.error) { problems.push({ kind: 'parse', file: pack.file, detail: pack.error, hash: pack.hash }); continue; }
     for (const row of pack.rows) {
       if (row.error) { problems.push({ kind: 'schema', file: pack.file, path: pack.path, detail: row.error }); continue; }

@@ -485,7 +485,7 @@ export function applyDocumentsStep(
 
   try {
     const parsed = parseDocumentsSelection(
-      appendFormData(workflowSessionToQueryParams(toBrowserWorkflowContextInput(context)), formData, (key) => {
+      appendFormData({ ...workflowSessionToQueryParams(toBrowserWorkflowContextInput(context)), symptomIds: [] }, formData, (key) => {
         if (DOCUMENTS_CONTEXT_KEYS.has(key)) return true;
         const timelineMatch = /^(?:onsetYear|diagnosisYear)-(.+)$/.exec(key);
         return timelineMatch !== null && diagnosedIdSet.has(timelineMatch[1]);
