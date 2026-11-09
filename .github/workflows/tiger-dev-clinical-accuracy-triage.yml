@@ -1,0 +1,138 @@
+name: Tiger DEV Clinical Accuracy Triage
+
+# Weekly public bibliography and MONDO review screening; no medical decisions.
+on:
+  schedule:
+    - cron: "41 4 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tiger-dev-clinical-accuracy-triage
+  cancel-in-progress: false
+
+jobs:
+  evidence-and-ontology-triage:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: tiger-dev-research
+    timeout-minutes: 25
+    steps:
+      - name: Checkout reviewed main without persisted token
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+
+      - name: Setup Node 22
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install pinned dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+
+      - name: Verify immutable ontology and all existing public clinical mappings
+        run: |
+          python3 scripts/automation/stage_pinned_ontology.py
+          python3 scripts/lib/build-clinical-review-ledger.py
+          python3 scripts/automation/build_claim_review_packets.py
+          python3 scripts/automation/build_claim_review_packets.py --verify
+          python3 scripts/automation/ontology_identity_triage.py \
+            --export /tmp/scf-clinical-accuracy-triage/ontology-review.csv
+
+      - name: Fetch bounded current PubMed bibliographic and correction metadata
+        env:
+          NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
+        run: |
+          python3 scripts/automation/clinical_accuracy_triage.py
+          python3 scripts/automation/clinical_accuracy_triage.py --verify
+
+      - name: Test medical-governance and provenance guards
+        run: |
+          python3 -m unittest discover -s tests -p 'test_clinical_accuracy_triage.py'
+          python3 -m unittest discover -s tests -p 'test_claim_review_packets.py'
+          python3 -m unittest discover -s tests -p 'test_clinical_review_rules.py'
+          node --test tests/clinical-accuracy-triage.test.mjs \
+            tests/clinical-review-batch1.test.mjs
+
+      - name: Append review-only evidence snapshot to protected Tiger Cloud DEV
+        env:
+          TIGER_AUTOMATION_DEV_URL: ${{ secrets.TIGER_AUTOMATION_DEV_URL }}
+          SCF_CLINICAL_TRIAGE_DIR: /tmp/scf-clinical-accuracy-triage
+        run: node scripts/automation/clinical-accuracy-tiger-dev.mjs apply --dev-write
+
+      - name: Verify all 416 Tiger DEV triage rows in read-only transaction
+        env:
+          TIGER_AUTOMATION_DEV_URL: ${{ secrets.TIGER_AUTOMATION_DEV_URL }}
+          SCF_CLINICAL_TRIAGE_DIR: /tmp/scf-clinical-accuracy-triage
+        run: node scripts/automation/clinical-accuracy-tiger-dev.mjs verify
+
+      - name: Flag source outages or correction signals for human review
+        run: |
+          python3 - <<'PY'
+          import json
+          j=json.load(open('/tmp/scf-clinical-accuracy-triage/triage-run.json'))
+          if j['bibliographicMetadataChecked'] != 20 or j['efetchRecordsChecked'] != 20:
+              raise SystemExit('PubMed metadata incomplete; qualified review required')
+          if j['pubmedStatusAlerts'] > 0:
+              raise SystemExit('Publication correction signal; qualified review required')
+          print('Research source preflight passed, clinical claims remain NOT_ASSESSED')
+          PY
+
+      - name: Save public-only review artifacts
+        if: always()
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
+        with:
+          name: tiger-dev-clinical-accuracy-${{ github.run_id }}
+          path: |
+            /tmp/scf-clinical-accuracy-triage/
+            /tmp/scf-source-to-claim-review/published-high-priority.md
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Summarize reviewer queue without granting medical approvals
+        if: always()
+        run: |
+          echo '## Clinical accuracy source review — NOT a medical decision' >> "$GITHUB_STEP_SUMMARY"
+          if [[ -f /tmp/scf-clinical-accuracy-triage/clinical-accuracy-review.md ]]; then
+            cat /tmp/scf-clinical-accuracy-triage/clinical-accuracy-review.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo 'Report missing: inspect failed steps.' >> "$GITHUB_STEP_SUMMARY"
+          fi
+          echo 'Zero automated clinical verification, VA nexus approvals or Production changes.' >> "$GITHUB_STEP_SUMMARY"
+
+  triage-issue-tracker:
+    needs: evidence-and-ontology-triage
+    if: always() && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      issues: write
+    steps:
+      - name: Maintain single failure or source-status issue
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TRIAGE_RESULT: ${{ needs.evidence-and-ontology-triage.result }}
+        run: |
+          set -euo pipefail
+          title="Tiger DEV clinical source triage requires attention"
+          issue="$(gh issue list -R "$GITHUB_REPOSITORY" --state open \
+            --search "${title} in:title" --limit 100 --json number,title \
+            --jq '.[] | select(.title=="Tiger DEV clinical source triage requires attention") | .number' | head -1)"
+          link="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          if [[ "$TRIAGE_RESULT" == "success" ]]; then
+            if [[ -n "$issue" ]]; then
+              gh issue close "$issue" -R "$GITHUB_REPOSITORY" --reason completed \
+                --comment "Source metadata healthy again: $link. Clinical review still required."
+            fi
+          else
+            body="DEV public-source research or verification failed: ${link}. This is NOT evidence of medical invalidity. Clinical review remains required; Production is unchanged."
+            if [[ -n "$issue" ]]; then
+              gh issue edit "$issue" -R "$GITHUB_REPOSITORY" --body "$body"
+            else
+              gh issue create -R "$GITHUB_REPOSITORY" --title "$title" --body "$body"
+            fi
