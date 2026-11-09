@@ -1,0 +1,148 @@
+name: Tiger DEV Expanded Pathway Evidence Review
+
+# DEV-only public research over 827 remaining authored secondary pathways.
+# Research completion is not a medical nexus or publication approval.
+on:
+  schedule:
+    - cron: "11 3,9,15,21 * * *"
+  workflow_dispatch:
+    inputs:
+      batch_index:
+        description: "Review batch 0-8, or auto for all nine batches over time"
+        required: false
+        type: string
+        default: "auto"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tiger-dev-expanded-evidence
+  cancel-in-progress: false
+
+jobs:
+  expanded-public-research:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: tiger-dev-research
+    timeout-minutes: 35
+    steps:
+      - name: Checkout reviewed main
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+
+      - name: Setup Node 22
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install pinned dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+
+      - name: Verify fixed ontology provenance and complete mapping ledger
+        run: |
+          python3 scripts/automation/stage_pinned_ontology.py
+          python3 scripts/lib/build-clinical-review-ledger.py
+          python3 -m unittest discover -s tests -p 'test_pinned_ontology_bootstrap.py'
+          python3 -m unittest discover -s tests -p 'test_clinical_review_rules.py'
+          python3 -m unittest discover -s tests -p 'test_directional_evidence_campaign.py'
+          python3 -m unittest discover -s tests -p 'test_expanded_evidence_campaign.py'
+          node --test tests/clinical-review-batch1.test.mjs tests/tiger-autonomous-evidence.test.mjs tests/expanded-evidence-campaign.test.mjs
+
+      - name: Collect one bounded PubMed research batch
+        env:
+          NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
+          BATCH_INDEX: ${{ inputs.batch_index || 'auto' }}
+        run: |
+          python3 scripts/automation/expanded_evidence_campaign.py \
+            --batch-index "$BATCH_INDEX" \
+            --out /tmp/scf-autonomous-expanded-evidence
+          cp /tmp/scf-clinical-review-batch1/summary.json \
+            /tmp/scf-autonomous-expanded-evidence/contradiction-summary.json
+          cp /tmp/scf-clinical-review-batch1/pathway-contradiction-queue.csv \
+            /tmp/scf-autonomous-expanded-evidence/
+
+      - name: Append immutable batch to Tiger Cloud DEV
+        env:
+          TIGER_AUTOMATION_DEV_URL: ${{ secrets.TIGER_AUTOMATION_DEV_URL }}
+          SCF_EVIDENCE_FILE: /tmp/scf-autonomous-expanded-evidence/evidence-run.json
+        run: node scripts/automation/tiger-evidence-dev.mjs apply --dev-write
+
+      - name: Independently verify Tiger DEV rows and cumulative coverage
+        env:
+          TIGER_AUTOMATION_DEV_URL: ${{ secrets.TIGER_AUTOMATION_DEV_URL }}
+          SCF_EVIDENCE_FILE: /tmp/scf-autonomous-expanded-evidence/evidence-run.json
+        run: |
+          node scripts/automation/tiger-evidence-dev.mjs verify \
+            > /tmp/scf-autonomous-expanded-evidence/tiger-parity.json
+          node scripts/automation/expanded-evidence-coverage.mjs \
+            > /tmp/scf-autonomous-expanded-evidence/coverage-stdout.json
+          cat /tmp/scf-autonomous-expanded-evidence/coverage.json
+
+      - name: Expose provider outages, missing metadata and publication risks
+        run: |
+          python3 scripts/automation/check_evidence_health.py \
+            --summary /tmp/scf-autonomous-expanded-evidence/summary.json
+
+      - name: Upload immutable public-only research artifacts
+        if: always()
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
+        with:
+          name: tiger-dev-expanded-evidence-${{ github.run_id }}
+          path: /tmp/scf-autonomous-expanded-evidence/
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Summarize research and coverage
+        if: always()
+        shell: bash
+        run: |
+          if [[ -f /tmp/scf-autonomous-expanded-evidence/report.md ]]; then
+            cat /tmp/scf-autonomous-expanded-evidence/report.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "No research report produced. Inspect failed steps." >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [[ -f /tmp/scf-autonomous-expanded-evidence/coverage.json ]]; then
+            echo '' >> "$GITHUB_STEP_SUMMARY"
+            echo '## Cumulative distinct-pathway research coverage' >> "$GITHUB_STEP_SUMMARY"
+            cat /tmp/scf-autonomous-expanded-evidence/coverage.json >> "$GITHUB_STEP_SUMMARY"
+          fi
+          echo '' >> "$GITHUB_STEP_SUMMARY"
+          echo 'No automated clinical approval, individual nexus or Production publication.' >> "$GITHUB_STEP_SUMMARY"
+
+  track-expanded-research:
+    needs: expanded-public-research
+    if: always() && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      issues: write
+    steps:
+      - name: Maintain a scoped engineering-failure issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESEARCH_RESULT: ${{ needs.expanded-public-research.result }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          title="Tiger DEV expanded evidence workflow failed — source review required"
+          issue="$(gh issue list --repo "$GITHUB_REPOSITORY" --state open \
+            --search "${title} in:title" --limit 100 --json number,title \
+            --jq '.[] | select(.title=="Tiger DEV expanded evidence workflow failed — source review required") | .number' | head -n 1)"
+          link="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          if [[ "$RESEARCH_RESULT" == "success" ]]; then
+            if [[ -n "$issue" ]]; then
+              gh issue close "$issue" --repo "$GITHUB_REPOSITORY" --reason completed \
+                --comment "Tiger DEV research checks green again: $link. Clinical decisions still require review."
+            fi
+            echo "DEV research passed, no clinical approvals." >> "$GITHUB_STEP_SUMMARY"
+          else
+            body="DEV research or its data checks failed (job: ${RESEARCH_RESULT}). Run: ${link}. No clinical verdict or patient nexus implied. No Production publication."
+            if [[ -n "$issue" ]]; then
+              gh issue edit "$issue" --repo "$GITHUB_REPOSITORY" --body "$body"
+            else
+              gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --body "$body"
+            fi
+          fi

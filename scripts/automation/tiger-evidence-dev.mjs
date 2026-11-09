@@ -44,6 +44,19 @@ export function validate(doc) {
   assert.match(doc.runId, /^[a-f0-9]{64}$/);
   const without = Object.fromEntries(Object.entries(doc).filter(([key]) => key !== "runId"));
   assert.equal(doc.runId, sha(without), "Reference research manifest modified");
+  const extensionFields = ["campaignScope", "batchIndex", "batchCount", "batchSize",
+    "totalRemainder", "priorDirectional", "fullInventory", "selectionDigest"];
+  if (extensionFields.some((field) => Object.hasOwn(doc, field))) {
+    assert.equal(doc.campaignScope, "REMAINDER_RESEARCH_ONLY");
+    assert.equal(doc.batchCount, 9);
+    assert.equal(doc.batchSize, 100);
+    assert.equal(doc.totalRemainder, 827);
+    assert.equal(doc.priorDirectional, 48);
+    assert.equal(doc.fullInventory, 875);
+    assert.match(doc.selectionDigest, /^[a-f0-9]{64}$/);
+    assert.ok(Number.isInteger(doc.batchIndex) && doc.batchIndex >= 0 && doc.batchIndex < 9);
+    assert.equal(doc.edges.length, doc.batchIndex === 8 ? 27 : 100);
+  }
   assert.ok(Array.isArray(doc.edges) && doc.edges.length >= 1 && doc.edges.length <= 350);
   assert.ok(Array.isArray(doc.articles) && doc.articles.length <= 1000);
   assert.ok(Array.isArray(doc.discoveries) && doc.discoveries.length === doc.edges.length);
@@ -171,18 +184,33 @@ async function ingest(db,doc) {
 }
 async function historicalDiff(db,doc) {
   const prior=await db.query("SELECT run_id FROM "+SCHEMA+
-    ".runs WHERE run_id<>$1 ORDER BY inserted_at DESC,run_id DESC LIMIT 1",[doc.runId]);
-  if(!prior.rows.length) return {comparison:"FIRST_RUN",changedMetadata:0,newlyResolved:0};
-  const previous=prior.rows[0].run_id;
-  const results=await db.query("SELECT "+
-    "COUNT(*) FILTER (WHERE a.metadata_hash IS DISTINCT FROM b.metadata_hash)::int AS changed,"+
-    "COUNT(*) FILTER (WHERE a.status='METADATA_RETRIEVED' AND "+
-      "b.status IN ('UNRESOLVED','PROVIDER_UNAVAILABLE'))::int AS newly_resolved "+
-    "FROM "+SCHEMA+".pubmed_articles a LEFT JOIN "+SCHEMA+".pubmed_articles b "+
-      "ON b.run_id=$2 AND b.pmid=a.pmid WHERE a.run_id=$1",[doc.runId,previous]);
-  return {comparison:"PREVIOUS_RUN",changedMetadata:results.rows[0].changed,
-    newlyResolved:results.rows[0].newly_resolved};
+    ".runs WHERE run_id<>$1 AND source_ledger_id=$2 LIMIT 1",
+    [doc.runId,doc.sourceLedgerId]);
+  if(!prior.rows.length) return {comparison:"FIRST_RUN",changedMetadata:0,
+    newlyResolved:0,previouslySeenPmids:0,newlyObservedPmids:doc.articles.length};
+  // Compare each PMID to its latest previous record in the *same ledger edition*,
+  // not just the immediately prior batch (which often contains disjoint PMIDs).
+  const result=await db.query(`WITH earlier AS (
+     SELECT DISTINCT ON (a.pmid) a.pmid,a.status,a.metadata_hash
+       FROM ${SCHEMA}.pubmed_articles a JOIN ${SCHEMA}.runs r ON r.run_id=a.run_id
+      WHERE a.run_id<>$1 AND r.source_ledger_id=$2
+      ORDER BY a.pmid,r.inserted_at DESC,a.run_id DESC
+    ) SELECT
+      COUNT(*) FILTER (WHERE earlier.pmid IS NOT NULL)::int AS previously_seen,
+      COUNT(*) FILTER (WHERE earlier.pmid IS NULL)::int AS newly_observed,
+      COUNT(*) FILTER (WHERE earlier.pmid IS NOT NULL
+        AND a.metadata_hash IS DISTINCT FROM earlier.metadata_hash)::int AS changed,
+      COUNT(*) FILTER (WHERE earlier.pmid IS NOT NULL
+        AND a.status='METADATA_RETRIEVED'
+        AND earlier.status IN ('UNRESOLVED','PROVIDER_UNAVAILABLE'))::int AS newly_resolved
+      FROM ${SCHEMA}.pubmed_articles a LEFT JOIN earlier ON earlier.pmid=a.pmid
+      WHERE a.run_id=$1`,[doc.runId,doc.sourceLedgerId]);
+  const x=result.rows[0];
+  return {comparison:"EARLIER_SAME_LEDGER_RUNS",changedMetadata:x.changed,
+    newlyResolved:x.newly_resolved,previouslySeenPmids:x.previously_seen,
+    newlyObservedPmids:x.newly_observed};
 }
+
 export async function execute(mode,doc) {
   validate(doc);
   assert.ok(["apply","verify"].includes(mode));

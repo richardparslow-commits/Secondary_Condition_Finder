@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Fail visibly on incomplete API/source status; never equate metadata with clinical proof."""
+import argparse
 import json
 import sys
 from pathlib import Path
@@ -29,8 +30,11 @@ def assess(data):
 
 
 if __name__=="__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--summary", type=Path, default=SUMMARY)
+    args = parser.parse_args()
     try:
-        report=json.loads(SUMMARY.read_text())
+        report=json.loads(args.summary.read_text())
         concerns=assess(report)
         print(json.dumps({"engineeringQuality":"ATTENTION" if concerns else "PASSED",
                           "issues":concerns,
