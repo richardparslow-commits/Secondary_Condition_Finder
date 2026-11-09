@@ -168,6 +168,7 @@ describe("API route rate-limit coverage", () => {
       "/api/admin/cache-clear": "admin-cache-clear",
       "/api/health": "health",
       "/api/regulatory/preflight": "regulatory-preflight",
+      "/api/internal/tiger-catalog-compare": "tiger-catalog-probe",
     };
 
     for (const policy of API_ROUTE_LIMIT_POLICIES) {

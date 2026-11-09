@@ -216,6 +216,13 @@ export const adminCacheClearLimiter = createRateLimiter({
   name: "admin-cache-clear",
 });
 
+/** Preview catalog probe (authenticated, opens a database connection). */
+export const tigerCatalogProbeLimiter = createRateLimiter({
+  windowMs: 60_000,
+  max: 5,
+  name: "tiger-catalog-probe",
+});
+
 /**
  * Public dynamic reference GETs that can reach upstream VA quota or shared
  * cache writes. Bounds inbound abuse independently of the workflow limiter,

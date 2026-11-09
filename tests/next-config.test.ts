@@ -110,6 +110,12 @@ describe("COI exemption source builder", () => {
 describe("file-tracing scope decision", () => {
   const include = nextConfig.outputFileTracingIncludes?.["/**"] ?? [];
 
+  it("traces the Cloudflare PostgreSQL socket for the preview probe", () => {
+    expect(nextConfig.outputFileTracingIncludes?.["/api/internal/tiger-catalog-compare"]).toEqual([
+      "./node_modules/pg-cloudflare/dist/index.js",
+    ]);
+  });
+
   it("keeps the app-wide tracing include that the memoized loaders require", () => {
     // The data directory is a server-wide dependency: every secondary
     // workflow page, presumptive page, /terms, the health API, both action

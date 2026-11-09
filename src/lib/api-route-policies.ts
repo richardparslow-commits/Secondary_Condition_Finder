@@ -23,6 +23,7 @@ import {
   adminCacheClearLimiter,
   healthLimiter,
   regulatoryPreflightLimiter,
+  tigerCatalogProbeLimiter,
 } from "./rate-limiter";
 import type { createRateLimiter } from "./rate-limiter";
 
@@ -68,6 +69,13 @@ export const API_ROUTE_LIMIT_POLICIES: readonly ApiRouteLimitPolicy[] = [
     },
     rationale:
       "Authenticated and destructive: its blast radius is the shared reference data behind every public page.",
+  },
+  {
+    path: "/api/internal/tiger-catalog-compare",
+    limiter: tigerCatalogProbeLimiter,
+    limitedBody: { error: "Rate limit exceeded. Please try again later." },
+    rationale:
+      "Authenticated preview probe opens a database connection and executes catalog queries.",
   },
   {
     path: "/api/health",
