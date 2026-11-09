@@ -19,12 +19,11 @@
  * arrives already passing the automated portion of the gate.
  */
 import { cleanup, render, screen } from "@testing-library/react";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import PrivacyRequestPage from "@/app/privacy/request/page";
 import { SecondaryWorkflowCompletionActions } from "@/components/secondary/SecondaryWorkflowCompletionActions";
 import {
-  PRIVACY_CONTACT_EMAIL,
   PRIVACY_INTAKE_PATH,
   PRIVACY_REQUESTS,
   privacyRequestMessage,
@@ -38,7 +37,8 @@ vi.mock("next/navigation", () => ({
   useRouter: () => ({ push: vi.fn(), replace: vi.fn(), back: vi.fn() }),
 }));
 
-afterEach(cleanup);
+beforeEach(() => vi.stubEnv("PRIVACY_CONTACT_EMAIL", "privacy-review@example.org"));
+afterEach(() => { cleanup(); vi.unstubAllEnvs(); });
 
 describe("privacy request intake surface", () => {
   it("prepares one correctly addressed message per request type", () => {
@@ -46,7 +46,7 @@ describe("privacy request intake surface", () => {
 
     for (const request of PRIVACY_REQUESTS) {
       const href = screen.getByRole("link", { name: request.label }).getAttribute("href") ?? "";
-      expect(href.startsWith(`mailto:${PRIVACY_CONTACT_EMAIL}?`)).toBe(true);
+      expect(href.startsWith(`mailto:privacy-review@example.org?`)).toBe(true);
       const decoded = decodeURIComponent(href);
       expect(decoded).toContain(request.subject);
       expect(decoded).toContain(privacyRequestMessage(request.type));
@@ -72,7 +72,7 @@ describe("privacy request intake surface", () => {
     expect(textareas).toHaveLength(PRIVACY_REQUESTS.length);
     expect((textareas[0] as HTMLTextAreaElement).value).toContain("Subject:");
     expect((textareas[0] as HTMLTextAreaElement).readOnly).toBe(true);
-    expect(screen.getByText(PRIVACY_CONTACT_EMAIL)).toBeTruthy();
+    expect(screen.getByText("privacy-review@example.org")).toBeTruthy();
   });
 
   it("submits nothing to the application: no form, no field, no submit control", () => {

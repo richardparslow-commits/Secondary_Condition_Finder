@@ -25,7 +25,7 @@ export default function HomePage() {
           <article className="ui-card">
             <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">↗</span><div><p className="ui-kicker">Secondary</p><h2 className="text-2xl font-bold">Condition Caused By Service-Connected Condition</h2></div></div>
             <p>Explore a current condition that may be the result of, or would not have occurred but for, an already service-connected disability (Spicer/M21-1 May 2026).</p>
-            <Link href="/secondary/condition-caused-by" className="ui-button mt-6 w-full">Learn More <span aria-hidden="true">→</span></Link>
+            <Link href="/secondary/condition-caused-by" className="ui-button mt-6 w-full">Learn about causation <span aria-hidden="true">→</span></Link>
           </article>
 
           <article className="ui-card">
@@ -62,7 +62,7 @@ export default function HomePage() {
           <article className="ui-card">
             <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">↗</span><div><p className="ui-kicker">Secondary</p><h2 className="text-2xl font-bold">Conditions via Aggravation</h2></div></div>
             <p>Explore a condition that already existed but may have been made worse, or its treatment interfered with, by a service-connected disability (Spicer/M21-1 May 2026).</p>
-            <Link href="/secondary/condition-aggravation" className="ui-button mt-6 w-full">Learn More <span aria-hidden="true">→</span></Link>
+            <Link href="/secondary/condition-aggravation" className="ui-button mt-6 w-full">Learn about aggravation <span aria-hidden="true">→</span></Link>
           </article>
 
           <article className="ui-card">

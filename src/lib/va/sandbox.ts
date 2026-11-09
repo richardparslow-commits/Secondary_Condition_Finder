@@ -464,6 +464,9 @@ async function requestVaJson<T>(args: {
       }
 
       if (!response.ok) {
+        // Error documents are never used; release the upstream body before
+        // returning a fallback or starting another attempt.
+        void response.body?.cancel().catch(() => undefined);
         const durationMs = Date.now() - startedAt;
         const observation: VaApiObservation = {
           requestId,
