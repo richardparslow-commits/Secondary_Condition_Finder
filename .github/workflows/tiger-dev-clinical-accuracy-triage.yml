@@ -70,6 +70,16 @@ jobs:
           SCF_CLINICAL_TRIAGE_DIR: /tmp/scf-clinical-accuracy-triage
         run: node scripts/automation/clinical-accuracy-tiger-dev.mjs verify
 
+      - name: Reconcile all 507 citation-flagged pathways against Tiger DEV bibliography
+        env:
+          TIGER_AUTOMATION_DEV_URL: ${{ secrets.TIGER_AUTOMATION_DEV_URL }}
+        run: |
+          node scripts/automation/citation-research-dev.mjs
+          python3 scripts/automation/citation_provenance_reconcile.py \
+            --metadata-json /tmp/scf-clinical-accuracy-triage/citation-research-metadata.json
+          python3 scripts/automation/citation_provenance_reconcile.py --verify
+          python3 -m unittest discover -s tests -p 'test_citation_provenance_reconcile.py'
+
       - name: Flag source outages or correction signals for human review
         run: |
           python3 - <<'PY'
