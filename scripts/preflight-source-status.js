@@ -16,8 +16,8 @@
 //                            withdrawn publication
 //   EXPRESSION_OF_CONCERN  — publication type "Expression of Concern", or a
 //                            linked expression-of-concern notice
-//   UNRESOLVED             — the reference's PMID does not resolve in PubMed,
-//                            so no status check is possible
+//   UNRESOLVED             — the reference's PMID has no PubMed summary or no
+//                            full status record, so a complete check is impossible
 //
 // Non-blocking notes: linked errata ("Published Erratum", ErratumIn) are
 // reported for reviewer awareness but do not fail the preflight.
@@ -195,11 +195,11 @@ function evaluateRefs(refs, esummaryResult, efetchXml) {
     }
     const esum = esummary.get(pmid);
     const efetchDoc = efetch.get(pmid);
-    if (!esum && !efetchDoc) {
+    if (!esum || !efetchDoc) {
       flags.push({
         pmid,
         flag: FLAG_CLASSES.UNRESOLVED,
-        evidence: "PMID does not resolve in PubMed; status cannot be verified",
+        evidence: "PubMed summary or full status record missing; complete status cannot be verified",
         where: entry.where,
       });
       continue;
