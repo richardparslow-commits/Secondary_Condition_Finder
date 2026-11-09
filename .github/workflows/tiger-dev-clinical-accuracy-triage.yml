@@ -136,3 +136,4 @@ jobs:
             else
               gh issue create -R "$GITHUB_REPOSITORY" --title "$title" --body "$body"
             fi
+          fi
