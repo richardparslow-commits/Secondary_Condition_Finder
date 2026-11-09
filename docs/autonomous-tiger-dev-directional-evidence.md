@@ -19,7 +19,7 @@ Workflow: `.github/workflows/tiger-dev-directional-evidence.yml`
 - Downloads the official pinned **MONDO v2026-10-06** ontology with SHA-256 verification, rebuilds Batch 1's 819/875 review ledger and contradiction signals, runs tests, then checks PubMed.
 - Public NCBI E-utilities metadata and fixed Title/Abstract study discovery only. 550 ms minimum request pacing, timeouts, bounded retries, no raw abstract copying and no unrestricted patient queries.
 - Inserts a content-addressed research snapshot into the dedicated Tiger Cloud DEV schema and performs independent READ ONLY exact-row verification.
-- Saves a GitHub Actions run summary and JSON/CSV/Markdown artifacts (30-day retention).
+- Saves a GitHub Actions run summary and JSON/CSV/Markdown artifacts (30-day retention). A separate minimally privileged issue job reports failed checks and automatically closes its issue when a later run is green.
 - Starts running automatically **once the workflow PR has been reviewed and merged to the default branch**. Opening a draft PR is not sufficient.
 
 GitHub can delay or occasionally drop scheduled executions. Inspect Actions history after activation. The workflow does not auto-stop just because source metadata resolves: **clinical review remains outstanding**.

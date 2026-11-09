@@ -99,6 +99,11 @@ test("GitHub workflow is scheduled, main-only and read-only to the repo", () => 
   assert.match(yaml,/permissions:\s*contents: read/);
   assert.match(yaml,/TIGER_AUTOMATION_DEV_URL: \$\{\{ secrets.TIGER_AUTOMATION_DEV_URL \}\}/);
   assert.doesNotMatch(yaml,/pull_request:\s*|contents: write|gh pr merge|tsdbadmin/i);
+  assert.match(yaml,/  track-evidence:/);
+  assert.match(yaml,/needs: public-evidence-review/);
+  assert.match(yaml,/issues: write/);
+  assert.match(yaml,/gh issue create/);
+  assert.match(yaml,/gh issue close/);
 });
 
 test("resolved PubMed sources require signed metadata fields", () => {

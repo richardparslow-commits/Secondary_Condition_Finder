@@ -93,3 +93,44 @@ jobs:
           path: /tmp/scf-autonomous-directional-evidence/
           if-no-files-found: warn
           retention-days: 30
+
+  track-evidence:
+    # A separate minimal-permission job hands failures to a human. The
+    # research/DB job itself never receives issues:write or repo mutation rights.
+    needs: public-evidence-review
+    if: always() && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    timeout-minutes: 5
+    steps:
+      - name: Open, update or close the autonomous evidence tracking issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESEARCH_RESULT: ${{ needs.public-evidence-review.result }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          title="Tiger DEV autonomous evidence workflow failed — source review required"
+          issue="$(gh issue list --repo "$GITHUB_REPOSITORY" --state open \
+            --search "${title} in:title" --limit 100 --json number,title \
+            --jq '.[] | select(.title=="Tiger DEV autonomous evidence workflow failed — source review required") | .number' | head -n 1)"
+          link="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          if [[ "$RESEARCH_RESULT" == "success" ]]; then
+            if [[ -n "$issue" ]]; then
+              gh issue close "$issue" --repo "$GITHUB_REPOSITORY" \
+                --reason completed --comment "Autonomous Tiger DEV evidence checks are green again: $link. Clinical review remains separately required."
+              echo "Closed resolved Tiger DEV workflow failure issue #$issue" >> "$GITHUB_STEP_SUMMARY"
+            else
+              echo 'Autonomous Tiger DEV workflow is green; no failure issue.' >> "$GITHUB_STEP_SUMMARY"
+            fi
+          else
+            body="The scheduled DEV research workflow was not successful (job result: ${RESEARCH_RESULT}). Review the failed API, contradiction, database integrity or security checks at: ${link}. This issue tracks an **engineering/source-availability problem**, not a verified medical relationship or patient nexus. No medical content should be published automatically."
+            if [[ -n "$issue" ]]; then
+              gh issue edit "$issue" --repo "$GITHUB_REPOSITORY" --body "$body"
+              echo "Updated outstanding DEV workflow failure issue #$issue" >> "$GITHUB_STEP_SUMMARY"
+            else
+              gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --body "$body"
+              echo 'Created DEV workflow failure tracking issue.' >> "$GITHUB_STEP_SUMMARY"
+            fi
+          fi
