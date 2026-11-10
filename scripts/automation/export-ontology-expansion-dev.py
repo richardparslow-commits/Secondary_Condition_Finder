@@ -9,6 +9,8 @@ ROOT=Path(__file__).resolve().parents[2]
 STAGED=Path("/tmp/scf-mondo-20261006/staged")
 OUT=ROOT/"docs/research-dev"
 PIN="a165dc2fc61761f5e5413b6395dd4afb14c89d78783af213a9b8f1d0a3f2a8c7"
+SOURCE_SHA256="2631e8e165d41def1a46749adb1ce0a336c8aba7f6bc0978729592cee8fed60b"
+EXPECTED_TABLES=("app_audits","app_candidates","app_pathways","concepts","parents","synonyms","xrefs")
 BUCKETS={
  "mental-health":r"depress|anxiet|bipolar|schizo|psychos|post.traumatic|attention.deficit|autis|substance use",
  "tbi-neurology":r"brain injur|encephal|epilep|neuropath|seizur|migraine|parkinson|multiple sclerosis|neurodegener",
@@ -21,21 +23,41 @@ BUCKETS={
  "rare-genetic":r"congenital|inherited|hereditar|mitochondri|chromosom|gene-related|gene mutation",
 }
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
+def snapshot_digest(source_sha256,tables):
+ return hashlib.sha256((source_sha256+json.dumps(
+  {name: table["sha256"] for name,table in tables.items()},sort_keys=True)).encode()).hexdigest()
+def validate_manifest(m):
+ if m.get("source_sha256")!=SOURCE_SHA256:
+  raise ValueError("Unexpected MONDO source digest")
+ tables=m.get("tables")
+ if not isinstance(tables,dict) or set(tables)!=set(EXPECTED_TABLES):
+  raise ValueError("Unexpected ontology table set")
+ for name,table in tables.items():
+  digest=table.get("sha256") if isinstance(table,dict) else None
+  if not isinstance(digest,str) or not re.fullmatch(r"[a-f0-9]{64}",digest):
+   raise ValueError("Bad ontology source hash: "+name)
+ computed=snapshot_digest(SOURCE_SHA256,tables)
+ if m.get("snapshot")!=computed or computed!=PIN:
+  raise ValueError("MONDO snapshot digest mismatch")
+ return computed
 def normalized(v):
  s=unicodedata.normalize("NFKD",str(v).lower())
  s="".join(ch for ch in s if not unicodedata.combining(ch))
  return " ".join(re.findall(r"[a-z0-9]+",s))
 def load():
  m=json.loads((STAGED/"manifest.json").read_text())
- if (m.get("snapshot")!=PIN or m.get("version")!="v2026-10-06"
+ if (m.get("version")!="v2026-10-06"
    or m.get("clinicalApproval")!="NOT_GRANTED" or m.get("appConditionCount")!=819):
   raise ValueError("Unexpected MONDO snapshot")
+ validate_manifest(m)
  counts={"concepts":36055,"app_candidates":565,"app_audits":819}
- tables={}
- for table,n in counts.items():
+ for table in EXPECTED_TABLES:
   f=STAGED/(table+".csv")
   if not f.is_file() or sha(f)!=m["tables"][table]["sha256"]:
    raise ValueError("Bad ontology source hash: "+table)
+ tables={}
+ for table,n in counts.items():
+  f=STAGED/(table+".csv")
   with f.open(newline="",encoding="utf8") as handle:rows=list(csv.DictReader(handle))
   if len(rows)!=n:raise ValueError("Unexpected source count: "+table)
   tables[table]=rows
