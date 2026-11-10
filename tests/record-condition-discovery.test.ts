@@ -9,6 +9,7 @@ import {
   withdrawRecordCondition, withdrawRecordSource,
 } from "../src/lib/secondary-workflow/record-derived-confirmation";
 import {
+  browserWorkflowContextStorageKey,
   readBrowserWorkflowContext, writeBrowserWorkflowContext,
 } from "../src/lib/secondary-workflow/browser-context";
 
@@ -33,6 +34,30 @@ const base = {
   serviceConnectedConditionIds: ["post-traumatic-stress-disorder"],
   ratingsByConditionId: { "post-traumatic-stress-disorder": 70 },
 };
+
+describe("Veteran-entered-diagnoses-only workflow invariant", () => {
+  it("drops every old record-extracted target on reading a legacy tab", () => {
+    const storageMap = new Map<string, string>();
+    const storage = {
+      getItem: (key: string) => storageMap.get(key) ?? null,
+      setItem: (key: string, value: string) => storageMap.set(key, value),
+    };
+    storageMap.set(browserWorkflowContextStorageKey, JSON.stringify({
+      ...base,
+      version: 1,
+      diagnosedConditionIds: ["post-traumatic-stress-disorder", "obstructive-sleep-apnea"],
+      recordDiscoveredConditionIds: ["obstructive-sleep-apnea"],
+      recordClaimStatusByConditionId: { "obstructive-sleep-apnea": "pending" },
+      recordSourceIdsByConditionId: { "obstructive-sleep-apnea": ["old-review-file"] },
+    }));
+    const checked = readBrowserWorkflowContext(storage as unknown as Storage);
+    expect(checked?.diagnosedConditionIds).toEqual(["post-traumatic-stress-disorder"]);
+    expect(checked?.ratingsByConditionId).toEqual(base.ratingsByConditionId);
+    expect(checked?.serviceConnectedConditionIds).toEqual(base.serviceConnectedConditionIds);
+    expect(checked?.recordDiscoveredConditionIds).toEqual([]);
+    expect(checked?.recordSourceIdsByConditionId).toEqual({});
+  });
+});
 
 describe("P0 record-derived condition discovery: local mentions, not diagnoses", () => {
   it("surfaces a new clinician-authored assessment with page/line provenance", () => {
@@ -122,7 +147,10 @@ describe("P0 record-derived condition discovery: local mentions, not diagnoses",
     expect(serialized).not.toContain("synthetic-record.txt");
     expect(serialized).not.toContain("page 3");
     expect(serialized).not.toContain("Obstructive Sleep Apnea");
+    // Record-extracted suggestions cannot persist or enter the comparison.
     expect(readBrowserWorkflowContext(storage as unknown as Storage)?.recordDiscoveredConditionIds)
-      .toEqual(["obstructive-sleep-apnea"]);
+      .toEqual([]);
+    expect(readBrowserWorkflowContext(storage as unknown as Storage)?.diagnosedConditionIds)
+      .toEqual(base.diagnosedConditionIds);
   });
 });

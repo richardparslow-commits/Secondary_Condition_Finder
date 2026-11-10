@@ -102,7 +102,7 @@ export function readBrowserWorkflowContext(
   }
 
   const result = browserWorkflowContextSchema.safeParse(parsed);
-  return result.success ? result.data : null;
+  return result.success ? removeLegacyRecordSuggestions(result.data) : null;
 }
 
 /**
@@ -119,7 +119,35 @@ export function writeBrowserWorkflowContext(
     version: BROWSER_WORKFLOW_CONTEXT_VERSION,
   });
   if (!parsed.success) throw new BrowserWorkflowContextTooLargeError();
-  storage.setItem(browserWorkflowContextStorageKey, JSON.stringify(parsed.data));
+  // Reject record-generated targets even if an older caller attempts to
+  // persist them. Only the Veteran's explicit Step 1 selection is eligible.
+  storage.setItem(browserWorkflowContextStorageKey, JSON.stringify(removeLegacyRecordSuggestions(parsed.data)));
+}
+
+/**
+ * Prior releases allowed record-extracted conditions to enter diagnosed IDs.
+ * The current product only compares diagnoses explicitly provided by the Veteran.
+ * On read AND write, retract every record-origin ID while keeping manually
+ * supplied service-connected conditions, ratings, and unrelated history.
+ * A previously record-derived condition can be reselected in Step 1 if it was
+ * independently diagnosed by the Veteran's medical professional.
+ */
+function removeLegacyRecordSuggestions(context: BrowserWorkflowContext): BrowserWorkflowContext {
+  const fromRecords = new Set(context.recordDiscoveredConditionIds ?? []);
+  if (fromRecords.size === 0) return context;
+  const protectedPrimaries = new Set(context.serviceConnectedConditionIds ?? []);
+  const remove = new Set([...fromRecords].filter((id) => !protectedPrimaries.has(id)));
+  return {
+    ...context,
+    diagnosedConditionIds: context.diagnosedConditionIds?.filter((id) => !remove.has(id)),
+    conditionTimeline: context.conditionTimeline
+      ? Object.fromEntries(Object.entries(context.conditionTimeline)
+          .filter(([id]) => !remove.has(id)))
+      : undefined,
+    recordDiscoveredConditionIds: [],
+    recordClaimStatusByConditionId: {},
+    recordSourceIdsByConditionId: {},
+  };
 }
 
 /** Removes the browser-local context. Throws if removal cannot be confirmed. */

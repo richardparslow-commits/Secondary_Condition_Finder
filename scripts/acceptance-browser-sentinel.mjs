@@ -1065,30 +1065,22 @@ async function run() {
     60_000,
   );
   walk.passA.textEvidenceRetainedLocally = true;
-  await waitForPage(
-    `(() => {
-      const section = document.querySelector('section[aria-labelledby="record-discovery-heading"]');
-      const article = [...(section?.querySelectorAll("article") ?? [])].find(
-        (element) => element.querySelector("h3")?.textContent?.trim() === "Migraine Headaches",
-      );
-      return !!article?.querySelector('input[type="checkbox"]');
-    })()`,
-    "clinician-authored record-derived research topic",
-  );
-  await pageEval(js(function () {
-    const section = document.querySelector('section[aria-labelledby="record-discovery-heading"]');
-    const article = [...(section?.querySelectorAll("article") ?? [])].find(
-      (element) => element.querySelector("h3")?.textContent?.trim() === "Migraine Headaches",
-    );
-    const checkbox = article?.querySelector('input[type="checkbox"]');
-    if (checkbox && !checkbox.checked) checkbox.click();
-    return checkbox?.checked === true;
+  // Medical record text is for evidence review only, not diagnosis discovery.
+  const recordResearchOff = await pageEval(js(function () {
+    return !document.querySelector('section[aria-labelledby="record-discovery-heading"]') &&
+      !document.body.innerText.includes("Possible additional conditions found in your records");
   }));
-  await waitForPage(
-    `!!document.querySelector('section[aria-labelledby="record-discovery-heading"] select')`,
-    "record-derived claim status selection",
+  assert("no record-derived diagnosis or opt-in UI exists", recordResearchOff === true);
+  const selectedAfterRecord = await pageEval(js(function () {
+    try {
+      return JSON.parse(sessionStorage.getItem("secondary-condition-finder:secondary-workflow:v1") || "{}").diagnosedConditionIds || [];
+    } catch { return []; }
+  }));
+  assert(
+    "uploaded record cannot add an unselected diagnosis",
+    Array.isArray(selectedAfterRecord) && !selectedAfterRecord.includes("migraine-headaches"),
+    JSON.stringify(selectedAfterRecord),
   );
-  await pageEval(js(selectByOptionValue, "pending"));
 
   // Evidence upload 2 — image-only scanned PDF; OCR must run in local workers.
   const jpegBase64 = await pageEval(js(drawOcrImage, SENTINELS.ocrToken, 2200, 260));
@@ -1278,24 +1270,22 @@ async function run() {
     {
       field: "recordDiscoveredConditionIds",
       sentinel: null,
-      ok: record?.recordDiscoveredConditionIds?.includes("migraine-headaches") === true &&
-        record?.diagnosedConditionIds?.includes("migraine-headaches") === true,
+      ok: !record?.recordDiscoveredConditionIds?.length &&
+        !record?.diagnosedConditionIds?.includes("migraine-headaches"),
       detail: JSON.stringify(record?.recordDiscoveredConditionIds ?? null),
     },
     {
       field: "recordClaimStatusByConditionId",
       sentinel: null,
-      ok: record?.recordClaimStatusByConditionId?.["migraine-headaches"] === "pending",
+      ok: !record?.recordClaimStatusByConditionId ||
+        Object.keys(record.recordClaimStatusByConditionId).length === 0,
       detail: JSON.stringify(record?.recordClaimStatusByConditionId ?? null),
     },
     {
       field: "recordSourceIdsByConditionId",
       sentinel: null,
-      ok: Array.isArray(record?.recordSourceIdsByConditionId?.["migraine-headaches"]) &&
-        record.recordSourceIdsByConditionId["migraine-headaches"].length > 0 &&
-        record.recordSourceIdsByConditionId["migraine-headaches"].every(
-          (sourceId) => typeof sourceId === "string" && sourceId.length > 0 && analysesText.includes(sourceId),
-        ),
+      ok: !record?.recordSourceIdsByConditionId ||
+        Object.keys(record.recordSourceIdsByConditionId).length === 0,
       detail: JSON.stringify(record?.recordSourceIdsByConditionId ?? null),
     },
   ];
@@ -1303,7 +1293,7 @@ async function run() {
     (field) => field !== "version" && !fieldControls.some((entry) => entry.field === field),
   );
   assert(
-    "every context schema field has a positive control in the walk",
+    "every context schema field has an explicit privacy control in the walk",
     uncoveredFields.length === 0,
     uncoveredFields.length
       ? `uncovered: ${uncoveredFields.join(", ")}`
