@@ -265,6 +265,7 @@ jobs:
           set -euo pipefail
           python3 -m unittest discover -s tests -p 'test_secondary_evidence_discovery.py' 2>&1 | tee ci-secondary-evidence.log
           python3 -m unittest discover -s tests -p 'test_candidate_publication_preflight.py' 2>&1 | tee ci-candidate-metadata.log
+          node --test tests/candidate-review-tiger-dev.test.mjs 2>&1 | tee ci-candidate-dev.log
           npm test 2>&1 | tee ci-test.log
       # Focused coordination gate: the fleet simulation holds 30–40 simulated
       # instances to the shared-cache, single-flight, circuit, invalidation,

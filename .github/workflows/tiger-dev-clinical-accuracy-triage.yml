@@ -69,6 +69,18 @@ jobs:
           python3 scripts/automation/candidate_publication_preflight.py
           python3 scripts/automation/candidate_publication_preflight.py --verify
 
+      - name: Append immutable candidate publication and pathway research rows to Tiger DEV
+        env:
+          TIGER_AUTOMATION_DEV_URL: ${{ secrets.TIGER_AUTOMATION_DEV_URL }}
+        run: |
+          node --test tests/candidate-review-tiger-dev.test.mjs
+          node scripts/automation/candidate-review-tiger-dev.mjs apply --dev-write
+
+      - name: Independently verify all candidate research rows in read-only DEV transaction
+        env:
+          TIGER_AUTOMATION_DEV_URL: ${{ secrets.TIGER_AUTOMATION_DEV_URL }}
+        run: node scripts/automation/candidate-review-tiger-dev.mjs verify
+
       - name: Test medical-governance and provenance guards
         run: |
           python3 -m unittest discover -s tests -p 'test_clinical_accuracy_triage.py'
