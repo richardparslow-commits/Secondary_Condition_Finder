@@ -97,7 +97,7 @@ test("SQL function binds identity to session user and enforces revocable credent
   assert.match(sql,/FROM scf_evidence_ci_writer/);
   assert.match(sql,/production_publication_state/);
   assert.match(sql,/NOT_GRANTED/);
-  assert.match(sql,/FOREIGN KEY/); // SQL context is enforced by existing private receipt table
+  assert.match(sql,/JOIN scf_candidate_review_dev\.publications/); // Exact immutable candidate linkage
   assert.doesNotMatch(sql,/\bCREATE ROLE\b(?!.*NO LOGIN)/i);
   assert.doesNotMatch(sql,/\bGRANT EXECUTE\b/i);
   assert.doesNotMatch(sql,/TIGER_AUTOMATION_DEV_URL/);
