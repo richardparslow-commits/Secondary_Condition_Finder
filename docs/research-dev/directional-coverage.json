@@ -1,0 +1,32 @@
+{
+  "already_published_in_app_data": 21,
+  "authored_types": {
+    "AGGRAVATION": 2,
+    "DIRECT_CAUSATION": 46
+  },
+  "candidate_text_search_hit_edges": 21,
+  "cited_pmids_metadata_present": 90,
+  "cited_pmids_status_review": 0,
+  "cited_pmids_unresolved": 0,
+  "edges": 48,
+  "environment": "DEV_ONLY",
+  "flag_counts": {
+    "ALREADY_PUBLISHED_APP_DATA": 21,
+    "DIRECTIONAL_CLAIM_HUMAN_REVIEW": 48,
+    "INDIVIDUAL_NEXUS_PROBABILITY_LANGUAGE": 30,
+    "NO_CLINICAL_PROOF_FROM_METADATA": 48,
+    "NO_KEYWORD_CANDIDATE_MATCH": 27
+  },
+  "independent_clinical_approvals": 0,
+  "next_gate": "Qualified human review of the exact direction, mechanism, article relevance, conflicting evidence and individualized nexus language.",
+  "priority": {
+    "P0": 21,
+    "P1": 27
+  },
+  "production_changes": 0,
+  "pubmed_metadata_rows": 186,
+  "source_observed_at": "2026-11-09T05:09:56+00:00",
+  "source_snapshot": "37ef11e59267ea3c6cbe5ed1220a93879e707f376f3440188e4149648545bb0f",
+  "unique_cited_pmids": 90,
+  "workstream": "directional-review-48"
+}

@@ -5,14 +5,14 @@
 # ~35 minutes; this workflow runs ONLY the accessibility gate files so an axe
 # regression is attributed in under two minutes instead of hiding inside the
 # full-suite log. Nothing here uses `continue-on-error`: any failing step fails
-# the job. Note this job is an attribution signal, not a merge gate — the
-# "Protect main production lineage" ruleset requires only `verify` and
-# `verify-doc-lint`, and both already run these same axe suites in full.
+# the job. `a11y-508-gate` is also a required context for `research-dev` under
+# the "Solo research DEV PR + CI gate" ruleset, so keep this workflow's
+# pull-request targets aligned with every ruleset that requires the job.
 name: PR 508 compliance
 
 on:
   pull_request:
-    branches: [main]
+    branches: [main, research-dev]
   workflow_dispatch:
 
 concurrency:

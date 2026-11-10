@@ -1,0 +1,32 @@
+{
+  "workstream": "official-va-legal-authorities",
+  "environment": "DEV_ONLY",
+  "source_run": "3ffdbd32bf9e2bf3b5209a1da6e99e029b507ac3b0aa80fa74da9804a2b03ae0",
+  "observed_at": "2026-11-10",
+  "records": 11,
+  "records_by_kind": {
+    "statute": 4,
+    "regulation": 2,
+    "manual": 2,
+    "court_case": 3
+  },
+  "flags": {
+    "LEGAL_HUMAN_REVIEW_REQUIRED": 11,
+    "EFFECTIVE_DATE_AND_AMENDMENTS_CHECK": 2,
+    "REVIEW_CLAIM_TYPE_STAGE_LIMITS": 1,
+    "REVIEW_TERA_APPLICABILITY_EXCEPTIONS": 1,
+    "CFR_M21_SPICER_AGGRAVATION_RECONCILIATION": 3,
+    "AGGRAVATION_BASELINE_AND_NATURAL_PROGRESS_TEXT": 1,
+    "REVERIFY_CURRENT_ECFR_TEXT": 1,
+    "M21_DATED_EDITION": 2,
+    "EXACT_HOLDING_SCOPE_REVIEW": 3,
+    "LATER_CASE_TREATMENT_CHECK": 3,
+    "ORIGINAL_OPINION_URL_NOT_YET_VERIFIED": 1
+  },
+  "official_primary_source_records": 10,
+  "indirect_official_case_citations": 1,
+  "legal_human_approvals": 0,
+  "production_changes": 0,
+  "case_law_completeness": "NOT_CLAIMED",
+  "authority_effective_dates": "HUMAN_REVIEW_PENDING"
+}

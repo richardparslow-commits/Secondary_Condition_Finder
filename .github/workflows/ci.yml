@@ -267,6 +267,8 @@ jobs:
           python3 -m unittest discover -s tests -p 'test_candidate_publication_preflight.py' 2>&1 | tee ci-candidate-metadata.log
           node --test tests/candidate-review-tiger-dev.test.mjs 2>&1 | tee ci-candidate-dev.log
           node --test tests/reviewer-intake-dev.test.mjs 2>&1 | tee ci-qualified-review-intake.log
+          python3 -m unittest discover -s tests -p 'test_ontology_expansion_provenance.py' 2>&1 | tee ci-ontology-provenance.log
+          node --test tests/dev-ontology-review-queue.test.mjs 2>&1 | tee ci-ontology-queue.log
           npm test 2>&1 | tee ci-test.log
       # Focused coordination gate: the fleet simulation holds 30–40 simulated
       # instances to the shared-cache, single-flight, circuit, invalidation,
