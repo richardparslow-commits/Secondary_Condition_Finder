@@ -135,7 +135,7 @@ test("one complete security-definer intake DDL and one executable reviewer grant
   assert.equal(SQL.split("CREATE OR REPLACE FUNCTION scf_candidate_review_dev.submit_qualified_review").length-1,1);
   assert.equal(SQL.split("END $qualified$;").length-1,1);
   assert.equal(SQL.split("GRANT EXECUTE ON FUNCTION scf_candidate_review_dev.submit_qualified_review").length-1,1);
-  assert.match(SQL,/TO scf_dev_qualified_reviewers;\\s*$/);
+  assert.ok(SQL.trimEnd().endsWith("TO scf_dev_qualified_reviewers;"));
 });
 
 test("audit rejects accidental CI privileges or private table access",()=>{
