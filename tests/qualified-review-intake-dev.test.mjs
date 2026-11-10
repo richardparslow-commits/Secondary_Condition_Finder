@@ -117,13 +117,15 @@ function mockDb(permission){
   };
 }
 test("admin setup stays one transaction and fails closed on public or CI EXECUTE",async()=>{
-  const valid=mockDb({ci_can_submit:false,public_can_submit:false});
+  const valid=mockDb({ci_can_submit:false,public_can_submit:false,
+    ci_can_read_roster:false,ci_can_insert_receipt:false});
   const r=await setupIntake(async()=>valid,"SELECT 'synthetic' AS setup");
   assert.equal(r.result,"DEV_QUALIFIED_REVIEW_INTAKE_LOCKED_UNTIL_ADMIN_ENROLLMENT");
   assert.deepEqual(valid.calls.slice(0,2),["BEGIN","SELECT 'synthetic' AS setup"]);
   assert.ok(valid.calls.includes("COMMIT"));
   assert.ok(!valid.calls.includes("ROLLBACK"));
-  const bad=mockDb({ci_can_submit:false,public_can_submit:true});
+  const bad=mockDb({ci_can_submit:false,public_can_submit:true,
+    ci_can_read_roster:false,ci_can_insert_receipt:false});
   await assert.rejects(setupIntake(async()=>bad,"SELECT 1"));
   assert.ok(bad.calls.includes("ROLLBACK"));
   assert.ok(!bad.calls.includes("COMMIT"));

@@ -149,13 +149,20 @@ export async function setupIntake(connect=openAdmin,sql=fs.readFileSync(SCRIPT,"
       "pg_catalog.acldefault('f',p.proowner))) acl "+
       "WHERE n.nspname='scf_candidate_review_dev' "+
       "AND p.proname='submit_qualified_review' "+
-      "AND acl.grantee=0 AND acl.privilege_type='EXECUTE') AS public_can_submit");
+      "AND acl.grantee=0 AND acl.privilege_type='EXECUTE') AS public_can_submit,"+
+      "has_table_privilege('scf_evidence_ci_writer',"+
+      "'scf_candidate_review_dev.reviewer_authorizations','SELECT') AS ci_can_read_roster,"+
+      "has_table_privilege('scf_evidence_ci_writer',"+
+      "'scf_candidate_review_dev.qualified_human_reviews','INSERT') AS ci_can_insert_receipt");
     assert.equal(rights.rows.length,1);
     assert.equal(rights.rows[0].ci_can_submit,false);
     assert.equal(rights.rows[0].public_can_submit,false);
+    assert.equal(rights.rows[0].ci_can_read_roster,false);
+    assert.equal(rights.rows[0].ci_can_insert_receipt,false);
     await db.query("COMMIT");active=false;
     return {result:"DEV_QUALIFIED_REVIEW_INTAKE_LOCKED_UNTIL_ADMIN_ENROLLMENT",
-      ciCanSubmit:false,publicCanSubmit:false,credentialsProvisioned:0,
+      ciCanSubmit:false,publicCanSubmit:false,ciCanReadRoster:false,
+      ciCanInsertReceipt:false,reviewerLoginsCreatedBySetup:0,
       humanReviewDecisionsCreated:0,clinicalApprovals:0,productionChanges:0};
   }catch{
     if(active)await db.query("ROLLBACK").catch(()=>undefined);
