@@ -50,17 +50,18 @@ export type RecordConditionMatcher = readonly MatcherEntry[];
 
 const DIAGNOSIS_HEADER = /^(?:diagnos(?:is|es)|assessment|impressions?|active\s+problems|problem\s+list|medical\s+diagnoses?)\s*:?\s*$/i;
 const RESET_HEADER = /^(?:plan|treatment|medications|family\s+history|review\s+of\s+systems|social\s+history|procedure|physical\s+exam(?:ination)?|follow[- ]up|history\s+of\s+present\s+illness)\s*:?\s*$/i;
+const FAMILY_HISTORY_HEADER = /^(?:family\s*(?:history|hx)|fam\s*hx|fhx|fmhx)\b\s*:?\s*/i;
 // Conservative exclusion screen: a family member's condition must not be
 // suggested as this Veteran's diagnosis. Colon-terminated FHx headers and
 // "mother has" phrasing are common in medical notes.
-const FAMILY_HISTORY = /\b(?:family\s*(?:history|hx)|fam\s*hx|fhx|fmhx)\b|\b(?:mother|father|parent|sibling|brother|sister|child|son|daughter|grandmother|grandfather|aunt|uncle)\s+(?:has|had|with|diagnos(?:ed|is)|suffers?|affected)\b/i;
+const FAMILY_HISTORY = /\b(?:family\s*(?:history|hx)|fam\s*hx|fhx|fmhx)\b|\b(?:mother|father|parent|sibling|brother|sister|child|son|daughter|grandmother|grandfather|aunt|uncle)(?:['’]s)?(?:\s*:\s*|\s+)(?:(?:has|had|with|diagnos(?:ed|is)|suffers?|affected)\s+)?/i;
 // Fail closed on simple chart negation. It is safer to hold an ambiguous
 // statement for clinician review than offer a non-existent disease for opt-in.
 const RULED_OUT = /\b(?:rule(?:d)?\s+out|r\/o|no|not|never|negative|absent|denies?|denied|without|unlikely|excluded)\b/i;
-const SUSPECTED = /\b(?:possible|possibly|suspected?|probable|perhaps|questionable|concern\s+for|differential|consider|evaluation\s+for|evaluating\s+for|may\s+have|question\s+of|working\s+diagnosis|suggestive\s+of|versus|vs\.?)\b/i;
+const SUSPECTED = /\b(?:possible|possibly|suspected?|probable|perhaps|questionable|concern\s+for|differential|consider|evaluation\s+for|evaluating\s+for|may\s+have|question\s+of|working\s+diagnosis|suggestive\s+of|versus|vs\.?|refer(?:red|ral)\s+for|pending|awaiting)\b/i;
 const HISTORICAL = /\b(?:history\s+of|hx\s+of|previously|resolved|remote\s+history|prior\s+diagnosis)\b/i;
 const SYMPTOM_ONLY = /\b(?:symptoms?\s+(?:of|include)|complains?\s+of|reports?\s+of|screen(?:ing)?\s+for|c\/o)\b/i;
-const DIAGNOSIS_STATED = /\b(?:dx|diagnos(?:is|es|ed)|assessment|impression|active\s+problems?)\b\s*(?::|with|of)?(?=\s|$)/i;
+const DIAGNOSIS_STATED = /^\s*(?:dx|diagnos(?:is|es|ed)|assessment|impression)\b\s*(?::|with|of)?(?=\s|$)/i;
 const BOILERPLATE = /\b(?:38\s+(?:cfr|c\.f\.r\.|usc|u\.s\.c\.)|service\s+connection\s+may\s+be\s+granted|diagnostic\s+code\s+\d{4})\b/i;
 const CLINICIANS = new Set<ClinicianCredential>([
   "physician", "psychologist", "np-pa", "other-licensed-clinician",
@@ -104,7 +105,12 @@ export function buildRecordConditionMatcher(catalog: ConditionCatalog): RecordCo
   });
 }
 
-function classify(sentence: string, inDiagnosisSection: boolean): RecordMentionCategory {
+function classify(
+  sentence: string,
+  inDiagnosisSection: boolean,
+  inFamilyHistorySection: boolean,
+): RecordMentionCategory {
+  if (inFamilyHistorySection) return "family-history";
   if (FAMILY_HISTORY.test(sentence)) return "family-history";
   if (RULED_OUT.test(sentence)) return "ruled-out";
   if (SUSPECTED.test(sentence) || /\?\s*$/.test(sentence)) return "suspected";
@@ -130,13 +136,24 @@ export function discoverRecordConditionCandidates(
   let lineCount = 0;
   for (const segment of segments) {
     let diagnosisSection = false;
+    let familyHistorySection = false;
     for (const raw of segment.text.replace(/\r\n?/g,"\n").split("\n")) {
       lineCount++;
       if (lineCount > RECORD_DISCOVERY_MAX_LINES || out.length >= RECORD_DISCOVERY_MAX_CANDIDATES) return out;
       const line = raw.trim();
-      if (!line) { diagnosisSection = false; continue; }
-      if (DIAGNOSIS_HEADER.test(line)) { diagnosisSection = true; continue; }
-      if (RESET_HEADER.test(line) || (/:\s*$/.test(line) && line.length < 80)) diagnosisSection = false;
+      if (!line) { diagnosisSection = false; familyHistorySection = false; continue; }
+      if (DIAGNOSIS_HEADER.test(line)) {
+        diagnosisSection = true;
+        familyHistorySection = false;
+        continue;
+      }
+      if (FAMILY_HISTORY_HEADER.test(line)) {
+        diagnosisSection = false;
+        familyHistorySection = true;
+      } else if (RESET_HEADER.test(line) || (/:\s*$/.test(line) && line.length < 80)) {
+        diagnosisSection = false;
+        familyHistorySection = false;
+      }
       if (line.length > MAX_LINE_CHARS || BOILERPLATE.test(line)) continue;
       const parts = line.split(/(?:;\s*|(?<=[.!?])\s+(?=[A-Z0-9]))/).filter(Boolean);
       for (const part of parts) {
@@ -145,8 +162,9 @@ export function discoverRecordConditionCandidates(
         const lower = sentence.toLocaleLowerCase();
         for (const m of matcher) {
           if (!lower.includes(m.anchor) || !m.pattern.test(sentence) || (m.guard && !m.guard.test(sentence))) continue;
-          if (m.diagnosisContextRequired && !diagnosisSection && !DIAGNOSIS_STATED.test(sentence)) continue;
-          const category = classify(sentence, diagnosisSection);
+          const category = classify(sentence, diagnosisSection, familyHistorySection);
+          if (m.diagnosisContextRequired && !diagnosisSection && !DIAGNOSIS_STATED.test(sentence) &&
+              category !== "ruled-out" && category !== "family-history") continue;
           const key = metadata.sourceId + ":" + m.conditionId + ":" + category;
           if (seen.has(key)) continue;
           seen.add(key);

@@ -139,11 +139,24 @@ describe("P0 safety gate regression: common chart negation and family history", 
     expect(source("Assessment:\nMother has obstructive sleep apnea")[0]?.category).toBe("family-history");
     expect(source("Assessment:\nFather diagnosed with obstructive sleep apnea")[0]?.category).toBe("family-history");
     expect(source("FHx: obstructive sleep apnea")[0]?.category).toBe("family-history");
+    expect(source("Assessment:\nMother: OSA")[0]?.category).toBe("family-history");
+    expect(source("Assessment:\nMother's OSA")[0]?.category).toBe("family-history");
+    expect(source("Assessment:\nMother:Obstructive Sleep Apnea")[0]?.category).toBe("family-history");
   });
 
   it("marks tentative clinical shorthand as suspected rather than confirmed", () => {
     expect(source("Assessment:\nProbable OSA?")[0]?.category).toBe("suspected");
     expect(source("Assessment:\nOSA vs narcolepsy")[0]?.category).toBe("suspected");
+  });
+
+  it("holds referrals and pending assessments instead of treating them as diagnoses", () => {
+    expect(source("Referred for assessment of obstructive sleep apnea")[0]?.category).toBe("suspected");
+    expect(source("Assessment:\nOSA assessment pending")[0]?.category).toBe("suspected");
+  });
+
+  it("keeps family-history headings active for inline and following-line mentions", () => {
+    expect(source("Assessment:\nFHx: Mother\nOSA")[0]?.category).toBe("family-history");
+    expect(source("Assessment:\nFamily History: OSA")[0]?.category).toBe("family-history");
   });
 
   it("recognizes curated common short aliases only in affirmative diagnostic context", () => {
@@ -152,6 +165,13 @@ describe("P0 safety gate regression: common chart negation and family history", 
     });
     expect(source("Dx: OSA")[0]?.category).toBe("diagnosis-statement");
     expect(source("Treatment:\nOSA equipment notice")).toEqual([]);
+  });
+
+  it("retains ruled-out and family-history shorthand as veto evidence", () => {
+    expect(source("No OSA", "negative-record")[0]?.category).toBe("ruled-out");
+    expect(source("FHx: OSA", "family-record")[0]?.category).toBe("family-history");
+    expect(source("Assessment:\nOSA\nPlan:\nNo OSA").map(({ category }) => category))
+      .toEqual(["diagnosis-statement", "ruled-out"]);
   });
 });
 
