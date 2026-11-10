@@ -127,22 +127,37 @@ export function writeBrowserWorkflowContext(
 /**
  * Prior releases allowed record-extracted conditions to enter diagnosed IDs.
  * The current product only compares diagnoses explicitly provided by the Veteran.
- * On read AND write, retract every record-origin ID while keeping manually
- * supplied service-connected conditions, ratings, and unrelated history.
- * A previously record-derived condition can be reselected in Step 1 if it was
- * independently diagnosed by the Veteran's medical professional.
+ * On read AND write, retract every record-origin ID, including one later
+ * marked service connected through the workflow; its origin cannot be
+ * authenticated as a Step 1 Veteran-entered diagnosis. Preserve OTHER
+ * manually entered VA-rated conditions, ratings and unrelated history.
+ * A previously record-derived condition may be reselected in Step 1 only
+ * after the Veteran personally confirms their existing medical diagnosis.
  */
 function removeLegacyRecordSuggestions(context: BrowserWorkflowContext): BrowserWorkflowContext {
   const fromRecords = new Set(context.recordDiscoveredConditionIds ?? []);
   if (fromRecords.size === 0) return context;
-  const protectedPrimaries = new Set(context.serviceConnectedConditionIds ?? []);
-  const remove = new Set([...fromRecords].filter((id) => !protectedPrimaries.has(id)));
+  // A past Step 2 "yes" answer is NOT proof of a direct Step 1 selection.
+  // If origin is lost while keeping that condition, a later "no" would turn
+  // it into an unsafely inferred non-service-connected research target.
+  const keep = (id: string) => !fromRecords.has(id);
   return {
     ...context,
-    diagnosedConditionIds: context.diagnosedConditionIds?.filter((id) => !remove.has(id)),
+    diagnosedConditionIds: context.diagnosedConditionIds?.filter(keep),
+    serviceConnectedConditionIds: context.serviceConnectedConditionIds?.filter(keep),
+    serviceConnectedAnswerDraft: context.serviceConnectedAnswerDraft
+      ? Object.fromEntries(
+          Object.entries(context.serviceConnectedAnswerDraft).filter(([id]) => keep(id)),
+        )
+      : undefined,
+    ratingsByConditionId: context.ratingsByConditionId
+      ? Object.fromEntries(Object.entries(context.ratingsByConditionId)
+          .filter(([id]) => keep(id)))
+      : undefined,
+    permanentAndTotalConditionIds: context.permanentAndTotalConditionIds?.filter(keep),
     conditionTimeline: context.conditionTimeline
       ? Object.fromEntries(Object.entries(context.conditionTimeline)
-          .filter(([id]) => !remove.has(id)))
+          .filter(([id]) => keep(id)))
       : undefined,
     recordDiscoveredConditionIds: [],
     recordClaimStatusByConditionId: {},

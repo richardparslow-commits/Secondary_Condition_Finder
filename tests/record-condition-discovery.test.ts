@@ -12,6 +12,9 @@ import {
   browserWorkflowContextStorageKey,
   readBrowserWorkflowContext, writeBrowserWorkflowContext,
 } from "../src/lib/secondary-workflow/browser-context";
+import {
+  applyDiagnosedStep, applyServiceConnectedStep,
+} from "../src/lib/secondary-workflow/client-steps";
 
 const catalog: ConditionCatalog = [
   { id: "post-traumatic-stress-disorder", name: "Post Traumatic Stress Disorder", aliases: ["PTSD"],
@@ -36,6 +39,86 @@ const base = {
 };
 
 describe("Veteran-entered-diagnoses-only workflow invariant", () => {
+  it("cannot launder a record-origin diagnosis through a VA-rated yes then no", () => {
+    const storageMap = new Map<string, string>();
+    const storage = {
+      getItem: (key: string) => storageMap.get(key) ?? null,
+      setItem: (key: string, value: string) => storageMap.set(key, value),
+    };
+    // Legacy scenario: OSA was record-extracted, then marked VA-rated in Step 2.
+    // PTSD and migraine were selected independently. All examples synthetic.
+    const initial = {
+      ...base, version: 1,
+      diagnosedConditionIds: [
+        "post-traumatic-stress-disorder", "obstructive-sleep-apnea", "migraine-headaches",
+      ],
+      serviceConnectedConditionIds: ["post-traumatic-stress-disorder", "obstructive-sleep-apnea"],
+      serviceConnectedAnswerDraft: {
+        "post-traumatic-stress-disorder": "yes" as const,
+        "obstructive-sleep-apnea": "yes" as const,
+        "migraine-headaches": "no" as const,
+      },
+      ratingsByConditionId: {
+        "post-traumatic-stress-disorder": 70,
+        "obstructive-sleep-apnea": 50,
+      },
+      permanentAndTotalConditionIds: ["post-traumatic-stress-disorder", "obstructive-sleep-apnea"],
+      conditionTimeline: {
+        "post-traumatic-stress-disorder": { onsetYear: 2014 },
+        "obstructive-sleep-apnea": { diagnosisYear: 2018 },
+      },
+      recordDiscoveredConditionIds: ["obstructive-sleep-apnea"],
+      recordClaimStatusByConditionId: { "obstructive-sleep-apnea": "pending" as const },
+      recordSourceIdsByConditionId: { "obstructive-sleep-apnea": ["record-synthetic"] },
+    };
+    storage.setItem(browserWorkflowContextStorageKey, JSON.stringify(initial));
+    const safe = readBrowserWorkflowContext(storage as unknown as Storage);
+    expect(safe).not.toBeNull();
+    expect(safe?.diagnosedConditionIds).toEqual([
+      "post-traumatic-stress-disorder", "migraine-headaches",
+    ]);
+    expect(safe?.serviceConnectedConditionIds).toEqual(["post-traumatic-stress-disorder"]);
+    expect(safe?.ratingsByConditionId).toEqual({ "post-traumatic-stress-disorder": 70 });
+    expect(safe?.permanentAndTotalConditionIds).toEqual(["post-traumatic-stress-disorder"]);
+    expect(safe?.serviceConnectedAnswerDraft).toEqual({
+      "post-traumatic-stress-disorder": "yes",
+      "migraine-headaches": "no",
+    });
+    expect(safe?.conditionTimeline).toEqual({
+      "post-traumatic-stress-disorder": { onsetYear: 2014 },
+    });
+    expect(safe?.recordDiscoveredConditionIds).toEqual([]);
+    // Repeating the same legacy input through a stale *writer* must fail closed.
+    writeBrowserWorkflowContext(storage as unknown as Storage, initial);
+    expect(readBrowserWorkflowContext(storage as unknown as Storage)).toMatchObject({
+      diagnosedConditionIds: ["post-traumatic-stress-disorder", "migraine-headaches"],
+      serviceConnectedConditionIds: ["post-traumatic-stress-disorder"],
+      recordDiscoveredConditionIds: [],
+    });
+    // Step 2 cannot offer the hidden old record-derived OSA as a "no" target.
+    const step2Form = new FormData();
+    step2Form.set("serviceConnected-post-traumatic-stress-disorder", "yes");
+    step2Form.set("serviceConnected-migraine-headaches", "no");
+    step2Form.set("serviceConnected-obstructive-sleep-apnea", "no");
+    const step2 = applyServiceConnectedStep(safe!, step2Form, catalog);
+    expect(step2.ok).toBe(true);
+    if (step2.ok) {
+      expect(step2.context.diagnosedConditionIds).toEqual([
+        "post-traumatic-stress-disorder", "migraine-headaches",
+      ]);
+      expect(step2.context.serviceConnectedConditionIds).toEqual([
+        "post-traumatic-stress-disorder",
+      ]);
+    }
+    // The only way back into intake is a fresh explicit Step 1 selection.
+    const step1Form = new FormData();
+    step1Form.append("diagnosed", "post-traumatic-stress-disorder");
+    step1Form.append("diagnosed", "obstructive-sleep-apnea");
+    const step1 = applyDiagnosedStep(safe!, step1Form, catalog);
+    expect(step1.ok).toBe(true);
+    if (step1.ok) expect(step1.context.diagnosedConditionIds).toContain("obstructive-sleep-apnea");
+  });
+
   it("drops every old record-extracted target on reading a legacy tab", () => {
     const storageMap = new Map<string, string>();
     const storage = {
