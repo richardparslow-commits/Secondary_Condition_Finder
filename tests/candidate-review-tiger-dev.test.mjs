@@ -51,6 +51,9 @@ test("immutable candidate run rejects approval and source tampering even when re
     d=>{d.caseCandidateLinks[0].individualVaNexus="SERVICE_CONNECTED";},
     d=>{d.productionChanges=1;},
     d=>{d.sourceLedgerId="b".repeat(64);},
+    d=>{d.patientIdentifier="DO_NOT_STORE_PRIVATE_DATA";},
+    d=>{d.publications[0].patientNotes="FORBIDDEN";},
+    d=>{d.caseCandidateLinks[0].clinicalReviewerDecision="APPROVED";},
   ]){
     const doc=clone(a);mutate(doc);
     assert.throws(()=>validate(rehash(doc)));
