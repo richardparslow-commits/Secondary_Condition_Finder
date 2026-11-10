@@ -120,7 +120,7 @@ BEGIN
   END IF;
 
   IF request IS NULL OR jsonb_typeof(request) <> 'object' OR
-    (SELECT count(*) FROM jsonb_object_keys(request)) <> 13 OR
+    (SELECT count(*) FROM jsonb_object_keys(request)) <> 15 OR
     EXISTS (SELECT 1 FROM jsonb_object_keys(request) AS names(field)
       WHERE field NOT IN ('submissionId','runId','sourceId','targetId',
         'candidatePmid','reviewedAt','clinicalDisposition','studyDesignPopulation',
@@ -130,10 +130,6 @@ BEGIN
     RAISE EXCEPTION 'Unexpected or incomplete DEV study review payload';
   END IF;
 
-  -- Required exact set has 15 fields; never accept caller-controlled reviewer identity.
-  IF (SELECT count(*) FROM jsonb_object_keys(request)) <> 15 THEN
-    RAISE EXCEPTION 'Missing required qualified study review fields';
-  END IF;
 
   IF (request->>'submissionId') !~
       '^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$' OR
