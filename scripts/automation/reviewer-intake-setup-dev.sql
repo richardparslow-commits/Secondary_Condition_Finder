@@ -131,7 +131,7 @@ BEGIN
     WHERE jsonb_typeof(value)<>'object'
        OR value->>'pmid' IS NULL
        OR value->>'pmid' !~ '^[1-9][0-9]{3,8}$'
-       OR length(btrim(value->>'assessment')) NOT BETWEEN 12 AND 2000
+       OR COALESCE(length(btrim(value->>'assessment')),0) NOT BETWEEN 12 AND 2000
   ) THEN
     RAISE EXCEPTION 'Each reviewed study must identify a PubMed source and rationale';
   END IF;
