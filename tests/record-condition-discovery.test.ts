@@ -9,6 +9,7 @@ import {
   withdrawRecordCondition, withdrawRecordSource,
 } from "../src/lib/secondary-workflow/record-derived-confirmation";
 import {
+  browserWorkflowContextStorageKey,
   readBrowserWorkflowContext, writeBrowserWorkflowContext,
 } from "../src/lib/secondary-workflow/browser-context";
 
@@ -151,5 +152,62 @@ describe("P0 safety gate regression: common chart negation and family history", 
     });
     expect(source("Dx: OSA")[0]?.category).toBe("diagnosis-statement");
     expect(source("Treatment:\nOSA equipment notice")).toEqual([]);
+  });
+});
+
+describe("P0 migration: previously confirmed record topics require fresh review", () => {
+  it("fails closed for old unsafe opt-ins while retaining manual rated diagnoses", () => {
+    const storageMap = new Map<string, string>();
+    const storage = {
+      getItem: (key: string) => storageMap.get(key) ?? null,
+      setItem: (key: string, value: string) => storageMap.set(key, value),
+    };
+    storageMap.set(browserWorkflowContextStorageKey, JSON.stringify({
+      ...base, version: 1,
+      diagnosedConditionIds: ["post-traumatic-stress-disorder", "obstructive-sleep-apnea"],
+      recordDiscoveredConditionIds: ["obstructive-sleep-apnea"],
+      recordClaimStatusByConditionId: { "obstructive-sleep-apnea": "pending" },
+      recordSourceIdsByConditionId: { "obstructive-sleep-apnea": ["old-synthetic-doc"] },
+      conditionTimeline: {
+        "post-traumatic-stress-disorder": { onsetYear: 2010 },
+        "obstructive-sleep-apnea": { diagnosisYear: 2018 },
+      },
+    }));
+    const sanitized = readBrowserWorkflowContext(storage as unknown as Storage);
+    expect(sanitized?.diagnosedConditionIds).toEqual(["post-traumatic-stress-disorder"]);
+    expect(sanitized?.serviceConnectedConditionIds).toEqual(["post-traumatic-stress-disorder"]);
+    expect(sanitized?.ratingsByConditionId).toEqual(base.ratingsByConditionId);
+    expect(sanitized?.conditionTimeline).toEqual({ "post-traumatic-stress-disorder": { onsetYear: 2010 } });
+    expect(sanitized?.recordDiscoveredConditionIds).toEqual([]);
+    expect(sanitized?.recordClaimStatusByConditionId).toEqual({});
+    expect(sanitized?.recordSourceIdsByConditionId).toEqual({});
+    expect(sanitized?.recordDerivedSafeguardVersion).toBe(2);
+    expect(sanitized?.recordDerivedReReviewRequired).toBe(true);
+
+    // A normal guarded save makes this safe projection the durable tab record.
+    writeBrowserWorkflowContext(storage as unknown as Storage, sanitized!);
+    expect(readBrowserWorkflowContext(storage as unknown as Storage)?.recordDerivedReReviewRequired).toBe(true);
+
+    const reapproved = confirmRecordDerivedConditions(sanitized!, [{
+      conditionId: "obstructive-sleep-apnea", claimStatus: "unknown", sourceIds: ["new-synthetic-doc"],
+    }], catalog);
+    expect(reapproved.recordDerivedSafeguardVersion).toBe(2);
+    expect(reapproved.recordDerivedReReviewRequired).toBe(false);
+    expect(reapproved.diagnosedConditionIds).toContain("obstructive-sleep-apnea");
+  });
+
+  it("does not invalidate already stamped, correctly reviewed record topics", () => {
+    const newContext = confirmRecordDerivedConditions(base, [{
+      conditionId: "obstructive-sleep-apnea", claimStatus: "denied", sourceIds: ["synthetic-new-source"],
+    }], catalog);
+    const stored = new Map<string,string>();
+    const storage = {
+      getItem: (key:string) => stored.get(key) ?? null,
+      setItem: (key:string,value:string) => stored.set(key,value),
+    };
+    writeBrowserWorkflowContext(storage as unknown as Storage, newContext);
+    const readBack = readBrowserWorkflowContext(storage as unknown as Storage);
+    expect(readBack?.recordDiscoveredConditionIds).toEqual(["obstructive-sleep-apnea"]);
+    expect(readBack?.recordDerivedReReviewRequired).toBe(false);
   });
 });

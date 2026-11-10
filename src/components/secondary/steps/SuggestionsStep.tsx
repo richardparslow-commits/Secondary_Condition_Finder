@@ -258,6 +258,15 @@ export function SuggestionsStep({ snapshot, vaReference }: SuggestionsStepProps)
         </p>
       </header>
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" role="group" aria-label="Workflow progress"><span>✓ Diagnosed</span><span>✓ Service-connected</span><span>✓ Ratings</span><span>✓ Documents</span><strong className="text-blue-700">5 Connections</strong><span>6 Evidence</span><span className="ml-auto no-print"><PrintReportButton /></span></div>
+      {context?.recordDerivedReReviewRequired && (
+        <p role="alert" className="ui-callout mb-5 text-sm">
+          <strong>Older record-derived topics were held for re-review.</strong>
+          The updated safety checks exclude prior record-only selections that
+          could reflect a negated diagnosis or family history. Manually selected
+          conditions and ratings remain. Return to Step 4 and re-analyze records
+          before adding a new research topic.
+        </p>
+      )}
       <RegulatoryPreflightStatus snapshot={snapshot} changes={relevantChanges} />
 
       <div className="ui-grid">

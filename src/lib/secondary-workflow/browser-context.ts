@@ -24,6 +24,12 @@ export const browserWorkflowContextStorageKey =
   "secondary-condition-finder:secondary-workflow:v1";
 
 export const BROWSER_WORKFLOW_CONTEXT_VERSION = 1 as const;
+/**
+ * Only record-derived confirmations from the corrected negation/family
+ * detector are accepted in the secondary research workflow. Manual diagnoses
+ * and service-connected ratings are not migrated or reset.
+ */
+export const RECORD_DERIVED_SAFEGUARD_VERSION = 2 as const;
 
 const contextEntrySchema = z.string().min(1).max(MAX_CONTEXT_ITEM_LENGTH);
 
@@ -59,6 +65,8 @@ const browserWorkflowContextSchema = z.object({
     z.string().regex(/^[a-z0-9-]{2,90}$/),
     z.array(z.string().min(1).max(128)).min(1).max(8),
   ).refine((entries) => Object.keys(entries).length <= 30).optional(),
+  recordDerivedSafeguardVersion: z.literal(RECORD_DERIVED_SAFEGUARD_VERSION).optional(),
+  recordDerivedReReviewRequired: z.boolean().optional(),
 });
 
 export type BrowserWorkflowContext = z.infer<typeof browserWorkflowContextSchema>;
@@ -102,7 +110,33 @@ export function readBrowserWorkflowContext(
   }
 
   const result = browserWorkflowContextSchema.safeParse(parsed);
-  return result.success ? result.data : null;
+  if (!result.success) return null;
+  const value = result.data;
+  if (!(value.recordDiscoveredConditionIds?.length) ||
+      value.recordDerivedSafeguardVersion === RECORD_DERIVED_SAFEGUARD_VERSION) {
+    return value;
+  }
+
+  // Old opt-ins could have arisen from "No [disease]" or a family member's
+  // diagnosis. They must not continue to the comparison engine after a code
+  // update. Preserve manually entered diagnoses, VA ratings and other context.
+  // The notice makes this fail-closed migration visible rather than silently
+  // dropping prior research topics. The tab storage is updated on next save.
+  const old = new Set(value.recordDiscoveredConditionIds);
+  const rated = new Set(value.serviceConnectedConditionIds ?? []);
+  const invalidated = new Set([...old].filter((id) => !rated.has(id)));
+  return {
+    ...value,
+    diagnosedConditionIds: value.diagnosedConditionIds?.filter((id) => !invalidated.has(id)),
+    conditionTimeline: Object.fromEntries(
+      Object.entries(value.conditionTimeline ?? {}).filter(([id]) => !invalidated.has(id)),
+    ),
+    recordDiscoveredConditionIds: [],
+    recordClaimStatusByConditionId: {},
+    recordSourceIdsByConditionId: {},
+    recordDerivedSafeguardVersion: RECORD_DERIVED_SAFEGUARD_VERSION,
+    recordDerivedReReviewRequired: true,
+  };
 }
 
 /**

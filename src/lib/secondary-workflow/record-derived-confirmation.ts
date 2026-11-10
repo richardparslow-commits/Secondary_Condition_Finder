@@ -1,6 +1,9 @@
 import type { ConditionCatalog } from "@/lib/catalog/schema";
 import type { RecordClaimStatus } from "@/lib/evidence/record-condition-discovery";
-import type { BrowserWorkflowContextInput } from "./browser-context";
+import {
+  RECORD_DERIVED_SAFEGUARD_VERSION,
+  type BrowserWorkflowContextInput,
+} from "./browser-context";
 
 export interface VeteranReviewedRecordCondition {
   conditionId: string;
@@ -57,6 +60,8 @@ export function confirmRecordDerivedConditions(
     recordDiscoveredConditionIds: [...confirmed],
     recordClaimStatusByConditionId: statuses,
     recordSourceIdsByConditionId: sources,
+    recordDerivedSafeguardVersion: RECORD_DERIVED_SAFEGUARD_VERSION,
+    recordDerivedReReviewRequired: false,
   };
 }
 
@@ -123,5 +128,7 @@ export function clearRecordDerivedConditions(
     recordDiscoveredConditionIds: [],
     recordClaimStatusByConditionId: {},
     recordSourceIdsByConditionId: {},
+    recordDerivedSafeguardVersion: RECORD_DERIVED_SAFEGUARD_VERSION,
+    recordDerivedReReviewRequired: false,
   };
 }

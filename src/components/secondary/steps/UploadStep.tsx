@@ -209,6 +209,8 @@ export function UploadStep() {
       recordDiscoveredConditionIds: context?.recordDiscoveredConditionIds ?? [],
       recordClaimStatusByConditionId: context?.recordClaimStatusByConditionId ?? {},
       recordSourceIdsByConditionId: context?.recordSourceIdsByConditionId ?? {},
+      recordDerivedSafeguardVersion: context?.recordDerivedSafeguardVersion,
+      recordDerivedReReviewRequired: context?.recordDerivedReReviewRequired,
     };
     const approved = recordGroups.filter((group) =>
       group.eligible && reviewedRecords[group.id] !== undefined,
@@ -291,6 +293,16 @@ export function UploadStep() {
             onUnsavedPastedTextChange={handleUnsavedPastedTextChange}
           />
 
+          {context?.recordDerivedReReviewRequired && (
+            <p role="alert" className="mt-4 rounded-lg border border-amber-300 bg-amber-50 p-3 text-sm text-amber-950">
+              <strong>Record research topics need review again.</strong> An earlier
+              detection version could have treated negative findings or a
+              relative&apos;s diagnosis as your condition. Those previously added
+              record-only topics have been excluded from this review. Your
+              manually entered conditions and VA ratings were preserved.
+              Re-analyze the relevant record and confirm any new research topic.
+            </p>
+          )}
           <section className="mt-6 rounded-xl border border-blue-200 bg-blue-50 p-4" aria-labelledby="record-discovery-heading">
             <h2 id="record-discovery-heading" className="text-xl font-semibold text-blue-950">
               Possible additional conditions found in your records

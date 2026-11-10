@@ -199,6 +199,10 @@ function retainedDocumentsData(context: BrowserWorkflowContext | null) {
       ? { recordClaimStatusByConditionId: context.recordClaimStatusByConditionId } : {}),
     ...(context?.recordSourceIdsByConditionId
       ? { recordSourceIdsByConditionId: context.recordSourceIdsByConditionId } : {}),
+    ...(context?.recordDerivedSafeguardVersion
+      ? { recordDerivedSafeguardVersion: context.recordDerivedSafeguardVersion } : {}),
+    ...(context?.recordDerivedReReviewRequired !== undefined
+      ? { recordDerivedReReviewRequired: context.recordDerivedReReviewRequired } : {}),
   };
 }
 
