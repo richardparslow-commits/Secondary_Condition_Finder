@@ -124,7 +124,8 @@ function privilegeRow(){
     ci_read_receipts:false,ci_insert_receipts:false,ci_execute_submit:false,
     reviewer_group_read_receipts:false,reviewer_group_insert_receipts:false,
     reviewer_group_execute_submit:true,
-    reviewer_count:"0",active_reviewer_count:"0",receipt_count:"0"};
+    reviewer_count:"0",active_reviewer_count:"0",receipt_count:"0",
+    unregistered_role_members:"0"};
 }
 test("audit rejects accidental CI privileges or private table access",()=>{
   const r=privilegeRow();assert.equal(assertGateAudit(r),r);
@@ -135,6 +136,7 @@ test("audit rejects accidental CI privileges or private table access",()=>{
   }
   assert.throws(()=>assertGateAudit({...r,role_is_no_login:false}));
   assert.throws(()=>assertGateAudit({...r,reviewer_group_execute_submit:false}));
+  assert.throws(()=>assertGateAudit({...r,unregistered_role_members:"1"}));
   assert.match(gateAuditSql(),/has_function_privilege/);
 });
 function mockDb(login="scf_review_verified1",fail=false){
