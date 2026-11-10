@@ -4,6 +4,12 @@ import { useEffect, useMemo, useState } from "react";
 import { useRef } from "react";
 
 import { extractLocalEvidenceDocument } from "@/lib/evidence/document-extract";
+import type { ConditionCatalog } from "@/lib/catalog/schema";
+import {
+  buildRecordConditionMatcher,
+  discoverRecordConditionCandidates,
+  type RecordConditionCandidate,
+} from "@/lib/evidence/record-condition-discovery";
 import {
   analyzeEvidenceSegments,
   type ClinicianCredential,
@@ -55,6 +61,11 @@ import {
 
 interface Props {
   conditionTerms: string[];
+  /** Optional public catalog powers *review-only*, local, unselected-condition discovery. */
+  recordDiscoveryCatalog?: ConditionCatalog;
+  onRecordCandidatesChange?: (candidates: RecordConditionCandidate[]) => void;
+  onRecordSourceRemoved?: (sourceId: string) => void;
+  onRecordEvidenceCleared?: () => void;
   /** Lets the containing step guard navigation while pasted text is unanalyzed. */
   onUnsavedPastedTextChange?: (hasUnsavedText: boolean) => void;
 }
@@ -183,7 +194,10 @@ function withUserLocatorPrefix(segments: EvidenceTextSegment[], prefix: string):
   }));
 }
 
-export function LocalEvidenceAnalyzer({ conditionTerms, onUnsavedPastedTextChange }: Props) {
+export function LocalEvidenceAnalyzer({
+  conditionTerms, recordDiscoveryCatalog, onRecordCandidatesChange,
+  onRecordSourceRemoved, onRecordEvidenceCleared, onUnsavedPastedTextChange,
+}: Props) {
   const [credential, setCredential] = useState<ClinicianCredential>("unknown");
   const [locatorPrefix, setLocatorPrefix] = useState("");
   const [pastedSourceName, setPastedSourceName] = useState("Pasted medical record text");
@@ -216,6 +230,40 @@ export function LocalEvidenceAnalyzer({ conditionTerms, onUnsavedPastedTextChang
   // inside it then runs once per invocation — measured directly by
   // tests/local-evidence-extraction-fence.test.tsx.
   const analysesRef = useRef<EvidenceAnalysis[]>([]);
+  // Browser-memory only: private excerpts and source names never enter the
+  // workflow context or leave the tab through a research API.
+  const recordSourcesRef = useRef(new Map<string, RecordConditionCandidate[]>());
+  const lastPersistedRecordSourceRef = useRef<string | null>(null);
+  const recordMatcher = useMemo(
+    () => recordDiscoveryCatalog ? buildRecordConditionMatcher(recordDiscoveryCatalog) : [],
+    [recordDiscoveryCatalog],
+  );
+
+  function emitRecordCandidates() {
+    const retained = new Set(analysesRef.current.map(evidenceAnalysisIdentity));
+    for (const id of recordSourcesRef.current.keys()) {
+      if (!retained.has(id)) recordSourcesRef.current.delete(id);
+    }
+    onRecordCandidatesChange?.([...recordSourcesRef.current.values()].flat().slice(0, 80));
+  }
+
+  function discoverFromSegments(
+    analysis: EvidenceAnalysis,
+    segments: EvidenceTextSegment[],
+    author: ClinicianCredential,
+  ) {
+    if (!recordMatcher.length) return;
+    const identity = evidenceAnalysisIdentity(analysis);
+    // If browser storage rejected the evidence write, do not let an otherwise
+    // invisible source authorize a downstream record-derived research topic.
+    if (lastPersistedRecordSourceRef.current !== identity) return;
+    const entries = discoverRecordConditionCandidates(segments, {
+      sourceId: analysis.sourceId ?? identity, sourceName: analysis.sourceName,
+      credential: author,
+    }, recordMatcher);
+    recordSourcesRef.current.set(identity, entries);
+    emitRecordCandidates();
+  }
 
   /** Commits a new snapshot to state and to the ref the persistence path reads. */
   function applyAnalyses(next: EvidenceAnalysis[]) {
@@ -406,6 +454,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms, onUnsavedPastedTextChang
       (item) => evidenceAnalysisIdentity(item) === incomingIdentity,
     );
     const saved = saveStored(retained, activeLimits);
+    lastPersistedRecordSourceRef.current = saved && retainedIncoming ? incomingIdentity : null;
     applyAnalyses(retained);
     if (!retainedIncoming) {
       const refusedWarning = `${analysis.sourceName}: ${STORAGE_RECORD_REFUSED_WARNING}`;
@@ -436,6 +485,16 @@ export function LocalEvidenceAnalyzer({ conditionTerms, onUnsavedPastedTextChang
     const removed = analysesRef.current.length - retained.length;
     const saved = saveStored(retained, STANDARD_LIMITS);
     applyAnalyses(retained);
+    if (saved) {
+      const retainedKeys = new Set(retained.map(evidenceAnalysisIdentity));
+      for (const oldKey of recordSourcesRef.current.keys()) {
+        if (!retainedKeys.has(oldKey)) {
+          recordSourcesRef.current.delete(oldKey);
+          if (oldKey.startsWith("id:")) onRecordSourceRemoved?.(oldKey.slice(3));
+        }
+      }
+      emitRecordCandidates();
+    }
     if (removed > 0 || !saved) {
       setWarnings((prev) => {
         const next = [...prev];
@@ -456,6 +515,11 @@ export function LocalEvidenceAnalyzer({ conditionTerms, onUnsavedPastedTextChang
     const next = removeEvidenceAnalysis(analysesRef.current, sourceId);
     const saved = saveStored(next, limits);
     applyAnalyses(next);
+    if (saved) {
+      recordSourcesRef.current.delete("id:" + sourceId);
+      emitRecordCandidates();
+      onRecordSourceRemoved?.(sourceId);
+    }
     if (!saved) {
       setWarnings((previous) =>
         previous.includes(STORAGE_REMOVAL_REFUSED_WARNING)
@@ -606,12 +670,14 @@ export function LocalEvidenceAnalyzer({ conditionTerms, onUnsavedPastedTextChang
           `${row.sourceName}: This reads like a VA decision letter or adjudication text. You selected a clinician author, so the app may label adjudication language as clinician-authored. Set this document's author to “Non-clinician” if it is not a medical opinion.`,
         );
       }
+      const segments = withUserLocatorPrefix(extracted.segments, locatorPrefix);
       const analysis = analyzeEvidenceSegments(
-        withUserLocatorPrefix(extracted.segments, locatorPrefix),
+        segments,
         { sourceId: row.sourceId, sourceName: extracted.sourceName, credential: row.credential },
         conditionTerms,
       );
       const notice = commitAnalysis(analysis);
+      discoverFromSegments(analysis, segments, row.credential);
       if (notice) nextWarnings.push(notice);
       return { processed: 1, warnings: nextWarnings, skipped: false, hint };
     } catch (error) {
@@ -973,12 +1039,14 @@ export function LocalEvidenceAnalyzer({ conditionTerms, onUnsavedPastedTextChang
               );
             }
           } else {
+            const analyzedSegments = withUserLocatorPrefix(segments, locatorPrefix);
             const analysis = analyzeEvidenceSegments(
-              withUserLocatorPrefix(segments, locatorPrefix),
+              analyzedSegments,
               { sourceId: row.sourceId, sourceName: row.sourceName, credential: row.credential },
               conditionTerms,
             );
             const notice = commitAnalysis(analysis);
+            discoverFromSegments(analysis, analyzedSegments, row.credential);
             if (notice) nextWarnings.push(notice);
             setRowOutcome(row.id);
             setMessage(
@@ -1051,6 +1119,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms, onUnsavedPastedTextChang
       conditionTerms,
     );
     const notice = commitAnalysis(analysis);
+    discoverFromSegments(analysis, segments, credential);
     setPastedText("");
     setWarnings(notice ? [notice] : []);
     setMessage("Pasted text was analyzed locally in this browser tab.");
@@ -1062,6 +1131,9 @@ export function LocalEvidenceAnalyzer({ conditionTerms, onUnsavedPastedTextChang
     const excerptsCleared = clearStoredEvidence(storage);
     const checkpointCleared = clearOcrCheckpoint(storage);
     applyAnalyses([]);
+    recordSourcesRef.current.clear();
+    onRecordCandidatesChange?.([]);
+    if (excerptsCleared && checkpointCleared) onRecordEvidenceCleared?.();
     setPending([]);
     setPastedText("");
     setPastedSourceName("Pasted medical record text");

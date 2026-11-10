@@ -186,7 +186,7 @@ export function EvidenceStep({ snapshot }: EvidenceStepProps) {
 
   return (
     <main>
-      <header className="page-hero text-center"><p className="ui-kicker">Step 6 of 6</p><h1>Evidence &amp; Research Checklist</h1><p className="mx-auto mt-3 max-w-3xl text-lg">Review evidence questions for the same diagnosed non-service-connected conditions evaluated in Step 5. This page does not add new diagnoses, determine eligibility, or decide whether a relationship has been medically established.</p></header>
+      <header className="page-hero text-center"><p className="ui-kicker">Step 6 of 6</p><h1>Evidence &amp; Research Checklist</h1><p className="mx-auto mt-3 max-w-3xl text-lg">Review evidence questions for the non-service-connected conditions and explicitly veteran-reviewed record research topics from Step 5. A record-derived topic is not a confirmed diagnosis. This page does not determine eligibility or whether any relationship has been medically established.</p></header>
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" role="group" aria-label="Workflow progress"><span>✓ Diagnosed</span><span>✓ Service-connected</span><span>✓ Ratings</span><span>✓ Documents</span><span>✓ Connections</span><strong className="text-blue-700">6 Evidence</strong><span className="ml-auto no-print"><PrintReportButton label="Print this checklist" /></span></div>
       <RegulatoryPreflightStatus snapshot={snapshot} changes={relevantChanges} />
 
