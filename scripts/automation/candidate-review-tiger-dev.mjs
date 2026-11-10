@@ -25,8 +25,25 @@ export const sha=x=>createHash("sha256").update(canonical(x)).digest("hex");
 const without=(o,k)=>Object.fromEntries(Object.entries(o).filter(([n])=>n!==k));
 const key=x=>x.sourceId+"|"+x.targetId;
 const linkKey=x=>x.source_id+"|"+x.target_id+"|"+x.candidate_pmid;
+function exactPublicKeys(row,keys){
+  assert.ok(row && typeof row==="object" && !Array.isArray(row));
+  assert.deepEqual(Object.keys(row).sort(),[...keys].sort(),
+    "Unexpected research metadata fields: no private/clinical extras permitted");
+}
+const DOC_FIELDS=["schemaVersion","scope","sourceLedgerId","sourceCandidateRunSha256",
+  "observedAt","sourcePublicationCount","publications","caseCandidateLinks",
+  "clinicalApprovals","individualVaNexusApprovals","productionChanges",
+  "abstractTextsStored","fullTextsReviewed","contradictionFindings","runSha256"];
+const PUB_FIELDS=["pmid","title","publicationTypes","publicationYearText",
+  "abstractAvailable","correctionOrRetractionTypes","publicationStatusReviewRequired",
+  "bibliographicStatus","clinicalSupport","medicalReview","fullTextReviewed",
+  "abstractTextStored","publicationAuthorization"];
+const LINK_FIELDS=["sourceId","targetId","originalPmid","candidatePmid",
+  "searchRank","studyScreening","clinicalFinding","individualVaNexus",
+  "publicationAuthorization"];
 
 export function validate(doc){
+  exactPublicKeys(doc,DOC_FIELDS);
   assert.equal(doc.schemaVersion,1);
   assert.equal(doc.scope,SCOPE);
   assert.equal(doc.sourceLedgerId,SOURCE);
@@ -43,6 +60,7 @@ export function validate(doc){
   assert.ok(Array.isArray(doc.caseCandidateLinks)&&doc.caseCandidateLinks.length<=252);
   const pubs=new Set(),publicationIndex=new Map();
   for(const p of doc.publications){
+    exactPublicKeys(p,PUB_FIELDS);
     assert.match(p.pmid,PMID);assert.ok(!pubs.has(p.pmid));pubs.add(p.pmid);
     publicationIndex.set(p.pmid,p);
     assert.ok(typeof p.title==="string"&&p.title.length>=5&&p.title.length<=1200);
@@ -62,6 +80,7 @@ export function validate(doc){
   }
   const links=new Set(),ranks=new Set(),edges=new Set();
   for(const l of doc.caseCandidateLinks){
+    exactPublicKeys(l,LINK_FIELDS);
     assert.match(l.sourceId,SLUG);assert.match(l.targetId,SLUG);
     assert.match(l.originalPmid,PMID);assert.match(l.candidatePmid,PMID);
     assert.ok(pubs.has(l.candidatePmid));
