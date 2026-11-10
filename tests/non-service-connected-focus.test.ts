@@ -132,7 +132,9 @@ describe("Step 5 diagnosis-centered contract", () => {
   it("organizes Step 5 by non-service-connected diagnosis rather than by service-connected primary", () => {
     expect(suggestionsPage).toContain("Review Your Non-Service-Connected Diagnoses");
     expect(suggestionsPage).toContain("Organized by the diagnosed condition that is not yet service connected.");
-    expect(suggestionsPage).toContain("does not generate new diagnoses or list conditions you did not select");
+    expect(suggestionsPage).toContain("any record-derived research topics you explicitly reviewed in Step 4");
+    expect(suggestionsPage).toContain("A record term match is not a confirmed diagnosis.");
+    expect(suggestionsPage).toContain("The page does not search for additional diagnoses that might develop in the future.");
     expect(suggestionsPage).not.toContain("Published Secondary Pathways");
     expect(suggestionsPage).not.toContain("groupSuggestionsByPrimary");
     expect(suggestionsPage).not.toContain("SecondarySuggestionItem");
