@@ -123,6 +123,8 @@ export function assertGateAudit(row){
   assert.ok(Number.isInteger(Number(row.active_reviewer_count)) &&
     Number(row.active_reviewer_count)>=0);
   assert.ok(Number.isInteger(Number(row.receipt_count))&&Number(row.receipt_count)>=0);
+  assert.equal(Number(row.unregistered_role_members),0,
+    "Unverified or unregistered individual reviewer group membership");
   return row;
 }
 export const gateAuditSql=()=>
@@ -143,7 +145,14 @@ export const gateAuditSql=()=>
   " WHERE n.nspname='"+SCHEMA+"' AND p.proname='submit_qualified_review'), 'EXECUTE') AS reviewer_group_execute_submit,"+
   "(SELECT COUNT(*) FROM "+SCHEMA+".qualified_reviewers) AS reviewer_count,"+
   "(SELECT COUNT(*) FROM "+SCHEMA+".qualified_reviewers WHERE status='ACTIVE' AND credential_expires_at>now()) AS active_reviewer_count,"+
-  "(SELECT COUNT(*) FROM "+SCHEMA+".qualified_human_reviews) AS receipt_count";
+  "(SELECT COUNT(*) FROM "+SCHEMA+".qualified_human_reviews) AS receipt_count,"+
+  "(SELECT COUNT(*) FROM pg_auth_members m "+
+  "JOIN pg_roles g ON g.oid=m.roleid JOIN pg_roles member ON member.oid=m.member "+
+  "WHERE g.rolname='scf_dev_qualified_reviewers' AND member.rolname<>'tsdbadmin' "+
+  "AND NOT EXISTS (SELECT 1 FROM "+SCHEMA+".qualified_reviewers reg "+
+  "WHERE reg.login_name=member.rolname AND reg.status='ACTIVE' "+
+  "AND reg.revoked_at IS NULL AND reg.verified_at<=now() "+
+  "AND reg.credential_expires_at>now())) AS unregistered_role_members";
 
 async function adminDb(){
   const conn=getLabConnection(SERVICE,"verify");
