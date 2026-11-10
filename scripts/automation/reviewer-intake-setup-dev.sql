@@ -90,8 +90,9 @@ BEGIN
     RAISE EXCEPTION 'Invalid provenance identifiers';
   END IF;
   IF p_reviewed_at IS NULL OR p_reviewed_at > now() + interval '1 day'
+     OR p_reviewed_at < v_reviewer.verified_at
      OR p_reviewed_at < timestamp with time zone '2020-01-01 00:00:00+00' THEN
-    RAISE EXCEPTION 'Invalid qualified review timestamp';
+    RAISE EXCEPTION 'Review must occur after independently verified reviewer qualification';
   END IF;
   IF p_clinical_disposition NOT IN
      ('NEEDS_MORE_EVIDENCE','INSUFFICIENT_EVIDENCE','POTENTIAL_SUPPORT',
@@ -130,10 +131,77 @@ BEGIN
     ) AS cited
     WHERE jsonb_typeof(value)<>'object'
        OR value->>'pmid' IS NULL
-       OR value->>'pmid' !~ '^[1-9][0-9]{3,8}$'
+       OR jsonb_typeof(value->'pmid')<>'string'
+       OR value->>'pmid' !~ '^[1-9][0-9]{3,8}
+  SELECT content_sha256 INTO v_source_sha
+    FROM scf_candidate_review_dev.case_candidates
+   WHERE run_id=p_run_id AND source_id=p_source_id
+     AND target_id=p_target_id AND candidate_pmid=p_candidate_pmid
+     AND review_state='PENDING_QUALIFIED_REVIEW'
+     AND claim_verification='NOT_ASSESSED'
+     AND publication_authorization='NOT_GRANTED';
+  IF NOT FOUND THEN
+    RAISE EXCEPTION 'Unknown or ineligible source-to-claim candidate link';
+  END IF;
+
+  INSERT INTO scf_candidate_review_dev.qualified_human_reviews (
+    run_id,source_id,target_id,candidate_pmid,
+    reviewer_identifier,reviewer_qualification,qualification_verified_by,
+    reviewed_at,clinical_disposition,study_design_population,
+    causal_direction_limits,confounders_and_mediation,supporting_evidence,
+    unresolved_contradictions,full_text_access_basis,reviewer_rationale,
+    production_publication_state)
+  VALUES (
+    p_run_id,p_source_id,p_target_id,p_candidate_pmid,
+    v_reviewer.reviewer_identifier,v_reviewer.reviewer_qualification,
+    v_reviewer.qualification_verified_by,p_reviewed_at,p_clinical_disposition,
+    p_study_design_population,p_causal_direction_limits,
+    p_confounders_and_mediation,p_supporting_evidence,
+    p_unresolved_contradictions,p_full_text_access_basis,
+    p_reviewer_rationale,'NOT_GRANTED')
+  RETURNING review_id INTO v_id;
+
+  INSERT INTO scf_candidate_review_dev.qualified_review_receipt_audit (
+    review_id,reviewer_login,submission_sha256,source_candidate_sha256)
+  VALUES (v_id,v_actor,p_submission_sha256,v_source_sha);
+  RETURN v_id;
+END $qualified$;
+
+-- PostgreSQL grants EXECUTE on new functions to PUBLIC by default. Explicitly
+-- remove it inside the same setup transaction, before any reviewer is enabled.
+REVOKE ALL ON SCHEMA scf_candidate_review_dev FROM PUBLIC;
+REVOKE ALL ON scf_candidate_review_dev.qualified_reviewers,
+  scf_candidate_review_dev.qualified_review_receipt_audit FROM PUBLIC;
+REVOKE ALL ON scf_candidate_review_dev.qualified_reviewers,
+  scf_candidate_review_dev.qualified_review_receipt_audit FROM scf_evidence_ci_writer;
+REVOKE ALL ON scf_candidate_review_dev.qualified_human_reviews
+  FROM scf_dev_qualified_reviewers;
+REVOKE ALL ON scf_candidate_review_dev.qualified_reviewers,
+  scf_candidate_review_dev.qualified_review_receipt_audit
+  FROM scf_dev_qualified_reviewers;
+REVOKE ALL ON FUNCTION scf_candidate_review_dev.submit_qualified_review(
+  text,text,text,text,timestamptz,text,text,text,text,jsonb,jsonb,text,text,text)
+  FROM PUBLIC;
+REVOKE ALL ON FUNCTION scf_candidate_review_dev.submit_qualified_review(
+  text,text,text,text,timestamptz,text,text,text,text,jsonb,jsonb,text,text,text)
+  FROM scf_evidence_ci_writer;
+GRANT USAGE ON SCHEMA scf_candidate_review_dev TO scf_dev_qualified_reviewers;
+GRANT EXECUTE ON FUNCTION scf_candidate_review_dev.submit_qualified_review(
+  text,text,text,text,timestamptz,text,text,text,text,jsonb,jsonb,text,text,text)
+  TO scf_dev_qualified_reviewers;
+
+       OR jsonb_typeof(value->'assessment')<>'string'
        OR COALESCE(length(btrim(value->>'assessment')),0) NOT BETWEEN 12 AND 2000
+       OR (value - 'pmid' - 'assessment') <> '{}'::jsonb
   ) THEN
     RAISE EXCEPTION 'Each reviewed study must identify a PubMed source and rationale';
+  END IF;
+  IF (SELECT COUNT(DISTINCT value->>'pmid') FROM jsonb_array_elements(p_supporting_evidence))
+       <> jsonb_array_length(p_supporting_evidence)
+     OR (SELECT COUNT(DISTINCT value->>'pmid')
+          FROM jsonb_array_elements(p_unresolved_contradictions))
+       <> jsonb_array_length(p_unresolved_contradictions) THEN
+    RAISE EXCEPTION 'Duplicate evidence PMIDs within a review category';
   END IF;
   SELECT content_sha256 INTO v_source_sha
     FROM scf_candidate_review_dev.case_candidates
