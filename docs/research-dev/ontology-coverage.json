@@ -1,0 +1,34 @@
+{
+  "app_catalog_unchanged": 819,
+  "automatically_published_to_app": 0,
+  "environment": "DEV_ONLY",
+  "excluded_counts": {
+    "already_lexically_linked": 561,
+    "generic_or_ambiguous": 19,
+    "obsolete": 3921,
+    "possible_unlinked": 31554
+  },
+  "existing_ontology_crosswalk_rows": 565,
+  "medically_verified_new_conditions": 0,
+  "ontology_active": 32134,
+  "ontology_concepts_total": 36055,
+  "pinned_snapshot": "a165dc2fc61761f5e5413b6395dd4afb14c89d78783af213a9b8f1d0a3f2a8c7",
+  "potential_unlinked_concepts": 31554,
+  "release": "v2026-10-06",
+  "review_buckets": {
+    "cardiopulmonary": 100,
+    "immune-endocrine": 100,
+    "mental-health": 100,
+    "oncology-tumors": 100,
+    "other": 100,
+    "rare-genetic": 100,
+    "rare-hematology": 100,
+    "renal-gastrointestinal": 100,
+    "skeletal-musculoskeletal": 100,
+    "tbi-neurology": 100
+  },
+  "review_queue_rows": 1000,
+  "review_required": "Human medical-terminology reviewer must verify meaning, duplications, obsolescence, ICD/Xref alignment, clinical granularity before catalog promotion.",
+  "source_file_sha256": "6f8d2ab7d19328e68ce8158ed3159625c74209fd1610b4a7244145cb3eb5912c",
+  "workstream": "ontology-review-candidates"
+}
