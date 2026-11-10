@@ -1,0 +1,3711 @@
+{
+  "schemaVersion": 1,
+  "sourceLedgerId": "dcd6681315b0b36c4a0a8270405f5446f0bd75d01465fefae1114f2206bcd7aa",
+  "sourceCommit": "",
+  "observedAt": "2026-11-09T05:09:56+00:00",
+  "clinicalApproval": "NOT_GRANTED",
+  "edges": [
+    {
+      "sourceId": "anal-fistula",
+      "targetId": "fecal-incontinence",
+      "sourceName": "Anal Fistula Fistula in Ano",
+      "targetName": "Fecal Incontinence Impairment of Sphincter Control",
+      "publicationState": "PUBLISHED",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+      "reviewRules": [
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "INDIVIDUAL_NEXUS_ASSERTION_IN_GENERIC_KNOWLEDGE_BASE",
+        "INDIVIDUAL_PROBABILITY_ALIGNMENT_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW"
+      ],
+      "citationPmids": [
+        "33387100"
+      ],
+      "citationCount": 1,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "brain-cancer",
+      "targetId": "seizure-disorder",
+      "sourceName": "Brain Cancer Glioblastoma",
+      "targetName": "Seizure Disorder Epilepsy",
+      "publicationState": "DRAFT",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+      "reviewRules": [
+        "CLINICAL_REFERENCE_STATUS_REVIEW",
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "INDIVIDUAL_PROBABILITY_ALIGNMENT_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW",
+        "SOURCE_REGISTRY_REVIEW"
+      ],
+      "citationPmids": [
+        "26478444",
+        "40576825"
+      ],
+      "citationCount": 2,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "cauda-equina-syndrome",
+      "targetId": "erectile-dysfunction",
+      "sourceName": "Cauda Equina Syndrome",
+      "targetName": "Erectile Dysfunction",
+      "publicationState": "PUBLISHED",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+      "reviewRules": [
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "INDIVIDUAL_NEXUS_ASSERTION_IN_GENERIC_KNOWLEDGE_BASE",
+        "INDIVIDUAL_PROBABILITY_ALIGNMENT_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW"
+      ],
+      "citationPmids": [
+        "40380123"
+      ],
+      "citationCount": 1,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "cerebral-contusion",
+      "targetId": "seizure-disorder",
+      "sourceName": "Cerebral contusion",
+      "targetName": "Seizure Disorder Epilepsy",
+      "publicationState": "DRAFT",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+      "reviewRules": [
+        "CLINICAL_REFERENCE_STATUS_REVIEW",
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "INDIVIDUAL_PROBABILITY_ALIGNMENT_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW",
+        "SOURCE_REGISTRY_REVIEW"
+      ],
+      "citationPmids": [
+        "24239245",
+        "28076834",
+        "32848013"
+      ],
+      "citationCount": 3,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "chronic-liver-disease",
+      "targetId": "cirrhosis-of-the-liver",
+      "sourceName": "Chronic Liver Disease Without Cirrhosis",
+      "targetName": "Cirrhosis of the Liver",
+      "publicationState": "PUBLISHED",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+      "reviewRules": [
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "INDIVIDUAL_NEXUS_ASSERTION_IN_GENERIC_KNOWLEDGE_BASE",
+        "INDIVIDUAL_PROBABILITY_ALIGNMENT_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW"
+      ],
+      "citationPmids": [
+        "32108989"
+      ],
+      "citationCount": 1,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "chronic-pyelonephritis",
+      "targetId": "chronic-kidney-disease",
+      "sourceName": "Chronic Pyelonephritis",
+      "targetName": "Chronic Kidney Disease Renal Failure",
+      "publicationState": "PUBLISHED",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+      "reviewRules": [
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "INDIVIDUAL_NEXUS_ASSERTION_IN_GENERIC_KNOWLEDGE_BASE",
+        "INDIVIDUAL_PROBABILITY_ALIGNMENT_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW"
+      ],
+      "citationPmids": [
+        "11110586"
+      ],
+      "citationCount": 1,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "chronic-sinusitis",
+      "targetId": "sleep-apnea",
+      "sourceName": "Chronic Sinusitis",
+      "targetName": "Sleep Apnea Obstructive Central Mixed",
+      "publicationState": "PUBLISHED",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+      "reviewRules": [
+        "CAUSAL_CLASSIFICATION_WITH_LIMITING_EVIDENCE_LANGUAGE",
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "INDIVIDUAL_NEXUS_ASSERTION_IN_GENERIC_KNOWLEDGE_BASE",
+        "INDIVIDUAL_PROBABILITY_ALIGNMENT_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW"
+      ],
+      "citationPmids": [
+        "41969980"
+      ],
+      "citationCount": 1,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "coronary-bypass-residuals",
+      "targetId": "cardiac-arrhythmia",
+      "sourceName": "Coronary Bypass Surgery Residuals",
+      "targetName": "Cardiac Arrhythmias Atrial Fibrillation Tachycardia",
+      "publicationState": "DRAFT",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "NOT_ASSERTED",
+      "reviewRules": [
+        "CLINICAL_REFERENCE_STATUS_REVIEW",
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW",
+        "SOURCE_REGISTRY_REVIEW"
+      ],
+      "citationPmids": [
+        "28628573",
+        "40948152",
+        "41242757"
+      ],
+      "citationCount": 3,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "coronary-bypass-residuals",
+      "targetId": "cognitive-disorder",
+      "sourceName": "Coronary Bypass Surgery Residuals",
+      "targetName": "Cognitive disorder",
+      "publicationState": "DRAFT",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "NOT_ASSERTED",
+      "reviewRules": [
+        "CLINICAL_REFERENCE_STATUS_REVIEW",
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW",
+        "SOURCE_REGISTRY_REVIEW"
+      ],
+      "citationPmids": [
+        "12417349",
+        "19412153",
+        "22762316"
+      ],
+      "citationCount": 3,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "cushings-syndrome",
+      "targetId": "hypertension",
+      "sourceName": "Cushing s Syndrome",
+      "targetName": "Hypertensive Vascular Disease Hypertension",
+      "publicationState": "PUBLISHED",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+      "reviewRules": [
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "INDIVIDUAL_PROBABILITY_ALIGNMENT_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW"
+      ],
+      "citationPmids": [
+        "35950979"
+      ],
+      "citationCount": 1,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "cystitis-or-neurogenic-bladder",
+      "targetId": "hydronephrosis",
+      "sourceName": "Chronic Cystitis Neurogenic Bladder",
+      "targetName": "Hydronephrosis",
+      "publicationState": "DRAFT",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "NOT_ASSERTED",
+      "reviewRules": [
+        "CLINICAL_REFERENCE_STATUS_REVIEW",
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "SOURCE_REGISTRY_REVIEW"
+      ],
+      "citationPmids": [
+        "28612061",
+        "33085409",
+        "39349021"
+      ],
+      "citationCount": 3,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "dandy-walker-syndrome",
+      "targetId": "hydrocephalus",
+      "sourceName": "Dandy-Walker syndrome",
+      "targetName": "Hydrocephalus",
+      "publicationState": "DRAFT",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "NOT_ASSERTED",
+      "reviewRules": [
+        "CLINICAL_REFERENCE_STATUS_REVIEW",
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "SOURCE_REGISTRY_REVIEW"
+      ],
+      "citationPmids": [
+        "21928031",
+        "26100996",
+        "40445443"
+      ],
+      "citationCount": 3,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "depressive-disorder",
+      "targetId": "erectile-dysfunction",
+      "sourceName": "Major Depressive Disorder",
+      "targetName": "Erectile Dysfunction",
+      "publicationState": "PUBLISHED",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+      "reviewRules": [
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "INDIVIDUAL_NEXUS_ASSERTION_IN_GENERIC_KNOWLEDGE_BASE",
+        "INDIVIDUAL_PROBABILITY_ALIGNMENT_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW"
+      ],
+      "citationPmids": [
+        "34247952"
+      ],
+      "citationCount": 1,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "diabetes-insipidus",
+      "targetId": "hydronephrosis",
+      "sourceName": "Diabetes Insipidus",
+      "targetName": "Hydronephrosis",
+      "publicationState": "DRAFT",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "NOT_ASSERTED",
+      "reviewRules": [
+        "CLINICAL_REFERENCE_STATUS_REVIEW",
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "SOURCE_REGISTRY_REVIEW"
+      ],
+      "citationPmids": [
+        "20301356",
+        "34055061",
+        "35937824"
+      ],
+      "citationCount": 3,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "diffuse-axonal-injury",
+      "targetId": "cognitive-disorder",
+      "sourceName": "Diffuse axonal injury",
+      "targetName": "Cognitive disorder",
+      "publicationState": "DRAFT",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "NOT_ASSERTED",
+      "reviewRules": [
+        "CLINICAL_REFERENCE_STATUS_REVIEW",
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW",
+        "SOURCE_REGISTRY_REVIEW"
+      ],
+      "citationPmids": [
+        "26583181",
+        "28847474",
+        "30929221"
+      ],
+      "citationCount": 3,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "encephalitis",
+      "targetId": "seizure-disorder",
+      "sourceName": "Encephalitis",
+      "targetName": "Seizure Disorder Epilepsy",
+      "publicationState": "DRAFT",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "NOT_ASSERTED",
+      "reviewRules": [
+        "CLINICAL_REFERENCE_STATUS_REVIEW",
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "SOURCE_REGISTRY_REVIEW"
+      ],
+      "citationPmids": [
+        "29985213",
+        "39522606",
+        "42564238"
+      ],
+      "citationCount": 3,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "eosinophilic-myocarditis",
+      "targetId": "congestive-heart-failure",
+      "sourceName": "Eosinophilic myocarditis",
+      "targetName": "Congestive Heart Failure",
+      "publicationState": "DRAFT",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "NOT_ASSERTED",
+      "reviewRules": [
+        "CLINICAL_REFERENCE_STATUS_REVIEW",
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW",
+        "SOURCE_REGISTRY_REVIEW"
+      ],
+      "citationPmids": [
+        "41645905",
+        "42147059",
+        "42340531"
+      ],
+      "citationCount": 3,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "esophageal-stricture",
+      "targetId": "dysphagia",
+      "sourceName": "Esophageal Stricture",
+      "targetName": "Dysphagia",
+      "publicationState": "DRAFT",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "NOT_ASSERTED",
+      "reviewRules": [
+        "CLINICAL_REFERENCE_STATUS_REVIEW",
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW",
+        "SOURCE_REGISTRY_REVIEW"
+      ],
+      "citationPmids": [
+        "19439958",
+        "21129544",
+        "34599565"
+      ],
+      "citationCount": 3,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "esophagitis",
+      "targetId": "esophageal-stricture",
+      "sourceName": "Esophagitis",
+      "targetName": "Esophageal Stricture",
+      "publicationState": "DRAFT",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "NOT_ASSERTED",
+      "reviewRules": [
+        "CLINICAL_REFERENCE_STATUS_REVIEW",
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW",
+        "SOURCE_REGISTRY_REVIEW"
+      ],
+      "citationPmids": [
+        "19439958",
+        "21129544",
+        "34599565"
+      ],
+      "citationCount": 3,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "fecal-impaction",
+      "targetId": "fecal-incontinence",
+      "sourceName": "Fecal impaction",
+      "targetName": "Fecal Incontinence Impairment of Sphincter Control",
+      "publicationState": "DRAFT",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "NOT_ASSERTED",
+      "reviewRules": [
+        "CLINICAL_REFERENCE_STATUS_REVIEW",
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW",
+        "SOURCE_REGISTRY_REVIEW"
+      ],
+      "citationPmids": [
+        "16009033",
+        "18799126",
+        "3360329"
+      ],
+      "citationCount": 3,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "gastrinoma",
+      "targetId": "peptic-ulcer-disease",
+      "sourceName": "Gastrinoma",
+      "targetName": "Peptic Ulcer Disease Gastric Duodenal",
+      "publicationState": "DRAFT",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "NOT_ASSERTED",
+      "reviewRules": [
+        "CLINICAL_REFERENCE_STATUS_REVIEW",
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW",
+        "SOURCE_REGISTRY_REVIEW"
+      ],
+      "citationPmids": [
+        "16253901",
+        "21193359",
+        "29019150"
+      ],
+      "citationCount": 3,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "gastritis",
+      "targetId": "peptic-ulcer-disease",
+      "sourceName": "Gastritis",
+      "targetName": "Peptic Ulcer Disease Gastric Duodenal",
+      "publicationState": "DRAFT",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "NOT_ASSERTED",
+      "reviewRules": [
+        "CLINICAL_REFERENCE_STATUS_REVIEW",
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "SOURCE_REGISTRY_REVIEW"
+      ],
+      "citationPmids": [
+        "12126754",
+        "22404446",
+        "27092708"
+      ],
+      "citationCount": 3,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "giant-cell-myocarditis",
+      "targetId": "congestive-heart-failure",
+      "sourceName": "Giant cell myocarditis",
+      "targetName": "Congestive Heart Failure",
+      "publicationState": "DRAFT",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "NOT_ASSERTED",
+      "reviewRules": [
+        "CLINICAL_REFERENCE_STATUS_REVIEW",
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW",
+        "SOURCE_REGISTRY_REVIEW"
+      ],
+      "citationPmids": [
+        "41072973",
+        "42073389",
+        "42393943"
+      ],
+      "citationCount": 3,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "glucagonoma",
+      "targetId": "diabetes-mellitus",
+      "sourceName": "Glucagonoma",
+      "targetName": "Diabetes mellitus",
+      "publicationState": "DRAFT",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "NOT_ASSERTED",
+      "reviewRules": [
+        "CLINICAL_REFERENCE_STATUS_REVIEW",
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW",
+        "SOURCE_REGISTRY_REVIEW"
+      ],
+      "citationPmids": [
+        "38039101",
+        "40613421",
+        "42766419"
+      ],
+      "citationCount": 3,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "goodpasture-syndrome",
+      "targetId": "chronic-kidney-disease",
+      "sourceName": "Goodpasture syndrome",
+      "targetName": "Chronic Kidney Disease Renal Failure",
+      "publicationState": "DRAFT",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "NOT_ASSERTED",
+      "reviewRules": [
+        "CLINICAL_REFERENCE_STATUS_REVIEW",
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW",
+        "SOURCE_REGISTRY_REVIEW"
+      ],
+      "citationPmids": [
+        "42006224",
+        "42199438",
+        "42618193"
+      ],
+      "citationCount": 3,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "granulomatosis-with-polyangiitis",
+      "targetId": "chronic-kidney-disease",
+      "sourceName": "Granulomatosis with polyangiitis",
+      "targetName": "Chronic Kidney Disease Renal Failure",
+      "publicationState": "DRAFT",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "NOT_ASSERTED",
+      "reviewRules": [
+        "CLINICAL_REFERENCE_STATUS_REVIEW",
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW",
+        "SOURCE_REGISTRY_REVIEW"
+      ],
+      "citationPmids": [
+        "20394635",
+        "27749233",
+        "39305914"
+      ],
+      "citationCount": 3,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "guyon-s-canal-syndrome",
+      "targetId": "muscle-atrophy",
+      "sourceName": "Guyon s canal syndrome",
+      "targetName": "Muscle atrophy",
+      "publicationState": "DRAFT",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "NOT_ASSERTED",
+      "reviewRules": [
+        "CLINICAL_REFERENCE_STATUS_REVIEW",
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW",
+        "SOURCE_REGISTRY_REVIEW"
+      ],
+      "citationPmids": [
+        "24559635",
+        "24774037",
+        "42065727"
+      ],
+      "citationCount": 3,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "heart-valve-disorders",
+      "targetId": "congestive-heart-failure",
+      "sourceName": "Heart Valve Disorders",
+      "targetName": "Congestive Heart Failure",
+      "publicationState": "DRAFT",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+      "reviewRules": [
+        "CLINICAL_REFERENCE_STATUS_REVIEW",
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "INDIVIDUAL_NEXUS_ASSERTION_IN_GENERIC_KNOWLEDGE_BASE",
+        "INDIVIDUAL_PROBABILITY_ALIGNMENT_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW",
+        "SOURCE_REGISTRY_REVIEW"
+      ],
+      "citationPmids": [
+        "33332150",
+        "34453165"
+      ],
+      "citationCount": 2,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "hepatic-steatosis",
+      "targetId": "cirrhosis-of-the-liver",
+      "sourceName": "Hepatic steatosis",
+      "targetName": "Cirrhosis of the Liver",
+      "publicationState": "DRAFT",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+      "reviewRules": [
+        "CLINICAL_REFERENCE_STATUS_REVIEW",
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "INDIVIDUAL_NEXUS_ASSERTION_IN_GENERIC_KNOWLEDGE_BASE",
+        "INDIVIDUAL_PROBABILITY_ALIGNMENT_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW",
+        "SOURCE_REGISTRY_REVIEW"
+      ],
+      "citationPmids": [
+        "42481370",
+        "42690133"
+      ],
+      "citationCount": 2,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "hyperinsulinism",
+      "targetId": "hypoglycemia",
+      "sourceName": "Hyperinsulinism",
+      "targetName": "Hypoglycemia",
+      "publicationState": "DRAFT",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+      "reviewRules": [
+        "CLINICAL_REFERENCE_STATUS_REVIEW",
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "INDIVIDUAL_NEXUS_ASSERTION_IN_GENERIC_KNOWLEDGE_BASE",
+        "INDIVIDUAL_PROBABILITY_ALIGNMENT_REVIEW",
+        "SOURCE_REGISTRY_REVIEW"
+      ],
+      "citationPmids": [
+        "29280746",
+        "34547194"
+      ],
+      "citationCount": 2,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "hyperparathyroidism",
+      "targetId": "kidney-stones",
+      "sourceName": "Hyperparathyroidism",
+      "targetName": "Kidney Stones Nephrolithiasis",
+      "publicationState": "PUBLISHED",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+      "reviewRules": [
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "INDIVIDUAL_NEXUS_ASSERTION_IN_GENERIC_KNOWLEDGE_BASE",
+        "INDIVIDUAL_PROBABILITY_ALIGNMENT_REVIEW"
+      ],
+      "citationPmids": [
+        "36245251"
+      ],
+      "citationCount": 1,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "hypertension",
+      "targetId": "chronic-kidney-disease",
+      "sourceName": "Hypertensive Vascular Disease Hypertension",
+      "targetName": "Chronic Kidney Disease Renal Failure",
+      "publicationState": "PUBLISHED",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+      "reviewRules": [
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "INDIVIDUAL_NEXUS_ASSERTION_IN_GENERIC_KNOWLEDGE_BASE",
+        "INDIVIDUAL_PROBABILITY_ALIGNMENT_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW"
+      ],
+      "citationPmids": [
+        "40811497"
+      ],
+      "citationCount": 1,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "hypertension",
+      "targetId": "congestive-heart-failure",
+      "sourceName": "Hypertensive Vascular Disease Hypertension",
+      "targetName": "Congestive Heart Failure",
+      "publicationState": "PUBLISHED",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+      "reviewRules": [
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "INDIVIDUAL_NEXUS_ASSERTION_IN_GENERIC_KNOWLEDGE_BASE",
+        "INDIVIDUAL_PROBABILITY_ALIGNMENT_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW"
+      ],
+      "citationPmids": [
+        "40811497"
+      ],
+      "citationCount": 1,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "hypertensive-heart-disease",
+      "targetId": "congestive-heart-failure",
+      "sourceName": "Hypertensive Heart Disease",
+      "targetName": "Congestive Heart Failure",
+      "publicationState": "PUBLISHED",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+      "reviewRules": [
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "INDIVIDUAL_NEXUS_ASSERTION_IN_GENERIC_KNOWLEDGE_BASE",
+        "INDIVIDUAL_PROBABILITY_ALIGNMENT_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW"
+      ],
+      "citationPmids": [
+        "36082670"
+      ],
+      "citationCount": 1,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "hypogonadism",
+      "targetId": "osteoporosis",
+      "sourceName": "Hypogonadism",
+      "targetName": "Osteoporosis Residuals of",
+      "publicationState": "PUBLISHED",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+      "reviewRules": [
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "INDIVIDUAL_NEXUS_ASSERTION_IN_GENERIC_KNOWLEDGE_BASE",
+        "INDIVIDUAL_PROBABILITY_ALIGNMENT_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW"
+      ],
+      "citationPmids": [
+        "29499097"
+      ],
+      "citationCount": 1,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "impetigo",
+      "targetId": "nephritis",
+      "sourceName": "Impetigo",
+      "targetName": "Nephritis",
+      "publicationState": "DRAFT",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+      "reviewRules": [
+        "CLINICAL_REFERENCE_STATUS_REVIEW",
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "INDIVIDUAL_PROBABILITY_ALIGNMENT_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW",
+        "SOURCE_REGISTRY_REVIEW"
+      ],
+      "citationPmids": [
+        "18373105",
+        "36479753"
+      ],
+      "citationCount": 2,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "implantable-cardiac-pacemaker",
+      "targetId": "heart-valve-disorders",
+      "sourceName": "Implantable Cardiac Pacemaker",
+      "targetName": "Heart Valve Disorders",
+      "publicationState": "PUBLISHED",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+      "reviewRules": [
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "INDIVIDUAL_NEXUS_ASSERTION_IN_GENERIC_KNOWLEDGE_BASE",
+        "INDIVIDUAL_PROBABILITY_ALIGNMENT_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW"
+      ],
+      "citationPmids": [
+        "34389210"
+      ],
+      "citationCount": 1,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "insulinoma",
+      "targetId": "hyperinsulinism",
+      "sourceName": "Insulinoma",
+      "targetName": "Hyperinsulinism",
+      "publicationState": "DRAFT",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+      "reviewRules": [
+        "CLINICAL_REFERENCE_STATUS_REVIEW",
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "INDIVIDUAL_PROBABILITY_ALIGNMENT_REVIEW",
+        "SOURCE_REGISTRY_REVIEW"
+      ],
+      "citationPmids": [
+        "24557504",
+        "27915035"
+      ],
+      "citationCount": 2,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "intracranial-injury-without-skull-fracture",
+      "targetId": "epilepsy",
+      "sourceName": "Intracranial Injury Without Skull Fracture",
+      "targetName": "Epilepsy",
+      "publicationState": "DRAFT",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+      "reviewRules": [
+        "CLINICAL_REFERENCE_STATUS_REVIEW",
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "INDIVIDUAL_PROBABILITY_ALIGNMENT_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW",
+        "SOURCE_REGISTRY_REVIEW"
+      ],
+      "citationPmids": [
+        "35188950",
+        "40835018"
+      ],
+      "citationCount": 2,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "intracranial-injury-without-skull-fracture",
+      "targetId": "hypopituitarism",
+      "sourceName": "Intracranial Injury Without Skull Fracture",
+      "targetName": "Hypopituitarism",
+      "publicationState": "DRAFT",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+      "reviewRules": [
+        "CLINICAL_REFERENCE_STATUS_REVIEW",
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "INDIVIDUAL_PROBABILITY_ALIGNMENT_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW",
+        "SOURCE_REGISTRY_REVIEW"
+      ],
+      "citationPmids": [
+        "22779906",
+        "36693336"
+      ],
+      "citationCount": 2,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "ovarian-cancer",
+      "targetId": "peripheral-neuropathy",
+      "sourceName": "Ovarian Cancer",
+      "targetName": "Peripheral Neuropathy",
+      "publicationState": "PUBLISHED",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+      "reviewRules": [
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "INDIVIDUAL_NEXUS_ASSERTION_IN_GENERIC_KNOWLEDGE_BASE",
+        "INDIVIDUAL_PROBABILITY_ALIGNMENT_REVIEW"
+      ],
+      "citationPmids": [
+        "24582486"
+      ],
+      "citationCount": 1,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "pituitary-neoplasm",
+      "targetId": "visual-impairment",
+      "sourceName": "Pituitary Neoplasm",
+      "targetName": "Visual Acuity Field Impairment",
+      "publicationState": "PUBLISHED",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+      "reviewRules": [
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "INDIVIDUAL_NEXUS_ASSERTION_IN_GENERIC_KNOWLEDGE_BASE",
+        "INDIVIDUAL_PROBABILITY_ALIGNMENT_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW"
+      ],
+      "citationPmids": [
+        "32419072"
+      ],
+      "citationCount": 1,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "ptsd",
+      "targetId": "erectile-dysfunction",
+      "sourceName": "Post-Traumatic Stress Disorder PTSD",
+      "targetName": "Erectile Dysfunction",
+      "publicationState": "PUBLISHED",
+      "nexusClassification": "AGGRAVATION",
+      "probabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+      "reviewRules": [
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "INDIVIDUAL_PROBABILITY_ALIGNMENT_REVIEW"
+      ],
+      "citationPmids": [
+        "19473282"
+      ],
+      "citationCount": 1,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "pulmonary-hypertension",
+      "targetId": "congestive-heart-failure",
+      "sourceName": "Pulmonary Hypertension",
+      "targetName": "Congestive Heart Failure",
+      "publicationState": "PUBLISHED",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+      "reviewRules": [
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "INDIVIDUAL_NEXUS_ASSERTION_IN_GENERIC_KNOWLEDGE_BASE",
+        "INDIVIDUAL_PROBABILITY_ALIGNMENT_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW"
+      ],
+      "citationPmids": [
+        "36017548"
+      ],
+      "citationCount": 1,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "sleep-apnea",
+      "targetId": "anxiety-disorder",
+      "sourceName": "Sleep Apnea Obstructive Central Mixed",
+      "targetName": "Generalized Anxiety Disorder",
+      "publicationState": "PUBLISHED",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+      "reviewRules": [
+        "CAUSAL_CLASSIFICATION_WITH_LIMITING_EVIDENCE_LANGUAGE",
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "INDIVIDUAL_NEXUS_ASSERTION_IN_GENERIC_KNOWLEDGE_BASE",
+        "INDIVIDUAL_PROBABILITY_ALIGNMENT_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW"
+      ],
+      "citationPmids": [
+        "30453780"
+      ],
+      "citationCount": 1,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "sleep-apnea",
+      "targetId": "depressive-disorder",
+      "sourceName": "Sleep Apnea Obstructive Central Mixed",
+      "targetName": "Major Depressive Disorder",
+      "publicationState": "PUBLISHED",
+      "nexusClassification": "AGGRAVATION",
+      "probabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+      "reviewRules": [
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "INDIVIDUAL_PROBABILITY_ALIGNMENT_REVIEW",
+        "ONTOLOGY_ENDPOINT_IDENTITY_REVIEW"
+      ],
+      "citationPmids": [
+        "38888794"
+      ],
+      "citationCount": 1,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "testicular-cancer",
+      "targetId": "hypogonadism",
+      "sourceName": "Testicular Cancer",
+      "targetName": "Hypogonadism",
+      "publicationState": "PUBLISHED",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+      "reviewRules": [
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "INDIVIDUAL_NEXUS_ASSERTION_IN_GENERIC_KNOWLEDGE_BASE",
+        "INDIVIDUAL_PROBABILITY_ALIGNMENT_REVIEW"
+      ],
+      "citationPmids": [
+        "27009402"
+      ],
+      "citationCount": 1,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    },
+    {
+      "sourceId": "urethral-stricture",
+      "targetId": "hydronephrosis",
+      "sourceName": "Urethral Stricture",
+      "targetName": "Hydronephrosis",
+      "publicationState": "PUBLISHED",
+      "nexusClassification": "DIRECT_CAUSATION",
+      "probabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+      "reviewRules": [
+        "DIRECTIONAL_RELATIONSHIP_REVIEW",
+        "INDIVIDUAL_NEXUS_ASSERTION_IN_GENERIC_KNOWLEDGE_BASE",
+        "INDIVIDUAL_PROBABILITY_ALIGNMENT_REVIEW"
+      ],
+      "citationPmids": [
+        "8571802"
+      ],
+      "citationCount": 1,
+      "clinicalDisposition": "HUMAN_REVIEW_REQUIRED"
+    }
+  ],
+  "articles": [
+    {
+      "pmid": "10885988",
+      "status": "METADATA_RETRIEVED",
+      "title": "Pathogenesis of group A streptococcal infections.",
+      "date": "2000 Jul",
+      "doi": "10.1128/CMR.13.3.470",
+      "publicationTypes": [
+        "Journal Article",
+        "Research Support, U.S. Gov't, P.H.S.",
+        "Review"
+      ],
+      "metadataHash": "083827bf51ed1495cb8594fb882aff0fe116205c9ad61a08c26b9a0deda0570b"
+    },
+    {
+      "pmid": "10966208",
+      "status": "METADATA_RETRIEVED",
+      "title": "Giant cell myocarditis: most fatal of autoimmune diseases.",
+      "date": "2000 Aug",
+      "doi": "10.1053/sarh.2000.8367",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "9aae267c6e20d0afcaa27a60c58414a8ff64c6ce0601413f9d9cc1913e2524d3"
+    },
+    {
+      "pmid": "11109946",
+      "status": "METADATA_RETRIEVED",
+      "title": "[Perianal streptococcal dermatitis].",
+      "date": "2000 Nov",
+      "doi": "10.1016/s0929-693x(00)00129-9",
+      "publicationTypes": [
+        "Case Reports",
+        "English Abstract",
+        "Journal Article"
+      ],
+      "metadataHash": "3dbb854c38654d4eed20a65890b7cf2d0d96b27a1d291532bbf316c68a47a4f6"
+    },
+    {
+      "pmid": "11110586",
+      "status": "METADATA_RETRIEVED",
+      "title": "Long-term follow-up of patients presenting to adult nephrologists with chronic pyelonephritis and 'normal' renal function.",
+      "date": "2000 Dec",
+      "doi": "10.1093/qjmed/93.12.799",
+      "publicationTypes": [
+        "Journal Article",
+        "Research Support, Non-U.S. Gov't"
+      ],
+      "metadataHash": "da515b2715b383b0bee56f08053a0a99dada8c2dce4956ea5e0411e75d96846c"
+    },
+    {
+      "pmid": "11321935",
+      "status": "METADATA_RETRIEVED",
+      "title": "Liver disease and diabetes mellitus.",
+      "date": "2001 Mar",
+      "doi": "",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "c660d2fa71ac4c4a5d11b76640a55e5b28b895e924d5b1994582183d8ecddd68"
+    },
+    {
+      "pmid": "11389357",
+      "status": "METADATA_RETRIEVED",
+      "title": "Acute myocarditis.",
+      "date": "2001 Jun",
+      "doi": "10.1097/00008480-200106000-00004",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "fb15ce0d0ca9400b34ae4feba46456265b8e8c13c9f2fd54993086f28e49e788"
+    },
+    {
+      "pmid": "11696266",
+      "status": "METADATA_RETRIEVED",
+      "title": "Idiopathic Giant Cell Myocarditis.",
+      "date": "2001 Dec",
+      "doi": "10.1007/s11936-001-0020-y",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "26438804b1ca187a0c6a23144e3ac4635146510bcb3f23233b7e18900f6ac078"
+    },
+    {
+      "pmid": "12126754",
+      "status": "METADATA_RETRIEVED",
+      "title": "Molecular and cellular mechanisms involved in Helicobacter pylori-induced inflammation and oxidative stress.",
+      "date": "2002 Aug 1",
+      "doi": "10.1016/s0891-5849(02)00868-7",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "23c1d27d09cea5bb907aff5fb30bfc70fe5f2fba2411d1f402eb2b48f24b89c5"
+    },
+    {
+      "pmid": "12417349",
+      "status": "METADATA_RETRIEVED",
+      "title": "Vascular dementia may be the most common form of dementia in the elderly.",
+      "date": "2002 Nov 15",
+      "doi": "10.1016/s0022-510x(02)00252-6",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "8de448240e72c468823540a9d9a925ce6329385e95d13b3df09fd484fd09ed79"
+    },
+    {
+      "pmid": "12429320",
+      "status": "METADATA_RETRIEVED",
+      "title": "Sexual dysfunction in combat veterans with post-traumatic stress disorder.",
+      "date": "2002 Nov",
+      "doi": "10.1016/s0090-4295(02)01899-x",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "cff4e1ec9d55c7f4fca2a3cc7ac39d7c8c29e46bea335dfa35f74510edb0984d"
+    },
+    {
+      "pmid": "14045004",
+      "status": "METADATA_RETRIEVED",
+      "title": "THE DANDY-WALKER SYNDROME.",
+      "date": "1963 Jul",
+      "doi": "10.1097/00005072-196307000-00007",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "7cf9bc0e835bc70d61be51df3fee614756e941c512d4cfd75afa58bc48ed7fc5"
+    },
+    {
+      "pmid": "14200958",
+      "status": "METADATA_RETRIEVED",
+      "title": "PYELOILEOCUTANEOUS ANASTOMOSIS.",
+      "date": "1964 Aug",
+      "doi": "",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "387714444616064d6515717fed1b349b2c2ca681b61cf4bafe6095b6ad2923e7"
+    },
+    {
+      "pmid": "16009033",
+      "status": "METADATA_RETRIEVED",
+      "title": "Fecal incontinence.",
+      "date": "2005 Aug",
+      "doi": "10.1007/s11938-005-0025-9",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "53c8c81884f697806755b9b05eab6dfc49064d38f741dd8809165ad3c5f52315"
+    },
+    {
+      "pmid": "16097361",
+      "status": "METADATA_RETRIEVED",
+      "title": "Hypertensive heart disease.",
+      "date": "2005 Mar",
+      "doi": "10.1291/hypres.28.191",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "25fa403fdadc3991a43930c3111e82880f40f711199ad8a20707f6e6c3a303fd"
+    },
+    {
+      "pmid": "16253901",
+      "status": "METADATA_RETRIEVED",
+      "title": "Surgical treatment and prognosis of gastrinoma.",
+      "date": "2005 Oct",
+      "doi": "10.1016/j.bpg.2005.05.003",
+      "publicationTypes": [
+        "Comparative Study",
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "72be8c4ef59d9da7bf4b598fd94510a5cfcecdb2deeabcda08aefb3b7c10bd96"
+    },
+    {
+      "pmid": "16377104",
+      "status": "METADATA_RETRIEVED",
+      "title": "Obstructive uropathy.",
+      "date": "2006 Jan",
+      "doi": "10.1016/j.earlhumdev.2005.11.002",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "f6cd85c3db1e577991d0651a02a3825a752e2263377cf7a71b0a804508ed960c"
+    },
+    {
+      "pmid": "16828412",
+      "status": "METADATA_RETRIEVED",
+      "title": "Rare syndromes.",
+      "date": "2006 Jul-Aug",
+      "doi": "10.1016/j.clindermatol.2006.04.005",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "3ad469be4407f5510058814d2641f1b4dd325751af955e6f25644faa5f067bf5"
+    },
+    {
+      "pmid": "16934708",
+      "status": "METADATA_RETRIEVED",
+      "title": "Group A streptococcus.",
+      "date": "2006 Jul",
+      "doi": "10.1053/j.spid.2006.07.001",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "4d94848bb256f191e2118767eecfc22b09fe9b15b9c35dc7fb1b6f9250f7dd77"
+    },
+    {
+      "pmid": "18373105",
+      "status": "METADATA_RETRIEVED",
+      "title": "Changing epidemiology of acute post-streptococcal glomerulonephritis in Northeast Florida: a comparative study.",
+      "date": "2008 Jul",
+      "doi": "10.1007/s00467-008-0778-1",
+      "publicationTypes": [
+        "Comparative Study",
+        "Journal Article"
+      ],
+      "metadataHash": "2d1117701e8c2eee4ae87ee6172eb62462740c7fdd0bc25985165d55ca555edc"
+    },
+    {
+      "pmid": "18743865",
+      "status": "METADATA_RETRIEVED",
+      "title": "Hyperinsulinism-Hypoglycemia.",
+      "date": "1936 Nov",
+      "doi": "",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "33b2b57da4f9f3a6354769350a64457278cd5fab1eda16a5b7bd2ff4f51e62bf"
+    },
+    {
+      "pmid": "18799126",
+      "status": "METADATA_RETRIEVED",
+      "title": "Management and prevention of fecal impaction.",
+      "date": "2008 Oct",
+      "doi": "10.1007/s11894-008-0091-y",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "a1be89371c8d2247cf9ea8a33851f3c59fe2221786a6a0770a2af7d1eaa8daae"
+    },
+    {
+      "pmid": "19225262",
+      "status": "METADATA_RETRIEVED",
+      "title": "Partial androgen deficiency, depression and testosterone treatment in aging men.",
+      "date": "2009 Feb",
+      "doi": "10.1007/BF03324891",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "6f1b495cea53d93a1201894356e8cf6decbf3c0aeab6d9f7e97cccee9c9d429c"
+    },
+    {
+      "pmid": "19412153",
+      "status": "METADATA_RETRIEVED",
+      "title": "Cognitive dysfunction after cardiovascular surgery.",
+      "date": "2009 May",
+      "doi": "",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "8d0484f556b7aea731cc49aa9a25eae751f18fbb008fd5baf216ca3968feb6ae"
+    },
+    {
+      "pmid": "19439958",
+      "status": "METADATA_RETRIEVED",
+      "title": "Peptic esophageal stricture: medical treatment.",
+      "date": "2009",
+      "doi": "10.1159/000210101",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "d31875bc12a0df493b21db44b99e846944b2766e9dc7e2ca87c4ce69798b2f57"
+    },
+    {
+      "pmid": "19473282",
+      "status": "METADATA_RETRIEVED",
+      "title": "Selective serotonin reuptake inhibitor-induced sexual dysfunction.",
+      "date": "2009 May",
+      "doi": "10.1111/j.1743-6109.2009.01248.x",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "e6b03f12fb32fe106fd133af8c58c5c3d73257481919f88f8e12821cb1d23a0b"
+    },
+    {
+      "pmid": "19776749",
+      "status": "METADATA_RETRIEVED",
+      "title": "Cardiovascular disease risk, vascular health and erectile dysfunction among middle-aged, clinically depressed men.",
+      "date": "2010 Jan-Feb",
+      "doi": "10.1038/ijir.2009.43",
+      "publicationTypes": [
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ],
+      "metadataHash": "98baea087b76d1a199d61c47598f0e3f80ac4ee148021dd4fed06948f92282db"
+    },
+    {
+      "pmid": "20301356",
+      "status": "METADATA_RETRIEVED",
+      "title": "Hereditary Nephrogenic Diabetes Insipidus.",
+      "date": "1993",
+      "doi": "",
+      "publicationTypes": [
+        "Review"
+      ],
+      "metadataHash": "c96b0e1d6b1740e9abce1aa82e2e451dcf0d647d358a7219789c6275d9866b80"
+    },
+    {
+      "pmid": "20394635",
+      "status": "METADATA_RETRIEVED",
+      "title": "Outcomes of renal transplantation in recipients with Wegener's granulomatosis.",
+      "date": "2011 May-Jun",
+      "doi": "10.1111/j.1399-0012.2010.01248.x",
+      "publicationTypes": [
+        "Comparative Study",
+        "Journal Article"
+      ],
+      "metadataHash": "ad50748d487c0bbbca43ccf03dbf569e20f6063f309a68401fb0b58939cde79c"
+    },
+    {
+      "pmid": "20970043",
+      "status": "METADATA_RETRIEVED",
+      "title": "The obesity paradox.",
+      "date": "2010 Oct",
+      "doi": "10.1016/j.ccc.2010.06.004",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "16528f5a307bdbddd5070b499faf951b3820b47fad338e489b8cc0e9a0619556"
+    },
+    {
+      "pmid": "21129544",
+      "status": "METADATA_RETRIEVED",
+      "title": "Reflux esophageal stricture--a review of 30 years' experience in children.",
+      "date": "2010 Dec",
+      "doi": "10.1016/j.jpedsurg.2010.08.033",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "433b452189e560c850180e5184a4b1aeaa7d033cea74550d9db5415934898ad4"
+    },
+    {
+      "pmid": "21193359",
+      "status": "METADATA_RETRIEVED",
+      "title": "Zollinger-Ellison syndrome: presentation, response to therapy, and outcome.",
+      "date": "2011 Jun",
+      "doi": "10.1016/j.dld.2010.11.007",
+      "publicationTypes": [
+        "Clinical Trial",
+        "Journal Article",
+        "Research Support, Non-U.S. Gov't"
+      ],
+      "metadataHash": "d7b71afbdccaf50ed06ef8ac1fa568d419712d45973bb66b49674328ae70904b"
+    },
+    {
+      "pmid": "21928031",
+      "status": "METADATA_RETRIEVED",
+      "title": "Hydrocephalus in Dandy-Walker malformation.",
+      "date": "2011 Oct",
+      "doi": "10.1007/s00381-011-1544-4",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "745a2d94b702094760d67ec7bdcd7ad4daef2f660321352617f0816bea6c55f1"
+    },
+    {
+      "pmid": "22404446",
+      "status": "METADATA_RETRIEVED",
+      "title": "Systematic review and meta-analysis: Helicobacter pylori eradication therapy after simple closure of perforated duodenal ulcer.",
+      "date": "2012 Apr",
+      "doi": "10.1111/j.1523-5378.2011.00928.x",
+      "publicationTypes": [
+        "Journal Article",
+        "Meta-Analysis",
+        "Research Support, Non-U.S. Gov't",
+        "Systematic Review"
+      ],
+      "metadataHash": "1e1f55ff456d86c850efae3d99fba5a294c5018586170b0f82688c0b538cce9e"
+    },
+    {
+      "pmid": "22762316",
+      "status": "METADATA_RETRIEVED",
+      "title": "Cognitive trajectories after postoperative delirium.",
+      "date": "2012 Jul 5",
+      "doi": "10.1056/NEJMoa1112923",
+      "publicationTypes": [
+        "Journal Article",
+        "Multicenter Study",
+        "Research Support, N.I.H., Extramural"
+      ],
+      "metadataHash": "86533b4a3e8954c7aa941afc61a58afd94b46e927c3cfcd17b2856fb367c8d60"
+    },
+    {
+      "pmid": "22779906",
+      "status": "METADATA_RETRIEVED",
+      "title": "Post-traumatic head injury pituitary dysfunction.",
+      "date": "2013 Mar",
+      "doi": "10.3109/09638288.2012.697252",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "dcb5f388da88c412267d15d6744e3e637aa3c2fd2b911767653826ccb6a7cbe3"
+    },
+    {
+      "pmid": "23850431",
+      "status": "METADATA_RETRIEVED",
+      "title": "Newly diagnosed major depressive disorder and the risk of erectile dysfunction: a population-based cohort study in Taiwan.",
+      "date": "2013 Dec 15",
+      "doi": "10.1016/j.psychres.2013.06.012",
+      "publicationTypes": [
+        "Journal Article",
+        "Research Support, Non-U.S. Gov't"
+      ],
+      "metadataHash": "532208ebf8c5f26c3a7cd4a46c32a2bb6024ec46c44bfb44a724727f5d2a0adb"
+    },
+    {
+      "pmid": "24239245",
+      "status": "METADATA_RETRIEVED",
+      "title": "Post-traumatic seizures--a prospective, multicenter, large case study after head injury in China.",
+      "date": "2013 Dec",
+      "doi": "10.1016/j.eplepsyres.2013.10.006",
+      "publicationTypes": [
+        "Case Reports",
+        "Journal Article",
+        "Multicenter Study",
+        "Research Support, Non-U.S. Gov't"
+      ],
+      "metadataHash": "e8228b9b80c2b5cc6da9d05f1b94a8cfc23682561c5669d6e5642bc024e42766"
+    },
+    {
+      "pmid": "24557504",
+      "status": "METADATA_RETRIEVED",
+      "title": "Hyperinsulinaemic hypoglycaemia.",
+      "date": "2014 Mar",
+      "doi": "10.1055/s-0034-1367063",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "eb88ca5f531700fb405066325c5e936238b0c1c1b723fd5158ded65e3a0cef4e"
+    },
+    {
+      "pmid": "24559635",
+      "status": "METADATA_RETRIEVED",
+      "title": "Ulnar tunnel syndrome.",
+      "date": "2014 Mar",
+      "doi": "10.1016/j.jhsa.2013.08.102",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "d7c565ee28e1153825d79f8d0505f324fd4afea8625269cf84d6e5e0a9ee6bd3"
+    },
+    {
+      "pmid": "24582486",
+      "status": "METADATA_RETRIEVED",
+      "title": "Carboplatin plus paclitaxel once a week versus every 3 weeks in patients with advanced ovarian cancer (MITO-7): a randomised, multicentre, open-label, phase 3 trial.",
+      "date": "2014 Apr",
+      "doi": "10.1016/S1470-2045(14)70049-X",
+      "publicationTypes": [
+        "Clinical Trial, Phase III",
+        "Comparative Study",
+        "Journal Article",
+        "Multicenter Study",
+        "Randomized Controlled Trial"
+      ],
+      "metadataHash": "090b86615314a4f09f10d9a860b76ef876a9e325f12704a4682ecbc3161142ff"
+    },
+    {
+      "pmid": "24645840",
+      "status": "METADATA_RETRIEVED",
+      "title": "Nesidioblastosis in adults.",
+      "date": "2014",
+      "doi": "10.4149/neo_2014_047",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "f80ef0f890c173010d731f266f4b59caa6724ccaa30976a1f718484abfcb94f9"
+    },
+    {
+      "pmid": "24774037",
+      "status": "METADATA_RETRIEVED",
+      "title": "Ulnar nerve deep branch compression by a ganglion: a review of nine cases.",
+      "date": "2014 Jul",
+      "doi": "10.1016/j.injury.2014.03.017",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "6cc789964352ffedb137d941557444b19278ed4834320319ab1fe4af57024440"
+    },
+    {
+      "pmid": "24788188",
+      "status": "METADATA_RETRIEVED",
+      "title": "Urologic manifestations of Erdheim-Chester disease.",
+      "date": "2014 Jul",
+      "doi": "10.1016/j.urology.2013.10.023",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "55226494dacbc1e742a528200d256e421a4269a99635f3e2b80fdae97fbb54bb"
+    },
+    {
+      "pmid": "2522004",
+      "status": "METADATA_RETRIEVED",
+      "title": "Heart and hypertension.",
+      "date": "1989 Feb",
+      "doi": "10.1093/ajh/2.2.16s",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "a69747759cdd2e765cbedbfb6132d6a1cd5c2fac880c16ccc39e44b05959416b"
+    },
+    {
+      "pmid": "25282462",
+      "status": "METADATA_RETRIEVED",
+      "title": "[Familial Wolfram syndrome].",
+      "date": "2014 Nov",
+      "doi": "10.1016/j.arcped.2014.08.017",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "54768ba7fc8a1d5a62c326307fb097279a4bc674c3c9a2335e5374d1d1043809"
+    },
+    {
+      "pmid": "25339570",
+      "status": "METADATA_RETRIEVED",
+      "title": "Severe congestive heart failure as the main symptom of eosinophilic granulomatosis and polyangiitis (Churg-Strauss syndrome).",
+      "date": "2014",
+      "doi": "10.5603/PiAP.2014.0077",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "37e913bd431d2a540c8721dc49de3ec452e23ff5bfb37454dbf084dedc371789"
+    },
+    {
+      "pmid": "25665140",
+      "status": "METADATA_RETRIEVED",
+      "title": "Sexual dysfunction in veterans with post-traumatic stress disorder.",
+      "date": "2015 Apr",
+      "doi": "10.1111/jsm.12823",
+      "publicationTypes": [
+        "Journal Article",
+        "Research Support, U.S. Gov't, Non-P.H.S.",
+        "Review"
+      ],
+      "metadataHash": "45e044e365e5dcdcc5a6f118744c324fce296bd31f051c093a666b727373a8ec"
+    },
+    {
+      "pmid": "25905351",
+      "status": "METADATA_RETRIEVED",
+      "title": "Atypical Forms of Diabetes.",
+      "date": "2000",
+      "doi": "",
+      "publicationTypes": [
+        "Review"
+      ],
+      "metadataHash": "b5763850dc451cc2c1a46bd2c125ff77cf29c05bc131a6c1dea3183a62e2b7a6"
+    },
+    {
+      "pmid": "26100996",
+      "status": "METADATA_RETRIEVED",
+      "title": "Dandy-Walker Malformation: A Clinical and Surgical Outcome Analysis.",
+      "date": "2015 Jun",
+      "doi": "",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "1e980778a2bb400fdc6017025271f7eadeff024707906a3f8068e2ed12c14254"
+    },
+    {
+      "pmid": "26478444",
+      "status": "METADATA_RETRIEVED",
+      "title": "Seizures in oligodendroglial tumors.",
+      "date": "2015",
+      "doi": "10.2217/cns.15.29",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "44037befb73724aa05ba8cc679722a04f540314a0e33f96105be7daee71f9662"
+    },
+    {
+      "pmid": "26583181",
+      "status": "METADATA_RETRIEVED",
+      "title": "Diffuse Axonal Injury.",
+      "date": "2016",
+      "doi": "",
+      "publicationTypes": [
+        "Review"
+      ],
+      "metadataHash": "60fdcc43b1a481896f53b0a35d8a96edc936a1aa788e83f5f7eec688e2f69b94"
+    },
+    {
+      "pmid": "27009402",
+      "status": "METADATA_RETRIEVED",
+      "title": "Testosterone deficiency in testicular cancer survivors - a systematic review and meta-analysis.",
+      "date": "2016 May",
+      "doi": "10.1111/andr.12177",
+      "publicationTypes": [
+        "Journal Article",
+        "Meta-Analysis",
+        "Systematic Review"
+      ],
+      "metadataHash": "121784395149ac15228ffe110f3d4da7dda9051b0a46359864e742565690fc72"
+    },
+    {
+      "pmid": "27092708",
+      "status": "METADATA_RETRIEVED",
+      "title": "Eradication therapy for peptic ulcer disease in Helicobacter pylori-positive people.",
+      "date": "2016 Apr 19",
+      "doi": "10.1002/14651858.CD003840.pub5",
+      "publicationTypes": [
+        "Journal Article",
+        "Meta-Analysis",
+        "Research Support, Non-U.S. Gov't",
+        "Systematic Review"
+      ],
+      "metadataHash": "87a7dd0d8fceffce66dd64b5d56dce4b28ff176de85b0a32a9233879b2f46002"
+    },
+    {
+      "pmid": "27725542",
+      "status": "METADATA_RETRIEVED",
+      "title": "Echocardiographic Changes in Eosinophilic Endocarditis Induced by Churg-Strauss Syndrome.",
+      "date": "2016",
+      "doi": "10.2169/internalmedicine.55.7150",
+      "publicationTypes": [
+        "Case Reports",
+        "Journal Article"
+      ],
+      "metadataHash": "6d04ee78e1503d5357521144f1a85a0dd8f283192e64033f6f2e11c83b75c5ad"
+    },
+    {
+      "pmid": "27745759",
+      "status": "METADATA_RETRIEVED",
+      "title": "[Eosinophilic esophagitis].",
+      "date": "2017 Mar",
+      "doi": "10.1016/j.lpm.2016.09.003",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "0a3f2fa53579f6a9c8514d9a8460e3935655da450caa72b198824bfbeb98c517"
+    },
+    {
+      "pmid": "27749233",
+      "status": "METADATA_RETRIEVED",
+      "title": "Clinical course and outcomes of childhood-onset granulomatosis with polyangiitis.",
+      "date": "2017 Mar-Apr",
+      "doi": "",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "c339540927063eb7765df3c1a6d87db7e9fe24bcb90ceee63566258335205a6b"
+    },
+    {
+      "pmid": "27784548",
+      "status": "METADATA_RETRIEVED",
+      "title": "Systematic Review of Sexual Dysfunction Among Veterans with Post-Traumatic Stress Disorder.",
+      "date": "2015 Apr",
+      "doi": "10.1002/smrj.47",
+      "publicationTypes": [
+        "Review",
+        "Journal Article"
+      ],
+      "metadataHash": "f393c33507de327c113f97cf83899d13c49395cae319ef874de7d0fbbb2d3211"
+    },
+    {
+      "pmid": "27915035",
+      "status": "METADATA_RETRIEVED",
+      "title": "Hyperinsulinaemic hypoglycaemia in children and adults.",
+      "date": "2017 Sep",
+      "doi": "10.1016/S2213-8587(16)30323-0",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "57ba0bfc441f5c694883278602f2304bbee26005df7213696cb299f8b928bf08"
+    },
+    {
+      "pmid": "28076834",
+      "status": "METADATA_RETRIEVED",
+      "title": "Risk factors for posttraumatic epilepsy: A systematic review and meta-analysis.",
+      "date": "2017 Feb",
+      "doi": "10.1016/j.yebeh.2016.10.026",
+      "publicationTypes": [
+        "Journal Article",
+        "Meta-Analysis",
+        "Systematic Review"
+      ],
+      "metadataHash": "7cbc9990e918ed50cfffef871aba119b24d156160246ab589202c36d48e1feb5"
+    },
+    {
+      "pmid": "28193800",
+      "status": "METADATA_RETRIEVED",
+      "title": "Cardiovascular and Ventilatory Consequences of Laparoscopic Surgery.",
+      "date": "2017 Feb 14",
+      "doi": "10.1161/CIRCULATIONAHA.116.023262",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "dd69eb6b42f83df675019d8d0d0e8b32f567d41a017fb8c23cc7edd7b215e73d"
+    },
+    {
+      "pmid": "28349221",
+      "status": "METADATA_RETRIEVED",
+      "title": "Total artificial heart implantation for biventricular failure due to eosinophilic myocarditis.",
+      "date": "2017 Sep",
+      "doi": "10.1007/s10047-017-0954-9",
+      "publicationTypes": [
+        "Case Reports",
+        "Journal Article"
+      ],
+      "metadataHash": "fa57ef19fc51182a03c6d2d9d2c3d1115ec4698768eb160d3841e165563e9bdd"
+    },
+    {
+      "pmid": "28612061",
+      "status": "METADATA_RETRIEVED",
+      "title": "Management of vesicoureteral reflux in neurogenic bladder.",
+      "date": "2017 Jun",
+      "doi": "10.4111/icu.2017.58.S1.S54",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "aa3e7555364370cec1877ffc146cdd48ed5189a857a98cdbcf9d7f5417eac4af"
+    },
+    {
+      "pmid": "28628573",
+      "status": "METADATA_RETRIEVED",
+      "title": "Postoperative Atrial Fibrillation.",
+      "date": "2017 Jul",
+      "doi": "10.1213/ANE.0000000000002070",
+      "publicationTypes": [
+        "Editorial",
+        "Comment"
+      ],
+      "metadataHash": "15b1b0539f6f45a5aa2a6844867c96001a7100bfb8488f6e890d6f7dc8022029"
+    },
+    {
+      "pmid": "28780072",
+      "status": "METADATA_RETRIEVED",
+      "title": "Presentation and Epidemiology of Gastroesophageal Reflux Disease.",
+      "date": "2018 Jan",
+      "doi": "10.1053/j.gastro.2017.07.045",
+      "publicationTypes": [
+        "Journal Article",
+        "Research Support, N.I.H., Extramural",
+        "Research Support, U.S. Gov't, Non-P.H.S.",
+        "Review"
+      ],
+      "metadataHash": "bd13fffe3cdd0887bca6b525c95e9d82e375154a7b4eb4250bc7ab9286c6a069"
+    },
+    {
+      "pmid": "28847474",
+      "status": "METADATA_RETRIEVED",
+      "title": "Neuropsychology of traumatic brain injury: An expert overview.",
+      "date": "2017 Jul-Aug",
+      "doi": "10.1016/j.neurol.2017.07.006",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "b3b074de0a6b9bc1600debfa3965545e407d155ad8ddcc35442cf776d361ff18"
+    },
+    {
+      "pmid": "2884877",
+      "status": "METADATA_RETRIEVED",
+      "title": "Glucagonoma syndrome.",
+      "date": "1987 May 29",
+      "doi": "10.1016/0002-9343(87)90424-4",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "d5419ad141c6e3d480292078e4a14d6ffaa21a28266dc7b87c9e26f8dce3d8ca"
+    },
+    {
+      "pmid": "29019150",
+      "status": "METADATA_RETRIEVED",
+      "title": "The Zollinger-Ellison syndrome: is there a role for somatostatin analogues in the treatment of the gastrinoma?",
+      "date": "2018 Apr",
+      "doi": "10.1007/s12020-017-1420-4",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "9c54112913447b29f9d7c2d127ebb0385d2d506bf3b2fc66c61210fee4899cf6"
+    },
+    {
+      "pmid": "29131920",
+      "status": "METADATA_RETRIEVED",
+      "title": "Congenital Hyperinsulinism.",
+      "date": "2017 Nov 1",
+      "doi": "10.3928/19382359-20171020-01",
+      "publicationTypes": [
+        "Case Reports",
+        "Journal Article"
+      ],
+      "metadataHash": "898804c8da0db3ba8e2643dd1fcc53b4c5495d5ee44d7f7153d055bf54344baa"
+    },
+    {
+      "pmid": "29280746",
+      "status": "METADATA_RETRIEVED",
+      "title": "Congenital Hyperinsulinism: Diagnosis and Treatment Update.",
+      "date": "2017 Dec 30",
+      "doi": "10.4274/jcrpe.2017.S007",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "d1f4a6839c6deeabbb6a336a48b2ea560c385f62509bdb496f50b446ed71bfa4"
+    },
+    {
+      "pmid": "29499097",
+      "status": "METADATA_RETRIEVED",
+      "title": "EAA clinical guideline on management of bone health in the andrological outpatient clinic.",
+      "date": "2018 Mar",
+      "doi": "10.1111/andr.12470",
+      "publicationTypes": [
+        "Journal Article",
+        "Practice Guideline",
+        "Review"
+      ],
+      "metadataHash": "d89e32e20829919bae509e9a3f32278b2cb4f9d140a61beb65c5653c670c0d18"
+    },
+    {
+      "pmid": "29985213",
+      "status": "METADATA_RETRIEVED",
+      "title": "Outcomes in Patients With Severe West Nile Neuroinvasive Disease.",
+      "date": "2018 Sep",
+      "doi": "10.1097/CCM.0000000000003257",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "85dd56f05647511eda75f57ea5e2355ec277df951cc8e9708d15625a7486484f"
+    },
+    {
+      "pmid": "30416105",
+      "status": "METADATA_RETRIEVED",
+      "title": "Group A Streptococcus disease in Hong Kong children: an overview.",
+      "date": "2018 Dec",
+      "doi": "10.12809/hkmj187275",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "4182b86d26a9222f0db3ec724f4f3eaaafe2308cf7947f193b372391248d1c24"
+    },
+    {
+      "pmid": "30422467",
+      "status": "METADATA_RETRIEVED",
+      "title": "Necrolytic Migratory Erythema.",
+      "date": "2023 Jan",
+      "doi": "",
+      "publicationTypes": [
+        "Study Guide"
+      ],
+      "metadataHash": "9f93df5a72bf2321498da6ededde7d9023ad5836871dcfbe93ef4c5f156b2695"
+    },
+    {
+      "pmid": "30453780",
+      "status": "METADATA_RETRIEVED",
+      "title": "Association of Anxiety and Depression in Obstructive Sleep Apnea Patients: A Systematic Review and Meta-Analysis.",
+      "date": "2020 Jan-Feb",
+      "doi": "10.1080/15402002.2018.1545649",
+      "publicationTypes": [
+        "Journal Article",
+        "Meta-Analysis",
+        "Systematic Review"
+      ],
+      "metadataHash": "82841f172047b49f60879dca99b8132f8e43a16dd10750f9f2ff5e96fa6c076c"
+    },
+    {
+      "pmid": "30855785",
+      "status": "METADATA_RETRIEVED",
+      "title": "Dandy-Walker Malformation.",
+      "date": "2026 Jan",
+      "doi": "",
+      "publicationTypes": [
+        "Study Guide"
+      ],
+      "metadataHash": "54f62dae049f3b5fa73d6d75ccf8f19cd2e5b1718d2162ed20c4cfd734b9d629"
+    },
+    {
+      "pmid": "30929221",
+      "status": "METADATA_RETRIEVED",
+      "title": "Traumatic brain injury: neuropathological, neurocognitive and neurobehavioral sequelae.",
+      "date": "2019 Jun",
+      "doi": "10.1007/s11102-019-00957-9",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "40ae543881bed6dbbb5c68757f8bd75112b34fc9b6d901e54832994af84d2c6e"
+    },
+    {
+      "pmid": "30974015",
+      "status": "METADATA_RETRIEVED",
+      "title": "ACVIM consensus guidelines for the diagnosis and treatment of myxomatous mitral valve disease in dogs.",
+      "date": "2019 May",
+      "doi": "10.1111/jvim.15488",
+      "publicationTypes": [
+        "Guideline",
+        "Journal Article"
+      ],
+      "metadataHash": "f24228cc3576ef911a2ced7b899a41f80d7a65729ad827e01f0339e0691380a7"
+    },
+    {
+      "pmid": "31179886",
+      "status": "METADATA_RETRIEVED",
+      "title": "Fatal Sarcocystis cruzi-induced eosinophilic myocarditis in a heifer in Uruguay.",
+      "date": "2019 Jul",
+      "doi": "10.1177/1040638719856651",
+      "publicationTypes": [
+        "Case Reports",
+        "Journal Article"
+      ],
+      "metadataHash": "14f8473aa3a9af294508371d144d0e888ca6bbee0785dd02cf9553a5c1550bf7"
+    },
+    {
+      "pmid": "31194366",
+      "status": "METADATA_RETRIEVED",
+      "title": "Esophageal Stricture.",
+      "date": "2023 Jan",
+      "doi": "",
+      "publicationTypes": [
+        "Study Guide"
+      ],
+      "metadataHash": "290d1a13be17fc98355d5868a3f0fd8965cf35710820813e5457c662c60091b0"
+    },
+    {
+      "pmid": "31516786",
+      "status": "METADATA_RETRIEVED",
+      "title": "Idiopathic Urethral Stricture and Nephrogenic Diabetes Insipidus: The Odd Couple.",
+      "date": "2019 Jul 4",
+      "doi": "10.7759/cureus.5076",
+      "publicationTypes": [
+        "Case Reports",
+        "Journal Article"
+      ],
+      "metadataHash": "6498bf92ec5d61b3d836a1ee39a6ad07b15c49b4d60660b842821762fca80b2e"
+    },
+    {
+      "pmid": "31529123",
+      "status": "METADATA_RETRIEVED",
+      "title": "A regression framework to uncover pleiotropy in large-scale electronic health record data.",
+      "date": "2019 Oct 1",
+      "doi": "10.1093/jamia/ocz084",
+      "publicationTypes": [
+        "Journal Article",
+        "Research Support, N.I.H., Extramural",
+        "Research Support, Non-U.S. Gov't",
+        "Research Support, U.S. Gov't, Non-P.H.S."
+      ],
+      "metadataHash": "a381ac0a1aea06e37d8182c4b3d013847a9f949502685ac779b28f7408ca3393"
+    },
+    {
+      "pmid": "31805527",
+      "status": "METADATA_RETRIEVED",
+      "title": "Testicular Cancer Survivorship.",
+      "date": "2019 Dec",
+      "doi": "10.6004/jnccn.2019.7369",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "8d6a883381195155aa7521fa5069bda1e4b696c75398cd2d3fb558672410de3c"
+    },
+    {
+      "pmid": "32056743",
+      "status": "METADATA_RETRIEVED",
+      "title": "Phosphodiesterase-5 inhibitors: Shedding new light on the darkness of depression?",
+      "date": "2020 Mar 1",
+      "doi": "10.1016/j.jad.2019.11.114",
+      "publicationTypes": [
+        "Journal Article",
+        "Research Support, Non-U.S. Gov't",
+        "Review"
+      ],
+      "metadataHash": "ef1f5357279d9798d03ca23ebc4363857216c391ae9dd495b13da13b98682009"
+    },
+    {
+      "pmid": "32108989",
+      "status": "METADATA_RETRIEVED",
+      "title": "Consensus on the diagnosis and treatment of hepatic fibrosis (2019).",
+      "date": "2020 Mar",
+      "doi": "10.1111/1751-2980.12854",
+      "publicationTypes": [
+        "Journal Article",
+        "Consensus Statement"
+      ],
+      "metadataHash": "c75707f43ec754a1e282b928d5b27e421c31b6125ead69ee1d1c22f500816101"
+    },
+    {
+      "pmid": "32133246",
+      "status": "METADATA_RETRIEVED",
+      "title": "Giant Cell Myocarditis: A Time Sensitive Distant Diagnosis.",
+      "date": "2020 Jan 20",
+      "doi": "10.7759/cureus.6712",
+      "publicationTypes": [
+        "Case Reports",
+        "Journal Article"
+      ],
+      "metadataHash": "86891549164e4ba10fd1be2d7a92234b0f1cbf89376cc68438a5791c9a96ed66"
+    },
+    {
+      "pmid": "32310466",
+      "status": "METADATA_RETRIEVED",
+      "title": "Esophageal Intramural Pseudodiverticulosis.",
+      "date": "2023 Jan",
+      "doi": "",
+      "publicationTypes": [
+        "Study Guide"
+      ],
+      "metadataHash": "fe2e49d1184fa12163e7e057eed76c663689efa5ffc4d923e2a9268d68e1fad6"
+    },
+    {
+      "pmid": "32313337",
+      "status": "METADATA_RETRIEVED",
+      "title": "Ultrasound elastography in patients with fatty liver disease.",
+      "date": "2020 Jan-Feb",
+      "doi": "10.1590/0100-3984.2019.0028",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "2c69e2bfdf324fda809c2b19aee0692fecdd95c06dd70b96e4a5124556806fbc"
+    },
+    {
+      "pmid": "32327280",
+      "status": "METADATA_RETRIEVED",
+      "title": "Uncommon compressive neuropathies of upper limbs.",
+      "date": "2020 Jun",
+      "doi": "10.1016/j.berh.2020.101516",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "ac46d6fffd6c35aa55f80bcc26d944e5d2a222dd037fd9ed89aebddef34f4180"
+    },
+    {
+      "pmid": "32419072",
+      "status": "METADATA_RETRIEVED",
+      "title": "Quality of care evaluation in non-functioning pituitary adenoma with chiasm compression: visual outcomes and timing of intervention clinical recommendations based on a systematic literature review and cohort study.",
+      "date": "2020 Aug",
+      "doi": "10.1007/s11102-020-01044-0",
+      "publicationTypes": [
+        "Journal Article",
+        "Systematic Review"
+      ],
+      "metadataHash": "330d003bb56b6bcfecf761bee87e90ce721a076e465290e09607e955f7e15816"
+    },
+    {
+      "pmid": "32571515",
+      "status": "METADATA_RETRIEVED",
+      "title": "Surgical treatment of congenital hyperinsulinism.",
+      "date": "2020 Jun",
+      "doi": "10.1016/j.sempedsurg.2020.150924",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "1d311b351437f97e478108f716c2a80f4de7cc7903bbf5dad9896f380bf2c833"
+    },
+    {
+      "pmid": "32644617",
+      "status": "METADATA_RETRIEVED",
+      "title": "Coronary Artery Fistula.",
+      "date": "2023 Jan",
+      "doi": "",
+      "publicationTypes": [
+        "Study Guide"
+      ],
+      "metadataHash": "5f90579591ae2931910d7785a8cf40ecf9b50e41337a18555aa0057c20553ad3"
+    },
+    {
+      "pmid": "32809451",
+      "status": "METADATA_RETRIEVED",
+      "title": "Aortopulmonary Window (Archived).",
+      "date": "2023 Jan",
+      "doi": "",
+      "publicationTypes": [
+        "Study Guide"
+      ],
+      "metadataHash": "14bf0f669b1b537d0b62899c2b4a484dc8e2684c5012cd8e967cb42c764f8146"
+    },
+    {
+      "pmid": "32848013",
+      "status": "METADATA_RETRIEVED",
+      "title": "Early brain biomarkers of post-traumatic seizures: initial report of the multicentre epilepsy bioinformatics study for antiepileptogenic therapy (EpiBioS4Rx) prospective study.",
+      "date": "2020 Nov",
+      "doi": "10.1136/jnnp-2020-322780",
+      "publicationTypes": [
+        "Journal Article",
+        "Multicenter Study",
+        "Research Support, N.I.H., Extramural",
+        "Research Support, Non-U.S. Gov't"
+      ],
+      "metadataHash": "cb89fa842ba8d531a3691342d8928d33725de58b18d61c37c9ab72b68cde633f"
+    },
+    {
+      "pmid": "33085409",
+      "status": "METADATA_RETRIEVED",
+      "title": "Vesicoureteral Reflux.",
+      "date": "2024 Jan",
+      "doi": "",
+      "publicationTypes": [
+        "Study Guide"
+      ],
+      "metadataHash": "e204dc87dcbf085b24fec28b34208da211e15e0f64f1b623cf7597da62a79c34"
+    },
+    {
+      "pmid": "33304627",
+      "status": "METADATA_RETRIEVED",
+      "title": "The Role of Elastography in Non-Alcoholic Fatty Liver Disease.",
+      "date": "2020 Jul-Sep",
+      "doi": "10.12865/CHSJ.46.03.07",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "a9b767d82513c05a3c90f43d27e68403b77e4cd1c7032fc657d1d59b1d317664"
+    },
+    {
+      "pmid": "33332150",
+      "status": "METADATA_RETRIEVED",
+      "title": "2020 ACC/AHA Guideline for the Management of Patients With Valvular Heart Disease: A Report of the American College of Cardiology/American Heart Association Joint Committee on Clinical Practice Guidelines.",
+      "date": "2021 Feb 2",
+      "doi": "10.1161/CIR.0000000000000923",
+      "publicationTypes": [
+        "Journal Article",
+        "Practice Guideline"
+      ],
+      "metadataHash": "b4a58c9eaf6d910d0290b37b567a976d49f258566d77c6bad607386128906eea"
+    },
+    {
+      "pmid": "33387100",
+      "status": "METADATA_RETRIEVED",
+      "title": "Simple fistula-in-ano: is it all simple? A systematic review.",
+      "date": "2021 Apr",
+      "doi": "10.1007/s10151-020-02385-5",
+      "publicationTypes": [
+        "Journal Article",
+        "Research Support, Non-U.S. Gov't",
+        "Systematic Review"
+      ],
+      "metadataHash": "eaca5cc0253a8077a9a09ad9ea5217780fc44dd36a03c5711078013555b109e8"
+    },
+    {
+      "pmid": "3360329",
+      "status": "METADATA_RETRIEVED",
+      "title": "Atypical presentation of geriatric infections.",
+      "date": "1988 May",
+      "doi": "",
+      "publicationTypes": [
+        "Case Reports",
+        "Journal Article"
+      ],
+      "metadataHash": "9bbc9f179f830fdc7c8ef3b4a9b4aafe98b3b8d3603dad4b4e5a640d48e93361"
+    },
+    {
+      "pmid": "33983694",
+      "status": "METADATA_RETRIEVED",
+      "title": "APOB-Related Familial Hypobetalipoproteinemia.",
+      "date": "1993",
+      "doi": "",
+      "publicationTypes": [
+        "Review"
+      ],
+      "metadataHash": "6a4ba77513e337dc81b666730b9f95a8a62cca90969abae2f3acc312bd724a3b"
+    },
+    {
+      "pmid": "34055061",
+      "status": "METADATA_RETRIEVED",
+      "title": "Nephrogenic diabetes insipidus in children (Review).",
+      "date": "2021 Jul",
+      "doi": "10.3892/etm.2021.10178",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "21009afb85250665b304821c838f38520ef67676ceb8530aa6bbc8870ac76eac"
+    },
+    {
+      "pmid": "34185118",
+      "status": "METADATA_RETRIEVED",
+      "title": "[Management of chemotherapy side effects and their long-term sequelae].",
+      "date": "2021 Jul",
+      "doi": "10.1007/s00120-021-01569-7",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "f36b67e6e83c251224af96476e2a3d2c25c0acc3f222293f5842bbd6bb5ea1aa"
+    },
+    {
+      "pmid": "34247952",
+      "status": "METADATA_RETRIEVED",
+      "title": "Erectile and Ejaculatory Dysfunction Associated with Use of Psychotropic Drugs: A Systematic Review.",
+      "date": "2021 Aug",
+      "doi": "10.1016/j.jsxm.2021.05.016",
+      "publicationTypes": [
+        "Journal Article",
+        "Systematic Review"
+      ],
+      "metadataHash": "6cc7ea51ce3e12bc81c889792b367792e18464c3969b1ff9072dd31419ae36c8"
+    },
+    {
+      "pmid": "34389210",
+      "status": "METADATA_RETRIEVED",
+      "title": "Incidence, Risk Factors, and Prognosis of Tricuspid Regurgitation After Cardiac Implantable Electronic Device Implantation: A Systematic Review and Meta-analysis.",
+      "date": "2022 Jun",
+      "doi": "10.1053/j.jvca.2021.06.025",
+      "publicationTypes": [
+        "Journal Article",
+        "Meta-Analysis",
+        "Systematic Review",
+        "Research Support, Non-U.S. Gov't"
+      ],
+      "metadataHash": "b8c2ac826d3219578e3de6ab2f78c964fb1e18af3a6b8f58d313c620313b556e"
+    },
+    {
+      "pmid": "34430410",
+      "status": "METADATA_RETRIEVED",
+      "title": "A neo-rectal bladder by uretero-rectal anastomosis: a case report.",
+      "date": "2021 Jul",
+      "doi": "10.21037/tau-21-298",
+      "publicationTypes": [
+        "Case Reports",
+        "Journal Article"
+      ],
+      "metadataHash": "87924216c402dca67a4d9956d168681e1ca217f9ee1ddc087dd1a8e855b8f96f"
+    },
+    {
+      "pmid": "34453165",
+      "status": "METADATA_RETRIEVED",
+      "title": "2021 ESC/EACTS Guidelines for the management of valvular heart disease.",
+      "date": "2022 Feb 12",
+      "doi": "10.1093/eurheartj/ehab395",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "ae13b37e83771fded33cb02d2991b7997bc89cdee43e8d3ee7e0735879ad457d"
+    },
+    {
+      "pmid": "34547194",
+      "status": "METADATA_RETRIEVED",
+      "title": "Congenital hyperinsulinism: recent updates on molecular mechanisms, diagnosis and management.",
+      "date": "2022 Mar 28",
+      "doi": "10.1515/jpem-2021-0369",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "65a20fa6cad08223edde22a16b4de5c73d121480a769c499c9cadd28542a9bd8"
+    },
+    {
+      "pmid": "34599565",
+      "status": "METADATA_RETRIEVED",
+      "title": "Real world management of esophageal ulcers: analysis of their presentation, etiology, and outcomes.",
+      "date": "2021 Jul-Sep",
+      "doi": "10.51821/84.3.004",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "26c01dbbdb765041550f099568edad87cba14696deac9587af2f290cdaad380d"
+    },
+    {
+      "pmid": "34992226",
+      "status": "METADATA_RETRIEVED",
+      "title": "Erectile dysfunction among patients and health care providers during COVID-19 pandemic: A systematic review.",
+      "date": "2022 Mar",
+      "doi": "10.1038/s41443-021-00504-w",
+      "publicationTypes": [
+        "Journal Article",
+        "Systematic Review"
+      ],
+      "metadataHash": "faa7e5760e4455f6317ee545fa5df38eb111bb744aefb4652aaab116e35cf8c9"
+    },
+    {
+      "pmid": "35004032",
+      "status": "METADATA_RETRIEVED",
+      "title": "A Comprehensive Review Study on Glomerulonephritis Associated With Post-streptococcal Infection.",
+      "date": "2021 Dec",
+      "doi": "10.7759/cureus.20212",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "744492c65cd51c19b1576e3f7d97e55c1e7a88281eac57851d008c6a91ed05c5"
+    },
+    {
+      "pmid": "35101262",
+      "status": "METADATA_RETRIEVED",
+      "title": "Clinical spectrum and management options for prostatic utricle in children.",
+      "date": "2022 Nov",
+      "doi": "10.1016/j.jpedsurg.2022.01.013",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "2b5b8444a992e5ba579e0758c9bf1cacee54433f1ebce18f606460670e069884"
+    },
+    {
+      "pmid": "351211",
+      "status": "METADATA_RETRIEVED",
+      "title": "Diabetes insipidus and hydronephrosis.",
+      "date": "1978 Jun",
+      "doi": "10.1016/s0022-5347(17)57608-9",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "1fe52493216aaeded2ec4dc475b2e7ee390089fba3644b00d4bcf305e315362c"
+    },
+    {
+      "pmid": "35188950",
+      "status": "METADATA_RETRIEVED",
+      "title": "Risk Factors and Prognosis of Early Posttraumatic Seizures in Moderate to Severe Traumatic Brain Injury.",
+      "date": "2022 Apr 1",
+      "doi": "10.1001/jamaneurol.2021.5420",
+      "publicationTypes": [
+        "Journal Article",
+        "Research Support, Non-U.S. Gov't"
+      ],
+      "metadataHash": "883f1e23d896370aa8eef65374ec62bf0b0f2cf40bc466e920d886b1353867b8"
+    },
+    {
+      "pmid": "35792506",
+      "status": "METADATA_RETRIEVED",
+      "title": "Erectile Dysfunction in a U.S. National Sample of Male Military Veterans.",
+      "date": "2023 Aug 29",
+      "doi": "10.1093/milmed/usac187",
+      "publicationTypes": [
+        "Journal Article",
+        "Research Support, U.S. Gov't, Non-P.H.S."
+      ],
+      "metadataHash": "05b6046da55ee1f217b39fe2a885da894b7c359e64a238d010dc18540ad93ffb"
+    },
+    {
+      "pmid": "35836446",
+      "status": "METADATA_RETRIEVED",
+      "title": "Magnesium and Hypertension: Decoding Novel Anti-hypertensives.",
+      "date": "2022 Jun",
+      "doi": "10.7759/cureus.25839",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "c2ab353e73ace25a830178b2ec649199c28ee8103856b9aae0eddc44e730693e"
+    },
+    {
+      "pmid": "358428",
+      "status": "METADATA_RETRIEVED",
+      "title": "Dandy-Walker syndrome.",
+      "date": "1978 Jun 17",
+      "doi": "",
+      "publicationTypes": [
+        "Case Reports",
+        "Clinical Trial",
+        "Journal Article"
+      ],
+      "metadataHash": "e28a2fb78b7e335c360140e70077480674ca0d6d01929805574d86b8c310a460"
+    },
+    {
+      "pmid": "35937824",
+      "status": "METADATA_RETRIEVED",
+      "title": "Upper urinary dilatation and treatment of 26 patients with diabetes insipidus: A single-center retrospective study.",
+      "date": "2022",
+      "doi": "10.3389/fendo.2022.941453",
+      "publicationTypes": [
+        "Journal Article",
+        "Research Support, Non-U.S. Gov't"
+      ],
+      "metadataHash": "d79c34a5f63a8c5a4215a93515a6e7bbb21a434e2791623bbc92f3fde2e28089"
+    },
+    {
+      "pmid": "35950979",
+      "status": "METADATA_RETRIEVED",
+      "title": "Diagnosis and management of hypertension in patients with Cushing's syndrome: a position statement and consensus of the Working Group on Endocrine Hypertension of the European Society of Hypertension.",
+      "date": "2022 Nov 1",
+      "doi": "10.1097/HJH.0000000000003252",
+      "publicationTypes": [
+        "Journal Article",
+        "Research Support, Non-U.S. Gov't",
+        "Consensus Statement"
+      ],
+      "metadataHash": "e301173d1a8b3ba51dae22f8690d552b797587ff0a3c4f694e820efb5ddf6db3"
+    },
+    {
+      "pmid": "36017548",
+      "status": "METADATA_RETRIEVED",
+      "title": "2022 ESC/ERS Guidelines for the diagnosis and treatment of pulmonary hypertension.",
+      "date": "2022 Oct 11",
+      "doi": "10.1093/eurheartj/ehac237",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "2b371d88b1bc71fe68829a15503baa4030823d32ba117b1655e8af33e70e7785"
+    },
+    {
+      "pmid": "36082670",
+      "status": "METADATA_RETRIEVED",
+      "title": "Growing Heart Failure Burden of Hypertensive Heart Disease: A Call to Action.",
+      "date": "2023 Jan",
+      "doi": "10.1161/HYPERTENSIONAHA.122.19373",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "f3d96426839ac381b400675b9832809e700fc7453258dde7fa9b0621137c4108"
+    },
+    {
+      "pmid": "36245251",
+      "status": "METADATA_RETRIEVED",
+      "title": "Evaluation and Management of Primary Hyperparathyroidism: Summary Statement and Guidelines from the Fifth International Workshop.",
+      "date": "2022 Nov",
+      "doi": "10.1002/jbmr.4677",
+      "publicationTypes": [
+        "Systematic Review",
+        "Journal Article",
+        "Research Support, Non-U.S. Gov't"
+      ],
+      "metadataHash": "d56d3b0c8bde48f396eaf700c7c66a91d002e756ed004024e0fd47d1288a84b4"
+    },
+    {
+      "pmid": "36282060",
+      "status": "METADATA_RETRIEVED",
+      "title": "What Is a Normal Testosterone Level for Young Men? Rethinking the 300 ng/dL Cutoff for Testosterone Deficiency in Men 20-44 Years Old.",
+      "date": "2022 Dec",
+      "doi": "10.1097/JU.0000000000002928",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "c4b42127112fe9d2196a4d1b923ce62d575e8580d901c3c9c4b13adb39fef2f2"
+    },
+    {
+      "pmid": "36464132",
+      "status": "METADATA_RETRIEVED",
+      "title": "Clinical Presentation and Diagnostic Approach to Hypoglycemia in Adults Without Diabetes Mellitus.",
+      "date": "2023 Apr",
+      "doi": "10.1016/j.eprac.2022.11.010",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "6acb8ffb9e99224b70c826863ee7dbfb9673d8b31d394b6d9f04af83841577c9"
+    },
+    {
+      "pmid": "36479753",
+      "status": "METADATA_RETRIEVED",
+      "title": "Streptococcus pyogenes Impetigo, Erysipelas, and Cellulitis.",
+      "date": "2022 Oct 8",
+      "doi": "",
+      "publicationTypes": [
+        "Review"
+      ],
+      "metadataHash": "1b0885c43f4bca6572f1b31b369443b358b55ae0981605068afd7d915b908f8b"
+    },
+    {
+      "pmid": "36595088",
+      "status": "METADATA_RETRIEVED",
+      "title": "Diuretics in pediatrics.",
+      "date": "2023 May",
+      "doi": "10.1007/s00431-022-04768-2",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "59b06e273e9e63c687e95f11e5f200431b46df3ba6b5ac7d4eab815ad5e5e97b"
+    },
+    {
+      "pmid": "36693336",
+      "status": "METADATA_RETRIEVED",
+      "title": "Post-Traumatic Hypopituitarism: A Neglected Consequence of Traumatic Brain Injury.",
+      "date": "2023",
+      "doi": "10.1159/000529327",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "b9a33be3c349261786227bfd0a16d81e64eb055413c669c31fc114541ddc4aaa"
+    },
+    {
+      "pmid": "36867377",
+      "status": "METADATA_RETRIEVED",
+      "title": "Cardiovascular Risks in Testicular Cancer: Assessment, Prevention, and Treatment.",
+      "date": "2023 May",
+      "doi": "10.1007/s11912-023-01375-8",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "dac41420d7efd49434c28b592243e12c8e6cac1e1a0e6b967d85dbb36d3e48bc"
+    },
+    {
+      "pmid": "37236543",
+      "status": "METADATA_RETRIEVED",
+      "title": "Insights into modifiable risk factors of erectile dysfunction, a wide-angled Mendelian Randomization study.",
+      "date": "2024 Apr",
+      "doi": "10.1016/j.jare.2023.05.008",
+      "publicationTypes": [
+        "Journal Article",
+        "Research Support, Non-U.S. Gov't"
+      ],
+      "metadataHash": "151a45a3c42f1a679ae54179fed05832565548c51370d495fe05880551aa68a8"
+    },
+    {
+      "pmid": "37454648",
+      "status": "METADATA_RETRIEVED",
+      "title": "International Guidelines for the Diagnosis and Management of Hyperinsulinism.",
+      "date": "2024",
+      "doi": "10.1159/000531766",
+      "publicationTypes": [
+        "Journal Article",
+        "Practice Guideline"
+      ],
+      "metadataHash": "3fc5454679cfdf49eaa7e48a4da769bffefbfc9d6f51df85f707d88d736b3b19"
+    },
+    {
+      "pmid": "37523934",
+      "status": "METADATA_RETRIEVED",
+      "title": "Endocrine disorders associated with obesity.",
+      "date": "2023 Aug",
+      "doi": "10.1016/j.bpobgyn.2023.102394",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "e49062a22222be0956eaa26f6008d7af498c1c103f1fc858a084bd80560ac9b9"
+    },
+    {
+      "pmid": "37526937",
+      "status": "METADATA_RETRIEVED",
+      "title": "Effect of Exercise on Chemotherapy-Induced Peripheral Neuropathy Among Patients Treated for Ovarian Cancer: A Secondary Analysis of a Randomized Clinical Trial.",
+      "date": "2023 Aug 1",
+      "doi": "10.1001/jamanetworkopen.2023.26463",
+      "publicationTypes": [
+        "Randomized Controlled Trial",
+        "Multicenter Study",
+        "Clinical Trial, Phase III",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ],
+      "metadataHash": "90f8823f30ab3db24f7d761dc99f38cd2de9ef3157a67334302bdaa63483e198"
+    },
+    {
+      "pmid": "38007812",
+      "status": "METADATA_RETRIEVED",
+      "title": "[Focal congenital hyperinsulinism].",
+      "date": "2023 Nov 26",
+      "doi": "10.1556/650.2023.32915",
+      "publicationTypes": [
+        "English Abstract",
+        "Journal Article"
+      ],
+      "metadataHash": "ba9b581e6ebe2ee85a9c71f8fc15238c7c28aa31bc58c6e3427da0871b256df4"
+    },
+    {
+      "pmid": "38039101",
+      "status": "METADATA_RETRIEVED",
+      "title": "Characteristics and treatment options of glucagonomas: a national study from the French Group of Endocrine Tumors and ENDOCAN-RENATEN network.",
+      "date": "2023 Dec 6",
+      "doi": "10.1093/ejendo/lvad157",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "8f2725d317a750e609e3f558ce71428145cfa461214f7c0037e6a8bcf0b9f80f"
+    },
+    {
+      "pmid": "38628528",
+      "status": "METADATA_RETRIEVED",
+      "title": "Aortoiliac occlusion mimicking cauda equina syndrome, a diagnostic dilemma: A case report and review of the literature.",
+      "date": "2024",
+      "doi": "10.25259/SNI_1011_2023",
+      "publicationTypes": [
+        "Case Reports",
+        "Journal Article"
+      ],
+      "metadataHash": "1c79c8ba2b377f7bfe9e5670a0a8b3dc927d73554c5328c531d0a1f1530da36a"
+    },
+    {
+      "pmid": "38629854",
+      "status": "METADATA_RETRIEVED",
+      "title": "Approach to the Neonate With Hypoglycemia.",
+      "date": "2024 Aug 13",
+      "doi": "10.1210/clinem/dgae267",
+      "publicationTypes": [
+        "Case Reports",
+        "Journal Article",
+        "Review",
+        "Research Support, U.S. Gov't, P.H.S.",
+        "Research Support, N.I.H., Extramural"
+      ],
+      "metadataHash": "cf2e0cdbba3e272ea7161ab6cd62b034f88b613072ef977c1c1952ef1729e498"
+    },
+    {
+      "pmid": "38733027",
+      "status": "METADATA_RETRIEVED",
+      "title": "MEMS Technology in Cardiology: Advancements and Applications in Heart Failure Management Focusing on the CardioMEMS Device.",
+      "date": "2024 May 3",
+      "doi": "10.3390/s24092922",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "57c115f4ae2657f7e77446bfb957d38827daaaccc0813bf444b64010845f6bf6"
+    },
+    {
+      "pmid": "38888794",
+      "status": "METADATA_RETRIEVED",
+      "title": "Association between obstructive sleep apnea severity and depression risk: a systematic review and dose-response meta-analysis.",
+      "date": "2024 Oct",
+      "doi": "10.1007/s11325-024-03083-4",
+      "publicationTypes": [
+        "Journal Article",
+        "Meta-Analysis",
+        "Systematic Review"
+      ],
+      "metadataHash": "9e1c8550b1195cee13af613846740a58eb76561a1fb981ec45597b4c9889ba1a"
+    },
+    {
+      "pmid": "39305914",
+      "status": "METADATA_RETRIEVED",
+      "title": "The effects of age and frailty on the risks of end-stage renal disease, death, and severe infection in older adults with antineutrophil cytoplasmic antibody-associated vasculitis: a retrospective cohort study.",
+      "date": "2024 Nov",
+      "doi": "10.1016/S2665-9913(24)00193-0",
+      "publicationTypes": [
+        "Journal Article",
+        "Research Support, Non-U.S. Gov't",
+        "Research Support, N.I.H., Extramural"
+      ],
+      "metadataHash": "20981dc30579e2014d15bf2108f6b8355d6b2d5ea871d21f93b649cd7ccd252c"
+    },
+    {
+      "pmid": "39349021",
+      "status": "METADATA_RETRIEVED",
+      "title": "Pediatric Urinary Tract Infections.",
+      "date": "2024 Nov",
+      "doi": "10.1016/j.ucl.2024.06.004",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "b79afd391ddcd2694f6c8e920fb4a89dcfab04ebae1ccccf9efe4a3e13cb4dfa"
+    },
+    {
+      "pmid": "39461270",
+      "status": "METADATA_RETRIEVED",
+      "title": "Safety and tolerability of mirvetuximab soravtansine monotherapy for folate receptor alpha-expressing recurrent ovarian cancer: An integrated safety summary.",
+      "date": "2024 Dec",
+      "doi": "10.1016/j.ygyno.2024.10.013",
+      "publicationTypes": [
+        "Journal Article",
+        "Research Support, Non-U.S. Gov't"
+      ],
+      "metadataHash": "f3b52f97da143fc2bea330b10ac34a2c9731838a6966b5799f4ba1a680c9c5ab"
+    },
+    {
+      "pmid": "39522606",
+      "status": "METADATA_RETRIEVED",
+      "title": "Functional outcome after infectious encephalitis: a longitudinal multicentre prospective cohort study.",
+      "date": "2025 Mar",
+      "doi": "10.1016/j.cmi.2024.11.001",
+      "publicationTypes": [
+        "Journal Article",
+        "Multicenter Study"
+      ],
+      "metadataHash": "bfd247f3013488e04dbba39b60035bb09584e4e79ebc655a32e078cad91f1af9"
+    },
+    {
+      "pmid": "39617390",
+      "status": "METADATA_RETRIEVED",
+      "title": "[Laparoscopic Hiatal Hernia Repair].",
+      "date": "2024 Sep",
+      "doi": "",
+      "publicationTypes": [
+        "English Abstract",
+        "Journal Article"
+      ],
+      "metadataHash": "9ffe49636f071512521089595dc1d6cb7137884b4b4fe2d1e8f51031a180a7d3"
+    },
+    {
+      "pmid": "39823617",
+      "status": "METADATA_RETRIEVED",
+      "title": "Gastroesophageal Reflux in Infants and Children: Diagnosis and Treatment.",
+      "date": "2025 Jan",
+      "doi": "",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "3690e90ab45dce0c5811f13ef8fd1d62d18bded98c74cdcb7c397e946c7ba5f2"
+    },
+    {
+      "pmid": "39899286",
+      "status": "METADATA_RETRIEVED",
+      "title": "Testicular Germ Cell Tumors: A Review.",
+      "date": "2025 Mar 4",
+      "doi": "10.1001/jama.2024.27122",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "084c6b050574534cdb78bf8cd3a916b336fcd219249c9c62e8d71374df6838f3"
+    },
+    {
+      "pmid": "40380123",
+      "status": "METADATA_RETRIEVED",
+      "title": "The implications of surgery on sexual dysfunction in patients with lumbar disc herniation with cauda equina syndrome: a systematic review.",
+      "date": "2025 May 16",
+      "doi": "10.1186/s12891-025-08736-3",
+      "publicationTypes": [
+        "Journal Article",
+        "Systematic Review"
+      ],
+      "metadataHash": "c6351c7c7877f57b45d6090be9eb346ce6634b6bec17152706aac7580f429035"
+    },
+    {
+      "pmid": "40412994",
+      "status": "METADATA_RETRIEVED",
+      "title": "Management of Esophageal Strictures.",
+      "date": "2025 Jul",
+      "doi": "10.1016/j.giec.2025.02.002",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "02d4473847e967ebf9b859c3c3767a9154f4aac97710d29b4a5d7e5251ef19cb"
+    },
+    {
+      "pmid": "40445443",
+      "status": "METADATA_RETRIEVED",
+      "title": "Dandy-Walker syndrome: an updated literature review.",
+      "date": "2025 May 30",
+      "doi": "10.1007/s00381-025-06842-0",
+      "publicationTypes": [
+        "Journal Article",
+        "Review",
+        "Research Support, Non-U.S. Gov't"
+      ],
+      "metadataHash": "c9ee2ba8b6a856dc19742631ce7cbbe55446ae6f3eaff61faf2f6d118e2661bf"
+    },
+    {
+      "pmid": "40576825",
+      "status": "METADATA_RETRIEVED",
+      "title": "The molecular landscape of glioblastoma-associated epilepsy.",
+      "date": "2025 Aug",
+      "doi": "10.1007/s00109-025-02567-4",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "0ead381d1d6c28ac5ca3db297936ebb733450ccec99c5fff3d0d534cf9b8d6f5"
+    },
+    {
+      "pmid": "40610807",
+      "status": "METADATA_RETRIEVED",
+      "title": "Prevalence of Hepatic Steatosis and Fibrosis in Asian Indian Individuals with Type 2 Diabetes.",
+      "date": "2025 Sep",
+      "doi": "10.1007/s13300-025-01764-1",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "15a0422aa737ab03c34d387e59e7223056970f2d2577e7f31d4e90dbbdd9faee"
+    },
+    {
+      "pmid": "40613421",
+      "status": "METADATA_RETRIEVED",
+      "title": "Glucagonoma and Glucagonoma Syndrome: An Updated Review.",
+      "date": "2025 Oct",
+      "doi": "10.1111/cen.15300",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "2bd3fc60bf173a6aabe47dca3e6a8c1a865fd211ff8926511bd30ba9279b4c64"
+    },
+    {
+      "pmid": "40637557",
+      "status": "METADATA_RETRIEVED",
+      "title": "Acute Necrotizing Eosinophilic Myocarditis in a 27-year-old Woman: A Case Report.",
+      "date": "2025 Dec 1",
+      "doi": "10.1097/PAF.0000000000001060",
+      "publicationTypes": [
+        "Journal Article",
+        "Case Reports"
+      ],
+      "metadataHash": "a8ee7348f2b2b1a4060bcf537c3a91737cdc4853acee11fb10abea614208b53c"
+    },
+    {
+      "pmid": "40743868",
+      "status": "METADATA_RETRIEVED",
+      "title": "Antibody-drug conjugates in gynecologic cancer: current landscape, clinical data, and emerging targets.",
+      "date": "2025 Sep",
+      "doi": "10.1016/j.ijgc.2025.101978",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "dec11d8393ca758101b67bb376f88c6a22afa1c9ea4dde2b9e26027a967dca0e"
+    },
+    {
+      "pmid": "40811497",
+      "status": "METADATA_RETRIEVED",
+      "title": "2025 AHA/ACC/AANP/AAPA/ABC/ACCP/ACPM/AGS/AMA/ASPC/NMA/PCNA/SGIM Guideline for the Prevention, Detection, Evaluation and Management of High Blood Pressure in Adults: A Report of the American College of Cardiology/American Heart Association Joint Committee on Clinical Practice Guidelines.",
+      "date": "2025 Sep 16",
+      "doi": "10.1161/CIR.0000000000001356",
+      "publicationTypes": [
+        "Journal Article",
+        "Practice Guideline"
+      ],
+      "metadataHash": "4eb41966921b17b8bb62940f4e27bb5b2f0f88d85ef4473a4e85f25dc25bf2fc"
+    },
+    {
+      "pmid": "40835018",
+      "status": "METADATA_RETRIEVED",
+      "title": "Global prevalence of post-traumatic epilepsy in traumatic brain injury patients: a systematic review and meta-analysis (1997-2024).",
+      "date": "2025 Oct 1",
+      "doi": "10.1016/j.neuroscience.2025.07.008",
+      "publicationTypes": [
+        "Journal Article",
+        "Systematic Review",
+        "Meta-Analysis",
+        "Research Support, Non-U.S. Gov't"
+      ],
+      "metadataHash": "5856eb783439f5e0265b160d6c3946a64473afe12845efd9d986c9ce19e55408"
+    },
+    {
+      "pmid": "40948152",
+      "status": "METADATA_RETRIEVED",
+      "title": "Postoperative Atrial Fibrillation Following Isolated Coronary Artery Bypass Grafting: Incidence, Predictors, and Clinical Outcomes.",
+      "date": "2025 Sep",
+      "doi": "10.29271/jcpsp.2025.09.1083",
+      "publicationTypes": [
+        "Journal Article",
+        "Observational Study"
+      ],
+      "metadataHash": "f04e560f20b4ab5218dc3b7c57a5351a5dc619dfcefac600450baba34120844d"
+    },
+    {
+      "pmid": "41072973",
+      "status": "METADATA_RETRIEVED",
+      "title": "Early Recognition of Giant Cell Myocarditis in a Patient With Fascicular Ventricular Tachycardia.",
+      "date": "2025 Oct 8",
+      "doi": "10.1016/j.jaccas.2025.105333",
+      "publicationTypes": [
+        "Case Reports",
+        "Journal Article"
+      ],
+      "metadataHash": "bb8de182625d3263659eea034f08da165ae3604336ad3804f12f5daa0edfbc6e"
+    },
+    {
+      "pmid": "41127625",
+      "status": "METADATA_RETRIEVED",
+      "title": "Functional Outcomes in Cauda Equina Syndrome Beyond 48 hours Window: A Case Series.",
+      "date": "2025",
+      "doi": "10.1155/cris/1906412",
+      "publicationTypes": [
+        "Case Reports",
+        "Journal Article"
+      ],
+      "metadataHash": "3edd78cd15dda65080bc34037cd535f1c599e63f3073d768e0d3f0019e6dfc20"
+    },
+    {
+      "pmid": "41242757",
+      "status": "METADATA_RETRIEVED",
+      "title": "Postoperative Atrial Fibrillation After Coronary Artery Bypass Grafting.",
+      "date": "2025 Dec 25",
+      "doi": "10.1253/circj.CJ-25-0581",
+      "publicationTypes": [
+        "Journal Article",
+        "Multicenter Study",
+        "Clinical Trial",
+        "Research Support, Non-U.S. Gov't"
+      ],
+      "metadataHash": "e0a037754dd596255cada9f4a85fa0091adf8261a448ec114c9d444e99b545ef"
+    },
+    {
+      "pmid": "41256744",
+      "status": "METADATA_RETRIEVED",
+      "title": "Whipple of Whipple's Triad.",
+      "date": "2023 Nov",
+      "doi": "10.14744/cpr.2023.03511",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "09bc3205f4e2b565060f32ab2f92ead393eb4d7aa55304c396490ac0c2c9ebfa"
+    },
+    {
+      "pmid": "41346918",
+      "status": "METADATA_RETRIEVED",
+      "title": "Double Trouble: Concomitant Carpal Tunnel Syndrome and Guyon's Canal Syndrome.",
+      "date": "2025 Nov",
+      "doi": "10.7759/cureus.96020",
+      "publicationTypes": [
+        "Case Reports",
+        "Journal Article"
+      ],
+      "metadataHash": "a4aed719f15e402f9f2aa476a8ba5cb732d453a1c89123456c0f8a5b0c641692"
+    },
+    {
+      "pmid": "41406646",
+      "status": "METADATA_RETRIEVED",
+      "title": "Long-term survival prediction in older women with stage I-II breast cancer using decision tree-based machine learning.",
+      "date": "2026 Mar",
+      "doi": "10.1016/j.jgo.2025.102828",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "656af6c1cc709b8a7d7123faf8125386dcf726f9ac81b48f038fd46098ceefcf"
+    },
+    {
+      "pmid": "41476443",
+      "status": "METADATA_RETRIEVED",
+      "title": "Intradural Extramedullary Spinal Cord Malignancy Treated With Percutaneous Image-Guided Cryoablation.",
+      "date": "2025 Dec",
+      "doi": "10.7759/cureus.100300",
+      "publicationTypes": [
+        "Case Reports",
+        "Journal Article"
+      ],
+      "metadataHash": "7a91058c2a01d3c8611d8296145d9e45a7e09cf642900dc60fdc8dfa2ffc3a08"
+    },
+    {
+      "pmid": "41645905",
+      "status": "METADATA_RETRIEVED",
+      "title": "Natural History of Patients With Histologically Proven Acute Eosinophilic Myocarditis.",
+      "date": "2026 Mar 3",
+      "doi": "10.1161/CIRCULATIONAHA.125.074797",
+      "publicationTypes": [
+        "Journal Article",
+        "Multicenter Study"
+      ],
+      "metadataHash": "593f4be97b63cd4b6d9e2ed14f9fb5033472572f98f146d0be564e32be4b41b5"
+    },
+    {
+      "pmid": "41668694",
+      "status": "METADATA_RETRIEVED",
+      "title": "Hydrocephalus-associated trigeminal neuralgia.",
+      "date": "2026",
+      "doi": "10.3389/fneur.2026.1687097",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "b23807f28a145291d9d2b762781a4ae8b3fe93c689914110631ff86f7f902540"
+    },
+    {
+      "pmid": "41969980",
+      "status": "METADATA_RETRIEVED",
+      "title": "Association between chronic rhinosinusitis and obstructive sleep apnea: evidence from systematic review, meta-analysis, and Mendelian Randomization.",
+      "date": "2026 Apr",
+      "doi": "10.1007/s41105-026-00641-z",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "b7515c86252b7c8662f37f06a4bc0c64eede87c80e5a21995be950b50b3c2e28"
+    },
+    {
+      "pmid": "41974150",
+      "status": "METADATA_RETRIEVED",
+      "title": "Pembrolizumab plus weekly paclitaxel in platinum-resistant recurrent ovarian cancer (ENGOT-ov65/KEYNOTE-B96): a multicentre, randomised, double-blind, phase 3 study.",
+      "date": "2026 Apr 18",
+      "doi": "10.1016/S0140-6736(26)00602-1",
+      "publicationTypes": [
+        "Journal Article",
+        "Clinical Trial, Phase III",
+        "Randomized Controlled Trial",
+        "Multicenter Study"
+      ],
+      "metadataHash": "2915400375a6d9e1039c7123a82d1a8da0be0da1e77f97a0c38658a91bbd309f"
+    },
+    {
+      "pmid": "42006224",
+      "status": "METADATA_RETRIEVED",
+      "title": "Outcomes in Children and Adults With Antiglomerular Basement Membrane Disease.",
+      "date": "2026 May",
+      "doi": "10.1016/j.ekir.2026.106353",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "7f27e3b3b8b3be75aa0479b9dc6f518dda22f764314e2882315fea6753bfd254"
+    },
+    {
+      "pmid": "42065727",
+      "status": "METADATA_RETRIEVED",
+      "title": "Surgical outcome for type I Guyon's canal syndrome with claw hand deformity: a review of 11 patients.",
+      "date": "2026 May 1",
+      "doi": "10.1007/s00701-026-06893-5",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "9565ba20c5d59cf812ddb11475a8d5419f08b340fdd539367b79ff0b092b8dd2"
+    },
+    {
+      "pmid": "42073389",
+      "status": "METADATA_RETRIEVED",
+      "title": "Impact of Early Diagnosis and Immunosuppressive Therapy on Giant Cell Myocarditis Outcomes: A Review.",
+      "date": "2026 Apr 1",
+      "doi": "10.3390/life16040575",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "55fbe348b0408d2235565f5258d8cfa1377e0b824771c4793e5b5cc48115792f"
+    },
+    {
+      "pmid": "42147059",
+      "status": "METADATA_RETRIEVED",
+      "title": "Case Report: When inotropy backfires-dobutamine-associated eosinophilic myocarditis.",
+      "date": "2026",
+      "doi": "10.3389/fcvm.2026.1781601",
+      "publicationTypes": [
+        "Case Reports",
+        "Journal Article"
+      ],
+      "metadataHash": "05f25c51499377e16b05ca80e8f0c1f0a33f9aad78b915a4b71b4255b7bdca4f"
+    },
+    {
+      "pmid": "42199438",
+      "status": "METADATA_RETRIEVED",
+      "title": "Rituximab is associated with accelerated dialysis independence in anti-glomerular basement membrane disease: a retrospective cohort analysis of renal survival.",
+      "date": "2026",
+      "doi": "10.3389/fimmu.2026.1835889",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "b883d18f3eb63957113703b677b393653907ca44b8245361a4bf38d6cc80fd95"
+    },
+    {
+      "pmid": "42340531",
+      "status": "METADATA_RETRIEVED",
+      "title": "Acute and Chronic Myocarditis in Men and Women.",
+      "date": "2026 Jun 24",
+      "doi": "10.1007/s11897-026-00768-7",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "e83c63bd5f07e84e0e8692039fc7cc3a1f075e05407151037627a3d5f641f2f4"
+    },
+    {
+      "pmid": "42393943",
+      "status": "METADATA_RETRIEVED",
+      "title": "Giant cell myocarditis in an 18-year-old patient with new-onset systemic lupus erythematosus: A fatal case of rapidly progressing heart failure.",
+      "date": "2026 Sep",
+      "doi": "10.1177/09612033261465053",
+      "publicationTypes": [
+        "Journal Article",
+        "Case Reports"
+      ],
+      "metadataHash": "db2975a4a5430be9f0e78ffbef73ef362ccb07ac1ebca9be6f3495c3c77bebb1"
+    },
+    {
+      "pmid": "42472710",
+      "status": "METADATA_RETRIEVED",
+      "title": "Sexual dysfunction after cauda equina syndrome: a systematic review of long-term outcomes.",
+      "date": "2026 Jul 20",
+      "doi": "10.1007/s00586-026-10170-5",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "13ec08b62441afc866d0b8f468cd3f8b3cd75bd8e69dc09c0f581b819d435a44"
+    },
+    {
+      "pmid": "42481370",
+      "status": "METADATA_RETRIEVED",
+      "title": "Non-invasive Tests for the Prediction of Liver-related Events in Patients with MASLD: A Systematic Review and Meta-analysis.",
+      "date": "2026 Jul 22",
+      "doi": "10.1016/j.acra.2026.06.068",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "e7d044023eeb9d04c5c0543a3ab8b22e1e7d3fa8d9dc1c91651dabc5a6e11356"
+    },
+    {
+      "pmid": "42564238",
+      "status": "METADATA_RETRIEVED",
+      "title": "Age-stratified clinical characteristics and long-term neurological outcomes of pediatric herpes simplex virus encephalitis: a longitudinal cohort study of 56 children.",
+      "date": "2026",
+      "doi": "10.3389/fneur.2026.1882046",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "83d1acd78df7266e21411f38850beda77e0804ab25ed65f0a167b270a1beb61d"
+    },
+    {
+      "pmid": "42618193",
+      "status": "METADATA_RETRIEVED",
+      "title": "Anti-glomerular basement membrane disease: A contemporary case series from a large university hospital center.",
+      "date": "2026 Aug-Sep",
+      "doi": "10.1016/j.nefroe.2026.501522",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "524d8858206daea21f1d5aa19b61d27909705a035317fa01f4e90f55094942c3"
+    },
+    {
+      "pmid": "42690133",
+      "status": "METADATA_RETRIEVED",
+      "title": "Prognostic value of liver histology in steatotic liver disease: a systematic literature review and meta-analysis.",
+      "date": "2026 Oct",
+      "doi": "10.57264/cer-2026-0148",
+      "publicationTypes": [
+        "Journal Article",
+        "Systematic Review",
+        "Meta-Analysis"
+      ],
+      "metadataHash": "f118c83f3e12325dd3fa29dfe5fd04d169c2550dc9ec1340c39a5977efd91a24"
+    },
+    {
+      "pmid": "42766419",
+      "status": "METADATA_RETRIEVED",
+      "title": "Approach to the patient with primary hyperglucagonemia.",
+      "date": "2026 Sep 8",
+      "doi": "10.1210/clinem/dgag371",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "6ff29b6398752a1aa340e0d7085e52c453ad7ee67761d860aa2b374e524db886"
+    },
+    {
+      "pmid": "6095016",
+      "status": "METADATA_RETRIEVED",
+      "title": "[Glucagonoma].",
+      "date": "1984 Sep",
+      "doi": "",
+      "publicationTypes": [
+        "Case Reports",
+        "English Abstract",
+        "Journal Article"
+      ],
+      "metadataHash": "66ddd34dabc76ec6803c1776a056391ce2c1fd8695a993097790d63b3db6f1b7"
+    },
+    {
+      "pmid": "6677094",
+      "status": "METADATA_RETRIEVED",
+      "title": "[Clinical study on ureterosigmoidostomy].",
+      "date": "1983 Nov",
+      "doi": "",
+      "publicationTypes": [
+        "English Abstract",
+        "Journal Article"
+      ],
+      "metadataHash": "b34d0e4636bf8bd4f898d489892e3fb926f1a75fe81cdfd0d73efdf721bb8935"
+    },
+    {
+      "pmid": "7779862",
+      "status": "METADATA_RETRIEVED",
+      "title": "Giant cell myocarditis.",
+      "date": "1995 Mar-Apr",
+      "doi": "",
+      "publicationTypes": [
+        "Case Reports",
+        "Journal Article"
+      ],
+      "metadataHash": "8eb1578a24a54a73207a65ae2369f09ed815bd60455e5cf518300b63882a8f48"
+    },
+    {
+      "pmid": "8430189",
+      "status": "METADATA_RETRIEVED",
+      "title": "Idiopathic eosinophilic esophagitis.",
+      "date": "1993 Mar",
+      "doi": "10.1148/radiology.186.3.8430189",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "29d0de57bf18676b57bc279bc26f14440bb6200a7e640d10c6ed17598058c688"
+    },
+    {
+      "pmid": "8571802",
+      "status": "METADATA_RETRIEVED",
+      "title": "[Renal and ureteral complications of urethral stenosis].",
+      "date": "1995 Jun",
+      "doi": "",
+      "publicationTypes": [
+        "English Abstract",
+        "Journal Article"
+      ],
+      "metadataHash": "61626ee4a079a59c46cf4b140ddbae2dcc70b3f99b4daab8ac5412a953866330"
+    },
+    {
+      "pmid": "8678395",
+      "status": "METADATA_RETRIEVED",
+      "title": "Diabetic and hypertensive heart disease.",
+      "date": "1996 Aug 15",
+      "doi": "10.7326/0003-4819-125-4-199608150-00009",
+      "publicationTypes": [
+        "Journal Article",
+        "Review"
+      ],
+      "metadataHash": "668d2a83761445f49377e78923ea64d5d233bdb88432f7adf037599eb2bf9b4a"
+    },
+    {
+      "pmid": "8845491",
+      "status": "METADATA_RETRIEVED",
+      "title": "Carboplatin-related idiosyncrasy.",
+      "date": "1995 Dec",
+      "doi": "10.1097/00001813-199512000-00010",
+      "publicationTypes": [
+        "Case Reports",
+        "Journal Article"
+      ],
+      "metadataHash": "5af86391cec1fa9722513c77e136c16f7e414d6f72d9dbefc867972745dab238"
+    },
+    {
+      "pmid": "9061525",
+      "status": "METADATA_RETRIEVED",
+      "title": "Guyon's canal syndrome. A different clinical presentation caused by an atypical fibrous band.",
+      "date": "1997 Feb",
+      "doi": "10.1016/s0266-7681(97)80016-2",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "metadataHash": "4d97c4e7e09ac321091854ad0b7765fdb4392c8323ac96b79e2ef3a1e1c7b638"
+    }
+  ],
+  "discoveries": [
+    {
+      "sourceId": "anal-fistula",
+      "targetId": "fecal-incontinence",
+      "candidatePmids": [],
+      "status": "NO_TEXT_MATCH",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "brain-cancer",
+      "targetId": "seizure-disorder",
+      "candidatePmids": [],
+      "status": "NO_TEXT_MATCH",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "cauda-equina-syndrome",
+      "targetId": "erectile-dysfunction",
+      "candidatePmids": [
+        "42472710",
+        "41476443",
+        "38628528",
+        "41127625",
+        "40380123"
+      ],
+      "status": "CANDIDATES_FOUND",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "cerebral-contusion",
+      "targetId": "seizure-disorder",
+      "candidatePmids": [],
+      "status": "NO_TEXT_MATCH",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "chronic-liver-disease",
+      "targetId": "cirrhosis-of-the-liver",
+      "candidatePmids": [],
+      "status": "NO_TEXT_MATCH",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "chronic-pyelonephritis",
+      "targetId": "chronic-kidney-disease",
+      "candidatePmids": [],
+      "status": "NO_TEXT_MATCH",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "chronic-sinusitis",
+      "targetId": "sleep-apnea",
+      "candidatePmids": [],
+      "status": "NO_TEXT_MATCH",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "coronary-bypass-residuals",
+      "targetId": "cardiac-arrhythmia",
+      "candidatePmids": [],
+      "status": "NO_TEXT_MATCH",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "coronary-bypass-residuals",
+      "targetId": "cognitive-disorder",
+      "candidatePmids": [],
+      "status": "NO_TEXT_MATCH",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "cushings-syndrome",
+      "targetId": "hypertension",
+      "candidatePmids": [],
+      "status": "NO_TEXT_MATCH",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "cystitis-or-neurogenic-bladder",
+      "targetId": "hydronephrosis",
+      "candidatePmids": [],
+      "status": "NO_TEXT_MATCH",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "dandy-walker-syndrome",
+      "targetId": "hydrocephalus",
+      "candidatePmids": [
+        "40445443",
+        "41668694",
+        "30855785",
+        "358428",
+        "14045004"
+      ],
+      "status": "CANDIDATES_FOUND",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "depressive-disorder",
+      "targetId": "erectile-dysfunction",
+      "candidatePmids": [
+        "32056743",
+        "37236543",
+        "23850431",
+        "19225262",
+        "19776749"
+      ],
+      "status": "CANDIDATES_FOUND",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "diabetes-insipidus",
+      "targetId": "hydronephrosis",
+      "candidatePmids": [
+        "16377104",
+        "20301356",
+        "24788188",
+        "25282462",
+        "351211"
+      ],
+      "status": "CANDIDATES_FOUND",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "diffuse-axonal-injury",
+      "targetId": "cognitive-disorder",
+      "candidatePmids": [],
+      "status": "NO_TEXT_MATCH",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "encephalitis",
+      "targetId": "seizure-disorder",
+      "candidatePmids": [],
+      "status": "NO_TEXT_MATCH",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "eosinophilic-myocarditis",
+      "targetId": "congestive-heart-failure",
+      "candidatePmids": [
+        "25339570",
+        "28349221",
+        "27725542",
+        "40637557",
+        "31179886"
+      ],
+      "status": "CANDIDATES_FOUND",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "esophageal-stricture",
+      "targetId": "dysphagia",
+      "candidatePmids": [
+        "28780072",
+        "27745759",
+        "32310466",
+        "31194366",
+        "39617390"
+      ],
+      "status": "CANDIDATES_FOUND",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "esophagitis",
+      "targetId": "esophageal-stricture",
+      "candidatePmids": [
+        "28780072",
+        "40412994",
+        "39823617",
+        "27745759",
+        "8430189"
+      ],
+      "status": "CANDIDATES_FOUND",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "fecal-impaction",
+      "targetId": "fecal-incontinence",
+      "candidatePmids": [],
+      "status": "NO_TEXT_MATCH",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "gastrinoma",
+      "targetId": "peptic-ulcer-disease",
+      "candidatePmids": [],
+      "status": "NO_TEXT_MATCH",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "gastritis",
+      "targetId": "peptic-ulcer-disease",
+      "candidatePmids": [],
+      "status": "NO_TEXT_MATCH",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "giant-cell-myocarditis",
+      "targetId": "congestive-heart-failure",
+      "candidatePmids": [
+        "11389357",
+        "7779862",
+        "11696266",
+        "32133246",
+        "10966208"
+      ],
+      "status": "CANDIDATES_FOUND",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "glucagonoma",
+      "targetId": "diabetes-mellitus",
+      "candidatePmids": [
+        "30422467",
+        "2884877",
+        "16828412",
+        "6095016",
+        "25905351"
+      ],
+      "status": "CANDIDATES_FOUND",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "goodpasture-syndrome",
+      "targetId": "chronic-kidney-disease",
+      "candidatePmids": [],
+      "status": "NO_TEXT_MATCH",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "granulomatosis-with-polyangiitis",
+      "targetId": "chronic-kidney-disease",
+      "candidatePmids": [],
+      "status": "NO_TEXT_MATCH",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "guyon-s-canal-syndrome",
+      "targetId": "muscle-atrophy",
+      "candidatePmids": [
+        "32327280",
+        "41346918",
+        "9061525",
+        "42065727"
+      ],
+      "status": "CANDIDATES_FOUND",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "heart-valve-disorders",
+      "targetId": "congestive-heart-failure",
+      "candidatePmids": [
+        "31529123",
+        "41406646",
+        "38733027"
+      ],
+      "status": "CANDIDATES_FOUND",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "hepatic-steatosis",
+      "targetId": "cirrhosis-of-the-liver",
+      "candidatePmids": [
+        "33983694",
+        "40610807",
+        "32313337",
+        "11321935",
+        "33304627"
+      ],
+      "status": "CANDIDATES_FOUND",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "hyperinsulinism",
+      "targetId": "hypoglycemia",
+      "candidatePmids": [
+        "38629854",
+        "37454648",
+        "38007812",
+        "29131920",
+        "18743865"
+      ],
+      "status": "CANDIDATES_FOUND",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "hyperparathyroidism",
+      "targetId": "kidney-stones",
+      "candidatePmids": [],
+      "status": "NO_TEXT_MATCH",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "hypertension",
+      "targetId": "chronic-kidney-disease",
+      "candidatePmids": [],
+      "status": "NO_TEXT_MATCH",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "hypertension",
+      "targetId": "congestive-heart-failure",
+      "candidatePmids": [],
+      "status": "NO_TEXT_MATCH",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "hypertensive-heart-disease",
+      "targetId": "congestive-heart-failure",
+      "candidatePmids": [
+        "20970043",
+        "8678395",
+        "35836446",
+        "16097361",
+        "2522004"
+      ],
+      "status": "CANDIDATES_FOUND",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "hypogonadism",
+      "targetId": "osteoporosis",
+      "candidatePmids": [],
+      "status": "NO_TEXT_MATCH",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "impetigo",
+      "targetId": "nephritis",
+      "candidatePmids": [
+        "35004032",
+        "16934708",
+        "11109946",
+        "30416105",
+        "10885988"
+      ],
+      "status": "CANDIDATES_FOUND",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "implantable-cardiac-pacemaker",
+      "targetId": "heart-valve-disorders",
+      "candidatePmids": [],
+      "status": "NO_TEXT_MATCH",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "insulinoma",
+      "targetId": "hyperinsulinism",
+      "candidatePmids": [
+        "36464132",
+        "24645840",
+        "32571515",
+        "41256744",
+        "37523934"
+      ],
+      "status": "CANDIDATES_FOUND",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "intracranial-injury-without-skull-fracture",
+      "targetId": "epilepsy",
+      "candidatePmids": [],
+      "status": "NO_TEXT_MATCH",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "intracranial-injury-without-skull-fracture",
+      "targetId": "hypopituitarism",
+      "candidatePmids": [],
+      "status": "NO_TEXT_MATCH",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "ovarian-cancer",
+      "targetId": "peripheral-neuropathy",
+      "candidatePmids": [
+        "41974150",
+        "8845491",
+        "37526937",
+        "40743868",
+        "39461270"
+      ],
+      "status": "CANDIDATES_FOUND",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "pituitary-neoplasm",
+      "targetId": "visual-impairment",
+      "candidatePmids": [],
+      "status": "NO_TEXT_MATCH",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "ptsd",
+      "targetId": "erectile-dysfunction",
+      "candidatePmids": [
+        "25665140",
+        "27784548",
+        "34992226",
+        "35792506",
+        "12429320"
+      ],
+      "status": "CANDIDATES_FOUND",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "pulmonary-hypertension",
+      "targetId": "congestive-heart-failure",
+      "candidatePmids": [
+        "30974015",
+        "32644617",
+        "32809451",
+        "36595088",
+        "28193800"
+      ],
+      "status": "CANDIDATES_FOUND",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "sleep-apnea",
+      "targetId": "anxiety-disorder",
+      "candidatePmids": [],
+      "status": "NO_TEXT_MATCH",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "sleep-apnea",
+      "targetId": "depressive-disorder",
+      "candidatePmids": [],
+      "status": "NO_TEXT_MATCH",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "testicular-cancer",
+      "targetId": "hypogonadism",
+      "candidatePmids": [
+        "39899286",
+        "34185118",
+        "36282060",
+        "31805527",
+        "36867377"
+      ],
+      "status": "CANDIDATES_FOUND",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    },
+    {
+      "sourceId": "urethral-stricture",
+      "targetId": "hydronephrosis",
+      "candidatePmids": [
+        "14200958",
+        "35101262",
+        "31516786",
+        "6677094",
+        "34430410"
+      ],
+      "status": "CANDIDATES_FOUND",
+      "candidateClinicalSupport": "NOT_ASSESSED"
+    }
+  ],
+  "runId": "37ef11e59267ea3c6cbe5ed1220a93879e707f376f3440188e4149648545bb0f"
+}
