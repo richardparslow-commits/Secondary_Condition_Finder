@@ -141,8 +141,13 @@ export async function setupIntake(connect=openAdmin,sql=fs.readFileSync(SCRIPT,"
     const rights=await db.query(
       "SELECT has_function_privilege('scf_evidence_ci_writer',"+
       "'scf_candidate_review_dev.submit_qualified_review(jsonb)','EXECUTE') AS ci_can_submit,"+
-      "has_function_privilege('PUBLIC',"+
-      "'scf_candidate_review_dev.submit_qualified_review(jsonb)','EXECUTE') AS public_can_submit");
+      "EXISTS (SELECT 1 FROM pg_catalog.pg_proc p "+
+      "JOIN pg_catalog.pg_namespace n ON n.oid=p.pronamespace "+
+      "CROSS JOIN LATERAL pg_catalog.aclexplode(COALESCE(p.proacl,"+
+      "pg_catalog.acldefault('f',p.proowner))) acl "+
+      "WHERE n.nspname='scf_candidate_review_dev' "+
+      "AND p.proname='submit_qualified_review' "+
+      "AND acl.grantee=0 AND acl.privilege_type='EXECUTE') AS public_can_submit");
     assert.equal(rights.rows.length,1);
     assert.equal(rights.rows[0].ci_can_submit,false);
     assert.equal(rights.rows[0].public_can_submit,false);
