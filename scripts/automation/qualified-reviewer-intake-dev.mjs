@@ -125,11 +125,11 @@ export function bootstrapStatements(){
       "THEN CREATE ROLE "+SUBMITTER+" NOLOGIN NOINHERIT; END IF; END $$",
     "ALTER TABLE "+s+".qualified_human_reviews ADD COLUMN IF NOT EXISTS "+
       "receipt_sha256 text",
-    "DO $ BEGIN IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname="+
-      "'scf_review_receipt_hash_valid' AND conrelid='"+s+".qualified_human_reviews'::regclass) "+
+    "DO $$ BEGIN IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname="+
+      "\'scf_review_receipt_hash_valid\' AND conrelid=\'"+s+".qualified_human_reviews\'::regclass) "+
       "THEN ALTER TABLE "+s+".qualified_human_reviews "+
       "ADD CONSTRAINT scf_review_receipt_hash_valid "+
-      "CHECK(receipt_sha256 ~ '^[a-f0-9]{64}
+      "CHECK(receipt_sha256 ~ \'^[a-f0-9]{64}$\'); END IF; END $$",
     "ALTER TABLE "+s+".qualified_human_reviews ALTER COLUMN receipt_sha256 SET NOT NULL",
     "CREATE UNIQUE INDEX IF NOT EXISTS scf_review_receipt_unique "+
       "ON "+s+".qualified_human_reviews(receipt_sha256)",
