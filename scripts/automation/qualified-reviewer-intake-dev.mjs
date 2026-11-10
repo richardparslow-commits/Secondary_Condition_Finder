@@ -95,6 +95,12 @@ export function validateReceipt(doc){
     "Exact human-authored receipt digest mismatch");
   return doc;
 }
+export function sealDraft(draft){
+  assert.ok(draft && typeof draft==="object" && !Array.isArray(draft));
+  assert.deepEqual(Object.keys(draft).sort(),KEYS.filter(x=>x!=="receiptSha256").sort());
+  const doc={...draft,receiptSha256:sha(draft)};
+  return validateReceipt(doc);
+}
 export function parseReviewerConnection(raw){
   if(!raw)throw new Error("Missing separate qualified-reviewer DEV secret");
   let url;
@@ -259,6 +265,14 @@ if(process.argv[1]?.endsWith("qualified-reviewer-intake-dev.mjs")){
   if(mode==="setup"&&args.length===1&&args[0]==="--dev-write"){
     try{console.log(JSON.stringify(await installReviewerIntake()));}
     catch{console.error("Restricted DEV intake setup failed; no secrets disclosed");process.exitCode=1;}
+  }else if(mode==="seal"&&args.length===2){
+    try{
+      const draft=JSON.parse(fs.readFileSync(args[0],"utf8"));
+      const doc=sealDraft(draft);
+      fs.writeFileSync(args[1],JSON.stringify(doc,null,2)+"\n",{flag:"wx",mode:0o600});
+      console.log(JSON.stringify({result:"LOCAL_RECEIPT_DRAFT_SEALED",
+        receiptSha256:doc.receiptSha256,clinicalApprovals:0,publicationChanges:0}));
+    }catch{console.error("Could not seal restricted local review draft");process.exitCode=1;}
   }else if(mode==="validate"&&args.length===1){
     try{const doc=JSON.parse(fs.readFileSync(args[0],"utf8"));validateReceipt(doc);
       console.log(JSON.stringify({result:"REVIEW_RECEIPT_FORMAT_VALID",
@@ -271,7 +285,7 @@ if(process.argv[1]?.endsWith("qualified-reviewer-intake-dev.mjs")){
       })));}
     catch{console.error("Reviewer authentication or evidence gate rejected receipt");process.exitCode=1;}
   }else{
-    console.error("Usage: setup --dev-write | validate <receipt.json> | submit --dev-write <receipt.json>");
+    console.error("Usage: setup --dev-write | seal <draft.json> <receipt.json> | validate <receipt.json> | submit --dev-write <receipt.json>");
     process.exitCode=1;
   }
 }
