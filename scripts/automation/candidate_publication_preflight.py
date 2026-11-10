@@ -217,6 +217,47 @@ def validate(doc, source=SOURCE, original=discovery.SOURCE, queries=discovery.QU
     return doc
 
 
+# Priority denotes bibliographic follow-up order only, not clinical evidence weight.
+QUEUE_FIELDS = [
+    "reviewPriority", "sourceId", "targetId", "originalPMID", "candidatePMID",
+    "searchRank", "officialTitle", "publicationTypeLabels", "abstractAvailable",
+    "publicationStatusNoticeTypes", "humanFullTextScreeningRequired",
+    "reviewer", "reviewerQualifications", "fullTextSectionsRead",
+    "studyDesignPopulation", "directionality", "confounders",
+    "medicationOrProcedureMediation", "exactSourceToClaimSupport",
+    "competingEvidenceAssessment", "clinicalDisposition", "reviewerRationale",
+]
+
+
+def reviewer_queue(doc):
+    """Pure, provenance-bound operational queue; human decision cells stay empty."""
+    pubs = {p["pmid"]: p for p in doc["publications"]}
+    rows = []
+    for link in doc["caseCandidateLinks"]:
+        pub = pubs[link["candidatePmid"]]
+        priority = ("P1_STATUS_NOTICE_REVIEW"
+                    if pub["publicationStatusReviewRequired"] else
+                    "P2_ABSTRACT_UNAVAILABLE"
+                    if not pub["abstractAvailable"] else
+                    "P3_FULL_TEXT_SCREENING")
+        row = {
+            "reviewPriority": priority,
+            "sourceId": link["sourceId"], "targetId": link["targetId"],
+            "originalPMID": link["originalPmid"],
+            "candidatePMID": pub["pmid"], "searchRank": str(link["searchRank"]),
+            "officialTitle": pub["title"],
+            "publicationTypeLabels": "; ".join(pub["publicationTypes"]),
+            "abstractAvailable": str(pub["abstractAvailable"]),
+            "publicationStatusNoticeTypes": "; ".join(pub["correctionOrRetractionTypes"]),
+            "humanFullTextScreeningRequired": "YES",
+        }
+        row.update(dict.fromkeys(QUEUE_FIELDS[11:], ""))
+        rows.append(row)
+    return sorted(rows, key=lambda r: (r["reviewPriority"], r["sourceId"],
+                                      r["targetId"], int(r["searchRank"]),
+                                      r["candidatePMID"]))
+
+
 def build(source=SOURCE, output=OUT, fetcher=fetch_official, observed=None,
           original=discovery.SOURCE, queries=discovery.QUERIES):
     candidate, ids = inputs(source, original, queries)
@@ -248,7 +289,8 @@ def build(source=SOURCE, output=OUT, fetcher=fetch_official, observed=None,
     validate(doc, source, original, queries)
     output.mkdir(parents=True, exist_ok=True)
     names = ["candidate-metadata.json", "candidate-metadata-review.csv",
-             "candidate-metadata-dossier.md", "qualified-clinical-screening-EMPTY.csv"]
+             "candidate-metadata-dossier.md", "qualified-clinical-screening-EMPTY.csv",
+             "candidate-human-review-queue.csv"]
     (output / names[0]).write_text(json.dumps(doc, indent=2) + "\n", encoding="utf8")
     with (output / names[1]).open("w", newline="", encoding="utf8") as handle:
         w = csv.writer(handle)
@@ -290,6 +332,10 @@ def build(source=SOURCE, output=OUT, fetcher=fetch_official, observed=None,
             "Correction/retraction link(s): " + (", ".join(pub["correctionOrRetractionTypes"]) or "none indexed"),
             "**Human study screening REQUIRED; claim support NOT_ASSESSED.**", ""]
     (output / names[2]).write_text("\n".join(dossier) + "\n", encoding="utf8")
+    with (output / names[4]).open("w", newline="", encoding="utf8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=QUEUE_FIELDS)
+        writer.writeheader()
+        writer.writerows(reviewer_queue(doc))
     manifest = {
         "runSha256": doc["runSha256"], "sourceCandidateRunSha256": candidate["runSha256"],
         "bibliographicRecords": len(ids), "caseCandidateLinks": len(links),
@@ -310,7 +356,8 @@ def verify(source=SOURCE, output=OUT, original=discovery.SOURCE,
                    source, original, queries)
     manifest = json.loads((output / "candidate-metadata-manifest.json").read_text())
     names = {"candidate-metadata.json", "candidate-metadata-review.csv",
-             "candidate-metadata-dossier.md", "qualified-clinical-screening-EMPTY.csv"}
+             "candidate-metadata-dossier.md", "qualified-clinical-screening-EMPTY.csv",
+             "candidate-human-review-queue.csv"}
     if (manifest.get("runSha256") != doc["runSha256"]
         or manifest.get("sourceCandidateRunSha256") != doc["sourceCandidateRunSha256"]
         or manifest.get("bibliographicRecords") != len(doc["publications"])
@@ -360,6 +407,11 @@ def verify(source=SOURCE, output=OUT, original=discovery.SOURCE,
         human = list(csv.DictReader(f))
     if human != expected_human:
         raise ValueError("Human screening template changed or contains decisions")
+    with (output / "candidate-human-review-queue.csv").open(
+            newline="", encoding="utf8") as f:
+        queue = list(csv.DictReader(f))
+    if queue != reviewer_queue(doc):
+        raise ValueError("Prioritized human clinical queue differs from source metadata")
     return {"result": "EXACT_CANDIDATE_PUBMED_METADATA_PARITY",
             "officialPubMedRecords": len(doc["publications"]),
             "candidateReviewLinks": len(doc["caseCandidateLinks"]),
