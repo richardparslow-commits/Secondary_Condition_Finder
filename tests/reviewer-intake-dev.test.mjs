@@ -112,6 +112,9 @@ test("DB DDL uses individual-login identity, verified registry, SECURITY DEFINER
   assert.match(SQL,/REVOKE ALL ON FUNCTION/);
   assert.match(SQL,/GRANT EXECUTE ON FUNCTION/);
   assert.match(SQL,/scf_dev_qualified_reviewers NOLOGIN/);
+  assert.match(SQL,/pg_has_role\(rolname/);
+  assert.match(SQL,/NOT rolbypassrls/);
+  assert.match(SQL,/NOT rolcreaterole/);
   assert.doesNotMatch(SQL,/CREATE ROLE scf_review_[a-z0-9]+ LOGIN/);
   assert.doesNotMatch(SQL,/GRANT .*qualified_human_reviews .* TO scf_dev_qualified_reviewers/);
   assert.doesNotMatch(SQL,/GRANT .*qualified_human_reviews .* TO scf_evidence_ci_writer/);
