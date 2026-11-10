@@ -181,7 +181,90 @@ BEGIN
       (SELECT count(*) FROM jsonb_object_keys(item)) <> 2 OR
       (SELECT count(*) FROM jsonb_object_keys(item) AS names(k)
           WHERE k IN ('pmid','assessment')) <> 2 OR
+      jsonb_typeof(item->'pmid') <> 'string' OR
+      jsonb_typeof(item->'assessment') <> 'string' OR
+      (item->>'pmid') !~ '^[1-9][0-9]{3,8} ('POTENTIAL_SUPPORT','POTENTIAL_CONTRADICTION',
+        'CONTEXT_ONLY','INSUFFICIENT_FOR_CLAIM')) THEN
+    RAISE EXCEPTION 'Unrecognized supporting study citation descriptor';
+  END IF;
+  IF EXISTS (SELECT 1 FROM jsonb_array_elements(request->'unresolvedContradictions') AS e(item)
+    WHERE jsonb_typeof(item)<>'object' OR
+      (SELECT count(*) FROM jsonb_object_keys(item)) <> 2 OR
+      (SELECT count(*) FROM jsonb_object_keys(item) AS names(k)
+        WHERE k IN ('pmid','issue')) <> 2 OR
       (item->>'pmid') !~ '^[1-9][0-9]{3,8}$' OR
+      (item->>'issue') NOT IN ('CAUSAL_DIRECTION','POPULATION_MISMATCH',
+        'CONFOUNDING','MEDICATION_OR_PROCEDURE','PUBLICATION_CORRECTION',
+        'OTHER_UNRESOLVED')) THEN
+    RAISE EXCEPTION 'Unrecognized contradiction citation descriptor';
+  END IF;
+  IF v_disposition IN ('POTENTIAL_CONTRADICTION','MIXED_OR_CONFLICTED')
+      AND jsonb_array_length(request->'unresolvedContradictions')=0 THEN
+    RAISE EXCEPTION 'Contradiction disposition requires cited unresolved evidence';
+  END IF;
+
+  SELECT p.payload->>'publicationStatusReviewRequired'='true'
+    INTO v_correction_required
+    FROM scf_candidate_review_dev.case_candidates l
+    JOIN scf_candidate_review_dev.publications p
+      ON p.run_id=l.run_id AND p.pmid=l.candidate_pmid
+    WHERE l.run_id=request->>'runId'
+      AND l.source_id=request->>'sourceId'
+      AND l.target_id=request->>'targetId'
+      AND l.candidate_pmid=request->>'candidatePmid'
+      AND l.review_state='PENDING_QUALIFIED_REVIEW'
+      AND l.claim_verification='NOT_ASSESSED'
+      AND l.publication_authorization='NOT_GRANTED';
+  IF NOT FOUND THEN
+    RAISE EXCEPTION 'Exact immutable research evidence link does not exist';
+  END IF;
+
+  v_correction:=request->>'correctionNoticeDisposition';
+  IF v_correction NOT IN ('REVIEWED','REQUIRES_FOLLOW_UP','NOT_APPLICABLE') OR
+     (v_correction_required AND v_correction='NOT_APPLICABLE') THEN
+    RAISE EXCEPTION 'Official correction notices require explicit reviewer attention';
+  END IF;
+
+  INSERT INTO scf_candidate_review_dev.qualified_human_reviews
+    (run_id,source_id,target_id,candidate_pmid,
+     reviewer_identifier,reviewer_qualification,qualification_verified_by,
+     reviewed_at,clinical_disposition,study_design_population,
+     causal_direction_limits,confounders_and_mediation,supporting_evidence,
+     unresolved_contradictions,full_text_access_basis,reviewer_rationale,
+     correction_notice_disposition,submission_id,production_publication_state)
+  VALUES
+    (request->>'runId',request->>'sourceId',request->>'targetId',
+     request->>'candidatePmid',v_auth.reviewer_identifier,
+     v_auth.professional_qualification,v_auth.qualification_verified_by,
+     v_reviewed_at,v_disposition,request->>'studyDesignPopulation',
+     request->>'causalDirectionLimits',request->>'confoundersAndMediation',
+     request->'supportingEvidence',request->'unresolvedContradictions',
+     request->>'fullTextAccessBasis',request->>'reviewerRationale',
+     v_correction,(request->>'submissionId')::uuid,'NOT_GRANTED')
+  RETURNING review_id INTO v_receipt;
+  RETURN v_receipt;
+END
+$body$;
+
+-- PostgreSQL grants functions to PUBLIC by default: explicitly revoke.
+REVOKE ALL ON FUNCTION scf_candidate_review_dev.submit_qualified_review(jsonb) FROM PUBLIC;
+REVOKE ALL ON FUNCTION scf_candidate_review_dev.submit_qualified_review(jsonb)
+  FROM scf_evidence_ci_writer;
+
+REVOKE ALL ON TABLE scf_candidate_review_dev.reviewer_authorizations FROM PUBLIC;
+REVOKE ALL ON TABLE scf_candidate_review_dev.reviewer_authorization_events FROM PUBLIC;
+REVOKE ALL ON TABLE scf_candidate_review_dev.qualified_human_reviews FROM PUBLIC;
+REVOKE ALL ON TABLE scf_candidate_review_dev.reviewer_authorizations
+  FROM scf_evidence_ci_writer;
+REVOKE ALL ON TABLE scf_candidate_review_dev.reviewer_authorization_events
+  FROM scf_evidence_ci_writer;
+REVOKE ALL ON TABLE scf_candidate_review_dev.qualified_human_reviews
+  FROM scf_evidence_ci_writer;
+
+-- NO reviewer accounts, LOGIN roles, credential enrollments, or EXECUTE grants here.
+-- A DBA must independently verify credentials, create a distinct LOGIN account,
+-- insert an attestation and only then GRANT USAGE/EXECUTE to that login.
+ OR
       (item->>'assessment') NOT IN ('POTENTIAL_SUPPORT','POTENTIAL_CONTRADICTION',
         'CONTEXT_ONLY','INSUFFICIENT_FOR_CLAIM')) THEN
     RAISE EXCEPTION 'Unrecognized supporting study citation descriptor';
