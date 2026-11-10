@@ -30,6 +30,18 @@ const SLUG=/^[a-z0-9-]{2,90}$/;
 const PMID=/^[1-9][0-9]{3,8}$/;
 const LOGIN=/^scf_review_[a-z0-9_]{4,40}$/;
 
+// Every direct DML capability on every private clinical/credential table must
+// remain denied to CI research and to the reviewer EXECUTE-only group.
+export const PRIVATE_PRIVILEGE_CHECKS=Object.freeze(
+  [["ci","scf_evidence_ci_writer"],["reviewer_group","scf_dev_qualified_reviewers"]]
+    .flatMap(([prefix,role])=>["qualified_reviewers","qualified_human_reviews",
+      "qualified_review_receipt_audit"].flatMap(table=>
+      ["SELECT","INSERT","UPDATE","DELETE"].map(privilege=>{
+        const field=prefix+"_"+table+"_"+privilege.toLowerCase();
+        return {field,sql:"has_table_privilege('"+role+"','"+SCHEMA+"."+table+
+          "','"+privilege+"') AS "+field};
+      }))));
+
 export function canonical(x){
   if(Array.isArray(x))return "["+x.map(canonical).join(",")+"]";
   if(x && typeof x==="object")return "{"+Object.keys(x).sort().map(
@@ -125,6 +137,8 @@ export function assertGateAudit(row){
   assert.ok(Number.isInteger(Number(row.receipt_count))&&Number(row.receipt_count)>=0);
   assert.equal(Number(row.unregistered_role_members),0,
     "Unverified or unregistered individual reviewer group membership");
+  for(const check of PRIVATE_PRIVILEGE_CHECKS)
+    assert.equal(row[check.field],false,"Unexpected direct private-table privilege: "+check.field);
   return row;
 }
 export const gateAuditSql=()=>
@@ -152,7 +166,8 @@ export const gateAuditSql=()=>
   "AND NOT EXISTS (SELECT 1 FROM "+SCHEMA+".qualified_reviewers reg "+
   "WHERE reg.login_name=member.rolname AND reg.status='ACTIVE' "+
   "AND reg.revoked_at IS NULL AND reg.verified_at<=now() "+
-  "AND reg.credential_expires_at>now())) AS unregistered_role_members";
+  "AND reg.credential_expires_at>now())) AS unregistered_role_members"+
+  PRIVATE_PRIVILEGE_CHECKS.map(check=>","+check.sql).join("");
 
 async function adminDb(){
   const conn=getLabConnection(SERVICE,"verify");
@@ -165,17 +180,19 @@ async function adminDb(){
 }
 
 export async function setupGates(connect=adminDb,ddl=fs.readFileSync(SQL,"utf8")){
-  const db=await connect();let active=false;
+  const db=await connect();let active=false,committed=false;
   try{
     await db.query("BEGIN");active=true;
     await db.query("SET LOCAL lock_timeout='4000ms'");
     await db.query("SELECT pg_advisory_xact_lock(202611, 924)");
     await db.query(ddl);
-    await db.query("COMMIT");active=false;
+    await db.query("COMMIT");active=false;committed=true;
     return await auditGates(async()=>db,false);
   }catch{
     if(active)await db.query("ROLLBACK").catch(()=>undefined);
-    throw Error("DEV qualified-reviewer gates setup failed closed; no credentials logged");
+    throw Error(committed
+      ? "DEV gate setup COMMITTED but post-commit audit failed; run audit-gates and inspect DEV grants"
+      : "DEV qualified-reviewer gates setup failed closed; no credentials logged");
   }finally{await db.end().catch(()=>undefined);}
 }
 export async function auditGates(connect=adminDb,owns=true){

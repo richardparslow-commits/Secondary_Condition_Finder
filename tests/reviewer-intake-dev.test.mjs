@@ -2,7 +2,8 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import {sha,canonical,validateReview,parseReviewerConnection,submitHumanReview,
-  assertGateAudit,gateAuditSql,auditGates,setupGates} from
+  assertGateAudit,gateAuditSql,auditGates,setupGates,
+  PRIVATE_PRIVILEGE_CHECKS} from
   "../scripts/automation/reviewer-intake-dev.mjs";
 
 const SQL=fs.readFileSync("scripts/automation/reviewer-intake-setup-dev.sql","utf8");
@@ -128,7 +129,8 @@ function privilegeRow(){
     reviewer_group_read_receipts:false,reviewer_group_insert_receipts:false,
     reviewer_group_execute_submit:true,
     reviewer_count:"0",active_reviewer_count:"0",receipt_count:"0",
-    unregistered_role_members:"0"};
+    unregistered_role_members:"0",
+    ...Object.fromEntries(PRIVATE_PRIVILEGE_CHECKS.map(check=>[check.field,false]))};
 }
 test("one complete security-definer intake DDL and one executable reviewer grant",()=>{
   assert.ok(SQL.length>9000 && SQL.length<12000,"Unexpected security DDL size");
@@ -149,6 +151,12 @@ test("audit rejects accidental CI privileges or private table access",()=>{
   assert.throws(()=>assertGateAudit({...r,reviewer_group_execute_submit:false}));
   assert.throws(()=>assertGateAudit({...r,unregistered_role_members:"1"}));
   assert.match(gateAuditSql(),/has_function_privilege/);
+  assert.equal(PRIVATE_PRIVILEGE_CHECKS.length,24);
+  for(const check of PRIVATE_PRIVILEGE_CHECKS){
+    assert.match(gateAuditSql(),new RegExp(check.field));
+    assert.throws(()=>assertGateAudit({...r,[check.field]:true}),
+      "Gate must reject "+check.field);
+  }
 });
 function mockDb(login="scf_review_verified1",fail=false){
   const calls=[];
@@ -201,6 +209,24 @@ test("DB setup uses one transaction and gate audit is explicitly read only",asyn
   assert.equal(result.activeQualifiedReviewers,0);
   assert.ok(audit.calls.every(c=>!c.sql.startsWith("INSERT INTO")));
 });
+test("post-commit audit failure reports committed DDL and does not misstate rollback",async()=>{
+  const db=mockDb();
+  const prior=db.query.bind(db);
+  db.query=async(sql,params)=>{
+    if(sql.startsWith("SELECT EXISTS")){
+      const result=await prior(sql,params);
+      result.rows[0].ci_qualified_review_receipt_audit_select=true;
+      return result;
+    }
+    return prior(sql,params);
+  };
+  await assert.rejects(setupGates(async()=>db,SQL),/COMMITTED but post-commit audit failed/);
+  const executed=db.calls.map(c=>c.sql);
+  assert.ok(executed.indexOf("COMMIT")<executed.indexOf("BEGIN READ ONLY"));
+  assert.equal(executed.filter(x=>x==="COMMIT").length,1);
+  assert.equal(executed.filter(x=>x==="ROLLBACK").length,1);
+});
+
 test("CI never exposes private reviewer credential or issues qualified clinical decisions",()=>{
   const ci=fs.readFileSync(".github/workflows/ci.yml","utf8");
   const weekly=fs.readFileSync(".github/workflows/tiger-dev-clinical-accuracy-triage.yml","utf8");
