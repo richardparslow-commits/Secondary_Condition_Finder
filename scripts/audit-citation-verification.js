@@ -2,6 +2,15 @@
 const fs = require("fs");
 const path = require("path");
 
+const {
+  loadDigestExemptions,
+  classifyDigestPosition,
+  exemptionAssessmentStale,
+} = require("./lib/citation-digest-exemptions");
+// One definition of the pin, shared with the weekly network probe. Importing is
+// safe: audit-citation-decay.js only runs its probe when it is the entrypoint.
+const { MAX_UNDIGESTED_VERIFIED_REFS } = require("./audit-citation-decay");
+
 const kbDir = path.join(process.cwd(), "data/knowledge-base");
 const retirementPath = path.join(process.cwd(), "data/citation-retirements.json");
 const files = fs.readdirSync(kbDir).filter((file) => file.endsWith(".json")).sort();
@@ -9,6 +18,8 @@ const retirementLedger = fs.existsSync(retirementPath)
   ? JSON.parse(fs.readFileSync(retirementPath, "utf8"))
   : { version: 1, retirements: [] };
 const retirements = Array.isArray(retirementLedger.retirements) ? retirementLedger.retirements : [];
+const digestExemptions = loadDigestExemptions(process.cwd());
+const todayIso = new Date().toISOString().slice(0, 10);
 
 // Debt ceilings and provenance floors advance only when a reviewed batch improves them.
 // Raw live clinical-URL counts are observations, not monotonic floors: withdrawing an
@@ -340,6 +351,15 @@ let references = 0;
 let verified = 0;
 let clinical = 0;
 let clinicalWithUrls = 0;
+// Content-digest position of the verified population, computed offline so the
+// PR that creates digest debt is the PR that fails. The weekly network probe
+// cannot do this: by the time it runs, the verifier who could have captured the
+// digest at verification time is gone and the SOP forbids backfilling one.
+let verifiedWithDigest = 0;
+let verifiedDigestExempt = 0;
+let verifiedUndigestedActionable = 0;
+let verifiedDigestExemptionPending = 0;
+const actionableUndigestedRefs = [];
 
 function addHard(message) { hardFindings.push(message); }
 function addReview(message) { reviewFindings.push(message); }
@@ -377,6 +397,19 @@ for (const file of files) {
         if (!reference.sourceUrl) addHard(`${file}: suggestions[${suggestionIndex}].sourceReferences[${referenceIndex}]: clinical-evidence reference is missing sourceUrl`);
       }
       const prefix = `${file}: suggestions[${suggestionIndex}].sourceReferences[${referenceIndex}]`;
+      if (reference.verified === true && reference.sourceUrl) {
+        const position = classifyDigestPosition(reference, digestExemptions.compiled, todayIso);
+        if (position.state === "digested") verifiedWithDigest += 1;
+        else if (position.state === "exempt") verifiedDigestExempt += 1;
+        else {
+          verifiedUndigestedActionable += 1;
+          if (position.pendingExemption) verifiedDigestExemptionPending += 1;
+          actionableUndigestedRefs.push({ file, primary: mapping.id, target: suggestion.conditionId,
+            citation: reference.citation, sourceUrl: reference.sourceUrl,
+            sourceCheckedOn: reference.sourceCheckedOn, pendingExemptionId: position.pendingExemption?.id ?? null });
+        }
+        if (reference.contentDigest && position.state !== "digested") addHard(`${prefix}: malformed contentDigest`);
+      }
       if (reference.verified === true) {
         for (const field of ["sourceUrl", "sourceCheckedOn", "sourceLocator", "verificationScope"]) if (!reference[field]) addHard(`${prefix}: verified reference is missing ${field}`);
       }
@@ -424,7 +457,18 @@ if (reviewFindings.length > CITATION_DEBT_BASELINE.reviewFindings) addHard(`cita
 if (!clinicalEvidenceUrlCoverageComplete) addHard(`citation provenance: not every live clinical-evidence reference has a canonical URL (${clinicalWithUrls}/${clinical})`);
 if (retiredClinicalWithUrls < CITATION_DEBT_BASELINE.retiredClinicalEvidenceWithUrls) addHard(`citation debt ratchet: retired clinical URL provenance regressed (${retiredClinicalWithUrls} < ${CITATION_DEBT_BASELINE.retiredClinicalEvidenceWithUrls})`);
 
+for (const problem of digestExemptions.problems) addHard(`digest-exemption register is invalid: ${problem}`);
+for (const entry of digestExemptions.entries) {
+  if (exemptionAssessmentStale(entry, todayIso)) addHard(`digest exemption ${entry?.id ?? "(no id)"}: assessment invalid, future-dated, or older than 365 days; re-measure before relying on it`);
+}
+if (verifiedDigestExemptionPending > 0) addHard(`${verifiedDigestExemptionPending} verified references match proposed digest exemptions awaiting qualified-human approval; no debt has been waived`);
+if (verifiedUndigestedActionable > MAX_UNDIGESTED_VERIFIED_REFS) addHard(`content-drift observability regressed: ${verifiedUndigestedActionable} verified references lack an approved exemption or contentDigest (ratchet baseline ${MAX_UNDIGESTED_VERIFIED_REFS}); see docs/citation-verification-sop.md`);
+
+const digestReport = { verifiedWithDigestCount: verifiedWithDigest, verifiedDigestExemptCount: verifiedDigestExempt,
+  verifiedDigestExemptionPendingCount: verifiedDigestExemptionPending,
+  verifiedUndigestedActionableCount: verifiedUndigestedActionable, maxUndigestedVerifiedRefs: MAX_UNDIGESTED_VERIFIED_REFS,
+  actionableUndigested: actionableUndigestedRefs, digestExemptionProblemCount: digestExemptions.problems.length };
 const unverifiedCitationCounts = [...unverifiedByCitation.entries()].map(([citation, count]) => ({ citation, count })).sort((a, b) => b.count - a.count || a.citation.localeCompare(b.citation));
-const report = { knowledgeBaseFiles: files.length, references, verified, retiredVerified, verifiedProvenance, unverified, citationDebtBaseline: CITATION_DEBT_BASELINE, clinicalEvidenceReferences: clinical, clinicalEvidenceReferencesWithUrls: clinicalWithUrls, clinicalEvidenceUrlCoverageComplete, retiredClinicalEvidenceReferencesWithUrls: retiredClinicalWithUrls, clinicalEvidenceProvenanceWithUrls, hardFindingCount: hardFindings.length, reviewFindingCount: reviewFindings.length, hardFindings, reviewFindings, unverifiedCitationCounts };
+const report = { ...digestReport, knowledgeBaseFiles: files.length, references, verified, retiredVerified, verifiedProvenance, unverified, citationDebtBaseline: CITATION_DEBT_BASELINE, clinicalEvidenceReferences: clinical, clinicalEvidenceReferencesWithUrls: clinicalWithUrls, clinicalEvidenceUrlCoverageComplete, retiredClinicalEvidenceReferencesWithUrls: retiredClinicalWithUrls, clinicalEvidenceProvenanceWithUrls, hardFindingCount: hardFindings.length, reviewFindingCount: reviewFindings.length, hardFindings, reviewFindings, unverifiedCitationCounts };
 console.log(JSON.stringify(report, null, 2));
 process.exitCode = hardFindings.length > 0 ? 1 : 0;

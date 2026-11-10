@@ -292,6 +292,42 @@ describe("citation-decay-watch maintains its tracking issue in both directions",
   });
 });
 
+describe("citation-decay-watch reports digest-policy failures", () => {
+  const workflow = readWorkflow("citation-decay-watch.yml");
+  const probeStep = workflow.slice(
+    workflow.indexOf("- name: Run citation decay probe"),
+    workflow.indexOf("- name: Upload decay report"),
+  );
+  const issueJs = workflow.slice(workflow.indexOf("--input-type=module - <<'NODE'"));
+
+  it("writes the failure summary before returning the probe's nonzero exit status", () => {
+    expect(probeStep.indexOf("set +e")).toBeGreaterThan(-1);
+    expect(probeStep.indexOf("set +e")).toBeLessThan(probeStep.indexOf("npm_config_loglevel=silent npm run citations:decay"));
+    expect(probeStep).toContain("probe_exit_code=$?");
+    expect(probeStep).toContain("summary_exit_code=$?");
+    expect(probeStep).toContain('exit "$probe_exit_code"');
+    expect(probeStep).not.toContain('" || true');
+  });
+
+  it("surfaces approval counts, structural reasons, and actionable debt in the run summary", () => {
+    expect(probeStep).toContain("report.verifiedDigestExemptCount");
+    expect(probeStep).toContain("report.verifiedDigestExemptionPendingCount");
+    expect(probeStep).toContain("report.verifiedUndigestedActionableCount");
+    expect(probeStep).toContain("report.structuralFlags");
+    expect(probeStep).toContain("report.actionableUndigested");
+  });
+
+  it("includes the same decision context in the tracking issue and does not claim zero remaining work when green", () => {
+    expect(issueJs).toContain("report.verifiedDigestExemptCount");
+    expect(issueJs).toContain("report.verifiedDigestExemptionPendingCount");
+    expect(issueJs).toContain("report.verifiedUndigestedActionableCount");
+    expect(issueJs).toContain("report.structuralFlags");
+    expect(issueJs).toContain("report.actionableUndigested");
+    expect(issueJs).toContain("any remaining actionable digest");
+    expect(issueJs).not.toContain("no re-verification work is outstanding");
+  });
+});
+
 describe("citation-decay-watch attributes verification debt to its owning gate", () => {
   const workflow = readWorkflow("citation-decay-watch.yml");
 

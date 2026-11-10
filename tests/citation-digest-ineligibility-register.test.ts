@@ -203,8 +203,9 @@ describe("the ratchet is pinned to the live eligible backlog", () => {
 
     expect(source).toContain("docs/citation-digest-ineligible-classes.json");
     expect(source).toContain("MAX_UNDIGESTED_ELIGIBLE_VERIFIED_REFS");
-    // The corpus-wide pin could never be satisfied and must not come back.
-    expect(source).not.toContain("MAX_UNDIGESTED_VERIFIED_REFS");
-    expect(source).not.toContain("maxUndigestedVerifiedRefs");
+    // Production also applies #527's approval-gated policy. A measured class
+    // must not silently approve the separate proposals.
+    expect(source).toContain("register, loadDigestExemptions(process.cwd())");
+    expect(source).toContain("enforceApprovalPolicy && verifiedUndigestedActionable > MAX_UNDIGESTED_VERIFIED_REFS");
   });
 });

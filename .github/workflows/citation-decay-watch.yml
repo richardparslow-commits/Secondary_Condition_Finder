@@ -46,12 +46,15 @@ jobs:
         id: probe
         run: |
           set -o pipefail
+          # Actions runs bash with errexit. Disable it around the probe so the
+          # JSON report and summary are still produced when the audit exits 1.
+          set +e
           # Silencing npm's script banner keeps the captured report pure JSON.
           # The 2026-09-28 run uploaded the '> secondary-condition-finder@0.1.0
           # citations:decay' banner ahead of the report, so track-decay's
           # JSON.parse died on it and the tracking issue was never opened.
           npm_config_loglevel=silent npm run citations:decay 2>&1 | tee citation-decay-report.json
-          exit_code=$?
+          probe_exit_code=$?
           node --input-type=module -e "
             import { readFileSync, writeFileSync } from 'node:fs';
             // Tolerate a leading banner: this must still parse if npm ever
@@ -75,6 +78,11 @@ jobs:
                 report.digestIneligibleWithoutDigestCount + ' of ' + report.verifiedWithoutDigestCount +
                 ' undigested; register reviewed ' + report.digestIneligibilityRegister.reviewedOn +
                 ', expires ' + report.digestIneligibilityRegister.reviewExpiresOn,
+              '- approved digest exemptions: ' + report.verifiedDigestExemptCount,
+              '- digest exemptions pending qualified-human approval: ' + report.verifiedDigestExemptionPendingCount,
+              '- actionable undigested verified references: ' + report.verifiedUndigestedActionableCount +
+                ' (ratchet ' + report.maxUndigestedVerifiedRefs + ')',
+              '- structural flags: ' + report.structuralFlagCount,
               '- stale (tiered windows): ' + report.staleCount,
               '- bot-blocked (unverifiable by probe): ' + report.botBlockedUnverifiableCount,
               '- throttled / unresponsive (unverifiable by probe): ' + report.throttledUnverifiableCount,
@@ -84,11 +92,28 @@ jobs:
               '- unverified (debt ratcheted by citations:audit, not gated here): ' + report.unverifiedCount,
               '- ceiling usage (link rot + stale + drift): ' + report.citationCeilingUsage + '/' + report.citationCeiling,
               '',
+              '## Structural flags',
+              ...(report.structuralFlags.length
+                ? report.structuralFlags.slice(0, 10).map((flag) => '- ' + flag.file + ': ' + flag.reason)
+                : ['- none']),
+              '',
+              '## Actionable undigested verified references',
+              ...(report.actionableUndigested.length
+                ? report.actionableUndigested.slice(0, 10).map((reference) =>
+                    '- ' + reference.primary + ' → ' + reference.target + ': ' +
+                    (reference.citation || reference.sourceUrl) +
+                    (reference.pendingExemptionId ? ' (pending exemption: ' + reference.pendingExemptionId + ')' : ''))
+                : ['- none']),
+              '',
               'See the uploaded artifact for the full JSON report.',
             ].join('\n') + '\n';
             writeFileSync(process.env.GITHUB_STEP_SUMMARY, summary);
-          " || true
-          exit $exit_code
+          "
+          summary_exit_code=$?
+          if [ "$probe_exit_code" -ne 0 ]; then
+            exit "$probe_exit_code"
+          fi
+          exit "$summary_exit_code"
       - name: Upload decay report
         if: always()
         uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
@@ -160,8 +185,9 @@ jobs:
 
           const body = [
             marker,
-            "The scheduled citation decay probe failed. A qualified human must",
-            "re-verify or withdraw the flagged references under",
+            "The scheduled citation decay and digest-observability audit failed.",
+            "Review the structural flags and actionable digest debt below; a",
+            "qualified human must make any source-verification or exemption decision under",
             "docs/citation-verification-sop.md. This issue is maintained by the",
             "citation-decay-watch workflow; it updates in place while decay",
             "persists and closes when a scheduled run is green again.",
@@ -179,6 +205,10 @@ jobs:
             `| content drift detectable | ${report.contentDriftDetectable} (${report.contentDriftCoveragePercent}% of ${report.verifiedReferenceCount} verified references carry a digest) |`,
             `| digest-eligible backlog | ${report.digestEligibleWithoutDigestCount}/${report.digestEligibleReferenceCount} await a qualified-human digest (ratchet ${report.maxUndigestedEligibleVerifiedRefs}) |`,
             `| digest-ineligible (declared class, no digest possible) | ${report.digestIneligibleWithoutDigestCount} of ${report.verifiedWithoutDigestCount} undigested — register reviewed ${report.digestIneligibilityRegister.reviewedOn}, expires ${report.digestIneligibilityRegister.reviewExpiresOn} |`,
+            `| approved digest exemptions | ${report.verifiedDigestExemptCount} |`,
+            `| digest exemptions pending qualified-human approval | ${report.verifiedDigestExemptionPendingCount} |`,
+            `| actionable undigested verified references | ${report.verifiedUndigestedActionableCount} (ratchet ${report.maxUndigestedVerifiedRefs}) |`,
+            `| structural flags | ${report.structuralFlagCount} |`,
             `| bot-blocked (unverifiable by probe) | ${report.botBlockedUnverifiableCount} |`,
             `| throttled / unresponsive (unverifiable by probe) | ${report.throttledUnverifiableCount} |`,
             `| probe coverage (URLs that produced a verdict) | ${report.probeCoveragePercent}% (${report.definitiveVerdictUrlCount} of ${report.uniqueUrlsProbed} probed; ${report.unverifiableByProbeUrlCount} unverifiable) |`,
@@ -207,6 +237,24 @@ jobs:
                 )
               : ["- none"]),
             "",
+            "## Structural flags",
+            ...(report.structuralFlags.length
+              ? report.structuralFlags.slice(0, 20).map(
+                  (flag) => `- \`${flag.file}\`: ${flag.reason}`,
+                )
+              : ["- none"]),
+            "",
+            "## Actionable undigested verified references",
+            ...(report.actionableUndigested.length
+              ? report.actionableUndigested.slice(0, 20).map(
+                  (reference) =>
+                    `- \`${reference.primary}\` → \`${reference.target}\`: ${reference.citation ?? reference.sourceUrl}` +
+                    (reference.pendingExemptionId
+                      ? ` (pending exemption: \`${reference.pendingExemptionId}\`)`
+                      : ""),
+                )
+              : ["- none"]),
+            "",
             `Run: ${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`,
             "",
           ].join("\n");
@@ -226,9 +274,11 @@ jobs:
           // whole mechanism exists to avoid.
           const greenBody = [
             marker,
-            "The scheduled citation decay probe is green again: nothing decayed and no",
-            "re-verification work is outstanding, so this tracking issue closed",
-            "automatically. A later scheduled run that fails opens a new tracking issue.",
+            "The scheduled citation decay probe is green again: no link rot, stale",
+            "references, or digest-ratchet breach were detected in this run. This",
+            "tracking issue closed automatically; any remaining actionable digest",
+            "backlog is shown below and remains qualified-human work. A later scheduled",
+            "run that fails opens a new tracking issue.",
             "",
             "| metric | count |",
             "| --- | --- |",
@@ -236,12 +286,27 @@ jobs:
             `| content drift | ${report.contentDriftCount} (detectable: ${report.contentDriftDetectable}, ${report.contentDriftCoveragePercent}% digest coverage) |`,
             `| digest-eligible backlog | ${report.digestEligibleWithoutDigestCount}/${report.digestEligibleReferenceCount} await a qualified-human digest (ratchet ${report.maxUndigestedEligibleVerifiedRefs}) |`,
             `| digest-ineligible (declared class, no digest possible) | ${report.digestIneligibleWithoutDigestCount} of ${report.verifiedWithoutDigestCount} undigested — register reviewed ${report.digestIneligibilityRegister.reviewedOn}, expires ${report.digestIneligibilityRegister.reviewExpiresOn} |`,
+            `| approved digest exemptions | ${report.verifiedDigestExemptCount} |`,
+            `| digest exemptions pending qualified-human approval | ${report.verifiedDigestExemptionPendingCount} |`,
+            `| actionable undigested verified references | ${report.verifiedUndigestedActionableCount} (ratchet ${report.maxUndigestedVerifiedRefs}) |`,
+            `| structural flags | ${report.structuralFlagCount} |`,
             `| bot-blocked (unverifiable by probe) | ${report.botBlockedUnverifiableCount} |`,
             `| throttled / unresponsive (unverifiable by probe) | ${report.throttledUnverifiableCount} |`,
             `| probe coverage (URLs that produced a verdict) | ${report.probeCoveragePercent}% (${report.definitiveVerdictUrlCount} of ${report.uniqueUrlsProbed} probed; ${report.unverifiableByProbeUrlCount} unverifiable) |`,
             `| stale | ${report.staleCount} |`,
             `| unverified (debt ratcheted by citations:audit, not gated here) | ${report.unverifiedCount} |`,
             `| ceiling usage (link rot + stale + drift) | ${report.citationCeilingUsage}/${report.citationCeiling} |`,
+            "",
+            "## Actionable undigested verified references",
+            ...(report.actionableUndigested.length
+              ? report.actionableUndigested.slice(0, 20).map(
+                  (reference) =>
+                    `- \`${reference.primary}\` → \`${reference.target}\`: ${reference.citation ?? reference.sourceUrl}` +
+                    (reference.pendingExemptionId
+                      ? ` (pending exemption: \`${reference.pendingExemptionId}\`)`
+                      : ""),
+                )
+              : ["- none"]),
             "",
             `Run: ${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`,
             "",
