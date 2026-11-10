@@ -18,7 +18,7 @@ Use the approved Tiger DEV service m8vrpmo6ec and the existing authorized admini
     node scripts/automation/reviewer-intake-dev.mjs setup-gates --dev-write
     node scripts/automation/reviewer-intake-dev.mjs audit-gates
 
-Bootstrap runs in one DEV database transaction and creates the private reviewer registry, append-only receipt audit, NOLOGIN execution group and protected function. It grants **no** reviewer login or membership. The audit returns counts only, not reviewer names or medical opinions. It fails if the automated research writer can read private review data or invoke the submission function. No Production credentials are accepted.
+Bootstrap runs in one DEV database transaction and creates the private reviewer registry, append-only receipt audit, NOLOGIN execution group and protected function. It creates **no individual reviewer login or qualification entry**. PostgreSQL may automatically add the creating database administrator as a group manager; that administrator still cannot submit as a reviewer because the function requires a distinct named reviewer login and verified registry identity. The audit fails if any other group member lacks a currently active, independently verified registry entry. The audit returns counts only, not reviewer names or medical opinions. It fails if the automated research writer can read private review data or invoke the submission function. No Production credentials are accepted.
 
 ## Qualification and credential onboarding — explicit human action still required
 
