@@ -63,7 +63,9 @@ def parse_pubmed(root, requested):
     for entry in root:
         if entry.tag not in {"PubmedArticle", "PubmedBookArticle"}:
             raise ValueError("Unexpected publication entry")
-        main = (entry.find("./MedlineCitation") or entry.find("./BookDocument"))
+        main = entry.find("./MedlineCitation")
+        if main is None:
+            main = entry.find("./BookDocument")
         if main is None:
             raise ValueError("Publication without source metadata")
         pmid = (main.findtext("./PMID") or "").strip()
