@@ -1,0 +1,236 @@
+{
+  "schemaVersion": 1,
+  "seedId": "scf-va-authorities-initial-20261110",
+  "observedAt": "2026-11-10",
+  "environment": "DEV_ONLY",
+  "approval": "NOT_GRANTED",
+  "records": [
+    {
+      "id": "usc-1110",
+      "kind": "statute",
+      "citation": "38 U.S.C. § 1110",
+      "title": "Basic entitlement—wartime service",
+      "sourceUrl": "https://uscode.house.gov/us/usc/119-124/t38/s1110/",
+      "sourceDate": "2026-10-15",
+      "summary": "Relevant statutory basis for compensation for disability resulting from service-connected disease or injury; precise application requires legal review.",
+      "sourceRole": "PRIMARY_OFFICIAL",
+      "authorityStatus": "LEGAL_HUMAN_REVIEW_REQUIRED",
+      "precedentialStatus": "NOT_APPLICABLE",
+      "court": "",
+      "docket": "",
+      "decisionDate": "",
+      "effectiveDate": "",
+      "reviewFlags": [
+        "LEGAL_HUMAN_REVIEW_REQUIRED",
+        "EFFECTIVE_DATE_AND_AMENDMENTS_CHECK"
+      ]
+    },
+    {
+      "id": "usc-1131",
+      "kind": "statute",
+      "citation": "38 U.S.C. § 1131",
+      "title": "Basic entitlement—other than wartime service",
+      "sourceUrl": "https://uscode.house.gov/us/usc/119-124/t38/s1131/",
+      "sourceDate": "2026-10-15",
+      "summary": "Statutory entitlement for disability resulting from disease or injury incurred or aggravated in other-than-wartime service.",
+      "sourceRole": "PRIMARY_OFFICIAL",
+      "authorityStatus": "LEGAL_HUMAN_REVIEW_REQUIRED",
+      "precedentialStatus": "NOT_APPLICABLE",
+      "court": "",
+      "docket": "",
+      "decisionDate": "",
+      "effectiveDate": "",
+      "reviewFlags": [
+        "LEGAL_HUMAN_REVIEW_REQUIRED",
+        "EFFECTIVE_DATE_AND_AMENDMENTS_CHECK"
+      ]
+    },
+    {
+      "id": "usc-5103a",
+      "kind": "statute",
+      "citation": "38 U.S.C. § 5103A",
+      "title": "Duty to assist claimants",
+      "sourceUrl": "https://uscode.house.gov/us/usc/119-124/t38/s5103A/",
+      "sourceDate": "2026-10-15",
+      "summary": "Describes VA duties concerning relevant evidence, examinations, and medical opinions; exceptions and timing require case-specific review.",
+      "sourceRole": "PRIMARY_OFFICIAL",
+      "authorityStatus": "LEGAL_HUMAN_REVIEW_REQUIRED",
+      "precedentialStatus": "NOT_APPLICABLE",
+      "court": "",
+      "docket": "",
+      "decisionDate": "",
+      "effectiveDate": "",
+      "reviewFlags": [
+        "LEGAL_HUMAN_REVIEW_REQUIRED",
+        "REVIEW_CLAIM_TYPE_STAGE_LIMITS"
+      ]
+    },
+    {
+      "id": "usc-1168",
+      "kind": "statute",
+      "citation": "38 U.S.C. § 1168",
+      "title": "Medical nexus examinations for toxic exposure risk activities",
+      "sourceUrl": "https://uscode.house.gov/us/usc/119-124/t38/s1168/",
+      "sourceDate": "2026-10-15",
+      "summary": "Describes examination/opinion requirements for qualifying toxic-exposure-risk claims and enumerated exceptions.",
+      "sourceRole": "PRIMARY_OFFICIAL",
+      "authorityStatus": "LEGAL_HUMAN_REVIEW_REQUIRED",
+      "precedentialStatus": "NOT_APPLICABLE",
+      "court": "",
+      "docket": "",
+      "decisionDate": "",
+      "effectiveDate": "",
+      "reviewFlags": [
+        "LEGAL_HUMAN_REVIEW_REQUIRED",
+        "REVIEW_TERA_APPLICABILITY_EXCEPTIONS"
+      ]
+    },
+    {
+      "id": "cfr-3310",
+      "kind": "regulation",
+      "citation": "38 C.F.R. § 3.310",
+      "title": "Disabilities due to or aggravated by service-connected disease or injury",
+      "sourceUrl": "https://www.ecfr.gov/current/title-38/chapter-I/part-3/section-3.310",
+      "sourceDate": "2026-11-06",
+      "summary": "Relevant regulatory framework for secondary causation, aggravation, cardiovascular/amputation effects, and specified TBI secondary rules; compare current rule text with binding precedent and M21-1.",
+      "sourceRole": "PRIMARY_OFFICIAL",
+      "authorityStatus": "LEGAL_HUMAN_REVIEW_REQUIRED",
+      "precedentialStatus": "NOT_APPLICABLE",
+      "court": "",
+      "docket": "",
+      "decisionDate": "",
+      "effectiveDate": "",
+      "reviewFlags": [
+        "LEGAL_HUMAN_REVIEW_REQUIRED",
+        "CFR_M21_SPICER_AGGRAVATION_RECONCILIATION",
+        "AGGRAVATION_BASELINE_AND_NATURAL_PROGRESS_TEXT"
+      ]
+    },
+    {
+      "id": "cfr-201303",
+      "kind": "regulation",
+      "citation": "38 C.F.R. § 20.1303",
+      "title": "Nonprecedential nature of Board decisions",
+      "sourceUrl": "https://www.ecfr.gov/current/title-38/chapter-I/part-20/section-20.1303",
+      "sourceDate": "",
+      "summary": "Prior BVA decisions ordinarily bind only the specific appeal and do not guarantee the outcome of another veteran's claim.",
+      "sourceRole": "PRIMARY_OFFICIAL",
+      "authorityStatus": "LEGAL_HUMAN_REVIEW_REQUIRED",
+      "precedentialStatus": "NOT_APPLICABLE",
+      "court": "",
+      "docket": "",
+      "decisionDate": "",
+      "effectiveDate": "",
+      "reviewFlags": [
+        "LEGAL_HUMAN_REVIEW_REQUIRED",
+        "REVERIFY_CURRENT_ECFR_TEXT"
+      ]
+    },
+    {
+      "id": "m21-vii2d",
+      "kind": "manual",
+      "citation": "M21-1 V.ii.2.D",
+      "title": "Secondary service connection and aggravation",
+      "sourceUrl": "https://www.knowva.ebenefits.va.gov/system/templates/selfservice/va_ssnew/help/customer/locale/en-US/portal/554400000001018/content/554400000180484/",
+      "sourceDate": "2026-05-01",
+      "summary": "VA adjudication guidance discusses but-for causation, treatment interference and aggravation; must not be misrepresented as overriding controlling statutes, regulations, or precedent.",
+      "sourceRole": "PRIMARY_OFFICIAL",
+      "authorityStatus": "LEGAL_HUMAN_REVIEW_REQUIRED",
+      "precedentialStatus": "NOT_APPLICABLE",
+      "court": "",
+      "docket": "",
+      "decisionDate": "",
+      "effectiveDate": "",
+      "reviewFlags": [
+        "LEGAL_HUMAN_REVIEW_REQUIRED",
+        "CFR_M21_SPICER_AGGRAVATION_RECONCILIATION",
+        "M21_DATED_EDITION"
+      ]
+    },
+    {
+      "id": "m21-ivib",
+      "kind": "manual",
+      "citation": "M21-1 IV.i.1.B",
+      "title": "Evidentiary standards for examinations and opinions",
+      "sourceUrl": "https://www.knowva.ebenefits.va.gov/system/templates/selfservice/va_ssnew/help/customer/locale/en-US/portal/554400000001018/content/554400000180495/",
+      "sourceDate": "2026-05-01",
+      "summary": "VA instructions on deciding whether medical examinations or opinions are necessary, including secondary-condition claims.",
+      "sourceRole": "PRIMARY_OFFICIAL",
+      "authorityStatus": "LEGAL_HUMAN_REVIEW_REQUIRED",
+      "precedentialStatus": "NOT_APPLICABLE",
+      "court": "",
+      "docket": "",
+      "decisionDate": "",
+      "effectiveDate": "",
+      "reviewFlags": [
+        "LEGAL_HUMAN_REVIEW_REQUIRED",
+        "M21_DATED_EDITION"
+      ]
+    },
+    {
+      "id": "fedcir-spicer-2023",
+      "kind": "court_case",
+      "citation": "Spicer v. McDonough, 61 F.4th 1360 (Fed. Cir. 2023)",
+      "title": "Spicer v. McDonough",
+      "sourceUrl": "https://www.cafc.uscourts.gov/03-08-2023-22-1239-spicer-v-mcdonough-opinion-22-1239-opinion-3-8-2023_2091586/",
+      "sourceDate": "2023-03-08",
+      "summary": "Federal Circuit construed the statutory 'resulting from' standard to require but-for causation rather than a narrower proximate-cause requirement; exact holding scope and later treatment require legal review.",
+      "sourceRole": "PRIMARY_OFFICIAL",
+      "authorityStatus": "LEGAL_HUMAN_REVIEW_REQUIRED",
+      "precedentialStatus": "PRECEDENTIAL_REPORTED",
+      "court": "Federal Circuit",
+      "docket": "22-1239",
+      "decisionDate": "2023-03-08",
+      "effectiveDate": "",
+      "reviewFlags": [
+        "LEGAL_HUMAN_REVIEW_REQUIRED",
+        "EXACT_HOLDING_SCOPE_REVIEW",
+        "LATER_CASE_TREATMENT_CHECK",
+        "CFR_M21_SPICER_AGGRAVATION_RECONCILIATION"
+      ]
+    },
+    {
+      "id": "cavc-ward-2019",
+      "kind": "court_case",
+      "citation": "Ward v. Wilkie, 31 Vet. App. 233 (2019)",
+      "title": "Ward v. Wilkie (consolidated with Neal)",
+      "sourceUrl": "https://www.uscourts.cavc.gov/documents/WardLM_16-2157%20%283%29.pdf",
+      "sourceDate": "2019-06-14",
+      "summary": "CAVC rejected a permanent-worsening requirement for secondary aggravation and remanded for application of the correct standard; individual facts and later treatment require legal review.",
+      "sourceRole": "PRIMARY_OFFICIAL",
+      "authorityStatus": "LEGAL_HUMAN_REVIEW_REQUIRED",
+      "precedentialStatus": "PRECEDENTIAL_OPINION",
+      "court": "CAVC",
+      "docket": "16-2157;17-1204",
+      "decisionDate": "2019-06-14",
+      "effectiveDate": "",
+      "reviewFlags": [
+        "LEGAL_HUMAN_REVIEW_REQUIRED",
+        "EXACT_HOLDING_SCOPE_REVIEW",
+        "LATER_CASE_TREATMENT_CHECK"
+      ]
+    },
+    {
+      "id": "cavc-allen-1995",
+      "kind": "court_case",
+      "citation": "Allen v. Brown, 7 Vet. App. 439 (1995) (en banc)",
+      "title": "Allen v. Brown",
+      "sourceUrl": "https://www.uscourts.cavc.gov/documents/WardLM_16-2157%20%283%29.pdf",
+      "sourceDate": "1995",
+      "summary": "Historical en-banc secondary-aggravation precedent, cited by Ward; this record currently links to Ward as an official subsequent-case citation, NOT the original Allen opinion.",
+      "sourceRole": "OFFICIAL_COURT_SECONDARY_CITATION",
+      "authorityStatus": "LEGAL_HUMAN_REVIEW_REQUIRED",
+      "precedentialStatus": "EN_BANC_PRECEDENT_CITED_SECONDARILY",
+      "court": "CAVC",
+      "docket": "",
+      "decisionDate": "",
+      "effectiveDate": "",
+      "reviewFlags": [
+        "LEGAL_HUMAN_REVIEW_REQUIRED",
+        "ORIGINAL_OPINION_URL_NOT_YET_VERIFIED",
+        "EXACT_HOLDING_SCOPE_REVIEW",
+        "LATER_CASE_TREATMENT_CHECK"
+      ]
+    }
+  ]
+}
