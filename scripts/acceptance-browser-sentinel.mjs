@@ -1298,6 +1298,21 @@ async function run() {
         ),
       detail: JSON.stringify(record?.recordSourceIdsByConditionId ?? null),
     },
+    {
+      field: "recordDerivedSafeguardVersion",
+      sentinel: null,
+      // Real veteran opt-in to the corrected local research path stamps v2.
+      ok: record?.recordDerivedSafeguardVersion === 2,
+      detail: JSON.stringify(record?.recordDerivedSafeguardVersion ?? null),
+    },
+    {
+      field: "recordDerivedReReviewRequired",
+      sentinel: null,
+      // Re-approved record topics clear the re-review flag; this is checked
+      // in the real browser flow, not from a synthetic schema-only fixture.
+      ok: record?.recordDerivedReReviewRequired === false,
+      detail: JSON.stringify(record?.recordDerivedReReviewRequired ?? null),
+    },
   ];
   const uncoveredFields = contextFields.filter(
     (field) => field !== "version" && !fieldControls.some((entry) => entry.field === field),
