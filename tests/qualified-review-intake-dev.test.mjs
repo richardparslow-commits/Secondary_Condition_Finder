@@ -41,6 +41,8 @@ test("qualified review validates exactly the human-only preliminary evidence fie
     d=>{d.submissionId="not-a-uuid";},
     d=>{d.clinicalDisposition="VERIFIED";},
     d=>{d.supportingEvidence=[];},
+    d=>{d.supportingEvidence=[{pmid:"12345678",assessment:"CONTEXT_ONLY"}];},
+    d=>{d.supportingEvidence=[{pmid:99880001,assessment:"CONTEXT_ONLY"}];},
     d=>{d.unresolvedContradictions=[{pmid:"99880001",issue:"PROVEN_FALSE"}];},
     d=>{d.supportingEvidence=[{pmid:"99880001",assessment:"CONTEXT_ONLY",note:"private notes"}];},
     d=>{d.reviewerRationale="short";},

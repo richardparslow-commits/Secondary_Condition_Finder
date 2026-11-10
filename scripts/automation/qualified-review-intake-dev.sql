@@ -183,7 +183,8 @@ BEGIN
           WHERE k IN ('pmid','assessment')) <> 2 OR
       jsonb_typeof(item->'pmid') <> 'string' OR
       jsonb_typeof(item->'assessment') <> 'string' OR
-      (item->>'pmid') !~ '^[1-9][0-9]{3,8} ('POTENTIAL_SUPPORT','POTENTIAL_CONTRADICTION',
+      (item->>'pmid') !~ '^[1-9][0-9]{3,8}$' OR
+      (item->>'assessment') NOT IN ('POTENTIAL_SUPPORT','POTENTIAL_CONTRADICTION',
         'CONTEXT_ONLY','INSUFFICIENT_FOR_CLAIM')) THEN
     RAISE EXCEPTION 'Unrecognized supporting study citation descriptor';
   END IF;
@@ -192,11 +193,17 @@ BEGIN
       (SELECT count(*) FROM jsonb_object_keys(item)) <> 2 OR
       (SELECT count(*) FROM jsonb_object_keys(item) AS names(k)
         WHERE k IN ('pmid','issue')) <> 2 OR
+      jsonb_typeof(item->'pmid') <> 'string' OR
+      jsonb_typeof(item->'issue') <> 'string' OR
       (item->>'pmid') !~ '^[1-9][0-9]{3,8}$' OR
       (item->>'issue') NOT IN ('CAUSAL_DIRECTION','POPULATION_MISMATCH',
         'CONFOUNDING','MEDICATION_OR_PROCEDURE','PUBLICATION_CORRECTION',
         'OTHER_UNRESOLVED')) THEN
     RAISE EXCEPTION 'Unrecognized contradiction citation descriptor';
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM jsonb_array_elements(request->'supportingEvidence') AS e(item)
+     WHERE item->>'pmid' = request->>'candidatePmid') THEN
+    RAISE EXCEPTION 'The exact candidate PMID must appear in the screened evidence list';
   END IF;
   IF v_disposition IN ('POTENTIAL_CONTRADICTION','MIXED_OR_CONFLICTED')
       AND jsonb_array_length(request->'unresolvedContradictions')=0 THEN

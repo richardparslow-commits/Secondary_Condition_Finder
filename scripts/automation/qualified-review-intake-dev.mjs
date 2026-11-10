@@ -75,6 +75,8 @@ export function validateReview(value,now=new Date()){
     assert.match(row.pmid,PMID);
     assert.ok(ASSESS.has(row.assessment));
   }
+  assert.ok(value.supportingEvidence.some(r=>r.pmid===value.candidatePmid),
+    "The exact candidate PMID must be included in the screened evidence");
   assert.ok(Array.isArray(value.unresolvedContradictions)
     &&value.unresolvedContradictions.length<=20);
   for(const row of value.unresolvedContradictions){
