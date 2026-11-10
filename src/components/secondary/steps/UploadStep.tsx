@@ -11,6 +11,15 @@ import { VaGovRecordWalkthrough } from "@/components/secondary/VaGovRecordWalkth
 import { VoiceInputHotkeyBridge, VoiceInputTextarea } from "@/components/secondary/VoiceInputTextarea";
 import { indexById } from "@/lib/catalog/lookup";
 import { buildEvidenceConditionTerms } from "@/lib/evidence/condition-terms";
+import type {
+  RecordClaimStatus, RecordConditionCandidate,
+} from "@/lib/evidence/record-condition-discovery";
+import {
+  clearRecordDerivedConditions,
+  confirmRecordDerivedConditions,
+  withdrawRecordCondition,
+  withdrawRecordSource,
+} from "@/lib/secondary-workflow/record-derived-confirmation";
 import { useClientCorpus } from "@/lib/client-corpus";
 import {
   applyDocumentsStep,
@@ -25,7 +34,9 @@ import {
   MIN_TIMELINE_YEAR,
   timelineField,
 } from "@/lib/secondary-workflow/state";
-import { useBrowserWorkflowContext } from "@/lib/secondary-workflow/use-browser-context";
+import {
+  readSessionContext, useBrowserWorkflowContext,
+} from "@/lib/secondary-workflow/use-browser-context";
 import {
   SECONDARY_VALIDATION_MESSAGES,
   type SecondaryValidationCode,
@@ -76,6 +87,10 @@ export function UploadStep() {
   const [localError, setLocalError] = useState<SecondaryValidationCode | null>(null);
   const [hasUnanalyzedPastedText, setHasUnanalyzedPastedText] = useState(false);
   const [showPasteLeaveWarning, setShowPasteLeaveWarning] = useState(false);
+  const [recordCandidates, setRecordCandidates] = useState<RecordConditionCandidate[]>([]);
+  // Not stored until the veteran explicitly opts in on this screen. Quotes and
+  // filenames are NEVER copied into the workflow context.
+  const [reviewedRecords, setReviewedRecords] = useState<Record<string, RecordClaimStatus>>({});
   const handleUnsavedPastedTextChange = useCallback((hasUnsavedText: boolean) => {
     setHasUnanalyzedPastedText(hasUnsavedText);
     if (!hasUnsavedText) setShowPasteLeaveWarning(false);
@@ -87,7 +102,7 @@ export function UploadStep() {
   const validationMessage = localError ? SECONDARY_VALIDATION_MESSAGES[localError] : null;
 
   const byId = useMemo(() => (corpus ? indexById(corpus.conditions) : new Map()), [corpus]);
-  const diagnosedConditionIds = context?.diagnosedConditionIds ?? [];
+  const diagnosedConditionIds = useMemo(() => context?.diagnosedConditionIds ?? [], [context]);
   const serviceConnectedConditionIds = context?.serviceConnectedConditionIds ?? [];
   const ratingsByConditionId = context?.ratingsByConditionId;
   const permanentAndTotalConditionIds = context?.permanentAndTotalConditionIds ?? [];
@@ -104,6 +119,62 @@ export function UploadStep() {
     return condition ? [condition] : [];
   });
   const conditionTerms = buildEvidenceConditionTerms(selectedConditions);
+  const recordGroups = useMemo(() => {
+    const byCondition = new Map<string, RecordConditionCandidate[]>();
+    const chosen = new Set(diagnosedConditionIds);
+    for (const candidate of recordCandidates) {
+      if (!byId.has(candidate.conditionId) || chosen.has(candidate.conditionId)) continue;
+      const existing = byCondition.get(candidate.conditionId) ?? [];
+      existing.push(candidate);
+      byCondition.set(candidate.conditionId, existing);
+    }
+    return [...byCondition.entries()].map(([id, mentions]) => ({
+      id,
+      name: byId.get(id)?.name ?? id,
+      mentions,
+      // A term in an assessment alone is insufficient. Only a clinician-
+      // authored affirmative statement, with no contradictory negative or
+      // family-history mention, may be opted into the research intake.
+      eligible: mentions.some((m) => m.category === "diagnosis-statement" && m.clinicianAuthored) &&
+        !mentions.some((m) => m.category === "ruled-out" || m.category === "family-history"),
+    })).sort((a,b) => a.name.localeCompare(b.name));
+  }, [recordCandidates, byId, diagnosedConditionIds]);
+
+  const handleRecordCandidatesChange = useCallback((next: RecordConditionCandidate[]) => {
+    setRecordCandidates(next);
+    const active = new Set(next.map((entry) => entry.conditionId));
+    setReviewedRecords((previous) =>
+      Object.fromEntries(Object.entries(previous).filter(([id]) => active.has(id))),
+    );
+  }, []);
+
+  const handleRecordSourceRemoved = useCallback((sourceId: string) => {
+    const latest = readSessionContext();
+    if (!latest) return;
+    const next = withdrawRecordSource(toBrowserWorkflowContextInput(latest), sourceId);
+    const result = persistStepContext(persist, next);
+    if (!result.ok) setLocalError(result.code);
+  }, [persist]);
+
+  const handleRecordEvidenceCleared = useCallback(() => {
+    setReviewedRecords({});
+    const latest = readSessionContext();
+    if (!latest) return;
+    const result = persistStepContext(
+      persist, clearRecordDerivedConditions(toBrowserWorkflowContextInput(latest)),
+    );
+    if (!result.ok) setLocalError(result.code);
+  }, [persist]);
+
+  function removePreviouslyReviewedCondition(id: string) {
+    if (!context) return;
+    const next = withdrawRecordCondition(toBrowserWorkflowContextInput(context), id);
+    const outcome = persistStepContext(persist, next);
+    if (!outcome.ok) setLocalError(outcome.code);
+    else setReviewedRecords((current) => {
+      const copy = { ...current }; delete copy[id]; return copy;
+    });
+  }
 
   function onDocumentsSharedChange(next: boolean) {
     if (!context) return;
@@ -130,7 +201,32 @@ export function UploadStep() {
       setLocalError(result.code);
       return;
     }
-    const outcome = persistStepResult(persist, result);
+    // Existing context may contain earlier record-derived selections from a
+    // previous Step 4 visit; the general Step 4 parser intentionally does not
+    // understand these new browser-only fields, so preserve them explicitly.
+    const previousRecordContext = {
+      ...result.context,
+      recordDiscoveredConditionIds: context?.recordDiscoveredConditionIds ?? [],
+      recordClaimStatusByConditionId: context?.recordClaimStatusByConditionId ?? {},
+      recordSourceIdsByConditionId: context?.recordSourceIdsByConditionId ?? {},
+    };
+    const approved = recordGroups.filter((group) =>
+      group.eligible && reviewedRecords[group.id] !== undefined,
+    ).map((group) => ({
+      conditionId: group.id,
+      claimStatus: reviewedRecords[group.id],
+      sourceIds: [...new Set(group.mentions.map((entry) => entry.sourceId))].slice(0, 8),
+    }));
+    let nextRecordContext;
+    try {
+      nextRecordContext = confirmRecordDerivedConditions(
+        previousRecordContext, approved, corpus.conditions,
+      );
+    } catch {
+      setLocalError("invalid-context");
+      return;
+    }
+    const outcome = persistStepResult(persist, { ...result, context: nextRecordContext });
     if (!outcome.ok) {
       setLocalError(outcome.code);
       return;
@@ -188,8 +284,98 @@ export function UploadStep() {
 
           <LocalEvidenceAnalyzer
             conditionTerms={conditionTerms}
+            recordDiscoveryCatalog={corpus?.conditions}
+            onRecordCandidatesChange={handleRecordCandidatesChange}
+            onRecordSourceRemoved={handleRecordSourceRemoved}
+            onRecordEvidenceCleared={handleRecordEvidenceCleared}
             onUnsavedPastedTextChange={handleUnsavedPastedTextChange}
           />
+
+          <section className="mt-6 rounded-xl border border-blue-200 bg-blue-50 p-4" aria-labelledby="record-discovery-heading">
+            <h2 id="record-discovery-heading" className="text-xl font-semibold text-blue-950">
+              Possible additional conditions found in your records
+            </h2>
+            <p className="mt-2 text-sm text-blue-950">
+              This is a local term search, not a diagnosis or medical opinion. Terms may
+              be historical, suspected, excluded, or about family members. Review the
+              exact passage and ask a medical professional to confirm whether it applies.
+              Only an affirmative clinician-authored diagnosis statement can be selected
+              for additional research here. No selection is made automatically.
+            </p>
+            {recordGroups.length === 0 ? (
+              <p className="mt-3 text-sm text-blue-900">
+                No additional catalog condition mentions have been found in the records analyzed in this tab.
+              </p>
+            ) : (
+              <div className="mt-4 space-y-3">
+                {recordGroups.map((group) => (
+                  <article key={group.id} className="rounded-lg border border-blue-200 bg-white p-3">
+                    <h3 className="font-semibold">{group.name}</h3>
+                    <ul className="mt-2 space-y-2 text-sm">
+                      {group.mentions.slice(0, 3).map((entry, index) => (
+                        <li key={entry.sourceId + ":" + entry.category + ":" + index}>
+                          <span className="font-medium">{entry.category.replaceAll("-", " ")}{entry.clinicianAuthored ? " (author identified as clinician)" : " (author unverified/non-clinician)"}</span>
+                          <span className="block text-slate-600">{entry.sourceName} — {entry.locator}</span>
+                          <q className="block text-slate-800">{entry.quote}</q>
+                        </li>
+                      ))}
+                    </ul>
+                    {group.eligible ? (
+                      <div className="mt-3 space-y-2">
+                        <label className="flex items-start gap-2 text-sm font-medium">
+                          <input type="checkbox" className="mt-1" checked={reviewedRecords[group.id] !== undefined}
+                            onChange={(event) => setReviewedRecords((prev) => {
+                              const next = { ...prev };
+                              if (event.target.checked) next[group.id] = "unknown";
+                              else delete next[group.id];
+                              return next;
+                            })} />
+                          I want to add this as a possible research topic, not as a verified diagnosis.
+                        </label>
+                        {reviewedRecords[group.id] !== undefined && (
+                          <label className="block text-sm">
+                            Current VA claim status (your understanding)
+                            <select className="mt-1 block w-full rounded-lg border border-slate-300 p-2"
+                              value={reviewedRecords[group.id]} onChange={(event) =>
+                                setReviewedRecords((prev) => ({
+                                  ...prev, [group.id]: event.target.value as RecordClaimStatus,
+                                }))}>
+                              <option value="unknown">Unsure / unknown</option>
+                              <option value="not-yet-claimed">Not yet claimed</option>
+                              <option value="pending">Claim pending</option>
+                              <option value="denied">Previously denied</option>
+                            </select>
+                          </label>
+                        )}
+                      </div>
+                    ) : (
+                      <p className="mt-3 text-sm text-amber-900">
+                        Held for medical clarification: there is no uncontradicted
+                        clinician-authored affirmative diagnosis statement for this term.
+                        It will not be treated as a diagnosed condition.
+                      </p>
+                    )}
+                  </article>
+                ))}
+              </div>
+            )}
+            {(context?.recordDiscoveredConditionIds?.length ?? 0) > 0 && (
+              <div className="mt-5 border-t border-blue-200 pt-3">
+                <h3 className="font-semibold text-blue-950">Research topics you previously added</h3>
+                <ul className="mt-2 space-y-2">
+                  {context?.recordDiscoveredConditionIds?.map((id) => (
+                    <li key={id} className="flex flex-wrap items-center justify-between gap-2 text-sm">
+                      <span>{byId.get(id)?.name ?? id} — {context.recordClaimStatusByConditionId?.[id] ?? "unknown"}</span>
+                      <button type="button" className="ui-button-secondary"
+                        onClick={() => removePreviouslyReviewedCondition(id)}>
+                        Remove research topic
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </section>
 
           <form onSubmit={onSubmit} className="mt-6 space-y-5">
             <fieldset className="rounded-xl border border-slate-200 p-4 shadow-none">

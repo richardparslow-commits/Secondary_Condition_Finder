@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "seedId": "scf-public-trials-nih-projects-pilot-20261109",
+  "topics": [
+    { "id": "post-traumatic-stress-disorder", "query": "post traumatic stress disorder" },
+    { "id": "traumatic-brain-injury", "query": "traumatic brain injury" },
+    { "id": "multiple-sclerosis", "query": "multiple sclerosis" }
+  ]
+}

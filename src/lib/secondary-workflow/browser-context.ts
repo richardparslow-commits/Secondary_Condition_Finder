@@ -47,6 +47,18 @@ const browserWorkflowContextSchema = z.object({
   history: z.array(contextEntrySchema).max(MAX_CONTEXT_ITEMS).optional(),
   symptomIds: z.array(z.string().regex(/^[a-z0-9-]+$/)).max(20).optional(),
   conditionTimeline: z.record(z.string(), timelineEntrySchema).optional(),
+  // Explicitly confirmed RECORD-DERIVED *research topics*, not clinical diagnoses.
+  // Only catalog IDs, status and opaque local source IDs; no quotes or document text.
+  recordDiscoveredConditionIds: z.array(z.string().regex(/^[a-z0-9-]{2,90}$/))
+    .max(30).optional(),
+  recordClaimStatusByConditionId: z.record(
+    z.string().regex(/^[a-z0-9-]{2,90}$/),
+    z.enum(["not-yet-claimed", "pending", "denied", "unknown"]),
+  ).refine((entries) => Object.keys(entries).length <= 30).optional(),
+  recordSourceIdsByConditionId: z.record(
+    z.string().regex(/^[a-z0-9-]{2,90}$/),
+    z.array(z.string().min(1).max(128)).min(1).max(8),
+  ).refine((entries) => Object.keys(entries).length <= 30).optional(),
 });
 
 export type BrowserWorkflowContext = z.infer<typeof browserWorkflowContextSchema>;

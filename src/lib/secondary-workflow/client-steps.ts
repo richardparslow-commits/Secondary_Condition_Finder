@@ -193,6 +193,12 @@ function retainedDocumentsData(context: BrowserWorkflowContext | null) {
     ...(context?.treatments?.length ? { treatments: context.treatments } : {}),
     ...(context?.history?.length ? { history: context.history } : {}),
     ...(context?.symptomIds?.length ? { symptomIds: context.symptomIds } : {}),
+    ...(context?.recordDiscoveredConditionIds?.length
+      ? { recordDiscoveredConditionIds: context.recordDiscoveredConditionIds } : {}),
+    ...(context?.recordClaimStatusByConditionId
+      ? { recordClaimStatusByConditionId: context.recordClaimStatusByConditionId } : {}),
+    ...(context?.recordSourceIdsByConditionId
+      ? { recordSourceIdsByConditionId: context.recordSourceIdsByConditionId } : {}),
   };
 }
 

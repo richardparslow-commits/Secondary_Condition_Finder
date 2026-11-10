@@ -102,7 +102,11 @@ describe("browser-local persistence failure contract (no silent data loss)", () 
       const source = readRepoFile(`src/components/secondary/steps/${name}.tsx`);
       // Every forward advance goes through persistStepResult, and a failed
       // outcome is surfaced on the step instead of navigating.
-      expect(source).toContain("persistStepResult(persist, result)");
+      expect(source).toContain(
+        name === "UploadStep"
+          ? "persistStepResult(persist, { ...result, context: nextRecordContext })"
+          : "persistStepResult(persist, result)",
+      );
       expect(source).toContain("setLocalError(outcome.code)");
       expect(source).toContain('searchParams.has("error")');
       expect(source).toContain("router.replace(outcome.next)");

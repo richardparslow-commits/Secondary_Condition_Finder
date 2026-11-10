@@ -1046,7 +1046,8 @@ async function run() {
   );
 
   // Evidence upload 1 — plain text file with literal sentinel name + content.
-  const textPayload = `Medical opinion addressed to the rating decision.\nThe sleep apnea is caused by service-connected PTSD, per ${SENTINELS.evidenceText}.\n`;
+  const textPayload = `Medical opinion addressed to the rating decision.\nThe sleep apnea is caused by service-connected PTSD, per ${SENTINELS.evidenceText}.\nDiagnosis: Migraine Headaches\n`;
+  await pageEval(js(selectByOptionValue, "physician"));
   await pageEval(
     js(stageFile, Buffer.from(textPayload, "utf8").toString("base64"),
       SENTINELS.evidenceFileName, "text/plain", "#local-evidence-files"),
@@ -1064,6 +1065,30 @@ async function run() {
     60_000,
   );
   walk.passA.textEvidenceRetainedLocally = true;
+  await waitForPage(
+    `(() => {
+      const section = document.querySelector('section[aria-labelledby="record-discovery-heading"]');
+      const article = [...(section?.querySelectorAll("article") ?? [])].find(
+        (element) => element.querySelector("h3")?.textContent?.trim() === "Migraine Headaches",
+      );
+      return !!article?.querySelector('input[type="checkbox"]');
+    })()`,
+    "clinician-authored record-derived research topic",
+  );
+  await pageEval(js(function () {
+    const section = document.querySelector('section[aria-labelledby="record-discovery-heading"]');
+    const article = [...(section?.querySelectorAll("article") ?? [])].find(
+      (element) => element.querySelector("h3")?.textContent?.trim() === "Migraine Headaches",
+    );
+    const checkbox = article?.querySelector('input[type="checkbox"]');
+    if (checkbox && !checkbox.checked) checkbox.click();
+    return checkbox?.checked === true;
+  }));
+  await waitForPage(
+    `!!document.querySelector('section[aria-labelledby="record-discovery-heading"] select')`,
+    "record-derived claim status selection",
+  );
+  await pageEval(js(selectByOptionValue, "pending"));
 
   // Evidence upload 2 — image-only scanned PDF; OCR must run in local workers.
   const jpegBase64 = await pageEval(js(drawOcrImage, SENTINELS.ocrToken, 2200, 260));
@@ -1249,6 +1274,29 @@ async function run() {
         record?.conditionTimeline?.ptsd?.onsetYear === 2011 ||
         record?.conditionTimeline?.ptsd?.diagnosisYear === 2013,
       detail: JSON.stringify(record?.conditionTimeline ?? null),
+    },
+    {
+      field: "recordDiscoveredConditionIds",
+      sentinel: null,
+      ok: record?.recordDiscoveredConditionIds?.includes("migraine-headaches") === true &&
+        record?.diagnosedConditionIds?.includes("migraine-headaches") === true,
+      detail: JSON.stringify(record?.recordDiscoveredConditionIds ?? null),
+    },
+    {
+      field: "recordClaimStatusByConditionId",
+      sentinel: null,
+      ok: record?.recordClaimStatusByConditionId?.["migraine-headaches"] === "pending",
+      detail: JSON.stringify(record?.recordClaimStatusByConditionId ?? null),
+    },
+    {
+      field: "recordSourceIdsByConditionId",
+      sentinel: null,
+      ok: Array.isArray(record?.recordSourceIdsByConditionId?.["migraine-headaches"]) &&
+        record.recordSourceIdsByConditionId["migraine-headaches"].length > 0 &&
+        record.recordSourceIdsByConditionId["migraine-headaches"].every(
+          (sourceId) => typeof sourceId === "string" && sourceId.length > 0 && analysesText.includes(sourceId),
+        ),
+      detail: JSON.stringify(record?.recordSourceIdsByConditionId ?? null),
     },
   ];
   const uncoveredFields = contextFields.filter(
