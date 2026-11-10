@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { canonical } from "../scripts/automation/candidate-review-tiger-dev.mjs";
 import { validateReceipt, parseReviewerConnection, bootstrapStatements,
-  checkReviewer, submitReceipt } from "../scripts/automation/qualified-reviewer-intake-dev.mjs";
+  checkReviewer, submitReceipt, sealDraft } from "../scripts/automation/qualified-reviewer-intake-dev.mjs";
 
 const digest=x=>createHash("sha256").update(canonical(x)).digest("hex");
 const clone=x=>JSON.parse(JSON.stringify(x));
@@ -42,6 +42,12 @@ test("structured preliminary reviewer receipts require exact fields and digest",
   assert.throws(()=>validateReceipt(rehash(contradiction)));
   const support=clone(doc);support.supportingEvidence=[];
   assert.throws(()=>validateReceipt(rehash(support)));
+});
+test("local sealing preserves signed reviewer provenance without authentication claims",()=>{
+  const original=fixture(),draft=Object.fromEntries(Object.entries(original).filter(([k])=>k!=="receiptSha256"));
+  assert.deepEqual(sealDraft(draft),original);
+  const altered={...draft,claimantEmail:"never write patient data"};
+  assert.throws(()=>sealDraft(altered));
 });
 test("study pointers allow only PMID and bounded non-identifying note",()=>{
   for(const mutate of [
