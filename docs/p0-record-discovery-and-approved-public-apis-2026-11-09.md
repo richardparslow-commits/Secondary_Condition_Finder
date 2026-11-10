@@ -23,7 +23,7 @@ The fixed public research pilot topics are specified in scripts/fixtures/public-
 
 DEV-only service identity: secondary-condition-finder-test; Tiger service ID m8vrpmo6ec; TLS direct port 30902. The separate database schema is scf_public_research_extensions_dev. All rows are labeled UNVERIFIED_RESEARCH_METADATA, and all runs RESEARCH_ONLY_NO_CLINICAL_APPROVAL. SQL is a single transaction with an independent read-only parity verification. No production database was modified.
 
-Verified pilot: 9 ClinicalTrials.gov records plus 9 NIH RePORTER projects = 18. Snapshot SHA-256: 94f35d17992ae10307f5db1be6bb2c37c3eb9ae7c99804cd4605e233232da947. The verifier returned DEV_METADATA_PARITY_PASS. Clinical approvals: zero. Public mapping changes: zero.
+Verified pilot: 9 ClinicalTrials.gov records plus 9 NIH RePORTER projects = 18. Snapshot SHA-256: 4c243af63c2cc20d113a2f39090f1d455b9fdbf5fe1ced084a1be39170adf405. The verifier returned DEV_METADATA_PARITY_PASS on the committed implementation. An earlier pre-commit pilot run with digest 94f35d17992ae10307f5db1be6bb2c37c3eb9ae7c99804cd4605e233232da947 also remains as an immutable historical DEV snapshot and must not be counted as 18 additional unique sources. Clinical approvals: zero. Public mapping changes: zero.
 
 ### Rerun procedure
 
