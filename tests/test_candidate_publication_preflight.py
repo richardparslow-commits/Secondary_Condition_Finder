@@ -139,6 +139,52 @@ class CandidateBibliographyTests(unittest.TestCase):
             self.assertEqual(mod.verify(source=candidate, original=original,
                                         output=out)["clinicalApprovals"], 0)
 
+    def test_prioritized_reviewer_queue_preserves_empty_human_decisions(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            folder = Path(tmp)
+            original, candidate = prepare(folder)
+            out = folder / "metadata"
+
+            def synthesize_absent_abstract(ids):
+                found = fetch_fixture(ids)
+                found["99880002"]["abstractAvailable"] = False
+                return found
+
+            mod.build(source=candidate, original=original, output=out,
+                      fetcher=synthesize_absent_abstract)
+            with (out / "candidate-human-review-queue.csv").open(
+                    newline="", encoding="utf8") as handle:
+                rows = list(csv.DictReader(handle))
+            self.assertEqual(len(rows), 42)
+            self.assertTrue(all(r["reviewPriority"] == "P1_STATUS_NOTICE_REVIEW"
+                                for r in rows[:21]))
+            self.assertTrue(all(r["reviewPriority"] == "P2_ABSTRACT_UNAVAILABLE"
+                                for r in rows[21:]))
+            self.assertTrue(all(r["humanFullTextScreeningRequired"] == "YES"
+                                for r in rows))
+            self.assertTrue(all(not any(r[key] for key in mod.QUEUE_FIELDS[11:])
+                                for r in rows))
+            self.assertEqual(mod.verify(source=candidate, original=original,
+                                        output=out)["candidateReviewLinks"], 42)
+
+    def test_rehashed_tampered_reviewer_queue_still_fails(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            folder = Path(tmp)
+            original, candidate = prepare(folder)
+            out = folder / "metadata"
+            mod.build(source=candidate, original=original,
+                      output=out, fetcher=fetch_fixture)
+            path = out / "candidate-human-review-queue.csv"
+            original_text = path.read_text()
+            path.write_text(original_text.replace("P1_STATUS_NOTICE_REVIEW",
+                                                  "P3_FULL_TEXT_SCREENING", 1))
+            manifest_file = out / "candidate-metadata-manifest.json"
+            manifest = json.loads(manifest_file.read_text())
+            manifest["outputFilesSha256"][path.name] = mod.file_sha(path)
+            manifest_file.write_text(json.dumps(manifest))
+            with self.assertRaises(ValueError):
+                mod.verify(source=candidate, original=original, output=out)
+
     def test_weekly_and_pr_ci_verify_research_only_metadata(self):
         workflow = (ROOT / ".github/workflows/tiger-dev-clinical-accuracy-triage.yml").read_text()
         ci = (ROOT / ".github/workflows/ci.yml").read_text()
