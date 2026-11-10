@@ -162,8 +162,8 @@ BEGIN
   ] LOOP
     v_len:=length(btrim(request->>v_pmid));
     IF jsonb_typeof(request->v_pmid) <> 'string' OR
-      v_len < CASE WHEN v_pmid='reviewerRationale' THEN 30 ELSE 12 END OR
-      v_len > CASE WHEN v_pmid='reviewerRationale' THEN 5000 ELSE 3000 END THEN
+      (v_pmid='reviewerRationale' AND (v_len<30 OR v_len>5000)) OR
+      (v_pmid<>'reviewerRationale' AND (v_len<12 OR v_len>3000)) THEN
       RAISE EXCEPTION 'Required clinical-context field is missing or unbounded';
     END IF;
   END LOOP;
