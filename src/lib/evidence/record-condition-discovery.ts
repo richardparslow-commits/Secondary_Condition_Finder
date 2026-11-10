@@ -35,21 +35,32 @@ export const RECORD_DISCOVERY_MAX_CANDIDATES = 30;
 export const RECORD_DISCOVERY_MAX_QUOTE_CHARS = 300;
 const MAX_TERM_ALIASES = 5;
 const MAX_LINE_CHARS = 1200;
+// A short label is accepted only if it has a unique catalog owner and appears
+// in a named diagnosis/assessment context. Unknown 3-5 letter chart acronyms
+// remain excluded to avoid interpreting medical abbreviations speculatively.
+const CONTEXTUAL_SHORT_ALIASES = new Set(["osa", "ptsd", "tbi", "gerd", "cfs"]);
 
 type MatcherEntry = {
   conditionId: string; conditionName: string; anchor: string;
   pattern: RegExp; guard: RegExp | null;
+  /** Selected low-risk shorthand may match only inside explicit diagnosis context. */
+  diagnosisContextRequired: boolean;
 };
 export type RecordConditionMatcher = readonly MatcherEntry[];
 
 const DIAGNOSIS_HEADER = /^(?:diagnos(?:is|es)|assessment|impressions?|active\s+problems|problem\s+list|medical\s+diagnoses?)\s*:?\s*$/i;
 const RESET_HEADER = /^(?:plan|treatment|medications|family\s+history|review\s+of\s+systems|social\s+history|procedure|physical\s+exam(?:ination)?|follow[- ]up|history\s+of\s+present\s+illness)\s*:?\s*$/i;
-const FAMILY_HISTORY = /\b(?:family\s+(?:history|hx)|mother|father|parent|sibling|brother|sister)\s*(?:of|with|:)\b/i;
-const RULED_OUT = /\b(?:rule(?:d)?\s+out|r\/o|negative\s+for|no\s+evidence\s+of|no\s+diagnosis\s+of|not\s+diagnosed\s+with|denies?|without|no\s+history\s+of)\b/i;
-const SUSPECTED = /\b(?:possible|possibly|suspected?|concern\s+for|differential|consider|evaluation\s+for|evaluating\s+for|may\s+have|question\s+of|working\s+diagnosis)\b/i;
+// Conservative exclusion screen: a family member's condition must not be
+// suggested as this Veteran's diagnosis. Colon-terminated FHx headers and
+// "mother has" phrasing are common in medical notes.
+const FAMILY_HISTORY = /\b(?:family\s*(?:history|hx)|fam\s*hx|fhx|fmhx)\b|\b(?:mother|father|parent|sibling|brother|sister|child|son|daughter|grandmother|grandfather|aunt|uncle)\s+(?:has|had|with|diagnos(?:ed|is)|suffers?|affected)\b/i;
+// Fail closed on simple chart negation. It is safer to hold an ambiguous
+// statement for clinician review than offer a non-existent disease for opt-in.
+const RULED_OUT = /\b(?:rule(?:d)?\s+out|r\/o|no|not|never|negative|absent|denies?|denied|without|unlikely|excluded)\b/i;
+const SUSPECTED = /\b(?:possible|possibly|suspected?|probable|perhaps|questionable|concern\s+for|differential|consider|evaluation\s+for|evaluating\s+for|may\s+have|question\s+of|working\s+diagnosis|suggestive\s+of|versus|vs\.?)\b/i;
 const HISTORICAL = /\b(?:history\s+of|hx\s+of|previously|resolved|remote\s+history|prior\s+diagnosis)\b/i;
 const SYMPTOM_ONLY = /\b(?:symptoms?\s+(?:of|include)|complains?\s+of|reports?\s+of|screen(?:ing)?\s+for|c\/o)\b/i;
-const DIAGNOSIS_STATED = /\b(?:diagnos(?:is|es|ed)\s*(?::|with|of)?|(?:dx|assessment|impression|active\s+problems?)\s*:)\b/i;
+const DIAGNOSIS_STATED = /\b(?:dx|diagnos(?:is|es|ed)|assessment|impression|active\s+problems?)\b\s*(?::|with|of)?(?=\s|$)/i;
 const BOILERPLATE = /\b(?:38\s+(?:cfr|c\.f\.r\.|usc|u\.s\.c\.)|service\s+connection\s+may\s+be\s+granted|diagnostic\s+code\s+\d{4})\b/i;
 const CLINICIANS = new Set<ClinicianCredential>([
   "physician", "psychologist", "np-pa", "other-licensed-clinician",
@@ -58,7 +69,8 @@ const CLINICIANS = new Set<ClinicianCredential>([
 function acceptableTerm(value: string): boolean {
   const term = value.trim();
   if (term.length < 3 || term.length > 100) return false;
-  if (term.length < 6 && !conditionTermGuardFor(term)) return false;
+  if (term.length < 6 && !conditionTermGuardFor(term) &&
+      !CONTEXTUAL_SHORT_ALIASES.has(term.toLocaleLowerCase())) return false;
   if (/^\d+$/.test(term)) return false;
   return true;
 }
@@ -86,14 +98,16 @@ export function buildRecordConditionMatcher(catalog: ConditionCatalog): RecordCo
     if (!pattern) return [];
     const anchor = term.toLocaleLowerCase().split(/[\s\u00a0\u2010-\u2015-]/)[0];
     return [{ conditionId: condition.id, conditionName: condition.name,
-      anchor, pattern, guard: conditionTermGuardFor(term) }];
+      anchor, pattern, guard: conditionTermGuardFor(term),
+      diagnosisContextRequired: term.length < 6 && !conditionTermGuardFor(term),
+    }];
   });
 }
 
 function classify(sentence: string, inDiagnosisSection: boolean): RecordMentionCategory {
   if (FAMILY_HISTORY.test(sentence)) return "family-history";
   if (RULED_OUT.test(sentence)) return "ruled-out";
-  if (SUSPECTED.test(sentence)) return "suspected";
+  if (SUSPECTED.test(sentence) || /\?\s*$/.test(sentence)) return "suspected";
   if (HISTORICAL.test(sentence)) return "historical";
   if (SYMPTOM_ONLY.test(sentence)) return "symptom-only";
   if (inDiagnosisSection || DIAGNOSIS_STATED.test(sentence)) return "diagnosis-statement";
@@ -127,10 +141,11 @@ export function discoverRecordConditionCandidates(
       const parts = line.split(/(?:;\s*|(?<=[.!?])\s+(?=[A-Z0-9]))/).filter(Boolean);
       for (const part of parts) {
         const sentence = part.trim();
-        if (sentence.length < 6 || sentence.length > MAX_LINE_CHARS || BOILERPLATE.test(sentence)) continue;
+        if (sentence.length < 3 || sentence.length > MAX_LINE_CHARS || BOILERPLATE.test(sentence)) continue;
         const lower = sentence.toLocaleLowerCase();
         for (const m of matcher) {
           if (!lower.includes(m.anchor) || !m.pattern.test(sentence) || (m.guard && !m.guard.test(sentence))) continue;
+          if (m.diagnosisContextRequired && !diagnosisSection && !DIAGNOSIS_STATED.test(sentence)) continue;
           const category = classify(sentence, diagnosisSection);
           const key = metadata.sourceId + ":" + m.conditionId + ":" + category;
           if (seen.has(key)) continue;

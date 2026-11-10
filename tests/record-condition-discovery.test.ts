@@ -126,3 +126,30 @@ describe("P0 record-derived condition discovery: local mentions, not diagnoses",
       .toEqual(["obstructive-sleep-apnea"]);
   });
 });
+
+describe("P0 safety gate regression: common chart negation and family history", () => {
+  it("does not describe a simple negative assessment as an affirmative diagnosis", () => {
+    expect(source("Assessment:\nNo obstructive sleep apnea")[0]?.category).toBe("ruled-out");
+    expect(source("Assessment:\nNo OSA")[0]?.category).toBe("ruled-out");
+    expect(source("Diagnosis: OSA absent")[0]?.category).toBe("ruled-out");
+  });
+
+  it("holds first-degree relatives' illness and FHx shorthand as family history", () => {
+    expect(source("Assessment:\nMother has obstructive sleep apnea")[0]?.category).toBe("family-history");
+    expect(source("Assessment:\nFather diagnosed with obstructive sleep apnea")[0]?.category).toBe("family-history");
+    expect(source("FHx: obstructive sleep apnea")[0]?.category).toBe("family-history");
+  });
+
+  it("marks tentative clinical shorthand as suspected rather than confirmed", () => {
+    expect(source("Assessment:\nProbable OSA?")[0]?.category).toBe("suspected");
+    expect(source("Assessment:\nOSA vs narcolepsy")[0]?.category).toBe("suspected");
+  });
+
+  it("recognizes curated common short aliases only in affirmative diagnostic context", () => {
+    expect(source("Assessment:\nOSA")[0]).toMatchObject({
+      conditionId:"obstructive-sleep-apnea", category:"diagnosis-statement",
+    });
+    expect(source("Dx: OSA")[0]?.category).toBe("diagnosis-statement");
+    expect(source("Treatment:\nOSA equipment notice")).toEqual([]);
+  });
+});
