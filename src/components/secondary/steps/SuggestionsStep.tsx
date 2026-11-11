@@ -254,7 +254,7 @@ export function SuggestionsStep({ snapshot, vaReference }: SuggestionsStepProps)
         <p className="ui-kicker">Step 5 of 6</p>
         <h1>Review Your Non-Service-Connected Diagnoses</h1>
         <p className="mx-auto mt-3 max-w-3xl text-lg">
-          This step compares your already service-connected conditions with the diagnoses you selected and any record-derived research topics you explicitly reviewed in Step 4. A record term match is not a confirmed diagnosis. Each published relationship is a research starting point, not a medical nexus or claim-approval prediction.
+          This step compares the VA-rated conditions you identified with other conditions you report were already diagnosed by a medical professional. The app researches possible causation or aggravation but does not diagnose conditions, establish a medical nexus, or predict claim approval.
         </p>
       </header>
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" role="group" aria-label="Workflow progress"><span>✓ Diagnosed</span><span>✓ Service-connected</span><span>✓ Ratings</span><span>✓ Documents</span><strong className="text-blue-700">5 Connections</strong><span>6 Evidence</span><span className="ml-auto no-print"><PrintReportButton /></span></div>
@@ -263,7 +263,7 @@ export function SuggestionsStep({ snapshot, vaReference }: SuggestionsStepProps)
       <div className="ui-grid">
         <aside className="ui-card" aria-label="Conditions being compared">
           <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">✓</span><h2 className="text-xl font-bold">Conditions Being Compared</h2></div>
-          <h3 className="font-bold">Non-service-connected diagnoses and confirmed-for-research topics</h3>
+          <h3 className="font-bold">Reported doctor-diagnosed, non-VA-rated conditions</h3>
           {nonServiceConnectedNames.length > 0 ? <div className="mt-2 flex flex-wrap gap-2">{nonServiceConnectedNames.map((name) => <span key={name} className="rounded-lg border border-amber-200 bg-amber-50 px-2.5 py-1 text-xs text-amber-950">{name}</span>)}</div> : <p className="mt-2 text-sm text-slate-600">Every diagnosed condition in this review is already marked service connected.</p>}
           <div className="ui-divider" />
           <h3 className="font-bold">Already service connected</h3><div className="mt-2 flex flex-wrap gap-2">{primaryNames.map((name) => <span key={name} className="rounded-lg border border-blue-200 bg-blue-50 px-2.5 py-1 text-xs text-blue-900">{name}</span>)}</div>
@@ -274,16 +274,6 @@ export function SuggestionsStep({ snapshot, vaReference }: SuggestionsStepProps)
 
         <section className="ui-card">
           <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">↔</span><div><h2 className="text-xl font-bold">Possible Connections to Review</h2><p className="text-sm text-slate-600">Organized by the diagnosed condition that is not yet service connected.</p></div></div>
-          {(context?.recordDiscoveredConditionIds?.length ?? 0) > 0 && (
-            <div className="ui-callout mb-5 text-sm">
-              <strong>From records — research topics, not clinical diagnoses:</strong>{" "}
-              {context?.recordDiscoveredConditionIds?.map((id) =>
-                (model.byId.get(id)?.name ?? id) + " (" +
-                (context.recordClaimStatusByConditionId?.[id] ?? "unknown") + ")",
-              ).join("; ")}.
-              Ask a clinician to verify these conditions and an accredited representative about any pending or denied claims.
-            </div>
-          )}
           <div className="ui-callout mb-5 text-sm"><strong>Direction matters:</strong> The question on this page is whether an already service-connected condition may have caused, contributed to, aggravated, or otherwise medically related to a diagnosis you already have but that is not service connected. The page does not search for additional diagnoses that might develop in the future.</div>
           <SecondarySuggestionsTabs
             conditions={timelineConditions}

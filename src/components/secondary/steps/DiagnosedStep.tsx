@@ -124,7 +124,7 @@ export function DiagnosedStep() {
       <header className="page-hero text-center">
         <p className="ui-kicker">Step 1 of 6</p>
         <h1>Diagnosed Conditions</h1>
-        <p className="mx-auto mt-3 max-w-3xl text-lg">Select conditions you have been formally diagnosed with and want to evaluate in this research session.</p>
+        <p className="mx-auto mt-3 max-w-3xl text-lg">Select only conditions that a medical professional has already diagnosed. You provide the diagnoses; this application does not diagnose or infer conditions from your records.</p>
       </header>
 
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-sm" role="group" aria-label="Workflow progress">

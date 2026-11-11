@@ -102,7 +102,7 @@ export function readBrowserWorkflowContext(
   }
 
   const result = browserWorkflowContextSchema.safeParse(parsed);
-  return result.success ? result.data : null;
+  return result.success ? removeLegacyRecordSuggestions(result.data) : null;
 }
 
 /**
@@ -119,7 +119,50 @@ export function writeBrowserWorkflowContext(
     version: BROWSER_WORKFLOW_CONTEXT_VERSION,
   });
   if (!parsed.success) throw new BrowserWorkflowContextTooLargeError();
-  storage.setItem(browserWorkflowContextStorageKey, JSON.stringify(parsed.data));
+  // Reject record-generated targets even if an older caller attempts to
+  // persist them. Only the Veteran's explicit Step 1 selection is eligible.
+  storage.setItem(browserWorkflowContextStorageKey, JSON.stringify(removeLegacyRecordSuggestions(parsed.data)));
+}
+
+/**
+ * Prior releases allowed record-extracted conditions to enter diagnosed IDs.
+ * The current product only compares diagnoses explicitly provided by the Veteran.
+ * On read AND write, retract every record-origin ID, including one later
+ * marked service connected through the workflow; its origin cannot be
+ * authenticated as a Step 1 Veteran-entered diagnosis. Preserve OTHER
+ * manually entered VA-rated conditions, ratings and unrelated history.
+ * A previously record-derived condition may be reselected in Step 1 only
+ * after the Veteran personally confirms their existing medical diagnosis.
+ */
+function removeLegacyRecordSuggestions(context: BrowserWorkflowContext): BrowserWorkflowContext {
+  const fromRecords = new Set(context.recordDiscoveredConditionIds ?? []);
+  if (fromRecords.size === 0) return context;
+  // A past Step 2 "yes" answer is NOT proof of a direct Step 1 selection.
+  // If origin is lost while keeping that condition, a later "no" would turn
+  // it into an unsafely inferred non-service-connected research target.
+  const keep = (id: string) => !fromRecords.has(id);
+  return {
+    ...context,
+    diagnosedConditionIds: context.diagnosedConditionIds?.filter(keep),
+    serviceConnectedConditionIds: context.serviceConnectedConditionIds?.filter(keep),
+    serviceConnectedAnswerDraft: context.serviceConnectedAnswerDraft
+      ? Object.fromEntries(
+          Object.entries(context.serviceConnectedAnswerDraft).filter(([id]) => keep(id)),
+        )
+      : undefined,
+    ratingsByConditionId: context.ratingsByConditionId
+      ? Object.fromEntries(Object.entries(context.ratingsByConditionId)
+          .filter(([id]) => keep(id)))
+      : undefined,
+    permanentAndTotalConditionIds: context.permanentAndTotalConditionIds?.filter(keep),
+    conditionTimeline: context.conditionTimeline
+      ? Object.fromEntries(Object.entries(context.conditionTimeline)
+          .filter(([id]) => keep(id)))
+      : undefined,
+    recordDiscoveredConditionIds: [],
+    recordClaimStatusByConditionId: {},
+    recordSourceIdsByConditionId: {},
+  };
 }
 
 /** Removes the browser-local context. Throws if removal cannot be confirmed. */
